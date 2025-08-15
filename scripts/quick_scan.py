@@ -40,7 +40,7 @@ import json
 
 # Embedded default vocab (acts as fallback if tokenmap parse not supplied / fails)
 DEFAULT_STOPWORDS = {"the","and","of","for","set","pack","stl","model","models","mini","minis","figure","figures","files","printing","print"}
-DEFAULT_DESIGNER_ALIASES = {"ghamak","ghmk","ghamak_studio","rn_estudio","rn-estudio","rnestudio","archvillain","arch_villain","archvillain_games","avg","puppetswar","puppets_war","tinylegend","azerama","hybris","hybris_studio","moxomor","mezgike","momoji","momoji3d","3dmomoji","moonfigures","3dmoonn","funservicestl","pikky","pikky_prints"}
+DEFAULT_DESIGNER_ALIASES = {"ghamak","ghmk","ghamak_studio","rn_estudio","rn-estudio","rnestudio","archvillain","arch_villain","archvillain_games","avg","puppetswar","puppets_war","tinylegend","azerama","hybris","hybris_studio","moxomor","mezgike","momoji","momoji3d","3dmomoji","moonfigures","3dmoonn","funservicestl","pikky","pikky_prints","esm"}
 DEFAULT_LINEAGE_FAMILY = {"elf","elves","aelf","aelves","human","humans","man","men","dwarf","dwarves","duardin","orc","orcs","ork","orks","orruk","orruks","undead","skeleton","skeletons","ghoul","ghouls","zombie","zombies","wight","wights","demon","daemon","daemons","demons","goblin","goblins","grot","grots","halfling","halflings","hobbit","hobbits","lizardfolk","lizardman","lizardmen","saurus","dragonborn","draconian","drake","vampire","vampires","vampiric","ratfolk","kobold","kobolds"}
 DEFAULT_FACTION_HINTS = {"stormcast","custodes","tau","aeldari","eldar","nurgle","tzeentch","slaanesh","khorne","necron","tyranid","ork","orks","guard","astra","sororitas","votann","skaven","lumineth","seraphon"}
 VARIANT_AXES = {"split","parts","part","multi-part","multi_part","onepiece","one_piece","merged","solidpiece","hollow","hollowed","solid","presupported","pre-supported","pre_supported","supported","unsupported","no_supports","clean","bust","base_pack","bases_only","base_set","bits","bitz","accessories"}
@@ -59,6 +59,7 @@ SPLIT_CHARS = re.compile(r"[\s_\-]+")
 TOKEN_MIN_LEN = 2
 TOKENMAP_VERSION: str | None = None
 TOKEN_LIST_PATTERN = re.compile(r'^\s*([a-z0-9_]+):\s*\[(.*?)\]\s*$')
+DESIGNER_SUFFIXES = ("studio","studios","miniature","miniatures","minis","prints","printing","figures","figure")
 
 def _split_alias_list(raw: str) -> list[str]:
     out = []
@@ -127,6 +128,30 @@ def load_tokenmap(tokenmap_path: pathlib.Path) -> dict[str, int] | None:
             continue
     return {'designers_added': designers_added,'lineage_added': lineage_added,'faction_aliases_added': factions_added,'stopwords_added': stopwords_added}
 
+def load_external_designers(designers_path: pathlib.Path) -> int:
+    """Load only designers section from external designers_tokenmap.md. Returns count added."""
+    global DESIGNER_ALIASES
+    try:
+        text = designers_path.read_text(encoding='utf-8', errors='ignore')
+    except Exception:
+        return 0
+    in_designers = False
+    added = 0
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            if in_designers: in_designers = False
+        if stripped.startswith('designers:'):
+            in_designers = True
+            continue
+        m_list = TOKEN_LIST_PATTERN.match(line)
+        if m_list and in_designers:
+            _, raw_list = m_list.groups()
+            for a in _split_alias_list(raw_list):
+                if a not in DESIGNER_ALIASES:
+                    DESIGNER_ALIASES.add(a); added += 1
+    return added
+
 def tokenize(path: pathlib.Path) -> list[str]:
     raw = path.stem.lower()
     parts = SPLIT_CHARS.split(raw)
@@ -158,7 +183,16 @@ def classify_token(tok: str) -> str | None:
     if SCALE_MM_RE.match(tok): return "scale_mm"
     return None
 
-def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool, include_archives: bool, archive_sample: int) -> dict:
+def maybe_strip_designer_suffix(tok: str) -> str:
+    # Only strip if token longer than suffix+1 and endswith suffix; return stripped if result in designer aliases
+    for suf in DESIGNER_SUFFIXES:
+        if tok.endswith(suf) and len(tok) > len(suf)+1:
+            base = tok[:-len(suf)]
+            if base in DESIGNER_ALIASES:
+                return base
+    return tok
+
+def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool, include_archives: bool, archive_sample: int, strip_suffixes: bool) -> dict:
     file_count = dir_count = 0
     archive_count = 0
     token_counter: collections.Counter[str] = collections.Counter()
@@ -170,6 +204,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
         if p.is_dir():
             if skip_dirs: continue
             for tok in tokenize(p):
+                if strip_suffixes:
+                    tok = maybe_strip_designer_suffix(tok)
                 domain = classify_token(tok)
                 token_counter[tok] += 1
                 if domain: token_domain.setdefault(tok, domain)
@@ -184,6 +220,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
             archive_count += 1
         file_count += 1
         for tok in tokenize(p):
+            if strip_suffixes:
+                tok = maybe_strip_designer_suffix(tok)
             domain = classify_token(tok)
             token_counter[tok] += 1
             if domain: token_domain.setdefault(tok, domain)
@@ -299,6 +337,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--emit-known-summary', action='store_true', help='Include summary counts of classified tokens by domain')
     ap.add_argument('--include-archives', action='store_true', help='Include archive filenames (.zip/.rar/.7z/.cbz/.cbr) without extraction')
     ap.add_argument('--archive-sample', type=int, default=0, help='Show up to N archive-only tokens that did not make top unknown list')
+    ap.add_argument('--designers-file', help='Optional external designers_tokenmap.md file to preload designer aliases')
+    ap.add_argument('--strip-designer-suffixes', action='store_true', help='Strip common designer suffixes (studio/minis/prints/figures) after alias match to reduce variant noise')
     return ap.parse_args(argv)
 
 def main(argv: list[str]) -> int:
@@ -310,6 +350,16 @@ def main(argv: list[str]) -> int:
     if not root.exists() or not root.is_dir():
         print(f"Root not found or not directory: {root}", file=sys.stderr); return 2
     exts = {e.lower() for e in args.extensions}
+    # Load external designers first (if provided or exists by default name)
+    if args.designers_file:
+        dpath = pathlib.Path(args.designers_file)
+    else:
+        dpath = pathlib.Path(__file__).resolve().parent.parent / 'designers_tokenmap.md'
+    if dpath.exists():
+        added = load_external_designers(dpath)
+        if added:
+            print(f"[info] external designers loaded +{added} from {dpath.name}")
+
     if args.tokenmap:
         tm_path = pathlib.Path(args.tokenmap)
         if tm_path.exists():
@@ -342,7 +392,7 @@ def main(argv: list[str]) -> int:
                 print(f"[warn] failed to read ignore file: {e}")
         else:
             print(f"[warn] ignore file not found: {ig_path}")
-    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary, args.include_archives, args.archive_sample)
+    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary, args.include_archives, args.archive_sample, args.strip_designer_suffixes)
     if args.json_out: out_path = pathlib.Path(args.json_out)
     else:
         out_path = root / 'quick_scan_report.json'

@@ -1,8 +1,8 @@
-# Token Normalization Map (Version 5)
+# Token Normalization Map (Version 9)
 
 Purpose: Central, versioned mapping of raw path/file tokens -> canonical normalized values used in metadata fields (see `MetadataFields.md`). Keeps heuristic logic transparent and auditable. Phase 1 scope focuses on high-confidence, low-ambiguity mappings only. Ambiguous or low-frequency tokens route to `residual_tokens` + `normalization_warnings`.
 
-Version: 5
+Version: 9
 Applies to fields first introduced in Phase 1 (designer, intended_use_bucket, basic variant axes, game_system, codex_faction, lineage_family (high-level), pc_candidate_flag proto heuristics, scale basics) and seeds for Phase 2 (lineage_primary examples) for forward compatibility (but Phase 2 tokens flagged if matched early).
 
 ---
@@ -28,7 +28,7 @@ Sections:
 ---
 ## 2. Meta
 ```
-token_map_version: 5
+token_map_version: 9
 min_token_length: 2
 case_sensitive: false
 strip_chars: ["(", ")", "[", "]", ",", ";", "{", "}"]
@@ -37,110 +37,13 @@ split_on: ["_", "-", " "]
 ```
 
 ---
-## 3. Designers (Aliases -> canonical)
-Only include high-frequency designers you actually have; others go to residual until observed 2+ times.
+## 3. Designers (External Reference)
+Designer aliases fully externalized. See `designers_tokenmap.md` (separately versioned) for the canonical list. This main map intentionally excludes designer entries to minimize noise in diffs.
 
 ```
-designers:
-	ghamak: ["ghamak", "ghmk", "ghamak_studio"]
-	rn_estudio: ["rn_estudio", "rn-estudio", "rnestudio"]
-	archvillain: ["archvillain", "arch_villain", "archvillain_games", "avg"]
-	puppetswar: ["puppetswar", "puppets_war"]
-	tinylegend: ["tinylegend"]
-	azerama: ["azerama"]
-	hybris_studio: ["hybris", "hybris_studio", "hybrisstudio"]
-	pikky_prints: ["pikky", "pikky_prints"]
-	warsteel_miniatures: ["warsteel", "warsteel_miniatures", "warsteel_miniaturs", "warsteelminiatures"]
-	momoji: ["momoji", "momoji3d", "3dmomoji"]
-	moonfigures: ["moonfigures"]
-	three_dmoonn: ["3dmoonn"]
-	funservicestl: ["funservicestl"]
-	miyo_studio: ["miyo", "miyo_studio", "miyo studio"]
-	megha: ["megha", "megha_l", "megha l"]  # include observed variant with initial
-	kuton: ["kuton"]
-	zahen_studio: ["zahen", "zahen_studio", "zahen studio"]
-	chuya_factory: ["chuya", "chuya_factory", "chuya factory"]
-	kuru_figure: ["kuru", "kuru_figure", "kuru figure"]
-	nomnom: ["nomnom"]
-	nympha3d: ["nympha3d", "nympha"]
-	moxomor: ["moxomor"]
-	mezgike: ["mezgike"]
-	abe3d: ["abe3d"]
-	ca3d: ["ca3d"]
-	jigglystix: ["jigglystix"]
-	torrida: ["torrida", "torrida_minis", "torrida minis"]
-	skarix: ["skarix"]
-	xo3d: ["oxo3d", "xo3d", "oxo_3d"]
-	rubim: ["rubim"]
-	pink_studio: ["pink_studio", "pink studio"]
-	dinamuuu3d: ["dinamuuu3d", "dinamuu3d", "dinamuuu3d"]  # minor spelling drift
-	zf3d: ["zf3d"]
-	gsculpt_art: ["gsculpt", "gsculpt_art", "gsculpt art"]
-	aliance: ["aliance"]
-	messias3d_figure: ["messias", "messias3d", "messias_3d", "messias 3d", "messias3d_figure", "messias 3d figure"]
-	obstetrician_m_booth: ["obstetrician-m.booth", "obstetrician_m_booth", "obstetricianmbooth"]
-	vx_labs: ["vx-labs", "vx_labs", "vxlabs"]
-	cw_studio: ["cw_studio", "cw studio", "chickenwar", "cw studio (chickenwar)"]
-	es_monster: ["e.s.monster", "es_monster", "esmonster"]
-	gm3d: ["gm3d"]
-	kangyong: ["kangyong", "kang_yong", "kang yong"]
-	manilovefigures: ["manilovefigures", "mani_love_figures", "mani love figures"]
-	peachfigure: ["peachfigure", "peach_figure", "peach figure"]
-	officer_rhu: ["officer-rhu", "officer_rhu", "officerrhu"]
-	exclusive3dprinting: ["exclusive3dprinting", "exclusive_3d_printing", "exclusive 3d printing"]
-	rushzilla: ["rushzilla"]
-	francis_quez: ["francis quez", "francis_quez", "francisquez"]
+designers: external_reference
 ```
 
-Collision rule: If a token matches aliases for >1 designer (should not in curated list) emit `warning: designer_alias_collision` and push token to residual.
-
----
-## 4. Lineage
-High-level Phase 1: lineage_family only. Provide forward-looking primary seeds (flagged future=true) so we don't later reclassify unexpectedly.
-
-```
-lineage:
-	family_map:
-		elf: ["elf", "elves", "aelf", "aelves"]
-		human: ["human", "humans", "man", "men"]
-		dwarf: ["dwarf", "dwarves", "duardin"]
-		orc: ["orc", "orcs", "ork", "orks", "orruk", "orruks"]
-		undead: ["undead", "skeleton", "skeletons", "ghoul", "ghouls", "zombie", "zombies", "wight", "wights"]
-		demon: ["demon", "daemon", "daemons", "demons"]
-		goblin: ["goblin", "goblins", "grot", "grots"]
-		halfling: ["halfling", "halflings", "hobbit", "hobbits"]
-		lizardfolk: ["lizardfolk", "lizardman", "lizardmen", "saurus"]
-		dragonkin: ["dragonborn", "draconian", "draconian", "drake"]
-		vampire: ["vampire", "vampires", "vampiric"]
-		ratfolk: ["ratfolk", "ratkin", "ratmen"]  # generic rodent lineage outside specific system 'skaven'
-		kobold: ["kobold", "kobolds"]
-	primary_seeds:  # Phase 2 enable (mark future for now)
-		high_elf: { tokens: ["high_elf", "high-elf"], family: elf, future: true }
-		dark_elf: { tokens: ["dark_elf", "dark-elf", "drow"], family: elf, future: true }
-		wood_elf: { tokens: ["wood_elf", "wood-elf", "sylvan_elf", "sylvan"], family: elf, future: true }
-		stormcast_human: { tokens: ["stormcast", "stormcast_eternal", "stormcast_eternals"], family: human, future: true }
-		duardin: { tokens: ["duardin"], family: dwarf, future: true }
-		minotaur: { tokens: ["minotaur", "minotaurs"], family: ???, future: true }  # decide if separate family or monster taxonomy later
-```
-
-Ambiguity examples (not mapped now): "lich", "banshee" (would map to undead later). If encountered -> residual + warning `ambiguous_lineage_token`.
-
----
-## 5. Factions (System Specific)
-Separate mapping per game_system. Keys list canonical `codex_faction` (or Battletome faction) and alias array. Coverage aims for current (2025) main armies only; deprecated/legends or micro-subfactions excluded for now (flow to residual for later decision). Aliases include common abbreviations, singular/plural, and frequent spelling variants.
-
-```
-factions:
-	warhammer_40k:
-		space_marines: ["space_marine", "space_marines", "adeptus_astartes", "astartes", "aastartes", "marine", "marines"]
-		adepta_sororitas: ["adepta_sororitas", "sisters_of_battle", "sister_of_battle", "sororitas", "sob"]
-		adeptus_custodes: ["adeptus_custodes", "custodes", "custodian", "custodians"]
-		astra_militarum: ["astra_militarum", "imperial_guard", "guard", "am"]
-		adeptus_mechanicus: ["adeptus_mechanicus", "admech", "mechanicus", "skitarii", "cult_mechanicus"]
-		agents_of_the_imperium: ["agents_imperium", "inquisition", "ordo_malleus", "ordo_xenos", "ordo_hereticus", "rogue_trader", "assassinorum", "assassin"]
-		imperial_knights: ["imperial_knight", "imperial_knights", "ik"]
-		chaos_space_marines: ["chaos_space_marine", "chaos_space_marines", "csm"]
-		world_eaters: ["world_eater", "world_eaters"]
 		death_guard: ["death_guard"]
 		thousand_sons: ["thousand_son", "thousand_sons", "1ksons"]
 		chaos_daemons: ["chaos_daemon", "chaos_daemons", "daemon", "daemons"]

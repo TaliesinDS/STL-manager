@@ -25,7 +25,7 @@ if not exist "%IGNORE_FILE%" (
 
 REM --include-archives : count .zip/.rar/.7z/.cbz/.cbr filenames (no extraction)
 REM --archive-sample 30 : surface up to 30 archive-only tokens that didn't make the main unknown slice
-set ARGS=--unknown-top 300 --include-archives --archive-sample 30 --json-out "%JSON_OUT%" --emit-known-summary --ignore-file "%IGNORE_FILE%"
+set ARGS=--unknown-top 300 --include-archives --archive-sample 30 --strip-designer-suffixes --json-out "%JSON_OUT%" --emit-known-summary --ignore-file "%IGNORE_FILE%" --designers-file "%SCRIPT_DIR%..\designers_tokenmap.md"
 if exist "%TOKENMAP%" (
   set ARGS=%ARGS% --tokenmap "%TOKENMAP%"
 ) else (
