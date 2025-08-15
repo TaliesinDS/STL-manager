@@ -99,6 +99,9 @@ Phase Legend:
 | scale_ratio_den | integer | P1 | Denominator of ratio 1:den | Accept 4,6,7,9,10,12 etc. |
 | height_mm | integer | P1 | Explicit mm size if token present | No inference yet |
 | mm_declared_conflict | boolean | P2 | Ratio + mm mismatch flag | Review queue |
+| style_primary | enum | P1 | Anatomical style axis (realistic, heroic, anime) | Focuses on proportion realism vs heroic exaggeration vs anime stylization; MUST remain null unless an explicit high-confidence token (e.g., "anime", "bishoujo", "waifu", "heroic_scale", "true scale") is present or manually set; ambiguous borderline anime-realistic hybrids stay null for manual judgment |
+| style_primary_confidence | enum | P1 | certain, probable, guess | Mirrors other *_confidence fields; starts guess if inferred by fallback |
+| style_aesthetic_tags | array<string> | P2 | Non-anatomical aesthetic descriptors (grimdark, baroque, gothic, biomechanical, ornate, chibi, toon, low_poly, painterly, gritty) | Multi-tag; renamed from style_secondary_tags |
 | addon_type | enum | P2 | weapon_swap, armor_panel, decorative, iconography, clothing_set, head_swap, basing_upgrade, pose_rebuilder, alt_turret, magnet_adapter, vehicle_stowage | Functional upgrade role (nullable) |
 | requires_base_model | boolean | P2 | True if unusable standalone | Derive from absence of core body parts |
 | compatibility_scope | enum | P2 | single_unit, faction_wide, multi_faction, system_wide, generic | Breadth of applicability |
@@ -238,6 +241,9 @@ Note: A lineage_primary always belongs to exactly one lineage_family, but some a
 - addon_type: weapon_swap, armor_panel, decorative, iconography, clothing_set, head_swap, basing_upgrade, pose_rebuilder, alt_turret, magnet_adapter, vehicle_stowage
 - compatibility_scope: single_unit, faction_wide, multi_faction, system_wide, generic
 - attachment_points: turret_ring, sponson_left, sponson_right, hull_top, hull_side_left, hull_side_right, head, left_arm, right_arm, backpack, shoulder_left, shoulder_right, base_top
+- style_primary: realistic, heroic, anime
+- style_aesthetic_tags (examples): grimdark, baroque, gothic, biomechanical, organic, ornate, minimalist, gritty, painterly, chibi, toon, low_poly, stylized
+- style_primary_confidence: certain, probable, guess
 - review_status: unreviewed, flagged, confirmed
 - designer_confidence / actor_confidence: certain, probable, stylized (actor only), composite (actor only), guess (designer only)
 
