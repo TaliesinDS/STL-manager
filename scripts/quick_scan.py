@@ -23,7 +23,9 @@ Optional JSON (--json-out):
         "scale_mm": [{"token": str, "mm": int, "count": int}],
         "numeric_tokens": [{"token": str, "count": int}],
         "suggestions": [str],
-        "token_map_version": str | null
+    "token_map_version": str | null,
+    "ignored_tokens": [{"token": str, "count": int, "reason": str}],
+    "domain_summary": {"designer": int, "lineage_family": int, ...}
     }
 """
 from __future__ import annotations
@@ -143,7 +145,7 @@ def classify_token(tok: str) -> str | None:
     if SCALE_MM_RE.match(tok): return "scale_mm"
     return None
 
-def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool) -> dict:
+def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool) -> dict:
     file_count = dir_count = 0
     token_counter: collections.Counter[str] = collections.Counter()
     token_domain: dict[str, str] = {}
@@ -166,7 +168,17 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
             if domain: token_domain.setdefault(tok, domain)
             if any(c.isdigit() for c in tok): numeric_like[tok] += 1
         if limit and file_count >= limit: break
-    unknown = [(tok, cnt) for tok, cnt in token_counter.most_common() if tok not in token_domain][:unknown_top]
+    # Build unknown list excluding user ignored tokens
+    unknown: list[tuple[str,int]] = []
+    for tok, cnt in token_counter.most_common():
+        if tok in token_domain:
+            continue
+        if tok in ignore_set:
+            continue
+        unknown.append((tok, cnt))
+        if len(unknown) >= unknown_top:
+            break
+    ignored_tokens = [{"token": t, "count": token_counter[t], "reason": "user_ignore"} for t in sorted(ignore_set) if t in token_counter]
     ratios_raw = [(t, c) for t, c in token_counter.items() if classify_token(t) == "scale_ratio"]
     mms_raw = [(t, c) for t, c in token_counter.items() if classify_token(t) == "scale_mm"]
     ratios = []
@@ -188,6 +200,13 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
     print(f"Distinct tokens: {len(token_counter)}")
     print("\nTop unknown tokens (potential new vocab):")
     for tok, cnt in unknown: print(f"  {tok}: {cnt}")
+    if ignored_tokens:
+        print(f"\nIgnored tokens (suppressed so others can surface): {len(ignored_tokens)}")
+        for it in ignored_tokens[:15]:
+            print(f"  {it['token']}: {it['count']}")
+        extra = len(ignored_tokens) - 15
+        if extra > 0:
+            print(f"  ... (+{extra} more)")
     if ratios or mm_entries:
         print("\nScale tokens:")
         for r in ratios:
@@ -198,6 +217,15 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
     for nt in numeric_tokens: print(f"  {nt['token']}: {nt['count']}")
     print("\nSuggestions:")
     for s in suggestions: print(f"  {s}")
+    domain_summary = {}
+    if emit_known_summary:
+        inv: dict[str,int] = collections.Counter(token_domain.values())
+        domain_summary = dict(inv)
+        if emit_known_summary:
+            print("\nKnown domain summary:")
+            for k,v in sorted(domain_summary.items()):
+                print(f"  {k}: {v}")
+
     return {
         "scanned_files": file_count,
         "scanned_directories": (0 if skip_dirs else dir_count),
@@ -208,6 +236,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
         "numeric_tokens": numeric_tokens,
         "suggestions": suggestions,
         "token_map_version": TOKENMAP_VERSION,
+        "ignored_tokens": ignored_tokens,
+        "domain_summary": domain_summary,
     }
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -219,6 +249,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--unknown-top', type=int, default=300, help='How many top unknown tokens to include')
     ap.add_argument('--skip-dirs', action='store_true', help='Skip tokenizing directory names (default includes)')
     ap.add_argument('--tokenmap', help='Path to tokenmap.md to dynamically load vocab (aliases, lineage, factions, stopwords)')
+    ap.add_argument('--ignore-file', help='Path to newline-delimited token ignore list (one token per line; # comments allowed)')
+    ap.add_argument('--emit-known-summary', action='store_true', help='Include summary counts of classified tokens by domain')
     return ap.parse_args(argv)
 
 def main(argv: list[str]) -> int:
@@ -240,7 +272,29 @@ def main(argv: list[str]) -> int:
                 print("[warn] tokenmap parse failed; using embedded defaults")
         else:
             print(f"[warn] tokenmap path not found: {tm_path}; using embedded defaults")
-    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs)
+    ignore_set: set[str] = set()
+    ig_path: pathlib.Path | None = None
+    if args.ignore_file:
+        ig_path = pathlib.Path(args.ignore_file)
+    else:
+        # Fallback: look for ignored_tokens.txt alongside script
+        candidate = pathlib.Path(__file__).resolve().parent / 'ignored_tokens.txt'
+        if candidate.exists():
+            ig_path = candidate
+            print(f"[info] --ignore-file not provided; using default {ig_path.name}")
+    if ig_path:
+        if ig_path.exists():
+            try:
+                for line in ig_path.read_text(encoding='utf-8').splitlines():
+                    line = line.strip().lower()
+                    if not line or line.startswith('#'): continue
+                    ignore_set.add(line)
+                print(f"[info] loaded {len(ignore_set)} ignore tokens from {ig_path}")
+            except Exception as e:
+                print(f"[warn] failed to read ignore file: {e}")
+        else:
+            print(f"[warn] ignore file not found: {ig_path}")
+    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary)
     if args.json_out: out_path = pathlib.Path(args.json_out)
     else:
         out_path = root / 'quick_scan_report.json'

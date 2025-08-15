@@ -45,6 +45,8 @@ What it does (Phase 0 safe):
 - Recurses files (no archive extraction) honoring extension filter.
 - Splits stems (and now directory names) on `_ - space` unless `--skip-dirs` provided.
 - Optionally loads designers / lineage / faction aliases / stopwords from `tokenmap.md` via `--tokenmap` (falls back to embedded defaults if parsing fails).
+- Supports ignore list & domain summary via `--ignore-file` (newline tokens, `#` comments) and `--emit-known-summary` to print counts of classified domains and suppress noisy frequent known/ambiguous tokens from the unknown list.
+	- If `--ignore-file` is omitted the script auto-loads `ignored_tokens.txt` from the scripts directory when present.
 - Counts token frequencies and classifies against a minimal embedded vocab subset (sync with `tokenmap.md`).
 - Prints top unknown tokens (candidates for expansion into designer aliases, factions, lineage, style, etc.).
 - Highlights scale ratio / mm tokens and numeric-containing tokens (pose, version, base size hints).
