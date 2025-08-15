@@ -1,0 +1,268 @@
+# Metadata Fields Specification
+
+Purpose: Define all planned metadata fields for the STL Manager project, their intent, data type, allowed values, introduction phase, and notes so early planning stays consistent and we avoid premature complexity.
+
+Phase Legend:
+- P0 = Phase 0 (initial passive inventory; **no archive extraction**, minimal parsing)
+- P1 = Early enrichment (basic normalization, simple token parsing)
+- P2 = Variant grouping & advanced classification
+- P3 = Geometry analysis / hashing / dedupe
+- P4 = AI-assisted tagging & inference
+- FUTURE = Not scheduled yet / speculative
+
+> Principle: Introduce only what we can reliably populate; leave placeholders for future fields so the model remains stable.
+
+---
+## 1. Core Identification
+| Field | Type | Phase | Description | Notes |
+|-------|------|-------|-------------|-------|
+| id | UUID / integer | P1 | Primary key for a ModelVariant record | Could start as incremental in a local DB |
+| model_group_id | UUID | P2 | Links variants that share the same underlying character/figure concept | Created during grouping |
+| archive_id | UUID | P1 | Source archive reference | One variant can belong to multiple archives via join table |
+
+## 2. File System Inventory
+| Field | Type | Phase | Description | Notes |
+| root_id | string | P0 | Logical root label for scan | e.g., `tabletop_intent_root1` |
+| rel_path | string | P0 | Relative path from root (POSIX style) | Store raw; do not normalize case |
+| filename | string | P0 | Leaf name | |
+| extension | string | P0 | Lowercased extension (no dot) | |
+| size_bytes | integer | P0 | File size | |
+| mtime_iso | ISO8601 string | P0 | Last modified time (UTC) | Optional if cheap |
+| depth | integer | P0 | Directory depth (root=0) | |
+| is_dir | boolean | P0 | Directory flag (mostly false in inventory file view) | |
+| is_archive | boolean | P0 | Extension in {zip, rar, 7z, tar, …} | Archives not unpacked in P0 |
+| scan_batch_id | UUID | P0 | Batch identifier to group a scan run | Allows diffing |
+
+## 3. Provenance / Source
+| Field | Type | Phase | Description | Notes |
+| source_archives | array<archive_id> | P1 | All archives containing equivalent file content | Needs hashing (P3) to fully populate |
+| original_archive_filename | string | P1 | Name of archive file first seen | |
+| distribution_source | enum | P2 | Platform: patreon, myminifactory, gumroad, cgtrader, unknown | Parsed from tokens / docs |
+| license_status | enum | FUTURE | personal_use, commercial_license, unknown | From included license text |
+
+## 4. Designer & Collection
+| Field | Type | Phase | Description | Notes |
+| designer | string | P1 | Sculptor / studio normalized name | Repetition heuristic |
+| designer_confidence | enum | P1 | certain, probable, guess | Manual upgrade |
+| collection_id | UUID | P2 | Monthly / thematic collection reference | Ghamak March 2023 etc. |
+| collection_original_label | string | P1 | Raw folder/archive label | Preserve token form |
+| collection_cycle | string (YYYY-MM) | P1 | Year-month extracted | Regex month mapping |
+| collection_sequence_number | integer | P1 | Numeric prefix like 52 | Optional |
+| collection_theme | string | P2 | Fantasy / Sci-Fi etc. | Simple controlled set |
+
+## 5. Franchise & Character
+| Field | Type | Phase | Description | Notes |
+| franchise | string | P2 | Canonical IP (marvel, dragon_ball, lotr, lol, etc.) | Controlled vocabulary |
+| sub_franchise | string | P2 | e.g., marvel_cinematic_universe | Optional |
+| character_name | string | P2 | Canonical character (hermione_granger) | Snake case |
+| character_aliases | array<string> | P2 | Raw tokens / alternative spellings | Kept for search |
+| actor_likeness | string | P2 | Actor name if likeness-based | Manual confirm |
+| actor_confidence | enum | P2 | certain, probable, stylized, composite | Starts as probable if auto-detected |
+| likeness_rights_flag | enum | FUTURE | potential_issue | For filtering/export compliance |
+
+## 6. Tabletop Game Mapping
+| Field | Type | Phase | Description | Notes |
+| game_system | string | P1 | warhammer_40k, age_of_sigmar, dnd5e, etc. | Token normalization |
+| codex_faction | string | P1 | e.g., necrons, ossiarch_bonereapers | |
+| codex_unit_name | string | P2 | Kainan's Reapers | Apostrophes preserved |
+| proxy_type | enum | P2 | official, direct_clone, stylized_proxy, counts_as, kitbash_pack | Manual / heuristic |
+| loadout_variants | array<string> | P2 | Weapon / gear options | From tokens |
+| base_size_mm | integer | P2 | 25, 32, 40, 60, etc. | Derived / manual |
+| rule_edition | integer | FUTURE | Edition number | If encoded |
+| lineage_family | string | P1 | Broad ancestry bucket (elf, human, dwarf, orc, undead, demon, construct, plantfolk, beastfolk, lizardfolk, dragonkin, angelic, aberration, goblin, halfling, giant, vampire, werebeast, slime, skeleton, insectfolk, elemental, fae, mixed, unknown) | High-level filter |
+| lineage_primary | string | P2 | Specific playable/species identity within family (high_elf, dark_elf, drow, wood_elf, stormcast_human, duardin, aelf, etc.) | Distinct gameplay / lore role |
+| lineage_aliases | array<string> | P2 | Raw tokens that mapped to family or primary | For transparency |
+| faction_general | string | P1 | System-agnostic faction/grouping (e.g., chaos, order, death) | High-tier bucket (esp. AoS) |
+| faction_path | array<string> | P2 | Ordered hierarchy e.g., [order, stormcast_eternals] | For drill-down UI |
+| tabletop_role | enum | P2 | pc_candidate, npc, monster, unit, terrain, vehicle, mount, familiar, summon | Multi-select via separate table if needed |
+| pc_candidate_flag | boolean | P1 | Quick boolean for likely player avatar suitability | Heuristic (humanoid + adventurer tokens) |
+| human_subtype | enum | P2 | generic_human, warhammer_human, dnd_adventurer_human, historical_human, other | Differentiates human contexts |
+| role_confidence | enum | P2 | certain, probable, guess | Manual upgrade |
+| lineage_confidence | enum | P1 | certain, probable, guess | Starts low if inferred indirectly |
+
+## 7. Variant Dimensions
+| Field | Type | Phase | Description | Notes |
+| intended_use_bucket | enum | P1 | tabletop_intent, display_large, mixed, unknown | From directory context |
+| content_flag | enum | P1 | sfw, nsfw | Coarse binary used early (quick filter) |
+| nsfw_level | enum | P2 | none, lingerie, topless, bottomless, nude, explicit_act | Granular; `none` mirrors sfw; assigned per variant |
+| nsfw_exposure_top | enum | P2 | covered, lingerie, sheer, exposed | Optional finer axis (can defer) |
+| nsfw_exposure_bottom | enum | P2 | covered, lingerie, sheer, exposed | Separate from overall level for asymmetric variants |
+| nsfw_act_tags | array<string> | P2 | Specific acts (e.g., kiss, fondling, penetration, implied) | Controlled subset; empty if none |
+| segmentation | enum | P1 | split, merged, unknown | |
+| internal_volume | enum | P1 | solid, hollowed, unknown | |
+| support_state | enum | P1 | presupported, supported, unsupported, unknown | |
+| has_slicer_project | boolean | P1 | Presence of .lychee, .chitubox, etc. | Not a support proxy |
+| pose_variant | string | P2 | pose1, variantB, alt_pose, etc. | Normalized token |
+| version_num | integer | P2 | Numeric version extracted (v2, v3) | Separate from pose |
+| part_pack_type | enum | P2 | full_model, parts, bust_only, base_only, accessory | Heuristic |
+| has_bust_variant | boolean | P2 | True if both full + bust forms present | |
+| scale_ratio_den | integer | P1 | Denominator of ratio 1:den | Accept 4,6,7,9,10,12 etc. |
+| height_mm | integer | P1 | Explicit mm size if token present | No inference yet |
+| mm_declared_conflict | boolean | P2 | Ratio + mm mismatch flag | Review queue |
+
+## 8. Geometry & Integrity (Future Phases)
+| Field | Type | Phase | Description | Notes |
+| hash_sha256 | hex string | P3 | File content hash | Dedupe / provenance |
+| triangle_count | integer | P3 | Mesh complexity | Requires geometry parse |
+| manifold_flag | boolean | P3 | Basic mesh validity | |
+| bounding_box_mm | array<float>(3) | P3 | X,Y,Z extents | For scale sanity |
+| volume_cc | float | P3 | Print volume | Potential resin calc |
+| thin_wall_warnings | array<string> | P4 | Problem areas | From analysis tool |
+
+## 9. Tagging & Classification
+| Field | Type | Phase | Description | Notes |
+| user_tags | array<string> | P1 | Manual freeform tags | Stored normalized lower |
+| auto_tags | array<string> | P4 | ML-suggested tags | Marked unconfirmed until accepted |
+| tag_conflicts | array<string> | P4 | Collisions needing review | |
+
+## 10. Audit / Workflow
+| Field | Type | Phase | Description | Notes |
+| created_at | ISO8601 | P1 | Record creation timestamp | |
+| updated_at | ISO8601 | P1 | Last mutation timestamp | |
+| review_status | enum | P2 | unreviewed, flagged, confirmed | Human workflow |
+| normalization_warnings | array<string> | P1 | e.g., ambiguous_bust, ambiguous_support | Drives review queue |
+| confidence_score | float (0-1) | P2 | Aggregate heuristic | Weighted components |
+| notes | text | P1 | Freeform user note | |
+
+## 11. Residual / Transparency
+| Field | Type | Phase | Description | Notes |
+| raw_path_tokens | array<string> | P0 | Tokenized original path segments | Re-process safe |
+| residual_tokens | array<string> | P1 | Unclassified tokens post-normalization | Mining for new rules |
+| token_version | integer | P1 | Normalization ruleset version applied | Migration aid |
+
+## 12. Archive Entity (Separate Table Concept)
+| Field | Type | Phase | Description | Notes |
+| archive_id | UUID | P1 | Primary key | |
+| rel_path | string | P0 | Path within root | |
+| filename | string | P0 | Archive filename | |
+| size_bytes | integer | P0 | Raw size | |
+| hash_sha256 | hex string | P3 | Hash for integrity / dedupe | Defer until P3 |
+| nested_archive_flag | boolean | P2 | True if discovered inside another archive | |
+| scan_first_seen_at | ISO8601 | P0 | First inventory detection time | |
+
+## 13. Collection Entity (Separate Table)
+| Field | Type | Phase | Description | Notes |
+| collection_id | UUID | P2 | Primary key | |
+| publisher | string | P2 | Designer / studio | |
+| cycle | string (YYYY-MM) | P2 | Month | |
+| sequence_number | integer | P2 | Numeric order | |
+| theme | string | P2 | e.g., fantasy | |
+| original_label | string | P2 | Raw folder name | |
+
+## 14. Character Entity
+| Field | Type | Phase | Description | Notes |
+| character_id | UUID | P2 | Primary key | |
+| name | string | P2 | Canonical | |
+| aliases | array<string> | P2 | Alternative spellings | |
+| franchise | string | P2 | IP | |
+| sub_franchise | string | P2 | Optional | |
+| actor_likeness | string | P2 | Actor if applicable | |
+| actor_confidence | enum | P2 | certain / probable / stylized / composite | |
+
+## 15. Unit Entity (Tabletop)
+| Field | Type | Phase | Description | Notes |
+| unit_id | UUID | P2 | Primary key | |
+| game_system | string | P2 | warhammer_40k etc. | |
+| faction | string | P2 | e.g., necrons | |
+| unit_name | string | P2 | Official unit name | |
+| canonical_base_size_mm | integer | P2 | Standard base | |
+| edition_introduced | integer | FUTURE | Rule edition | |
+
+## 16. Relationship Tables (Concepts)
+| Table | Fields | Purpose |
+|-------|--------|---------|
+| model_group_variant | model_group_id, variant_id | Associate variants to group |
+| variant_archive | variant_id, archive_id | Multi-archive provenance |
+| variant_tag | variant_id, tag | Manual tags many-to-many |
+| variant_unit | variant_id, unit_id, proxy_type | Link variant to unit with proxy classification |
+| variant_character | variant_id, character_id, likeness_confidence | Link variant to character |
+| collection_variant | collection_id, variant_id | Membership in monthly release |
+
+---
+## 17. Controlled Vocabularies (Initial Seeds)
+
+These will live in separate small config files later.
+
+- intended_use_bucket: tabletop_intent, display_large, mixed, unknown
+- content_flag: sfw, nsfw
+// NSFW granularity (introduced P2; `none` implied when content_flag=sfw)
+- nsfw_level: none, lingerie, topless, bottomless, nude, explicit_act
+- nsfw_exposure_top: covered, lingerie, sheer, exposed
+- nsfw_exposure_bottom: covered, lingerie, sheer, exposed
+- nsfw_act_tags: (controlled list e.g., kiss, fondling, penetration, implied, other)
+- segmentation: split, merged, unknown
+- internal_volume: solid, hollowed, unknown
+- support_state: presupported, supported, unsupported, unknown
+- part_pack_type: full_model, parts, bust_only, base_only, accessory
+- proxy_type: official, direct_clone, stylized_proxy, counts_as, kitbash_pack
+- lineage_family: elf, human, dwarf, orc, undead, demon, construct, plantfolk, beastfolk, lizardfolk, dragonkin, angelic, aberration, goblin, halfling, giant, vampire, werebeast, slime, skeleton, insectfolk, elemental, fae, mixed, unknown
+- lineage_primary (examples across families, non-exhaustive):
+	- elf: high_elf, wood_elf, dark_elf, drow, sylvan_elf, sea_elf, desert_elf, moon_elf, sun_elf, generic_elf
+	- human: stormcast_human, freeguild_human, dnd_adventurer_human, historical_human, barbarian_human, cleric_human, rogue_human, paladin_human
+	- dwarf: mountain_dwarf, duardin, chaos_dwarf, deep_dwarf, hill_dwarf
+	- orc: ork, orruk, savage_orc, black_orc, ironjaw_orc
+	- undead: vampire, skeleton_warrior, zombie, lich, wight, mummy, ghoul
+	- demon: generic_demon, greater_demon, succubus, incubus, imp, balor_like
+	- construct: golem_stone, golem_iron, animated_armor, warforged_like, clockwork_construct
+	- plantfolk: dryad, treant, spriggan, fungal_creature
+	- beastfolk: beastman, minotaur, satyr, faun, centaur, catfolk, foxfolk, ratfolk, kobold (alt: kobolt), lizardfolk, birdfolk, insectfolk_subtypes (antfolk, beetlefolk)
+	- dragonkin: dragonborn_generic, half_dragon, drakekin
+	- angelic: angel, seraph, deva, archangel
+	- aberration: mindflayer_like, beholder_like, tentacle_horror
+	- goblin: goblin, hobgoblin, bugbear
+	- halfling: lightfoot_halfling, stout_halfling, generic_halfling
+	- giant: hill_giant, fire_giant, frost_giant, storm_giant, stone_giant, ogre, troll
+	- werebeast: werewolf, werebear, wererat, wereboar
+	- slime: ooze, gelatinous_cube, slime_generic
+	- skeleton: skeleton_archer, skeleton_knight, skeleton_mage
+	- elemental: fire_elemental, water_elemental, earth_elemental, air_elemental
+	- fae: pixie, sprite, nymph, fairy, banshee (optionally also undead), eladrin
+	- mixed: hybrid_dragon_elf, chimera, multi_species_fusion
+	- unknown: placeholder when tokens insufficient
+
+Note: A lineage_primary always belongs to exactly one lineage_family, but some ambiguous creatures (e.g., banshee) may map to a primary under multiple candidate families; in such cases choose the dominant lore classification and add a normalization_warning for review.
+- human_subtype: generic_human, warhammer_human, dnd_adventurer_human, historical_human, other
+- tabletop_role: pc_candidate, npc, monster, unit, terrain, vehicle, mount, familiar, summon
+- review_status: unreviewed, flagged, confirmed
+- designer_confidence / actor_confidence: certain, probable, stylized (actor only), composite (actor only), guess (designer only)
+
+---
+## 18. Introduction Roadmap (High-Level)
+
+- P0: rel_path, filename, extension, size_bytes, depth, is_archive, root_id, raw_path_tokens, scan_batch_id
+- P1: designer, intended_use_bucket, basic variant axes (content_flag, segmentation, internal_volume, support_state, scale_ratio_den, height_mm), collection_basic (collection_original_label, collection_cycle, sequence), game_system, codex_faction, residual_tokens, token_version, normalization_warnings
+- P2: grouping (model_group_id), franchise/character, proxy_type, codex_unit_name, part_pack_type, pose_variant, version_num, has_bust_variant, loadout_variants, base_size_mm, collection_id linkage, actor_likeness, lineage_subrace, faction_path, tabletop_role, human_subtype, nsfw_level + exposure fields + nsfw_act_tags, confidence fields, review workflow, user_tags, notes
+- P3: hashing, geometry metrics, provenance expansion (source_archives), dedupe logic
+- P4: auto_tags, thin_wall_warnings, ML confidence scoring refinement
+- FUTURE: licensing, rights flags, rule edition, advanced quality analytics
+
+---
+## 19. Open Questions (To Refine Later)
+- How to assign model_group boundaries automatically vs manual seeding?
+- Minimum confidence threshold for auto-creating Character vs requiring manual confirm?
+- Strategy for updating derived fields when normalization rules (token_version) change (recompute all vs incremental)?
+- Handling potential legal sensitivity of actor likeness (local-only flag vs export suppression)?
+- Distinguishing ‘bust’ as variant versus segmentation part in ambiguous sets.
+- Clear policy for borderline categories (e.g., transparent lingerie counted as lingerie vs sheer; mapping to nsfw_level).
+- Whether explicit_act requires presence of act tags or can be inferred from file/folder naming only.
+- Exact heuristics for pc_candidate_flag (humanoid + gear tokens vs explicit unit names) and when to auto-clear for monsters.
+- Strategy for mapping system-specific faction terms into lineage_primary (e.g., aelf -> elf, duardin -> dwarf) while keeping original tokens.
+
+---
+## 20. Change Management
+When a field is added or semantics shift:
+1. Increment token_version (if normalization impacted).
+2. Add entry to `DECISIONS.md` with date + rationale.
+3. Provide a lightweight migration note (even if just “backfill null”).
+
+---
+## 21. Non-Goals (For Now)
+- Automatic watermark / signature removal detection
+- Commercial license validation automation
+- Full-text OCR of included PDFs
+- Automatic actor likeness model inference (manual flag only initially)
+
+---
+## 22. Summary
+This spec captures the superset of metadata we have discussed. Early phases (P0/P1) stay intentionally small and reliable; later phases enrich without forcing retroactive renames. We will resist adding geometry or ML-derived fields until grouping & manual review workflows stabilize.
+
