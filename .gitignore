@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+.vscode/
+.idea/
+.venv/
+build/
+dist/
+notes/
+# Optional future patterns (uncomment if you choose to exclude)
+# *.stl
+# *.obj
+# *.zip
+# *.rar
