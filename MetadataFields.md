@@ -94,11 +94,22 @@ Phase Legend:
 | has_slicer_project | boolean | P1 | Presence of .lychee, .chitubox, etc. | Not a support proxy |
 | pose_variant | string | P2 | pose1, variantB, alt_pose, etc. | Normalized token |
 | version_num | integer | P2 | Numeric version extracted (v2, v3) | Separate from pose |
-| part_pack_type | enum | P2 | full_model, parts, bust_only, base_only, accessory | Heuristic |
+| part_pack_type | enum | P2 | full_model, parts, bust_only, base_only, accessory, upgrade_kit, conversion_bits, weapon_pack, head_swap_pack, clothing_set, decorative_bits | Refined classification for addon packs; legacy values retained |
 | has_bust_variant | boolean | P2 | True if both full + bust forms present | |
 | scale_ratio_den | integer | P1 | Denominator of ratio 1:den | Accept 4,6,7,9,10,12 etc. |
 | height_mm | integer | P1 | Explicit mm size if token present | No inference yet |
 | mm_declared_conflict | boolean | P2 | Ratio + mm mismatch flag | Review queue |
+| addon_type | enum | P2 | weapon_swap, armor_panel, decorative, iconography, clothing_set, head_swap, basing_upgrade, pose_rebuilder, alt_turret, magnet_adapter, vehicle_stowage | Functional upgrade role (nullable) |
+| requires_base_model | boolean | P2 | True if unusable standalone | Derive from absence of core body parts |
+| compatibility_scope | enum | P2 | single_unit, faction_wide, multi_faction, system_wide, generic | Breadth of applicability |
+| compatible_units | array<string> | P2 | Canonical unit names targeted (e.g., rhino) | Will become FK list |
+| compatible_factions | array<string> | P2 | Factions explicitly referenced | Subset codex_faction |
+| multi_faction_flag | boolean | P2 | True if >1 compatible_factions | Derived |
+| attachment_points | array<string> | P2 | turret_ring, sponson_left, sponson_right, hull_top, hull_side_left, hull_side_right, head, left_arm, right_arm, backpack, shoulder_left, shoulder_right, base_top | Controlled vocab list |
+| replaces_parts | array<string> | P2 | Parts replaced (turret, sponson, head, hatch, weapon) | Review targeting |
+| additive_only_flag | boolean | P2 | No original part removal required | Derived |
+| clothing_variant_flag | boolean | P2 | Apparel/outfit overlay set | Subset of addon packs |
+| magnet_ready_flag | boolean | P2 | Magnet prep tokens present | Heuristic now, geometry later |
 
 ## 8. Geometry & Integrity (Future Phases)
 | Field | Type | Phase | Description | Notes |
@@ -194,6 +205,7 @@ These will live in separate small config files later.
 - internal_volume: solid, hollowed, unknown
 - support_state: presupported, supported, unsupported, unknown
 - part_pack_type: full_model, parts, bust_only, base_only, accessory
+	- extended (P2): upgrade_kit, conversion_bits, weapon_pack, head_swap_pack, clothing_set, decorative_bits
 - proxy_type: official, direct_clone, stylized_proxy, counts_as, kitbash_pack
 - lineage_family: elf, human, dwarf, orc, undead, demon, construct, plantfolk, beastfolk, lizardfolk, dragonkin, angelic, aberration, goblin, halfling, giant, vampire, werebeast, slime, skeleton, insectfolk, elemental, fae, mixed, unknown
 - lineage_primary (examples across families, non-exhaustive):
@@ -223,6 +235,9 @@ These will live in separate small config files later.
 Note: A lineage_primary always belongs to exactly one lineage_family, but some ambiguous creatures (e.g., banshee) may map to a primary under multiple candidate families; in such cases choose the dominant lore classification and add a normalization_warning for review.
 - human_subtype: generic_human, warhammer_human, dnd_adventurer_human, historical_human, other
 - tabletop_role: pc_candidate, npc, monster, unit, terrain, vehicle, mount, familiar, summon
+- addon_type: weapon_swap, armor_panel, decorative, iconography, clothing_set, head_swap, basing_upgrade, pose_rebuilder, alt_turret, magnet_adapter, vehicle_stowage
+- compatibility_scope: single_unit, faction_wide, multi_faction, system_wide, generic
+- attachment_points: turret_ring, sponson_left, sponson_right, hull_top, hull_side_left, hull_side_right, head, left_arm, right_arm, backpack, shoulder_left, shoulder_right, base_top
 - review_status: unreviewed, flagged, confirmed
 - designer_confidence / actor_confidence: certain, probable, stylized (actor only), composite (actor only), guess (designer only)
 
@@ -247,6 +262,9 @@ Note: A lineage_primary always belongs to exactly one lineage_family, but some a
 - Whether explicit_act requires presence of act tags or can be inferred from file/folder naming only.
 - Exact heuristics for pc_candidate_flag (humanoid + gear tokens vs explicit unit names) and when to auto-clear for monsters.
 - Strategy for mapping system-specific faction terms into lineage_primary (e.g., aelf -> elf, duardin -> dwarf) while keeping original tokens.
+- How to formalize addon compatibility confidence scoring (threshold for auto-link vs manual confirm).
+- Distinguishing upgrade_kit vs conversion_bits (e.g., replacement vs purely decorative augmentation criteria).
+- Policy for multi_faction_flag when factions share chassis naming (avoid false positives).
 
 ---
 ## 20. Change Management
