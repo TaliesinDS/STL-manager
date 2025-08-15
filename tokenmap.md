@@ -1,8 +1,8 @@
-# Token Normalization Map (Version 2)
+# Token Normalization Map (Version 3)
 
 Purpose: Central, versioned mapping of raw path/file tokens -> canonical normalized values used in metadata fields (see `MetadataFields.md`). Keeps heuristic logic transparent and auditable. Phase 1 scope focuses on high-confidence, low-ambiguity mappings only. Ambiguous or low-frequency tokens route to `residual_tokens` + `normalization_warnings`.
 
-Version: 2
+Version: 3
 Applies to fields first introduced in Phase 1 (designer, intended_use_bucket, basic variant axes, game_system, codex_faction, lineage_family (high-level), pc_candidate_flag proto heuristics, scale basics) and seeds for Phase 2 (lineage_primary examples) for forward compatibility (but Phase 2 tokens flagged if matched early).
 
 ---
@@ -28,7 +28,7 @@ Sections:
 ---
 ## 2. Meta
 ```
-token_map_version: 2
+token_map_version: 3
 min_token_length: 2
 case_sensitive: false
 strip_chars: ["(", ")", "[", "]", ",", ";", "{", "}"]
@@ -46,6 +46,8 @@ designers:
 	rn_estudio: ["rn_estudio", "rn-estudio", "rnestudio"]
 	archvillain: ["archvillain", "arch_villain", "archvillain_games", "avg"]
 	puppetswar: ["puppetswar", "puppets_war"]
+	tinylegend: ["tinylegend"]  # newly observed creator
+	azerama: ["azerama"]        # newly observed creator
 ```
 
 Collision rule: If a token matches aliases for >1 designer (should not in curated list) emit `warning: designer_alias_collision` and push token to residual.
@@ -68,12 +70,15 @@ lineage:
 		lizardfolk: ["lizardfolk", "lizardman", "lizardmen", "saurus"]
 		dragonkin: ["dragonborn", "draconian", "draconian", "drake"]
 		vampire: ["vampire", "vampires", "vampiric"]
+		ratfolk: ["ratfolk"]  # generic rodent lineage outside specific system 'skaven'
+		kobold: ["kobold", "kobolds"]
 	primary_seeds:  # Phase 2 enable (mark future for now)
 		high_elf: { tokens: ["high_elf", "high-elf"], family: elf, future: true }
 		dark_elf: { tokens: ["dark_elf", "dark-elf", "drow"], family: elf, future: true }
 		wood_elf: { tokens: ["wood_elf", "wood-elf", "sylvan_elf", "sylvan"], family: elf, future: true }
 		stormcast_human: { tokens: ["stormcast", "stormcast_eternal", "stormcast_eternals"], family: human, future: true }
 		duardin: { tokens: ["duardin"], family: dwarf, future: true }
+		minotaur: { tokens: ["minotaur", "minotaurs"], family: ???, future: true }  # decide if separate family or monster taxonomy later
 ```
 
 Ambiguity examples (not mapped now): "lich", "banshee" (would map to undead later). If encountered -> residual + warning `ambiguous_lineage_token`.
@@ -293,6 +298,42 @@ warnings:
 - Weapon loadout extraction (sword, shield, bow) feeding `loadout_variants`
 
 Added for Version 2 (completed here): Expanded Warhammer 40K & Age of Sigmar faction alias coverage.
+
+Added for Version 3:
+- New designers: tinylegend, azerama.
+- Lineage family expansions: ratfolk, kobold (high-frequency cross-system species in collection names).
+- Future seed (flagged): minotaur (pending decision to treat as lineage vs monster taxonomy in Phase 2).
+- Planning notes for tabletop-specific optional fields (equipment_type, pose_index, base_size_mm, base_shape, unit_role) — NOT active mappings yet to avoid overfitting non-tabletop assets.
+
+---
+## 19. Planned Tabletop-Specific Field Concepts (Documentation Only; Not Yet Normalized)
+
+These fields are frequently relevant for Warhammer / similar game-system minis but often noise for display sculpts or generic terrain. They remain out of active normalization to prevent misclassification until selective activation criteria (e.g., intended_use=tabletop_intent OR presence of system/faction token) are implemented.
+
+```
+tabletop_planned_fields:
+	equipment_type: # weapon / gear categories (sword, axe, spear, shield, banner, bolter, flamer, plasma, chainsword, rifle, launcher, cannon, turret)
+		status: planned
+		activation_condition: game_system resolved OR codex_faction resolved
+		strategy: whitelist high-signal tokens; map to enum; capture multiples
+	pose_index:
+		pattern: ^p(\d{2})$
+		status: planned
+		notes: Only extract when variant tokens co-occur with obvious unit identifiers
+	base_size_mm:
+		pattern: ^(25|28|30|32|35|36|40|50|60|75)mm?$
+		status: planned
+		notes: Distinguish from generic numbers by proximity to 'base' or base shape tokens
+	base_shape:
+		tokens: ["round", "square", "oval"]
+		status: planned
+	unit_role:
+		tokens_example: ["infantry", "cavalry", "champion", "commander", "knight", "ranger", "marauder", "musician", "banner", "rider", "mount"]
+		status: planned
+		notes: Some overlap with existing role_cues (pc_candidate heuristics) – integrate later via precedence update
+```
+
+Implementation gating: Add only after establishing a two-phase normalization where tabletop-intent classification precedes extraction of tabletop_planned_fields.
 
 ---
 ## 17. Change Policy
