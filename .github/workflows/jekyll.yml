@@ -1,26 +1,12 @@
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  # Auto triggers disabled: this workflow now only runs manually if ever needed.
+  workflow_dispatch:
 
 jobs:
   build:
+    if: false  # Fully disabled while repo is planning-only (plain markdown, no Gemfile).
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2'
-      - name: Install dependencies
-        run: bundle install
-      - name: Build site (with trace)
-        run: bundle exec jekyll build --trace
-        env:
-          JEKYLL_ENV: production
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ./_site
-          cname: www.arthurkortekaas.nl
+      - name: Skip notice
+        run: echo Jekyll-workflow-disabled-remove-if-false-to-enable
