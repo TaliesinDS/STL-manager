@@ -47,6 +47,7 @@ What it does (Phase 0 safe):
 - Optionally loads designers / lineage / faction aliases / stopwords from `tokenmap.md` via `--tokenmap` (falls back to embedded defaults if parsing fails).
 - Supports ignore list & domain summary via `--ignore-file` (newline tokens, `#` comments) and `--emit-known-summary` to print counts of classified domains and suppress noisy frequent known/ambiguous tokens from the unknown list.
 	- If `--ignore-file` is omitted the script auto-loads `ignored_tokens.txt` from the scripts directory when present.
+- Optional `--include-archives` adds archive filenames (.zip .rar .7z .cbz .cbr) to token stream (still no extraction) and reports `scanned_archives` in JSON.
 - Counts token frequencies and classifies against a minimal embedded vocab subset (sync with `tokenmap.md`).
 - Prints top unknown tokens (candidates for expansion into designer aliases, factions, lineage, style, etc.).
 - Highlights scale ratio / mm tokens and numeric-containing tokens (pose, version, base size hints).

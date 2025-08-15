@@ -16,7 +16,8 @@ Outputs (stdout always):
     - Simple heuristic suggestions list (printed at end)
 Optional JSON (--json-out):
     {
-        "scanned_files": int,
+    "scanned_files": int,
+    "scanned_archives": int,
         "distinct_tokens": int,
         "top_unknown_tokens": [{"token": str, "count": int}],
         "scale_ratios": [{"token": str, "denominator": int, "count": int, "uncommon": bool}],
@@ -45,6 +46,7 @@ VARIANT_AXES = {"split","parts","multi-part","multi_part","onepiece","one_piece"
 SCALE_RATIO_RE = re.compile(r"^1[-_:]?([0-9]{1,3})$")
 SCALE_MM_RE = re.compile(r"^([0-9]{2,3})mm$")
 ALLOWED_DENOMS = {4,6,7,9,10,12}
+ARCHIVE_EXTS = {'.zip', '.rar', '.7z', '.cbz', '.cbr'}  # simple set (multi-suffix like .tar.gz not yet handled)
 
 # Runtime vocab (mutable): initialized with defaults, optionally replaced/extended by tokenmap parse
 STOPWORDS = set(DEFAULT_STOPWORDS)
@@ -145,8 +147,9 @@ def classify_token(tok: str) -> str | None:
     if SCALE_MM_RE.match(tok): return "scale_mm"
     return None
 
-def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool) -> dict:
+def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool, include_archives: bool) -> dict:
     file_count = dir_count = 0
+    archive_count = 0
     token_counter: collections.Counter[str] = collections.Counter()
     token_domain: dict[str, str] = {}
     numeric_like: collections.Counter[str] = collections.Counter()
@@ -160,7 +163,12 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
                 if any(c.isdigit() for c in tok): numeric_like[tok] += 1
             dir_count += 1
             continue
-        if exts and p.suffix.lower() not in exts: continue
+        suffix = p.suffix.lower()
+        is_archive = suffix in ARCHIVE_EXTS if include_archives else False
+        if exts and suffix not in exts and not is_archive:
+            continue
+        if is_archive:
+            archive_count += 1
         file_count += 1
         for tok in tokenize(p):
             domain = classify_token(tok)
@@ -196,6 +204,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
     if any(tok.startswith('v') and tok[1:].isdigit() for tok in token_counter): suggestions.append("Detected version-like tokens; ensure version_num extraction pattern covers them.")
     suggestions.append("Consider capturing any high-frequency unknowns appearing across >5% of scanned files.")
     print(f"Scanned files: {file_count}")
+    if include_archives and archive_count:
+        print(f"  (archives counted among files: {archive_count})")
     if not skip_dirs: print(f"Scanned directories: {dir_count}")
     print(f"Distinct tokens: {len(token_counter)}")
     print("\nTop unknown tokens (potential new vocab):")
@@ -227,7 +237,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
                 print(f"  {k}: {v}")
 
     return {
-        "scanned_files": file_count,
+    "scanned_files": file_count,
+    "scanned_archives": archive_count if include_archives else 0,
         "scanned_directories": (0 if skip_dirs else dir_count),
         "distinct_tokens": len(token_counter),
         "top_unknown_tokens": [{"token": tok, "count": cnt} for tok, cnt in unknown],
@@ -251,6 +262,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--tokenmap', help='Path to tokenmap.md to dynamically load vocab (aliases, lineage, factions, stopwords)')
     ap.add_argument('--ignore-file', help='Path to newline-delimited token ignore list (one token per line; # comments allowed)')
     ap.add_argument('--emit-known-summary', action='store_true', help='Include summary counts of classified tokens by domain')
+    ap.add_argument('--include-archives', action='store_true', help='Include archive filenames (.zip/.rar/.7z/.cbz/.cbr) without extraction')
     return ap.parse_args(argv)
 
 def main(argv: list[str]) -> int:
@@ -294,7 +306,7 @@ def main(argv: list[str]) -> int:
                 print(f"[warn] failed to read ignore file: {e}")
         else:
             print(f"[warn] ignore file not found: {ig_path}")
-    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary)
+    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary, args.include_archives)
     if args.json_out: out_path = pathlib.Path(args.json_out)
     else:
         out_path = root / 'quick_scan_report.json'

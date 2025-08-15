@@ -24,3 +24,4 @@
 2025-08-15: Added dynamic vocab loading to quick_scan via --tokenmap parsing minimal sections of tokenmap.md (designers, lineage family_map, faction aliases, stopwords) to eliminate manual duplication and keep exploratory scan aligned with current map version; preserves embedded defaults as fallback.
 2025-08-15: Added --ignore-file (suppress specified tokens from unknown list) and --emit-known-summary (domain counts + JSON fields ignored_tokens, domain_summary) to quick_scan to focus on genuinely new vocabulary amid high-frequency but uninteresting tokens.
 2025-08-15: quick_scan now auto-loads `ignored_tokens.txt` (if present beside script) when --ignore-file is not provided, reducing friction for repeated exploratory scans.
+2025-08-15: Added --include-archives flag to quick_scan to optionally tokenize archive filenames (zip/rar/7z/cbz/cbr) without extraction, capturing collection metadata hints embedded only in archive names; JSON now includes scanned_archives.
