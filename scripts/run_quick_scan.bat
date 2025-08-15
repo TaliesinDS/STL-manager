@@ -1,7 +1,7 @@
 @echo off
 REM Double-click wrapper for quick_scan.py
 REM Behavior: scans the directory containing this batch file (recursively) and writes quick_scan_report.json there.
-REM Adds dynamic vocab (--tokenmap tokenmap.md), ignore list, domain summary, and JSON report.
+REM Adds dynamic vocab (--tokenmap tokenmap.md), ignore list, domain summary, archive filename inclusion, archive-only token sampling, and JSON report.
 
 set SCRIPT_DIR=%~dp0
 pushd "%SCRIPT_DIR%"
@@ -23,7 +23,9 @@ if not exist "%IGNORE_FILE%" (
   echo # add more noisy tokens as desired>>"%IGNORE_FILE%"
 )
 
-set ARGS=--unknown-top 300 --json-out "%JSON_OUT%" --emit-known-summary --ignore-file "%IGNORE_FILE%"
+REM --include-archives : count .zip/.rar/.7z/.cbz/.cbr filenames (no extraction)
+REM --archive-sample 30 : surface up to 30 archive-only tokens that didn't make the main unknown slice
+set ARGS=--unknown-top 300 --include-archives --archive-sample 30 --json-out "%JSON_OUT%" --emit-known-summary --ignore-file "%IGNORE_FILE%"
 if exist "%TOKENMAP%" (
   set ARGS=%ARGS% --tokenmap "%TOKENMAP%"
 ) else (

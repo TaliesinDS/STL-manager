@@ -17,7 +17,7 @@ Outputs (stdout always):
 Optional JSON (--json-out):
     {
     "scanned_files": int,
-    "scanned_archives": int,
+        "scanned_archives": int,
         "distinct_tokens": int,
         "top_unknown_tokens": [{"token": str, "count": int}],
         "scale_ratios": [{"token": str, "denominator": int, "count": int, "uncommon": bool}],
@@ -26,7 +26,8 @@ Optional JSON (--json-out):
         "suggestions": [str],
     "token_map_version": str | null,
     "ignored_tokens": [{"token": str, "count": int, "reason": str}],
-    "domain_summary": {"designer": int, "lineage_family": int, ...}
+    "domain_summary": {"designer": int, "lineage_family": int, ...},
+    "archive_token_sample": [{"token": str, "count": int}]
     }
 """
 from __future__ import annotations
@@ -39,10 +40,10 @@ import json
 
 # Embedded default vocab (acts as fallback if tokenmap parse not supplied / fails)
 DEFAULT_STOPWORDS = {"the","and","of","for","set","pack","stl","model","models","mini","minis","figure","figures","files","printing","print"}
-DEFAULT_DESIGNER_ALIASES = {"ghamak","ghmk","ghamak_studio","rn_estudio","rn-estudio","rnestudio","archvillain","arch_villain","archvillain_games","avg","puppetswar","puppets_war","tinylegend","azerama"}
+DEFAULT_DESIGNER_ALIASES = {"ghamak","ghmk","ghamak_studio","rn_estudio","rn-estudio","rnestudio","archvillain","arch_villain","archvillain_games","avg","puppetswar","puppets_war","tinylegend","azerama","hybris","hybris_studio","moxomor","mezgike","momoji","momoji3d","3dmomoji","moonfigures","3dmoonn","funservicestl","pikky","pikky_prints"}
 DEFAULT_LINEAGE_FAMILY = {"elf","elves","aelf","aelves","human","humans","man","men","dwarf","dwarves","duardin","orc","orcs","ork","orks","orruk","orruks","undead","skeleton","skeletons","ghoul","ghouls","zombie","zombies","wight","wights","demon","daemon","daemons","demons","goblin","goblins","grot","grots","halfling","halflings","hobbit","hobbits","lizardfolk","lizardman","lizardmen","saurus","dragonborn","draconian","drake","vampire","vampires","vampiric","ratfolk","kobold","kobolds"}
 DEFAULT_FACTION_HINTS = {"stormcast","custodes","tau","aeldari","eldar","nurgle","tzeentch","slaanesh","khorne","necron","tyranid","ork","orks","guard","astra","sororitas","votann","skaven","lumineth","seraphon"}
-VARIANT_AXES = {"split","parts","multi-part","multi_part","onepiece","one_piece","merged","solidpiece","hollow","hollowed","solid","presupported","pre-supported","pre_supported","supported","unsupported","no_supports","clean","bust","base_pack","bases_only","base_set","bits","bitz","accessories"}
+VARIANT_AXES = {"split","parts","part","multi-part","multi_part","onepiece","one_piece","merged","solidpiece","hollow","hollowed","solid","presupported","pre-supported","pre_supported","supported","unsupported","no_supports","clean","bust","base_pack","bases_only","base_set","bits","bitz","accessories"}
 SCALE_RATIO_RE = re.compile(r"^1[-_:]?([0-9]{1,3})$")
 SCALE_MM_RE = re.compile(r"^([0-9]{2,3})mm$")
 ALLOWED_DENOMS = {4,6,7,9,10,12}
@@ -134,6 +135,16 @@ def tokenize(path: pathlib.Path) -> list[str]:
         p = p.strip()
         if not p or len(p) < TOKEN_MIN_LEN:
             continue
+        # Normalize wrapper punctuation and leading markers to reduce noisy variants
+        p = p.strip("()[]{}+")
+        # Remove leading '@' (social/source markers) and trailing '+' artifacts
+        if p.startswith('@'):
+            p = p[1:]
+        # Collapse trailing extension remnants in token (e.g., 'unsupported.stl')
+        if p.endswith('.stl'):
+            p = p[:-4]
+        if not p or len(p) < TOKEN_MIN_LEN:
+            continue
         tokens.append(p)
     return tokens
 
@@ -147,12 +158,14 @@ def classify_token(tok: str) -> str | None:
     if SCALE_MM_RE.match(tok): return "scale_mm"
     return None
 
-def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool, include_archives: bool) -> dict:
+def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_dirs: bool, ignore_set: set[str], emit_known_summary: bool, include_archives: bool, archive_sample: int) -> dict:
     file_count = dir_count = 0
     archive_count = 0
     token_counter: collections.Counter[str] = collections.Counter()
     token_domain: dict[str, str] = {}
     numeric_like: collections.Counter[str] = collections.Counter()
+    archive_token_set: set[str] = set()
+    token_from_archive: set[str] = set()
     for p in root.rglob('*'):
         if p.is_dir():
             if skip_dirs: continue
@@ -175,6 +188,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
             token_counter[tok] += 1
             if domain: token_domain.setdefault(tok, domain)
             if any(c.isdigit() for c in tok): numeric_like[tok] += 1
+            if is_archive:
+                token_from_archive.add(tok)
         if limit and file_count >= limit: break
     # Build unknown list excluding user ignored tokens
     unknown: list[tuple[str,int]] = []
@@ -187,6 +202,21 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
         if len(unknown) >= unknown_top:
             break
     ignored_tokens = [{"token": t, "count": token_counter[t], "reason": "user_ignore"} for t in sorted(ignore_set) if t in token_counter]
+
+    # Archive-only sample (tokens that occur only in archive filenames, not classified, not ignored, not already in top unknown)
+    archive_sample_list: list[dict] = []
+    if archive_sample > 0 and token_from_archive:
+        unknown_tokens_set = {t for t,_ in unknown}
+        for tok in token_from_archive:
+            if tok in token_domain: continue
+            if tok in ignore_set: continue
+            if tok in unknown_tokens_set: continue
+            # Only include tokens predominantly archive-sourced (heuristic: frequency <=2 or appears only in archives)
+            archive_token_set.add(tok)
+        # Sort archive-only tokens by count desc then alpha
+        sorted_arch = sorted( ((t, token_counter[t]) for t in archive_token_set), key=lambda x: (-x[1], x[0]) )
+        for t,c in sorted_arch[:archive_sample]:
+            archive_sample_list.append({"token": t, "count": c})
     ratios_raw = [(t, c) for t, c in token_counter.items() if classify_token(t) == "scale_ratio"]
     mms_raw = [(t, c) for t, c in token_counter.items() if classify_token(t) == "scale_mm"]
     ratios = []
@@ -227,6 +257,10 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
     for nt in numeric_tokens: print(f"  {nt['token']}: {nt['count']}")
     print("\nSuggestions:")
     for s in suggestions: print(f"  {s}")
+    if archive_sample_list:
+        print(f"\nArchive token sample (not in top unknown): {len(archive_sample_list)} shown")
+        for a in archive_sample_list[:20]:
+            print(f"  {a['token']}: {a['count']}")
     domain_summary = {}
     if emit_known_summary:
         inv: dict[str,int] = collections.Counter(token_domain.values())
@@ -248,7 +282,8 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
         "suggestions": suggestions,
         "token_map_version": TOKENMAP_VERSION,
         "ignored_tokens": ignored_tokens,
-        "domain_summary": domain_summary,
+    "domain_summary": domain_summary,
+    "archive_token_sample": archive_sample_list,
     }
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -263,6 +298,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--ignore-file', help='Path to newline-delimited token ignore list (one token per line; # comments allowed)')
     ap.add_argument('--emit-known-summary', action='store_true', help='Include summary counts of classified tokens by domain')
     ap.add_argument('--include-archives', action='store_true', help='Include archive filenames (.zip/.rar/.7z/.cbz/.cbr) without extraction')
+    ap.add_argument('--archive-sample', type=int, default=0, help='Show up to N archive-only tokens that did not make top unknown list')
     return ap.parse_args(argv)
 
 def main(argv: list[str]) -> int:
@@ -306,7 +342,7 @@ def main(argv: list[str]) -> int:
                 print(f"[warn] failed to read ignore file: {e}")
         else:
             print(f"[warn] ignore file not found: {ig_path}")
-    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary, args.include_archives)
+    report = scan(root, args.limit, exts, args.unknown_top, args.skip_dirs, ignore_set, args.emit_known_summary, args.include_archives, args.archive_sample)
     if args.json_out: out_path = pathlib.Path(args.json_out)
     else:
         out_path = root / 'quick_scan_report.json'

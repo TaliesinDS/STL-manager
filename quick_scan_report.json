@@ -1,1507 +1,1316 @@
 {
-  "scanned_files": 67014,
-  "scanned_directories": 11190,
-  "distinct_tokens": 14882,
+  "scanned_files": 4789,
+  "scanned_archives": 3733,
+  "scanned_directories": 369,
+  "distinct_tokens": 5400,
   "top_unknown_tokens": [
     {
-      "token": "base",
-      "count": 4640
+      "token": "nsfw",
+      "count": 402
     },
     {
-      "token": "lys",
-      "count": 3766
+      "token": "3d",
+      "count": 191
     },
     {
-      "token": "body",
-      "count": 2679
+      "token": "moxomor",
+      "count": 162
     },
     {
-      "token": "arm",
-      "count": 2392
-    },
-    {
-      "token": "sk",
-      "count": 2201
-    },
-    {
-      "token": "head",
-      "count": 1929
-    },
-    {
-      "token": "preview",
-      "count": 1674
-    },
-    {
-      "token": "left",
-      "count": 1567
-    },
-    {
-      "token": "ps",
-      "count": 1471
-    },
-    {
-      "token": "01",
-      "count": 1468
-    },
-    {
-      "token": "02",
-      "count": 1441
-    },
-    {
-      "token": "ik",
-      "count": 1432
-    },
-    {
-      "token": "right",
-      "count": 1361
-    },
-    {
-      "token": "sup",
-      "count": 1221
-    },
-    {
-      "token": "thumb",
-      "count": 1195
-    },
-    {
-      "token": "shield",
-      "count": 1142
-    },
-    {
-      "token": "hand",
-      "count": 1137
-    },
-    {
-      "token": "03",
-      "count": 1110
-    },
-    {
-      "token": "vu",
-      "count": 1096
-    },
-    {
-      "token": "floor",
-      "count": 1069
-    },
-    {
-      "token": "05",
-      "count": 978
-    },
-    {
-      "token": "torso",
-      "count": 958
-    },
-    {
-      "token": "helmet",
-      "count": 955
-    },
-    {
-      "token": "04",
-      "count": 881
-    },
-    {
-      "token": "small",
-      "count": 878
-    },
-    {
-      "token": "leg",
-      "count": 850
-    },
-    {
-      "token": "legs",
-      "count": 839
-    },
-    {
-      "token": "full",
-      "count": 826
-    },
-    {
-      "token": "large",
-      "count": 818
-    },
-    {
-      "token": "wing",
-      "count": 816
-    },
-    {
-      "token": "sword",
-      "count": 808
-    },
-    {
-      "token": "repulsor",
-      "count": 805
-    },
-    {
-      "token": "06",
-      "count": 797
-    },
-    {
-      "token": "pres",
-      "count": 776
-    },
-    {
-      "token": "bef",
-      "count": 767
-    },
-    {
-      "token": "pre",
-      "count": 754
-    },
-    {
-      "token": "tile",
-      "count": 749
-    },
-    {
-      "token": "front",
-      "count": 723
-    },
-    {
-      "token": "(supported)",
-      "count": 713
-    },
-    {
-      "token": "(repaired)",
-      "count": 705
-    },
-    {
-      "token": "turret",
-      "count": 689
-    },
-    {
-      "token": "with",
-      "count": 656
-    },
-    {
-      "token": "warrior",
-      "count": 650
-    },
-    {
-      "token": "09",
-      "count": 638
-    },
-    {
-      "token": "lychee",
-      "count": 628
-    },
-    {
-      "token": "weapon",
-      "count": 625
-    },
-    {
-      "token": "wall",
-      "count": 616
-    },
-    {
-      "token": "x2",
-      "count": 614
-    },
-    {
-      "token": "ch",
-      "count": 599
-    },
-    {
-      "token": "medium",
-      "count": 587
-    },
-    {
-      "token": "07",
-      "count": 580
-    },
-    {
-      "token": "side",
-      "count": 576
-    },
-    {
-      "token": "weapons",
-      "count": 568
-    },
-    {
-      "token": "tiny",
-      "count": 568
-    },
-    {
-      "token": "08",
-      "count": 559
-    },
-    {
-      "token": "p02",
-      "count": 543
-    },
-    {
-      "token": "spear",
-      "count": 539
-    },
-    {
-      "token": "p01",
-      "count": 535
-    },
-    {
-      "token": "top",
-      "count": 530
-    },
-    {
-      "token": "shoulder",
-      "count": 512
-    },
-    {
-      "token": "wardragon",
-      "count": 476
-    },
-    {
-      "token": "beefed",
-      "count": 473
-    },
-    {
-      "token": "pt",
-      "count": 464
-    },
-    {
-      "token": "ohs",
-      "count": 453
-    },
-    {
-      "token": "lr",
-      "count": 452
-    },
-    {
-      "token": "heavy",
-      "count": 452
-    },
-    {
-      "token": "arms",
-      "count": 440
-    },
-    {
-      "token": "rider",
-      "count": 438
-    },
-    {
-      "token": "armor",
-      "count": 438
-    },
-    {
-      "token": "on",
-      "count": 437
-    },
-    {
-      "token": "fixed",
-      "count": 437
-    },
-    {
-      "token": "p03",
-      "count": 436
-    },
-    {
-      "token": "pose",
-      "count": 436
-    },
-    {
-      "token": "hi",
-      "count": 434
-    },
-    {
-      "token": "unchainedsoldier",
-      "count": 434
-    },
-    {
-      "token": "cannon",
-      "count": 432
-    },
-    {
-      "token": "knight",
-      "count": 431
-    },
-    {
-      "token": "tinylegend",
-      "count": 429
-    },
-    {
-      "token": "p04",
-      "count": 416
-    },
-    {
-      "token": "back",
-      "count": 410
-    },
-    {
-      "token": "gun",
-      "count": 382
-    },
-    {
-      "token": "excl",
-      "count": 380
-    },
-    {
-      "token": "combined",
-      "count": 376
-    },
-    {
-      "token": "tail",
-      "count": 375
-    },
-    {
-      "token": "em",
-      "count": 364
-    },
-    {
-      "token": "grogbann",
-      "count": 363
-    },
-    {
-      "token": "21",
-      "count": 358
-    },
-    {
-      "token": "repaired",
-      "count": 350
-    },
-    {
-      "token": "display",
-      "count": 350
-    },
-    {
-      "token": "p06",
-      "count": 349
-    },
-    {
-      "token": "36",
-      "count": 348
-    },
-    {
-      "token": "p05",
-      "count": 346
-    },
-    {
-      "token": "stormtrooper",
-      "count": 345
-    },
-    {
-      "token": "cavalry",
-      "count": 341
-    },
-    {
-      "token": "infantry",
-      "count": 340
-    },
-    {
-      "token": "trench",
-      "count": 340
-    },
-    {
-      "token": "fly",
-      "count": 335
-    },
-    {
-      "token": "main",
-      "count": 334
-    },
-    {
-      "token": "center",
-      "count": 333
-    },
-    {
-      "token": "skull",
-      "count": 331
-    },
-    {
-      "token": "ratfolk",
-      "count": 331
-    },
-    {
-      "token": "mount",
-      "count": 329
-    },
-    {
-      "token": "stand",
-      "count": 327
-    },
-    {
-      "token": "backpack",
-      "count": 325
-    },
-    {
-      "token": "unchainedhorse",
-      "count": 324
-    },
-    {
-      "token": "p07",
-      "count": 319
-    },
-    {
-      "token": "complete",
-      "count": 318
-    },
-    {
-      "token": "banner",
-      "count": 315
-    },
-    {
-      "token": "hull",
-      "count": 315
-    },
-    {
-      "token": "images",
-      "count": 312
-    },
-    {
-      "token": "dragon",
-      "count": 310
-    },
-    {
-      "token": "dk",
-      "count": 308
-    },
-    {
-      "token": "horse",
-      "count": 306
-    },
-    {
-      "token": "titan",
-      "count": 305
-    },
-    {
-      "token": "mcg",
-      "count": 305
-    },
-    {
-      "token": "by",
-      "count": 303
-    },
-    {
-      "token": "captain",
-      "count": 303
-    },
-    {
-      "token": "22",
-      "count": 288
-    },
-    {
-      "token": "knights",
-      "count": 285
-    },
-    {
-      "token": "forest",
-      "count": 285
-    },
-    {
-      "token": "tinycard",
-      "count": 283
-    },
-    {
-      "token": "card",
-      "count": 281
-    },
-    {
-      "token": "supports",
-      "count": 277
-    },
-    {
-      "token": "air",
-      "count": 274
-    },
-    {
-      "token": "v2",
-      "count": 271
-    },
-    {
-      "token": "2109",
-      "count": 270
-    },
-    {
-      "token": "axe",
-      "count": 268
-    },
-    {
-      "token": "cry",
-      "count": 263
-    },
-    {
-      "token": "up",
-      "count": 262
-    },
-    {
-      "token": "walk",
-      "count": 260
-    },
-    {
-      "token": "hk",
-      "count": 260
-    },
-    {
-      "token": "fern",
-      "count": 258
-    },
-    {
-      "token": "p08",
-      "count": 256
-    },
-    {
-      "token": "75",
-      "count": 254
-    },
-    {
-      "token": "lord",
-      "count": 253
-    },
-    {
-      "token": "modular",
-      "count": 248
-    },
-    {
-      "token": "leafwalker",
-      "count": 248
-    },
-    {
-      "token": "00",
-      "count": 247
-    },
-    {
-      "token": "soldier",
-      "count": 247
-    },
-    {
-      "token": "executioner",
-      "count": 247
-    },
-    {
-      "token": "beastsworn",
-      "count": 247
-    },
-    {
-      "token": "predator",
-      "count": 244
-    },
-    {
-      "token": "minotaur",
-      "count": 240
-    },
-    {
-      "token": "fix",
-      "count": 240
-    },
-    {
-      "token": "m17",
-      "count": 239
-    },
-    {
-      "token": "blade",
-      "count": 236
-    },
-    {
-      "token": "dragonflycavalry",
-      "count": 236
-    },
-    {
-      "token": "2104",
-      "count": 234
-    },
-    {
-      "token": "constructor",
-      "count": 230
-    },
-    {
-      "token": "profile",
-      "count": 230
-    },
-    {
-      "token": "moon",
-      "count": 229
-    },
-    {
-      "token": "part",
-      "count": 229
-    },
-    {
-      "token": "ud",
-      "count": 226
-    },
-    {
-      "token": "launcher",
-      "count": 226
-    },
-    {
-      "token": "musician",
-      "count": 224
-    },
-    {
-      "token": "upper",
-      "count": 223
-    },
-    {
-      "token": "ranger",
-      "count": 221
-    },
-    {
-      "token": "elfwarrior",
-      "count": 221
-    },
-    {
-      "token": "pad",
-      "count": 220
-    },
-    {
-      "token": "mounted",
-      "count": 219
-    },
-    {
-      "token": "centerpiece",
-      "count": 219
-    },
-    {
-      "token": "piece",
-      "count": 219
-    },
-    {
-      "token": "40k",
-      "count": 219
-    },
-    {
-      "token": "female",
-      "count": 218
-    },
-    {
-      "token": "plate",
-      "count": 218
-    },
-    {
-      "token": "wizards",
-      "count": 215
-    },
-    {
-      "token": "foot",
-      "count": 214
-    },
-    {
-      "token": "champion",
-      "count": 214
-    },
-    {
-      "token": "p11",
-      "count": 214
-    },
-    {
-      "token": "power",
-      "count": 214
-    },
-    {
-      "token": "azerama",
-      "count": 212
-    },
-    {
-      "token": "rat",
-      "count": 207
-    },
-    {
-      "token": "divineorder",
-      "count": 207
-    },
-    {
-      "token": "rock",
-      "count": 204
-    },
-    {
-      "token": "fist",
-      "count": 203
-    },
-    {
-      "token": "crystal",
-      "count": 203
-    },
-    {
-      "token": "m121",
-      "count": 202
-    },
-    {
-      "token": "no",
-      "count": 201
-    },
-    {
-      "token": "nude",
-      "count": 201
-    },
-    {
-      "token": "bottom",
-      "count": 200
-    },
-    {
-      "token": "raider",
-      "count": 200
-    },
-    {
-      "token": "tree",
-      "count": 195
-    },
-    {
-      "token": "x3",
-      "count": 195
-    },
-    {
-      "token": "bow",
-      "count": 194
-    },
-    {
-      "token": "x4",
-      "count": 193
-    },
-    {
-      "token": "plasma",
-      "count": 193
-    },
-    {
-      "token": "rear",
-      "count": 192
-    },
-    {
-      "token": "midnightguard",
-      "count": 190
-    },
-    {
-      "token": "heads",
-      "count": 188
-    },
-    {
-      "token": "35",
-      "count": 188
-    },
-    {
-      "token": "atzaangor",
-      "count": 187
-    },
-    {
-      "token": "terminator",
-      "count": 187
-    },
-    {
-      "token": "chariot",
-      "count": 186
-    },
-    {
-      "token": "2010",
-      "count": 186
-    },
-    {
-      "token": "sisters",
-      "count": 183
-    },
-    {
-      "token": "skele",
-      "count": 183
-    },
-    {
-      "token": "2202",
-      "count": 182
-    },
-    {
-      "token": "v1",
-      "count": 182
-    },
-    {
-      "token": "cyberpunk",
-      "count": 182
-    },
-    {
-      "token": "squad",
-      "count": 181
-    },
-    {
-      "token": "m142",
-      "count": 181
-    },
-    {
-      "token": "wild",
-      "count": 180
-    },
-    {
-      "token": "chainsword",
-      "count": 180
-    },
-    {
-      "token": "sasha",
-      "count": 180
-    },
-    {
-      "token": "ae",
-      "count": 179
-    },
-    {
-      "token": "empty",
-      "count": 179
-    },
-    {
-      "token": "p09",
-      "count": 178
-    },
-    {
-      "token": "ravager",
-      "count": 175
-    },
-    {
-      "token": "x1",
-      "count": 174
-    },
-    {
-      "token": "lazgun",
-      "count": 174
-    },
-    {
-      "token": "helm",
-      "count": 173
-    },
-    {
-      "token": "armour",
-      "count": 173
-    },
-    {
-      "token": "marauder",
-      "count": 172
-    },
-    {
-      "token": "bolter",
-      "count": 171
-    },
-    {
-      "token": "round",
-      "count": 169
-    },
-    {
-      "token": "rifle",
-      "count": 169
-    },
-    {
-      "token": "basesquare",
-      "count": 169
-    },
-    {
-      "token": "tank",
-      "count": 167
-    },
-    {
-      "token": "square",
-      "count": 165
-    },
-    {
-      "token": "baseround",
-      "count": 165
-    },
-    {
-      "token": "51",
-      "count": 164
-    },
-    {
-      "token": "mayhem",
-      "count": 164
-    },
-    {
-      "token": "lower",
-      "count": 163
-    },
-    {
-      "token": "us",
-      "count": 160
-    },
-    {
-      "token": "tower",
-      "count": 160
-    },
-    {
-      "token": "2111",
-      "count": 160
-    },
-    {
-      "token": "kobold",
+      "token": "aka",
       "count": 159
     },
     {
-      "token": "hatch",
-      "count": 158
-    },
-    {
-      "token": "mob",
-      "count": 158
-    },
-    {
-      "token": "commander",
-      "count": 157
-    },
-    {
-      "token": "doors",
-      "count": 157
-    },
-    {
-      "token": "male",
-      "count": 157
-    },
-    {
-      "token": "52",
-      "count": 155
-    },
-    {
-      "token": "saddle",
-      "count": 153
-    },
-    {
-      "token": "helmets",
-      "count": 151
-    },
-    {
-      "token": "2110",
+      "token": "t.me",
       "count": 150
     },
     {
-      "token": "warhound",
-      "count": 150
+      "token": "studios",
+      "count": 129
+    },
+    {
+      "token": "studio",
+      "count": 129
+    },
+    {
+      "token": "40",
+      "count": 126
+    },
+    {
+      "token": "+nsfw",
+      "count": 126
+    },
+    {
+      "token": "(2)",
+      "count": 126
+    },
+    {
+      "token": "by",
+      "count": 93
+    },
+    {
+      "token": "ca3d",
+      "count": 90
+    },
+    {
+      "token": "chariot",
+      "count": 77
+    },
+    {
+      "token": "@stl",
+      "count": 76
+    },
+    {
+      "token": "girl",
+      "count": 73
+    },
+    {
+      "token": "square",
+      "count": 71
+    },
+    {
+      "token": "zone",
+      "count": 70
+    },
+    {
+      "token": "supports",
+      "count": 67
+    },
+    {
+      "token": "no",
+      "count": 66
+    },
+    {
+      "token": "peach",
+      "count": 63
+    },
+    {
+      "token": "2024",
+      "count": 61
+    },
+    {
+      "token": "miniatures",
+      "count": 59
+    },
+    {
+      "token": "monster",
+      "count": 57
+    },
+    {
+      "token": "3dmoonn",
+      "count": 57
+    },
+    {
+      "token": "@stla3dm",
+      "count": 56
+    },
+    {
+      "token": "momoji",
+      "count": 53
+    },
+    {
+      "token": "version",
+      "count": 52
+    },
+    {
+      "token": "mezgike",
+      "count": 52
+    },
+    {
+      "token": "hybris",
+      "count": 51
+    },
+    {
+      "token": "ca",
+      "count": 49
+    },
+    {
+      "token": "ratkin",
+      "count": 47
+    },
+    {
+      "token": "waraltar",
+      "count": 47
     },
     {
       "token": "oxo3d",
-      "count": 150
+      "count": 45
     },
     {
-      "token": "chitubox",
-      "count": 149
+      "token": "crew",
+      "count": 45
     },
     {
-      "token": "grav",
-      "count": 149
+      "token": "abe3d",
+      "count": 44
     },
     {
-      "token": "mask",
-      "count": 147
+      "token": "pt",
+      "count": 44
     },
     {
-      "token": "siegebeetle",
-      "count": 146
+      "token": "2023",
+      "count": 43
     },
     {
-      "token": "ready",
-      "count": 145
+      "token": "@magic",
+      "count": 43
     },
     {
-      "token": "m119",
-      "count": 145
+      "token": "jigglystix",
+      "count": 43
     },
     {
-      "token": "32",
-      "count": 144
+      "token": "torrida",
+      "count": 42
+    },
+    {
+      "token": "3dl",
+      "count": 42
+    },
+    {
+      "token": "hi",
+      "count": 42
+    },
+    {
+      "token": "bowguards",
+      "count": 42
+    },
+    {
+      "token": "sfw",
+      "count": 40
+    },
+    {
+      "token": "eldjotun",
+      "count": 38
+    },
+    {
+      "token": "from",
+      "count": 37
+    },
+    {
+      "token": "marin",
+      "count": 37
+    },
+    {
+      "token": "rubim",
+      "count": 37
+    },
+    {
+      "token": "2022",
+      "count": 36
+    },
+    {
+      "token": "nikke",
+      "count": 36
+    },
+    {
+      "token": "kitagawa",
+      "count": 35
+    },
+    {
+      "token": "factory",
+      "count": 35
+    },
+    {
+      "token": "round",
+      "count": 35
+    },
+    {
+      "token": "excl",
+      "count": 35
+    },
+    {
+      "token": "scale",
+      "count": 33
     },
     {
       "token": "night",
-      "count": 144
+      "count": 33
     },
     {
-      "token": "bearer",
-      "count": 144
+      "token": "(+nsfw)",
+      "count": 33
     },
     {
-      "token": "flamer",
-      "count": 143
+      "token": "@pixel",
+      "count": 33
     },
     {
-      "token": "20",
-      "count": 142
+      "token": "chuya",
+      "count": 33
     },
     {
-      "token": "volcanicdragon",
-      "count": 142
+      "token": "pre",
+      "count": 32
     },
     {
-      "token": "pinup",
-      "count": 141
+      "token": "(1)",
+      "count": 32
     },
     {
-      "token": "castle",
-      "count": 141
+      "token": "skarix",
+      "count": 32
     },
     {
-      "token": "assault",
-      "count": 141
+      "token": "ratogre",
+      "count": 32
     },
     {
-      "token": "cd",
-      "count": 141
+      "token": "sniper",
+      "count": 31
     },
     {
-      "token": "if",
-      "count": 140
+      "token": "zero",
+      "count": 30
+    },
+    {
+      "token": "cw",
+      "count": 29
+    },
+    {
+      "token": "labs",
+      "count": 29
+    },
+    {
+      "token": "shyn",
+      "count": 28
+    },
+    {
+      "token": "loot",
+      "count": 28
+    },
+    {
+      "token": "es",
+      "count": 27
+    },
+    {
+      "token": "figurines",
+      "count": 27
+    },
+    {
+      "token": "gr8tech",
+      "count": 27
+    },
+    {
+      "token": "vx",
+      "count": 27
+    },
+    {
+      "token": "home",
+      "count": 26
+    },
+    {
+      "token": "lady",
+      "count": 26
+    },
+    {
+      "token": "building",
+      "count": 26
+    },
+    {
+      "token": "horse",
+      "count": 25
+    },
+    {
+      "token": "lord",
+      "count": 25
+    },
+    {
+      "token": "with",
+      "count": 25
+    },
+    {
+      "token": "2b",
+      "count": 25
+    },
+    {
+      "token": "in",
+      "count": 25
+    },
+    {
+      "token": "high",
+      "count": 25
+    },
+    {
+      "token": "kuru",
+      "count": 25
+    },
+    {
+      "token": "neko",
+      "count": 25
+    },
+    {
+      "token": "e.s",
+      "count": 24
+    },
+    {
+      "token": "kuton",
+      "count": 24
+    },
+    {
+      "token": "megha",
+      "count": 24
+    },
+    {
+      "token": "miyo",
+      "count": 24
     },
     {
       "token": "standard",
-      "count": 138
+      "count": 23
     },
     {
-      "token": "lance",
-      "count": 138
+      "token": "2025",
+      "count": 23
     },
     {
-      "token": "column",
-      "count": 137
+      "token": "zahen",
+      "count": 23
     },
     {
-      "token": "p13",
-      "count": 137
+      "token": "bunny",
+      "count": 23
     },
     {
-      "token": "necropolis",
-      "count": 137
+      "token": "sky",
+      "count": 23
     },
     {
-      "token": "razorback",
-      "count": 137
+      "token": "keeper",
+      "count": 23
     },
     {
-      "token": "platform",
-      "count": 136
+      "token": "nsfw@hehestl",
+      "count": 22
     },
     {
-      "token": "m30",
-      "count": 136
+      "token": "frieren",
+      "count": 22
     },
     {
-      "token": "claw",
-      "count": 136
+      "token": "art",
+      "count": 22
     },
     {
-      "token": "witchelves",
-      "count": 136
+      "token": "anime",
+      "count": 22
     },
     {
-      "token": "m65",
-      "count": 135
+      "token": "1.1",
+      "count": 22
     },
     {
-      "token": "boss",
-      "count": 135
+      "token": "bulkamancer",
+      "count": 22
     },
     {
-      "token": "pistol",
-      "count": 135
+      "token": "part",
+      "count": 22
     },
     {
-      "token": "blood",
-      "count": 135
+      "token": "ruined",
+      "count": 22
     },
     {
-      "token": "wheel",
-      "count": 135
+      "token": "@figuruwustl",
+      "count": 21
     },
     {
-      "token": "unchainedcommander",
-      "count": 135
+      "token": "medieval",
+      "count": 21
     },
     {
-      "token": "cultist",
-      "count": 134
+      "token": "witch",
+      "count": 21
     },
     {
-      "token": "23",
-      "count": 133
+      "token": "harley",
+      "count": 21
     },
     {
-      "token": "m131",
-      "count": 133
+      "token": "knights",
+      "count": 21
     },
     {
-      "token": "sewer",
-      "count": 133
-    },
-    {
-      "token": "assembly",
-      "count": 133
-    },
-    {
-      "token": "2x2",
-      "count": 133
-    },
-    {
-      "token": "presupport",
-      "count": 132
-    },
-    {
-      "token": "marauders",
-      "count": 132
-    },
-    {
-      "token": "m36",
-      "count": 131
-    },
-    {
-      "token": "void",
-      "count": 131
-    },
-    {
-      "token": "3at",
-      "count": 131
-    },
-    {
-      "token": "im",
-      "count": 130
-    },
-    {
-      "token": "open",
-      "count": 130
-    },
-    {
-      "token": "m120",
-      "count": 127
-    },
-    {
-      "token": "jump",
-      "count": 127
-    },
-    {
-      "token": "sponson",
-      "count": 127
-    },
-    {
-      "token": "blank",
-      "count": 127
-    },
-    {
-      "token": "support",
-      "count": 126
-    },
-    {
-      "token": "wide",
-      "count": 126
-    },
-    {
-      "token": "piston",
-      "count": 126
-    },
-    {
-      "token": "rune",
-      "count": 125
-    },
-    {
-      "token": "big",
-      "count": 124
-    },
-    {
-      "token": "warhammer",
-      "count": 124
-    },
-    {
-      "token": "39",
-      "count": 124
-    },
-    {
-      "token": "unit",
-      "count": 124
-    },
-    {
-      "token": "grenade",
-      "count": 124
+      "token": "battle",
+      "count": 21
     },
     {
       "token": "officer",
-      "count": 123
+      "count": 21
     },
     {
-      "token": "pose3",
-      "count": 123
+      "token": "genshin",
+      "count": 21
     },
     {
-      "token": "waist",
-      "count": 123
+      "token": "prints",
+      "count": 21
+    },
+    {
+      "token": "pikky",
+      "count": 21
+    },
+    {
+      "token": "death",
+      "count": 20
+    },
+    {
+      "token": "succubus",
+      "count": 20
+    },
+    {
+      "token": "marvel",
+      "count": 20
+    },
+    {
+      "token": "catwoman",
+      "count": 20
+    },
+    {
+      "token": "black",
+      "count": 20
+    },
+    {
+      "token": "zenless",
+      "count": 20
+    },
+    {
+      "token": "impact",
+      "count": 20
+    },
+    {
+      "token": "sunknightsfoots",
+      "count": 20
+    },
+    {
+      "token": "greenhagmounted",
+      "count": 20
+    },
+    {
+      "token": "nami",
+      "count": 19
+    },
+    {
+      "token": "nier",
+      "count": 19
+    },
+    {
+      "token": "2021",
+      "count": 19
+    },
+    {
+      "token": "quinn",
+      "count": 19
+    },
+    {
+      "token": "space",
+      "count": 19
+    },
+    {
+      "token": "sofa",
+      "count": 19
+    },
+    {
+      "token": "cut",
+      "count": 19
+    },
+    {
+      "token": "iv",
+      "count": 19
+    },
+    {
+      "token": "pink",
+      "count": 19
+    },
+    {
+      "token": "power",
+      "count": 18
+    },
+    {
+      "token": "school",
+      "count": 18
+    },
+    {
+      "token": "highelves",
+      "count": 18
+    },
+    {
+      "token": "up",
+      "count": 18
+    },
+    {
+      "token": "on",
+      "count": 18
+    },
+    {
+      "token": "late",
+      "count": 18
+    },
+    {
+      "token": "carpet",
+      "count": 18
+    },
+    {
+      "token": "chitubox",
+      "count": 18
+    },
+    {
+      "token": "bugbearzombie",
+      "count": 18
+    },
+    {
+      "token": "v1",
+      "count": 17
+    },
+    {
+      "token": "001",
+      "count": 17
+    },
+    {
+      "token": "blade",
+      "count": 17
+    },
+    {
+      "token": "raw",
+      "count": 17
+    },
+    {
+      "token": "v2",
+      "count": 17
+    },
+    {
+      "token": "@tridrob",
+      "count": 17
+    },
+    {
+      "token": "dredge",
+      "count": 17
+    },
+    {
+      "token": "diorama",
+      "count": 17
+    },
+    {
+      "token": "nympha3d",
+      "count": 17
+    },
+    {
+      "token": "greenhag",
+      "count": 17
+    },
+    {
+      "token": "kill",
+      "count": 16
+    },
+    {
+      "token": "red",
+      "count": 16
+    },
+    {
+      "token": "white",
+      "count": 16
+    },
+    {
+      "token": "pinup",
+      "count": 16
+    },
+    {
+      "token": "azur",
+      "count": 16
+    },
+    {
+      "token": "lane",
+      "count": 16
+    },
+    {
+      "token": "3dmomoji",
+      "count": 16
+    },
+    {
+      "token": "tatsumaki",
+      "count": 16
+    },
+    {
+      "token": "one",
+      "count": 16
+    },
+    {
+      "token": "(nsfw)",
+      "count": 16
+    },
+    {
+      "token": "marine",
+      "count": 16
+    },
+    {
+      "token": "love",
+      "count": 16
+    },
+    {
+      "token": "fan",
+      "count": 16
+    },
+    {
+      "token": "funservicestl",
+      "count": 16
+    },
+    {
+      "token": "prince",
+      "count": 16
+    },
+    {
+      "token": "moonfigures",
+      "count": 16
+    },
+    {
+      "token": "wightpocalypse",
+      "count": 16
+    },
+    {
+      "token": "duchess",
+      "count": 16
+    },
+    {
+      "token": "sickles",
+      "count": 16
+    },
+    {
+      "token": "uncut",
+      "count": 15
+    },
+    {
+      "token": "king",
+      "count": 15
+    },
+    {
+      "token": "angel",
+      "count": 15
+    },
+    {
+      "token": "cat",
+      "count": 15
+    },
+    {
+      "token": "princess",
+      "count": 15
+    },
+    {
+      "token": "girls",
+      "count": 15
+    },
+    {
+      "token": "sculpts",
+      "count": 15
+    },
+    {
+      "token": "star",
+      "count": 15
+    },
+    {
+      "token": "exclusive",
+      "count": 15
+    },
+    {
+      "token": "nympha",
+      "count": 15
+    },
+    {
+      "token": "sin3dstudio",
+      "count": 15
+    },
+    {
+      "token": "tenshi",
+      "count": 15
+    },
+    {
+      "token": "warsteel",
+      "count": 15
+    },
+    {
+      "token": "15th",
+      "count": 15
+    },
+    {
+      "token": "century",
+      "count": 15
+    },
+    {
+      "token": "gewalthaufen",
+      "count": 15
+    },
+    {
+      "token": "unsupported.stl",
+      "count": 15
+    },
+    {
+      "token": "moon",
+      "count": 14
+    },
+    {
+      "token": "zelda",
+      "count": 14
+    },
+    {
+      "token": "velma",
+      "count": 14
+    },
+    {
+      "token": "chainsaw",
+      "count": 14
+    },
+    {
+      "token": "goddess",
+      "count": 14
+    },
+    {
+      "token": "quiet",
+      "count": 14
+    },
+    {
+      "token": "@projectstl",
+      "count": 14
+    },
+    {
+      "token": "honkai",
+      "count": 14
+    },
+    {
+      "token": "fantasy",
+      "count": 14
+    },
+    {
+      "token": "annishag",
+      "count": 14
+    },
+    {
+      "token": "catapult",
+      "count": 14
+    },
+    {
+      "token": "elven",
+      "count": 13
+    },
+    {
+      "token": "blue",
+      "count": 13
+    },
+    {
+      "token": "warhammer",
+      "count": 13
+    },
+    {
+      "token": "rhu",
+      "count": 13
+    },
+    {
+      "token": "alita",
+      "count": 13
+    },
+    {
+      "token": "me",
+      "count": 13
+    },
+    {
+      "token": "hermione",
+      "count": 13
+    },
+    {
+      "token": "ritual",
+      "count": 13
+    },
+    {
+      "token": "askafroa",
+      "count": 13
+    },
+    {
+      "token": "rogue",
+      "count": 12
+    },
+    {
+      "token": "sailor",
+      "count": 12
+    },
+    {
+      "token": "kugo",
+      "count": 12
+    },
+    {
+      "token": "23",
+      "count": 12
+    },
+    {
+      "token": "deep",
+      "count": 12
+    },
+    {
+      "token": "pokemon",
+      "count": 12
+    },
+    {
+      "token": "pin",
+      "count": 12
+    },
+    {
+      "token": "widow",
+      "count": 12
+    },
+    {
+      "token": "war",
+      "count": 12
+    },
+    {
+      "token": "queen",
+      "count": 12
+    },
+    {
+      "token": "archive",
+      "count": 12
+    },
+    {
+      "token": "dragon",
+      "count": 12
+    },
+    {
+      "token": "shinobu",
+      "count": 12
+    },
+    {
+      "token": "term",
+      "count": 12
+    },
+    {
+      "token": "dinamuuu3d",
+      "count": 12
+    },
+    {
+      "token": "momoji3d",
+      "count": 12
+    },
+    {
+      "token": "nomnom",
+      "count": 12
+    },
+    {
+      "token": "rock",
+      "count": 12
+    },
+    {
+      "token": "ratmen",
+      "count": 12
+    },
+    {
+      "token": "greater",
+      "count": 12
+    },
+    {
+      "token": "forestspirit",
+      "count": 12
+    },
+    {
+      "token": "nighthag",
+      "count": 12
+    },
+    {
+      "token": "finfolkfemale",
+      "count": 12
+    },
+    {
+      "token": "finfolkmale",
+      "count": 12
+    },
+    {
+      "token": "unholyrunecaster",
+      "count": 12
+    },
+    {
+      "token": "lessermarilith",
+      "count": 12
+    },
+    {
+      "token": "wheel",
+      "count": 12
+    },
+    {
+      "token": "sekheta",
+      "count": 12
+    },
+    {
+      "token": "lara",
+      "count": 11
+    },
+    {
+      "token": "croft",
+      "count": 11
+    },
+    {
+      "token": "extra",
+      "count": 11
+    },
+    {
+      "token": "berserk",
+      "count": 11
+    },
+    {
+      "token": "oni",
+      "count": 11
+    },
+    {
+      "token": "dead",
+      "count": 11
+    },
+    {
+      "token": "dark",
+      "count": 11
+    },
+    {
+      "token": "eve",
+      "count": 11
+    },
+    {
+      "token": "evangelion",
+      "count": 11
+    },
+    {
+      "token": "punch",
+      "count": 11
+    },
+    {
+      "token": "yinlin",
+      "count": 11
+    },
+    {
+      "token": "supergirl",
+      "count": 11
+    },
+    {
+      "token": "scan",
+      "count": 11
+    },
+    {
+      "token": "terminator",
+      "count": 11
+    },
+    {
+      "token": "android",
+      "count": 11
+    },
+    {
+      "token": "june",
+      "count": 11
+    },
+    {
+      "token": "woman",
+      "count": 11
+    },
+    {
+      "token": "warrior",
+      "count": 11
+    },
+    {
+      "token": "yor",
+      "count": 11
+    },
+    {
+      "token": "forger",
+      "count": 11
+    },
+    {
+      "token": "strike",
+      "count": 11
+    },
+    {
+      "token": "hololive",
+      "count": 11
+    },
+    {
+      "token": "stone",
+      "count": 11
+    },
+    {
+      "token": "to",
+      "count": 11
+    },
+    {
+      "token": "jojoba",
+      "count": 11
+    },
+    {
+      "token": "norman",
+      "count": 11
+    },
+    {
+      "token": "sunknightsfoot02",
+      "count": 11
+    },
+    {
+      "token": "platform",
+      "count": 11
+    },
+    {
+      "token": "ghoul1",
+      "count": 11
+    },
+    {
+      "token": "ghoul2",
+      "count": 11
+    },
+    {
+      "token": "casca",
+      "count": 10
+    },
+    {
+      "token": "de",
+      "count": 10
+    },
+    {
+      "token": "hunters",
+      "count": 10
+    },
+    {
+      "token": "lilith",
+      "count": 10
+    },
+    {
+      "token": "raven",
+      "count": 10
+    },
+    {
+      "token": "maid",
+      "count": 10
+    },
+    {
+      "token": "shuten",
+      "count": 10
+    },
+    {
+      "token": "1.2",
+      "count": 10
+    },
+    {
+      "token": "ivy",
+      "count": 10
+    },
+    {
+      "token": "lucy",
+      "count": 10
+    },
+    {
+      "token": "alice",
+      "count": 10
+    },
+    {
+      "token": "victory",
+      "count": 10
+    },
+    {
+      "token": "artoria",
+      "count": 10
+    },
+    {
+      "token": "demara",
+      "count": 10
+    },
+    {
+      "token": "sexy",
+      "count": 10
+    },
+    {
+      "token": "heroes",
+      "count": 10
+    },
+    {
+      "token": "or",
+      "count": 10
+    },
+    {
+      "token": "doom",
+      "count": 10
+    },
+    {
+      "token": "final",
+      "count": 10
+    },
+    {
+      "token": "bell",
+      "count": 10
+    },
+    {
+      "token": "farm",
+      "count": 10
+    },
+    {
+      "token": "gate",
+      "count": 10
+    },
+    {
+      "token": "grimdale",
+      "count": 10
+    },
+    {
+      "token": "ayase",
+      "count": 10
+    },
+    {
+      "token": "pikkyprints",
+      "count": 10
+    },
+    {
+      "token": "panzer",
+      "count": 10
+    },
+    {
+      "token": "unsupp",
+      "count": 10
+    },
+    {
+      "token": "sunknightsfoot01",
+      "count": 10
+    },
+    {
+      "token": "sunknightsfoot03",
+      "count": 10
+    },
+    {
+      "token": "ark",
+      "count": 10
+    },
+    {
+      "token": "osirion",
+      "count": 10
+    },
+    {
+      "token": "#40",
+      "count": 9
+    },
+    {
+      "token": "supported@hehestl",
+      "count": 9
+    },
+    {
+      "token": "jessie",
+      "count": 9
+    },
+    {
+      "token": "lost",
+      "count": 9
+    },
+    {
+      "token": "adult",
+      "count": 9
+    },
+    {
+      "token": "misty",
+      "count": 9
     }
   ],
   "scale_ratios": [
     {
+      "token": "12",
+      "denominator": 2,
+      "count": 28,
+      "uncommon": true
+    },
+    {
       "token": "10",
       "denominator": 0,
-      "count": 595,
+      "count": 25,
       "uncommon": true
     },
     {
       "token": "11",
       "denominator": 1,
-      "count": 376,
-      "uncommon": true
-    },
-    {
-      "token": "12",
-      "denominator": 2,
-      "count": 221,
-      "uncommon": true
-    },
-    {
-      "token": "14",
-      "denominator": 4,
-      "count": 221,
-      "uncommon": false
-    },
-    {
-      "token": "15",
-      "denominator": 5,
-      "count": 218,
-      "uncommon": true
-    },
-    {
-      "token": "17",
-      "denominator": 7,
-      "count": 187,
-      "uncommon": false
-    },
-    {
-      "token": "13",
-      "denominator": 3,
-      "count": 172,
-      "uncommon": true
-    },
-    {
-      "token": "16",
-      "denominator": 6,
-      "count": 125,
-      "uncommon": false
-    },
-    {
-      "token": "19",
-      "denominator": 9,
-      "count": 101,
-      "uncommon": false
-    },
-    {
-      "token": "175",
-      "denominator": 75,
-      "count": 73,
-      "uncommon": true
-    },
-    {
-      "token": "1121",
-      "denominator": 121,
-      "count": 48,
+      "count": 17,
       "uncommon": true
     },
     {
       "token": "18",
       "denominator": 8,
-      "count": 47,
+      "count": 11,
       "uncommon": true
     },
     {
-      "token": "130",
-      "denominator": 30,
-      "count": 15,
-      "uncommon": true
-    },
-    {
-      "token": "115",
-      "denominator": 15,
-      "count": 14,
-      "uncommon": true
-    },
-    {
-      "token": "120",
-      "denominator": 20,
-      "count": 13,
-      "uncommon": true
-    },
-    {
-      "token": "135",
-      "denominator": 35,
-      "count": 10,
-      "uncommon": true
-    },
-    {
-      "token": "139",
-      "denominator": 39,
-      "count": 10,
-      "uncommon": true
-    },
-    {
-      "token": "132",
-      "denominator": 32,
-      "count": 7,
-      "uncommon": true
-    },
-    {
-      "token": "133",
-      "denominator": 33,
-      "count": 7,
-      "uncommon": true
-    },
-    {
-      "token": "136",
-      "denominator": 36,
-      "count": 7,
-      "uncommon": true
-    },
-    {
-      "token": "137",
-      "denominator": 37,
-      "count": 7,
-      "uncommon": true
-    },
-    {
-      "token": "100",
-      "denominator": 0,
-      "count": 6,
-      "uncommon": true
-    },
-    {
-      "token": "134",
-      "denominator": 34,
-      "count": 5,
-      "uncommon": true
-    },
-    {
-      "token": "131",
-      "denominator": 31,
+      "token": "15",
+      "denominator": 5,
       "count": 4,
       "uncommon": true
     },
     {
-      "token": "138",
-      "denominator": 38,
-      "count": 4,
-      "uncommon": true
-    },
-    {
-      "token": "101",
-      "denominator": 1,
+      "token": "13",
+      "denominator": 3,
       "count": 3,
       "uncommon": true
     },
     {
-      "token": "102",
-      "denominator": 2,
-      "count": 3,
-      "uncommon": true
-    },
-    {
-      "token": "104",
+      "token": "14",
       "denominator": 4,
-      "count": 3,
+      "count": 2,
       "uncommon": false
     },
     {
-      "token": "105",
-      "denominator": 5,
-      "count": 3,
-      "uncommon": true
+      "token": "16",
+      "denominator": 6,
+      "count": 2,
+      "uncommon": false
     },
     {
-      "token": "156",
-      "denominator": 56,
-      "count": 3,
-      "uncommon": true
-    },
-    {
-      "token": "1751",
-      "denominator": 751,
-      "count": 3,
-      "uncommon": true
-    },
-    {
-      "token": "154",
-      "denominator": 54,
+      "token": "1223",
+      "denominator": 223,
       "count": 2,
       "uncommon": true
     },
     {
-      "token": "155",
-      "denominator": 55,
+      "token": "1123",
+      "denominator": 123,
       "count": 2,
       "uncommon": true
     },
     {
-      "token": "166",
-      "denominator": 66,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "167",
-      "denominator": 67,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "159",
-      "denominator": 59,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "160",
-      "denominator": 60,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "161",
-      "denominator": 61,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "162",
-      "denominator": 62,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "163",
-      "denominator": 63,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "164",
-      "denominator": 64,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "165",
-      "denominator": 65,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "1800",
-      "denominator": 800,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "158",
-      "denominator": 58,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "157",
-      "denominator": 57,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "145",
-      "denominator": 45,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "153",
-      "denominator": 53,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "103",
-      "denominator": 3,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "1653",
-      "denominator": 653,
-      "count": 2,
-      "uncommon": true
-    },
-    {
-      "token": "127",
+      "token": "1027",
       "denominator": 27,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1140",
+      "denominator": 140,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1141",
+      "denominator": 141,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1143",
+      "denominator": 143,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1146",
+      "denominator": 146,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1154",
+      "denominator": 154,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1155",
+      "denominator": 155,
+      "count": 1,
+      "uncommon": true
+    },
+    {
+      "token": "1234",
+      "denominator": 234,
       "count": 1,
       "uncommon": true
     },
@@ -1512,531 +1321,232 @@
       "uncommon": true
     },
     {
-      "token": "129",
-      "denominator": 29,
+      "token": "1420",
+      "denominator": 420,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "168",
-      "denominator": 68,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "169",
-      "denominator": 69,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "170",
-      "denominator": 70,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "171",
-      "denominator": 71,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "172",
-      "denominator": 72,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "173",
-      "denominator": 73,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "174",
-      "denominator": 74,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "176",
-      "denominator": 76,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "106",
-      "denominator": 6,
-      "count": 1,
-      "uncommon": false
-    },
-    {
-      "token": "107",
+      "token": "17",
       "denominator": 7,
       "count": 1,
       "uncommon": false
     },
     {
-      "token": "108",
-      "denominator": 8,
+      "token": "1212",
+      "denominator": 212,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "109",
-      "denominator": 9,
-      "count": 1,
-      "uncommon": false
-    },
-    {
-      "token": "110",
-      "denominator": 10,
-      "count": 1,
-      "uncommon": false
-    },
-    {
-      "token": "111",
-      "denominator": 11,
+      "token": "1751",
+      "denominator": 751,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "112",
-      "denominator": 12,
-      "count": 1,
-      "uncommon": false
-    },
-    {
-      "token": "147",
-      "denominator": 47,
+      "token": "1660",
+      "denominator": 660,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "150",
-      "denominator": 50,
+      "token": "1984",
+      "denominator": 984,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "140",
-      "denominator": 40,
+      "token": "125",
+      "denominator": 25,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "141",
-      "denominator": 41,
+      "token": "100",
+      "denominator": 0,
       "count": 1,
       "uncommon": true
     },
     {
-      "token": "142",
-      "denominator": 42,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "195",
-      "denominator": 95,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "196",
-      "denominator": 96,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "197",
-      "denominator": 97,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "198",
-      "denominator": 98,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "199",
-      "denominator": 99,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "180",
-      "denominator": 80,
-      "count": 1,
-      "uncommon": true
-    },
-    {
-      "token": "152",
-      "denominator": 52,
+      "token": "1439",
+      "denominator": 439,
       "count": 1,
       "uncommon": true
     }
   ],
   "scale_mm": [
     {
-      "token": "32mm",
-      "mm": 32,
-      "count": 1097
-    },
-    {
       "token": "75mm",
       "mm": 75,
-      "count": 712
+      "count": 166
     },
     {
-      "token": "25mm",
-      "mm": 25,
-      "count": 488
-    },
-    {
-      "token": "28mm",
-      "mm": 28,
-      "count": 302
+      "token": "32mm",
+      "mm": 32,
+      "count": 134
     },
     {
       "token": "40mm",
       "mm": 40,
-      "count": 280
-    },
-    {
-      "token": "30mm",
-      "mm": 30,
-      "count": 198
-    },
-    {
-      "token": "50mm",
-      "mm": 50,
-      "count": 178
-    },
-    {
-      "token": "60mm",
-      "mm": 60,
-      "count": 124
-    },
-    {
-      "token": "70mm",
-      "mm": 70,
-      "count": 96
-    },
-    {
-      "token": "100mm",
-      "mm": 100,
-      "count": 74
-    },
-    {
-      "token": "35mm",
-      "mm": 35,
-      "count": 29
-    },
-    {
-      "token": "42mm",
-      "mm": 42,
-      "count": 18
-    },
-    {
-      "token": "80mm",
-      "mm": 80,
-      "count": 17
-    },
-    {
-      "token": "125mm",
-      "mm": 125,
-      "count": 16
-    },
-    {
-      "token": "160mm",
-      "mm": 160,
-      "count": 16
+      "count": 6
     },
     {
       "token": "120mm",
       "mm": 120,
-      "count": 15
-    },
-    {
-      "token": "145mm",
-      "mm": 145,
-      "count": 12
-    },
-    {
-      "token": "20mm",
-      "mm": 20,
-      "count": 10
-    },
-    {
-      "token": "150mm",
-      "mm": 150,
-      "count": 9
-    },
-    {
-      "token": "36mm",
-      "mm": 36,
-      "count": 8
-    },
-    {
-      "token": "130mm",
-      "mm": 130,
-      "count": 8
-    },
-    {
-      "token": "170mm",
-      "mm": 170,
-      "count": 7
-    },
-    {
-      "token": "90mm",
-      "mm": 90,
-      "count": 6
-    },
-    {
-      "token": "92mm",
-      "mm": 92,
-      "count": 6
-    },
-    {
-      "token": "46mm",
-      "mm": 46,
-      "count": 6
-    },
-    {
-      "token": "105mm",
-      "mm": 105,
-      "count": 6
-    },
-    {
-      "token": "10mm",
-      "mm": 10,
-      "count": 6
-    },
-    {
-      "token": "55mm",
-      "mm": 55,
-      "count": 4
-    },
-    {
-      "token": "95mm",
-      "mm": 95,
-      "count": 4
-    },
-    {
-      "token": "12mm",
-      "mm": 12,
-      "count": 4
-    },
-    {
-      "token": "14mm",
-      "mm": 14,
-      "count": 4
-    },
-    {
-      "token": "16mm",
-      "mm": 16,
-      "count": 4
-    },
-    {
-      "token": "175mm",
-      "mm": 175,
-      "count": 3
-    },
-    {
-      "token": "41mm",
-      "mm": 41,
-      "count": 3
-    },
-    {
-      "token": "56mm",
-      "mm": 56,
       "count": 2
     },
     {
-      "token": "52mm",
-      "mm": 52,
+      "token": "140mm",
+      "mm": 140,
       "count": 2
     },
     {
-      "token": "85mm",
-      "mm": 85,
+      "token": "200mm",
+      "mm": 200,
+      "count": 2
+    },
+    {
+      "token": "50mm",
+      "mm": 50,
+      "count": 2
+    },
+    {
+      "token": "28mm",
+      "mm": 28,
       "count": 1
     },
     {
-      "token": "72mm",
-      "mm": 72,
+      "token": "70mm",
+      "mm": 70,
       "count": 1
     },
     {
-      "token": "195mm",
-      "mm": 195,
-      "count": 1
-    },
-    {
-      "token": "29mm",
-      "mm": 29,
-      "count": 1
-    },
-    {
-      "token": "39mm",
-      "mm": 39,
-      "count": 1
-    },
-    {
-      "token": "34mm",
-      "mm": 34,
-      "count": 1
-    },
-    {
-      "token": "38mm",
-      "mm": 38,
-      "count": 1
-    },
-    {
-      "token": "31mm",
-      "mm": 31,
-      "count": 1
-    },
-    {
-      "token": "73mm",
-      "mm": 73,
-      "count": 1
-    },
-    {
-      "token": "65mm",
-      "mm": 65,
-      "count": 1
-    },
-    {
-      "token": "148mm",
-      "mm": 148,
+      "token": "180mm",
+      "mm": 180,
       "count": 1
     }
   ],
   "numeric_tokens": [
     {
-      "token": "01",
-      "count": 1468
-    },
-    {
-      "token": "02",
-      "count": 1441
-    },
-    {
-      "token": "03",
-      "count": 1110
-    },
-    {
-      "token": "32mm",
-      "count": 1097
-    },
-    {
-      "token": "05",
-      "count": 978
-    },
-    {
-      "token": "04",
-      "count": 881
-    },
-    {
-      "token": "06",
-      "count": 797
+      "token": "3d",
+      "count": 191
     },
     {
       "token": "75mm",
-      "count": 712
+      "count": 166
     },
     {
-      "token": "09",
-      "count": 638
+      "token": "32mm",
+      "count": 134
     },
     {
-      "token": "x2",
-      "count": 614
+      "token": "40",
+      "count": 126
+    },
+    {
+      "token": "(2)",
+      "count": 126
+    },
+    {
+      "token": "ca3d",
+      "count": 90
+    },
+    {
+      "token": "2024",
+      "count": 61
+    },
+    {
+      "token": "02",
+      "count": 57
+    },
+    {
+      "token": "3dmoonn",
+      "count": 57
+    },
+    {
+      "token": "@stla3dm",
+      "count": 56
+    },
+    {
+      "token": "01",
+      "count": 51
+    },
+    {
+      "token": "oxo3d",
+      "count": 45
+    },
+    {
+      "token": "abe3d",
+      "count": 44
+    },
+    {
+      "token": "2023",
+      "count": 43
+    },
+    {
+      "token": "3dl",
+      "count": 42
+    },
+    {
+      "token": "2022",
+      "count": 36
+    },
+    {
+      "token": "(1)",
+      "count": 32
+    },
+    {
+      "token": "12",
+      "count": 28
+    },
+    {
+      "token": "gr8tech",
+      "count": 27
     },
     {
       "token": "10",
-      "count": 595
+      "count": 25
     },
     {
-      "token": "07",
-      "count": 580
+      "token": "2b",
+      "count": 25
+    },
+    {
+      "token": "03",
+      "count": 24
+    },
+    {
+      "token": "06",
+      "count": 24
+    },
+    {
+      "token": "2025",
+      "count": 23
+    },
+    {
+      "token": "1.1",
+      "count": 22
+    },
+    {
+      "token": "04",
+      "count": 20
+    },
+    {
+      "token": "2021",
+      "count": 19
+    },
+    {
+      "token": "05",
+      "count": 18
+    },
+    {
+      "token": "v1",
+      "count": 17
     },
     {
       "token": "08",
-      "count": 559
-    },
-    {
-      "token": "p02",
-      "count": 543
-    },
-    {
-      "token": "p01",
-      "count": 535
-    },
-    {
-      "token": "25mm",
-      "count": 488
-    },
-    {
-      "token": "p03",
-      "count": 436
-    },
-    {
-      "token": "p04",
-      "count": 416
-    },
-    {
-      "token": "11",
-      "count": 376
-    },
-    {
-      "token": "21",
-      "count": 358
-    },
-    {
-      "token": "p06",
-      "count": 349
-    },
-    {
-      "token": "36",
-      "count": 348
-    },
-    {
-      "token": "p05",
-      "count": 346
-    },
-    {
-      "token": "p07",
-      "count": 319
-    },
-    {
-      "token": "28mm",
-      "count": 302
-    },
-    {
-      "token": "22",
-      "count": 288
-    },
-    {
-      "token": "40mm",
-      "count": 280
-    },
-    {
-      "token": "v2",
-      "count": 271
-    },
-    {
-      "token": "2109",
-      "count": 270
-    },
-    {
-      "token": "p08",
-      "count": 256
+      "count": 17
     }
   ],
   "suggestions": [
@@ -2044,5 +1554,439 @@
     "Validate scale tokens; add uncommon denominators to suspect list if legitimate.",
     "Detected version-like tokens; ensure version_num extraction pattern covers them.",
     "Consider capturing any high-frequency unknowns appearing across >5% of scanned files."
+  ],
+  "token_map_version": null,
+  "ignored_tokens": [
+    {
+      "token": "00",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "01",
+      "count": 51,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "02",
+      "count": 57,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "03",
+      "count": 24,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "04",
+      "count": 20,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "05",
+      "count": 18,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "06",
+      "count": 24,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "07",
+      "count": 16,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "08",
+      "count": 17,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "09",
+      "count": 10,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "21",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "22",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "32",
+      "count": 3,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "40k",
+      "count": 5,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "75",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "arm",
+      "count": 16,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "armor",
+      "count": 5,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "armour",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "arms",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "axe",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "back",
+      "count": 6,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "banner",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "base",
+      "count": 248,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "body",
+      "count": 33,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "bow",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "cannon",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "complete",
+      "count": 3,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "fixed",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "foot",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "front",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "full",
+      "count": 5,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "hand",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "hands",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "head",
+      "count": 28,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "heads",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "heavy",
+      "count": 7,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "helm",
+      "count": 3,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "helmet",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "images",
+      "count": 2,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "large",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "left",
+      "count": 17,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "leg",
+      "count": 9,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "legs",
+      "count": 10,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "lower",
+      "count": 7,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "medium",
+      "count": 5,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "p02",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "pose",
+      "count": 11,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "presupported",
+      "count": 9,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "rear",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "right",
+      "count": 16,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "shield",
+      "count": 18,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "small",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "supported",
+      "count": 440,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "sword",
+      "count": 19,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "torso",
+      "count": 34,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "upper",
+      "count": 3,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "weapon",
+      "count": 7,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "weapons",
+      "count": 1,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "wing",
+      "count": 4,
+      "reason": "user_ignore"
+    },
+    {
+      "token": "x1",
+      "count": 1,
+      "reason": "user_ignore"
+    }
+  ],
+  "domain_summary": {
+    "variant_axis": 13,
+    "stopword": 16,
+    "scale_ratio": 28,
+    "lineage_family": 20,
+    "scale_mm": 10,
+    "faction_hint": 11,
+    "designer": 5
+  },
+  "archive_token_sample": [
+    {
+      "token": "1.0",
+      "count": 9
+    },
+    {
+      "token": "[ls]",
+      "count": 9
+    },
+    {
+      "token": "akeno",
+      "count": 9
+    },
+    {
+      "token": "artifex3d",
+      "count": 9
+    },
+    {
+      "token": "bearer",
+      "count": 9
+    },
+    {
+      "token": "bleach",
+      "count": 9
+    },
+    {
+      "token": "brightwood",
+      "count": 9
+    },
+    {
+      "token": "burnice",
+      "count": 9
+    },
+    {
+      "token": "collection",
+      "count": 9
+    },
+    {
+      "token": "devil",
+      "count": 9
+    },
+    {
+      "token": "esm",
+      "count": 9
+    },
+    {
+      "token": "extras",
+      "count": 9
+    },
+    {
+      "token": "ganyu",
+      "count": 9
+    },
+    {
+      "token": "gear",
+      "count": 9
+    },
+    {
+      "token": "greendale",
+      "count": 9
+    },
+    {
+      "token": "la",
+      "count": 9
+    },
+    {
+      "token": "lys",
+      "count": 9
+    },
+    {
+      "token": "mausoleum",
+      "count": 9
+    },
+    {
+      "token": "meru",
+      "count": 9
+    },
+    {
+      "token": "my",
+      "count": 9
+    },
+    {
+      "token": "nsfw+futa",
+      "count": 9
+    },
+    {
+      "token": "qb",
+      "count": 9
+    },
+    {
+      "token": "ryuko",
+      "count": 9
+    },
+    {
+      "token": "se",
+      "count": 9
+    },
+    {
+      "token": "sea",
+      "count": 9
+    },
+    {
+      "token": "squad",
+      "count": 9
+    },
+    {
+      "token": "valentine",
+      "count": 9
+    },
+    {
+      "token": "works",
+      "count": 9
+    },
+    {
+      "token": "(3)",
+      "count": 8
+    },
+    {
+      "token": "2020",
+      "count": 8
+    }
   ]
 }

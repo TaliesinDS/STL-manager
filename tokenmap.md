@@ -1,8 +1,8 @@
-# Token Normalization Map (Version 3)
+# Token Normalization Map (Version 5)
 
 Purpose: Central, versioned mapping of raw path/file tokens -> canonical normalized values used in metadata fields (see `MetadataFields.md`). Keeps heuristic logic transparent and auditable. Phase 1 scope focuses on high-confidence, low-ambiguity mappings only. Ambiguous or low-frequency tokens route to `residual_tokens` + `normalization_warnings`.
 
-Version: 3
+Version: 5
 Applies to fields first introduced in Phase 1 (designer, intended_use_bucket, basic variant axes, game_system, codex_faction, lineage_family (high-level), pc_candidate_flag proto heuristics, scale basics) and seeds for Phase 2 (lineage_primary examples) for forward compatibility (but Phase 2 tokens flagged if matched early).
 
 ---
@@ -28,7 +28,7 @@ Sections:
 ---
 ## 2. Meta
 ```
-token_map_version: 3
+token_map_version: 5
 min_token_length: 2
 case_sensitive: false
 strip_chars: ["(", ")", "[", "]", ",", ";", "{", "}"]
@@ -46,8 +46,50 @@ designers:
 	rn_estudio: ["rn_estudio", "rn-estudio", "rnestudio"]
 	archvillain: ["archvillain", "arch_villain", "archvillain_games", "avg"]
 	puppetswar: ["puppetswar", "puppets_war"]
-	tinylegend: ["tinylegend"]  # newly observed creator
-	azerama: ["azerama"]        # newly observed creator
+	tinylegend: ["tinylegend"]
+	azerama: ["azerama"]
+	hybris_studio: ["hybris", "hybris_studio", "hybrisstudio"]
+	pikky_prints: ["pikky", "pikky_prints"]
+	warsteel_miniatures: ["warsteel", "warsteel_miniatures", "warsteel_miniaturs", "warsteelminiatures"]
+	momoji: ["momoji", "momoji3d", "3dmomoji"]
+	moonfigures: ["moonfigures"]
+	three_dmoonn: ["3dmoonn"]
+	funservicestl: ["funservicestl"]
+	miyo_studio: ["miyo", "miyo_studio", "miyo studio"]
+	megha: ["megha", "megha_l", "megha l"]  # include observed variant with initial
+	kuton: ["kuton"]
+	zahen_studio: ["zahen", "zahen_studio", "zahen studio"]
+	chuya_factory: ["chuya", "chuya_factory", "chuya factory"]
+	kuru_figure: ["kuru", "kuru_figure", "kuru figure"]
+	nomnom: ["nomnom"]
+	nympha3d: ["nympha3d", "nympha"]
+	moxomor: ["moxomor"]
+	mezgike: ["mezgike"]
+	abe3d: ["abe3d"]
+	ca3d: ["ca3d"]
+	jigglystix: ["jigglystix"]
+	torrida: ["torrida", "torrida_minis", "torrida minis"]
+	skarix: ["skarix"]
+	xo3d: ["oxo3d", "xo3d", "oxo_3d"]
+	rubim: ["rubim"]
+	pink_studio: ["pink_studio", "pink studio"]
+	dinamuuu3d: ["dinamuuu3d", "dinamuu3d", "dinamuuu3d"]  # minor spelling drift
+	zf3d: ["zf3d"]
+	gsculpt_art: ["gsculpt", "gsculpt_art", "gsculpt art"]
+	aliance: ["aliance"]
+	messias3d_figure: ["messias", "messias3d", "messias_3d", "messias 3d", "messias3d_figure", "messias 3d figure"]
+	obstetrician_m_booth: ["obstetrician-m.booth", "obstetrician_m_booth", "obstetricianmbooth"]
+	vx_labs: ["vx-labs", "vx_labs", "vxlabs"]
+	cw_studio: ["cw_studio", "cw studio", "chickenwar", "cw studio (chickenwar)"]
+	es_monster: ["e.s.monster", "es_monster", "esmonster"]
+	gm3d: ["gm3d"]
+	kangyong: ["kangyong", "kang_yong", "kang yong"]
+	manilovefigures: ["manilovefigures", "mani_love_figures", "mani love figures"]
+	peachfigure: ["peachfigure", "peach_figure", "peach figure"]
+	officer_rhu: ["officer-rhu", "officer_rhu", "officerrhu"]
+	exclusive3dprinting: ["exclusive3dprinting", "exclusive_3d_printing", "exclusive 3d printing"]
+	rushzilla: ["rushzilla"]
+	francis_quez: ["francis quez", "francis_quez", "francisquez"]
 ```
 
 Collision rule: If a token matches aliases for >1 designer (should not in curated list) emit `warning: designer_alias_collision` and push token to residual.
@@ -70,7 +112,7 @@ lineage:
 		lizardfolk: ["lizardfolk", "lizardman", "lizardmen", "saurus"]
 		dragonkin: ["dragonborn", "draconian", "draconian", "drake"]
 		vampire: ["vampire", "vampires", "vampiric"]
-		ratfolk: ["ratfolk"]  # generic rodent lineage outside specific system 'skaven'
+		ratfolk: ["ratfolk", "ratkin", "ratmen"]  # generic rodent lineage outside specific system 'skaven'
 		kobold: ["kobold", "kobolds"]
 	primary_seeds:  # Phase 2 enable (mark future for now)
 		high_elf: { tokens: ["high_elf", "high-elf"], family: elf, future: true }
@@ -171,8 +213,8 @@ Phase 1 only sets `content_flag=nsfw` if any strong cue. Fine granularity waits.
 
 ```
 nsfw_cues:
-	strong: ["nude", "naked", "topless", "nsfw", "lewd"]
-	weak: ["sexy", "pinup", "pin-up", "lingerie"]
+	strong: ["nude", "naked", "topless", "nsfw", "lewd", "futa"]  # added futa per new content observations
+	weak: ["sexy", "pinup", "pin-up", "lingerie"]  # pinup kept weak (broad range); may stay SFW contextually
 	exclude_false_positive_context: ["weapon", "nude_color_scheme"]
 ```
 
@@ -184,7 +226,7 @@ Rule: strong -> nsfw; weak -> nsfw unless conflicting safe context words present
 variant_axes:
 	segmentation:
 		split: ["split", "parts", "multi-part", "multi_part"]
-		merged: ["onepiece", "one_piece", "merged", "solidpiece"]
+		merged: ["onepiece", "one_piece", "merged", "solidpiece", "uncut"]  # 'uncut' treated as fully merged/not split
 	internal_volume:
 		hollowed: ["hollow", "hollowed"]
 		solid: ["solid"]
