@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["guilty_gear"],
   "characters": [
-    {"canonical": "elphelt_valentine", "aliases": ["elphelt", "valentine"]}
+    {"canonical": "elphelt_valentine", "aliases": ["elphelt", "valentine"]},
+    {"canonical": "baiken_guilty_gear", "aliases": ["baiken"]}
   ],
   "tokens": {
-    "strong_signals": ["elphelt_valentine", "elphelt"],
-    "weak_signals": ["valentine"],
+  "strong_signals": ["elphelt_valentine", "elphelt", "baiken_guilty_gear", "baiken"],
+  "weak_signals": ["valentine"],
     "stop_conflicts": [],
-    "notes": "Given name strong; surname shared with others weak." 
+  "notes": "Given name strong; surname shared with others weak. Added Baiken (qualified + given strong)." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "zootopia",
+  "display_name": "Zootopia",
+  "source_version": 1,
+  "aliases": ["zootopia"],
+  "characters": [
+    {"canonical": "judy_hopps", "aliases": ["judy", "hopps"]}
+  ],
+  "tokens": {
+    "strong_signals": ["judy_hopps"],
+    "weak_signals": ["judy", "hopps"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak due to common given name and potential surname collisions." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

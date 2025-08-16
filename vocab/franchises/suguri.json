@@ -1,0 +1,16 @@
+{
+  "franchise": "suguri",
+  "display_name": "Suguri",
+  "source_version": 1,
+  "aliases": ["suguri"],
+  "characters": [
+    {"canonical": "hiromi_suguri", "aliases": ["hiromi", "suguri"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hiromi_suguri", "hiromi"],
+    "weak_signals": ["suguri"],
+    "stop_conflicts": [],
+    "notes": "Hiromi distinctive; surname/franchise weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

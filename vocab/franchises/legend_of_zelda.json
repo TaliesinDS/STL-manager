@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "link", "aliases": []},
     {"canonical": "princess_zelda", "aliases": ["zelda"]},
-    {"canonical": "ganondorf", "aliases": ["ganon"]}
+  {"canonical": "ganondorf", "aliases": ["ganon"]},
+  {"canonical": "riju_zelda", "aliases": ["riju"]}
   ],
   "tokens": {
-    "strong_signals": ["ganondorf", "ganon"],
-    "weak_signals": ["link", "zelda"],
+  "strong_signals": ["ganondorf", "ganon", "riju_zelda", "riju"],
+  "weak_signals": ["link", "zelda"],
     "stop_conflicts": [],
-    "notes": "'link' generic so weak; need co-occurrence."
+  "notes": "'link' generic so weak; added Riju (qualified + given strong). Need co-occurrence for generic names." 
   },
   "provenance": {"source": "manual_seed"}
 }

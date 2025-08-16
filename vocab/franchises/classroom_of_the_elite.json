@@ -8,9 +8,9 @@
   ],
   "tokens": {
     "strong_signals": ["kikyo_kushida"],
-    "weak_signals": ["kikyo"],
+  "weak_signals": ["kikyo", "kushida"],
     "stop_conflicts": [],
-    "notes": "Given name alone weak."
+  "notes": "Qualified strong; given and surname weak. Alternate alias already present." 
   },
   "provenance": {"source": "manual_seed"}
 }

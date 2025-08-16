@@ -7,13 +7,14 @@
     {"canonical": "shermie", "aliases": []},
     {"canonical": "may_lee", "aliases": ["may", "lee", "maylee"]},
     {"canonical": "angel_kof", "aliases": ["angel"]},
-    {"canonical": "mai_shiranui", "aliases": ["mai", "shiranui"]}
+  {"canonical": "mai_shiranui", "aliases": ["mai", "shiranui"]},
+  {"canonical": "leona_heidern", "aliases": ["leona", "heidern"]}
   ],
   "tokens": {
-  "strong_signals": ["shermie", "may_lee", "maylee", "angel_kof", "mai_shiranui", "shiranui"],
-  "weak_signals": ["kof", "may", "lee", "angel", "mai"],
+  "strong_signals": ["shermie", "may_lee", "maylee", "angel_kof", "mai_shiranui", "shiranui", "leona_heidern"],
+  "weak_signals": ["kof", "may", "lee", "angel", "mai", "leona", "heidern"],
     "stop_conflicts": [],
-  "notes": "Added May Lee earlier; then Angel; now Mai Shiranui (surname distinctive strong; given name weak)."
+  "notes": "Added May Lee earlier; then Angel; Mai Shiranui; now Leona Heidern (qualified strong; components weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

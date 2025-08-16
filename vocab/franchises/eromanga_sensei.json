@@ -4,13 +4,13 @@
   "source_version": 1,
   "aliases": ["eromanga_sensei"],
   "characters": [
-    {"canonical": "izumi_sagiri", "aliases": ["sagiri", "sagiri_izumi"]}
+  {"canonical": "izumi_sagiri", "aliases": ["sagiri", "sagiri_izumi"]}
   ],
   "tokens": {
-    "strong_signals": ["izumi_sagiri"],
-    "weak_signals": ["sagiri"],
+  "strong_signals": ["izumi_sagiri", "sagiri"],
+  "weak_signals": ["izumi"],
     "stop_conflicts": [],
-    "notes": "Family + given for canonical; given name alone weak."
+  "notes": "Made given name 'sagiri' strong; family name 'izumi' weak due to commonality." 
   },
   "provenance": {"source": "manual_seed"}
 }

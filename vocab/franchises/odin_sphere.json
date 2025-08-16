@@ -1,0 +1,16 @@
+{
+  "franchise": "odin_sphere",
+  "display_name": "Odin Sphere",
+  "source_version": 1,
+  "aliases": ["odin_sphere"],
+  "characters": [
+    {"canonical": "velvet_odin_sphere", "aliases": ["velvet"]}
+  ],
+  "tokens": {
+    "strong_signals": ["velvet_odin_sphere"],
+    "weak_signals": ["velvet", "odin_sphere"],
+    "stop_conflicts": [],
+    "notes": "Velvet given name weak due to generic word; qualified strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

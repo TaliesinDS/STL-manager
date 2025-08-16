@@ -1,0 +1,16 @@
+{
+  "franchise": "dungeons_and_dragons",
+  "display_name": "Dungeons & Dragons",
+  "source_version": 1,
+  "aliases": ["dnd", "dungeons_and_dragons"],
+  "characters": [
+    {"canonical": "holga_cloventhorn", "aliases": ["holga", "cloventhorn"]}
+  ],
+  "tokens": {
+    "strong_signals": ["holga_cloventhorn", "holga"],
+    "weak_signals": ["cloventhorn", "dnd"],
+    "stop_conflicts": [],
+    "notes": "Holga distinctive; surname & system acronym weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

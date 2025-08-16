@@ -10,7 +10,7 @@
     "strong_signals": ["yumeko", "yumeko_jabami"],
     "weak_signals": ["jabami"],
     "stop_conflicts": [],
-    "notes": "Given name strong; surname weak." 
+  "notes": "Given name strong; surname weak. Yumeko Jabami request satisfied." 
   },
   "provenance": {"source": "manual_seed"}
 }

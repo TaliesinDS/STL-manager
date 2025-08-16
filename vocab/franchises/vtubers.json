@@ -5,13 +5,15 @@
   "aliases": ["vtuber", "vtubers"],
   "characters": [
     {"canonical": "silvervale", "aliases": ["silvervale"]},
-    {"canonical": "usada_pekora", "aliases": ["pekora", "usada", "usada_pekora"]}
+    {"canonical": "usada_pekora", "aliases": ["pekora", "usada", "usada_pekora"]},
+  {"canonical": "ironmouse", "aliases": ["ironmouse"]},
+  {"canonical": "misono_hibiki", "aliases": ["misono", "hibiki"]}
   ],
   "tokens": {
-  "strong_signals": ["silvervale", "usada_pekora", "pekora"],
-  "weak_signals": ["vtuber", "vtubers", "usada"],
+  "strong_signals": ["silvervale", "usada_pekora", "pekora", "ironmouse", "misono_hibiki"],
+  "weak_signals": ["vtuber", "vtubers", "usada", "misono", "hibiki"],
     "stop_conflicts": [],
-  "notes": "Added Silvervale earlier; now Usada Pekora. 'pekora' strong; 'usada' weak; platform descriptor weak." 
+  "notes": "Added Silvervale earlier; then Usada Pekora, Ironmouse, now Misono Hibiki (qualified strong; common JP name parts weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

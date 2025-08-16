@@ -9,13 +9,16 @@
   {"canonical": "alice_nikke", "aliases": ["alice"]},
   {"canonical": "dorothy_nikke", "aliases": ["dorothy"]},
   {"canonical": "marian_nikke", "aliases": ["marian"]},
-  {"canonical": "red_hood_nikke", "aliases": ["red_hood", "redhood"]}
+  {"canonical": "red_hood_nikke", "aliases": ["red_hood", "redhood"]},
+  {"canonical": "cinderella_nikke", "aliases": ["cinderella"]},
+  {"canonical": "folkwang_nikke", "aliases": ["folkwang"]},
+  {"canonical": "naga_nikke", "aliases": ["naga"]}
   ],
   "tokens": {
-  "strong_signals": ["anis_nikke", "volume_nikke", "alice_nikke", "dorothy_nikke", "marian_nikke", "red_hood_nikke", "red_hood"],
-  "weak_signals": ["anis", "volume", "alice", "dorothy", "marian", "redhood"],
+  "strong_signals": ["anis_nikke", "volume_nikke", "alice_nikke", "dorothy_nikke", "marian_nikke", "red_hood_nikke", "red_hood", "cinderella_nikke", "folkwang_nikke", "naga_nikke"],
+  "weak_signals": ["anis", "volume", "alice", "dorothy", "marian", "redhood", "cinderella", "folkwang", "naga"],
     "stop_conflicts": [],
-  "notes": "Franchise-qualified strong tokens; short given/common words as weak signals. Added Alice, Dorothy, Marian earlier; now added Red Hood (qualified strong)." 
+  "notes": "Franchise-qualified strong tokens; short given/common words as weak signals. Added Alice, Dorothy, Marian earlier; then Red Hood; now added Cinderella, Folkwang, Naga." 
   },
   "provenance": {"source": "manual_seed"}
 }

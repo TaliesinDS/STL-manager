@@ -6,13 +6,15 @@
   "characters": [
   {"canonical": "gawr_gura", "aliases": ["gura", "gawr"]},
   {"canonical": "ninomae_inanis", "aliases": ["ina", "ninomae", "inanis"]},
-  {"canonical": "marine_houshou", "aliases": ["marine", "houshou"]}
+  {"canonical": "marine_houshou", "aliases": ["marine", "houshou"]},
+  {"canonical": "nerissa_ravencroft", "aliases": ["nerissa", "ravencroft"]},
+  {"canonical": "ouro_kronii", "aliases": ["kronii", "ouro"]}
   ],
   "tokens": {
-  "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine"],
-  "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou"],
+  "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine", "nerissa_ravencroft", "nerissa", "ouro_kronii", "kronii"],
+  "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou", "ravencroft", "ouro"],
     "stop_conflicts": [],
-  "notes": "Added Ninomae Ina'nis (short 'ina' weak) and Marine Houshou (given name distinctive strong)."
+  "notes": "Added Ninomae Ina'nis and Marine Houshou earlier; now Nerissa Ravencroft and Ouro Kronii (handles + full forms strong; surnames/org tokens weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "tarzan",
+  "display_name": "Tarzan",
+  "source_version": 1,
+  "aliases": ["tarzan"],
+  "characters": [
+    {"canonical": "jane_porter_tarzan", "aliases": ["jane_porter", "jane"]}
+  ],
+  "tokens": {
+    "strong_signals": ["jane_porter_tarzan", "jane_porter"],
+    "weak_signals": ["jane"],
+    "stop_conflicts": [],
+    "notes": "Qualified + full name strong; given name common so weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

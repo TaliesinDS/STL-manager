@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["street_fighter"],
   "characters": [
-    {"canonical": "cammy", "aliases": []}
+    {"canonical": "cammy", "aliases": []},
+    {"canonical": "ibuki_street_fighter", "aliases": ["ibuki"]}
   ],
   "tokens": {
-    "strong_signals": ["cammy"],
-    "weak_signals": [],
+  "strong_signals": ["cammy", "ibuki_street_fighter", "ibuki"],
+  "weak_signals": [],
     "stop_conflicts": [],
-    "notes": "Cammy distinctive enough; no weak tokens needed."
+  "notes": "Cammy distinctive enough; added Ibuki (qualified + given strong)."
   },
   "provenance": {"source": "manual_seed"}
 }

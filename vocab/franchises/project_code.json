@@ -1,0 +1,17 @@
+{
+  "franchise": "project_code",
+  "display_name": "Project Code",
+  "source_version": 1,
+  "aliases": ["project_code"],
+  "characters": [
+    {"canonical": "project_code_snow", "aliases": ["project_code_snow", "snow"]},
+    {"canonical": "project_code_void", "aliases": ["project_code_void", "void"]}
+  ],
+  "tokens": {
+    "strong_signals": ["project_code_snow", "project_code_void"],
+    "weak_signals": ["snow", "void"],
+    "stop_conflicts": [],
+    "notes": "Qualified forms strong; common words 'snow' and 'void' weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

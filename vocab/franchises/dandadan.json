@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["dandadan"],
   "characters": [
-    {"canonical": "aira_shiratori", "aliases": ["aira", "shiratori"]}
+    {"canonical": "aira_shiratori", "aliases": ["aira", "shiratori"]},
+    {"canonical": "seiko_ayase", "aliases": ["seiko", "ayase", "ayase_seiko"]}
   ],
   "tokens": {
-    "strong_signals": ["aira_shiratori"],
-    "weak_signals": ["aira", "shiratori"],
+  "strong_signals": ["aira_shiratori", "seiko_ayase"],
+  "weak_signals": ["aira", "shiratori", "seiko", "ayase"],
     "stop_conflicts": [],
-    "notes": "Full name strong; components weak until uniqueness validated." 
+  "notes": "Full names strong; given/surname components weak for ambiguity control." 
   },
   "provenance": {"source": "manual_seed"}
 }

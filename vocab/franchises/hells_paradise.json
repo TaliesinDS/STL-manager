@@ -1,0 +1,16 @@
+{
+  "franchise": "hells_paradise",
+  "display_name": "Hell's Paradise",
+  "source_version": 1,
+  "aliases": ["hells_paradise", "jigokuraku"],
+  "characters": [
+    {"canonical": "yuzuriha_hells_paradise", "aliases": ["yuzuriha"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yuzuriha_hells_paradise"],
+    "weak_signals": ["yuzuriha", "jigokuraku"],
+    "stop_conflicts": [],
+    "notes": "Qualified form strong; standalone name + alt series title weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

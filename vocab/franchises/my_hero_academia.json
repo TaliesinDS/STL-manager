@@ -10,13 +10,15 @@
   {"canonical": "toru_hagakure", "aliases": ["toru", "hagakure", "tooru"]},
   {"canonical": "ochaco_uraraka", "aliases": ["ochaco", "uraraka"]},
   {"canonical": "mei_hatsume", "aliases": ["mei", "hatsume"]},
-  {"canonical": "camie_utsushimi", "aliases": ["camie", "utsushimi"]}
+  {"canonical": "camie_utsushimi", "aliases": ["camie", "utsushimi"]},
+  {"canonical": "kyoka_jiro", "aliases": ["kyoka", "jiro", "kyoka_jiro"]},
+  {"canonical": "kinoko_komori", "aliases": ["kinoko", "komori"]}
   ],
   "tokens": {
-  "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo", "toru_hagakure", "toru", "tooru", "ochaco_uraraka", "ochaco", "mei_hatsume", "mei", "camie_utsushimi", "camie"],
-  "weak_signals": ["mha", "himiko", "yaoyorozu", "hagakure", "uraraka", "hatsume", "utsushimi"],
+  "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo", "toru_hagakure", "toru", "tooru", "ochaco_uraraka", "ochaco", "mei_hatsume", "mei", "camie_utsushimi", "camie", "kyoka_jiro", "kyoka", "kinoko_komori", "kinoko"],
+  "weak_signals": ["mha", "himiko", "yaoyorozu", "hagakure", "uraraka", "hatsume", "utsushimi", "jiro", "komori"],
     "stop_conflicts": [],
-  "notes": "Added Momo, Ochaco, Mei earlier; now added Camie Utsushimi; given names strong; surnames weak." 
+  "notes": "Added Momo, Ochaco, Mei earlier; then Camie; now Kyoka Jiro and Kinoko Komori; given names strong; surnames weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

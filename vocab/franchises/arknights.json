@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["arknights"],
   "characters": [
-    {"canonical": "skadi_arknights", "aliases": ["skadi"]}
+    {"canonical": "skadi_arknights", "aliases": ["skadi"]},
+    {"canonical": "nian_arknights", "aliases": ["nian"]}
   ],
   "tokens": {
-    "strong_signals": ["skadi_arknights"],
-    "weak_signals": ["skadi"],
+  "strong_signals": ["skadi_arknights", "nian_arknights", "nian"],
+  "weak_signals": ["skadi"],
     "stop_conflicts": [],
-    "notes": "Skadi also appears in mythologies; qualifier strong." 
+  "notes": "Skadi also appears in mythologies; qualifier strong. Added Nian (qualified + given strong)." 
   },
   "provenance": {"source": "manual_seed"}
 }

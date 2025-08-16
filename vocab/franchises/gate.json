@@ -10,7 +10,7 @@
     "strong_signals": ["rory_mercury", "rory"],
     "weak_signals": ["mercury"],
     "stop_conflicts": ["gate"],
-    "notes": "Suppress generic word 'gate'; rely on character name."
+  "notes": "Rory Mercury seeded; 'gate' suppressed via stop_conflicts; 'mercury' weak due to planet word." 
   },
   "provenance": {"source": "manual_seed"}
 }

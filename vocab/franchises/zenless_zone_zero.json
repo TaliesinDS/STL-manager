@@ -11,12 +11,13 @@
   {"canonical": "vivian_zenless", "aliases": ["vivian"]},
   {"canonical": "anby_demara", "aliases": ["anby", "demara"]},
   {"canonical": "tsukishiro_yanagi", "aliases": ["tsukishiro", "yanagi"]}
+  ,{"canonical": "evelyn_chevalier", "aliases": ["evelyn", "chevalier"]}
   ],
   "tokens": {
-  "strong_signals": ["nekomiya_mana", "nicole_demara", "nicole", "ellen_joe", "ellen", "burnice_white", "burnice", "vivian_zenless", "vivian", "anby_demara", "anby", "tsukishiro_yanagi"],
-  "weak_signals": ["mana", "nekomiya", "demara", "joe", "white", "zzz", "tsukishiro", "yanagi"],
+  "strong_signals": ["nekomiya_mana", "nicole_demara", "nicole", "ellen_joe", "ellen", "burnice_white", "burnice", "vivian_zenless", "vivian", "anby_demara", "anby", "tsukishiro_yanagi", "evelyn_chevalier"],
+  "weak_signals": ["mana", "nekomiya", "demara", "joe", "white", "zzz", "tsukishiro", "yanagi", "evelyn", "chevalier"],
     "stop_conflicts": [],
-  "notes": "Added Nicole Demara (moved from Honkai) and Ellen Joe earlier; now Burnice White, Vivian, Anby Demara, and Tsukishiro Yanagi; given/specific full forms strong; common surname elements weak." 
+  "notes": "Added Nicole Demara (moved from Honkai) and Ellen Joe earlier; then Burnice White, Vivian, Anby Demara, Tsukishiro Yanagi; now Evelyn Chevalier. Qualified + distinctive given strong; common components weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

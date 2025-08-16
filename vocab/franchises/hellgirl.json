@@ -1,0 +1,16 @@
+{
+  "franchise": "hellgirl",
+  "display_name": "Hellgirl",
+  "source_version": 1,
+  "aliases": ["hellgirl"],
+  "characters": [
+    {"canonical": "hellgirl", "aliases": ["hellgirl"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hellgirl"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Single token character entry per request; treat as strong." 
+  },
+  "provenance": {"source": "manual_seed", "status": "provisional"}
+}

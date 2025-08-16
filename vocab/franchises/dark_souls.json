@@ -1,0 +1,16 @@
+{
+  "franchise": "dark_souls",
+  "display_name": "Dark Souls",
+  "source_version": 1,
+  "aliases": ["dark_souls"],
+  "characters": [
+    {"canonical": "gwynevere_dark_souls", "aliases": ["gwynevere"]}
+  ],
+  "tokens": {
+    "strong_signals": ["gwynevere_dark_souls"],
+    "weak_signals": ["gwynevere", "dark_souls"],
+    "stop_conflicts": [],
+    "notes": "Full qualified strong; given name weak due to variant spellings." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
