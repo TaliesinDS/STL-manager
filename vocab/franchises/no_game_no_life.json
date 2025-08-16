@@ -1,0 +1,16 @@
+{
+  "franchise": "no_game_no_life",
+  "display_name": "No Game No Life",
+  "source_version": 1,
+  "aliases": ["no_game_no_life"],
+  "characters": [
+    {"canonical": "jibril_ngnl", "aliases": ["jibril"]}
+  ],
+  "tokens": {
+    "strong_signals": ["jibril_ngnl"],
+    "weak_signals": ["jibril"],
+    "stop_conflicts": [],
+    "notes": "Qualifier for strong token; short name weak due to possible other uses." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

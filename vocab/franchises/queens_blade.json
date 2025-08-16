@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["queens_blade", "queen_blade"],
   "characters": [
-    {"canonical": "menace", "aliases": ["queen_blade_menace"]}
+    {"canonical": "menace", "aliases": ["queen_blade_menace"]},
+    {"canonical": "melona", "aliases": []}
   ],
   "tokens": {
-    "strong_signals": ["menace"],
+    "strong_signals": ["menace", "melona"],
     "weak_signals": [],
     "stop_conflicts": ["menace_to", "public_menace"],
-    "notes": "Common word; rely on precise token or contextual filters; added stop conflicts for phrases."
+    "notes": "Added Melona; distinctive name."
   },
   "provenance": {"source": "manual_seed"}
 }

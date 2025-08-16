@@ -1,0 +1,16 @@
+{
+  "franchise": "final_fantasy_xiv",
+  "display_name": "Final Fantasy XIV",
+  "source_version": 1,
+  "aliases": ["ffxiv", "final_fantasy_xiv"],
+  "characters": [
+    {"canonical": "alisaie_leveilleur", "aliases": ["alisaie", "leveilleur"]}
+  ],
+  "tokens": {
+    "strong_signals": ["alisaie_leveilleur", "alisaie"],
+    "weak_signals": ["leveilleur"],
+    "stop_conflicts": [],
+    "notes": "Given name distinctive enough for strong; family name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

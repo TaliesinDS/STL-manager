@@ -1,0 +1,16 @@
+{
+  "franchise": "final_fantasy_vii",
+  "display_name": "Final Fantasy VII",
+  "source_version": 1,
+  "aliases": ["ffvii", "final_fantasy_vii"],
+  "characters": [
+    {"canonical": "tifa_lockhart", "aliases": ["tifa", "lockhart"]}
+  ],
+  "tokens": {
+    "strong_signals": ["tifa_lockhart", "tifa"],
+    "weak_signals": ["lockhart"],
+    "stop_conflicts": [],
+    "notes": "Iconic given name allowed strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

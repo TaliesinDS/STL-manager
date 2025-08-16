@@ -1,0 +1,16 @@
+{
+  "franchise": "mahou_shoujo_ni_akogarete",
+  "display_name": "Mahou Shoujo ni Akogarete",
+  "source_version": 1,
+  "aliases": ["mahou_shoujo_ni_akogarete"],
+  "characters": [
+    {"canonical": "hiiragi_utena", "aliases": ["utena", "hiiragi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hiiragi_utena", "utena"],
+    "weak_signals": ["hiiragi"],
+    "stop_conflicts": [],
+    "notes": "Added Hiiragi Utena; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "goblin_slayer",
+  "display_name": "Goblin Slayer",
+  "source_version": 1,
+  "aliases": ["goblin_slayer"],
+  "characters": [
+    {"canonical": "cow_girl", "aliases": ["ushikai_musume", "cow_girl"]}
+  ],
+  "tokens": {
+    "strong_signals": ["cow_girl"],
+    "weak_signals": ["ushikai_musume"],
+    "stop_conflicts": [],
+    "notes": "Added Cow Girl; Japanese descriptor weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

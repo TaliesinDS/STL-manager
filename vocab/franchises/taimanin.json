@@ -1,0 +1,16 @@
+{
+  "franchise": "taimanin",
+  "display_name": "Taimanin (Series)",
+  "source_version": 1,
+  "aliases": ["taimanin", "taimanin_asagi"],
+  "characters": [
+    {"canonical": "igawa_sakura", "aliases": ["sakura_igawa", "igawa_sakura", "sakura", "igawa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["igawa_sakura"],
+    "weak_signals": ["sakura", "igawa", "sakura_igawa"],
+    "stop_conflicts": ["sakura_haruno", "sakura_kinomoto"],
+    "notes": "Qualified full name strong; generic 'sakura' weak with cross-franchise stop conflicts." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

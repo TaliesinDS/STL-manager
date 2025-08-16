@@ -1,0 +1,16 @@
+{
+  "franchise": "jujutsu_kaisen",
+  "display_name": "Jujutsu Kaisen",
+  "source_version": 1,
+  "aliases": ["jjk"],
+  "characters": [
+    {"canonical": "nobara_kugisaki", "aliases": ["nobara", "kugisaki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["nobara_kugisaki", "nobara"],
+    "weak_signals": ["kugisaki"],
+    "stop_conflicts": [],
+    "notes": "Full name & distinctive given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

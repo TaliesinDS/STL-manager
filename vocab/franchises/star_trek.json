@@ -1,0 +1,16 @@
+{
+  "franchise": "star_trek",
+  "display_name": "Star Trek",
+  "source_version": 1,
+  "aliases": ["star_trek"],
+  "characters": [
+    {"canonical": "seven_of_nine", "aliases": ["seven_of_nine", "seven"]}
+  ],
+  "tokens": {
+    "strong_signals": ["seven_of_nine"],
+    "weak_signals": ["seven"],
+    "stop_conflicts": [],
+    "notes": "Full designation strong; short 'seven' weak to avoid numeric/common collisions." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

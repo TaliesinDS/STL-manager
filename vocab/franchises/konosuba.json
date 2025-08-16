@@ -1,0 +1,16 @@
+{
+  "franchise": "konosuba",
+  "display_name": "KonoSuba",
+  "source_version": 1,
+  "aliases": ["konosuba"],
+  "characters": [
+    {"canonical": "megumin", "aliases": ["megumin"]}
+  ],
+  "tokens": {
+    "strong_signals": ["megumin"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Distinctive single-name character." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

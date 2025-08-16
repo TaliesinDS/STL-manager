@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["persona"],
   "characters": [
-    {"canonical": "futaba_sakura", "aliases": ["futaba", "sakura"]}
+    {"canonical": "futaba_sakura", "aliases": ["futaba", "sakura"]},
+    {"canonical": "mitsuru_kirijo", "aliases": ["mitsuru", "kirijo"]}
   ],
   "tokens": {
-    "strong_signals": ["futaba"],
-    "weak_signals": ["sakura"],
+    "strong_signals": ["futaba", "mitsuru"],
+    "weak_signals": ["sakura", "kirijo"],
     "stop_conflicts": [],
-    "notes": "Given name unique in collection; surname generic across anime so weak."
+    "notes": "Added Mitsuru Kirijo; given distinctive; surnames weak/generic risk."
   },
   "provenance": {"source": "manual_seed"}
 }

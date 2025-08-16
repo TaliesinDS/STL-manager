@@ -1,0 +1,16 @@
+{
+  "franchise": "manyuu_hikenchou",
+  "display_name": "Manyuu Hikenchou",
+  "source_version": 1,
+  "aliases": ["manyuu_hikenchou"],
+  "characters": [
+    {"canonical": "chifusa_manyuu", "aliases": ["chifusa", "manyuu"]}
+  ],
+  "tokens": {
+    "strong_signals": ["chifusa_manyuu", "chifusa"],
+    "weak_signals": ["manyuu"],
+    "stop_conflicts": [],
+    "notes": "Given name distinctive; family/clan name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

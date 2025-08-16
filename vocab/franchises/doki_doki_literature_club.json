@@ -1,0 +1,16 @@
+{
+  "franchise": "doki_doki_literature_club",
+  "display_name": "Doki Doki Literature Club!",
+  "source_version": 1,
+  "aliases": ["ddlc", "doki_doki_literature_club"],
+  "characters": [
+    {"canonical": "monika_ddlc", "aliases": ["monika"]}
+  ],
+  "tokens": {
+    "strong_signals": ["monika_ddlc"],
+    "weak_signals": ["monika"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong token with franchise suffix; bare 'monika' weak due to common name usage." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

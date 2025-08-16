@@ -1,0 +1,16 @@
+{
+  "franchise": "hagure_idol",
+  "display_name": "Hagure Idol: Jigoku-hen",
+  "source_version": 1,
+  "aliases": ["hagure_idol"],
+  "characters": [
+    {"canonical": "misora_haebaru", "aliases": ["misora", "haebaru"]}
+  ],
+  "tokens": {
+    "strong_signals": ["misora_haebaru", "misora"],
+    "weak_signals": ["haebaru"],
+    "stop_conflicts": [],
+    "notes": "Added Misora Haebaru; given distinctive." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["monster_musume"],
   "characters": [
-    {"canonical": "papi", "aliases": ["papi_harpy"]}
+    {"canonical": "papi", "aliases": ["papi_harpy"]},
+    {"canonical": "miia_lamia", "aliases": ["miia"]}
   ],
   "tokens": {
-    "strong_signals": ["papi_harpy"],
-    "weak_signals": ["papi"],
+    "strong_signals": ["papi_harpy", "miia_lamia"],
+    "weak_signals": ["papi", "miia"],
     "stop_conflicts": [],
-    "notes": "Short name ambiguous; append species for strong token."
+    "notes": "Added Miia (lamia); qualified strong token; short given name weak."
   },
   "provenance": {"source": "manual_seed"}
 }

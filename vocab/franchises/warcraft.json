@@ -1,0 +1,17 @@
+{
+  "franchise": "warcraft",
+  "display_name": "Warcraft",
+  "source_version": 1,
+  "aliases": ["world_of_warcraft", "wow", "warcraft"],
+  "characters": [
+    {"canonical": "yrel", "aliases": ["yrel"]},
+    {"canonical": "lady_vashj", "aliases": ["vashj", "lady_vashj"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yrel", "lady_vashj"],
+    "weak_signals": ["vashj"],
+    "stop_conflicts": [],
+    "notes": "Unique proper noun tokens kept strong; shorter surname for Vashj weak to reduce noise." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "beowulf_2007",
+  "display_name": "Beowulf (2007 Film)",
+  "source_version": 1,
+  "aliases": ["beowulf"],
+  "characters": [
+    {"canonical": "grendels_mother", "aliases": ["grendels_mother", "grendel_mother"]}
+  ],
+  "tokens": {
+    "strong_signals": ["grendels_mother"],
+    "weak_signals": ["grendel"],
+    "stop_conflicts": [],
+    "notes": "Angelina Jolie role; require compound for strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

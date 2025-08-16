@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "daki", "aliases": []},
     {"canonical": "shinobu_kocho", "aliases": ["shinobu", "kocho"]},
-    {"canonical": "mitsuri_kanroji", "aliases": ["mitsuri", "kanroji"]}
+    {"canonical": "mitsuri_kanroji", "aliases": ["mitsuri", "kanroji"]},
+    {"canonical": "nezuko_kamado", "aliases": ["nezuko", "kamado"]}
   ],
   "tokens": {
-    "strong_signals": ["daki", "shinobu", "kocho", "mitsuri", "kanroji"],
-    "weak_signals": ["demon_slayer"],
+    "strong_signals": ["daki", "shinobu", "kocho", "mitsuri", "kanroji", "nezuko"],
+    "weak_signals": ["demon_slayer", "kamado"],
     "stop_conflicts": [],
-    "notes": "Added Mitsuri Kanroji. Character names distinctive; franchise phrase weak due to generic tokens demon/slayer separately."
+    "notes": "Added Nezuko Kamado. Surname weak; given name distinctive." 
   },
   "provenance": {"source": "manual_seed"}
 }

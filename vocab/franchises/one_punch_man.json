@@ -2,16 +2,17 @@
   "franchise": "one_punch_man",
   "display_name": "One Punch Man",
   "source_version": 1,
-  "aliases": ["one_punch_man"],
+  "aliases": ["one_punch_man", "opm"],
   "characters": [
     {"canonical": "saitama", "aliases": []},
-    {"canonical": "genos", "aliases": []}
+    {"canonical": "genos", "aliases": []},
+    {"canonical": "do_s", "aliases": ["dos", "do-s", "do_s"]}
   ],
   "tokens": {
-    "strong_signals": ["saitama", "genos"],
-    "weak_signals": [],
+    "strong_signals": ["saitama", "genos", "do_s"],
+    "weak_signals": ["dos", "do-s"],
     "stop_conflicts": ["one"],
-    "notes": "saitama/genos unique; ignore generic 'one'."
+    "notes": "Added Do-S (canonical do_s). Hyphen & plain forms weak to avoid collision with Spanish 'dos'."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "metroid",
+  "display_name": "Metroid",
+  "source_version": 1,
+  "aliases": ["metroid"],
+  "characters": [
+    {"canonical": "zero_suit_samus", "aliases": ["samus", "samus_aran", "zero_suit_samus"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zero_suit_samus", "samus_aran"],
+    "weak_signals": ["samus"],
+    "stop_conflicts": [],
+    "notes": "Disambiguate suit variant; full name strong; short given name weak to prevent accidental generic matches." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

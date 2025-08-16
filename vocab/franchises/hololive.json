@@ -1,0 +1,16 @@
+{
+  "franchise": "hololive",
+  "display_name": "Hololive Vtubers",
+  "source_version": 1,
+  "aliases": ["hololive"],
+  "characters": [
+    {"canonical": "gawr_gura", "aliases": ["gura", "gawr"]}
+  ],
+  "tokens": {
+    "strong_signals": ["gawr_gura", "gura"],
+    "weak_signals": ["gawr"],
+    "stop_conflicts": [],
+    "notes": "Short 'gura' distinctive enough; include full canonical." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

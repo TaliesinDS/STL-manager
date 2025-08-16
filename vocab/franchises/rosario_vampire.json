@@ -1,0 +1,16 @@
+{
+  "franchise": "rosario_vampire",
+  "display_name": "Rosario + Vampire",
+  "source_version": 1,
+  "aliases": ["rosario_vampire"],
+  "characters": [
+    {"canonical": "mizore_shirayuki", "aliases": ["mizore", "shirayuki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mizore", "mizore_shirayuki"],
+    "weak_signals": ["shirayuki"],
+    "stop_conflicts": [],
+    "notes": "Added Mizore Shirayuki; surname weak to avoid collision." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

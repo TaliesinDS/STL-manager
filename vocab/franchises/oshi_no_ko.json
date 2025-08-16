@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["oshi_no_ko"],
   "characters": [
-    {"canonical": "kana_arima", "aliases": ["kana", "arima_kana"]}
+    {"canonical": "kana_arima", "aliases": ["kana", "arima_kana"]},
+    {"canonical": "ai_hoshino", "aliases": ["ai", "hoshino"]}
   ],
   "tokens": {
-    "strong_signals": ["kana_arima"],
-    "weak_signals": ["kana"],
+    "strong_signals": ["kana_arima", "ai_hoshino"],
+    "weak_signals": ["kana", "ai", "hoshino"],
     "stop_conflicts": [],
-    "notes": "Given name very common; full name strong."
+    "notes": "Added Ai Hoshino; short 'ai' ambiguous so weak."
   },
   "provenance": {"source": "manual_seed"}
 }

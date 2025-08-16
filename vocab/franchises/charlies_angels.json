@@ -1,0 +1,16 @@
+{
+  "franchise": "charlies_angels",
+  "display_name": "Charlie's Angels",
+  "source_version": 1,
+  "aliases": ["charlies_angels"],
+  "characters": [
+    {"canonical": "natalie_cook", "aliases": ["natalie", "cook"]}
+  ],
+  "tokens": {
+    "strong_signals": ["natalie_cook"],
+    "weak_signals": ["natalie", "cook"],
+    "stop_conflicts": [],
+    "notes": "Added Natalie Cook (Cameron Diaz). Full name strong; components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

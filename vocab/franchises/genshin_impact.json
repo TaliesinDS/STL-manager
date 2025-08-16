@@ -7,14 +7,16 @@
     {"canonical": "raiden_shogun", "aliases": ["raiden", "baal"]},
     {"canonical": "nahida", "aliases": []},
     {"canonical": "lumine", "aliases": []},
-    {"canonical": "eula", "aliases": []},
+  {"canonical": "eula", "aliases": ["eula", "eula_yura"]},
     {"canonical": "fischl", "aliases": []},
     {"canonical": "hu_tao", "aliases": ["hu", "tao", "hu_tao"]},
-    {"canonical": "kamisato_ayaka", "aliases": ["ayaka", "kamisato"]}
+  {"canonical": "kamisato_ayaka", "aliases": ["ayaka", "kamisato"]},
+  {"canonical": "lisa_genshin", "aliases": ["lisa"]},
+  {"canonical": "yae_miko", "aliases": ["yae", "miko", "yae_miko"]}
   ],
   "tokens": {
-    "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka"],
-    "weak_signals": ["genshin", "hu", "tao", "kamisato"],
+  "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka", "yae_miko"],
+  "weak_signals": ["genshin", "hu", "tao", "kamisato", "lisa", "yae", "miko"],
     "stop_conflicts": [],
     "notes": "Added Kamisato Ayaka; family name weak to avoid collision if other Kamisato added."
   },

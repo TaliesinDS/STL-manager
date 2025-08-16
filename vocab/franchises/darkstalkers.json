@@ -1,0 +1,16 @@
+{
+  "franchise": "darkstalkers",
+  "display_name": "Darkstalkers",
+  "source_version": 1,
+  "aliases": ["darkstalkers"],
+  "characters": [
+    {"canonical": "qbee", "aliases": ["qbee", "q-bee"]}
+  ],
+  "tokens": {
+    "strong_signals": ["qbee"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Unique stylized name." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

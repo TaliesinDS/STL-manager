@@ -1,0 +1,16 @@
+{
+  "franchise": "nikke",
+  "display_name": "Goddess of Victory: Nikke",
+  "source_version": 1,
+  "aliases": ["nikke", "goddess_of_victory_nikke"],
+  "characters": [
+    {"canonical": "anis_nikke", "aliases": ["anis"]}
+  ],
+  "tokens": {
+    "strong_signals": ["anis_nikke"],
+    "weak_signals": ["anis"],
+    "stop_conflicts": [],
+    "notes": "Franchise-qualified strong token; short given name weak to prevent accidental matches." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
