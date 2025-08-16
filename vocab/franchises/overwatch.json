@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["overwatch"],
   "characters": [
-    {"canonical": "mei_overwatch", "aliases": ["mei"]}
+    {"canonical": "mei_overwatch", "aliases": ["mei"]},
+    {"canonical": "d_va", "aliases": ["dva", "d.va"]}
   ],
   "tokens": {
-    "strong_signals": ["mei_overwatch"],
+    "strong_signals": ["mei_overwatch", "d_va", "dva", "d.va"],
     "weak_signals": ["mei"],
     "stop_conflicts": [],
-    "notes": "Qualifier used for strong token; short name is common."
+    "notes": "Added D.Va with variant stylings; keep 'mei' weak due to common usage; qualified forms strong." 
   },
   "provenance": {"source": "manual_seed"}
 }

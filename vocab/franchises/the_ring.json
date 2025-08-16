@@ -1,0 +1,16 @@
+{
+  "franchise": "the_ring",
+  "display_name": "The Ring",
+  "source_version": 1,
+  "aliases": ["ring"],
+  "characters": [
+    {"canonical": "sadako_yamamura", "aliases": ["sadako", "yamamura"]}
+  ],
+  "tokens": {
+    "strong_signals": ["sadako_yamamura", "sadako"],
+    "weak_signals": ["yamamura", "ring"],
+    "stop_conflicts": [],
+    "notes": "Sadako Yamamura added; given name distinctive enough for strong; surname and franchise kept weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

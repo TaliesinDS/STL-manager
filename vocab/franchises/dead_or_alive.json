@@ -5,13 +5,14 @@
   "aliases": ["dead_or_alive", "doa"],
   "characters": [
     {"canonical": "rachel_doa", "aliases": ["doa_rachel", "rachel_doa"]},
-    {"canonical": "kasumi_doa", "aliases": ["kasumi"]}
+    {"canonical": "kasumi_doa", "aliases": ["kasumi"]},
+    {"canonical": "tina_armstrong_doa", "aliases": ["tina", "armstrong"]}
   ],
   "tokens": {
-  "strong_signals": ["rachel_doa", "doa_rachel", "kasumi_doa"],
-  "weak_signals": ["rachel", "doa", "kasumi"],
+  "strong_signals": ["rachel_doa", "doa_rachel", "kasumi_doa", "tina_armstrong_doa"],
+  "weak_signals": ["rachel", "doa", "kasumi", "tina", "armstrong"],
     "stop_conflicts": [],
-  "notes": "Qualifier + name strong; 'rachel' and 'kasumi' alone ambiguous so weak." 
+  "notes": "Qualifier + name strong; 'rachel', 'kasumi', 'tina', 'armstrong' alone ambiguous so weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

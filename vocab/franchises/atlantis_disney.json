@@ -1,0 +1,16 @@
+{
+  "franchise": "atlantis_disney",
+  "display_name": "Atlantis: The Lost Empire",
+  "source_version": 1,
+  "aliases": ["atlantis_disney", "atlantis_lost_empire"],
+  "characters": [
+    {"canonical": "kida_nedakh", "aliases": ["kida", "nedakh"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kida_nedakh", "kida"],
+    "weak_signals": ["nedakh", "atlantis_disney", "atlantis_lost_empire"],
+    "stop_conflicts": [],
+    "notes": "Princess Kida (Kidagakash Nedakh) added; given name distinctive strong; franchise tokens weak due to generic mythic term." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

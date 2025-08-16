@@ -1,0 +1,16 @@
+{
+  "franchise": "stellar_blade",
+  "display_name": "Stellar Blade",
+  "source_version": 1,
+  "aliases": ["stellar_blade"],
+  "characters": [
+    {"canonical": "eve_stellar_blade", "aliases": ["eve"]}
+  ],
+  "tokens": {
+    "strong_signals": ["eve_stellar_blade"],
+    "weak_signals": ["eve"],
+    "stop_conflicts": [],
+    "notes": "Qualifier required; 'eve' alone is too generic (biblical, names)."
+  },
+  "provenance": {"source": "manual_seed"}
+}

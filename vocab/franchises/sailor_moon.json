@@ -1,0 +1,16 @@
+{
+  "franchise": "sailor_moon",
+  "display_name": "Sailor Moon",
+  "source_version": 1,
+  "aliases": ["sailor_moon"],
+  "characters": [
+    {"canonical": "makoto_kino", "aliases": ["makoto", "kino", "sailor_jupiter", "jupiter"]}
+  ],
+  "tokens": {
+    "strong_signals": ["makoto_kino", "makoto", "sailor_jupiter"],
+    "weak_signals": ["kino", "jupiter"],
+    "stop_conflicts": [],
+    "notes": "Makoto (Sailor Jupiter) added; planet name weak due to generic usage." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

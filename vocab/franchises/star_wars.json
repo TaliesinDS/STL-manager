@@ -1,0 +1,17 @@
+{
+  "franchise": "star_wars",
+  "display_name": "Star Wars",
+  "source_version": 1,
+  "aliases": ["star_wars", "sw"],
+  "characters": [
+    {"canonical": "princess_leia", "aliases": ["leia", "leia_organa", "organa"]},
+    {"canonical": "bastila_shan", "aliases": ["bastila", "shan"]}
+  ],
+  "tokens": {
+  "strong_signals": ["princess_leia", "leia", "leia_organa", "bastila_shan", "bastila"],
+  "weak_signals": ["organa", "sw", "shan"],
+    "stop_conflicts": [],
+  "notes": "Added Bastila Shan; given names strong; surnames weak; franchise acronym weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

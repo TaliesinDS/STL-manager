@@ -13,13 +13,14 @@
   {"canonical": "kamisato_ayaka", "aliases": ["ayaka", "kamisato"]},
   {"canonical": "lisa_genshin", "aliases": ["lisa"]},
   {"canonical": "yae_miko", "aliases": ["yae", "miko", "yae_miko"]},
-  {"canonical": "shenhe", "aliases": ["shenhe"]}
+  {"canonical": "shenhe", "aliases": ["shenhe"]},
+  {"canonical": "mavuika", "aliases": ["mavuika"]}
   ],
   "tokens": {
-  "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka", "yae_miko", "shenhe"],
+  "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka", "yae_miko", "shenhe", "mavuika"],
   "weak_signals": ["genshin", "hu", "tao", "kamisato", "lisa", "yae", "miko"],
     "stop_conflicts": [],
-    "notes": "Added Kamisato Ayaka; family name weak to avoid collision if other Kamisato added. Yae Miko included; Raiden Shogun canonical."
+  "notes": "Added Kamisato Ayaka earlier. Now added Mavuika after clarification. Family name tokens remain weak where needed; Raiden Shogun canonical." 
   },
   "provenance": {"source": "manual_seed"}
 }

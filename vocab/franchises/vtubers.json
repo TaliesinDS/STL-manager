@@ -1,0 +1,16 @@
+{
+  "franchise": "vtubers",
+  "display_name": "VTubers",
+  "source_version": 1,
+  "aliases": ["vtuber", "vtubers"],
+  "characters": [
+    {"canonical": "silvervale", "aliases": ["silvervale"]}
+  ],
+  "tokens": {
+    "strong_signals": ["silvervale"],
+    "weak_signals": ["vtuber", "vtubers"],
+    "stop_conflicts": [],
+    "notes": "Initial seeding with Silvervale; platform descriptor kept weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

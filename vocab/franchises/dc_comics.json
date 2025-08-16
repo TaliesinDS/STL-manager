@@ -7,13 +7,14 @@
     {"canonical": "harley_quinn", "aliases": ["harley"]},
     {"canonical": "catwoman", "aliases": []},
   {"canonical": "supergirl", "aliases": []},
-  {"canonical": "poison_ivy", "aliases": ["ivy", "poison_ivy"]}
+  {"canonical": "poison_ivy", "aliases": ["ivy", "poison_ivy"]},
+  {"canonical": "death_sandman", "aliases": ["death"]}
   ],
   "tokens": {
-  "strong_signals": ["harley", "catwoman", "supergirl", "poison_ivy"],
-  "weak_signals": ["dc", "ivy"],
+  "strong_signals": ["harley", "catwoman", "supergirl", "poison_ivy", "death_sandman"],
+  "weak_signals": ["dc", "ivy", "death"],
     "stop_conflicts": [],
-  "notes": "'ivy' generic so weak; compound 'poison_ivy' strong."
+  "notes": "'ivy' generic so weak; compound 'poison_ivy' strong. Added Death (Sandman); generic 'death' weak; qualified strong token." 
   },
   "provenance": {"source": "manual_seed"}
 }

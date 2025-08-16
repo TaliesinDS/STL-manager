@@ -4,13 +4,17 @@
   "source_version": 1,
   "aliases": ["zenless_zone_zero", "zzz"],
   "characters": [
-    {"canonical": "nekomiya_mana", "aliases": ["mana", "nekomiya"]}
+    {"canonical": "nekomiya_mana", "aliases": ["mana", "nekomiya"]},
+    {"canonical": "nicole_demara", "aliases": ["nicole", "demara"]},
+    {"canonical": "ellen_joe", "aliases": ["ellen", "joe"]},
+    {"canonical": "burnice_white", "aliases": ["burnice", "white"]},
+    {"canonical": "vivian_zenless", "aliases": ["vivian"]}
   ],
   "tokens": {
-    "strong_signals": ["nekomiya_mana"],
-    "weak_signals": ["mana", "nekomiya", "zzz"],
+  "strong_signals": ["nekomiya_mana", "nicole_demara", "nicole", "ellen_joe", "ellen", "burnice_white", "burnice", "vivian_zenless", "vivian"],
+  "weak_signals": ["mana", "nekomiya", "demara", "joe", "white", "zzz"],
     "stop_conflicts": [],
-    "notes": "Full name strong; components weak; franchise acronym weak." 
+  "notes": "Added Nicole Demara (moved from Honkai) and Ellen Joe earlier; now added Burnice White and Vivian; given names strong; common surnames kept weak; kept existing pattern." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "judge_dredd",
+  "display_name": "Judge Dredd",
+  "source_version": 1,
+  "aliases": ["judge_dredd"],
+  "characters": [
+    {"canonical": "cassandra_anderson", "aliases": ["anderson", "cassandra_anderson"]}
+  ],
+  "tokens": {
+    "strong_signals": ["cassandra_anderson", "anderson"],
+    "weak_signals": ["judge_dredd"],
+    "stop_conflicts": [],
+    "notes": "Cassandra Anderson added; surname made strong for uniqueness within dataset; franchise weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

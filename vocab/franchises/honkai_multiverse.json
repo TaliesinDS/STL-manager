@@ -7,13 +7,14 @@
     {"canonical": "seele", "aliases": []},
     {"canonical": "kiana", "aliases": []},
     {"canonical": "anby_demara", "aliases": ["anby", "demara"]},
-    {"canonical": "kafka", "aliases": []}
+    {"canonical": "kafka", "aliases": []},
+  {"canonical": "acheron_hsr", "aliases": ["acheron"]}
   ],
   "tokens": {
-    "strong_signals": ["seele", "kiana", "anby", "demara", "kafka"],
-    "weak_signals": ["honkai"],
+  "strong_signals": ["seele", "kiana", "anby", "kafka", "acheron_hsr", "acheron"],
+  "weak_signals": ["honkai", "demara"],
     "stop_conflicts": [],
-    "notes": "Added Kafka (Star Rail). Keep franchise name weak."
+  "notes": "Removed Nicole Demara (moved to Zenless). Added Acheron (Star Rail). Kept 'demara' as weak (shared surname with Anby)."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -6,13 +6,16 @@
   "characters": [
     {"canonical": "roronoa_zoro", "aliases": ["zoro"]},
     {"canonical": "monkey_d_luffy", "aliases": ["luffy"]},
-    {"canonical": "tony_tony_chopper", "aliases": ["chopper"]}
+    {"canonical": "tony_tony_chopper", "aliases": ["chopper"]},
+    {"canonical": "nami_one_piece", "aliases": ["nami"]},
+  {"canonical": "nico_robin", "aliases": ["robin", "nico", "nico_robin"]},
+  {"canonical": "vivi_one_piece", "aliases": ["vivi", "nefertari_vivi"]}
   ],
   "tokens": {
-    "strong_signals": ["zoro", "luffy", "chopper"],
-    "weak_signals": [],
+  "strong_signals": ["zoro", "luffy", "chopper", "nami_one_piece", "nami", "nico_robin", "robin", "vivi_one_piece", "vivi"],
+  "weak_signals": ["nico", "nefertari_vivi"],
     "stop_conflicts": [],
-    "notes": "character names distinctive; franchise title tokens (one, piece) too generic."
+  "notes": "Added Nami, Nico Robin earlier; now added Nefertari Vivi (qualified + given name strong). 'nefertari_vivi' weak to avoid overfitting. Franchise title tokens (one, piece) too generic." 
   },
   "provenance": {"source": "manual_seed"}
 }
