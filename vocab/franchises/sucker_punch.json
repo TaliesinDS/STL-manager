@@ -1,0 +1,16 @@
+{
+  "franchise": "sucker_punch",
+  "display_name": "Sucker Punch",
+  "source_version": 1,
+  "aliases": ["sucker_punch"],
+  "characters": [
+    {"canonical": "sweet_pea_sucker_punch", "aliases": ["sweet_pea", "sweetpea"]}
+  ],
+  "tokens": {
+    "strong_signals": ["sweet_pea_sucker_punch", "sweet_pea", "sweetpea"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Added Sweet Pea (sometimes 'Sweat Pea' misspelling). All distinct forms strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

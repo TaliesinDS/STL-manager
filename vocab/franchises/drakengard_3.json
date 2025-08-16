@@ -1,0 +1,16 @@
+{
+  "franchise": "drakengard_3",
+  "display_name": "Drakengard 3",
+  "source_version": 1,
+  "aliases": ["drakengard_3", "drakengard"],
+  "characters": [
+    {"canonical": "zero_drakengard_3", "aliases": ["zero"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zero_drakengard_3"],
+    "weak_signals": ["zero"],
+    "stop_conflicts": [],
+    "notes": "Added Zero; numeric word weak alone due to many uses." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

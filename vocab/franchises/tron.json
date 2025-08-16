@@ -1,0 +1,16 @@
+{
+  "franchise": "tron",
+  "display_name": "TRON",
+  "source_version": 1,
+  "aliases": ["tron"],
+  "characters": [
+    {"canonical": "quorra_tron", "aliases": ["quorra"]}
+  ],
+  "tokens": {
+    "strong_signals": ["quorra_tron", "quorra"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Added Quorra; distinctive name set strong with and without qualifier." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

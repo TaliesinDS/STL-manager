@@ -1,0 +1,16 @@
+{
+  "franchise": "metal_slug",
+  "display_name": "Metal Slug",
+  "source_version": 1,
+  "aliases": ["metal_slug"],
+  "characters": [
+    {"canonical": "fiolina_germi", "aliases": ["fiolina", "fio", "germi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["fiolina_germi", "fiolina", "fio"],
+    "weak_signals": ["germi"],
+    "stop_conflicts": [],
+    "notes": "Added Fiolina 'Fio' Germi; long + nickname strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "underworld",
+  "display_name": "Underworld",
+  "source_version": 1,
+  "aliases": ["underworld"],
+  "characters": [
+    {"canonical": "selene_underworld", "aliases": ["selene"]}
+  ],
+  "tokens": {
+    "strong_signals": ["selene_underworld"],
+    "weak_signals": ["selene"],
+    "stop_conflicts": [],
+    "notes": "Added Selene; mythological name weak alone; qualified strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

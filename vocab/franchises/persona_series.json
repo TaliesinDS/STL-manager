@@ -5,13 +5,14 @@
   "aliases": ["persona"],
   "characters": [
     {"canonical": "futaba_sakura", "aliases": ["futaba", "sakura"]},
-    {"canonical": "mitsuru_kirijo", "aliases": ["mitsuru", "kirijo"]}
+  {"canonical": "mitsuru_kirijo", "aliases": ["mitsuru", "kirijo"]},
+  {"canonical": "tae_takemi", "aliases": ["tae", "takemi"]}
   ],
   "tokens": {
-    "strong_signals": ["futaba", "mitsuru"],
-    "weak_signals": ["sakura", "kirijo"],
+  "strong_signals": ["futaba", "mitsuru", "tae_takemi", "tae"],
+  "weak_signals": ["sakura", "kirijo", "takemi"],
     "stop_conflicts": [],
-    "notes": "Added Mitsuru Kirijo; given distinctive; surnames weak/generic risk."
+  "notes": "Added Mitsuru earlier; now Tae Takemi (full + given strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

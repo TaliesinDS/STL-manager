@@ -17,12 +17,14 @@
   {"canonical": "kitty_pryde", "aliases": ["kitty", "pryde", "shadowcat"]},
   {"canonical": "invisible_woman", "aliases": ["sue_storm", "invisible_woman"]}
   , {"canonical": "peggy_carter", "aliases": ["agent_carter", "peggy", "carter"]}
+  , {"canonical": "she_hulk", "aliases": ["she_hulk", "shehulk", "jennifer_walters", "jennifer", "walters"]}
+  , {"canonical": "iron_widow_marvel", "aliases": ["iron_widow"]}
   ],
   "tokens": {
-  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat", "invisible_woman", "sue_storm", "peggy_carter", "agent_carter"],
-  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde", "invisible", "peggy", "carter"],
+  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat", "invisible_woman", "sue_storm", "peggy_carter", "agent_carter", "she_hulk", "shehulk", "iron_widow_marvel", "iron_widow"],
+  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde", "invisible", "peggy", "carter", "jennifer", "walters", "jennifer_walters"],
     "stop_conflicts": ["mantis_religious"],
-  "notes": "Added Mantis earlier; then Psylocke; then Kitty Pryde; then Invisible Woman. Now added Peggy Carter (Agent Carter) - title & full name strong; common name parts weak." 
+  "notes": "Added Mantis, Psylocke, Kitty, Invisible Woman, Peggy Carter. Now She-Hulk (Jennifer Walters) and Iron Widow (distinct mash-up handle) with full forms strong; common civilian name parts weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

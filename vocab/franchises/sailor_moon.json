@@ -6,12 +6,13 @@
   "characters": [
   {"canonical": "makoto_kino", "aliases": ["makoto", "kino", "sailor_jupiter", "jupiter"]},
   {"canonical": "ami_mizuno", "aliases": ["ami", "mizuno", "sailor_mercury", "mercury"]}
+  , {"canonical": "setsuna_meioh", "aliases": ["setsuna", "meioh", "sailor_pluto", "pluto"]}
   ],
   "tokens": {
-  "strong_signals": ["makoto_kino", "makoto", "sailor_jupiter", "ami_mizuno", "sailor_mercury"],
-  "weak_signals": ["kino", "jupiter", "ami", "mizuno", "mercury"],
+  "strong_signals": ["makoto_kino", "makoto", "sailor_jupiter", "ami_mizuno", "sailor_mercury", "setsuna_meioh", "sailor_pluto"],
+  "weak_signals": ["kino", "jupiter", "ami", "mizuno", "mercury", "setsuna", "meioh", "pluto"],
     "stop_conflicts": [],
-  "notes": "Makoto (Sailor Jupiter) added earlier; now Ami Mizuno (Sailor Mercury). Planet/mineral name weak due to generic usage." 
+  "notes": "Makoto (Jupiter) earlier; then Ami (Mercury); now Setsuna Meioh (Sailor Pluto). Planet/dwarf planet names weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -10,7 +10,7 @@
     "strong_signals": ["yoko_littner", "yoko"],
     "weak_signals": ["littner"],
     "stop_conflicts": [],
-    "notes": "Added Yoko Littner; given name widely recognized strong; surname weak." 
+  "notes": "Added Yoko Littner earlier (requested again, already present); given name widely recognized strong; surname weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

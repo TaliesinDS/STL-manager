@@ -1,0 +1,16 @@
+{
+  "franchise": "two_broke_girls",
+  "display_name": "2 Broke Girls",
+  "source_version": 1,
+  "aliases": ["two_broke_girls", "2_broke_girls"],
+  "characters": [
+    {"canonical": "max_black", "aliases": ["max", "black", "max_black"]}
+  ],
+  "tokens": {
+    "strong_signals": ["max_black"],
+    "weak_signals": ["max", "black"],
+    "stop_conflicts": [],
+    "notes": "Added Max Black; common word components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

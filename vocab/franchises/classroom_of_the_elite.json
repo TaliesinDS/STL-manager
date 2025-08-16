@@ -5,12 +5,13 @@
   "aliases": ["classroom_of_the_elite"],
   "characters": [
     {"canonical": "kikyo_kushida", "aliases": ["kikyo", "kushida_kikyo"]}
+  , {"canonical": "suzune_horikita", "aliases": ["suzune", "horikita"]}
   ],
   "tokens": {
-    "strong_signals": ["kikyo_kushida"],
-  "weak_signals": ["kikyo", "kushida"],
+    "strong_signals": ["kikyo_kushida", "suzune_horikita", "suzune"],
+  "weak_signals": ["kikyo", "kushida", "horikita"],
     "stop_conflicts": [],
-  "notes": "Qualified strong; given and surname weak. Alternate alias already present." 
+  "notes": "Added Kikyo Kushida earlier; now Suzune Horikita (full + given strong; surname weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

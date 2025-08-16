@@ -5,12 +5,13 @@
   "aliases": ["addams_family", "addams"],
   "characters": [
     {"canonical": "morticia_addams", "aliases": ["morticia"]}
+  , {"canonical": "wednesday_addams", "aliases": ["wednesday", "addams_wednesday"]}
   ],
   "tokens": {
-    "strong_signals": ["morticia", "addams"],
-    "weak_signals": [],
+  "strong_signals": ["morticia", "addams", "wednesday_addams", "wednesday"],
+  "weak_signals": [],
     "stop_conflicts": [],
-    "notes": "Surnames and given name distinctive."
+  "notes": "Added Morticia earlier; now Wednesday Addams (weekday term treated as strong only when paired, include full + given)."
   },
   "provenance": {"source": "manual_seed"}
 }
