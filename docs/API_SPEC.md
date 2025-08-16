@@ -92,6 +92,7 @@ Sample response:
 
 GET /api/v1/variants/{id}
 - Returns full detail (all metadata fields + override map + warnings + audit summary counts).
+- Includes `characters` array when linked: each { character_id, name, aliases, franchise, info_url }.
 
 GET /api/v1/variants/{id}/proxy-candidates
 - Returns list of units the variant can proxy (directly or via loadout kits), with summary of completeness.
@@ -107,6 +108,7 @@ Response:
 				"unit_name": "Intercessors",
 				"game_system": "warhammer_40k",
 				"faction": "adeptus_astartes",
+				"rules_url": "https://www.warhammer-community.com/downloads/40k_datasheets/intercessors.pdf",
 				"proxy_type": "stylized_proxy",
 				"multi_unit_proxy_flag": true,
 				"loadout_coverage": {

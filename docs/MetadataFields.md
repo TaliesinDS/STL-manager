@@ -185,6 +185,7 @@ Phase Legend:
 | sub_franchise | string | P2 | Optional | |
 | actor_likeness | string | P2 | Actor if applicable | |
 | actor_confidence | enum | P2 | certain / probable / stylized / composite | |
+| info_url | string (URL) | P2 | External canonical info page (wiki/fandom page) | Optional minimal pointer; no local bio storage |
 
 ## 15. Unit Entity (Tabletop)
 | Field | Type | Phase | Description | Notes |
@@ -194,6 +195,7 @@ Phase Legend:
 | unit_name | string | P2 | Official unit name | |
 | canonical_base_size_mm | integer | P2 | Standard base | |
 | edition_introduced | integer | FUTURE | Rule edition | |
+| rules_url | string (URL) | P2 | External link to official/public rules reference for the unit | Optional; pointer only, no rule text stored |
 
 ## 16. Relationship Tables (Concepts)
 | Table | Fields | Purpose |
