@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["danmachi"],
   "characters": [
-    {"canonical": "ais_wallenstein", "aliases": ["ais", "wallenstein"]}
+    {"canonical": "ais_wallenstein", "aliases": ["ais", "wallenstein"]},
+    {"canonical": "hestia", "aliases": []}
   ],
   "tokens": {
-    "strong_signals": ["wallenstein"],
+    "strong_signals": ["wallenstein", "hestia"],
     "weak_signals": ["ais"],
     "stop_conflicts": [],
-    "notes": "Surname distinctive; short given name weak."
+    "notes": "Added Hestia goddess; both wallenstein and hestia distinctive."
   },
   "provenance": {"source": "manual_seed"}
 }

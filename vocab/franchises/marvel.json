@@ -9,11 +9,13 @@
     {"canonical": "scarlet_witch", "aliases": ["wanda"]},
     {"canonical": "rogue", "aliases": []},
     {"canonical": "spider_gwen", "aliases": ["gwen_stacy", "spider_gwen"]},
-    {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]}
+  {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]},
+  {"canonical": "emma_frost", "aliases": ["emma", "frost"]},
+  {"canonical": "hope_summers", "aliases": ["hope", "summers"]}
   ],
   "tokens": {
-    "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen"],
-    "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie"],
+  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers"],
+  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers"],
     "stop_conflicts": [],
     "notes": "Added Rogue, Spider-Gwen (gwen/gwen stacy weak), Cassie Lang (ant cass lead). Distinctive strong tokens; franchise name weak."
   },

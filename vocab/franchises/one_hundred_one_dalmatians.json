@@ -1,0 +1,16 @@
+{
+  "franchise": "one_hundred_one_dalmatians",
+  "display_name": "101 Dalmatians",
+  "source_version": 1,
+  "aliases": ["101_dalmatians", "one_hundred_one_dalmatians"],
+  "characters": [
+    {"canonical": "cruella_de_vil", "aliases": ["cruella", "de_vil"]}
+  ],
+  "tokens": {
+    "strong_signals": ["cruella"],
+    "weak_signals": ["de_vil"],
+    "stop_conflicts": ["dalmatians"],
+    "notes": "Cruella distinctive; species word too generic across pet model sets."
+  },
+  "provenance": {"source": "manual_seed"}
+}

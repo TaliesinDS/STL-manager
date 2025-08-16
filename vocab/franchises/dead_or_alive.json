@@ -1,0 +1,16 @@
+{
+  "franchise": "dead_or_alive",
+  "display_name": "Dead or Alive",
+  "source_version": 1,
+  "aliases": ["dead_or_alive", "doa"],
+  "characters": [
+    {"canonical": "rachel_doa", "aliases": ["doa_rachel", "rachel_doa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rachel_doa", "doa_rachel"],
+    "weak_signals": ["rachel", "doa"],
+    "stop_conflicts": [],
+    "notes": "Qualifier + name strong; 'rachel' alone ambiguous."
+  },
+  "provenance": {"source": "manual_seed"}
+}

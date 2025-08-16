@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["lotr", "lord_of_the_rings"],
   "characters": [
-    {"canonical": "arwen_undomiel", "aliases": ["arwen"]}
+    {"canonical": "arwen_undomiel", "aliases": ["arwen"]},
+    {"canonical": "galadriel", "aliases": []}
   ],
   "tokens": {
-    "strong_signals": ["arwen"],
+    "strong_signals": ["arwen", "galadriel"],
     "weak_signals": ["lotr"],
     "stop_conflicts": [],
-    "notes": "Arwen distinctive; franchise acronym weak."
+    "notes": "Added Galadriel; both character names distinctive."
   },
   "provenance": {"source": "manual_seed"}
 }

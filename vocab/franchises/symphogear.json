@@ -1,0 +1,16 @@
+{
+  "franchise": "symphogear",
+  "display_name": "Symphogear",
+  "source_version": 1,
+  "aliases": ["symphogear"],
+  "characters": [
+    {"canonical": "misono_hibiki", "aliases": ["hibiki", "misono"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hibiki"],
+    "weak_signals": ["misono"],
+    "stop_conflicts": [],
+    "notes": "Hibiki distinctive; family name weaker."
+  },
+  "provenance": {"source": "manual_seed"}
+}

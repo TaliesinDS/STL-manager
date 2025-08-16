@@ -1,0 +1,16 @@
+{
+  "franchise": "girls_frontline",
+  "display_name": "Girls' Frontline",
+  "source_version": 1,
+  "aliases": ["girls_frontline", "girlsfrontline", "gfl"],
+  "characters": [
+    {"canonical": "pa15", "aliases": ["pa_15", "pa15_gfl"]}
+  ],
+  "tokens": {
+    "strong_signals": ["pa15", "pa_15"],
+    "weak_signals": ["gfl"],
+    "stop_conflicts": [],
+    "notes": "PA-15 numeric code distinctive; acronym weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

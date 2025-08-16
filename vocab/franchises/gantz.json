@@ -1,0 +1,16 @@
+{
+  "franchise": "gantz",
+  "display_name": "Gantz",
+  "source_version": 1,
+  "aliases": ["gantz"],
+  "characters": [
+    {"canonical": "anzu_yamasaki", "aliases": ["anzu", "yamasaki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["anzu"],
+    "weak_signals": ["yamasaki"],
+    "stop_conflicts": [],
+    "notes": "Anzu distinctive; surname weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

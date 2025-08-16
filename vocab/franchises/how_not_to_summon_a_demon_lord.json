@@ -1,0 +1,18 @@
+{
+  "franchise": "how_not_to_summon_a_demon_lord",
+  "display_name": "How Not to Summon a Demon Lord",
+  "source_version": 1,
+  "aliases": ["how_not_to_summon_a_demon_lord"],
+  "characters": [
+    {"canonical": "rem_galleu", "aliases": ["rem", "galleu"]},
+    {"canonical": "shera_l_greenwood", "aliases": ["shera", "greenwood"]},
+    {"canonical": "sylvie_handwerker", "aliases": ["sylvie"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rem_galleu", "shera", "sylvie"],
+    "weak_signals": ["rem", "galleu", "greenwood"],
+    "stop_conflicts": [],
+    "notes": "Short common tokens rem/sylvie weak unless paired; qualified variant strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "gate",
+  "display_name": "GATE",
+  "source_version": 1,
+  "aliases": ["gate"],
+  "characters": [
+    {"canonical": "rory_mercury", "aliases": ["rory", "mercury"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rory_mercury", "rory"],
+    "weak_signals": ["mercury"],
+    "stop_conflicts": ["gate"],
+    "notes": "Suppress generic word 'gate'; rely on character name."
+  },
+  "provenance": {"source": "manual_seed"}
+}

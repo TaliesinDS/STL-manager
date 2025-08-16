@@ -1,0 +1,16 @@
+{
+  "franchise": "fate_kaleid",
+  "display_name": "Fate/kaleid liner",
+  "source_version": 1,
+  "aliases": ["fate_kaleid"],
+  "characters": [
+    {"canonical": "chloe_von_einzbern", "aliases": ["chloe", "kuro"]}
+  ],
+  "tokens": {
+    "strong_signals": ["chloe_von_einzbern", "kuro"],
+    "weak_signals": ["chloe"],
+    "stop_conflicts": [],
+    "notes": "Kuro distinctive; chloe alone weak due to real-world usage."
+  },
+  "provenance": {"source": "manual_seed"}
+}

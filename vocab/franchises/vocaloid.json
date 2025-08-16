@@ -1,0 +1,16 @@
+{
+  "franchise": "vocaloid",
+  "display_name": "Vocaloid",
+  "source_version": 1,
+  "aliases": ["vocaloid"],
+  "characters": [
+    {"canonical": "hatsune_miku", "aliases": ["miku", "hatsune", "hatsune_miku"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hatsune_miku", "miku"],
+    "weak_signals": ["hatsune"],
+    "stop_conflicts": [],
+    "notes": "Miku widely recognized; surname alone weaker."
+  },
+  "provenance": {"source": "manual_seed"}
+}

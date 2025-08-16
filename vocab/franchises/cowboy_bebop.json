@@ -1,0 +1,16 @@
+{
+  "franchise": "cowboy_bebop",
+  "display_name": "Cowboy Bebop",
+  "source_version": 1,
+  "aliases": ["cowboy_bebop"],
+  "characters": [
+    {"canonical": "faye_valentine", "aliases": ["faye", "valentine"]}
+  ],
+  "tokens": {
+    "strong_signals": ["faye_valentine", "faye"],
+    "weak_signals": ["valentine"],
+    "stop_conflicts": [],
+    "notes": "Surname generic so weak; given name distinctive enough."
+  },
+  "provenance": {"source": "manual_seed"}
+}

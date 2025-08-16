@@ -1,0 +1,17 @@
+{
+  "franchise": "mushoku_tensei",
+  "display_name": "Mushoku Tensei",
+  "source_version": 1,
+  "aliases": ["mushoku_tensei", "jobless_reincarnation"],
+  "characters": [
+    {"canonical": "ghislaine_dedoldia", "aliases": ["ghislaine"]},
+    {"canonical": "eris_boreas_greyrat", "aliases": ["eris", "boreas"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ghislaine", "eris"],
+    "weak_signals": ["boreas"],
+    "stop_conflicts": [],
+    "notes": "Primary given names distinctive; optional family names weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

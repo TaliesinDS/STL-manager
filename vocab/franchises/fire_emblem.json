@@ -1,0 +1,17 @@
+{
+  "franchise": "fire_emblem",
+  "display_name": "Fire Emblem",
+  "source_version": 1,
+  "aliases": ["fire_emblem"],
+  "characters": [
+    {"canonical": "edelgard", "aliases": []},
+    {"canonical": "hilda_fire_emblem", "aliases": ["hilda"]}
+  ],
+  "tokens": {
+    "strong_signals": ["edelgard", "hilda_fire_emblem"],
+    "weak_signals": ["hilda"],
+    "stop_conflicts": [],
+    "notes": "Edelgard distinctive; 'hilda' ambiguous so strong only when qualified variant present."
+  },
+  "provenance": {"source": "manual_seed"}
+}

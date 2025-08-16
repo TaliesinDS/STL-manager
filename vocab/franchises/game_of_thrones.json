@@ -1,0 +1,16 @@
+{
+  "franchise": "game_of_thrones",
+  "display_name": "Game of Thrones",
+  "source_version": 1,
+  "aliases": ["game_of_thrones", "got"],
+  "characters": [
+    {"canonical": "daenerys_targaryen", "aliases": ["daenerys", "targaryen"]}
+  ],
+  "tokens": {
+    "strong_signals": ["daenerys", "targaryen"],
+    "weak_signals": ["got"],
+    "stop_conflicts": [],
+    "notes": "House/family name plus given name distinctive; acronym weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

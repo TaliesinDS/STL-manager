@@ -1,0 +1,16 @@
+{
+  "franchise": "mass_effect",
+  "display_name": "Mass Effect",
+  "source_version": 1,
+  "aliases": ["mass_effect"],
+  "characters": [
+    {"canonical": "tali_zorah", "aliases": ["tali", "zorah"]}
+  ],
+  "tokens": {
+    "strong_signals": ["tali_zorah"],
+    "weak_signals": ["tali", "zorah"],
+    "stop_conflicts": [],
+    "notes": "Require full name for strong; short 'tali' ambiguous."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "ghost_in_the_shell",
+  "display_name": "Ghost in the Shell",
+  "source_version": 1,
+  "aliases": ["ghost_in_the_shell"],
+  "characters": [
+    {"canonical": "motoko_kusanagi", "aliases": ["motoko", "kusanagi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kusanagi"],
+    "weak_signals": ["motoko"],
+    "stop_conflicts": [],
+    "notes": "Surname unique; given name appears elsewhere so weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

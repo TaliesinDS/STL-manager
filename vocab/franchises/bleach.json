@@ -5,13 +5,14 @@
   "aliases": ["bleach"],
   "characters": [
     {"canonical": "rangiku_matsumoto", "aliases": ["matsumoto", "rangiku"]},
-    {"canonical": "neliel_tu_odelschwanck", "aliases": ["neliel", "nelliel", "nel"]}
+    {"canonical": "neliel_tu_odelschwanck", "aliases": ["neliel", "nelliel", "nel"]},
+    {"canonical": "tier_harribel", "aliases": ["harribel", "halibel", "hallibel", "tier"]}
   ],
   "tokens": {
-    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel"],
-    "weak_signals": ["bleach"],
+    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel"],
+    "weak_signals": ["bleach", "tier"],
     "stop_conflicts": [],
-    "notes": "Short 'nel' may collide; treat as strong only with another bleach token else downgrade in heuristic stage."
+    "notes": "Added Tier Harribel with multiple spellings; 'tier' weak due to generic meaning."
   },
   "provenance": {"source": "manual_seed"}
 }

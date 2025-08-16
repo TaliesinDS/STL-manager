@@ -6,13 +6,16 @@
   "characters": [
     {"canonical": "raiden_shogun", "aliases": ["raiden", "baal"]},
     {"canonical": "nahida", "aliases": []},
-    {"canonical": "lumine", "aliases": []}
+    {"canonical": "lumine", "aliases": []},
+    {"canonical": "eula", "aliases": []},
+    {"canonical": "fischl", "aliases": []},
+    {"canonical": "hu_tao", "aliases": ["hu", "tao", "hu_tao"]}
   ],
   "tokens": {
-    "strong_signals": ["raiden", "nahida", "lumine"],
-    "weak_signals": ["genshin"],
+    "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao"],
+    "weak_signals": ["genshin", "hu", "tao"],
     "stop_conflicts": [],
-    "notes": "raiden may appear elsewhere (Mortal Kombat) but model context + other tokens will disambiguate."
+    "notes": "Added eula, fischl, hu_tao; short tokens hu/tao weak to avoid collisions."
   },
   "provenance": {"source": "manual_seed"}
 }

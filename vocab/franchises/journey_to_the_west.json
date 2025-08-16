@@ -1,0 +1,16 @@
+{
+  "franchise": "journey_to_the_west",
+  "display_name": "Journey to the West",
+  "source_version": 1,
+  "aliases": ["journey_to_the_west"],
+  "characters": [
+    {"canonical": "zhu_bajie", "aliases": ["bajie"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zhu_bajie", "bajie"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Classical literature figure; tokens distinctive in collection context."
+  },
+  "provenance": {"source": "manual_seed"}
+}

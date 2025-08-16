@@ -1,0 +1,17 @@
+{
+  "franchise": "my_hero_academia",
+  "display_name": "My Hero Academia",
+  "source_version": 1,
+  "aliases": ["my_hero_academia", "mha"],
+  "characters": [
+    {"canonical": "tsuyu_asui", "aliases": ["tsuyu", "asui"]},
+    {"canonical": "himiko_toga", "aliases": ["toga", "himiko"]}
+  ],
+  "tokens": {
+    "strong_signals": ["tsuyu", "asui", "toga"],
+    "weak_signals": ["mha", "himiko"],
+    "stop_conflicts": [],
+    "notes": "Added Himiko Toga; surname token 'toga' strong, given name weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "frozen",
+  "display_name": "Frozen",
+  "source_version": 1,
+  "aliases": ["frozen"],
+  "characters": [
+    {"canonical": "elsa", "aliases": ["queen_elsa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["elsa"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Elsa distinctive; no weak tokens needed."
+  },
+  "provenance": {"source": "manual_seed"}
+}

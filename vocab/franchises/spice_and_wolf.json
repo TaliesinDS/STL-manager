@@ -1,0 +1,16 @@
+{
+  "franchise": "spice_and_wolf",
+  "display_name": "Spice and Wolf",
+  "source_version": 1,
+  "aliases": ["spice_and_wolf"],
+  "characters": [
+    {"canonical": "holo", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["holo"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Name distinctive; no weak tokens needed."
+  },
+  "provenance": {"source": "manual_seed"}
+}

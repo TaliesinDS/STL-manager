@@ -1,0 +1,16 @@
+{
+  "franchise": "street_fighter",
+  "display_name": "Street Fighter",
+  "source_version": 1,
+  "aliases": ["street_fighter"],
+  "characters": [
+    {"canonical": "cammy", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["cammy"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Cammy distinctive enough; no weak tokens needed."
+  },
+  "provenance": {"source": "manual_seed"}
+}

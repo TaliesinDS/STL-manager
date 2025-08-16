@@ -1,0 +1,16 @@
+{
+  "franchise": "persona_series",
+  "display_name": "Persona Series",
+  "source_version": 1,
+  "aliases": ["persona"],
+  "characters": [
+    {"canonical": "futaba_sakura", "aliases": ["futaba", "sakura"]}
+  ],
+  "tokens": {
+    "strong_signals": ["futaba"],
+    "weak_signals": ["sakura"],
+    "stop_conflicts": [],
+    "notes": "Given name unique in collection; surname generic across anime so weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

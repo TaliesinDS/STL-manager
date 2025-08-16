@@ -1,0 +1,18 @@
+{
+  "franchise": "rezero",
+  "display_name": "Re:Zero",
+  "source_version": 1,
+  "aliases": ["rezero", "re_zero"],
+  "characters": [
+    {"canonical": "rem_rezero", "aliases": ["rem"]},
+    {"canonical": "emilia_rezero", "aliases": ["emilia"]},
+    {"canonical": "puck_rezero", "aliases": ["puck"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rem_rezero", "emilia_rezero", "puck_rezero"],
+    "weak_signals": ["rem", "emilia", "puck", "rezero"],
+    "stop_conflicts": [],
+    "notes": "Generic short names weak; qualified variants strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

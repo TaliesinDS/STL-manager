@@ -5,13 +5,14 @@
   "aliases": ["honkai", "honkai_impact", "star_rail"],
   "characters": [
     {"canonical": "seele", "aliases": []},
-    {"canonical": "kiana", "aliases": []}
+    {"canonical": "kiana", "aliases": []},
+    {"canonical": "anby_demara", "aliases": ["anby", "demara"]}
   ],
   "tokens": {
-    "strong_signals": ["seele", "kiana"],
+    "strong_signals": ["seele", "kiana", "anby", "demara"],
     "weak_signals": ["honkai"],
     "stop_conflicts": [],
-    "notes": "Star Rail vs Impact unified for simplicity."
+    "notes": "Added Anby Demara (Star Rail). Given+family tokens treated as strong due to low collision risk."
   },
   "provenance": {"source": "manual_seed"}
 }

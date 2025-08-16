@@ -1,0 +1,16 @@
+{
+  "franchise": "league_of_legends",
+  "display_name": "League of Legends",
+  "source_version": 1,
+  "aliases": ["league_of_legends", "lol"],
+  "characters": [
+    {"canonical": "gwen_lol", "aliases": ["gwen"]}
+  ],
+  "tokens": {
+    "strong_signals": ["gwen_lol"],
+    "weak_signals": ["gwen", "lol"],
+    "stop_conflicts": [],
+    "notes": "Need qualifier for strong to avoid Spider-Gwen collision."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,17 @@
+{
+  "franchise": "seven_deadly_sins",
+  "display_name": "The Seven Deadly Sins",
+  "source_version": 1,
+  "aliases": ["seven_deadly_sins"],
+  "characters": [
+    {"canonical": "diane", "aliases": ["diane_sds"]},
+    {"canonical": "elizabeth_liones", "aliases": ["elizabeth", "liones"]}
+  ],
+  "tokens": {
+    "strong_signals": ["elizabeth_liones", "liones", "diane_sds"],
+    "weak_signals": ["elizabeth", "diane", "seven_deadly_sins"],
+    "stop_conflicts": [],
+    "notes": "Use surname liones or tagged variant for strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

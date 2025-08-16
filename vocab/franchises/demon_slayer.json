@@ -1,0 +1,17 @@
+{
+  "franchise": "demon_slayer",
+  "display_name": "Demon Slayer",
+  "source_version": 1,
+  "aliases": ["demon_slayer", "kimetsu_no_yaiba"],
+  "characters": [
+    {"canonical": "daki", "aliases": []},
+    {"canonical": "shinobu_kocho", "aliases": ["shinobu", "kocho"]}
+  ],
+  "tokens": {
+    "strong_signals": ["daki", "shinobu", "kocho"],
+    "weak_signals": ["demon_slayer"],
+    "stop_conflicts": [],
+    "notes": "Character names distinctive; franchise phrase weak due to generic tokens demon/slayer separately."
+  },
+  "provenance": {"source": "manual_seed"}
+}

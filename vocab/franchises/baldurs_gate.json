@@ -1,0 +1,16 @@
+{
+  "franchise": "baldurs_gate",
+  "display_name": "Baldur's Gate",
+  "source_version": 1,
+  "aliases": ["baldurs_gate", "bg3"],
+  "characters": [
+    {"canonical": "shadowheart", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["shadowheart"],
+    "weak_signals": ["bg3"],
+    "stop_conflicts": [],
+    "notes": "Shadowheart distinctive; acronym weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

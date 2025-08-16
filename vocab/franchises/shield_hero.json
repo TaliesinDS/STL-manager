@@ -1,0 +1,17 @@
+{
+  "franchise": "shield_hero",
+  "display_name": "The Rising of the Shield Hero",
+  "source_version": 1,
+  "aliases": ["shield_hero"],
+  "characters": [
+    {"canonical": "raphtalia", "aliases": []},
+    {"canonical": "filo", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["raphtalia", "filo"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Both names distinctive."
+  },
+  "provenance": {"source": "manual_seed"}
+}

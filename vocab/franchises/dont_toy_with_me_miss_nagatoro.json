@@ -1,0 +1,16 @@
+{
+  "franchise": "dont_toy_with_me_miss_nagatoro",
+  "display_name": "Don't Toy With Me, Miss Nagatoro",
+  "source_version": 1,
+  "aliases": ["miss_nagatoro", "dont_toy_with_me_miss_nagatoro"],
+  "characters": [
+    {"canonical": "nagatoro", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["nagatoro"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Unique surname used as handle."
+  },
+  "provenance": {"source": "manual_seed"}
+}

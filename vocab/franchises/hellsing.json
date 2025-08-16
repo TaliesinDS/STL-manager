@@ -1,0 +1,16 @@
+{
+  "franchise": "hellsing",
+  "display_name": "Hellsing",
+  "source_version": 1,
+  "aliases": ["hellsing"],
+  "characters": [
+    {"canonical": "seras_victoria", "aliases": ["seras", "victoria"]}
+  ],
+  "tokens": {
+    "strong_signals": ["seras", "victoria"],
+    "weak_signals": ["hellsing"],
+    "stop_conflicts": [],
+    "notes": "Character name(s) distinctive enough; franchise word weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

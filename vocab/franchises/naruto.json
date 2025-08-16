@@ -4,13 +4,15 @@
   "source_version": 1,
   "aliases": ["naruto"],
   "characters": [
-    {"canonical": "anko_mitarashi", "aliases": ["anko", "mitarashi"]}
+    {"canonical": "anko_mitarashi", "aliases": ["anko", "mitarashi"]},
+    {"canonical": "ino_yamanaka", "aliases": ["ino", "yamanaka"]},
+    {"canonical": "hinata_hyuga", "aliases": ["hinata", "hyuga"]}
   ],
   "tokens": {
-    "strong_signals": ["mitarashi"],
-    "weak_signals": ["anko"],
+    "strong_signals": ["mitarashi", "yamanaka", "hyuga"],
+    "weak_signals": ["anko", "ino", "hinata"],
     "stop_conflicts": [],
-    "notes": "Surname unique; given name ambiguous across languages."
+    "notes": "Added Ino Yamanaka and Hinata Hyuga; surnames strong, given names weak to avoid cross-franchise collisions."
   },
   "provenance": {"source": "manual_seed"}
 }

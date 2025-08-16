@@ -1,0 +1,16 @@
+{
+  "franchise": "eminence_in_shadow",
+  "display_name": "The Eminence in Shadow",
+  "source_version": 1,
+  "aliases": ["eminence_in_shadow"],
+  "characters": [
+    {"canonical": "beta_eminence_in_shadow", "aliases": ["beta"]}
+  ],
+  "tokens": {
+    "strong_signals": ["beta_eminence_in_shadow"],
+    "weak_signals": ["beta"],
+    "stop_conflicts": [],
+    "notes": "Plain 'beta' too generic; require qualifier variant when available."
+  },
+  "provenance": {"source": "manual_seed"}
+}
