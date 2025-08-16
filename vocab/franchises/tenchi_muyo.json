@@ -1,0 +1,16 @@
+{
+  "franchise": "tenchi_muyo",
+  "display_name": "Tenchi Muyo!",
+  "source_version": 1,
+  "aliases": ["tenchi_muyo"],
+  "characters": [
+    {"canonical": "ryoko_hakubi", "aliases": ["ryoko", "hakubi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ryoko_hakubi", "ryoko"],
+    "weak_signals": ["hakubi"],
+    "stop_conflicts": [],
+    "notes": "Iconic given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

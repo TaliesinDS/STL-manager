@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["overlord"],
   "characters": [
-    {"canonical": "lupusregina", "aliases": ["lupusregina_beta", "lupu"]}
+  {"canonical": "lupusregina", "aliases": ["lupusregina_beta", "lupu"]},
+  {"canonical": "albedo_overlord", "aliases": ["albedo"]}
   ],
   "tokens": {
-    "strong_signals": ["lupusregina"],
-    "weak_signals": ["lupu"],
+  "strong_signals": ["lupusregina", "albedo_overlord"],
+  "weak_signals": ["lupu", "albedo"],
     "stop_conflicts": [],
-    "notes": "Full distinctive name strong; short nickname weak."
+  "notes": "Full distinctive names strong; nickname 'lupu' and generic 'albedo' weak (word also used in optics)."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "guilty_gear",
+  "display_name": "Guilty Gear",
+  "source_version": 1,
+  "aliases": ["guilty_gear"],
+  "characters": [
+    {"canonical": "elphelt_valentine", "aliases": ["elphelt", "valentine"]}
+  ],
+  "tokens": {
+    "strong_signals": ["elphelt_valentine", "elphelt"],
+    "weak_signals": ["valentine"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname shared with others weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

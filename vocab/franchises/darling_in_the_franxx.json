@@ -1,0 +1,16 @@
+{
+  "franchise": "darling_in_the_franxx",
+  "display_name": "Darling in the Franxx",
+  "source_version": 1,
+  "aliases": ["ditf", "darling_in_the_franxx"],
+  "characters": [
+    {"canonical": "zero_two", "aliases": ["zero_two", "002"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zero_two"],
+    "weak_signals": ["002"],
+    "stop_conflicts": [],
+    "notes": "Numeric code weak; full name strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

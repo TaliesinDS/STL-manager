@@ -1,0 +1,16 @@
+{
+  "franchise": "disney_princess",
+  "display_name": "Disney Princess / Fairy Tales",
+  "source_version": 1,
+  "aliases": ["disney"],
+  "characters": [
+    {"canonical": "snow_white_disney", "aliases": ["snow_white", "snow"]}
+  ],
+  "tokens": {
+    "strong_signals": ["snow_white_disney", "snow_white"],
+    "weak_signals": ["snow", "disney"],
+    "stop_conflicts": [],
+    "notes": "Generic 'snow' weak; qualified & full name strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

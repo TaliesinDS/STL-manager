@@ -1,0 +1,16 @@
+{
+  "franchise": "tinker_bell",
+  "display_name": "Tinker Bell / Disney Fairies",
+  "source_version": 1,
+  "aliases": ["tinker_bell"],
+  "characters": [
+    {"canonical": "tinker_bell", "aliases": ["tinker_bell", "tink"]}
+  ],
+  "tokens": {
+    "strong_signals": ["tinker_bell"],
+    "weak_signals": ["tink"],
+    "stop_conflicts": [],
+    "notes": "Short nickname weak; full name strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

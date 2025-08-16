@@ -6,11 +6,12 @@
   "characters": [
     {"canonical": "hermione_granger", "aliases": ["hermione"]},
     {"canonical": "ron_weasley", "aliases": ["ron"]},
-    {"canonical": "albus_dumbledore", "aliases": ["dumbledore"]}
+  {"canonical": "albus_dumbledore", "aliases": ["dumbledore"]},
+  {"canonical": "luna_lovegood", "aliases": ["luna", "lovegood"]}
   ],
   "tokens": {
-    "strong_signals": ["hermione", "dumbledore"],
-    "weak_signals": ["weasley", "hogwarts"],
+  "strong_signals": ["hermione", "dumbledore", "luna_lovegood", "luna"],
+  "weak_signals": ["weasley", "hogwarts", "lovegood"],
     "stop_conflicts": ["harry"],
     "notes": "harry token appears in other contexts; treat as conflict."
   },

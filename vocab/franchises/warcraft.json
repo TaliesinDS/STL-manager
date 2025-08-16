@@ -5,11 +5,12 @@
   "aliases": ["world_of_warcraft", "wow", "warcraft"],
   "characters": [
     {"canonical": "yrel", "aliases": ["yrel"]},
-    {"canonical": "lady_vashj", "aliases": ["vashj", "lady_vashj"]}
+  {"canonical": "lady_vashj", "aliases": ["vashj", "lady_vashj"]},
+  {"canonical": "sylvanas_windrunner", "aliases": ["sylvanas", "windrunner"]}
   ],
   "tokens": {
-    "strong_signals": ["yrel", "lady_vashj"],
-    "weak_signals": ["vashj"],
+  "strong_signals": ["yrel", "lady_vashj", "sylvanas", "sylvanas_windrunner"],
+  "weak_signals": ["vashj", "windrunner"],
     "stop_conflicts": [],
     "notes": "Unique proper noun tokens kept strong; shorter surname for Vashj weak to reduce noise." 
   },

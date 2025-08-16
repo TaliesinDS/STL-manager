@@ -1,0 +1,17 @@
+{
+  "franchise": "high_school_of_the_dead",
+  "display_name": "Highschool of the Dead",
+  "source_version": 1,
+  "aliases": ["high_school_of_the_dead", "hsotd"],
+  "characters": [
+  {"canonical": "saeko_busujima", "aliases": ["saeko", "busujima"]},
+  {"canonical": "shizuka_marikawa", "aliases": ["shizuka", "marikawa"]}
+  ],
+  "tokens": {
+  "strong_signals": ["saeko_busujima", "saeko", "shizuka_marikawa", "shizuka"],
+  "weak_signals": ["busujima", "marikawa"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

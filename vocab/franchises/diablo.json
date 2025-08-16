@@ -5,13 +5,14 @@
   "aliases": ["diablo"],
   "characters": [
     {"canonical": "lilith_diablo", "aliases": ["lilith"]},
-    {"canonical": "tyrael", "aliases": []}
+  {"canonical": "tyrael", "aliases": []},
+  {"canonical": "countess", "aliases": ["the_countess", "countess"]}
   ],
   "tokens": {
-    "strong_signals": ["tyrael"],
-    "weak_signals": ["lilith", "diablo"],
+  "strong_signals": ["tyrael", "countess"],
+  "weak_signals": ["lilith", "diablo", "the_countess"],
     "stop_conflicts": [],
-    "notes": "'lilith' collides with other media; treat as weak and disambiguate via co-occurrence (e.g., diablo, sanctuary)."
+  "notes": "'lilith' collides with other media; 'countess' kept canonical despite generic nature (Diablo II boss). Alternate 'the_countess' weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

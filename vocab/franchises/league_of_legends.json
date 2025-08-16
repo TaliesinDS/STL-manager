@@ -5,13 +5,15 @@
   "aliases": ["league_of_legends", "lol"],
   "characters": [
     {"canonical": "gwen_lol", "aliases": ["gwen"]},
-    {"canonical": "jinx_lol", "aliases": ["jinx"]}
+  {"canonical": "jinx_lol", "aliases": ["jinx"]},
+  {"canonical": "ahri_lol", "aliases": ["ahri", "sprite_blossom_ahri"]},
+  {"canonical": "vi_lol", "aliases": ["vi"]}
   ],
   "tokens": {
-    "strong_signals": ["gwen_lol", "jinx_lol"],
-    "weak_signals": ["gwen", "jinx", "lol"],
+  "strong_signals": ["gwen_lol", "jinx_lol", "ahri_lol", "vi_lol"],
+  "weak_signals": ["gwen", "jinx", "ahri", "sprite_blossom_ahri", "vi", "lol"],
     "stop_conflicts": [],
-    "notes": "Added Jinx with qualifier; plain names weak to avoid cross-franchise collisions." 
+  "notes": "Added Ahri; skin name kept weak along with short form; qualified form strong." 
   },
   "provenance": {"source": "manual_seed"}
 }

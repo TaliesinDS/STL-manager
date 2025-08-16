@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["blue_archive"],
   "characters": [
-    {"canonical": "asuna_blue_archive", "aliases": ["asuna"]}
+  {"canonical": "asuna_blue_archive", "aliases": ["asuna"]},
+  {"canonical": "karin_blue_archive", "aliases": ["karin"]}
   ],
   "tokens": {
-    "strong_signals": ["asuna_blue_archive"],
-    "weak_signals": ["asuna"],
+  "strong_signals": ["asuna_blue_archive", "karin_blue_archive"],
+  "weak_signals": ["asuna", "karin"],
     "stop_conflicts": [],
-    "notes": "'asuna' overlaps with SAO; require qualifier variant for strong when present."
+  "notes": "'asuna' overlaps with SAO; 'karin' common; both short forms weak, qualified strong."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -6,11 +6,12 @@
   "characters": [
     {"canonical": "tsuyu_asui", "aliases": ["tsuyu", "asui"]},
     {"canonical": "himiko_toga", "aliases": ["toga", "himiko"]},
-    {"canonical": "momo_yaoyorozu", "aliases": ["momo", "yaoyorozu"]}
+  {"canonical": "momo_yaoyorozu", "aliases": ["momo", "yaoyorozu"]},
+  {"canonical": "toru_hagakure", "aliases": ["toru", "hagakure", "tooru"]}
   ],
   "tokens": {
-    "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo"],
-    "weak_signals": ["mha", "himiko", "yaoyorozu"],
+  "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo", "toru_hagakure", "toru", "tooru"],
+  "weak_signals": ["mha", "himiko", "yaoyorozu", "hagakure"],
     "stop_conflicts": [],
     "notes": "Added Momo Yaoyorozu; full qualified strong; surname weak."
   },

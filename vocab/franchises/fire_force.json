@@ -1,0 +1,16 @@
+{
+  "franchise": "fire_force",
+  "display_name": "Fire Force",
+  "source_version": 1,
+  "aliases": ["fire_force", "enkon_no_shouboutai"],
+  "characters": [
+    {"canonical": "tamaki_kotatsu", "aliases": ["tamaki", "kotatsu"]}
+  ],
+  "tokens": {
+    "strong_signals": ["tamaki_kotatsu", "tamaki"],
+    "weak_signals": ["kotatsu"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

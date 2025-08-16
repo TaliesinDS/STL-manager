@@ -1,0 +1,16 @@
+{
+  "franchise": "that_time_i_got_reincarnated_as_a_slime",
+  "display_name": "That Time I Got Reincarnated as a Slime",
+  "source_version": 1,
+  "aliases": ["tensura", "that_time_i_got_reincarnated_as_a_slime"],
+  "characters": [
+    {"canonical": "shuna_tensura", "aliases": ["shuna"]}
+  ],
+  "tokens": {
+    "strong_signals": ["shuna_tensura", "shuna"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Name relatively distinctive; include qualified form." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

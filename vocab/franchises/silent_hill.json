@@ -1,0 +1,16 @@
+{
+  "franchise": "silent_hill",
+  "display_name": "Silent Hill",
+  "source_version": 1,
+  "aliases": ["silent_hill"],
+  "characters": [
+    {"canonical": "heather_mason", "aliases": ["heather", "mason"]}
+  ],
+  "tokens": {
+    "strong_signals": ["heather_mason", "heather"],
+    "weak_signals": ["mason"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; generic surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

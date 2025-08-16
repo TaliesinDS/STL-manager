@@ -1,0 +1,16 @@
+{
+  "franchise": "call_of_the_night",
+  "display_name": "Call of the Night",
+  "source_version": 1,
+  "aliases": ["call_of_the_night"],
+  "characters": [
+    {"canonical": "nazuna_nanakusa", "aliases": ["nazuna", "nanakusa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["nazuna_nanakusa", "nazuna"],
+    "weak_signals": ["nanakusa"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "harley_quinn", "aliases": ["harley"]},
     {"canonical": "catwoman", "aliases": []},
-    {"canonical": "supergirl", "aliases": []}
+  {"canonical": "supergirl", "aliases": []},
+  {"canonical": "poison_ivy", "aliases": ["ivy", "poison_ivy"]}
   ],
   "tokens": {
-    "strong_signals": ["harley", "catwoman", "supergirl"],
-    "weak_signals": ["dc"],
+  "strong_signals": ["harley", "catwoman", "supergirl", "poison_ivy"],
+  "weak_signals": ["dc", "ivy"],
     "stop_conflicts": [],
-    "notes": "dc alone too broad; rely on character tokens for confidence."
+  "notes": "'ivy' generic so weak; compound 'poison_ivy' strong."
   },
   "provenance": {"source": "manual_seed"}
 }

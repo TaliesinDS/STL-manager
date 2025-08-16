@@ -5,10 +5,12 @@
   "aliases": ["lotr", "lord_of_the_rings"],
   "characters": [
     {"canonical": "arwen_undomiel", "aliases": ["arwen"]},
-    {"canonical": "galadriel", "aliases": []}
+  {"canonical": "galadriel", "aliases": []},
+  {"canonical": "tauriel", "aliases": ["tauriel"]},
+  {"canonical": "sauron", "aliases": ["sauron"]}
   ],
   "tokens": {
-    "strong_signals": ["arwen", "galadriel"],
+  "strong_signals": ["arwen", "galadriel", "tauriel", "sauron"],
     "weak_signals": ["lotr"],
     "stop_conflicts": [],
     "notes": "Added Galadriel; both character names distinctive."

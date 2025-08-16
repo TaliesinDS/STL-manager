@@ -10,10 +10,11 @@
     {"canonical": "kuchiki_rukia", "aliases": ["rukia", "rukia_kuchiki"]},
     {"canonical": "lisa_yadomaru", "aliases": ["lisa", "yadomaru"]},
     {"canonical": "hiyori_sarugaki", "aliases": ["hiyori", "sarugaki"]}
+  ,{"canonical": "soi_fon", "aliases": ["soi_fon", "soifon", "sui_feng"]}
   ],
   "tokens": {
-    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori"],
-    "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa"],
+  "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng"],
+  "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa"],
     "stop_conflicts": [],
     "notes": "Added Rukia Kuchiki, Lisa Yadomaru, Hiyori Sarugaki; surnames weak; given names strong except common 'lisa' kept weak."
   },

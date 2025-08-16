@@ -1,0 +1,36 @@
+{
+  "franchise": "final_fantasy",
+  "display_name": "Final Fantasy",
+  "source_version": 1,
+  "aliases": [
+    "final_fantasy", "ff", "ffvii", "ffx", "ffxiv", "ffxv",
+    "final_fantasy_vii", "final_fantasy_x", "final_fantasy_xiv", "final_fantasy_xv"
+  ],
+  "characters": [
+    {"canonical": "tifa_lockhart", "aliases": ["tifa", "lockhart"]},
+    {"canonical": "rikku", "aliases": ["rikku_ffx"]},
+    {"canonical": "noctis_lucis_caelum", "aliases": ["noctis", "lucis", "caelum"]},
+    {"canonical": "lunafreya_nox_fleuret", "aliases": ["lunafreya", "luna", "nox", "fleuret"]},
+    {"canonical": "alisaie_leveilleur", "aliases": ["alisaie", "leveilleur"]},
+    {"canonical": "yshtola_rhul", "aliases": ["yshtola", "y_shtola"]}
+  ],
+  "tokens": {
+    "strong_signals": [
+      "tifa_lockhart", "tifa",
+      "rikku",
+      "noctis_lucis_caelum", "noctis",
+      "lunafreya_nox_fleuret", "lunafreya",
+      "alisaie_leveilleur", "alisaie",
+      "yshtola_rhul", "yshtola"
+    ],
+    "weak_signals": [
+      "lockhart", "luna", "leveilleur", "y_shtola",
+      "lucis", "caelum", "nox", "fleuret",
+      "ffvii", "ffx", "ffxiv", "ffxv",
+      "final_fantasy_vii", "final_fantasy_x", "final_fantasy_xiv", "final_fantasy_xv"
+    ],
+    "stop_conflicts": ["ff"],
+    "notes": "Consolidated all sub-series into one franchise; surnames and game codes weak; ultra-short acronym suppressed." 
+  },
+  "provenance": {"source": "manual_consolidation"}
+}

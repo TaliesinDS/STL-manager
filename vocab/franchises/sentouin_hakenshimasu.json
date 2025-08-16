@@ -1,0 +1,16 @@
+{
+  "franchise": "sentouin_hakenshimasu",
+  "display_name": "Sentouin, Hakenshimasu! (Combatants Will Be Dispatched!)",
+  "source_version": 1,
+  "aliases": ["sentouin_hakenshimasu", "combatants_will_be_dispatched"],
+  "characters": [
+    {"canonical": "heine_cwd", "aliases": ["heine"]}
+  ],
+  "tokens": {
+    "strong_signals": ["heine_cwd"],
+    "weak_signals": ["heine"],
+    "stop_conflicts": [],
+    "notes": "Heine can appear elsewhere; qualified variant strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

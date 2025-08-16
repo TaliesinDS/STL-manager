@@ -9,13 +9,15 @@
     {"canonical": "ishtar_fate", "aliases": ["ishtar"]},
     {"canonical": "ereshkigal", "aliases": []},
     {"canonical": "jeanne_darc", "aliases": ["jeanne", "jeanne_darc"]},
-    {"canonical": "mash_kyrielight", "aliases": ["mash", "kyrielight"]}
+    {"canonical": "mash_kyrielight", "aliases": ["mash", "kyrielight"]},
+    {"canonical": "mordred_fate", "aliases": ["mordred"]},
+    {"canonical": "chloe_von_einzbern", "aliases": ["chloe", "kuro"]}
   ],
   "tokens": {
-    "strong_signals": ["saber", "artoria", "altria", "gilgamesh", "ishtar_fate", "ereshkigal", "jeanne_darc", "mash_kyrielight", "mash"],
-    "weak_signals": ["fate", "ishtar", "jeanne", "kyrielight"],
+  "strong_signals": ["saber", "artoria", "altria", "gilgamesh", "ishtar_fate", "ereshkigal", "jeanne_darc", "mash_kyrielight", "mash", "mordred_fate", "mordred", "chloe_von_einzbern", "kuro"],
+  "weak_signals": ["fate", "ishtar", "jeanne", "kyrielight", "chloe"],
     "stop_conflicts": [],
-    "notes": "Added core FGO characters; generic myth names (Ishtar) weak alone; qualified form strong."
+  "notes": "Added core FGO characters; generic myth names (Ishtar) weak alone; Mordred added (name relatively distinctive so both forms strong)."
   },
   "provenance": {"source": "manual_seed"}
 }

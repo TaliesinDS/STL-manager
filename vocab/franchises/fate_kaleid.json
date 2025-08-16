@@ -1,16 +1,10 @@
 {
   "franchise": "fate_kaleid",
-  "display_name": "Fate/kaleid liner",
-  "source_version": 1,
+  "display_name": "Fate/kaleid liner (Deprecated)",
+  "deprecated": true,
+  "source_version": 2,
   "aliases": ["fate_kaleid"],
-  "characters": [
-    {"canonical": "chloe_von_einzbern", "aliases": ["chloe", "kuro"]}
-  ],
-  "tokens": {
-    "strong_signals": ["chloe_von_einzbern", "kuro"],
-    "weak_signals": ["chloe"],
-    "stop_conflicts": [],
-    "notes": "Kuro distinctive; chloe alone weak due to real-world usage."
-  },
-  "provenance": {"source": "manual_seed"}
+  "characters": [],
+  "tokens": {"strong_signals": [], "weak_signals": [], "stop_conflicts": [], "notes": "Merged into fate_series.json"},
+  "provenance": {"source": "manual_consolidation"}
 }

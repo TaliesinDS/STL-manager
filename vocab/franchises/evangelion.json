@@ -2,7 +2,7 @@
   "franchise": "evangelion",
   "display_name": "Neon Genesis Evangelion",
   "source_version": 1,
-  "aliases": ["evangelion", "nge"],
+  "aliases": ["evangelion", "neon_genesis_evangelion", "nge"],
   "characters": [
     {"canonical": "misato_katsuragi", "aliases": ["misato", "katsuragi"]}
   ],

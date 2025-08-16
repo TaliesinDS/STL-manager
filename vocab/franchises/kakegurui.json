@@ -1,0 +1,16 @@
+{
+  "franchise": "kakegurui",
+  "display_name": "Kakegurui",
+  "source_version": 1,
+  "aliases": ["kakegurui"],
+  "characters": [
+    {"canonical": "yumeko_jabami", "aliases": ["yumeko", "jabami"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yumeko", "yumeko_jabami"],
+    "weak_signals": ["jabami"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

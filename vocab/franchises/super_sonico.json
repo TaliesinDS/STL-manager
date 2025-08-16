@@ -1,0 +1,16 @@
+{
+  "franchise": "super_sonico",
+  "display_name": "Super Sonico",
+  "source_version": 1,
+  "aliases": ["super_sonico"],
+  "characters": [
+    {"canonical": "sonico", "aliases": ["sonico", "sonico_neko"]}
+  ],
+  "tokens": {
+    "strong_signals": ["sonico"],
+    "weak_signals": ["sonico_neko"],
+    "stop_conflicts": [],
+    "notes": "Character name itself strong; costume/form token weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

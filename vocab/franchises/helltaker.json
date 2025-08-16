@@ -1,0 +1,16 @@
+{
+  "franchise": "helltaker",
+  "display_name": "Helltaker",
+  "source_version": 1,
+  "aliases": ["helltaker"],
+  "characters": [
+    {"canonical": "zdrada_helltaker", "aliases": ["zdrada"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zdrada_helltaker", "zdrada"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Name distinctive; both forms strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

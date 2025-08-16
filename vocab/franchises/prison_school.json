@@ -1,0 +1,16 @@
+{
+  "franchise": "prison_school",
+  "display_name": "Prison School",
+  "source_version": 1,
+  "aliases": ["prison_school"],
+  "characters": [
+    {"canonical": "saeki_ai", "aliases": ["ai_saeki", "ai", "saeki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["saeki_ai"],
+    "weak_signals": ["ai_saeki", "ai", "saeki"],
+    "stop_conflicts": [],
+    "notes": "Given name 'ai' extremely common; require qualified strong token." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

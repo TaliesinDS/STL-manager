@@ -1,0 +1,16 @@
+{
+  "franchise": "horizon_zero_dawn",
+  "display_name": "Horizon (Zero Dawn / Forbidden West)",
+  "source_version": 1,
+  "aliases": ["horizon", "horizon_zero_dawn"],
+  "characters": [
+    {"canonical": "aloy", "aliases": ["aloy"]}
+  ],
+  "tokens": {
+    "strong_signals": ["aloy"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Unique name kept strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -5,13 +5,14 @@
   "aliases": ["seven_deadly_sins"],
   "characters": [
     {"canonical": "diane", "aliases": ["diane_sds"]},
-    {"canonical": "elizabeth_liones", "aliases": ["elizabeth", "liones"]}
+  {"canonical": "elizabeth_liones", "aliases": ["elizabeth", "liones"]},
+  {"canonical": "merlin_sds", "aliases": ["merlin"]}
   ],
   "tokens": {
-    "strong_signals": ["elizabeth_liones", "liones", "diane_sds"],
-    "weak_signals": ["elizabeth", "diane", "seven_deadly_sins"],
+  "strong_signals": ["elizabeth_liones", "liones", "diane_sds", "merlin_sds"],
+  "weak_signals": ["elizabeth", "diane", "seven_deadly_sins", "merlin"],
     "stop_conflicts": [],
-    "notes": "Use surname liones or tagged variant for strong."
+  "notes": "Use surname liones or tagged variant for strong; Merlin tagged to avoid Arthurian collisions."
   },
   "provenance": {"source": "manual_seed"}
 }

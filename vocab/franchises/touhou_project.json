@@ -1,0 +1,16 @@
+{
+  "franchise": "touhou_project",
+  "display_name": "Touhou Project",
+  "source_version": 1,
+  "aliases": ["touhou"],
+  "characters": [
+    {"canonical": "yukari_yakumo", "aliases": ["yukari", "yakumo"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yukari", "yukari_yakumo"],
+    "weak_signals": ["yakumo"],
+    "stop_conflicts": [],
+    "notes": "Given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

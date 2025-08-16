@@ -5,13 +5,15 @@
   "aliases": ["mushoku_tensei", "jobless_reincarnation"],
   "characters": [
     {"canonical": "ghislaine_dedoldia", "aliases": ["ghislaine"]},
-    {"canonical": "eris_boreas_greyrat", "aliases": ["eris", "boreas"]}
+  {"canonical": "eris_boreas_greyrat", "aliases": ["eris", "boreas"]},
+  {"canonical": "sylphiette_mt", "aliases": ["sylphiette", "sylph"]},
+  {"canonical": "roxy_migurdia", "aliases": ["roxy", "migurdia"]}
   ],
   "tokens": {
-    "strong_signals": ["ghislaine", "eris"],
-    "weak_signals": ["boreas"],
+  "strong_signals": ["ghislaine", "eris", "sylphiette_mt", "roxy_migurdia", "roxy"],
+  "weak_signals": ["boreas", "sylphiette", "sylph", "migurdia"],
     "stop_conflicts": [],
-    "notes": "Primary given names distinctive; optional family names weak."
+  "notes": "Added Sylphiette (short forms weak) and Roxy Migurdia (given name strong, surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

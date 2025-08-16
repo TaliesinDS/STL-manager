@@ -1,0 +1,16 @@
+{
+  "franchise": "gundam_witch_from_mercury",
+  "display_name": "Mobile Suit Gundam: The Witch from Mercury",
+  "source_version": 1,
+  "aliases": ["witch_from_mercury", "g_witch"],
+  "characters": [
+    {"canonical": "miorine_rembran", "aliases": ["miorine", "rembran"]}
+  ],
+  "tokens": {
+    "strong_signals": ["miorine_rembran", "miorine"],
+    "weak_signals": ["rembran"],
+    "stop_conflicts": [],
+    "notes": "Unique given name strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

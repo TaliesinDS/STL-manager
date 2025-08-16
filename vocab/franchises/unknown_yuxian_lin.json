@@ -1,0 +1,16 @@
+{
+  "franchise": "unknown_yuxian_lin",
+  "display_name": "Yuxian Lin (Unverified)",
+  "source_version": 1,
+  "aliases": ["yuxian_lin"],
+  "characters": [
+    {"canonical": "yuxian_lin", "aliases": ["yuxian", "lin_yuxian"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yuxian_lin"],
+    "weak_signals": ["yuxian"],
+    "stop_conflicts": [],
+    "notes": "Placeholder until franchise/source confirmed; will remove or relocate once clarified." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

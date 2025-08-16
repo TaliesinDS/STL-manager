@@ -1,0 +1,16 @@
+{
+  "franchise": "isekai_meikyuu_de_harem_wo",
+  "display_name": "Isekai Meikyuu de Harem wo",
+  "source_version": 1,
+  "aliases": ["isekai_meikyuu_de_harem_wo"],
+  "characters": [
+    {"canonical": "roxanne_imdhw", "aliases": ["roxanne"]}
+  ],
+  "tokens": {
+    "strong_signals": ["roxanne_imdhw"],
+    "weak_signals": ["roxanne"],
+    "stop_conflicts": [],
+    "notes": "Roxanne may appear in multiple media; qualified form strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

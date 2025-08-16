@@ -1,0 +1,16 @@
+{
+  "franchise": "redo_of_healer",
+  "display_name": "Redo of Healer",
+  "source_version": 1,
+  "aliases": ["redo_of_healer"],
+  "characters": [
+    {"canonical": "setsuna_redo", "aliases": ["setsuna"]}
+  ],
+  "tokens": {
+    "strong_signals": ["setsuna_redo"],
+    "weak_signals": ["setsuna"],
+    "stop_conflicts": [],
+    "notes": "Setsuna common across series; qualified token strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

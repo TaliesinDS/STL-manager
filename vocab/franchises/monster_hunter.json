@@ -1,0 +1,17 @@
+{
+  "franchise": "monster_hunter",
+  "display_name": "Monster Hunter",
+  "source_version": 1,
+  "aliases": ["monster_hunter", "monhun"],
+  "characters": [
+    {"canonical": "hinoa_monster_hunter", "aliases": ["hinoa"]},
+    {"canonical": "minoto_monster_hunter", "aliases": ["minoto"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hinoa_monster_hunter", "minoto_monster_hunter", "hinoa", "minoto"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Twin sisters; names distinctive so short forms acceptable strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

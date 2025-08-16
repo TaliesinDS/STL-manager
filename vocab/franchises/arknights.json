@@ -1,0 +1,16 @@
+{
+  "franchise": "arknights",
+  "display_name": "Arknights",
+  "source_version": 1,
+  "aliases": ["arknights"],
+  "characters": [
+    {"canonical": "skadi_arknights", "aliases": ["skadi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["skadi_arknights"],
+    "weak_signals": ["skadi"],
+    "stop_conflicts": [],
+    "notes": "Skadi also appears in mythologies; qualifier strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["nikke", "goddess_of_victory_nikke"],
   "characters": [
-    {"canonical": "anis_nikke", "aliases": ["anis"]}
+  {"canonical": "anis_nikke", "aliases": ["anis"]},
+  {"canonical": "volume_nikke", "aliases": ["volume"]}
   ],
   "tokens": {
-    "strong_signals": ["anis_nikke"],
-    "weak_signals": ["anis"],
+  "strong_signals": ["anis_nikke", "volume_nikke"],
+  "weak_signals": ["anis", "volume"],
     "stop_conflicts": [],
-    "notes": "Franchise-qualified strong token; short given name weak to prevent accidental matches." 
+  "notes": "Franchise-qualified strong tokens; short given/common words as weak signals." 
   },
   "provenance": {"source": "manual_seed"}
 }

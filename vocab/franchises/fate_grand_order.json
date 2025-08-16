@@ -1,17 +1,10 @@
 {
   "franchise": "fate_grand_order",
-  "display_name": "Fate/Grand Order",
-  "source_version": 1,
+  "display_name": "Fate/Grand Order (Deprecated)",
+  "deprecated": true,
+  "source_version": 2,
   "aliases": ["fgo", "fate_grand_order"],
-  "characters": [
-    {"canonical": "jeanne_darc", "aliases": ["jeanne", "jeanne_darc"]},
-    {"canonical": "mash_kyrielight", "aliases": ["mash", "kyrielight"]}
-  ],
-  "tokens": {
-    "strong_signals": ["jeanne_darc", "mash_kyrielight", "jeanne", "mash"],
-    "weak_signals": ["kyrielight"],
-    "stop_conflicts": ["fgo"],
-    "notes": "Acronym suppressed to avoid false positives; primary names strong."
-  },
-  "provenance": {"source": "manual_seed"}
+  "characters": [],
+  "tokens": {"strong_signals": [], "weak_signals": [], "stop_conflicts": [], "notes": "Merged into fate_series.json"},
+  "provenance": {"source": "manual_consolidation"}
 }

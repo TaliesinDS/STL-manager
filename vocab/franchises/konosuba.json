@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["konosuba"],
   "characters": [
-    {"canonical": "megumin", "aliases": ["megumin"]}
+  {"canonical": "megumin", "aliases": ["megumin"]},
+  {"canonical": "yunyun_konosuba", "aliases": ["yunyun", "yunyun_maid"]}
   ],
   "tokens": {
-    "strong_signals": ["megumin"],
-    "weak_signals": [],
+  "strong_signals": ["megumin", "yunyun_konosuba"],
+  "weak_signals": ["yunyun", "yunyun_maid"],
     "stop_conflicts": [],
-    "notes": "Distinctive single-name character." 
+  "notes": "Megumin distinctive; Yunyun added with qualified strong token; alt costume tokens weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

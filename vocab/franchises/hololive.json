@@ -4,13 +4,15 @@
   "source_version": 1,
   "aliases": ["hololive"],
   "characters": [
-    {"canonical": "gawr_gura", "aliases": ["gura", "gawr"]}
+  {"canonical": "gawr_gura", "aliases": ["gura", "gawr"]},
+  {"canonical": "ninomae_inanis", "aliases": ["ina", "ninomae", "inanis"]},
+  {"canonical": "marine_houshou", "aliases": ["marine", "houshou"]}
   ],
   "tokens": {
-    "strong_signals": ["gawr_gura", "gura"],
-    "weak_signals": ["gawr"],
+  "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine"],
+  "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou"],
     "stop_conflicts": [],
-    "notes": "Short 'gura' distinctive enough; include full canonical." 
+  "notes": "Added Ninomae Ina'nis (short 'ina' weak) and Marine Houshou (given name distinctive strong)."
   },
   "provenance": {"source": "manual_seed"}
 }

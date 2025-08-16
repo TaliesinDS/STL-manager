@@ -4,11 +4,12 @@
   "source_version": 1,
   "aliases": ["star_trek"],
   "characters": [
-    {"canonical": "seven_of_nine", "aliases": ["seven_of_nine", "seven"]}
+  {"canonical": "seven_of_nine", "aliases": ["seven_of_nine", "seven"]},
+  {"canonical": "nyota_uhura", "aliases": ["uhura", "nyota"]}
   ],
   "tokens": {
-    "strong_signals": ["seven_of_nine"],
-    "weak_signals": ["seven"],
+  "strong_signals": ["seven_of_nine", "uhura", "nyota_uhura"],
+  "weak_signals": ["seven", "nyota"],
     "stop_conflicts": [],
     "notes": "Full designation strong; short 'seven' weak to avoid numeric/common collisions." 
   },

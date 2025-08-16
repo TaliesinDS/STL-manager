@@ -1,9 +1,9 @@
 {
-  "franchise": "final_fantasy_vii",
-  "display_name": "Final Fantasy VII (Deprecated)",
+  "franchise": "final_fantasy_x",
+  "display_name": "Final Fantasy X (Deprecated)",
   "deprecated": true,
   "source_version": 2,
-  "aliases": ["ffvii", "final_fantasy_vii"],
+  "aliases": ["ffx", "final_fantasy_x"],
   "characters": [],
   "tokens": {"strong_signals": [], "weak_signals": [], "stop_conflicts": [], "notes": "Merged into final_fantasy.json"},
   "provenance": {"source": "manual_consolidation"}

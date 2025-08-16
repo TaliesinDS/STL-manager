@@ -1,0 +1,16 @@
+{
+  "franchise": "palworld",
+  "display_name": "Palworld",
+  "source_version": 1,
+  "aliases": ["palworld"],
+  "characters": [
+    {"canonical": "zoe_rayne", "aliases": ["zoe", "rayne"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zoe_rayne"],
+    "weak_signals": ["zoe", "rayne"],
+    "stop_conflicts": [],
+    "notes": "Short given name weak; qualified strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "gundam",
+  "display_name": "Mobile Suit Gundam",
+  "source_version": 1,
+  "aliases": ["gundam", "witch_from_mercury", "g_witch"],
+  "characters": [
+    {"canonical": "miorine_rembran", "aliases": ["miorine", "rembran"]}
+  ],
+  "tokens": {
+    "strong_signals": ["miorine_rembran", "miorine"],
+    "weak_signals": ["rembran"],
+    "stop_conflicts": [],
+    "notes": "Consolidated Gundam sub-series; removed uncertain placeholder character." 
+  },
+  "provenance": {"source": "manual_consolidation"}
+}

@@ -4,11 +4,12 @@
   "source_version": 1,
   "aliases": ["the_witcher", "witcher"],
   "characters": [
-    {"canonical": "ciri_the_witcher", "aliases": ["ciri"]}
+  {"canonical": "ciri_the_witcher", "aliases": ["ciri"]},
+  {"canonical": "triss_merigold", "aliases": ["triss", "merigold"]}
   ],
   "tokens": {
-    "strong_signals": ["ciri"],
-    "weak_signals": ["witcher"],
+  "strong_signals": ["ciri", "triss", "triss_merigold"],
+  "weak_signals": ["witcher", "merigold"],
     "stop_conflicts": [],
     "notes": "'ciri' distinctive; 'witcher' weak for generic fantasy use."
   },

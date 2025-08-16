@@ -1,0 +1,16 @@
+{
+  "franchise": "tensei_shitara_dai_nana_ouji",
+  "display_name": "Tensei Shitara Dai Nana Ouji (Reincarnated as the 7th Prince)",
+  "source_version": 1,
+  "aliases": ["dai_nana_ouji"],
+  "characters": [
+    {"canonical": "sylpha_langlis", "aliases": ["sylpha", "sylphia_langlis", "sylphia"]}
+  ],
+  "tokens": {
+    "strong_signals": ["sylpha_langlis"],
+    "weak_signals": ["sylpha", "sylphia", "sylphia_langlis"],
+    "stop_conflicts": [],
+    "notes": "Canonicalized to 'sylpha_langlis'; variant spellings weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
