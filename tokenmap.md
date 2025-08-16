@@ -1,8 +1,8 @@
-# Token Normalization Map (Version 9)
+# Token Normalization Map (Version 11)
 
 Purpose: Central, versioned mapping of raw path/file tokens -> canonical normalized values used in metadata fields (see `MetadataFields.md`). Keeps heuristic logic transparent and auditable. Phase 1 scope focuses on high-confidence, low-ambiguity mappings only. Ambiguous or low-frequency tokens route to `residual_tokens` + `normalization_warnings`.
 
-Version: 9
+Version: 11
 Applies to fields first introduced in Phase 1 (designer, intended_use_bucket, basic variant axes, game_system, codex_faction, lineage_family (high-level), pc_candidate_flag proto heuristics, scale basics) and seeds for Phase 2 (lineage_primary examples) for forward compatibility (but Phase 2 tokens flagged if matched early).
 
 ---
@@ -28,7 +28,7 @@ Sections:
 ---
 ## 2. Meta
 ```
-token_map_version: 9
+token_map_version: 11
 min_token_length: 2
 case_sensitive: false
 strip_chars: ["(", ")", "[", "]", ",", ";", "{", "}"]
@@ -85,7 +85,7 @@ designers: external_reference
 		blades_of_khorne: ["blades_of_khorne", "khorne", "bloodbound"]
 		maggotkin_of_nurgle: ["maggotkin", "maggotkin_of_nurgle", "nurgle"]
 		disciples_of_tzeentch: ["disciples_of_tzeentch", "tzeentch"]
-		hedonites_of_slaanesh: ["hedonites", "hedonites_of_slaanesh", "slaanesh"]
+		headonites_of_slaanesh: ["hedonites", "hedonites_of_slaanesh", "slaanesh"]
 		slaves_to_darkness: ["slaves_to_darkness", "std", "everchosen"]
 		beasts_of_chaos: ["beasts_of_chaos", "beast_of_chaos", "beastmen", "beastman"]
 		gloomspite_gitz: ["gloomspite_gitz", "gloomspite", "gitz", "moonclan", "squig", "squigs"]
@@ -99,6 +99,26 @@ designers: external_reference
 ```
 
 If `game_system` unresolved, faction tokens are ignored (prevent misclassification) but any high-signal rare name (e.g., "Astra Militarum") may still emit `faction_without_system` warning for review.
+
+---
+## 5.1 Codex Unit Names (Externalized – P2 Planning)
+Phase: Planned (P2). NOT active in Phase 1 normalization. Unit vocabulary moved to external files for modular growth and to minimize core file churn.
+
+External Files:
+- `codex_units_w40k.md`
+- `codex_units_aos.md`
+- `codex_units_oldworld.md`
+
+Sentinel Reference:
+```
+codex_units: external_reference
+```
+
+Activation Criteria (future): Evaluate only when BOTH `game_system` and (where relevant) `codex_faction` resolved. Generic tokens ("tactical", "warrior", "archer") require contextual reinforcement.
+
+Gating Rule: Mapping step runs post faction resolution, pre variant axes, only if `enable_unit_extraction=true` and phase >= P2.
+
+Deferral Rationale: Large, context-sensitive list; externalization allows iterative safe expansion and reduces false positives (e.g., decorative base pack named with generic unit word).
 
 ---
 ## 6. General Faction Buckets
@@ -148,8 +168,6 @@ Logic: If both segmentation tokens appear (e.g., folder has both 'split' and 'me
 
 ---
 ## 9. Scale Tokens
-Only capture explicit ratio (1_10, 1-10, 1:10) or mm values (32mm, 75mm). Do not infer mm from ratio yet.
-
 ```
 scale_tokens:
 	ratio_pattern: "^1[\-_:]([0-9]{1,3})$"  # capture group = denominator
