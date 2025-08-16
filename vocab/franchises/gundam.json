@@ -4,11 +4,12 @@
   "source_version": 1,
   "aliases": ["gundam", "witch_from_mercury", "g_witch"],
   "characters": [
-    {"canonical": "miorine_rembran", "aliases": ["miorine", "rembran"]}
+    {"canonical": "miorine_rembran", "aliases": ["miorine", "rembran"]},
+    {"canonical": "ryu_jose", "aliases": ["ryu", "jose"]}
   ],
   "tokens": {
-    "strong_signals": ["miorine_rembran", "miorine"],
-    "weak_signals": ["rembran"],
+  "strong_signals": ["miorine_rembran", "miorine", "ryu_jose"],
+  "weak_signals": ["rembran", "ryu", "jose"],
     "stop_conflicts": [],
     "notes": "Consolidated Gundam sub-series; removed uncertain placeholder character." 
   },
