@@ -82,6 +82,11 @@ Phase Legend:
 
 ## 7. Variant Dimensions
 | Field | Type | Phase | Description | Notes |
+| asset_category | enum | P1 | High-level asset class | miniature (default), terrain, vehicle, foliage, base_set, scatter, accessory_pack, other; conservative auto-detect via tokens else miniature |
+| terrain_subtype | enum | P2 | Terrain classification | building, ruin, wall, gate, tower, bridge, platform, scatter, tree, stump, rock, crystal, hill; only if asset_category=terrain |
+| vehicle_type | enum | P2 | Vehicle platform | tank, apc, car, truck, halftrack, walker, mech, aircraft, dropship, artillery, boat, submarine, train_locomotive; only if asset_category=vehicle |
+| vehicle_era | enum | P2 | Historical / thematic era | ww2, interwar, modern, near_future, scifi, fantasy, dieselpunk, steampunk; derived from tokens (e.g., panzer, sherman -> ww2) |
+| base_theme | enum | P2 | Decorative base set environment | urban, desert, snow, tundra, jungle, forest, swamp, industrial, ruined, alien, cavern, ship_deck, volcanic, icy, wasteland |
 | intended_use_bucket | enum | P1 | tabletop_intent, display_large, mixed, unknown | From directory context |
 | content_flag | enum | P1 | sfw, nsfw | Coarse binary used early (quick filter) |
 | nsfw_level | enum | P2 | none, lingerie, topless, bottomless, nude, explicit_act | Granular; `none` mirrors sfw; assigned per variant |
@@ -246,12 +251,19 @@ Note: A lineage_primary always belongs to exactly one lineage_family, but some a
 - style_primary_confidence: certain, probable, guess
 - review_status: unreviewed, flagged, confirmed
 - designer_confidence / actor_confidence: certain, probable, stylized (actor only), composite (actor only), guess (designer only)
+// Asset categorization (new)
+- asset_category: miniature, terrain, vehicle, foliage, base_set, scatter, accessory_pack, other
+- terrain_subtype: building, ruin, wall, gate, tower, bridge, platform, scatter, tree, stump, rock, crystal, hill
+- vehicle_type: tank, apc, car, truck, halftrack, walker, mech, aircraft, dropship, artillery, boat, submarine, train_locomotive
+- vehicle_era: ww2, interwar, modern, near_future, scifi, fantasy, dieselpunk, steampunk
+- base_theme: urban, desert, snow, tundra, jungle, forest, swamp, industrial, ruined, alien, cavern, ship_deck, volcanic, icy, wasteland
 
 ---
 ## 18. Introduction Roadmap (High-Level)
 
 - P0: rel_path, filename, extension, size_bytes, depth, is_archive, root_id, raw_path_tokens, scan_batch_id
 - P1: designer, intended_use_bucket, basic variant axes (content_flag, segmentation, internal_volume, support_state, scale_ratio_den, height_mm), collection_basic (collection_original_label, collection_cycle, sequence), game_system, codex_faction, residual_tokens, token_version, normalization_warnings
+	- (add) asset_category (minimal heuristic); defaults miniature when uncertain
 - P2: grouping (model_group_id), franchise/character, proxy_type, codex_unit_name, part_pack_type, pose_variant, version_num, has_bust_variant, loadout_variants, base_size_mm, collection_id linkage, actor_likeness, lineage_subrace, faction_path, tabletop_role, human_subtype, nsfw_level + exposure fields + nsfw_act_tags, confidence fields, review workflow, user_tags, notes
 - P3: hashing, geometry metrics, provenance expansion (source_archives), dedupe logic
 - P4: auto_tags, thin_wall_warnings, ML confidence scoring refinement
@@ -271,6 +283,10 @@ Note: A lineage_primary always belongs to exactly one lineage_family, but some a
 - How to formalize addon compatibility confidence scoring (threshold for auto-link vs manual confirm).
 - Distinguishing upgrade_kit vs conversion_bits (e.g., replacement vs purely decorative augmentation criteria).
 - Policy for multi_faction_flag when factions share chassis naming (avoid false positives).
+ - Conservative heuristic order for asset_category (e.g., explicit vehicle tokens before terrain nouns to avoid 'tank_wall' misparse).
+ - Handling ambiguous tokens like 'base' in character base vs base_set pack context (need pack-level plural or thematic tokens?).
+ - Vehicle era inference fallback when mixed tokens (e.g., scifi + sherman) appear—prefer ww2 or mark conflict?
+ - Whether foliage remains separate asset_category or folds into terrain_subtype=foliage; tradeoff between filtering convenience vs taxonomy simplicity.
 
 ---
 ## 20. Change Management
