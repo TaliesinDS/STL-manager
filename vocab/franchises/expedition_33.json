@@ -1,0 +1,16 @@
+{
+  "franchise": "expedition_33",
+  "display_name": "Expedition 33",
+  "source_version": 1,
+  "aliases": ["expedition_33"],
+  "characters": [
+    {"canonical": "lune_expedition_33", "aliases": ["lune"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lune_expedition_33"],
+    "weak_signals": ["lune"],
+    "stop_conflicts": [],
+    "notes": "Added Lune; short common 'lune' weak due to French/Spanish word meaning 'moon'." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

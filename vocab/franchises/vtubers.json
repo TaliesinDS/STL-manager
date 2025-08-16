@@ -7,13 +7,14 @@
     {"canonical": "silvervale", "aliases": ["silvervale"]},
     {"canonical": "usada_pekora", "aliases": ["pekora", "usada", "usada_pekora"]},
   {"canonical": "ironmouse", "aliases": ["ironmouse"]},
-  {"canonical": "misono_hibiki", "aliases": ["misono", "hibiki"]}
+  {"canonical": "misono_hibiki", "aliases": ["misono", "hibiki"]},
+  {"canonical": "shylily", "aliases": ["shylily"]}
   ],
   "tokens": {
-  "strong_signals": ["silvervale", "usada_pekora", "pekora", "ironmouse", "misono_hibiki"],
+  "strong_signals": ["silvervale", "usada_pekora", "pekora", "ironmouse", "misono_hibiki", "shylily"],
   "weak_signals": ["vtuber", "vtubers", "usada", "misono", "hibiki"],
     "stop_conflicts": [],
-  "notes": "Added Silvervale earlier; then Usada Pekora, Ironmouse, now Misono Hibiki (qualified strong; common JP name parts weak)." 
+  "notes": "Added Silvervale; then Pekora, Ironmouse, Misono Hibiki; now Shylily (handle unique strong). Also created standalone shylily manifest." 
   },
   "provenance": {"source": "manual_seed"}
 }

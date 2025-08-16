@@ -5,12 +5,13 @@
   "aliases": ["kuroinu"],
   "characters": [
     {"canonical": "olga_discordia", "aliases": ["olga", "discordia"]}
+  , {"canonical": "origa_kuroinu", "aliases": ["origa"]}
   ],
   "tokens": {
-    "strong_signals": ["olga_discordia"],
-    "weak_signals": ["olga", "discordia"],
+  "strong_signals": ["olga_discordia", "origa_kuroinu", "origa"],
+  "weak_signals": ["olga", "discordia"],
     "stop_conflicts": [],
-    "notes": "Full name strong; components weak due to generic potential cross-use." 
+  "notes": "Full names strong; 'origa' distinctive enough set strong; component surname tokens weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

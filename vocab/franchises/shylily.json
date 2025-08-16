@@ -1,0 +1,16 @@
+{
+  "franchise": "shylily",
+  "display_name": "Shylily (Standalone Vtuber)",
+  "source_version": 1,
+  "aliases": ["shylily"],
+  "characters": [
+    {"canonical": "shylily", "aliases": ["shylily"]}
+  ],
+  "tokens": {
+    "strong_signals": ["shylily"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Standalone vtuber manifest (also listed under aggregate vtubers)." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

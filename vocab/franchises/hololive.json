@@ -8,13 +8,17 @@
   {"canonical": "ninomae_inanis", "aliases": ["ina", "ninomae", "inanis"]},
   {"canonical": "marine_houshou", "aliases": ["marine", "houshou"]},
   {"canonical": "nerissa_ravencroft", "aliases": ["nerissa", "ravencroft"]},
-  {"canonical": "ouro_kronii", "aliases": ["kronii", "ouro"]}
+  {"canonical": "ouro_kronii", "aliases": ["kronii", "ouro"]},
+  {"canonical": "fuwawa_abyssgard", "aliases": ["fuwawa", "abyssgard"]},
+  {"canonical": "mococo_abyssgard", "aliases": ["mococo", "abyssgard"]},
+  {"canonical": "nanashi_mumei", "aliases": ["mumei", "nanashi"]}
+  ,{"canonical": "pekomama", "aliases": ["pekomama"]}
   ],
   "tokens": {
-  "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine", "nerissa_ravencroft", "nerissa", "ouro_kronii", "kronii"],
-  "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou", "ravencroft", "ouro"],
+  "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine", "nerissa_ravencroft", "nerissa", "ouro_kronii", "kronii", "fuwawa_abyssgard", "fuwawa", "mococo_abyssgard", "mococo", "nanashi_mumei", "mumei", "pekomama"],
+  "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou", "ravencroft", "ouro", "abyssgard", "nanashi"],
     "stop_conflicts": [],
-  "notes": "Added Ninomae Ina'nis and Marine Houshou earlier; now Nerissa Ravencroft and Ouro Kronii (handles + full forms strong; surnames/org tokens weak)."
+  "notes": "Earlier added core EN talents; then Fuwawa, Mococo, Mumei. Now added Pekomama (derivative meme character tied to Pekora)."
   },
   "provenance": {"source": "manual_seed"}
 }

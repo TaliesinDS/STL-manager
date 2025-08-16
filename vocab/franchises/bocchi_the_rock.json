@@ -1,0 +1,16 @@
+{
+  "franchise": "bocchi_the_rock",
+  "display_name": "Bocchi the Rock!",
+  "source_version": 1,
+  "aliases": ["bocchi_the_rock"],
+  "characters": [
+    {"canonical": "hitori_gotoh", "aliases": ["hitori", "gotoh", "bocchi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hitori_gotoh", "bocchi"],
+    "weak_signals": ["hitori", "gotoh"],
+    "stop_conflicts": [],
+    "notes": "Added Hitori Gotoh (Bocchi). Nickname distinctive strong; common JP name parts weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

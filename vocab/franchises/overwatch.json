@@ -5,13 +5,14 @@
   "aliases": ["overwatch"],
   "characters": [
     {"canonical": "mei_overwatch", "aliases": ["mei"]},
-    {"canonical": "d_va", "aliases": ["dva", "d.va"]}
+  {"canonical": "d_va", "aliases": ["dva", "d.va"]},
+  {"canonical": "widowmaker_overwatch", "aliases": ["widowmaker"]}
   ],
   "tokens": {
-    "strong_signals": ["mei_overwatch", "d_va", "dva", "d.va"],
-    "weak_signals": ["mei"],
+  "strong_signals": ["mei_overwatch", "d_va", "dva", "d.va", "widowmaker_overwatch", "widowmaker"],
+  "weak_signals": ["mei"],
     "stop_conflicts": [],
-    "notes": "Added D.Va with variant stylings; keep 'mei' weak due to common usage; qualified forms strong." 
+  "notes": "Added D.Va earlier; now Widowmaker (both full & handle strong). 'mei' remains weak due to common usage." 
   },
   "provenance": {"source": "manual_seed"}
 }

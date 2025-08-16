@@ -1,0 +1,16 @@
+{
+  "franchise": "violet_evergarden",
+  "display_name": "Violet Evergarden",
+  "source_version": 1,
+  "aliases": ["violet_evergarden"],
+  "characters": [
+    {"canonical": "violet_evergarden", "aliases": ["violet", "evergarden"]}
+  ],
+  "tokens": {
+    "strong_signals": ["violet_evergarden"],
+    "weak_signals": ["violet", "evergarden"],
+    "stop_conflicts": [],
+    "notes": "Added title character; color/given name weak solo." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "sakamoto_days",
+  "display_name": "Sakamoto Days",
+  "source_version": 1,
+  "aliases": ["sakamoto_days"],
+  "characters": [
+    {"canonical": "lu_shaotang", "aliases": ["lu", "shaotang"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lu_shaotang"],
+    "weak_signals": ["lu", "shaotang"],
+    "stop_conflicts": [],
+    "notes": "Added Lu Shaotang; short common surname 'lu' weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

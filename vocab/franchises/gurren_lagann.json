@@ -1,0 +1,16 @@
+{
+  "franchise": "gurren_lagann",
+  "display_name": "Tengen Toppa Gurren Lagann",
+  "source_version": 1,
+  "aliases": ["gurren_lagann", "tengen_toppa_gurren_lagann"],
+  "characters": [
+    {"canonical": "yoko_littner", "aliases": ["yoko", "littner"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yoko_littner", "yoko"],
+    "weak_signals": ["littner"],
+    "stop_conflicts": [],
+    "notes": "Added Yoko Littner; given name widely recognized strong; surname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

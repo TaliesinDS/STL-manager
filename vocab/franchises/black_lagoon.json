@@ -5,12 +5,13 @@
   "aliases": ["black_lagoon"],
   "characters": [
     {"canonical": "roberta_black_lagoon", "aliases": ["roberta"]}
+  , {"canonical": "revy_black_lagoon", "aliases": ["revy"]}
   ],
   "tokens": {
-    "strong_signals": ["roberta_black_lagoon"],
-    "weak_signals": ["roberta"],
+  "strong_signals": ["roberta_black_lagoon", "revy_black_lagoon", "revy"],
+  "weak_signals": ["roberta"],
     "stop_conflicts": [],
-    "notes": "Qualified variant strong; given name weak due to generic usage." 
+  "notes": "Qualified variants strong; 'revy' distinctive enough set strong as well; roberta given name weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

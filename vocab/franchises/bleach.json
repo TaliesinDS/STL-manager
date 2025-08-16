@@ -12,12 +12,13 @@
   {"canonical": "hiyori_sarugaki", "aliases": ["hiyori", "sarugaki"]},
   {"canonical": "nemu_kurotsuchi", "aliases": ["nemu", "kurotsuchi"]}
   ,{"canonical": "soi_fon", "aliases": ["soi_fon", "soifon", "sui_feng"]}
+  ,{"canonical": "orihime_inoue", "aliases": ["orihime", "inoue"]}
   ],
   "tokens": {
-  "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng", "nemu_kurotsuchi", "nemu"],
-  "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa", "kurotsuchi"],
+  "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng", "nemu_kurotsuchi", "nemu", "orihime_inoue", "orihime"],
+  "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa", "kurotsuchi", "inoue"],
     "stop_conflicts": [],
-  "notes": "Added Rukia Kuchiki, Lisa Yadomaru, Hiyori Sarugaki; now Nemu Kurotsuchi (full strong + given strong; surname weak)."
+  "notes": "Added Rukia, Lisa, Hiyori; then Nemu. Now added Orihime Inoue (given + full strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

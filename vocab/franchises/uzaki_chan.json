@@ -1,0 +1,16 @@
+{
+  "franchise": "uzaki_chan",
+  "display_name": "Uzaki-chan Wants to Hang Out!",
+  "source_version": 1,
+  "aliases": ["uzaki_chan", "uzaki_chan_wants_to_hang_out"],
+  "characters": [
+    {"canonical": "hana_uzaki", "aliases": ["hana", "uzaki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hana_uzaki"],
+    "weak_signals": ["hana", "uzaki"],
+    "stop_conflicts": [],
+    "notes": "Added Hana Uzaki; common given name weak; full name strong." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -5,13 +5,14 @@
   "aliases": ["disney"],
   "characters": [
     {"canonical": "snow_white_disney", "aliases": ["snow_white", "snow"]},
-    {"canonical": "aunt_cass", "aliases": ["cass", "aunt_cass"]}
+  {"canonical": "aunt_cass", "aliases": ["cass", "aunt_cass"]},
+  {"canonical": "mulan_disney", "aliases": ["mulan", "fa_mulan"]}
   ],
   "tokens": {
-  "strong_signals": ["snow_white_disney", "snow_white", "aunt_cass"],
-  "weak_signals": ["snow", "disney", "cass"],
+  "strong_signals": ["snow_white_disney", "snow_white", "aunt_cass", "mulan_disney", "mulan"],
+  "weak_signals": ["snow", "disney", "cass", "fa_mulan"],
     "stop_conflicts": [],
-  "notes": "Generic 'snow' weak; added Aunt Cass (Big Hero 6) into broad Disney bucket; 'cass' weak." 
+  "notes": "Generic 'snow' weak; added Aunt Cass (Big Hero 6) earlier; now added Mulan (qualified + common name strong, archaic family form weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

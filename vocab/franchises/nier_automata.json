@@ -5,13 +5,14 @@
   "aliases": ["nier_automata", "nier", "automata"],
   "characters": [
     {"canonical": "2b", "aliases": ["yoRHa_no2_type_b", "yorha_2b"]},
-    {"canonical": "a2_nier", "aliases": ["a2", "yoRHa_type_a_no2"]}
+  {"canonical": "a2_nier", "aliases": ["a2", "yoRHa_type_a_no2"]},
+  {"canonical": "9s_nier", "aliases": ["9s", "yorha_9s", "yoRHa_no9_type_s"]}
   ],
   "tokens": {
-  "strong_signals": ["nier", "automata", "2b", "a2_nier"],
-  "weak_signals": ["yorha", "a2", "yoRHa_type_a_no2"],
+  "strong_signals": ["nier", "automata", "2b", "a2_nier", "9s_nier", "9s"],
+  "weak_signals": ["yorha", "a2", "yoRHa_type_a_no2", "yorha_9s", "yoRHa_no9_type_s"],
     "stop_conflicts": [],
-  "notes": "Added A2; short raw 'a2' weak due to brevity; qualified strong token a2_nier." 
+  "notes": "Added A2 earlier; now 9S (YoRHa No.9 Type S). Digits alone short but '9s' paired with nier strong; YoRHa variant strings weak to avoid noise." 
   },
   "provenance": {"source": "manual_seed"}
 }

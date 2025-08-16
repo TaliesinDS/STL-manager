@@ -7,12 +7,13 @@
     {"canonical": "edelgard", "aliases": []},
     {"canonical": "hilda_fire_emblem", "aliases": ["hilda"]},
     {"canonical": "petra_macneary", "aliases": ["petra"]}
+  , {"canonical": "ingrid_galatea", "aliases": ["ingrid", "galatea"]}
   ],
   "tokens": {
-    "strong_signals": ["edelgard", "hilda_fire_emblem", "petra_macneary"],
-    "weak_signals": ["hilda", "petra"],
+  "strong_signals": ["edelgard", "hilda_fire_emblem", "petra_macneary", "ingrid_galatea", "ingrid"],
+  "weak_signals": ["hilda", "petra", "galatea"],
     "stop_conflicts": [],
-    "notes": "Edelgard distinctive; 'hilda' ambiguous so weak; added Petra Macneary with weak short form."
+  "notes": "Edelgard distinctive; 'hilda' ambiguous so weak; added Petra Macneary earlier. Now Ingrid Galatea (full + given strong, surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

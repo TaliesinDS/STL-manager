@@ -7,13 +7,15 @@
     {"canonical": "ghislaine_dedoldia", "aliases": ["ghislaine"]},
   {"canonical": "eris_boreas_greyrat", "aliases": ["eris", "boreas"]},
   {"canonical": "sylphiette_mt", "aliases": ["sylphiette", "sylph"]},
-  {"canonical": "roxy_migurdia", "aliases": ["roxy", "migurdia"]}
+  {"canonical": "roxy_migurdia", "aliases": ["roxy", "migurdia"]},
+  {"canonical": "pursena_adoldia", "aliases": ["pursena"]},
+  {"canonical": "rinia_dedoldia", "aliases": ["rinia"]}
   ],
   "tokens": {
-  "strong_signals": ["ghislaine", "eris", "sylphiette_mt", "roxy_migurdia", "roxy"],
-  "weak_signals": ["boreas", "sylphiette", "sylph", "migurdia"],
+  "strong_signals": ["ghislaine", "eris", "sylphiette_mt", "roxy_migurdia", "roxy", "pursena_adoldia", "pursena", "rinia_dedoldia", "rinia"],
+  "weak_signals": ["boreas", "sylphiette", "sylph", "migurdia", "dedoldia"],
     "stop_conflicts": [],
-  "notes": "Added Sylphiette (short forms weak) and Roxy Migurdia (given name strong, surname weak)."
+  "notes": "Added Sylphiette and Roxy earlier; now Pursena Adoldia and Rinia Dedoldia (distinctive given names strong; added clan surname dedoldia as weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

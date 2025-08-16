@@ -5,12 +5,13 @@
   "aliases": ["no_game_no_life"],
   "characters": [
     {"canonical": "jibril_ngnl", "aliases": ["jibril"]}
+  , {"canonical": "stephanie_dola", "aliases": ["stephanie", "steph", "dola"]}
   ],
   "tokens": {
-    "strong_signals": ["jibril_ngnl"],
-    "weak_signals": ["jibril"],
+  "strong_signals": ["jibril_ngnl", "stephanie_dola"],
+  "weak_signals": ["jibril", "stephanie", "steph", "dola"],
     "stop_conflicts": [],
-    "notes": "Qualifier for strong token; short name weak due to possible other uses." 
+  "notes": "Qualifier for strong token; added Stephanie Dola (full strong; common short forms weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }
