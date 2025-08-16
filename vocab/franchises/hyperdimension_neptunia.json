@@ -1,0 +1,16 @@
+{
+  "franchise": "hyperdimension_neptunia",
+  "display_name": "Hyperdimension Neptunia",
+  "source_version": 1,
+  "aliases": ["hyperdimension_neptunia", "neptunia"],
+  "characters": [
+    {"canonical": "iris_heart", "aliases": ["iris_heart", "irisheart"]}
+  ],
+  "tokens": {
+    "strong_signals": ["iris_heart"],
+    "weak_signals": ["irisheart"],
+    "stop_conflicts": ["iris_flower"],
+    "notes": "CPU form of Plutia; underscore variant strong, concatenated variant weak; add stop conflict for literal flower usage." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

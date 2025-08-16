@@ -1,0 +1,16 @@
+{
+  "franchise": "the_boys",
+  "display_name": "The Boys",
+  "source_version": 1,
+  "aliases": ["the_boys"],
+  "characters": [
+    {"canonical": "stormfront_the_boys", "aliases": ["stormfront"]}
+  ],
+  "tokens": {
+    "strong_signals": ["stormfront_the_boys", "stormfront"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Given name distinctive enough; include qualified variant." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

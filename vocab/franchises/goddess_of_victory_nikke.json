@@ -1,0 +1,9 @@
+{
+  "franchise": "goddess_of_victory_nikke",
+  "display_name": "Goddess of Victory: Nikke (Deprecated Duplicate)",
+  "deprecated": true,
+  "note": "Use nikke.json consolidated manifest.",
+  "characters": [],
+  "tokens": {"strong_signals": [], "weak_signals": [], "stop_conflicts": [], "notes": "Deprecated duplicate; kept as empty stub."},
+  "provenance": {"source": "manual_deprecation", "replaced_by": "nikke"}
+}

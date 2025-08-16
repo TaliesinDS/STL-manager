@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["fire_force", "enkon_no_shouboutai"],
   "characters": [
-    {"canonical": "tamaki_kotatsu", "aliases": ["tamaki", "kotatsu"]}
+    {"canonical": "tamaki_kotatsu", "aliases": ["tamaki", "kotatsu"]},
+    {"canonical": "maki_oze", "aliases": ["maki", "oze"]}
   ],
   "tokens": {
-    "strong_signals": ["tamaki_kotatsu", "tamaki"],
-    "weak_signals": ["kotatsu"],
+  "strong_signals": ["tamaki_kotatsu", "tamaki", "maki_oze", "maki"],
+  "weak_signals": ["kotatsu", "oze"],
     "stop_conflicts": [],
-    "notes": "Given name strong; surname weak." 
+  "notes": "Given names strong; surnames weak; added Maki Oze." 
   },
   "provenance": {"source": "manual_seed"}
 }

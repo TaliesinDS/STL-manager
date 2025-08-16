@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["disney"],
   "characters": [
-    {"canonical": "snow_white_disney", "aliases": ["snow_white", "snow"]}
+    {"canonical": "snow_white_disney", "aliases": ["snow_white", "snow"]},
+    {"canonical": "aunt_cass", "aliases": ["cass", "aunt_cass"]}
   ],
   "tokens": {
-    "strong_signals": ["snow_white_disney", "snow_white"],
-    "weak_signals": ["snow", "disney"],
+  "strong_signals": ["snow_white_disney", "snow_white", "aunt_cass"],
+  "weak_signals": ["snow", "disney", "cass"],
     "stop_conflicts": [],
-    "notes": "Generic 'snow' weak; qualified & full name strong." 
+  "notes": "Generic 'snow' weak; added Aunt Cass (Big Hero 6) into broad Disney bucket; 'cass' weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

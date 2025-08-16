@@ -1,0 +1,17 @@
+{
+  "franchise": "attack_on_titan",
+  "display_name": "Attack on Titan",
+  "source_version": 1,
+  "aliases": ["attack_on_titan", "aot"],
+  "characters": [
+    {"canonical": "annie_leonhart", "aliases": ["annie", "leonhart"]},
+    {"canonical": "sasha_braus", "aliases": ["sasha", "braus"]}
+  ],
+  "tokens": {
+  "strong_signals": ["annie_leonhart", "annie", "sasha_braus", "sasha"],
+  "weak_signals": ["leonhart", "aot", "braus"],
+    "stop_conflicts": [],
+  "notes": "Added Sasha Braus; given names strong; surnames weak; acronym weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

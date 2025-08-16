@@ -5,13 +5,14 @@
   "aliases": ["blue_archive"],
   "characters": [
   {"canonical": "asuna_blue_archive", "aliases": ["asuna"]},
-  {"canonical": "karin_blue_archive", "aliases": ["karin"]}
+  {"canonical": "karin_blue_archive", "aliases": ["karin"]},
+  {"canonical": "hoshino_blue_archive", "aliases": ["hoshino"]}
   ],
   "tokens": {
-  "strong_signals": ["asuna_blue_archive", "karin_blue_archive"],
-  "weak_signals": ["asuna", "karin"],
+  "strong_signals": ["asuna_blue_archive", "karin_blue_archive", "hoshino_blue_archive"],
+  "weak_signals": ["asuna", "karin", "hoshino"],
     "stop_conflicts": [],
-  "notes": "'asuna' overlaps with SAO; 'karin' common; both short forms weak, qualified strong."
+  "notes": "'asuna' overlaps with SAO; 'karin' common; 'hoshino' common surname; short forms weak, qualified strong."
   },
   "provenance": {"source": "manual_seed"}
 }

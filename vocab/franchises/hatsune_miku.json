@@ -1,0 +1,16 @@
+{
+  "franchise": "hatsune_miku",
+  "display_name": "Hatsune Miku / Vocaloid",
+  "source_version": 1,
+  "aliases": ["hatsune_miku"],
+  "characters": [
+    {"canonical": "mei_hatsume", "aliases": ["mei_hatsume", "mei"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mei_hatsume"],
+    "weak_signals": ["mei"],
+    "stop_conflicts": [],
+    "notes": "Clarification: 'Mei Hatsume' actually from MHA; if intended 'Hatsune Miku' different character. Keeping as provided but may belong in MHA."
+  },
+  "provenance": {"source": "manual_seed", "status": "needs_review"}
+}

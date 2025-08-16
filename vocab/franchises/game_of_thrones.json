@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["game_of_thrones", "got"],
   "characters": [
-    {"canonical": "daenerys_targaryen", "aliases": ["daenerys", "targaryen"]}
+    {"canonical": "daenerys_targaryen", "aliases": ["daenerys", "targaryen"]},
+    {"canonical": "arya_stark", "aliases": ["arya", "stark"]}
   ],
   "tokens": {
-    "strong_signals": ["daenerys", "targaryen"],
-    "weak_signals": ["got"],
+  "strong_signals": ["daenerys", "targaryen", "arya_stark", "arya"],
+  "weak_signals": ["got", "stark"],
     "stop_conflicts": [],
-    "notes": "House/family name plus given name distinctive; acronym weak."
+  "notes": "Added Arya Stark; house surname weak shared across family; given name strong."
   },
   "provenance": {"source": "manual_seed"}
 }

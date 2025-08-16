@@ -1,0 +1,16 @@
+{
+  "franchise": "avatar_the_last_airbender",
+  "display_name": "Avatar: The Last Airbender",
+  "source_version": 1,
+  "aliases": ["avatar_the_last_airbender", "avatar_last_airbender", "atla"],
+  "characters": [
+    {"canonical": "toph_beifong", "aliases": ["toph", "beifong"]}
+  ],
+  "tokens": {
+    "strong_signals": ["toph_beifong", "toph"],
+    "weak_signals": ["beifong", "atla"],
+    "stop_conflicts": [],
+    "notes": "Given name distinctive strong; surname weak; acronym weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

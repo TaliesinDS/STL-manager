@@ -12,7 +12,8 @@
     {"canonical": "noctis_lucis_caelum", "aliases": ["noctis", "lucis", "caelum"]},
     {"canonical": "lunafreya_nox_fleuret", "aliases": ["lunafreya", "luna", "nox", "fleuret"]},
     {"canonical": "alisaie_leveilleur", "aliases": ["alisaie", "leveilleur"]},
-    {"canonical": "yshtola_rhul", "aliases": ["yshtola", "y_shtola"]}
+  {"canonical": "yshtola_rhul", "aliases": ["yshtola", "y_shtola"]},
+  {"canonical": "yuffie_kisaragi", "aliases": ["yuffie", "kisaragi"]}
   ],
   "tokens": {
     "strong_signals": [
@@ -20,12 +21,13 @@
       "rikku",
       "noctis_lucis_caelum", "noctis",
       "lunafreya_nox_fleuret", "lunafreya",
-      "alisaie_leveilleur", "alisaie",
-      "yshtola_rhul", "yshtola"
+  "alisaie_leveilleur", "alisaie",
+  "yshtola_rhul", "yshtola",
+  "yuffie_kisaragi", "yuffie"
     ],
     "weak_signals": [
       "lockhart", "luna", "leveilleur", "y_shtola",
-      "lucis", "caelum", "nox", "fleuret",
+  "lucis", "caelum", "nox", "fleuret", "kisaragi",
       "ffvii", "ffx", "ffxiv", "ffxv",
       "final_fantasy_vii", "final_fantasy_x", "final_fantasy_xiv", "final_fantasy_xv"
     ],

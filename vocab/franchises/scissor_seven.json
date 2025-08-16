@@ -1,0 +1,16 @@
+{
+  "franchise": "scissor_seven",
+  "display_name": "Scissor Seven",
+  "source_version": 1,
+  "aliases": ["scissor_seven"],
+  "characters": [
+    {"canonical": "thirteen_scissor_seven", "aliases": ["thirteen"]}
+  ],
+  "tokens": {
+    "strong_signals": ["thirteen_scissor_seven"],
+    "weak_signals": ["thirteen"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; numeric word generic so weak alone." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

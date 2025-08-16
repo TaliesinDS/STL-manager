@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["high_school_dxd", "hs_dxd"],
   "characters": [
-    {"canonical": "rias_gremory", "aliases": ["rias", "gremory"]}
+    {"canonical": "rias_gremory", "aliases": ["rias", "gremory"]},
+    {"canonical": "akeno_himejima", "aliases": ["akeno", "himejima"]}
   ],
   "tokens": {
-    "strong_signals": ["rias", "gremory"],
-    "weak_signals": ["dxd"],
+  "strong_signals": ["rias", "gremory", "akeno_himejima", "akeno"],
+  "weak_signals": ["dxd", "himejima"],
     "stop_conflicts": ["high", "school"],
-    "notes": "Common words suppressed; character names drive detection."
+  "notes": "Common words suppressed; added Akeno Himejima (given name strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

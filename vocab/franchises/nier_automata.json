@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["nier_automata", "nier", "automata"],
   "characters": [
-    {"canonical": "2b", "aliases": ["yoRHa_no2_type_b", "yorha_2b"]}
+    {"canonical": "2b", "aliases": ["yoRHa_no2_type_b", "yorha_2b"]},
+    {"canonical": "a2_nier", "aliases": ["a2", "yoRHa_type_a_no2"]}
   ],
   "tokens": {
-    "strong_signals": ["nier", "automata", "2b"],
-    "weak_signals": ["yorha"],
+  "strong_signals": ["nier", "automata", "2b", "a2_nier"],
+  "weak_signals": ["yorha", "a2", "yoRHa_type_a_no2"],
     "stop_conflicts": [],
-    "notes": "Whitelist short token '2b' explicitly; require co-occurrence with nier|automata absent if alias recognized directly."
+  "notes": "Added A2; short raw 'a2' weak due to brevity; qualified strong token a2_nier." 
   },
   "provenance": {"source": "manual_seed"}
 }

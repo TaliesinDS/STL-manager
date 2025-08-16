@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["gantz"],
   "characters": [
-    {"canonical": "anzu_yamasaki", "aliases": ["anzu", "yamasaki"]}
+    {"canonical": "anzu_yamasaki", "aliases": ["anzu", "yamasaki"]},
+    {"canonical": "reika_shimohira", "aliases": ["reika", "shimohira"]}
   ],
   "tokens": {
-    "strong_signals": ["anzu"],
-    "weak_signals": ["yamasaki"],
+  "strong_signals": ["anzu", "reika_shimohira", "reika"],
+  "weak_signals": ["yamasaki", "shimohira"],
     "stop_conflicts": [],
-    "notes": "Anzu distinctive; surname weak."
+  "notes": "Anzu distinctive; added Reika Shimohira (given name distinctive strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -6,10 +6,11 @@
   "characters": [
   {"canonical": "le_malin", "aliases": ["le_malin"]},
   {"canonical": "st_louis", "aliases": ["st_louis", "saint_louis"]},
-  {"canonical": "richelieu", "aliases": ["richelieu"]}
+  {"canonical": "richelieu", "aliases": ["richelieu"]},
+  {"canonical": "tosa", "aliases": ["tosa"]}
   ],
   "tokens": {
-  "strong_signals": ["le_malin", "st_louis", "richelieu"],
+  "strong_signals": ["le_malin", "st_louis", "richelieu", "tosa"],
   "weak_signals": ["saint_louis"],
   "stop_conflicts": ["louis"],
   "notes": "Merged St. Louis; added Richelieu; city name part kept in stop conflicts; variant 'saint_louis' weak." 

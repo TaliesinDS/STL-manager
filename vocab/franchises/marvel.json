@@ -13,13 +13,14 @@
     {"canonical": "emma_frost", "aliases": ["emma", "frost"]},
     {"canonical": "hope_summers", "aliases": ["hope", "summers"]},
   {"canonical": "mantis", "aliases": []},
-  {"canonical": "psylocke", "aliases": ["betsy_braddock", "betsy", "braddock"]}
+  {"canonical": "psylocke", "aliases": ["betsy_braddock", "betsy", "braddock"]},
+  {"canonical": "kitty_pryde", "aliases": ["kitty", "pryde", "shadowcat"]}
   ],
   "tokens": {
-  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke"],
-  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock"],
+  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat"],
+  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde"],
     "stop_conflicts": ["mantis_religious"],
-  "notes": "Added Mantis earlier; now added Psylocke (Betsy Braddock). Mantis kept strong with stop pattern to avoid generic insect context."
+  "notes": "Added Mantis earlier; then Psylocke; now Kitty Pryde (Shadowcat). Shadowcat & full name strong; short components weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

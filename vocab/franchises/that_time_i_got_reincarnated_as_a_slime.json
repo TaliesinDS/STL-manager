@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["tensura", "that_time_i_got_reincarnated_as_a_slime"],
   "characters": [
-    {"canonical": "shuna_tensura", "aliases": ["shuna"]}
+    {"canonical": "shuna_tensura", "aliases": ["shuna"]},
+    {"canonical": "milim_nava", "aliases": ["milim", "nava"]}
   ],
   "tokens": {
-    "strong_signals": ["shuna_tensura", "shuna"],
-    "weak_signals": [],
+  "strong_signals": ["shuna_tensura", "shuna", "milim_nava", "milim"],
+  "weak_signals": ["nava"],
     "stop_conflicts": [],
-    "notes": "Name relatively distinctive; include qualified form." 
+  "notes": "Added Milim Nava; given names strong; 'nava' weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

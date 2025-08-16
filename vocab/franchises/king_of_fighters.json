@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "shermie", "aliases": []},
     {"canonical": "may_lee", "aliases": ["may", "lee", "maylee"]},
-    {"canonical": "angel_kof", "aliases": ["angel"]}
+    {"canonical": "angel_kof", "aliases": ["angel"]},
+    {"canonical": "mai_shiranui", "aliases": ["mai", "shiranui"]}
   ],
   "tokens": {
-  "strong_signals": ["shermie", "may_lee", "maylee", "angel_kof"],
-  "weak_signals": ["kof", "may", "lee", "angel"],
+  "strong_signals": ["shermie", "may_lee", "maylee", "angel_kof", "mai_shiranui", "shiranui"],
+  "weak_signals": ["kof", "may", "lee", "angel", "mai"],
     "stop_conflicts": [],
-  "notes": "Added May Lee earlier; now added Angel (qualified token strong; short form weak due to generic nature)."
+  "notes": "Added May Lee earlier; then Angel; now Mai Shiranui (surname distinctive strong; given name weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

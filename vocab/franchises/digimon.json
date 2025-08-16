@@ -1,0 +1,17 @@
+{
+  "franchise": "digimon",
+  "display_name": "Digimon",
+  "source_version": 1,
+  "aliases": ["digimon"],
+  "characters": [
+    {"canonical": "angewomon", "aliases": ["angewomon"]},
+    {"canonical": "devimon", "aliases": ["devimon"]}
+  ],
+  "tokens": {
+    "strong_signals": ["angewomon", "devimon"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Both distinctive evolved form names." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

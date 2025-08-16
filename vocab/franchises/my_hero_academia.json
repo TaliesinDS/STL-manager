@@ -7,13 +7,15 @@
     {"canonical": "tsuyu_asui", "aliases": ["tsuyu", "asui"]},
     {"canonical": "himiko_toga", "aliases": ["toga", "himiko"]},
   {"canonical": "momo_yaoyorozu", "aliases": ["momo", "yaoyorozu"]},
-  {"canonical": "toru_hagakure", "aliases": ["toru", "hagakure", "tooru"]}
+  {"canonical": "toru_hagakure", "aliases": ["toru", "hagakure", "tooru"]},
+  {"canonical": "ochaco_uraraka", "aliases": ["ochaco", "uraraka"]},
+  {"canonical": "mei_hatsume", "aliases": ["mei", "hatsume"]}
   ],
   "tokens": {
-  "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo", "toru_hagakure", "toru", "tooru"],
-  "weak_signals": ["mha", "himiko", "yaoyorozu", "hagakure"],
+  "strong_signals": ["tsuyu", "asui", "toga", "momo_yaoyorozu", "momo", "toru_hagakure", "toru", "tooru", "ochaco_uraraka", "ochaco", "mei_hatsume", "mei"],
+  "weak_signals": ["mha", "himiko", "yaoyorozu", "hagakure", "uraraka", "hatsume"],
     "stop_conflicts": [],
-    "notes": "Added Momo Yaoyorozu; full qualified strong; surname weak."
+  "notes": "Added Momo, Ochaco earlier; now added Mei Hatsume (given name strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

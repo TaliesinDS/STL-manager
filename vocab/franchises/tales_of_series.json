@@ -1,0 +1,16 @@
+{
+  "franchise": "tales_of_series",
+  "display_name": "Tales Of (Series)",
+  "source_version": 1,
+  "aliases": ["tales_of", "tales_series"],
+  "characters": [
+    {"canonical": "pascal_tales_of_graces", "aliases": ["pascal"]}
+  ],
+  "tokens": {
+    "strong_signals": ["pascal_tales_of_graces"],
+    "weak_signals": ["pascal"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong to disambiguate from mathematician; short name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

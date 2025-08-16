@@ -1,0 +1,16 @@
+{
+  "franchise": "the_mummy",
+  "display_name": "The Mummy (Film Series)",
+  "source_version": 1,
+  "aliases": ["the_mummy"],
+  "characters": [
+    {"canonical": "anck_su_namun", "aliases": ["anck_su_namun", "anck", "ansu"]}
+  ],
+  "tokens": {
+    "strong_signals": ["anck_su_namun"],
+    "weak_signals": ["anck", "ansu"],
+    "stop_conflicts": [],
+    "notes": "Full ceremonial name strong; shortened forms weak due to ambiguity." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
