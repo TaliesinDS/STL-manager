@@ -67,8 +67,11 @@ Phase Legend:
 | game_system | string | P1 | warhammer_40k, age_of_sigmar, dnd5e, etc. | Token normalization |
 | codex_faction | string | P1 | e.g., necrons, ossiarch_bonereapers | |
 | codex_unit_name | string | P2 | Kainan's Reapers | Apostrophes preserved |
-| proxy_type | enum | P2 | official, direct_clone, stylized_proxy, counts_as, kitbash_pack | Manual / heuristic |
+| proxy_type | enum | P2 | official, direct_clone, stylized_proxy, counts_as, kitbash_pack | Manual / heuristic (coarse overall classification for the variant as a whole) |
+| multi_unit_proxy_flag | boolean | P2 | Variant can legitimately represent multiple distinct codex units depending on selected/printed loadout | Derived if >1 variant_unit row with distinct unit_ids |
 | loadout_variants | array<string> | P2 | Weapon / gear options | From tokens |
+| supported_loadout_codes | array<string> | P2 | Normalized loadout codes this variant (alone) can realize (e.g., bolter, plasma_gun, power_fist) | Derived from filenames / part tokens; excludes those only achievable via external kits |
+| loadout_coverage_summary | JSON (virtual) | P2 | Per candidate unit: list of loadouts with status (complete, partial, missing) and missing component codes | Not persisted; computed on demand |
 | base_size_mm | integer | P2 | 25, 32, 40, 60, etc. | Derived / manual |
 | rule_edition | integer | FUTURE | Edition number | If encoded |
 | lineage_family | string | P1 | Broad ancestry bucket (elf, human, dwarf, orc, undead, demon, construct, plantfolk, beastfolk, lizardfolk, dragonkin, angelic, aberration, goblin, halfling, giant, vampire, werebeast, slime, skeleton, insectfolk, elemental, fae, mixed, unknown) | High-level filter |
@@ -115,6 +118,9 @@ Phase Legend:
 | compatible_units | array<string> | P2 | Canonical unit names targeted (e.g., rhino) | Will become FK list |
 | compatible_factions | array<string> | P2 | Factions explicitly referenced | Subset codex_faction |
 | multi_faction_flag | boolean | P2 | True if >1 compatible_factions | Derived |
+| compatible_model_group_ids | array<UUID> | P2 | Model groups (base bodies) this variant's components are explicitly designed to fit | Preferred over per-variant linkage for stability |
+| compatible_variant_ids | array<UUID> | P2 | Specific variant shells/bodies confirmed compatible (fallback when group not yet formed) | Transitional until grouping mature |
+| compatibility_assertions | JSON (virtual) | P2 | Expanded structured list: each { target_type: model_group|variant, target_id, fit_type, confidence, evidence_tokens } | Derived from relationship table |
 | attachment_points | array<string> | P2 | turret_ring, sponson_left, sponson_right, hull_top, hull_side_left, hull_side_right, head, left_arm, right_arm, backpack, shoulder_left, shoulder_right, base_top | Controlled vocab list |
 | replaces_parts | array<string> | P2 | Parts replaced (turret, sponson, head, hatch, weapon) | Review targeting |
 | additive_only_flag | boolean | P2 | No original part removal required | Derived |
@@ -196,6 +202,13 @@ Phase Legend:
 | variant_archive | variant_id, archive_id | Multi-archive provenance |
 | variant_tag | variant_id, tag | Manual tags many-to-many |
 | variant_unit | variant_id, unit_id, proxy_type | Link variant to unit with proxy classification |
+| variant_unit_proxy | variant_id, unit_id, proxy_type, proxy_role, confidence, loadout_code, evidence_tokens | Granular per-unit (and optionally per-loadout) proxy assertion rows; supersets simple variant_unit; proxy_role examples: full_alt_sculpt, counts_as, conversion_kit, weapon_swap, upgrade_bits |
+| variant_component | variant_id, component_id | Associate a variant file/group providing a reusable component (weapon arm, backpack) |
+| component | component_id, code, component_type, attachment_points, replaces_parts, weapon_profile_code | Catalog of discrete parts enabling loadouts |
+| unit_loadout | unit_loadout_id, unit_id, loadout_code, required_component_codes[], optional_component_codes[], exclusivity_groups[] | Canonical loadout definition for a unit |
+| unit_loadout_requirement | (alt if not array) unit_loadout_id, component_code, requirement_type(required|optional), group_key | Normalized relational form if arrays not stored inline |
+| variant_component_supply | variant_id, component_code, supply_scope (self_only|faction_wide|multi_faction|system_wide|generic), confidence | Declares that a variant supplies a component usable for loadout fulfillment |
+| variant_component_compatibility | component_variant_id, target_model_group_id (nullable), target_variant_id (nullable), fit_type (exact|near|generic|uncertain), confidence (certain|probable|guess), evidence_tokens[] | Explicit compatibility assertion enabling UI to show which base models this component fits |
 | variant_character | variant_id, character_id, likeness_confidence | Link variant to character |
 | collection_variant | collection_id, variant_id | Membership in monthly release |
 

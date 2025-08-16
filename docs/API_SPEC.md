@@ -93,6 +93,84 @@ Sample response:
 GET /api/v1/variants/{id}
 - Returns full detail (all metadata fields + override map + warnings + audit summary counts).
 
+GET /api/v1/variants/{id}/proxy-candidates
+- Returns list of units the variant can proxy (directly or via loadout kits), with summary of completeness.
+Response:
+```
+{
+	"success": true,
+	"data": {
+		"variant_id": "uuid-1",
+		"units": [
+			{
+				"unit_id": "u-abc",
+				"unit_name": "Intercessors",
+				"game_system": "warhammer_40k",
+				"faction": "adeptus_astartes",
+				"proxy_type": "stylized_proxy",
+				"multi_unit_proxy_flag": true,
+				"loadout_coverage": {
+					"bolt_rifle": { "status": "complete" },
+					"auto_bolt_rifle": { "status": "partial", "missing_components": ["left_auto_arm"] },
+					"stalker_bolt_rifle": { "status": "missing" }
+				},
+				"coverage_score": 0.67
+			}
+		]
+	}
+}
+```
+
+GET /api/v1/variants/{id}/loadout-coverage?unit_id=... (optional unit filter)
+- Detailed matrix of loadout requirements vs supplied components.
+
+GET /api/v1/variants/{id}/component-compatibility
+- Lists explicit compatibility assertions for component-providing variant (arms, weapons, backpacks).
+Response:
+```
+{
+	"success": true,
+	"data": {
+		"component_variant_id": "uuid-comp",
+		"compatibility": [
+			{ "target_type": "model_group", "target_id": "mg-123", "fit_type": "exact", "confidence": "certain" },
+			{ "target_type": "variant", "target_id": "v-shell1", "fit_type": "near", "confidence": "probable" }
+		]
+	}
+}
+```
+
+POST /api/v1/variants/{id}/component-compatibility
+```
+{
+	"assertions": [
+		{ "target_type": "model_group", "target_id": "mg-123", "fit_type": "exact", "confidence": "certain", "evidence_tokens": ["titan_forge", "intercessor" ] }
+	]
+}
+```
+
+DELETE /api/v1/variants/{id}/component-compatibility/{assertion_id}
+- Soft deletes assertion.
+
+POST /api/v1/variants/{id}/proxy-assertions
+```
+{
+	"assertions": [
+		{
+			"unit_id": "u-abc",
+			"proxy_type": "counts_as",
+			"loadout_code": "bolt_rifle",
+			"evidence_tokens": ["intercessor", "bolt", "primaris"],
+			"confidence": "probable"
+		}
+	]
+}
+```
+Response returns created rows (id, normalized fields).
+
+DELETE /api/v1/variants/{id}/proxy-assertions/{assertion_id}
+- Removes granular proxy assertion (soft delete with audit).
+
 PATCH /api/v1/variants/{id}
 Request:
 ```
@@ -149,6 +227,7 @@ POST /api/v1/jobs/{id}/cancel (best-effort)
 
 ## 4. Vocabulary Management
 Domains: designer, franchise, lineage_family, lineage_primary, faction, vehicle_type, vehicle_era, terrain_subtype, base_theme, asset_category (rare), addon_type, style_primary.
+Upcoming domains (Phase 2+): component_type, weapon_profile_code, loadout_code.
 
 GET /api/v1/vocab/{domain}?q=partial&limit=20
 
@@ -299,6 +378,9 @@ GET /api/v1/system/versions
 - ETag/If-None-Match on GET variant(s) for caching.
 
 ## 17. Open API Questions
+- Do we expose a batch endpoint to compute coverage for an arbitrary selection of variants to help plan an army list print queue?
+- Should loadout completeness scoring weight required vs optional components differently (e.g., optional omitted still counts as complete)?
+- Policy for cross-designer component compatibility (e.g., allow linking third-party weapon arms to official kit base body) — need explicit user opt-in? 
 - GraphQL overlay needed? (Maybe later for complex querying.)
 - Multi-tenant isolation? (Not in scope now.)
 - Delta feed for synchronization beyond audit (e.g., change stream).
