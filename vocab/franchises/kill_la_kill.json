@@ -1,0 +1,16 @@
+{
+  "franchise": "kill_la_kill",
+  "display_name": "Kill la Kill",
+  "source_version": 1,
+  "aliases": ["kill_la_kill"],
+  "characters": [
+    {"canonical": "ryuko_matoi", "aliases": ["ryuko", "matoi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ryuko", "matoi"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Distinctive protagonist name."
+  },
+  "provenance": {"source": "manual_seed"}
+}

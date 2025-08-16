@@ -1,0 +1,16 @@
+{
+  "franchise": "high_school_dxd",
+  "display_name": "High School DxD",
+  "source_version": 1,
+  "aliases": ["high_school_dxd", "hs_dxd"],
+  "characters": [
+    {"canonical": "rias_gremory", "aliases": ["rias", "gremory"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rias", "gremory"],
+    "weak_signals": ["dxd"],
+    "stop_conflicts": ["high", "school"],
+    "notes": "Common words suppressed; character names drive detection."
+  },
+  "provenance": {"source": "manual_seed"}
+}

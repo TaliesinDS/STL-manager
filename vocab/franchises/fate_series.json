@@ -1,0 +1,17 @@
+{
+  "franchise": "fate_series",
+  "display_name": "Fate Series",
+  "source_version": 1,
+  "aliases": ["fate", "fate_stay_night"],
+  "characters": [
+    {"canonical": "artoria_pendragon", "aliases": ["saber", "artoria", "altria"]},
+    {"canonical": "gilgamesh", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["saber", "artoria", "altria", "gilgamesh"],
+    "weak_signals": ["fate"],
+    "stop_conflicts": [],
+    "notes": "Saber can appear generically for sword themes but acceptable as strong given typical pairing."
+  },
+  "provenance": {"source": "manual_seed"}
+}

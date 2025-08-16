@@ -1,0 +1,16 @@
+{
+  "franchise": "bayonetta",
+  "display_name": "Bayonetta",
+  "source_version": 1,
+  "aliases": ["bayonetta"],
+  "characters": [
+    {"canonical": "bayonetta", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["bayonetta"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Single distinctive name."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,17 @@
+{
+  "franchise": "neon_genesis_evangelion",
+  "display_name": "Neon Genesis Evangelion",
+  "source_version": 1,
+  "aliases": ["evangelion", "nge"],
+  "characters": [
+    {"canonical": "asuka_langley", "aliases": ["asuka"]},
+    {"canonical": "rei_ayanami", "aliases": ["rei", "ayanami_rei"]}
+  ],
+  "tokens": {
+    "strong_signals": ["asuka", "ayanami", "ayanami_rei"],
+    "weak_signals": ["rei", "evangelion"],
+    "stop_conflicts": [],
+    "notes": "Added compound token ayanami_rei for stronger match; 'rei' still weak due to ambiguity."
+  },
+  "provenance": {"source": "manual_seed"}
+}

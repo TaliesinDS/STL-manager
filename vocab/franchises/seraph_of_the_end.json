@@ -1,0 +1,16 @@
+{
+  "franchise": "seraph_of_the_end",
+  "display_name": "Seraph of the End",
+  "source_version": 1,
+  "aliases": ["seraph_of_the_end", "owari_no_seraph"],
+  "characters": [
+    {"canonical": "hiiragi_utena", "aliases": ["hiiragi", "utena"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hiiragi", "utena"],
+    "weak_signals": ["seraph"],
+    "stop_conflicts": [],
+    "notes": "Surname and given name distinctive; 'seraph' generic."
+  },
+  "provenance": {"source": "manual_seed"}
+}

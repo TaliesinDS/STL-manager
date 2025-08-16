@@ -1,0 +1,17 @@
+{
+  "franchise": "berserk",
+  "display_name": "Berserk",
+  "source_version": 1,
+  "aliases": ["berserk"],
+  "characters": [
+    {"canonical": "guts", "aliases": []},
+    {"canonical": "griffith", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["guts", "griffith"],
+    "weak_signals": ["berserk"],
+    "stop_conflicts": [],
+    "notes": "Character names distinctive; 'guts' may appear generically but likely paired."
+  },
+  "provenance": {"source": "manual_seed"}
+}

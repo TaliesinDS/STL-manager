@@ -1,0 +1,16 @@
+{
+  "franchise": "teenage_mutant_ninja_turtles",
+  "display_name": "Teenage Mutant Ninja Turtles",
+  "source_version": 1,
+  "aliases": ["tmnt", "teenage_mutant_ninja_turtles"],
+  "characters": [
+    {"canonical": "april_oneill", "aliases": ["april", "oneill"]}
+  ],
+  "tokens": {
+    "strong_signals": ["april_oneill"],
+    "weak_signals": ["april", "oneill"],
+    "stop_conflicts": [],
+    "notes": "Month name 'april' weak; needs pairing."
+  },
+  "provenance": {"source": "manual_seed"}
+}

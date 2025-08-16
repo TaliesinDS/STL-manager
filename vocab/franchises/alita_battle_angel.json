@@ -1,0 +1,16 @@
+{
+  "franchise": "alita_battle_angel",
+  "display_name": "Alita: Battle Angel",
+  "source_version": 1,
+  "aliases": ["alita", "battle_angel"],
+  "characters": [
+    {"canonical": "alita", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["alita"],
+    "weak_signals": ["battle", "angel"],
+    "stop_conflicts": [],
+    "notes": "Alita unique; other words generic."
+  },
+  "provenance": {"source": "manual_seed"}
+}

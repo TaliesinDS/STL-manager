@@ -1,0 +1,16 @@
+{
+  "franchise": "super_mario",
+  "display_name": "Super Mario",
+  "source_version": 1,
+  "aliases": ["super_mario", "mario"],
+  "characters": [
+    {"canonical": "princess_peach", "aliases": ["peach"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mario"],
+    "weak_signals": ["peach"],
+    "stop_conflicts": ["peach"],
+    "notes": "'peach' alone ambiguous (fruit); treat as weak unless co-occurs with mario or princess token in path."
+  },
+  "provenance": {"source": "manual_seed"}
+}

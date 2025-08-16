@@ -1,0 +1,17 @@
+{
+  "franchise": "one_punch_man",
+  "display_name": "One Punch Man",
+  "source_version": 1,
+  "aliases": ["one_punch_man"],
+  "characters": [
+    {"canonical": "saitama", "aliases": []},
+    {"canonical": "genos", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["saitama", "genos"],
+    "weak_signals": [],
+    "stop_conflicts": ["one"],
+    "notes": "saitama/genos unique; ignore generic 'one'."
+  },
+  "provenance": {"source": "manual_seed"}
+}

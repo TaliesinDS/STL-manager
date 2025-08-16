@@ -1,0 +1,18 @@
+{
+  "franchise": "harry_potter",
+  "display_name": "Harry Potter",
+  "source_version": 1,
+  "aliases": ["harry_potter", "hp"],
+  "characters": [
+    {"canonical": "hermione_granger", "aliases": ["hermione"]},
+    {"canonical": "ron_weasley", "aliases": ["ron"]},
+    {"canonical": "albus_dumbledore", "aliases": ["dumbledore"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hermione", "dumbledore"],
+    "weak_signals": ["weasley", "hogwarts"],
+    "stop_conflicts": ["harry"],
+    "notes": "harry token appears in other contexts; treat as conflict."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "naruto",
+  "display_name": "Naruto",
+  "source_version": 1,
+  "aliases": ["naruto"],
+  "characters": [
+    {"canonical": "anko_mitarashi", "aliases": ["anko", "mitarashi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mitarashi"],
+    "weak_signals": ["anko"],
+    "stop_conflicts": [],
+    "notes": "Surname unique; given name ambiguous across languages."
+  },
+  "provenance": {"source": "manual_seed"}
+}

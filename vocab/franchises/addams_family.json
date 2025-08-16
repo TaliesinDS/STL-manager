@@ -1,0 +1,16 @@
+{
+  "franchise": "addams_family",
+  "display_name": "The Addams Family",
+  "source_version": 1,
+  "aliases": ["addams_family", "addams"],
+  "characters": [
+    {"canonical": "morticia_addams", "aliases": ["morticia"]}
+  ],
+  "tokens": {
+    "strong_signals": ["morticia", "addams"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Surnames and given name distinctive."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "dragon_ball",
+  "display_name": "Dragon Ball",
+  "source_version": 1,
+  "aliases": ["dragon_ball"],
+  "characters": [
+    {"canonical": "android_18", "aliases": ["android18", "android_18"]}
+  ],
+  "tokens": {
+    "strong_signals": ["android_18", "android18"],
+    "weak_signals": ["android"],
+    "stop_conflicts": [],
+    "notes": "Require number for strong; 'android' generic."
+  },
+  "provenance": {"source": "manual_seed"}
+}

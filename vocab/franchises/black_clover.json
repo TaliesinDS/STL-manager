@@ -1,0 +1,14 @@
+{
+  "franchise": "black_clover",
+  "display_name": "Black Clover",
+  "source_version": 1,
+  "aliases": ["black_clover"],
+  "characters": [],
+  "tokens": {
+    "strong_signals": ["black_clover"],
+    "weak_signals": ["clover"],
+    "stop_conflicts": ["black"],
+    "notes": "Treat full phrase as strong; color word excluded."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "bubblegum_crisis",
+  "display_name": "Bubblegum Crisis",
+  "source_version": 1,
+  "aliases": ["bubblegum_crisis"],
+  "characters": [
+    {"canonical": "bubblegum_crisis_mecha_girl", "aliases": ["bubblegum", "crisis"]}
+  ],
+  "tokens": {
+    "strong_signals": ["bubblegum_crisis"],
+    "weak_signals": ["bubblegum", "crisis"],
+    "stop_conflicts": [],
+    "notes": "Placeholder character descriptor until specific names appear."
+  },
+  "provenance": {"source": "manual_seed"}
+}

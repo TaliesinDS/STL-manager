@@ -1,0 +1,16 @@
+{
+  "franchise": "nier_automata",
+  "display_name": "NieR:Automata",
+  "source_version": 1,
+  "aliases": ["nier_automata", "nier", "automata"],
+  "characters": [
+    {"canonical": "2b", "aliases": ["yoRHa_no2_type_b", "yorha_2b"]}
+  ],
+  "tokens": {
+    "strong_signals": ["nier", "automata", "2b"],
+    "weak_signals": ["yorha"],
+    "stop_conflicts": [],
+    "notes": "Whitelist short token '2b' explicitly; require co-occurrence with nier|automata absent if alias recognized directly."
+  },
+  "provenance": {"source": "manual_seed"}
+}

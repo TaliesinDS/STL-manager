@@ -1,0 +1,16 @@
+{
+  "franchise": "hunger_games",
+  "display_name": "The Hunger Games",
+  "source_version": 1,
+  "aliases": ["hunger_games"],
+  "characters": [
+    {"canonical": "katniss_everdeen", "aliases": ["katniss", "everdeen"]}
+  ],
+  "tokens": {
+    "strong_signals": ["katniss", "everdeen"],
+    "weak_signals": ["hunger", "games"],
+    "stop_conflicts": [],
+    "notes": "Character name distinctive; franchise title words generic alone."
+  },
+  "provenance": {"source": "manual_seed"}
+}

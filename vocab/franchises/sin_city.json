@@ -1,0 +1,16 @@
+{
+  "franchise": "sin_city",
+  "display_name": "Sin City",
+  "source_version": 1,
+  "aliases": ["sin_city"],
+  "characters": [
+    {"canonical": "nancy_callahan", "aliases": ["nancy", "callahan"]}
+  ],
+  "tokens": {
+    "strong_signals": ["nancy_callahan"],
+    "weak_signals": ["nancy", "callahan"],
+    "stop_conflicts": [],
+    "notes": "Full name for strong; parts weak due to generic usage."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,17 @@
+{
+  "franchise": "diablo",
+  "display_name": "Diablo",
+  "source_version": 1,
+  "aliases": ["diablo"],
+  "characters": [
+    {"canonical": "lilith_diablo", "aliases": ["lilith"]},
+    {"canonical": "tyrael", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["tyrael"],
+    "weak_signals": ["lilith", "diablo"],
+    "stop_conflicts": [],
+    "notes": "'lilith' collides with other media; treat as weak and disambiguate via co-occurrence (e.g., diablo, sanctuary)."
+  },
+  "provenance": {"source": "manual_seed"}
+}

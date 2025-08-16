@@ -1,0 +1,17 @@
+{
+  "franchise": "bleach",
+  "display_name": "Bleach",
+  "source_version": 1,
+  "aliases": ["bleach"],
+  "characters": [
+    {"canonical": "rangiku_matsumoto", "aliases": ["matsumoto", "rangiku"]},
+    {"canonical": "neliel_tu_odelschwanck", "aliases": ["neliel", "nelliel", "nel"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel"],
+    "weak_signals": ["bleach"],
+    "stop_conflicts": [],
+    "notes": "Short 'nel' may collide; treat as strong only with another bleach token else downgrade in heuristic stage."
+  },
+  "provenance": {"source": "manual_seed"}
+}

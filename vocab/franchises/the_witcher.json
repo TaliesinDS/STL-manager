@@ -1,0 +1,16 @@
+{
+  "franchise": "the_witcher",
+  "display_name": "The Witcher",
+  "source_version": 1,
+  "aliases": ["the_witcher", "witcher"],
+  "characters": [
+    {"canonical": "ciri_the_witcher", "aliases": ["ciri"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ciri"],
+    "weak_signals": ["witcher"],
+    "stop_conflicts": [],
+    "notes": "'ciri' distinctive; 'witcher' weak for generic fantasy use."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,21 @@
+{
+  "franchise": "marvel",
+  "display_name": "Marvel",
+  "source_version": 1,
+  "aliases": ["marvel"],
+  "characters": [
+    {"canonical": "captain_marvel", "aliases": ["carol_danvers", "carol"]},
+    {"canonical": "black_widow", "aliases": ["natasha"]},
+    {"canonical": "scarlet_witch", "aliases": ["wanda"]},
+    {"canonical": "rogue", "aliases": []},
+    {"canonical": "spider_gwen", "aliases": ["gwen_stacy", "spider_gwen"]},
+    {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]}
+  ],
+  "tokens": {
+    "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen"],
+    "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie"],
+    "stop_conflicts": [],
+    "notes": "Added Rogue, Spider-Gwen (gwen/gwen stacy weak), Cassie Lang (ant cass lead). Distinctive strong tokens; franchise name weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

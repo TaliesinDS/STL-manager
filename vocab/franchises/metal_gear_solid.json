@@ -1,0 +1,17 @@
+{
+  "franchise": "metal_gear_solid",
+  "display_name": "Metal Gear Solid",
+  "source_version": 1,
+  "aliases": ["metal_gear_solid", "metal_gear"],
+  "characters": [
+    {"canonical": "solid_snake", "aliases": ["snake"]},
+    {"canonical": "big_boss", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["solid", "snake", "big", "boss"],
+    "weak_signals": ["metal", "gear"],
+    "stop_conflicts": [],
+    "notes": "Need phrase logic for 'solid snake'/'big boss'; single tokens may be ambiguous so treat most as weak except paired."
+  },
+  "provenance": {"source": "manual_seed"}
+}

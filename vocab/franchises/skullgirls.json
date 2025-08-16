@@ -1,0 +1,16 @@
+{
+  "franchise": "skullgirls",
+  "display_name": "Skullgirls",
+  "source_version": 1,
+  "aliases": ["skullgirls"],
+  "characters": [
+    {"canonical": "eliza", "aliases": ["eliza_skullgirls"]}
+  ],
+  "tokens": {
+    "strong_signals": ["eliza_skullgirls"],
+    "weak_signals": ["eliza"],
+    "stop_conflicts": [],
+    "notes": "'eliza' alone ambiguous; variant including franchise qualifier strong when appears in filename."
+  },
+  "provenance": {"source": "manual_seed"}
+}

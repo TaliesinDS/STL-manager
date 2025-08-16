@@ -1,0 +1,17 @@
+{
+  "franchise": "spy_x_family",
+  "display_name": "Spy x Family",
+  "source_version": 1,
+  "aliases": ["spy_x_family"],
+  "characters": [
+    {"canonical": "yor_forger", "aliases": ["yor"]},
+    {"canonical": "anya_forger", "aliases": ["anya"]}
+  ],
+  "tokens": {
+    "strong_signals": ["yor", "anya"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Distinctive character names."
+  },
+  "provenance": {"source": "manual_seed"}
+}

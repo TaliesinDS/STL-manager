@@ -1,0 +1,16 @@
+{
+  "franchise": "dungeon_meshi",
+  "display_name": "Dungeon Meshi",
+  "source_version": 1,
+  "aliases": ["dungeon_meshi", "delicious_in_dungeon"],
+  "characters": [
+    {"canonical": "marcille_donato", "aliases": ["marcille", "donato"]}
+  ],
+  "tokens": {
+    "strong_signals": ["marcille"],
+    "weak_signals": ["dungeon_meshi"],
+    "stop_conflicts": [],
+    "notes": "Marcille distinctive; using surname as alias though rare."
+  },
+  "provenance": {"source": "manual_seed"}
+}

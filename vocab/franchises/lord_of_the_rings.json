@@ -1,0 +1,16 @@
+{
+  "franchise": "lord_of_the_rings",
+  "display_name": "The Lord of the Rings",
+  "source_version": 1,
+  "aliases": ["lotr", "lord_of_the_rings"],
+  "characters": [
+    {"canonical": "arwen_undomiel", "aliases": ["arwen"]}
+  ],
+  "tokens": {
+    "strong_signals": ["arwen"],
+    "weak_signals": ["lotr"],
+    "stop_conflicts": [],
+    "notes": "Arwen distinctive; franchise acronym weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,17 @@
+{
+  "franchise": "chainsaw_man",
+  "display_name": "Chainsaw Man",
+  "source_version": 1,
+  "aliases": ["chainsaw_man"],
+  "characters": [
+    {"canonical": "denji", "aliases": []},
+    {"canonical": "power", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["denji"],
+    "weak_signals": ["power"],
+    "stop_conflicts": [],
+    "notes": "'power' very generic so only weak signal requiring co-occurrence with another franchise token."
+  },
+  "provenance": {"source": "manual_seed"}
+}

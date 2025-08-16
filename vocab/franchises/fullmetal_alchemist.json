@@ -1,0 +1,16 @@
+{
+  "franchise": "fullmetal_alchemist",
+  "display_name": "Fullmetal Alchemist",
+  "source_version": 1,
+  "aliases": ["fullmetal_alchemist"],
+  "characters": [
+    {"canonical": "winry_rockbell", "aliases": ["winry", "rockbell"]}
+  ],
+  "tokens": {
+    "strong_signals": ["winry", "rockbell"],
+    "weak_signals": ["fullmetal", "alchemist"],
+    "stop_conflicts": [],
+    "notes": "Character distinctive; title words generic or multi-use."
+  },
+  "provenance": {"source": "manual_seed"}
+}

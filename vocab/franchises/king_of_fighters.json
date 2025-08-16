@@ -1,0 +1,16 @@
+{
+  "franchise": "king_of_fighters",
+  "display_name": "The King of Fighters",
+  "source_version": 1,
+  "aliases": ["kof", "king_of_fighters"],
+  "characters": [
+    {"canonical": "shermie", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["shermie"],
+    "weak_signals": ["kof"],
+    "stop_conflicts": [],
+    "notes": "Shermie distinctive; acronym weak alone."
+  },
+  "provenance": {"source": "manual_seed"}
+}

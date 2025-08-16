@@ -1,0 +1,16 @@
+{
+  "franchise": "frieren_beyond_journeys_end",
+  "display_name": "Frieren: Beyond Journey's End",
+  "source_version": 1,
+  "aliases": ["frieren_beyond_journeys_end", "frieren"],
+  "characters": [
+    {"canonical": "frieren", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["frieren"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Minimal manifest seeded from user token list."
+  },
+  "provenance": {"source": "manual_seed"}
+}

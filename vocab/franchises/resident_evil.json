@@ -1,0 +1,16 @@
+{
+  "franchise": "resident_evil",
+  "display_name": "Resident Evil",
+  "source_version": 1,
+  "aliases": ["resident_evil"],
+  "characters": [
+    {"canonical": "ada_wong", "aliases": ["ada", "wong"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ada_wong"],
+    "weak_signals": ["ada", "wong"],
+    "stop_conflicts": [],
+    "notes": "Require full name for strong to avoid other 'Ada' references (programming language)."
+  },
+  "provenance": {"source": "manual_seed"}
+}

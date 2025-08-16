@@ -1,0 +1,17 @@
+{
+  "franchise": "scooby_doo",
+  "display_name": "Scooby-Doo",
+  "source_version": 1,
+  "aliases": ["scooby_doo", "scooby"],
+  "characters": [
+    {"canonical": "scooby_doo", "aliases": ["scooby"]},
+    {"canonical": "velma", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["scooby", "velma"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Short unique names."
+  },
+  "provenance": {"source": "manual_seed"}
+}

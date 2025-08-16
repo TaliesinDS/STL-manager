@@ -1,0 +1,18 @@
+{
+  "franchise": "legend_of_zelda",
+  "display_name": "The Legend of Zelda",
+  "source_version": 1,
+  "aliases": ["legend_of_zelda", "zelda"],
+  "characters": [
+    {"canonical": "link", "aliases": []},
+    {"canonical": "princess_zelda", "aliases": ["zelda"]},
+    {"canonical": "ganondorf", "aliases": ["ganon"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ganondorf", "ganon"],
+    "weak_signals": ["link", "zelda"],
+    "stop_conflicts": [],
+    "notes": "'link' generic so weak; need co-occurrence."
+  },
+  "provenance": {"source": "manual_seed"}
+}

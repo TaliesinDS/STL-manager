@@ -1,0 +1,16 @@
+{
+  "franchise": "danmachi",
+  "display_name": "Is It Wrong to Try to Pick Up Girls in a Dungeon?",
+  "source_version": 1,
+  "aliases": ["danmachi"],
+  "characters": [
+    {"canonical": "ais_wallenstein", "aliases": ["ais", "wallenstein"]}
+  ],
+  "tokens": {
+    "strong_signals": ["wallenstein"],
+    "weak_signals": ["ais"],
+    "stop_conflicts": [],
+    "notes": "Surname distinctive; short given name weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

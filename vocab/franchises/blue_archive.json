@@ -1,0 +1,16 @@
+{
+  "franchise": "blue_archive",
+  "display_name": "Blue Archive",
+  "source_version": 1,
+  "aliases": ["blue_archive"],
+  "characters": [
+    {"canonical": "asuna_blue_archive", "aliases": ["asuna"]}
+  ],
+  "tokens": {
+    "strong_signals": ["asuna_blue_archive"],
+    "weak_signals": ["asuna"],
+    "stop_conflicts": [],
+    "notes": "'asuna' overlaps with SAO; require qualifier variant for strong when present."
+  },
+  "provenance": {"source": "manual_seed"}
+}

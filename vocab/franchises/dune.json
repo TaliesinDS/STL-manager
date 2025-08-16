@@ -1,0 +1,16 @@
+{
+  "franchise": "dune",
+  "display_name": "Dune",
+  "source_version": 1,
+  "aliases": ["dune"],
+  "characters": [
+    {"canonical": "chani", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["chani"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Chani distinctive; no need for weak tokens."
+  },
+  "provenance": {"source": "manual_seed"}
+}

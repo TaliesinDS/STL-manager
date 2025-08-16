@@ -1,0 +1,16 @@
+{
+  "franchise": "my_dress_up_darling",
+  "display_name": "My Dress-Up Darling",
+  "source_version": 1,
+  "aliases": ["my_dress_up_darling", "dress_up_darling"],
+  "characters": [
+    {"canonical": "marin_kitagawa", "aliases": ["marin", "kitagawa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["marin", "kitagawa"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Require at least one of marin|kitagawa; both together raises confidence."
+  },
+  "provenance": {"source": "manual_seed"}
+}

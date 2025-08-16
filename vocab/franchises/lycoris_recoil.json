@@ -1,0 +1,17 @@
+{
+  "franchise": "lycoris_recoil",
+  "display_name": "Lycoris Recoil",
+  "source_version": 1,
+  "aliases": ["lycoris_recoil"],
+  "characters": [
+    {"canonical": "chisato_nishikigi", "aliases": ["chisato"]},
+    {"canonical": "takina_inoue", "aliases": ["takina"]}
+  ],
+  "tokens": {
+    "strong_signals": ["chisato", "takina"],
+    "weak_signals": ["lycoris"],
+    "stop_conflicts": [],
+    "notes": "Distinctive character names; franchise word sometimes appears in botanical contexts hence weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

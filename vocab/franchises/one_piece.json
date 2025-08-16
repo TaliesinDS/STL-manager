@@ -1,0 +1,18 @@
+{
+  "franchise": "one_piece",
+  "display_name": "One Piece",
+  "source_version": 1,
+  "aliases": ["one_piece"],
+  "characters": [
+    {"canonical": "roronoa_zoro", "aliases": ["zoro"]},
+    {"canonical": "monkey_d_luffy", "aliases": ["luffy"]},
+    {"canonical": "tony_tony_chopper", "aliases": ["chopper"]}
+  ],
+  "tokens": {
+    "strong_signals": ["zoro", "luffy", "chopper"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "character names distinctive; franchise title tokens (one, piece) too generic."
+  },
+  "provenance": {"source": "manual_seed"}
+}

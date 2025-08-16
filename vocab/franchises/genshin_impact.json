@@ -1,0 +1,18 @@
+{
+  "franchise": "genshin_impact",
+  "display_name": "Genshin Impact",
+  "source_version": 1,
+  "aliases": ["genshin_impact", "genshin"],
+  "characters": [
+    {"canonical": "raiden_shogun", "aliases": ["raiden", "baal"]},
+    {"canonical": "nahida", "aliases": []},
+    {"canonical": "lumine", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["raiden", "nahida", "lumine"],
+    "weak_signals": ["genshin"],
+    "stop_conflicts": [],
+    "notes": "raiden may appear elsewhere (Mortal Kombat) but model context + other tokens will disambiguate."
+  },
+  "provenance": {"source": "manual_seed"}
+}

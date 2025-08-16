@@ -1,0 +1,17 @@
+{
+  "franchise": "honkai_multiverse",
+  "display_name": "Honkai (Impact / Star Rail)",
+  "source_version": 1,
+  "aliases": ["honkai", "honkai_impact", "star_rail"],
+  "characters": [
+    {"canonical": "seele", "aliases": []},
+    {"canonical": "kiana", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["seele", "kiana"],
+    "weak_signals": ["honkai"],
+    "stop_conflicts": [],
+    "notes": "Star Rail vs Impact unified for simplicity."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,18 @@
+{
+  "franchise": "pokemon",
+  "display_name": "Pokémon",
+  "source_version": 1,
+  "aliases": ["pokemon", "pokémon"],
+  "characters": [
+    {"canonical": "pikachu", "aliases": []},
+    {"canonical": "gengar", "aliases": []},
+    {"canonical": "charizard", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["pikachu", "charizard", "gengar"],
+    "weak_signals": ["pokemon"],
+    "stop_conflicts": [],
+    "notes": "Distinct creature names are strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,18 @@
+{
+  "franchise": "dc_comics",
+  "display_name": "DC Comics",
+  "source_version": 1,
+  "aliases": ["dc", "dc_comics"],
+  "characters": [
+    {"canonical": "harley_quinn", "aliases": ["harley"]},
+    {"canonical": "catwoman", "aliases": []},
+    {"canonical": "supergirl", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["harley", "catwoman", "supergirl"],
+    "weak_signals": ["dc"],
+    "stop_conflicts": [],
+    "notes": "dc alone too broad; rely on character tokens for confidence."
+  },
+  "provenance": {"source": "manual_seed"}
+}
