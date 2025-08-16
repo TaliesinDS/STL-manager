@@ -1,5 +1,7 @@
 # Metadata Fields Specification
 
+Moved from repository root to `docs/` on 2025-08-16 (repository restructure) – content unchanged.
+
 Purpose: Define all planned metadata fields for the STL Manager project, their intent, data type, allowed values, introduction phase, and notes so early planning stays consistent and we avoid premature complexity.
 
 Phase Legend:
@@ -305,4 +307,3 @@ When a field is added or semantics shift:
 ---
 ## 22. Summary
 This spec captures the superset of metadata we have discussed. Early phases (P0/P1) stay intentionally small and reliable; later phases enrich without forcing retroactive renames. We will resist adding geometry or ML-derived fields until grouping & manual review workflows stabilize.
-

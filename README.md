@@ -1,24 +1,38 @@
-# STL-manager
-a database and app to manage a collection of 3d print files.
+# STL Manager
 
-STL Manager
-Personal project to inventory and eventually manage a very large 3D model library (STL, OBJ, slicer project files, previews, archives) safely and incrementally.
+Personal project to inventory and eventually manage a very large 3D model library (STL, OBJ, slicer project files, preview images, nested archives) using conservative, deterministic normalization phases.
 
-Status: Phase 0 — planning & passive inventory only.
+Status: Phase 0 (passive inventory & vocabulary design) transitioning toward Phase 1 (deterministic low‑risk normalization).
 
-Goals (current phase)
+## Repository Layout (2025-08-16 Restructure)
 
-Map existing extracted files (no archive extraction yet).
-Produce a simple inventory (path, size, extension, depth, archive flag).
-Make deliberate, reversible changes only after visibility.
-Out of Scope (for now)
+```
+docs/        Planning & specifications (API_SPEC, MetadataFields, NormalizationFlow, PLANNING, DesiredFeatures)
+vocab/       Modular vocab files (tokenmap, designers_tokenmap, codex_units_*.md) – externalized to reduce core churn
+scripts/     Utility / exploratory scripts (quick_scan.py, future normalization passes)
+DECISIONS.md Versioned rationale & token_map_version change log
+README.md    This file
+```
 
-Bulk archive extraction
-Geometry analysis (triangles, volume)
-Deduplication / renaming
-Web UI
-Automatic tag inference
-Next Micro Goal Implement a read-only scan script that outputs CSV and JSON inventories of existing extracted files.
+All large / high‑churn vocab domains (designers, codex unit lists) are externalized under `vocab/` so diffs stay readable and expansion doesn’t obscure structural taxonomy changes. Core token map (`vocab/tokenmap.md`) contains only stable, high-signal mappings plus sentinels:
+
+```
+designers: external_reference
+codex_units: external_reference
+```
+
+`quick_scan.py` automatically prefers `vocab/` paths (falls back to legacy root only with a warning – root duplicates have now been removed).
+
+## Phase 0 Goals
+
+Current Focus:
+- Map existing extracted files (no archive extraction yet).
+- Produce simple inventory (path, size, extension, depth, archive flag) – script spec in planning.
+- Curate conservative vocab & precedence ordering before any automated writes.
+
+Out of Scope (Now): archive extraction, geometry analytics (volume, height), dedupe / renames, probabilistic tagging, web UI, mesh thumbnails.
+
+Next Micro Goal: Implement read-only inventory scan (CSV + JSONL) feeding future normalization passes.
 
 ## Quick Exploratory Token Scan (Planning Aid)
 
@@ -30,10 +44,10 @@ PowerShell example:
 python scripts/quick_scan.py --root D:\Models --limit 60000 --extensions .stl .obj .chitubox .lys --json-out quick_scan_report.json
 ```
 
-With dynamic vocab from tokenmap (recommended after updates to `tokenmap.md`):
+With dynamic vocab from tokenmap (recommended after updates to `vocab/tokenmap.md`):
 
 ```
-python scripts/quick_scan.py --root D:\Models --tokenmap tokenmap.md --json-out quick_scan_report.json
+python scripts/quick_scan.py --root D:\Models --tokenmap vocab\tokenmap.md --json-out quick_scan_report.json
 ```
 
 Double‑click option:
@@ -44,7 +58,7 @@ Double‑click option:
 What it does (Phase 0 safe):
 - Recurses files (no archive extraction) honoring extension filter.
 - Splits stems (and now directory names) on `_ - space` unless `--skip-dirs` provided.
-- Optionally loads designers / lineage / faction aliases / stopwords from `tokenmap.md` via `--tokenmap` (falls back to embedded defaults if parsing fails).
+- Optionally loads designers / lineage / faction aliases / stopwords from `vocab/tokenmap.md` via `--tokenmap` (falls back to embedded defaults if parsing fails). Designers list auto-loads from `vocab/designers_tokenmap.md` if present (or legacy root with warning).
 - Supports ignore list & domain summary via `--ignore-file` (newline tokens, `#` comments) and `--emit-known-summary` to print counts of classified domains and suppress noisy frequent known/ambiguous tokens from the unknown list.
 	- If `--ignore-file` is omitted the script auto-loads `ignored_tokens.txt` from the scripts directory when present.
 - Optional `--include-archives` adds archive filenames (.zip .rar .7z .cbz .cbr) to token stream (still no extraction) and reports `scanned_archives` in JSON.
@@ -62,11 +76,36 @@ What it does NOT do:
 python scripts/quick_scan.py --root D:\Models > quick_scan_report.txt
 ```
 
-Future Enhancements (optional):
-- Emit JSON with structured sections.
-- Merge token frequencies across multiple roots with a root_id tag.
-- Integrate token_map_version diffing (mark which unknown tokens newly cross frequency thresholds).
-- Add style token detection once style vocab stabilizes.
- - Optional: separate directory vs file token frequency breakdown.
+## Planned Scripts / Roadmap
+
+Near Term:
+- inventory_scan.py (Phase 0) – produce CSV/JSONL inventory.
+- vocab_loader.py – aggregate & validate all `vocab/*.md` (collision + ambiguity checks).
+- normalization_passes/ (Phase 1) – deterministic field extraction (designer, faction/system, lineage_family, variant axes, NSFW coarse, intended_use, pc_candidate_flag, scale).
+
+Phase 2 Seeds (Gated):
+- Unit extraction using codex_units_* lists (`enable_unit_extraction` flag + contextual activation).
+- Tabletop-specific planned fields (equipment_type, base_size_mm, unit_role) once tabletop intent reliably detected.
+
+Phase 3+ Ideas:
+- Geometry hashing & dedupe, mesh measurements, override-aware re-normalization jobs.
+- Web UI for browsing, override layering, residual token mining.
+
+## DECISIONS & Versioning
+Every vocabulary or structural change is logged in `DECISIONS.md` referencing `token_map_version`. External vocab additions that don’t modify core sentinel structure may omit a version bump (noted explicitly).
+
+## Contributing / Extending (Internal Workflow)
+1. Propose vocab additions via residual token frequency (quick_scan report).
+2. Add new aliases to appropriate vocab file under `vocab/`.
+3. Update `DECISIONS.md` (date, rationale, version bump if core map changed).
+4. Re-run quick_scan to ensure new aliases collapse residual frequency.
+
+## Safety Principles
+- Deterministic passes only until precision validated (>95% target for designer + faction).
+- No destructive file operations in early phases.
+- External high-churn vocab kept isolated for low-noise diffs.
+
+## License
+TBD (will be added before any public release).
 
 License: (decide later)

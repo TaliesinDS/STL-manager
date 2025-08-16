@@ -1,4 +1,4 @@
-Planning Log
+Planning Log (moved from root to `docs/` on 2025-08-16; content unchanged)
 Dataset Snapshot (2025-08-15)
 Unprocessed archives: ~5k (RAR/ZIP), ~2 TB
 Extracted & partially ordered: ~96k files, ~2.6 TB

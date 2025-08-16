@@ -1,5 +1,7 @@
 # Normalization Flow (v0.1 Draft)
 
+Moved from repository root to `docs/` on 2025-08-16 (repository restructure) – content unchanged.
+
 Purpose: Define deterministic steps turning raw filesystem artifacts into normalized metadata fields (see `MetadataFields.md`) using vocab in `tokenmap.md`.
 
 Scope (Phase 1): Designers, game_system (implicit via faction?), codex_faction, lineage_family, variant axes (segmentation/internal_volume/support_state/part_pack_type), scale basics, intended_use_bucket, pc_candidate_flag (proto), content_flag (coarse NSFW), residual capture, warnings.

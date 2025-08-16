@@ -1,5 +1,7 @@
 # API Specification (Draft v0)
 
+Moved from repository root to `docs/` on 2025-08-16 (repository restructure) – content unchanged.
+
 Purpose: Define initial REST/JSON contract for the STL Manager application so schema + normalization design remain aligned with future UI/editor workflows. This draft focuses on read/write of metadata, dynamic vocab management, normalization re-runs, overrides, and bulk operations.
 
 Principles:
@@ -20,12 +22,12 @@ Auth (Future):
 Error Format:
 ```
 {
-  "success": false,
-  "error": {
-    "code": "validation_error",
-    "message": "Field value invalid",
-    "details": { "field": "lineage_family", "reason": "unknown value" }
-  }
+	"success": false,
+	"error": {
+		"code": "validation_error",
+		"message": "Field value invalid",
+		"details": { "field": "lineage_family", "reason": "unknown value" }
+	}
 }
 ```
 
@@ -36,28 +38,28 @@ GET /api/v1/schema/fields
 Response data example:
 ```
 {
-  "fields": [
-    {
-      "name": "designer",
-      "type": "string",
-      "phase": "P1",
-      "editable": true,
-      "auto": true,
-      "override_allowed": true,
-      "enum": null
-    },
-    {
-      "name": "scale_ratio_den",
-      "type": "int",
-      "phase": "P1",
-      "editable": false,
-      "auto": true,
-      "override_allowed": true,
-      "enum": null
-    }
-  ],
-  "token_map_version": 9,
-  "designers_map_version": 1
+	"fields": [
+		{
+			"name": "designer",
+			"type": "string",
+			"phase": "P1",
+			"editable": true,
+			"auto": true,
+			"override_allowed": true,
+			"enum": null
+		},
+		{
+			"name": "scale_ratio_den",
+			"type": "int",
+			"phase": "P1",
+			"editable": false,
+			"auto": true,
+			"override_allowed": true,
+			"enum": null
+		}
+	],
+	"token_map_version": 9,
+	"designers_map_version": 1
 }
 ```
 
@@ -71,20 +73,20 @@ GET /api/v1/variants?filters&cursor=...
 Sample response:
 ```
 {
-  "success": true,
-  "data": {
-    "results": [{
-      "id": "uuid-1",
-      "designer": "ghamak",
-      "franchise": null,
-      "asset_category": "miniature",
-      "lineage_family": "elf",
-      "residual_tokens": ["archer", "forest"],
-      "overrides": ["lineage_family"],
-      "updated_at": "2025-08-16T10:10:10Z"
-    }],
-    "next_cursor": null
-  }
+	"success": true,
+	"data": {
+		"results": [{
+			"id": "uuid-1",
+			"designer": "ghamak",
+			"franchise": null,
+			"asset_category": "miniature",
+			"lineage_family": "elf",
+			"residual_tokens": ["archer", "forest"],
+			"overrides": ["lineage_family"],
+			"updated_at": "2025-08-16T10:10:10Z"
+		}],
+		"next_cursor": null
+	}
 }
 ```
 
@@ -95,12 +97,12 @@ PATCH /api/v1/variants/{id}
 Request:
 ```
 {
-  "changes": [
-    { "field": "franchise", "value": "lotr" },
-    { "field": "lineage_family", "value": "elf", "override": true },
-    { "field": "user_tags", "op": "add_to_array", "values": ["archer", "woodland"] }
-  ],
-  "expected_version": 12
+	"changes": [
+		{ "field": "franchise", "value": "lotr" },
+		{ "field": "lineage_family", "value": "elf", "override": true },
+		{ "field": "user_tags", "op": "add_to_array", "values": ["archer", "woodland"] }
+	],
+	"expected_version": 12
 }
 ```
 Response includes new version.
@@ -116,12 +118,12 @@ Request: { "variant_ids": ["uuid-1", "uuid-2"], "force": false }
 POST /api/v1/bulk/variants/update
 ```
 {
-  "filter": { "designer": "ghamak", "lineage_family": "elf" },
-  "operations": [
-    { "field": "base_theme", "value": "forest" },
-    { "field": "user_tags", "op": "add_to_array", "values": ["legacy"] }
-  ],
-  "dry_run": true
+	"filter": { "designer": "ghamak", "lineage_family": "elf" },
+	"operations": [
+		{ "field": "base_theme", "value": "forest" },
+		{ "field": "user_tags", "op": "add_to_array", "values": ["legacy"] }
+	],
+	"dry_run": true
 }
 ```
 Response (dry_run): counts only.
@@ -130,16 +132,16 @@ Real run returns job_id.
 GET /api/v1/jobs/{id}
 ```
 {
-  "success": true,
-  "data": {
-    "id": "job-123",
-    "type": "bulk_update",
-    "status": "running",
-    "progress": { "processed": 150, "total": 1200 },
-    "started_at": "...",
-    "completed_at": null,
-    "result_summary": null
-  }
+	"success": true,
+	"data": {
+		"id": "job-123",
+		"type": "bulk_update",
+		"status": "running",
+		"progress": { "processed": 150, "total": 1200 },
+		"started_at": "...",
+		"completed_at": null,
+		"result_summary": null
+	}
 }
 ```
 
@@ -153,10 +155,10 @@ GET /api/v1/vocab/{domain}?q=partial&limit=20
 POST /api/v1/vocab/{domain}
 ```
 {
-  "canonical_name": "middle_earth_alliance",
-  "display_name": "Middle-Earth Alliance",
-  "aliases": ["middle earth alliance"],
-  "notes": "Created from August 2025 scan residuals"
+	"canonical_name": "middle_earth_alliance",
+	"display_name": "Middle-Earth Alliance",
+	"aliases": ["middle earth alliance"],
+	"notes": "Created from August 2025 scan residuals"
 }
 ```
 
@@ -175,36 +177,36 @@ Query params: domain=franchise|designer|lineage, min_frequency=2
 Response entries:
 ```
 {
-  "success": true,
-  "data": {
-    "candidates": [
-      {
-        "id": "cand-1",
-        "domain": "franchise",
-        "suggested_name": "attack_on_titan",
-        "evidence_tokens": ["aot", "mikasa"],
-        "variant_count": 37,
-        "first_seen": "2025-08-15T...Z",
-        "last_seen": "2025-08-16T...Z"
-      }
-    ]
-  }
+	"success": true,
+	"data": {
+		"candidates": [
+			{
+				"id": "cand-1",
+				"domain": "franchise",
+				"suggested_name": "attack_on_titan",
+				"evidence_tokens": ["aot", "mikasa"],
+				"variant_count": 37,
+				"first_seen": "2025-08-15T...Z",
+				"last_seen": "2025-08-16T...Z"
+			}
+		]
+	}
 }
 ```
 
 POST /api/v1/suggestions/{id}/promote
 ```
 {
-  "canonical_name": "attack_on_titan",
-  "display_name": "Attack on Titan",
-  "aliases": ["aot"],
-  "assign_variants": true
+	"canonical_name": "attack_on_titan",
+	"display_name": "Attack on Titan",
+	"aliases": ["aot"],
+	"assign_variants": true
 }
 ```
 - Creates vocab entry, assigns variants (unless assign_variants=false), removes candidate, queues normalization re-run.
 
 DELETE /api/v1/suggestions/{id}
-- Dismiss candidate (records suppression so it doesnt reappear until new evidence threshold).
+- Dismiss candidate (records suppression so it doesn’t reappear until new evidence threshold).
 
 ## 6. Audit
 GET /api/v1/audit/variant/{id}?limit=100&cursor=...
@@ -224,9 +226,9 @@ Response: list of { field, manual_value, original_auto_value, applied_at, applie
 POST /api/v1/variants/{id}/overrides
 ```
 {
-  "field": "lineage_family",
-  "manual_value": "elf",
-  "expected_auto_value": "unknown"
+	"field": "lineage_family",
+	"manual_value": "elf",
+	"expected_auto_value": "unknown"
 }
 ```
 - Fails if current auto value mismatches expected_auto_value (stale client guard) unless force=true.
@@ -238,11 +240,11 @@ DELETE /api/v1/variants/{id}/overrides/{field}
 POST /api/v1/normalize/run
 ```
 {
-  "scope": "all|filter|variants",
-  "filter": { "designer": "ghamak" },
-  "variant_ids": ["uuid-1"],
-  "fields": ["lineage_family", "game_system"],
-  "force": false
+	"scope": "all|filter|variants",
+	"filter": { "designer": "ghamak" },
+	"variant_ids": ["uuid-1"],
+	"fields": ["lineage_family", "game_system"],
+	"force": false
 }
 ```
 - Creates job; job type normalization_run.
@@ -261,14 +263,14 @@ GET /api/v1/jobs?types=bulk_update,normalization_run&status=running
 GET /api/v1/system/versions
 ```
 {
-  "success": true,
-  "data": {
-    "api_version": "1.0.0",
-    "token_map_version": 9,
-    "designers_map_version": 1,
-    "schema_hash": "abc123def",
-    "build_commit": "<git sha>"
-  }
+	"success": true,
+	"data": {
+		"api_version": "1.0.0",
+		"token_map_version": 9,
+		"designers_map_version": 1,
+		"schema_hash": "abc123def",
+		"build_commit": "<git sha>"
+	}
 }
 ```
 
@@ -305,18 +307,18 @@ GET /api/v1/system/versions
 ```
 openapi: 3.0.3
 info:
-  title: STL Manager API
-  version: 1.0.0
+	title: STL Manager API
+	version: 1.0.0
 paths:
-  /api/v1/variants:
-    get:
-      summary: List variants
-      parameters:
-        - name: cursor
-          in: query
-          schema: { type: string }
-      responses:
-        '200': { description: OK }
+	/api/v1/variants:
+		get:
+			summary: List variants
+			parameters:
+				- name: cursor
+					in: query
+					schema: { type: string }
+			responses:
+				'200': { description: OK }
 ```
 
 ---

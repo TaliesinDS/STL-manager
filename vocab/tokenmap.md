@@ -96,7 +96,6 @@ designers: external_reference
 		kruleboyz: ["kruleboy", "kruleboyz"]  # explicit subset if isolated in names
 		ironjawz: ["ironjaw", "ironjawz"]      # explicit subset
 		bonesplitterz: ["bonesplitter", "bonesplitterz"]
-```
 
 If `game_system` unresolved, faction tokens are ignored (prevent misclassification) but any high-signal rare name (e.g., "Astra Militarum") may still emit `faction_without_system` warning for review.
 
@@ -108,6 +107,7 @@ External Files:
 - `codex_units_w40k.md`
 - `codex_units_aos.md`
 - `codex_units_oldworld.md`
+- `codex_units_heresy.md`  # new (Warhammer 30K / Horus Heresy)
 
 Sentinel Reference:
 ```
@@ -308,4 +308,3 @@ When editing this map:
 ---
 ## 18. Summary
 This version establishes conservative, high-signal mappings to avoid early misclassification while providing scaffolding for richer Phase 2 fields. Ambiguous or low-frequency tokens deliberately flow into residual analysis to iteratively harden the map.
-

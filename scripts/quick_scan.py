@@ -354,7 +354,16 @@ def main(argv: list[str]) -> int:
     if args.designers_file:
         dpath = pathlib.Path(args.designers_file)
     else:
-        dpath = pathlib.Path(__file__).resolve().parent.parent / 'designers_tokenmap.md'
+        # Support relocated vocab files under /vocab (post 2025-08-16 restructure)
+        root_dir = pathlib.Path(__file__).resolve().parent.parent
+        candidate_new = root_dir / 'vocab' / 'designers_tokenmap.md'
+        if candidate_new.exists():
+            dpath = candidate_new
+        else:
+            legacy = root_dir / 'designers_tokenmap.md'
+            if legacy.exists():
+                print("[warn] using legacy root designers_tokenmap.md; migrate expected under vocab/" )
+            dpath = legacy
     if dpath.exists():
         added = load_external_designers(dpath)
         if added:
@@ -362,14 +371,25 @@ def main(argv: list[str]) -> int:
 
     if args.tokenmap:
         tm_path = pathlib.Path(args.tokenmap)
-        if tm_path.exists():
-            stats = load_tokenmap(tm_path)
-            if stats:
-                print(f"[info] tokenmap loaded (version={TOKENMAP_VERSION}) designers+{stats['designers_added']} lineage+{stats['lineage_added']} faction_aliases+{stats['faction_aliases_added']} stopwords+{stats['stopwords_added']}")
-            else:
-                print("[warn] tokenmap parse failed; using embedded defaults")
+    else:
+        # Auto-detect relocated tokenmap in vocab/ first, fallback to root
+        root_dir = pathlib.Path(__file__).resolve().parent.parent
+        candidate_new = root_dir / 'vocab' / 'tokenmap.md'
+        if candidate_new.exists():
+            tm_path = candidate_new
         else:
-            print(f"[warn] tokenmap path not found: {tm_path}; using embedded defaults")
+            legacy = root_dir / 'tokenmap.md'
+            if legacy.exists():
+                print("[warn] using legacy root tokenmap.md; migrate expected under vocab/")
+            tm_path = legacy
+    if tm_path.exists():
+        stats = load_tokenmap(tm_path)
+        if stats:
+            print(f"[info] tokenmap loaded (version={TOKENMAP_VERSION}) designers+{stats['designers_added']} lineage+{stats['lineage_added']} faction_aliases+{stats['faction_aliases_added']} stopwords+{stats['stopwords_added']} from {tm_path}")
+        else:
+            print("[warn] tokenmap parse failed; using embedded defaults")
+    else:
+        print(f"[warn] tokenmap path not found: {tm_path}; using embedded defaults")
     ignore_set: set[str] = set()
     ig_path: pathlib.Path | None = None
     if args.ignore_file:
