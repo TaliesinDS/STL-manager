@@ -1,0 +1,17 @@
+{
+  "franchise": "final_fantasy_xv",
+  "display_name": "Final Fantasy XV",
+  "source_version": 1,
+  "aliases": ["ffxv", "final_fantasy_xv"],
+  "characters": [
+    {"canonical": "noctis_lucis_caelum", "aliases": ["noctis"]},
+    {"canonical": "lunafreya_nox_fleuret", "aliases": ["lunafreya", "luna"]}
+  ],
+  "tokens": {
+    "strong_signals": ["noctis", "lunafreya"],
+    "weak_signals": ["luna", "ffxv"],
+    "stop_conflicts": [],
+    "notes": "Short 'luna' weak due to generic moon usage; distinctive canonical forms strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

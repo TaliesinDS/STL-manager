@@ -6,13 +6,16 @@
   "characters": [
     {"canonical": "rangiku_matsumoto", "aliases": ["matsumoto", "rangiku"]},
     {"canonical": "neliel_tu_odelschwanck", "aliases": ["neliel", "nelliel", "nel"]},
-    {"canonical": "tier_harribel", "aliases": ["harribel", "halibel", "hallibel", "tier"]}
+    {"canonical": "tier_harribel", "aliases": ["harribel", "halibel", "hallibel", "tier"]},
+    {"canonical": "kuchiki_rukia", "aliases": ["rukia", "rukia_kuchiki"]},
+    {"canonical": "lisa_yadomaru", "aliases": ["lisa", "yadomaru"]},
+    {"canonical": "hiyori_sarugaki", "aliases": ["hiyori", "sarugaki"]}
   ],
   "tokens": {
-    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel"],
-    "weak_signals": ["bleach", "tier"],
+    "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori"],
+    "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa"],
     "stop_conflicts": [],
-    "notes": "Added Tier Harribel with multiple spellings; 'tier' weak due to generic meaning."
+    "notes": "Added Rukia Kuchiki, Lisa Yadomaru, Hiyori Sarugaki; surnames weak; given names strong except common 'lisa' kept weak."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "overwatch",
+  "display_name": "Overwatch",
+  "source_version": 1,
+  "aliases": ["overwatch"],
+  "characters": [
+    {"canonical": "mei_overwatch", "aliases": ["mei"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mei_overwatch"],
+    "weak_signals": ["mei"],
+    "stop_conflicts": [],
+    "notes": "Qualifier used for strong token; short name is common."
+  },
+  "provenance": {"source": "manual_seed"}
+}

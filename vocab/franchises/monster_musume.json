@@ -1,0 +1,16 @@
+{
+  "franchise": "monster_musume",
+  "display_name": "Monster Musume",
+  "source_version": 1,
+  "aliases": ["monster_musume"],
+  "characters": [
+    {"canonical": "papi", "aliases": ["papi_harpy"]}
+  ],
+  "tokens": {
+    "strong_signals": ["papi_harpy"],
+    "weak_signals": ["papi"],
+    "stop_conflicts": [],
+    "notes": "Short name ambiguous; append species for strong token."
+  },
+  "provenance": {"source": "manual_seed"}
+}

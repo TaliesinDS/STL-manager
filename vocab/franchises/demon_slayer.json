@@ -5,13 +5,14 @@
   "aliases": ["demon_slayer", "kimetsu_no_yaiba"],
   "characters": [
     {"canonical": "daki", "aliases": []},
-    {"canonical": "shinobu_kocho", "aliases": ["shinobu", "kocho"]}
+    {"canonical": "shinobu_kocho", "aliases": ["shinobu", "kocho"]},
+    {"canonical": "mitsuri_kanroji", "aliases": ["mitsuri", "kanroji"]}
   ],
   "tokens": {
-    "strong_signals": ["daki", "shinobu", "kocho"],
+    "strong_signals": ["daki", "shinobu", "kocho", "mitsuri", "kanroji"],
     "weak_signals": ["demon_slayer"],
     "stop_conflicts": [],
-    "notes": "Character names distinctive; franchise phrase weak due to generic tokens demon/slayer separately."
+    "notes": "Added Mitsuri Kanroji. Character names distinctive; franchise phrase weak due to generic tokens demon/slayer separately."
   },
   "provenance": {"source": "manual_seed"}
 }

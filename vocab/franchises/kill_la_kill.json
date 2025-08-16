@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["kill_la_kill"],
   "characters": [
-    {"canonical": "ryuko_matoi", "aliases": ["ryuko", "matoi"]}
+    {"canonical": "ryuko_matoi", "aliases": ["ryuko", "matoi"]},
+    {"canonical": "satsuki_kiryuin", "aliases": ["satsuki", "kiryuin"]}
   ],
   "tokens": {
-    "strong_signals": ["ryuko", "matoi"],
-    "weak_signals": [],
+    "strong_signals": ["ryuko", "matoi", "satsuki_kiryuin", "satsuki"],
+    "weak_signals": ["kiryuin"],
     "stop_conflicts": [],
-    "notes": "Distinctive protagonist name."
+    "notes": "Added Satsuki Kiryuin; surname alone weak to avoid collisions."
   },
   "provenance": {"source": "manual_seed"}
 }

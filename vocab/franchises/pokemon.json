@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "pikachu", "aliases": []},
     {"canonical": "gengar", "aliases": []},
-    {"canonical": "charizard", "aliases": []}
+    {"canonical": "charizard", "aliases": []},
+    {"canonical": "marnie_pokemon", "aliases": ["marnie"]}
   ],
   "tokens": {
-    "strong_signals": ["pikachu", "charizard", "gengar"],
-    "weak_signals": ["pokemon"],
+    "strong_signals": ["pikachu", "charizard", "gengar", "marnie_pokemon"],
+    "weak_signals": ["pokemon", "marnie"],
     "stop_conflicts": [],
-    "notes": "Distinct creature names are strong."
+    "notes": "Added Marnie (Sword/Shield); qualifier for strong token."
   },
   "provenance": {"source": "manual_seed"}
 }

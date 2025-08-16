@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["my_dress_up_darling", "dress_up_darling"],
   "characters": [
-    {"canonical": "marin_kitagawa", "aliases": ["marin", "kitagawa"]}
+    {"canonical": "marin_kitagawa", "aliases": ["marin", "kitagawa"]},
+    {"canonical": "shizuku_cosplay", "aliases": ["shizuku"]}
   ],
   "tokens": {
-    "strong_signals": ["marin", "kitagawa"],
-    "weak_signals": [],
+    "strong_signals": ["marin", "kitagawa", "shizuku_cosplay"],
+    "weak_signals": ["shizuku"],
     "stop_conflicts": [],
-    "notes": "Require at least one of marin|kitagawa; both together raises confidence."
+    "notes": "Added Shizuku (in-universe cosplay persona) with qualified strong token; short name weak."
   },
   "provenance": {"source": "manual_seed"}
 }

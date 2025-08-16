@@ -1,0 +1,16 @@
+{
+  "franchise": "kaguya_sama_love_is_war",
+  "display_name": "Kaguya-sama: Love is War",
+  "source_version": 1,
+  "aliases": ["kaguya_sama", "love_is_war"],
+  "characters": [
+    {"canonical": "kaguya_shinomiya", "aliases": ["kaguya", "shinomiya"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kaguya", "shinomiya"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Both names distinctive within collection."
+  },
+  "provenance": {"source": "manual_seed"}
+}

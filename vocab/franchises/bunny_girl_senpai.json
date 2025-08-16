@@ -1,0 +1,16 @@
+{
+  "franchise": "bunny_girl_senpai",
+  "display_name": "Rascal Does Not Dream (Bunny Girl Senpai)",
+  "source_version": 1,
+  "aliases": ["bunny_girl_senpai", "rascal_does_not_dream"],
+  "characters": [
+    {"canonical": "mai_sakurajima", "aliases": ["mai", "sakurajima"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mai_sakurajima", "mai"],
+    "weak_signals": ["sakurajima"],
+    "stop_conflicts": [],
+    "notes": "Given name distinctive within domain; surname weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

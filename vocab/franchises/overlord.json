@@ -1,0 +1,16 @@
+{
+  "franchise": "overlord",
+  "display_name": "Overlord",
+  "source_version": 1,
+  "aliases": ["overlord"],
+  "characters": [
+    {"canonical": "lupusregina", "aliases": ["lupusregina_beta", "lupu"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lupusregina"],
+    "weak_signals": ["lupu"],
+    "stop_conflicts": [],
+    "notes": "Full distinctive name strong; short nickname weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

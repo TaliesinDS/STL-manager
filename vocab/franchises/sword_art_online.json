@@ -1,0 +1,16 @@
+{
+  "franchise": "sword_art_online",
+  "display_name": "Sword Art Online",
+  "source_version": 1,
+  "aliases": ["sao", "sword_art_online"],
+  "characters": [
+    {"canonical": "asuna_yuuki", "aliases": ["asuna", "yuuki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["asuna", "yuuki"],
+    "weak_signals": ["sao"],
+    "stop_conflicts": [],
+    "notes": "Asuna distinctive; acronym weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

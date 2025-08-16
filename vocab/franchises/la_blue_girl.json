@@ -1,0 +1,16 @@
+{
+  "franchise": "la_blue_girl",
+  "display_name": "La Blue Girl",
+  "source_version": 1,
+  "aliases": ["la_blue_girl"],
+  "characters": [
+    {"canonical": "miko_mido", "aliases": ["miko", "mido_miko"]}
+  ],
+  "tokens": {
+    "strong_signals": ["miko_mido"],
+    "weak_signals": ["miko"],
+    "stop_conflicts": [],
+    "notes": "Given name generic; full name strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

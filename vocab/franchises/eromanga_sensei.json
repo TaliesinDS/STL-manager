@@ -1,0 +1,16 @@
+{
+  "franchise": "eromanga_sensei",
+  "display_name": "Eromanga Sensei",
+  "source_version": 1,
+  "aliases": ["eromanga_sensei"],
+  "characters": [
+    {"canonical": "izumi_sagiri", "aliases": ["sagiri", "sagiri_izumi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["izumi_sagiri"],
+    "weak_signals": ["sagiri"],
+    "stop_conflicts": [],
+    "notes": "Family + given for canonical; given name alone weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

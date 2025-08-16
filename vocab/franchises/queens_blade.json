@@ -1,0 +1,16 @@
+{
+  "franchise": "queens_blade",
+  "display_name": "Queen's Blade",
+  "source_version": 1,
+  "aliases": ["queens_blade", "queen_blade"],
+  "characters": [
+    {"canonical": "menace", "aliases": ["queen_blade_menace"]}
+  ],
+  "tokens": {
+    "strong_signals": ["menace"],
+    "weak_signals": [],
+    "stop_conflicts": ["menace_to", "public_menace"],
+    "notes": "Common word; rely on precise token or contextual filters; added stop conflicts for phrases."
+  },
+  "provenance": {"source": "manual_seed"}
+}

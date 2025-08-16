@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["sin_city"],
   "characters": [
-    {"canonical": "nancy_callahan", "aliases": ["nancy", "callahan"]}
+    {"canonical": "nancy_callahan", "aliases": ["nancy", "callahan"]},
+    {"canonical": "ava_lord", "aliases": ["ava_lord", "ava"]}
   ],
   "tokens": {
-    "strong_signals": ["nancy_callahan"],
-    "weak_signals": ["nancy", "callahan"],
+    "strong_signals": ["nancy_callahan", "ava_lord"],
+    "weak_signals": ["nancy", "callahan", "ava"],
     "stop_conflicts": [],
-    "notes": "Full name for strong; parts weak due to generic usage."
+    "notes": "Added Ava Lord (Eva Green). Given names alone weak; full names strong."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -9,13 +9,14 @@
     {"canonical": "lumine", "aliases": []},
     {"canonical": "eula", "aliases": []},
     {"canonical": "fischl", "aliases": []},
-    {"canonical": "hu_tao", "aliases": ["hu", "tao", "hu_tao"]}
+    {"canonical": "hu_tao", "aliases": ["hu", "tao", "hu_tao"]},
+    {"canonical": "kamisato_ayaka", "aliases": ["ayaka", "kamisato"]}
   ],
   "tokens": {
-    "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao"],
-    "weak_signals": ["genshin", "hu", "tao"],
+    "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka"],
+    "weak_signals": ["genshin", "hu", "tao", "kamisato"],
     "stop_conflicts": [],
-    "notes": "Added eula, fischl, hu_tao; short tokens hu/tao weak to avoid collisions."
+    "notes": "Added Kamisato Ayaka; family name weak to avoid collision if other Kamisato added."
   },
   "provenance": {"source": "manual_seed"}
 }

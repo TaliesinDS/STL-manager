@@ -1,0 +1,16 @@
+{
+  "franchise": "soulcalibur",
+  "display_name": "Soulcalibur",
+  "source_version": 1,
+  "aliases": ["soul_calibur", "soul_edge"],
+  "characters": [
+    {"canonical": "ivy_valentine", "aliases": ["ivy", "valentine"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ivy_valentine"],
+    "weak_signals": ["ivy"],
+    "stop_conflicts": ["valentine"],
+    "notes": "Generic first name as weak, last name suppressed due to holiday context."
+  },
+  "provenance": {"source": "manual_seed"}
+}

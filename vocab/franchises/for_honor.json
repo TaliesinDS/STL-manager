@@ -1,0 +1,16 @@
+{
+  "franchise": "for_honor",
+  "display_name": "For Honor",
+  "source_version": 1,
+  "aliases": ["for_honor"],
+  "characters": [
+    {"canonical": "tora_olafsdotter", "aliases": ["tora", "olafsdotter"]}
+  ],
+  "tokens": {
+    "strong_signals": ["olafsdotter"],
+    "weak_signals": ["tora"],
+    "stop_conflicts": [],
+    "notes": "Surname distinctive; given name weaker alone."
+  },
+  "provenance": {"source": "manual_seed"}
+}

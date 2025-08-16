@@ -1,0 +1,16 @@
+{
+  "franchise": "komi_cant_communicate",
+  "display_name": "Komi Can't Communicate",
+  "source_version": 1,
+  "aliases": ["komi_cant_communicate", "komi_san"],
+  "characters": [
+    {"canonical": "komi_shouko", "aliases": ["shouko_komi", "komi_shoko"]}
+  ],
+  "tokens": {
+    "strong_signals": ["komi_shouko"],
+    "weak_signals": ["komi"],
+    "stop_conflicts": [],
+    "notes": "Surname alone ambiguous with other contexts; keep weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

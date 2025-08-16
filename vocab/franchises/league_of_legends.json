@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["league_of_legends", "lol"],
   "characters": [
-    {"canonical": "gwen_lol", "aliases": ["gwen"]}
+    {"canonical": "gwen_lol", "aliases": ["gwen"]},
+    {"canonical": "jinx_lol", "aliases": ["jinx"]}
   ],
   "tokens": {
-    "strong_signals": ["gwen_lol"],
-    "weak_signals": ["gwen", "lol"],
+    "strong_signals": ["gwen_lol", "jinx_lol"],
+    "weak_signals": ["gwen", "jinx", "lol"],
     "stop_conflicts": [],
-    "notes": "Need qualifier for strong to avoid Spider-Gwen collision."
+    "notes": "Added Jinx with qualifier; plain names weak to avoid cross-franchise collisions." 
   },
   "provenance": {"source": "manual_seed"}
 }

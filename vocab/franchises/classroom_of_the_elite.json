@@ -1,0 +1,16 @@
+{
+  "franchise": "classroom_of_the_elite",
+  "display_name": "Classroom of the Elite",
+  "source_version": 1,
+  "aliases": ["classroom_of_the_elite"],
+  "characters": [
+    {"canonical": "kikyo_kushida", "aliases": ["kikyo", "kushida_kikyo"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kikyo_kushida"],
+    "weak_signals": ["kikyo"],
+    "stop_conflicts": [],
+    "notes": "Given name alone weak."
+  },
+  "provenance": {"source": "manual_seed"}
+}

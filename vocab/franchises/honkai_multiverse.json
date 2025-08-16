@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "seele", "aliases": []},
     {"canonical": "kiana", "aliases": []},
-    {"canonical": "anby_demara", "aliases": ["anby", "demara"]}
+    {"canonical": "anby_demara", "aliases": ["anby", "demara"]},
+    {"canonical": "kafka", "aliases": []}
   ],
   "tokens": {
-    "strong_signals": ["seele", "kiana", "anby", "demara"],
+    "strong_signals": ["seele", "kiana", "anby", "demara", "kafka"],
     "weak_signals": ["honkai"],
     "stop_conflicts": [],
-    "notes": "Added Anby Demara (Star Rail). Given+family tokens treated as strong due to low collision risk."
+    "notes": "Added Kafka (Star Rail). Keep franchise name weak."
   },
   "provenance": {"source": "manual_seed"}
 }

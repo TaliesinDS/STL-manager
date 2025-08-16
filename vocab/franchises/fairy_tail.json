@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["fairy_tail"],
   "characters": [
-    {"canonical": "erza_scarlet", "aliases": ["erza", "scarlet"]}
+    {"canonical": "erza_scarlet", "aliases": ["erza", "scarlet"]},
+    {"canonical": "lucy_heartfilia", "aliases": ["lucy", "heartfilia"]}
   ],
   "tokens": {
-    "strong_signals": ["erza_scarlet", "erza"],
-    "weak_signals": ["scarlet"],
+    "strong_signals": ["erza_scarlet", "erza", "lucy_heartfilia", "lucy"],
+    "weak_signals": ["scarlet", "heartfilia"],
     "stop_conflicts": [],
-    "notes": "Scarlet alone ambiguous due to Marvel's Scarlet Witch; require erza pairing or full name for strong."
+    "notes": "Added Lucy Heartfilia; surname weak."
   },
   "provenance": {"source": "manual_seed"}
 }

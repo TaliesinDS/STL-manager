@@ -1,0 +1,16 @@
+{
+  "franchise": "dragon_maid",
+  "display_name": "Miss Kobayashi's Dragon Maid",
+  "source_version": 1,
+  "aliases": ["kobayashi_dragon_maid", "dragon_maid"],
+  "characters": [
+    {"canonical": "kanna_kamui", "aliases": ["kanna", "kamui_kanna"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kanna_kamui"],
+    "weak_signals": ["kanna"],
+    "stop_conflicts": [],
+    "notes": "Given name alone common; full name strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

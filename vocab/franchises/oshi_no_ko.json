@@ -1,0 +1,16 @@
+{
+  "franchise": "oshi_no_ko",
+  "display_name": "Oshi no Ko",
+  "source_version": 1,
+  "aliases": ["oshi_no_ko"],
+  "characters": [
+    {"canonical": "kana_arima", "aliases": ["kana", "arima_kana"]}
+  ],
+  "tokens": {
+    "strong_signals": ["kana_arima"],
+    "weak_signals": ["kana"],
+    "stop_conflicts": [],
+    "notes": "Given name very common; full name strong."
+  },
+  "provenance": {"source": "manual_seed"}
+}

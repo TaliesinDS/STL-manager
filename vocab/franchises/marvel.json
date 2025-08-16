@@ -5,19 +5,20 @@
   "aliases": ["marvel"],
   "characters": [
     {"canonical": "captain_marvel", "aliases": ["carol_danvers", "carol"]},
-    {"canonical": "black_widow", "aliases": ["natasha"]},
+    {"canonical": "black_widow", "aliases": ["natasha", "black_widow", "blackwidow", "black_widdow"]},
     {"canonical": "scarlet_witch", "aliases": ["wanda"]},
     {"canonical": "rogue", "aliases": []},
     {"canonical": "spider_gwen", "aliases": ["gwen_stacy", "spider_gwen"]},
-  {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]},
-  {"canonical": "emma_frost", "aliases": ["emma", "frost"]},
-  {"canonical": "hope_summers", "aliases": ["hope", "summers"]}
+    {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]},
+    {"canonical": "emma_frost", "aliases": ["emma", "frost"]},
+    {"canonical": "hope_summers", "aliases": ["hope", "summers"]},
+    {"canonical": "mantis", "aliases": []}
   ],
   "tokens": {
-  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers"],
-  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers"],
-    "stop_conflicts": [],
-    "notes": "Added Rogue, Spider-Gwen (gwen/gwen stacy weak), Cassie Lang (ant cass lead). Distinctive strong tokens; franchise name weak."
+    "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis"],
+    "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow"],
+    "stop_conflicts": ["mantis_religious"],
+    "notes": "Added Mantis and typo variants for Black Widow; mantis kept strong but add stop pattern to avoid generic insect context."
   },
   "provenance": {"source": "manual_seed"}
 }
