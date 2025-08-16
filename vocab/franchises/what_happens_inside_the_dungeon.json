@@ -1,0 +1,16 @@
+{
+  "franchise": "what_happens_inside_the_dungeon",
+  "display_name": "What Happens Inside the Dungeon",
+  "source_version": 1,
+  "aliases": ["what_happens_inside_the_dungeon"],
+  "characters": [
+    {"canonical": "chun_za", "aliases": ["chun", "za"]}
+  ],
+  "tokens": {
+    "strong_signals": ["chun_za"],
+    "weak_signals": ["chun", "za"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "elden_ring",
+  "display_name": "Elden Ring",
+  "source_version": 1,
+  "aliases": ["elden_ring"],
+  "characters": [
+    {"canonical": "recluse_elden_ring", "aliases": ["recluse"]}
+  ],
+  "tokens": {
+    "strong_signals": ["recluse_elden_ring"],
+    "weak_signals": ["recluse"],
+    "stop_conflicts": [],
+    "notes": "Provisional: 'Recluse' pending canon verification; keep qualified strong only." 
+  },
+  "provenance": {"source": "manual_seed", "status": "provisional"}
+}

@@ -12,13 +12,14 @@
     {"canonical": "cassie_lang", "aliases": ["cassie", "cassie_lang"]},
     {"canonical": "emma_frost", "aliases": ["emma", "frost"]},
     {"canonical": "hope_summers", "aliases": ["hope", "summers"]},
-    {"canonical": "mantis", "aliases": []}
+  {"canonical": "mantis", "aliases": []},
+  {"canonical": "psylocke", "aliases": ["betsy_braddock", "betsy", "braddock"]}
   ],
   "tokens": {
-  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis"],
-  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff"],
+  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke"],
+  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock"],
     "stop_conflicts": ["mantis_religious"],
-    "notes": "Added Mantis and typo variants for Black Widow; mantis kept strong but add stop pattern to avoid generic insect context."
+  "notes": "Added Mantis earlier; now added Psylocke (Betsy Braddock). Mantis kept strong with stop pattern to avoid generic insect context."
   },
   "provenance": {"source": "manual_seed"}
 }

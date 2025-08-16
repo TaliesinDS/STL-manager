@@ -1,0 +1,16 @@
+{
+  "franchise": "yu_gi_oh",
+  "display_name": "Yu-Gi-Oh!",
+  "source_version": 1,
+  "aliases": ["yu_gi_oh", "yugioh"],
+  "characters": [
+    {"canonical": "dark_magician_girl", "aliases": ["dark_magician_girl", "dmg"]}
+  ],
+  "tokens": {
+    "strong_signals": ["dark_magician_girl"],
+    "weak_signals": ["dmg"],
+    "stop_conflicts": ["dark_magician"],
+    "notes": "Explicit card name strong; acronym weak; prevent confusion with Dark Magician." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

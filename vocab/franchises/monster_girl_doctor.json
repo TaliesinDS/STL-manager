@@ -1,0 +1,16 @@
+{
+  "franchise": "monster_girl_doctor",
+  "display_name": "Monster Girl Doctor",
+  "source_version": 1,
+  "aliases": ["monster_girl_doctor"],
+  "characters": [
+    {"canonical": "aloe_monster_girl_doctor", "aliases": ["aloe"]}
+  ],
+  "tokens": {
+    "strong_signals": ["aloe_monster_girl_doctor"],
+    "weak_signals": ["aloe"],
+    "stop_conflicts": ["aloe_vera"],
+    "notes": "Qualified strong; 'aloe' generic plant reference so weak with plant stop conflict." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

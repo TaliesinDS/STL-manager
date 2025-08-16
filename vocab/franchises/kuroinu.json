@@ -1,0 +1,16 @@
+{
+  "franchise": "kuroinu",
+  "display_name": "Kuroinu",
+  "source_version": 1,
+  "aliases": ["kuroinu"],
+  "characters": [
+    {"canonical": "olga_discordia", "aliases": ["olga", "discordia"]}
+  ],
+  "tokens": {
+    "strong_signals": ["olga_discordia"],
+    "weak_signals": ["olga", "discordia"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak due to generic potential cross-use." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

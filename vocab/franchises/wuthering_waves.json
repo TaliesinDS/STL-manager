@@ -1,0 +1,16 @@
+{
+  "franchise": "wuthering_waves",
+  "display_name": "Wuthering Waves",
+  "source_version": 1,
+  "aliases": ["wuthering_waves"],
+  "characters": [
+    {"canonical": "yinlin", "aliases": []}
+  ],
+  "tokens": {
+    "strong_signals": ["yinlin"],
+    "weak_signals": [],
+    "stop_conflicts": [],
+    "notes": "Name distinctive; single strong token." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

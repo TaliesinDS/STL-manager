@@ -1,0 +1,16 @@
+{
+  "franchise": "record_of_lodoss_war",
+  "display_name": "Record of Lodoss War",
+  "source_version": 1,
+  "aliases": ["lodoss_war", "record_of_lodoss_war"],
+  "characters": [
+    {"canonical": "pirotess", "aliases": ["pirotesse", "pirotes"]}
+  ],
+  "tokens": {
+    "strong_signals": ["pirotess"],
+    "weak_signals": ["pirotesse", "pirotes"],
+    "stop_conflicts": [],
+    "notes": "Dark elf sorceress; variant spellings weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

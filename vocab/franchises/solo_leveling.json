@@ -1,0 +1,16 @@
+{
+  "franchise": "solo_leveling",
+  "display_name": "Solo Leveling",
+  "source_version": 1,
+  "aliases": ["solo_leveling"],
+  "characters": [
+    {"canonical": "cha_hae_in", "aliases": ["cha_hae_in", "hae_in", "cha"]}
+  ],
+  "tokens": {
+    "strong_signals": ["cha_hae_in"],
+    "weak_signals": ["hae_in", "cha"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak due to generic surname 'Cha'." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

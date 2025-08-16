@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["dead_or_alive", "doa"],
   "characters": [
-    {"canonical": "rachel_doa", "aliases": ["doa_rachel", "rachel_doa"]}
+    {"canonical": "rachel_doa", "aliases": ["doa_rachel", "rachel_doa"]},
+    {"canonical": "kasumi_doa", "aliases": ["kasumi"]}
   ],
   "tokens": {
-    "strong_signals": ["rachel_doa", "doa_rachel"],
-    "weak_signals": ["rachel", "doa"],
+  "strong_signals": ["rachel_doa", "doa_rachel", "kasumi_doa"],
+  "weak_signals": ["rachel", "doa", "kasumi"],
     "stop_conflicts": [],
-    "notes": "Qualifier + name strong; 'rachel' alone ambiguous."
+  "notes": "Qualifier + name strong; 'rachel' and 'kasumi' alone ambiguous so weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

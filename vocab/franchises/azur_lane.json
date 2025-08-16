@@ -5,13 +5,14 @@
   "aliases": ["azur_lane"],
   "characters": [
   {"canonical": "le_malin", "aliases": ["le_malin"]},
-  {"canonical": "st_louis", "aliases": ["st_louis", "saint_louis"]}
+  {"canonical": "st_louis", "aliases": ["st_louis", "saint_louis"]},
+  {"canonical": "richelieu", "aliases": ["richelieu"]}
   ],
   "tokens": {
-  "strong_signals": ["le_malin", "st_louis"],
+  "strong_signals": ["le_malin", "st_louis", "richelieu"],
   "weak_signals": ["saint_louis"],
   "stop_conflicts": ["louis"],
-  "notes": "Merged St. Louis; city name part kept in stop conflicts; variant 'saint_louis' weak." 
+  "notes": "Merged St. Louis; added Richelieu; city name part kept in stop conflicts; variant 'saint_louis' weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

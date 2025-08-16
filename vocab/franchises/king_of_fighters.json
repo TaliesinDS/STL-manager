@@ -5,13 +5,14 @@
   "aliases": ["kof", "king_of_fighters"],
   "characters": [
     {"canonical": "shermie", "aliases": []},
-    {"canonical": "may_lee", "aliases": ["may", "lee", "maylee"]}
+    {"canonical": "may_lee", "aliases": ["may", "lee", "maylee"]},
+    {"canonical": "angel_kof", "aliases": ["angel"]}
   ],
   "tokens": {
-    "strong_signals": ["shermie", "may_lee", "maylee"],
-    "weak_signals": ["kof", "may", "lee"],
+  "strong_signals": ["shermie", "may_lee", "maylee", "angel_kof"],
+  "weak_signals": ["kof", "may", "lee", "angel"],
     "stop_conflicts": [],
-    "notes": "Added May Lee; component names weak due to generic nature."
+  "notes": "Added May Lee earlier; now added Angel (qualified token strong; short form weak due to generic nature)."
   },
   "provenance": {"source": "manual_seed"}
 }

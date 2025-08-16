@@ -5,13 +5,14 @@
   "aliases": ["monster_hunter", "monhun"],
   "characters": [
     {"canonical": "hinoa_monster_hunter", "aliases": ["hinoa"]},
-    {"canonical": "minoto_monster_hunter", "aliases": ["minoto"]}
+    {"canonical": "minoto_monster_hunter", "aliases": ["minoto"]},
+    {"canonical": "gemma_monster_hunter", "aliases": ["gemma"]}
   ],
   "tokens": {
-    "strong_signals": ["hinoa_monster_hunter", "minoto_monster_hunter", "hinoa", "minoto"],
-    "weak_signals": [],
+  "strong_signals": ["hinoa_monster_hunter", "minoto_monster_hunter", "gemma_monster_hunter", "hinoa", "minoto"],
+  "weak_signals": ["gemma"],
     "stop_conflicts": [],
-    "notes": "Twin sisters; names distinctive so short forms acceptable strong." 
+  "notes": "Twin sisters; names distinctive so short forms acceptable strong. Added Gemma (Wilds) with weak short form until distinctiveness confirmed." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -5,13 +5,14 @@
   "aliases": ["fire_emblem"],
   "characters": [
     {"canonical": "edelgard", "aliases": []},
-    {"canonical": "hilda_fire_emblem", "aliases": ["hilda"]}
+    {"canonical": "hilda_fire_emblem", "aliases": ["hilda"]},
+    {"canonical": "petra_macneary", "aliases": ["petra"]}
   ],
   "tokens": {
-    "strong_signals": ["edelgard", "hilda_fire_emblem"],
-    "weak_signals": ["hilda"],
+    "strong_signals": ["edelgard", "hilda_fire_emblem", "petra_macneary"],
+    "weak_signals": ["hilda", "petra"],
     "stop_conflicts": [],
-    "notes": "Edelgard distinctive; 'hilda' ambiguous so strong only when qualified variant present."
+    "notes": "Edelgard distinctive; 'hilda' ambiguous so weak; added Petra Macneary with weak short form."
   },
   "provenance": {"source": "manual_seed"}
 }

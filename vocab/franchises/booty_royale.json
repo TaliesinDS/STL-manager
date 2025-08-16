@@ -1,0 +1,16 @@
+{
+  "franchise": "booty_royale",
+  "display_name": "Booty Royale",
+  "source_version": 1,
+  "aliases": ["booty_royale"],
+  "characters": [
+    {"canonical": "haebaru_misora", "aliases": ["misora", "haebaru"]}
+  ],
+  "tokens": {
+    "strong_signals": ["haebaru_misora"],
+    "weak_signals": ["misora", "haebaru"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

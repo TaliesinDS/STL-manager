@@ -1,0 +1,16 @@
+{
+  "franchise": "tekken",
+  "display_name": "Tekken",
+  "source_version": 1,
+  "aliases": ["tekken"],
+  "characters": [
+    {"canonical": "christie_monteiro", "aliases": ["christie", "monteiro"]}
+  ],
+  "tokens": {
+    "strong_signals": ["christie_monteiro"],
+    "weak_signals": ["christie", "monteiro"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

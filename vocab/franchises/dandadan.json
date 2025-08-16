@@ -1,0 +1,16 @@
+{
+  "franchise": "dandadan",
+  "display_name": "Dandadan",
+  "source_version": 1,
+  "aliases": ["dandadan"],
+  "characters": [
+    {"canonical": "aira_shiratori", "aliases": ["aira", "shiratori"]}
+  ],
+  "tokens": {
+    "strong_signals": ["aira_shiratori"],
+    "weak_signals": ["aira", "shiratori"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak until uniqueness validated." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

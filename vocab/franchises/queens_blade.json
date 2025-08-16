@@ -5,10 +5,11 @@
   "aliases": ["queens_blade", "queen_blade"],
   "characters": [
     {"canonical": "menace", "aliases": ["queen_blade_menace"]},
-    {"canonical": "melona", "aliases": []}
+    {"canonical": "melona", "aliases": []},
+    {"canonical": "melpha", "aliases": []}
   ],
   "tokens": {
-    "strong_signals": ["menace", "melona"],
+  "strong_signals": ["menace", "melona", "melpha"],
     "weak_signals": [],
     "stop_conflicts": ["menace_to", "public_menace"],
     "notes": "Added Melona; distinctive name."

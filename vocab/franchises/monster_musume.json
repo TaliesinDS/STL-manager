@@ -5,13 +5,14 @@
   "aliases": ["monster_musume"],
   "characters": [
     {"canonical": "papi", "aliases": ["papi_harpy"]},
-    {"canonical": "miia_lamia", "aliases": ["miia"]}
+    {"canonical": "miia_lamia", "aliases": ["miia"]},
+    {"canonical": "cathyl_centaur", "aliases": ["cathyl"]}
   ],
   "tokens": {
-    "strong_signals": ["papi_harpy", "miia_lamia"],
-    "weak_signals": ["papi", "miia"],
+  "strong_signals": ["papi_harpy", "miia_lamia", "cathyl_centaur"],
+  "weak_signals": ["papi", "miia", "cathyl"],
     "stop_conflicts": [],
-    "notes": "Added Miia (lamia); qualified strong token; short given name weak."
+  "notes": "Added Miia earlier; now added Cathyl (centaur). Qualified strong token; short given name weak."
   },
   "provenance": {"source": "manual_seed"}
 }

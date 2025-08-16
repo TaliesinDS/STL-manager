@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "anko_mitarashi", "aliases": ["anko", "mitarashi"]},
     {"canonical": "ino_yamanaka", "aliases": ["ino", "yamanaka"]},
-    {"canonical": "hinata_hyuga", "aliases": ["hinata", "hyuga"]}
+    {"canonical": "hinata_hyuga", "aliases": ["hinata", "hyuga"]},
+    {"canonical": "sakura_haruno", "aliases": ["sakura", "haruno"]}
   ],
   "tokens": {
-    "strong_signals": ["mitarashi", "yamanaka", "hyuga"],
-    "weak_signals": ["anko", "ino", "hinata"],
+  "strong_signals": ["mitarashi", "yamanaka", "hyuga", "haruno"],
+  "weak_signals": ["anko", "ino", "hinata", "sakura"],
     "stop_conflicts": [],
-    "notes": "Added Ino Yamanaka and Hinata Hyuga; surnames strong, given names weak to avoid cross-franchise collisions."
+  "notes": "Added Ino Yamanaka and Hinata Hyuga earlier; now added Sakura Haruno; surnames strong, given names weak to avoid cross-franchise collisions."
   },
   "provenance": {"source": "manual_seed"}
 }

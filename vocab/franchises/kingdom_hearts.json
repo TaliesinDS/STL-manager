@@ -1,0 +1,16 @@
+{
+  "franchise": "kingdom_hearts",
+  "display_name": "Kingdom Hearts",
+  "source_version": 1,
+  "aliases": ["kingdom_hearts", "kh"],
+  "characters": [
+    {"canonical": "aqua_kingdom_hearts", "aliases": ["aqua"]}
+  ],
+  "tokens": {
+    "strong_signals": ["aqua_kingdom_hearts"],
+    "weak_signals": ["aqua", "kh"],
+    "stop_conflicts": ["aqua_color"],
+    "notes": "Qualified form strong; 'aqua' generic word so weak; add stop pattern for pure color usage placeholder." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "black_lagoon",
+  "display_name": "Black Lagoon",
+  "source_version": 1,
+  "aliases": ["black_lagoon"],
+  "characters": [
+    {"canonical": "roberta_black_lagoon", "aliases": ["roberta"]}
+  ],
+  "tokens": {
+    "strong_signals": ["roberta_black_lagoon"],
+    "weak_signals": ["roberta"],
+    "stop_conflicts": [],
+    "notes": "Qualified variant strong; given name weak due to generic usage." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

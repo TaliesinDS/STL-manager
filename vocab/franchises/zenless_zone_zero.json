@@ -1,0 +1,16 @@
+{
+  "franchise": "zenless_zone_zero",
+  "display_name": "Zenless Zone Zero",
+  "source_version": 1,
+  "aliases": ["zenless_zone_zero", "zzz"],
+  "characters": [
+    {"canonical": "nekomiya_mana", "aliases": ["mana", "nekomiya"]}
+  ],
+  "tokens": {
+    "strong_signals": ["nekomiya_mana"],
+    "weak_signals": ["mana", "nekomiya", "zzz"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak; franchise acronym weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
