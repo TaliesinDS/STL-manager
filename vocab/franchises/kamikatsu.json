@@ -1,0 +1,16 @@
+{
+  "franchise": "kamikatsu",
+  "display_name": "Kamikatsu",
+  "source_version": 1,
+  "aliases": ["kamikatsu"],
+  "characters": [
+    {"canonical": "dakini_kamikatsu", "aliases": ["dakini"]}
+  ],
+  "tokens": {
+    "strong_signals": ["dakini_kamikatsu"],
+    "weak_signals": ["dakini"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; common mythological term weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

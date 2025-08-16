@@ -1,0 +1,16 @@
+{
+  "franchise": "magic_the_gathering",
+  "display_name": "Magic: The Gathering",
+  "source_version": 1,
+  "aliases": ["magic_the_gathering", "mtg"],
+  "characters": [
+    {"canonical": "liliana_vess", "aliases": ["liliana", "vess"]}
+  ],
+  "tokens": {
+    "strong_signals": ["liliana_vess"],
+    "weak_signals": ["liliana", "vess", "mtg"],
+    "stop_conflicts": [],
+    "notes": "Qualified + full name strong; common given name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

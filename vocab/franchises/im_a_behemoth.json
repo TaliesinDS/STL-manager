@@ -1,0 +1,16 @@
+{
+  "franchise": "im_a_behemoth",
+  "display_name": "I'm a Behemoth (Elf Girl's Pet)",
+  "source_version": 1,
+  "aliases": ["im_a_behemoth"],
+  "characters": [
+    {"canonical": "vulcan_im_a_behemoth", "aliases": ["vulcan"]}
+  ],
+  "tokens": {
+    "strong_signals": ["vulcan_im_a_behemoth"],
+    "weak_signals": ["vulcan"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; common mythological/brand name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

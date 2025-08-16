@@ -5,13 +5,14 @@
   "aliases": ["guilty_gear"],
   "characters": [
     {"canonical": "elphelt_valentine", "aliases": ["elphelt", "valentine"]},
-    {"canonical": "baiken_guilty_gear", "aliases": ["baiken"]}
+  {"canonical": "baiken_guilty_gear", "aliases": ["baiken"]},
+  {"canonical": "jam_kuradoberi", "aliases": ["jam", "kuradoberi"]}
   ],
   "tokens": {
-  "strong_signals": ["elphelt_valentine", "elphelt", "baiken_guilty_gear", "baiken"],
-  "weak_signals": ["valentine"],
+  "strong_signals": ["elphelt_valentine", "elphelt", "baiken_guilty_gear", "baiken", "jam_kuradoberi", "kuradoberi"],
+  "weak_signals": ["valentine", "jam"],
     "stop_conflicts": [],
-  "notes": "Given name strong; surname shared with others weak. Added Baiken (qualified + given strong)." 
+  "notes": "Given name strong; surname shared with others weak. Added Baiken earlier; now Jam Kuradoberi (qualified + surname strong; short 'jam' weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

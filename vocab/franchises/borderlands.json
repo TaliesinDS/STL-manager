@@ -1,0 +1,16 @@
+{
+  "franchise": "borderlands",
+  "display_name": "Borderlands",
+  "source_version": 1,
+  "aliases": ["borderlands"],
+  "characters": [
+    {"canonical": "mad_moxxi", "aliases": ["moxxi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mad_moxxi"],
+    "weak_signals": ["moxxi"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; nickname weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

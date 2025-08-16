@@ -1,0 +1,16 @@
+{
+  "franchise": "pulp_fiction",
+  "display_name": "Pulp Fiction",
+  "source_version": 1,
+  "aliases": ["pulp_fiction"],
+  "characters": [
+    {"canonical": "mia_wallace", "aliases": ["mia", "wallace"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mia_wallace"],
+    "weak_signals": ["mia", "wallace"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak (common names)." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

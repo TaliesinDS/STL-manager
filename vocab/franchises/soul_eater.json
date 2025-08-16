@@ -1,0 +1,16 @@
+{
+  "franchise": "soul_eater",
+  "display_name": "Soul Eater",
+  "source_version": 1,
+  "aliases": ["soul_eater"],
+  "characters": [
+    {"canonical": "blair_soul_eater", "aliases": ["blair"]}
+  ],
+  "tokens": {
+    "strong_signals": ["blair_soul_eater"],
+    "weak_signals": ["blair"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; common surname/given name variant weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

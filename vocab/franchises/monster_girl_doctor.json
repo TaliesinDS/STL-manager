@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["monster_girl_doctor"],
   "characters": [
-    {"canonical": "aloe_monster_girl_doctor", "aliases": ["aloe"]}
+    {"canonical": "aloe_monster_girl_doctor", "aliases": ["aloe"]},
+    {"canonical": "meme_redon", "aliases": ["meme", "redon", "memé_redon"]}
   ],
   "tokens": {
-    "strong_signals": ["aloe_monster_girl_doctor"],
-    "weak_signals": ["aloe"],
+  "strong_signals": ["aloe_monster_girl_doctor", "meme_redon"],
+  "weak_signals": ["aloe", "meme", "redon"],
     "stop_conflicts": ["aloe_vera"],
-    "notes": "Qualified strong; 'aloe' generic plant reference so weak with plant stop conflict." 
+  "notes": "Qualified strong; 'aloe' generic plant reference so weak with plant stop conflict. Added Meme Redon (full strong; components weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "reincarnated_as_a_sword",
+  "display_name": "Reincarnated as a Sword",
+  "source_version": 1,
+  "aliases": ["reincarnated_as_a_sword"],
+  "characters": [
+    {"canonical": "fran_reincarnated_as_a_sword", "aliases": ["fran"]}
+  ],
+  "tokens": {
+    "strong_signals": ["fran_reincarnated_as_a_sword"],
+    "weak_signals": ["fran"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; short name weak due to commonality." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

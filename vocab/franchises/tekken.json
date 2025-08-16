@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["tekken"],
   "characters": [
-    {"canonical": "christie_monteiro", "aliases": ["christie", "monteiro"]}
+    {"canonical": "christie_monteiro", "aliases": ["christie", "monteiro"]},
+    {"canonical": "lucky_chloe", "aliases": ["lucky", "chloe"]}
   ],
   "tokens": {
-    "strong_signals": ["christie_monteiro"],
-    "weak_signals": ["christie", "monteiro"],
+  "strong_signals": ["christie_monteiro", "lucky_chloe"],
+  "weak_signals": ["christie", "monteiro", "lucky", "chloe"],
     "stop_conflicts": [],
-    "notes": "Full name strong; components weak." 
+  "notes": "Full name strong; components weak. Added Lucky Chloe (qualified strong)." 
   },
   "provenance": {"source": "manual_seed"}
 }

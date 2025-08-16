@@ -1,0 +1,16 @@
+{
+  "franchise": "monogatari",
+  "display_name": "Monogatari Series",
+  "source_version": 1,
+  "aliases": ["monogatari"],
+  "characters": [
+    {"canonical": "hanekawa_tsubasa", "aliases": ["tsubasa", "hanekawa", "neko_hanekawa"]}
+  ],
+  "tokens": {
+    "strong_signals": ["hanekawa_tsubasa"],
+    "weak_signals": ["tsubasa", "hanekawa", "neko_hanekawa"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak; cat form alias weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

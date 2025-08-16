@@ -1,0 +1,16 @@
+{
+  "franchise": "warhammer_40k",
+  "display_name": "Warhammer 40K",
+  "source_version": 1,
+  "aliases": ["warhammer_40k", "40k"],
+  "characters": [
+    {"canonical": "lelith_heperax", "aliases": ["lelith", "heperax"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lelith_heperax"],
+    "weak_signals": ["lelith", "heperax", "40k"],
+    "stop_conflicts": [],
+    "notes": "Qualified full name strong; components weak until broader roster added." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

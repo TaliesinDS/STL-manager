@@ -5,13 +5,14 @@
   "aliases": ["taimanin", "taimanin_asagi"],
   "characters": [
     {"canonical": "igawa_sakura", "aliases": ["sakura_igawa", "igawa_sakura", "sakura", "igawa"]},
-    {"canonical": "yukikaze_mizuki", "aliases": ["yukikaze", "mizuki"]}
+  {"canonical": "yukikaze_mizuki", "aliases": ["yukikaze", "mizuki"]},
+  {"canonical": "shinohara_mari", "aliases": ["mari_shinohara", "mari", "shinohara"]}
   ],
   "tokens": {
-  "strong_signals": ["igawa_sakura", "yukikaze_mizuki"],
-  "weak_signals": ["sakura", "igawa", "sakura_igawa", "yukikaze", "mizuki"],
+  "strong_signals": ["igawa_sakura", "yukikaze_mizuki", "shinohara_mari"],
+  "weak_signals": ["sakura", "igawa", "sakura_igawa", "yukikaze", "mizuki", "mari", "shinohara"],
     "stop_conflicts": ["sakura_haruno", "sakura_kinomoto"],
-  "notes": "Qualified full names strong; generic 'sakura', 'yukikaze', 'mizuki' weak with cross-franchise stop conflicts." 
+  "notes": "Qualified full names strong; generic components weak with cross-franchise stop conflicts. Added Shinohara Mari (full strong; components weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

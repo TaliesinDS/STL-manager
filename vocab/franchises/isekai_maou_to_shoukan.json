@@ -1,0 +1,16 @@
+{
+  "franchise": "isekai_maou_to_shoukan",
+  "display_name": "Isekai Maou to Shoukan",
+  "source_version": 1,
+  "aliases": ["isekai_maou_to_shoukan", "isekai_maou"],
+  "characters": [
+    {"canonical": "shera_l_greenwood", "aliases": ["shera", "greenwood"]}
+  ],
+  "tokens": {
+    "strong_signals": ["shera_l_greenwood"],
+    "weak_signals": ["shera", "greenwood"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak; middle initial kept in canonical form." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

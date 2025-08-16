@@ -1,0 +1,16 @@
+{
+  "franchise": "mary_poppins",
+  "display_name": "Mary Poppins",
+  "source_version": 1,
+  "aliases": ["mary_poppins"],
+  "characters": [
+    {"canonical": "mary_poppins", "aliases": ["mary", "poppins"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mary_poppins"],
+    "weak_signals": ["mary", "poppins"],
+    "stop_conflicts": [],
+    "notes": "Qualified full strong; components weak (common given & surname)." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

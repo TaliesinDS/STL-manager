@@ -6,13 +6,15 @@
   "characters": [
     {"canonical": "papi", "aliases": ["papi_harpy"]},
     {"canonical": "miia_lamia", "aliases": ["miia"]},
-    {"canonical": "cathyl_centaur", "aliases": ["cathyl"]}
+  {"canonical": "cathyl_centaur", "aliases": ["cathyl"]},
+  {"canonical": "meroune_lorelei", "aliases": ["meroune", "lorelei"]},
+  {"canonical": "lilith_monster_musume", "aliases": ["lilith"]}
   ],
   "tokens": {
-  "strong_signals": ["papi_harpy", "miia_lamia", "cathyl_centaur"],
-  "weak_signals": ["papi", "miia", "cathyl"],
+  "strong_signals": ["papi_harpy", "miia_lamia", "cathyl_centaur", "meroune_lorelei", "meroune", "lilith_monster_musume"],
+  "weak_signals": ["papi", "miia", "cathyl", "lorelei", "lilith"],
     "stop_conflicts": [],
-  "notes": "Added Miia earlier; now added Cathyl (centaur). Qualified strong token; short given name weak."
+  "notes": "Added Miia earlier; then Cathyl; Meroune Lorelei; now Lilith (qualified strong; very common demon name weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

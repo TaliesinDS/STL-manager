@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["darkstalkers"],
   "characters": [
-    {"canonical": "qbee", "aliases": ["qbee", "q-bee"]}
+    {"canonical": "qbee", "aliases": ["qbee", "q-bee"]},
+    {"canonical": "morrigan_ainsland", "aliases": ["morrigan", "ainsland"]}
   ],
   "tokens": {
-    "strong_signals": ["qbee"],
-    "weak_signals": [],
+  "strong_signals": ["qbee", "morrigan_ainsland", "morrigan"],
+  "weak_signals": ["ainsland"],
     "stop_conflicts": [],
-    "notes": "Unique stylized name." 
+  "notes": "Unique stylized name. Added Morrigan Ainsland (qualified + given strong; surname weak)." 
   },
   "provenance": {"source": "manual_seed"}
 }

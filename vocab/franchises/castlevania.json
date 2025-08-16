@@ -1,0 +1,16 @@
+{
+  "franchise": "castlevania",
+  "display_name": "Castlevania",
+  "source_version": 1,
+  "aliases": ["castlevania"],
+  "characters": [
+    {"canonical": "lenore_castlevania", "aliases": ["lenore"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lenore_castlevania"],
+    "weak_signals": ["lenore"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; given name alone weak (generic)." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -1,0 +1,16 @@
+{
+  "franchise": "itadaki_seieki",
+  "display_name": "Itadaki! Seieki",
+  "source_version": 1,
+  "aliases": ["itadaki_seieki"],
+  "characters": [
+    {"canonical": "setogaya_mari", "aliases": ["mari", "setogaya"]}
+  ],
+  "tokens": {
+    "strong_signals": ["setogaya_mari"],
+    "weak_signals": ["mari", "setogaya"],
+    "stop_conflicts": [],
+    "notes": "Qualified full strong; components weak due to ambiguity." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -7,13 +7,14 @@
     {"canonical": "link", "aliases": []},
     {"canonical": "princess_zelda", "aliases": ["zelda"]},
   {"canonical": "ganondorf", "aliases": ["ganon"]},
-  {"canonical": "riju_zelda", "aliases": ["riju"]}
+  {"canonical": "riju_zelda", "aliases": ["riju"]},
+  {"canonical": "midna_zelda", "aliases": ["midna"]}
   ],
   "tokens": {
-  "strong_signals": ["ganondorf", "ganon", "riju_zelda", "riju"],
+  "strong_signals": ["ganondorf", "ganon", "riju_zelda", "riju", "midna_zelda", "midna"],
   "weak_signals": ["link", "zelda"],
     "stop_conflicts": [],
-  "notes": "'link' generic so weak; added Riju (qualified + given strong). Need co-occurrence for generic names." 
+  "notes": "'link' generic so weak; added Riju earlier; now Midna (qualified + given strong)." 
   },
   "provenance": {"source": "manual_seed"}
 }

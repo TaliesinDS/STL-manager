@@ -5,13 +5,14 @@
   "aliases": ["dragon_ball"],
   "characters": [
     {"canonical": "android_18", "aliases": ["android18", "android_18"]},
-    {"canonical": "bulma", "aliases": ["bulma"]}
+  {"canonical": "bulma", "aliases": ["bulma"]},
+  {"canonical": "android_21", "aliases": ["android21", "android_21"]}
   ],
   "tokens": {
-  "strong_signals": ["android_18", "android18", "bulma"],
+  "strong_signals": ["android_18", "android18", "bulma", "android_21", "android21"],
   "weak_signals": ["android"],
     "stop_conflicts": [],
-  "notes": "Require number for strong; 'android' generic. Added Bulma." 
+  "notes": "Require number for strong; 'android' generic. Added Bulma earlier; now Android 21." 
   },
   "provenance": {"source": "manual_seed"}
 }

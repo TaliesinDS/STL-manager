@@ -1,0 +1,16 @@
+{
+  "franchise": "arifureta",
+  "display_name": "Arifureta",
+  "source_version": 1,
+  "aliases": ["arifureta"],
+  "characters": [
+    {"canonical": "shea_haulia", "aliases": ["shea", "haulia", "sheas"]}
+  ],
+  "tokens": {
+    "strong_signals": ["shea_haulia", "shea"],
+    "weak_signals": ["haulia", "sheas"],
+    "stop_conflicts": [],
+    "notes": "Qualified + distinctive given strong; surname weak. Added plural mis-spelling alias as weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

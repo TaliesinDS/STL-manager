@@ -9,14 +9,15 @@
     {"canonical": "tier_harribel", "aliases": ["harribel", "halibel", "hallibel", "tier"]},
     {"canonical": "kuchiki_rukia", "aliases": ["rukia", "rukia_kuchiki"]},
     {"canonical": "lisa_yadomaru", "aliases": ["lisa", "yadomaru"]},
-    {"canonical": "hiyori_sarugaki", "aliases": ["hiyori", "sarugaki"]}
+  {"canonical": "hiyori_sarugaki", "aliases": ["hiyori", "sarugaki"]},
+  {"canonical": "nemu_kurotsuchi", "aliases": ["nemu", "kurotsuchi"]}
   ,{"canonical": "soi_fon", "aliases": ["soi_fon", "soifon", "sui_feng"]}
   ],
   "tokens": {
-  "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng"],
-  "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa"],
+  "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng", "nemu_kurotsuchi", "nemu"],
+  "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa", "kurotsuchi"],
     "stop_conflicts": [],
-    "notes": "Added Rukia Kuchiki, Lisa Yadomaru, Hiyori Sarugaki; surnames weak; given names strong except common 'lisa' kept weak."
+  "notes": "Added Rukia Kuchiki, Lisa Yadomaru, Hiyori Sarugaki; now Nemu Kurotsuchi (full strong + given strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

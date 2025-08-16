@@ -1,0 +1,16 @@
+{
+  "franchise": "wolf_of_wall_street",
+  "display_name": "The Wolf of Wall Street",
+  "source_version": 1,
+  "aliases": ["wolf_of_wall_street"],
+  "characters": [
+    {"canonical": "naomi_lapaglia", "aliases": ["naomi", "lapaglia"]}
+  ],
+  "tokens": {
+    "strong_signals": ["naomi_lapaglia"],
+    "weak_signals": ["naomi", "lapaglia"],
+    "stop_conflicts": [],
+    "notes": "Character (Naomi Lapaglia) not the actress. Full name strong; components weak due to common given name." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

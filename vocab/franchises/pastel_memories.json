@@ -1,0 +1,16 @@
+{
+  "franchise": "pastel_memories",
+  "display_name": "Pastel Memories",
+  "source_version": 1,
+  "aliases": ["pastel_memories"],
+  "characters": [
+    {"canonical": "michi_edogawabashi", "aliases": ["michi", "edogawabashi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["michi_edogawabashi"],
+    "weak_signals": ["michi", "edogawabashi"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

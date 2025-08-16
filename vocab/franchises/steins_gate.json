@@ -1,0 +1,16 @@
+{
+  "franchise": "steins_gate",
+  "display_name": "Steins;Gate",
+  "source_version": 1,
+  "aliases": ["steins_gate", "steins;gate"],
+  "characters": [
+    {"canonical": "makise_kurisu", "aliases": ["kurisu", "makise", "kurisu_makise"]}
+  ],
+  "tokens": {
+    "strong_signals": ["makise_kurisu"],
+    "weak_signals": ["kurisu", "makise"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; components weak; alt order alias included." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

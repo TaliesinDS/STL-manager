@@ -1,0 +1,16 @@
+{
+  "franchise": "black_rock_shooter",
+  "display_name": "Black Rock Shooter",
+  "source_version": 1,
+  "aliases": ["black_rock_shooter"],
+  "characters": [
+    {"canonical": "mato_kuroi", "aliases": ["mato", "kuroi"]}
+  ],
+  "tokens": {
+    "strong_signals": ["mato_kuroi"],
+    "weak_signals": ["mato", "kuroi"],
+    "stop_conflicts": [],
+    "notes": "Qualified full name strong; components weak until more roster added." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

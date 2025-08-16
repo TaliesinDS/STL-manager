@@ -1,0 +1,16 @@
+{
+  "franchise": "elfen_lied",
+  "display_name": "Elfen Lied",
+  "source_version": 1,
+  "aliases": ["elfen_lied"],
+  "characters": [
+    {"canonical": "lucy_elfen_lied", "aliases": ["lucy", "nyu"]}
+  ],
+  "tokens": {
+    "strong_signals": ["lucy_elfen_lied", "nyu"],
+    "weak_signals": ["lucy"],
+    "stop_conflicts": [],
+    "notes": "Qualified strong; alternate persona 'nyu' strong; common given name weak." 
+  },
+  "provenance": {"source": "manual_seed"}
+}
