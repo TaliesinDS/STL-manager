@@ -1,0 +1,20 @@
+{
+  "franchise": "xenoblade_chronicles",
+  "display_name": "Xenoblade Chronicles",
+  "source_version": 1,
+  "aliases": ["xenoblade", "xenoblade_chronicles"],
+  "characters": [
+    {"canonical": "pyra_xenoblade", "aliases": ["pyra"]},
+    {"canonical": "mythra_xenoblade", "aliases": ["mythra"]},
+    {"canonical": "poppi_xenoblade", "aliases": ["poppi"]},
+    {"canonical": "melia_xenoblade", "aliases": ["melia"]},
+    {"canonical": "nia_xenoblade", "aliases": ["nia"]}
+  ],
+  "tokens": {
+    "strong_signals": ["pyra_xenoblade", "mythra_xenoblade", "poppi_xenoblade", "melia_xenoblade", "nia_xenoblade", "pyra", "mythra"],
+    "weak_signals": ["poppi", "melia", "nia", "xenoblade"],
+    "stop_conflicts": [],
+    "notes": "Pyra & Mythra distinctive so given names also strong; others keep qualified strong only with given weak for balance." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

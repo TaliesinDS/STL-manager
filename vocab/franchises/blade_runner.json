@@ -1,0 +1,16 @@
+{
+  "franchise": "blade_runner",
+  "display_name": "Blade Runner",
+  "source_version": 1,
+  "aliases": ["blade_runner"],
+  "characters": [
+    {"canonical": "jori_ana_de_armas", "aliases": ["ana_de_armas_character", "ana_de_armas_blade_runner"]}
+  ],
+  "tokens": {
+    "strong_signals": ["ana_de_armas_blade_runner"],
+    "weak_signals": ["ana_de_armas_character", "blade_runner"],
+    "stop_conflicts": [],
+    "notes": "Placeholder for Ana de Armas hologram character (Joi). Using alias tokens; proper name 'Joi' withheld (too short) unless qualified." 
+  },
+  "provenance": {"source": "manual_seed", "status": "provisional"}
+}

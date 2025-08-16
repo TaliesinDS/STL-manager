@@ -1,0 +1,16 @@
+{
+  "franchise": "witchblade",
+  "display_name": "Witchblade",
+  "source_version": 1,
+  "aliases": ["witchblade"],
+  "characters": [
+    {"canonical": "sara_pezzini", "aliases": ["sara_pezzini", "sara", "pezzini"]}
+  ],
+  "tokens": {
+    "strong_signals": ["sara_pezzini"],
+    "weak_signals": ["sara", "pezzini", "witchblade"],
+    "stop_conflicts": [],
+    "notes": "Full name strong; components weak due to common given name and surname uniqueness not guaranteed elsewhere." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

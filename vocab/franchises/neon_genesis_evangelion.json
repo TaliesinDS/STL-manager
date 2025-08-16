@@ -5,13 +5,14 @@
   "aliases": ["evangelion", "nge"],
   "characters": [
     {"canonical": "asuka_langley", "aliases": ["asuka"]},
-    {"canonical": "rei_ayanami", "aliases": ["rei", "ayanami_rei"]}
+    {"canonical": "rei_ayanami", "aliases": ["rei", "ayanami_rei"]},
+    {"canonical": "misato_katsuragi", "aliases": ["misato", "katsuragi"]}
   ],
   "tokens": {
-    "strong_signals": ["asuka", "ayanami", "ayanami_rei"],
-    "weak_signals": ["rei", "evangelion"],
+  "strong_signals": ["asuka", "ayanami", "ayanami_rei", "misato_katsuragi", "misato"],
+  "weak_signals": ["rei", "evangelion", "katsuragi"],
     "stop_conflicts": [],
-    "notes": "Added compound token ayanami_rei for stronger match; 'rei' still weak due to ambiguity."
+  "notes": "Added compound token ayanami_rei earlier; now added Misato Katsuragi (full + given strong, surname weak). 'rei' remains weak due to ambiguity." 
   },
   "provenance": {"source": "manual_seed"}
 }

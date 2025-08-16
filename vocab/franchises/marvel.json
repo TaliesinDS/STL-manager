@@ -14,13 +14,14 @@
     {"canonical": "hope_summers", "aliases": ["hope", "summers"]},
   {"canonical": "mantis", "aliases": []},
   {"canonical": "psylocke", "aliases": ["betsy_braddock", "betsy", "braddock"]},
-  {"canonical": "kitty_pryde", "aliases": ["kitty", "pryde", "shadowcat"]}
+  {"canonical": "kitty_pryde", "aliases": ["kitty", "pryde", "shadowcat"]},
+  {"canonical": "invisible_woman", "aliases": ["sue_storm", "invisible_woman"]}
   ],
   "tokens": {
-  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat"],
-  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde"],
+  "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat", "invisible_woman", "sue_storm"],
+  "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde", "invisible"],
     "stop_conflicts": ["mantis_religious"],
-  "notes": "Added Mantis earlier; then Psylocke; now Kitty Pryde (Shadowcat). Shadowcat & full name strong; short components weak." 
+  "notes": "Added Mantis earlier; then Psylocke; then Kitty Pryde (Shadowcat); now Invisible Woman (Sue Storm). Generic 'invisible' weak; full title & alt name strong." 
   },
   "provenance": {"source": "manual_seed"}
 }

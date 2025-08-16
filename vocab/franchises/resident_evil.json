@@ -5,13 +5,14 @@
   "aliases": ["resident_evil"],
   "characters": [
     {"canonical": "ada_wong", "aliases": ["ada", "wong"]},
-    {"canonical": "claire_redfield", "aliases": ["claire", "redfield"]}
+    {"canonical": "claire_redfield", "aliases": ["claire", "redfield"]},
+    {"canonical": "jill_valentine", "aliases": ["jill", "valentine"]}
   ],
   "tokens": {
-    "strong_signals": ["ada_wong", "claire_redfield", "claire"],
-    "weak_signals": ["ada", "wong", "redfield"],
+  "strong_signals": ["ada_wong", "claire_redfield", "claire", "jill_valentine", "jill"],
+  "weak_signals": ["ada", "wong", "redfield", "valentine"],
     "stop_conflicts": [],
-    "notes": "Added Claire Redfield. Kept Ada Wong full name strong due to 'Ada' ambiguity; Claire given name strong (lower collision risk) and surname weak."
+  "notes": "Added Claire Redfield earlier; now Jill Valentine. Ada keeps full-name strong due to 'Ada' ambiguity; 'jill' acceptable strong; surnames weak where generic."
   },
   "provenance": {"source": "manual_seed"}
 }

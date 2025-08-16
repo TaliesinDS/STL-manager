@@ -7,10 +7,10 @@
     {"canonical": "seras_victoria", "aliases": ["seras", "victoria"]}
   ],
   "tokens": {
-    "strong_signals": ["seras", "victoria"],
-    "weak_signals": ["hellsing"],
+    "strong_signals": ["seras_victoria", "seras"],
+    "weak_signals": ["victoria", "hellsing"],
     "stop_conflicts": [],
-    "notes": "Character name(s) distinctive enough; franchise word weak."
+    "notes": "Seras Victoria: full name + given name strong; surname and franchise weak for balance." 
   },
   "provenance": {"source": "manual_seed"}
 }

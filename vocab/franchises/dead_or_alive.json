@@ -12,7 +12,7 @@
   "strong_signals": ["rachel_doa", "doa_rachel", "kasumi_doa", "tina_armstrong_doa"],
   "weak_signals": ["rachel", "doa", "kasumi", "tina", "armstrong"],
     "stop_conflicts": [],
-  "notes": "Qualifier + name strong; 'rachel', 'kasumi', 'tina', 'armstrong' alone ambiguous so weak." 
+  "notes": "Qualifier + name strong; 'rachel', 'kasumi', 'tina', 'armstrong' alone ambiguous so weak. Rachel already present (requested)." 
   },
   "provenance": {"source": "manual_seed"}
 }

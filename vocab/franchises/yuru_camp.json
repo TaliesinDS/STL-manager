@@ -1,0 +1,19 @@
+{
+  "franchise": "yuru_camp",
+  "display_name": "Yuru Camp",
+  "source_version": 1,
+  "aliases": ["yuru_camp", "laid_back_camp"],
+  "characters": [
+    {"canonical": "rin_shima", "aliases": ["rin", "shima"]},
+    {"canonical": "nadeshiko_kagamihara", "aliases": ["nadeshiko", "kagamihara"]},
+    {"canonical": "aoi_inuyama", "aliases": ["aoi", "inuyama"]},
+    {"canonical": "chiaki_ogaki", "aliases": ["chiaki", "ogaki"]}
+  ],
+  "tokens": {
+    "strong_signals": ["rin_shima", "nadeshiko_kagamihara", "aoi_inuyama", "chiaki_ogaki", "rin", "nadeshiko"],
+    "weak_signals": ["shima", "kagamihara", "aoi", "inuyama", "chiaki", "ogaki", "yuru_camp", "laid_back_camp"],
+    "stop_conflicts": [],
+    "notes": "Given names 'rin' & 'nadeshiko' moderately distinctive so strong; others weak to prevent cross-franchise collisions." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

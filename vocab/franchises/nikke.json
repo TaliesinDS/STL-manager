@@ -8,13 +8,14 @@
   {"canonical": "volume_nikke", "aliases": ["volume"]},
   {"canonical": "alice_nikke", "aliases": ["alice"]},
   {"canonical": "dorothy_nikke", "aliases": ["dorothy"]},
-  {"canonical": "marian_nikke", "aliases": ["marian"]}
+  {"canonical": "marian_nikke", "aliases": ["marian"]},
+  {"canonical": "red_hood_nikke", "aliases": ["red_hood", "redhood"]}
   ],
   "tokens": {
-  "strong_signals": ["anis_nikke", "volume_nikke", "alice_nikke", "dorothy_nikke", "marian_nikke"],
-  "weak_signals": ["anis", "volume", "alice", "dorothy", "marian"],
+  "strong_signals": ["anis_nikke", "volume_nikke", "alice_nikke", "dorothy_nikke", "marian_nikke", "red_hood_nikke", "red_hood"],
+  "weak_signals": ["anis", "volume", "alice", "dorothy", "marian", "redhood"],
     "stop_conflicts": [],
-  "notes": "Franchise-qualified strong tokens; short given/common words as weak signals. Added Alice, Dorothy, Marian." 
+  "notes": "Franchise-qualified strong tokens; short given/common words as weak signals. Added Alice, Dorothy, Marian earlier; now added Red Hood (qualified strong)." 
   },
   "provenance": {"source": "manual_seed"}
 }

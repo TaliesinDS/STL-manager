@@ -6,13 +6,14 @@
   "characters": [
   {"canonical": "asuna_blue_archive", "aliases": ["asuna"]},
   {"canonical": "karin_blue_archive", "aliases": ["karin"]},
-  {"canonical": "hoshino_blue_archive", "aliases": ["hoshino"]}
+  {"canonical": "hoshino_blue_archive", "aliases": ["hoshino"]},
+  {"canonical": "hina_sorasaki", "aliases": ["hina", "sorasaki"]}
   ],
   "tokens": {
-  "strong_signals": ["asuna_blue_archive", "karin_blue_archive", "hoshino_blue_archive"],
-  "weak_signals": ["asuna", "karin", "hoshino"],
+  "strong_signals": ["asuna_blue_archive", "karin_blue_archive", "hoshino_blue_archive", "hina_sorasaki", "hina"],
+  "weak_signals": ["asuna", "karin", "hoshino", "sorasaki"],
     "stop_conflicts": [],
-  "notes": "'asuna' overlaps with SAO; 'karin' common; 'hoshino' common surname; short forms weak, qualified strong."
+  "notes": "'asuna' overlaps with SAO; 'karin' common; 'hoshino' common surname; added Hina Sorasaki (given name moderately distinctive strong; surname weak)."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -6,13 +6,14 @@
   "characters": [
     {"canonical": "saitama", "aliases": []},
     {"canonical": "genos", "aliases": []},
-    {"canonical": "do_s", "aliases": ["dos", "do-s", "do_s"]}
+    {"canonical": "do_s", "aliases": ["dos", "do-s", "do_s"]},
+    {"canonical": "fubuki_opm", "aliases": ["fubuki"]}
   ],
   "tokens": {
-    "strong_signals": ["saitama", "genos", "do_s"],
-    "weak_signals": ["dos", "do-s"],
+  "strong_signals": ["saitama", "genos", "do_s", "fubuki_opm", "fubuki"],
+  "weak_signals": ["dos", "do-s"],
     "stop_conflicts": ["one"],
-    "notes": "Added Do-S (canonical do_s). Hyphen & plain forms weak to avoid collision with Spanish 'dos'."
+  "notes": "Added Do-S earlier; now added Fubuki (qualified and given strong). Hyphen & plain forms for Do-S weak to avoid collision with Spanish 'dos'." 
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,16 @@
+{
+  "franchise": "red_sonja",
+  "display_name": "Red Sonja",
+  "source_version": 1,
+  "aliases": ["red_sonja"],
+  "characters": [
+    {"canonical": "red_sonja", "aliases": ["red_sonja", "sonja"]}
+  ],
+  "tokens": {
+    "strong_signals": ["red_sonja"],
+    "weak_signals": ["sonja"],
+    "stop_conflicts": [],
+    "notes": "Full title strong; given name weak due to ambiguity with 'Sonya' variants." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

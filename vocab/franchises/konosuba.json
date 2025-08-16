@@ -5,13 +5,14 @@
   "aliases": ["konosuba"],
   "characters": [
   {"canonical": "megumin", "aliases": ["megumin"]},
-  {"canonical": "yunyun_konosuba", "aliases": ["yunyun", "yunyun_maid"]}
+  {"canonical": "yunyun_konosuba", "aliases": ["yunyun", "yunyun_maid"]},
+  {"canonical": "darkness_konosuba", "aliases": ["darkness"]}
   ],
   "tokens": {
-  "strong_signals": ["megumin", "yunyun_konosuba"],
+  "strong_signals": ["megumin", "yunyun_konosuba", "darkness_konosuba", "darkness"],
   "weak_signals": ["yunyun", "yunyun_maid"],
     "stop_conflicts": [],
-  "notes": "Megumin distinctive; Yunyun added with qualified strong token; alt costume tokens weak." 
+  "notes": "Megumin distinctive; Yunyun with qualified strong; added Darkness (qualified + common word also given strong for context disambiguation)." 
   },
   "provenance": {"source": "manual_seed"}
 }

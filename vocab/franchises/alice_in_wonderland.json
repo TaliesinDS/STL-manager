@@ -1,0 +1,16 @@
+{
+  "franchise": "alice_in_wonderland",
+  "display_name": "Alice in Wonderland",
+  "source_version": 1,
+  "aliases": ["alice_in_wonderland"],
+  "characters": [
+    {"canonical": "alice_wonderland", "aliases": ["alice", "alice_in_wonderland"]}
+  ],
+  "tokens": {
+    "strong_signals": ["alice_wonderland"],
+    "weak_signals": ["alice", "alice_in_wonderland"],
+    "stop_conflicts": [],
+    "notes": "Full qualified strong; 'alice' weak due to extreme ambiguity." 
+  },
+  "provenance": {"source": "manual_seed"}
+}

@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["vtuber", "vtubers"],
   "characters": [
-    {"canonical": "silvervale", "aliases": ["silvervale"]}
+    {"canonical": "silvervale", "aliases": ["silvervale"]},
+    {"canonical": "usada_pekora", "aliases": ["pekora", "usada", "usada_pekora"]}
   ],
   "tokens": {
-    "strong_signals": ["silvervale"],
-    "weak_signals": ["vtuber", "vtubers"],
+  "strong_signals": ["silvervale", "usada_pekora", "pekora"],
+  "weak_signals": ["vtuber", "vtubers", "usada"],
     "stop_conflicts": [],
-    "notes": "Initial seeding with Silvervale; platform descriptor kept weak."
+  "notes": "Added Silvervale earlier; now Usada Pekora. 'pekora' strong; 'usada' weak; platform descriptor weak." 
   },
   "provenance": {"source": "manual_seed"}
 }

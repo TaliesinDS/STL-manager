@@ -4,13 +4,15 @@
   "source_version": 1,
   "aliases": ["elden_ring"],
   "characters": [
-    {"canonical": "recluse_elden_ring", "aliases": ["recluse"]}
+    {"canonical": "recluse_elden_ring", "aliases": ["recluse"]},
+    {"canonical": "marika_elden_ring", "aliases": ["marika"]},
+    {"canonical": "eltanin_elden_ring", "aliases": ["eltanin"]}
   ],
   "tokens": {
-    "strong_signals": ["recluse_elden_ring"],
-    "weak_signals": ["recluse"],
+  "strong_signals": ["recluse_elden_ring", "marika_elden_ring"],
+  "weak_signals": ["recluse", "marika", "eltanin_elden_ring", "eltanin"],
     "stop_conflicts": [],
-    "notes": "Provisional: 'Recluse' pending canon verification; keep qualified strong only." 
+  "notes": "Provisional: 'Recluse' pending canon verification. Added Marika (qualified strong + weak given) and Eltanin (kept weak including qualified until verification)." 
   },
   "provenance": {"source": "manual_seed", "status": "provisional"}
 }

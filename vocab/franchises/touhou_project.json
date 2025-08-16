@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["touhou"],
   "characters": [
-    {"canonical": "yukari_yakumo", "aliases": ["yukari", "yakumo"]}
+    {"canonical": "yukari_yakumo", "aliases": ["yukari", "yakumo"]},
+    {"canonical": "sakuya_izayoi", "aliases": ["sakuya", "izayoi"]}
   ],
   "tokens": {
-    "strong_signals": ["yukari", "yukari_yakumo"],
-    "weak_signals": ["yakumo"],
+  "strong_signals": ["yukari", "yukari_yakumo", "sakuya_izayoi", "sakuya"],
+  "weak_signals": ["yakumo", "izayoi"],
     "stop_conflicts": [],
-    "notes": "Given name strong; surname weak." 
+  "notes": "Given names strong; surnames weak. Added Sakuya Izayoi." 
   },
   "provenance": {"source": "manual_seed"}
 }
