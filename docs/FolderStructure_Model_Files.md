@@ -98,19 +98,20 @@ Examples:
 ## 6. Display Pieces (Maker‑First Layout)
 Requirement change: Display pieces should group first by **maker (designer)**. Form/genre become secondary classification (README metadata rather than mandatory path levels) to keep navigation focused on sculptors.
 
-### 6.1 Canonical Path Pattern (Revised for Multi‑Axis Variants)
+### 6.1 Canonical Path Pattern (Revised for Multi‑Axis Variants + Scale)
 Some makers publish multiple orthogonal variant dimensions: content rating (sfw/nsfw), pose (pose-a/b), geometry packaging (split/merged), supports (presupported), hollowed, etc. A single flattened `variant_slug` becomes ambiguous (e.g., distinguishing nsfw split vs nsfw merged). We introduce a **two-tier** structure separating high-level semantic variant (what the piece depicts) from packaging/build attributes (how the geometry is delivered).
 
 ```
-/display/<maker>/<piece_slug>/<variant_id>/<package_id>/
+/display/<maker>/<piece_slug>/<variant_id>/<scale_id?>/<package_id>/
 ```
 Where:
 - **maker**: normalized sculptor/publisher slug (e.g., `ghamak`, `esmonster`, `azarama`). Unknown → `unknown_maker`.
 - **piece_slug**: primary piece identifier; lowercase snake_case.
 - **variant_id**: Encodes viewer-facing content/pose differences ONLY (NOT packaging). Grammar below.
+- **scale_id** (optional): Physical/render scale; required when multiple scales exist. Omit if only one standard scale (e.g., single 32mm release). Grammar below.
 - **package_id**: Encodes how the mesh is organized/support state. Grammar below.
 
-If there is only one semantic variant, you MAY omit `<variant_id>` and go directly to `<package_id>`, but consistency is recommended once multiple variants appear.
+If there is only one semantic variant, you MAY omit `<variant_id>`. If only one scale, omit `<scale_id>`. Maintain ordering when present.
 
 ### 6.1.1 `variant_id` Grammar
 Tokens (order fixed): `[rating]_[pose?]` where:
@@ -119,7 +120,17 @@ Tokens (order fixed): `[rating]_[pose?]` where:
 
 Examples: `sfw`, `nsfw`, `nsfw_pose-a`, `sfw_pose-running`.
 
-### 6.1.2 `package_id` Grammar
+### 6.1.2 `scale_id` Grammar
+Format: `scale-<value>` where `<value>` is one of:
+```
+32mm 35mm 54mm 75mm 90mm 120mm
+1_10 1_12 1_6 1_4   (ratios use underscore)
+chibi (stylized scale bucket)
+```
+Examples: `scale-32mm`, `scale-75mm`, `scale-1_10`.
+Avoid embedding scale in filenames when a scale directory exists.
+
+### 6.1.3 `package_id` Grammar
 Tokens (underscore separated, order fixed): `[geometry]_[support?]_[hollow?]`
 - **geometry** (required): `split` | `merged`
 - **support** (optional): `presupported` if official/curated supports applied
@@ -127,10 +138,11 @@ Tokens (underscore separated, order fixed): `[geometry]_[support?]_[hollow?]`
 
 Examples: `split`, `split_presupported`, `merged_presupported_hollowed`.
 
-This 2-tier approach lets both `nsfw/split` and `nsfw/merged` coexist cleanly:
+This layered approach lets `nsfw` variants exist at multiple scales & packages:
 ```
-/display/azerama/sasha_braus/nsfw/split/raw_parts/...
-/display/azerama/sasha_braus/nsfw/merged_presupported/...
+/display/azerama/sasha_braus/nsfw/scale-32mm/split/raw_parts/...
+/display/azerama/sasha_braus/nsfw/scale-32mm/merged_presupported/raw_parts/...
+/display/azerama/sasha_braus/nsfw/scale-75mm/merged_presupported/raw_parts/...
 ```
 Prior single-tier examples like `nsfw_split_version` are now represented by `variant_id = nsfw` + `package_id = split`.
 
@@ -139,17 +151,18 @@ Original example path:
 ```
 /display/azerama/Azerama - Sasha Braus/Sasha_NSFW_Azerama/01SashaNSFW_SplitVersion_STL_Azerama/<files>
 ```
-Proposed normalized canonical paths (two packages for same variant):
+Proposed normalized canonical paths (two packages, one scale):
 ```
-/display/azerama/sasha_braus/nsfw/split/raw_parts/<files>
-/display/azerama/sasha_braus/nsfw/merged_presupported/raw_parts/<files>
+/display/azerama/sasha_braus/nsfw/scale-32mm/split/raw_parts/<files>
+/display/azerama/sasha_braus/nsfw/scale-32mm/merged_presupported/raw_parts/<files>
 ```
 Steps:
 1. Maker = `azerama`.
 2. Piece name → `sasha_braus`.
-3. Semantic variant: `nsfw` (content rating only).
-4. Packaging variants: `split` and `merged_presupported`.
-5. Original vendor staging folder collapsed into standardized `raw_parts/` under each package.
+3. Semantic variant: `nsfw`.
+4. Scale: `scale-32mm` (present because multiple scales exist upstream or anticipated).
+5. Packaging variants: `split` and `merged_presupported`.
+6. Vendor staging collapsed into standardized `raw_parts/`.
 
 ### 6.3 Alternative (When Form is Crucial)
 If you have many forms per maker and need separation, you may optionally nest form before piece:
@@ -170,7 +183,13 @@ sfw_pose-a
 nsfw_pose-b
 sfw_pose-running
 ```
-Package tokens (Section 6.1.2 examples):
+Scale tokens (Section 6.1.2 examples):
+```
+scale-32mm
+scale-75mm
+scale-1_10
+```
+Package tokens (Section 6.1.3 examples):
 ```
 split
 merged
@@ -185,15 +204,15 @@ Do NOT place `presupported` or `hollowed` in the variant layer—keep them in `p
 ```
 <piece_slug>__v<Major>[ _revX][ _part-<Name>][ _pose-<Code>].stl
 ```
-Since variant and packaging are already encoded in directory layers, filenames SHOULD omit those tokens to reduce redundancy. Use `_part-` only when a single directory contains multiple distinct components (e.g., `_part-head`, `_part-torso`).
+Since variant, scale, and packaging are encoded in directory layers, filenames SHOULD omit those tokens. Use `_scale-XXmm` suffix ONLY if no scale folder is present (backwards compatibility). Use `_part-` only when a directory holds multiple components.
 
 Examples:
 ```
-/display/ghamak/dragon_lord/sfw/split/ raw_parts/dragon_lord__v1.stl
-/display/azerama/sasha_braus/nsfw/split/raw_parts/sasha_braus__v2_part-head.stl
-/display/azerama/sasha_braus/nsfw/split/raw_parts/sasha_braus__v2_part-torso.stl
-/display/azerama/sasha_braus/nsfw/merged_presupported/raw_parts/sasha_braus__v2.stl
-/display/esmonster/ancient_titan/sfw/merged_hollowed/raw_parts/ancient_titan__v3.stl
+/display/ghamak/dragon_lord/sfw/scale-32mm/merged/raw_parts/dragon_lord__v1.stl
+/display/azerama/sasha_braus/nsfw/scale-32mm/split/raw_parts/sasha_braus__v2_part-head.stl
+/display/azerama/sasha_braus/nsfw/scale-32mm/split/raw_parts/sasha_braus__v2_part-torso.stl
+/display/azerama/sasha_braus/nsfw/scale-75mm/merged_presupported/raw_parts/sasha_braus__v2.stl
+/display/esmonster/ancient_titan/sfw/scale-1_10/merged_hollowed/raw_parts/ancient_titan__v3.stl
 ```
 (You may also store alternative rendered/paint reference images under `docs/` inside the variant.)
 
@@ -276,12 +295,13 @@ napoleonic_grenadier_bust__v1_revA.stl
   "version": 2
 }
 ```
-### 10.3 Display Example (Maker‑First, Two‑Tier Variant/Package)
+### 10.3 Display Example (Maker‑First, Variant + Scale + Package)
 ```json
 {
   "maker": "azerama",
   "piece_name": "sasha_braus",
   "variant_id": "nsfw",                    
+  "scale_id": "scale-32mm",               
   "package_id": "split_presupported",      
   "form": "full_figure",                  
   "genre": "fantasy",                     
@@ -301,8 +321,13 @@ Validation considerations:
 - Split path after `/tabletop/warhammer` vs `/tabletop/other_games` vs `/tabletop/generic` to enter distinct extractors.
 - Allow optional segments (subfaction) by pattern length; fill absent fields with `null` in normalized output.
 - Source variant recognized by membership in allowed set (Section 7).
-- File tokenization: split on `__`, parse trailing `_pose-`, `_part-`, `_scale-`, `_revX` patterns.
-- Display parsing: if path matches `/display/<maker>/<piece>/<variant>/<package>/...`, capture `variant_id` & `package_id`. If only one segment after piece and it contains a geometry token (`split|merged`), treat it as `package_id` with implicit default variant `sfw` unless overridden by README.
+- File tokenization: split on `__`, parse trailing `_pose-`, `_part-`, `_scale-`, `_revX` patterns (scale suffix only when no scale folder).
+- Display parsing: 
+  - Pattern A: `/display/<maker>/<piece>/<variant>/<scale>/<package>/...`
+  - Pattern B: `/display/<maker>/<piece>/<variant>/<package>/...` (no scale folder) → derive scale from README or filename suffix if present.
+  - Pattern C: `/display/<maker>/<piece>/<package>/...` (implicit `variant_id = sfw`, no scale folder).
+  - Recognize scale folder by prefix `scale-`.
+  - Recognize package folder by leading geometry token (`split|merged`).
 
 ---
 ## 12. Future Extensions
