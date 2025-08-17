@@ -240,7 +240,6 @@ pyproject.toml
 9. Evaluate need for Postgres/Redis (only if scale gate crossed); otherwise continue optimizing SQLite.
 
 ---
-dramatiq
 ## Minimal Early Dependencies List (Python)
 ```
 fastapi
@@ -258,6 +257,45 @@ trimesh ; extra == "geometry"
 meshio  ; extra == "geometry"
 ```
 Optional (only if upgrading): `psycopg[binary]`, `prometheus-client`, `dramatiq`, `redis`.
+
+---
+### Docker Readiness (Deferred Future Packaging)
+The current local-first design is container-friendly; no chosen component blocks later Dockerization.
+Key readiness points:
+1. Single Process Simplicity: All baseline services (API, jobs, SQLite) run in one Python process, enabling a minimal single-container image initially.
+2. SQLite in WAL Mode: Works inside a container with a bind-mounted volume (`/data/app.db`) to persist state; no host OS features required beyond standard file locking (supported on Linux). For multi-writer or scale triggers you can introduce Postgres as a second container later without refactoring the normalization core.
+3. Static UI Assets: Pre-built React bundle is pure static files; COPY into image and serve via FastAPI static mount (no Node in runtime layer). Multi-stage build keeps final image slim.
+4. Optional Components: Dramatiq/Redis/Postgres/OpenSearch remain additive; each can map to additional services in a future `compose.yaml` without altering core package APIs (decoupled via interfaces/service modules).
+5. Configuration via Environment: Planned config loader should check env vars (e.g., `STLMGR_DB_URL`, `STLMGR_API_KEY`) before falling back to `CONFIG.yaml`, aligning with container best practices.
+6. Deterministic Builds: Pin versions in `pyproject.toml` + lock; future Dockerfile uses those to ensure reproducible layers.
+7. Logging & Metrics: Structured JSON logs already suitable for container stdout. Prometheus exporter (optional) just exposes an HTTP endpoint—no change needed.
+8. Security: Single-user API key stays as env var secret (`STLMGR_API_KEY`) in container runtime; later multi-user adds JWT without image change.
+
+Sample future (not yet needed) multi-stage outline:
+```
+FROM node:22-alpine AS ui-build
+WORKDIR /ui
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ .
+RUN npm run build
+
+FROM python:3.12-slim AS app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+# (Optionally install with pip if using requirements.txt)
+RUN pip install --no-cache-dir --upgrade pip \
+  && pip install .[geometry]  # or . without extras
+COPY stl_manager/ ./stl_manager/
+COPY scripts/start_container.sh ./
+COPY --from=ui-build /ui/dist ./ui_dist
+VOLUME ["/data"]
+ENV STLMGR_DB_PATH=/data/app.db
+EXPOSE 8000
+CMD ["python", "-m", "stl_manager.api.run"]
+```
+Nothing in current architecture mandates Windows-only code paths; ensure future file handling uses `pathlib` for portability.
 
 ---
 ## Suggested Next Steps
