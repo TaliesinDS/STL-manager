@@ -165,16 +165,18 @@ Steps:
 6. Vendor staging collapsed into standardized `raw_parts/`.
 
 ### 6.3 Alternative (When Form is Crucial)
-If you have many forms per maker and need separation, you may optionally nest form before piece:
+If you have many forms per maker and need separation, you may optionally nest form before piece. Insert scale & package segments in the same positions as the primary pattern:
 ```
-/display/<maker>/<form>/<piece_slug>/<variant_slug?>/
+/display/<maker>/<form>/<piece_slug>/<variant_id>/<scale_id?>/<package_id>/
 ```
-But keep this consistent—avoid mixing both patterns. Prefer the simpler maker → piece unless form disambiguation is necessary.
+If only one variant: `/display/<maker>/<form>/<piece_slug>/<scale_id?>/<package_id>/`.
+If only one scale: `/display/<maker>/<form>/<piece_slug>/<variant_id>/<package_id>/`.
+Avoid mixing both patterns for the same maker; choose one for consistency.
 
 ### 6.4 README Metadata for Display Pieces
 Because form & genre moved out of the path, ensure they appear in README.json (see updated Section 10.3 example).
 
-### 6.5 Allowed Variant & Package Tokens (Summary)
+### 6.5 Allowed Variant, Scale & Package Tokens (Summary)
 Variant tokens (Section 6.1.1):
 ```
 sfw
@@ -429,19 +431,24 @@ graph TD
   G6-->G9[docs]
 ```
 
-### 15.4 Display (Two Packages for One Variant) Example
+### 15.4 Display (Two Packages for One Variant & Scale) Example
 ASCII:
 ```
 /display/azerama/sasha_braus/
   nsfw/
-    split/
-      raw_parts/
-        sasha_braus__v2_part-head.stl
-        sasha_braus__v2_part-torso.stl
-      docs/README.json
-    merged_presupported/
-      raw_parts/sasha_braus__v2.stl
-      docs/README.json
+    scale-32mm/
+      split/
+        raw_parts/
+          sasha_braus__v2_part-head.stl
+          sasha_braus__v2_part-torso.stl
+        docs/README.json
+      merged_presupported/
+        raw_parts/sasha_braus__v2.stl
+        docs/README.json
+    scale-75mm/
+      merged_presupported/
+        raw_parts/sasha_braus__v2.stl
+        docs/README.json
 ```
 Mermaid:
 ```mermaid
@@ -449,21 +456,27 @@ graph TD
   D0[/display/]-->D1[azerama]
   D1-->D2[sasha_braus]
   D2-->D3[nsfw]
-  D3-->D4[split]
-  D4-->D5[raw_parts]
-  D5-->D6[sasha_braus__v2_part-head.stl]
-  D5-->D7[sasha_braus__v2_part-torso.stl]
-  D4-->D8[docs]
-  D3-->D9[merged_presupported]
-  D9-->D10[raw_parts]
-  D10-->D11[sasha_braus__v2.stl]
-  D9-->D12[docs]
+  D3-->S32[scale-32mm]
+  S32-->P1[split]
+  P1-->RP1[raw_parts]
+  RP1-->PH[sasha_braus__v2_part-head.stl]
+  RP1-->PT[sasha_braus__v2_part-torso.stl]
+  P1-->DOC1[docs]
+  D3-->S75[scale-75mm]
+  S32-->P2[merged_presupported]
+  P2-->RP2[raw_parts]
+  RP2-->MP[sasha_braus__v2.stl]
+  P2-->DOC2[docs]
+  S75-->P3[merged_presupported]
+  P3-->RP3[raw_parts]
+  RP3-->MP2[sasha_braus__v2.stl]
+  P3-->DOC3[docs]
 ```
 
-### 15.5 Display (Single Variant & Package) Simplified
+### 15.5 Display (Single Variant & Scale) Simplified
 ASCII:
 ```
-/display/ghamak/dragon_lord/sfw/merged/
+/display/ghamak/dragon_lord/sfw/scale-32mm/merged/
   raw_parts/dragon_lord__v1.stl
   docs/README.json
 ```
@@ -473,7 +486,8 @@ graph TD
   S0[/display/]-->S1[ghamak]
   S1-->S2[dragon_lord]
   S2-->S3[sfw]
-  S3-->S4[merged]
+  S3-->SC[scale-32mm]
+  SC-->S4[merged]
   S4-->S5[raw_parts]
   S5-->S6[dragon_lord__v1.stl]
   S4-->S7[docs]
