@@ -4,14 +4,23 @@ Personal project to inventory and eventually manage a very large 3D model librar
 
 Status: Phase 0 (passive inventory & vocabulary design) transitioning toward Phase 1 (deterministic low‑risk normalization).
 
+Project Constraints (baseline):
+- 100% local, offline-friendly (no required external services / cloud).
+- Free & open-source dependencies only.
+- Windows 10 one‑click startup target (no WSL / Docker required for baseline).
+- Deterministic normalization before any probabilistic / ML features.
+
+See `docs/TECH_STACK_PROPOSAL.md` (rev 1.1) for full architecture rationale.
+
 ## Repository Layout (2025-08-16 Restructure)
 
 ```
-docs/        Planning & specifications (API_SPEC, MetadataFields, NormalizationFlow, PLANNING, DesiredFeatures)
-vocab/       Modular vocab files (tokenmap, designers_tokenmap, codex_units_*.md) – externalized to reduce core churn
-scripts/     Utility / exploratory scripts (quick_scan.py, future normalization passes)
-DECISIONS.md Versioned rationale & token_map_version change log
-README.md    This file
+docs/         Planning & specifications (API_SPEC, MetadataFields, NormalizationFlow, PLANNING, DesiredFeatures, TECH_STACK_PROPOSAL)
+vocab/        Modular vocab files (tokenmap, designers_tokenmap, codex_units_*.md, franchises/ manifests)
+scripts/      Utility / exploratory scripts (quick_scan.py, one_click_start_template.bat, future normalization passes)
+prompts/      Reusable prompt/style definition assets (e.g., bernadette_banner_style_prompt.txt)
+DECISIONS.md  Versioned rationale & token_map_version change log
+README.md     This file
 ```
 
 All large / high‑churn vocab domains (designers, codex unit lists) are externalized under `vocab/` so diffs stay readable and expansion doesn’t obscure structural taxonomy changes. Core token map (`vocab/tokenmap.md`) contains only stable, high-signal mappings plus sentinels:
@@ -33,6 +42,15 @@ Current Focus:
 Out of Scope (Now): archive extraction, geometry analytics (volume, height), dedupe / renames, probabilistic tagging, web UI, mesh thumbnails.
 
 Next Micro Goal: Implement read-only inventory scan (CSV + JSONL) feeding future normalization passes.
+
+Upcoming Near Sequence (High-Level):
+1. Refactor scan + introduce ruleset digest & tests.
+2. Implement normalization engine + SQLite persistence + API (variants, vocab, overrides, jobs sync).
+3. Add in‑process job queue + SSE progress.
+4. Bundle minimal React UI as static assets (list + filters + override editing).
+5. Introduce audit logging & FTS search facets.
+6. (Optional) PyInstaller single‑EXE packaging.
+7. Geometry hashing (opt‑in) & dedupe suggestions.
 
 ## Quick Exploratory Token Scan (Planning Aid)
 
@@ -70,7 +88,7 @@ What it does (Phase 0 safe):
 What it does NOT do:
 - No writes / renames / DB mutations.
 - No geometry parsing.
--- JSON optional (use --json-out). Without it: stdout only. Redirect if desired:
+— JSON optional (use --json-out). Without it: stdout only. Redirect if desired:
 
 ```
 python scripts/quick_scan.py --root D:\Models > quick_scan_report.txt
@@ -90,6 +108,35 @@ Phase 2 Seeds (Gated):
 Phase 3+ Ideas:
 - Geometry hashing & dedupe, mesh measurements, override-aware re-normalization jobs.
 - Web UI for browsing, override layering, residual token mining.
+- (Optional) Postgres / Redis upgrade if local scale or concurrency needs exceed SQLite + thread pool.
+
+## Quick Start (Baseline One‑Click – Planned)
+Until the packaged batch script is finalized the following outlines intended behavior:
+
+1. Clone / download repo (or portable release zip when available).
+2. Double‑click `scripts/one_click_start_template.bat` (will be copied / renamed to `start_stl_manager.bat` in releases).
+	- Creates `.venv` if absent.
+	- Installs pinned dependencies from `requirements.txt` (generated from `poetry.lock` / pyproject).
+	- Launches FastAPI server on `http://127.0.0.1:8077/` and opens default browser.
+3. Use future UI (when added) or CLI commands (to be added under `stlmgr` Typer entrypoint) for scan & normalization.
+
+Nothing is installed globally; deleting the folder removes everything (idempotent local footprint).
+
+## Minimal Runtime Dependencies
+Baseline (Phase 1) runtime requires only the embedded Python environment (or forthcoming single EXE) and SQLite (bundled with Python). Optional extras (only when enabled):
+- Geometry: `trimesh`, `meshio` (installed via extras or included in EXE variant).
+- Postgres / Redis: NOT required; upgrade path only.
+
+## Local Configuration (Planned)
+Future `CONFIG.yaml` (or `.env`) will define:
+```
+api_port: 8077
+api_key: YOUR_LOCAL_KEY
+db_path: data/stl_manager.sqlite
+log_level: info
+geometry_enabled: false
+```
+If absent, safe defaults are used (single‑user mode, generated API key optional for initial prototype).
 
 ## DECISIONS & Versioning
 Every vocabulary or structural change is logged in `DECISIONS.md` referencing `token_map_version`. External vocab additions that don’t modify core sentinel structure may omit a version bump (noted explicitly).
@@ -104,8 +151,21 @@ Every vocabulary or structural change is logged in `DECISIONS.md` referencing `t
 - Deterministic passes only until precision validated (>95% target for designer + faction).
 - No destructive file operations in early phases.
 - External high-churn vocab kept isolated for low-noise diffs.
+- No hidden network calls / telemetry.
+
+## Architecture Snapshot (Concise)
+| Layer | Baseline | Notes |
+|-------|----------|-------|
+| Inventory & Normalization | Pure Python functions | Deterministic, versioned ruleset digest |
+| Persistence | SQLite (WAL, FTS5) | Single file portable, no service install |
+| API | FastAPI (Uvicorn) | Single process, SSE for job progress |
+| Jobs | Thread pool (in‑proc) | SQLite job table; upgrade optional |
+| Search | SQLite FTS5 | Upgrade path Postgres / OpenSearch deferred |
+| UI | Static React bundle | Served from same process; no Node at runtime |
+| Packaging | Venv folder or PyInstaller EXE | One‑click batch launcher |
+| Geometry (Optional) | trimesh / meshio | Only if user enables feature |
 
 ## License
-TBD (will be added before any public release).
+TBD (will be added before any public release). All current dependencies proposed are open‑source (MIT / Apache / BSD). Final license selection (MIT or Apache‑2.0 likely) pending.
 
 License: (decide later)
