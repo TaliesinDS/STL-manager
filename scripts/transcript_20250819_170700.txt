@@ -1,0 +1,44 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250819170700
+Username: MORDOR\akortekaas
+RunAs User: MORDOR\akortekaas
+Configuration Name: 
+Machine: MORDOR (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command if((Get-ExecutionPolicy ) -ne 'AllSigned') { Set-ExecutionPolicy -Scope Process Bypass }; & 'C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\Extract-Archives.ps1'
+Process ID: 25408
+PSVersion: 5.1.19041.6216
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6216
+BuildVersion: 10.0.19041.6216
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+==== Archive Extraction Menu ====
+ 1) Dry run (scan only)
+ 2) Extract (create marker + skip if marker)
+ 3) Extract (overwrite existing destinations)
+ 4) List only (list candidates)
+ 5) Toggle FlattenSingleRoot (current: False)
+ 6) Toggle RemoveJunk (current: False)
+ 7) Configure Root / Output paths
+ 8) Set max extracts this run (current: All)
+ 9) Set max parallel extractions (current: 1 (sequential))
+10) Quit
+
+
+==== Archive Extraction Menu ====
+ 1) Dry run (scan only)
+ 2) Extract (create marker + skip if marker)
+ 3) Extract (overwrite existing destinations)
+ 4) List only (list candidates)
+ 5) Toggle FlattenSingleRoot (current: False)
+ 6) Toggle RemoveJunk (current: False)
+ 7) Configure Root / Output paths
+ 8) Set max extracts this run (current: All)
+ 9) Set max parallel extractions (current: 3)
+10) Quit
+

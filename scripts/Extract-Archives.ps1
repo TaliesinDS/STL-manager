@@ -99,11 +99,46 @@
   [int]$MaxParallel,
   [string]$LogCsv,
   [switch]$PauseAfter,
-  [switch]$Interactive
+  [switch]$Interactive,
+  [switch]$DebugLogging
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+  # ---------------- Debug Logging (gated by -DebugLogging) ----------------
+  $script:DebugLogging = [bool]$DebugLogging
+  $script:DebugLogPath = Join-Path -Path $PSScriptRoot -ChildPath 'launcher_debug.log'
+  function Add-DebugLog {
+    param([string]$Message)
+    if (-not $script:DebugLogging) { return }
+    try {
+      $line = "[DEBUG] {0} {1}" -f (Get-Date -Format o), $Message
+      Add-Content -LiteralPath $script:DebugLogPath -Value $line -Encoding UTF8 -ErrorAction SilentlyContinue
+    } catch {}
+  }
+  if ($script:DebugLogging) {
+    Add-DebugLog "Script invoked (PID=$PID) Args: $($MyInvocation.UnboundArguments -join ' ')"
+    Add-DebugLog "Working directory: $(Get-Location)"
+    Add-DebugLog "PSScriptRoot: $PSScriptRoot"
+    try {
+      $global:__EA_TranscriptPath = Join-Path -Path $PSScriptRoot -ChildPath ("transcript_" + (Get-Date -Format 'yyyyMMdd_HHmmss') + ".txt")
+      Start-Transcript -Path $global:__EA_TranscriptPath -Force | Out-Null
+      Add-DebugLog "Transcript started: $global:__EA_TranscriptPath"
+    } catch { Add-DebugLog "WARN: Failed to start transcript: $($_.Exception.Message)" }
+    Add-DebugLog "Reached after transcript start."
+  }
+
+# Trap any unhandled terminating errors so the window doesn't instantly close when launched via double-click.
+trap {
+  Write-Host "[FATAL] $($_.Exception.Message)" -ForegroundColor Red
+    Add-DebugLog "FATAL: $($_.Exception.Message)"
+  if ($Interactive -or ($PSBoundParameters.Count -eq 0)) {
+    Read-Host "An unrecoverable error occurred. Press ENTER to exit" | Out-Null
+  }
+    Add-DebugLog "Exiting after fatal error"
+  exit 1
+}
 
 function Write-Info { param([string]$Msg) Write-Host "[INFO ] $Msg" -ForegroundColor Cyan }
 function Write-Warn { param([string]$Msg) Write-Warning $Msg }
@@ -265,10 +300,14 @@ function Show-InteractiveMenu {
   Write-Host " 5) Toggle FlattenSingleRoot (current: $FlattenSingleRoot)"
   Write-Host " 6) Toggle RemoveJunk (current: $RemoveJunk)"
   Write-Host " 7) Configure Root / Output paths" 
-  Write-Host " 8) Set max extracts this run (current: $([string]::IsNullOrWhiteSpace($MaxExtract) -or $MaxExtract -le 0 ? 'All' : $MaxExtract))"
-  Write-Host " 9) Set max parallel extractions (current: $([string]::IsNullOrWhiteSpace($MaxParallel) -or $MaxParallel -le 1 ? '1 (sequential)' : $MaxParallel))"
+  # PowerShell 5.1 compatibility: emulate ternary expressions explicitly
+  if ((-not $MaxExtract) -or $MaxExtract -le 0) { $maxExtractDisplay = 'All' } else { $maxExtractDisplay = $MaxExtract }
+  if ((-not $MaxParallel) -or $MaxParallel -le 1) { $maxParallelDisplay = '1 (sequential)' } else { $maxParallelDisplay = $MaxParallel }
+  Write-Host " 8) Set max extracts this run (current: $maxExtractDisplay)"
+  Write-Host " 9) Set max parallel extractions (current: $maxParallelDisplay)"
   Write-Host "10) Quit"
-  Write-Host ""; return (Read-Host "Select option [1-10]")
+  Write-Host "11) Toggle Debug logging (current: $script:DebugLogging)"
+  Write-Host ""; return (Read-Host "Select option [1-11]")
 }
 
 function Invoke-InteractiveSelection {
@@ -286,82 +325,62 @@ function Invoke-InteractiveSelection {
 
   $done = $false
   while (-not $done) {
-  Write-Info "Parallel controls: P=pause/resume feed, S=stop after current in-flight, Q=abort now, Space=status snapshot"
     $choice = Show-InteractiveMenu
     switch ($choice) {
-      '1' { $script:DryRun = $true; $script:Overwrite=$false; $script:ListOnly=$false; $script:MarkExtracted=$false; $script:SkipIfMarker=$false; $script:SkipIfNonEmpty=$false; $done = $true }
-  $pauseFeeding = $false
-  $stopAfterInflight = $false
-  $abort = $false
-  $lastStatus = Get-Date
-      '2' { $script:DryRun = $false; $script:Overwrite=$false; $script:ListOnly=$false; $script:MarkExtracted=$true; $script:SkipIfMarker=$true; $done = $true }
-    while ($inflight.Count -lt $MaxParallel -and $pending.Count -gt 0 -and -not $pauseFeeding -and -not $stopAfterInflight -and -not $abort) {
+      '1' { $script:DryRun = $true;  $script:Overwrite=$false; $script:ListOnly=$false; $script:MarkExtracted=$false; $script:SkipIfMarker=$false; $script:SkipIfNonEmpty=$false; $done = $true }
+      '2' { $script:DryRun = $false; $script:Overwrite=$false; $script:ListOnly=$false; $script:MarkExtracted=$true;  $script:SkipIfMarker=$true;  $done = $true }
+      '3' { $script:DryRun = $false; $script:Overwrite=$true;  $script:ListOnly=$false; $script:MarkExtracted=$true;  $script:SkipIfMarker=$false; $script:SkipIfNonEmpty=$false; $done = $true }
       '4' { $script:ListOnly = $true; $script:DryRun = $true; $done = $true }
-  '5' { $script:FlattenSingleRoot = -not $script:FlattenSingleRoot }
-  '6' { $script:RemoveJunk = -not $script:RemoveJunk }
-  '7' {
-        $r = Read-Host "Root folder (blank keep current: $Root)"; if ($r) { if (Test-Path -LiteralPath $r) { $script:Root = $r } else { Write-Warn "Path not found; keeping previous." } }
-        if (-not $script:Root) { $script:Root = (Get-Location).Path }
-        $newOut = Read-Host "Output root (blank keep current: $OutputRoot)"; if ($newOut) { $script:OutputRoot = $newOut }
-      }
-  '8' {
-        $lim = Read-Host "Enter max number of archives to extract this run (blank or 0 = no limit)"
-        if ($lim) {
-          [int]$val = 0
-          if ([int]::TryParse($lim, [ref]$val)) { $script:MaxExtract = $val } else { Write-Warn "Not a number; keeping previous." }
+      '5' { $script:FlattenSingleRoot = -not $script:FlattenSingleRoot }
+      '6' { $script:RemoveJunk      = -not $script:RemoveJunk }
+      '7' { $r = Read-Host "Root folder (blank keep current: $Root)"; if ($r) { if (Test-Path -LiteralPath $r) { $script:Root = $r } else { Write-Warn "Path not found; keeping previous." } }; if (-not $script:Root) { $script:Root = (Get-Location).Path }; $newOut = Read-Host "Output root (blank keep current: $OutputRoot)"; if ($newOut) { $script:OutputRoot = $newOut } }
+      '8' { $lim = Read-Host "Enter max number of archives to extract this run (blank or 0 = no limit)"; if ($lim) { [int]$val = 0; if ([int]::TryParse($lim, [ref]$val)) { $script:MaxExtract = $val } else { Write-Warn "Not a number; keeping previous." } } }
+      '9' { $par = Read-Host "Enter max parallel extractions (1 = sequential)"; if ($par) { [int]$pval = 1; if ([int]::TryParse($par, [ref]$pval)) { if ($pval -lt 1) { $pval = 1 }; $script:MaxParallel = $pval } else { Write-Warn "Not a number; keeping previous." } } }
+     '10' { Write-Host "Quitting."; exit 0 }
+     '11' {
+        if ($script:DebugLogging) {
+          $script:DebugLogging = $false; Write-Host 'Debug logging disabled.' -ForegroundColor Yellow
+        } else {
+          $script:DebugLogging = $true; Write-Host 'Debug logging enabled.' -ForegroundColor Yellow
+          if (-not $global:__EA_TranscriptPath) {
+            try {
+              $global:__EA_TranscriptPath = Join-Path -Path $PSScriptRoot -ChildPath ("transcript_" + (Get-Date -Format 'yyyyMMdd_HHmmss') + ".txt")
+              Start-Transcript -Path $global:__EA_TranscriptPath -Force | Out-Null
+              Add-DebugLog "Transcript started after enabling debug: $global:__EA_TranscriptPath"
+            } catch { Write-Warn "Failed to start transcript after enabling debug: $($_.Exception.Message)" }
+          }
         }
-      }
-  '9' {
-        $par = Read-Host "Enter max parallel extractions (1 = sequential)"
-        if ($par) {
-          [int]$pval = 1
-          if ([int]::TryParse($par, [ref]$pval)) { if ($pval -lt 1) { $pval = 1 }; $script:MaxParallel = $pval } else { Write-Warn "Not a number; keeping previous." }
-        }
-      }
- '10' { Write-Host "Quitting."; exit 0 }
+     }
       Default { Write-Warn "Invalid selection." }
     }
   }
+  # Mark that we used the interactive menu so the script auto-loops afterwards
+  $script:InteractiveLoop = $true
   # Pause after by default in menu mode so window doesn't close instantly
   # Removed automatic PauseAfter; loop logic at end handles staying open.
 }
 
 # If launched with right-click and no meaningful params, auto interactive
-if (-not $PSBoundParameters.ContainsKey('Interactive') -and $PSBoundParameters.Count -eq 0) {
-  $Interactive = $true
-}
+if (-not $PSBoundParameters.ContainsKey('Interactive') -and $PSBoundParameters.Count -eq 0) { Add-DebugLog 'Auto-enabling Interactive mode (no parameters supplied).'; $Interactive = $true } else { Add-DebugLog "Parameters supplied: $($PSBoundParameters.Keys -join ', ')" }
 
-if ($Interactive) {
-  Invoke-InteractiveSelection
-}
+if ($Interactive) { Add-DebugLog 'Entering interactive selection.'; Invoke-InteractiveSelection; Add-DebugLog "Interactive selection complete. Mode flags => DryRun=$DryRun Overwrite=$Overwrite ListOnly=$ListOnly Flatten=$FlattenSingleRoot RemoveJunk=$RemoveJunk MaxExtract=$MaxExtract MaxParallel=$MaxParallel" }
 
 # Normalize & validate roots (robust, avoids hidden chars & property accessor lint issue)
+Add-DebugLog 'Script start banner.'
 Write-Info "Script start: $(Get-Date -Format o)"
+Add-DebugLog 'Printed script start banner.'
 
 # If -Root not supplied (or empty), default to the current working directory
-    # Handle key input for control (best-effort; ignore errors if console not available)
-    try {
-      while ([Console]::KeyAvailable) {
-        $k = [Console]::ReadKey($true)
-        switch ($k.Key) {
-          'P' { $pauseFeeding = -not $pauseFeeding; Write-Info ("Feed " + ($pauseFeeding ? 'PAUSED' : 'RESUMED')) }
-          'S' { $stopAfterInflight = $true; Write-Info 'Will stop queuing new archives after current in-flight.' }
-          'Q' { Write-Warn 'Abort requested. Terminating in-flight processes.'; $abort = $true; foreach ($e in $inflight) { try { $e.Proc.Kill() } catch {} } ; $pending.Clear() }
-          'Spacebar' { Show-ParallelStatus -Extracted $extracted -Errors $errors -Skipped $skipped -InFlight $inflight.Count -Pending $pending.Count -Total $totalPlanned }
-        }
-      }
-    } catch { }
-    if ($abort) { break }
-    # periodic status every ~10s even if nothing finished
-    if ((Get-Date) -gt $lastStatus.AddSeconds(10)) { Show-ParallelStatus -Extracted $extracted -Errors $errors -Skipped $skipped -InFlight $inflight.Count -Pending $pending.Count -Total $totalPlanned; $lastStatus = Get-Date }
 if (-not $PSBoundParameters.ContainsKey('Root') -or [string]::IsNullOrWhiteSpace($Root)) {
-  $Root = (Get-Location).Path
+  $Root = (Get-Location).Path; Add-DebugLog "No -Root provided; defaulting Root to CWD: $Root"
   Write-Info "No -Root specified; defaulting to current directory: $Root"
 }
 
 if (-not (Test-Path -LiteralPath $Root)) {
   Write-Err "Root path not found: $Root"
+  Add-DebugLog "ERROR: Root path not found: $Root"
   if (-not $PSBoundParameters.ContainsKey('Root')) { Write-Err "(This was the auto-detected current directory; ensure you are launching from a valid folder.)" }
+  Add-DebugLog 'Exiting due to missing root.'
   exit 1
 }
 
@@ -388,8 +407,16 @@ if (-not $LogCsv) {
 $log = New-Object System.Collections.Generic.List[Object]
 
 # Detect 7z
-try { $SevenZip = Resolve-SevenZipPath -Explicit $SevenZipPath; Write-Info "Using 7z.exe: $SevenZip" }
-catch { Write-Err $_.Exception.Message; return }
+Add-DebugLog 'Resolving 7z.exe path.'
+try { $SevenZip = Resolve-SevenZipPath -Explicit $SevenZipPath; Write-Info "Using 7z.exe: $SevenZip"; Add-DebugLog "Resolved 7z.exe: $SevenZip" }
+catch {
+  Write-Err $_.Exception.Message
+  Add-DebugLog "ERROR resolving 7z: $($_.Exception.Message)"
+  # Always pause so user can read error when launched directly or via launcher.
+  Read-Host "7z not found. Press ENTER to exit" | Out-Null
+  Add-DebugLog 'Exiting due to 7z resolution failure (after pause).'
+  exit 1
+}
 
 # Normalize extensions
 $extSet = $Extensions | ForEach-Object { $_.ToLowerInvariant() } | Select-Object -Unique
@@ -398,6 +425,8 @@ Write-Info "Scanning '$Root' for extensions: $($extSet -join ', ')"
 $archives = @(Get-ChildItem -LiteralPath $Root -Recurse -File -ErrorAction Stop | Where-Object { $extSet -contains $_.Extension.ToLowerInvariant() })
 
 Write-Info "Found $($archives.Count) archive candidate(s)."
+Add-DebugLog "Archives discovered: $($archives.Count)"
+Add-DebugLog "Runtime flags: DryRun=$DryRun Overwrite=$Overwrite ListOnly=$ListOnly SkipIfMarker=$SkipIfMarker SkipIfNonEmpty=$SkipIfNonEmpty Flatten=$FlattenSingleRoot RemoveJunk=$RemoveJunk MaxExtract=$MaxExtract MaxParallel=$MaxParallel"
 if ($ListOnly) { Write-Info "ListOnly: skipping extraction phase." }
 
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
@@ -449,8 +478,13 @@ if ($MaxParallel -and $MaxParallel -gt 1 -and -not $DryRun -and -not $ListOnly) 
   $inflight = New-Object System.Collections.Generic.List[Object]
   $pending = [System.Collections.Generic.Queue[Object]]::new()
   foreach ($t in $tasks) { $pending.Enqueue($t) }
+  $pauseFeeding = $false
+  $stopAfterInflight = $false
+  $abort = $false
+  $lastStatus = Get-Date
+  Write-Info "Parallel controls: P=pause/resume feed, S=stop after current in-flight, Q=abort now, Space=status snapshot"
   while ($pending.Count -gt 0 -or $inflight.Count -gt 0) {
-    while ($inflight.Count -lt $MaxParallel -and $pending.Count -gt 0) {
+    while ($inflight.Count -lt $MaxParallel -and $pending.Count -gt 0 -and -not $pauseFeeding -and -not $stopAfterInflight -and -not $abort) {
       $t = $pending.Dequeue()
       $a = $t.Archive
       $archivePath = Add-LongPathPrefix $a.FullName
@@ -493,6 +527,20 @@ if ($MaxParallel -and $MaxParallel -gt 1 -and -not $DryRun -and -not $ListOnly) 
         }
       }
     }
+    # Key handling for parallel control
+    try {
+      while ([Console]::KeyAvailable) {
+        $k = [Console]::ReadKey($true)
+        switch ($k.Key) {
+          'P' { $pauseFeeding = -not $pauseFeeding; if ($pauseFeeding) { Write-Info 'Feed PAUSED' } else { Write-Info 'Feed RESUMED' } }
+          'S' { if (-not $stopAfterInflight) { $stopAfterInflight = $true; Write-Info 'Will stop queuing new archives after current in-flight.' } }
+          'Q' { Write-Warn 'Abort requested. Terminating in-flight processes.'; $abort = $true; foreach ($e in $inflight) { try { $e.Proc.Kill() } catch {} }; $pending.Clear() }
+          'Spacebar' { Show-ParallelStatus -Extracted $extracted -Errors $errors -Skipped $skipped -InFlight $inflight.Count -Pending $pending.Count -Total $totalPlanned }
+        }
+      }
+    } catch { }
+    if ($abort) { break }
+    if ((Get-Date) -gt $lastStatus.AddSeconds(10)) { Show-ParallelStatus -Extracted $extracted -Errors $errors -Skipped $skipped -InFlight $inflight.Count -Pending $pending.Count -Total $totalPlanned; $lastStatus = Get-Date }
     if ($inflight.Count -gt 0 -and $pending.Count -gt 0) { Start-Sleep -Milliseconds 250 }
     elseif ($inflight.Count -gt 0) { Start-Sleep -Milliseconds 150 }
   }
@@ -564,6 +612,7 @@ else {
 $sw.Stop()
 
 Write-Info "Processed: $processed  Extracted: $extracted  Skipped: $skipped  Errors: $errors  Elapsed: $([Math]::Round($sw.Elapsed.TotalMinutes,2)) min"
+Add-DebugLog "Summary: Processed=$processed Extracted=$extracted Skipped=$skipped Errors=$errors ElapsedMin=$([Math]::Round($sw.Elapsed.TotalMinutes,2))"
 
 try {
     $log | Export-Csv -Path $LogCsv -NoTypeInformation -Encoding UTF8
@@ -572,12 +621,26 @@ try {
 
 if ($errors -gt 0) { $exit=1 } else { $exit=0 }
 Write-Info "Exit code: $exit"
+Add-DebugLog "Exit code: $exit"
 
 if ($Interactive) {
-  # Immediately loop back to menu preserving root/output and persistent toggles (not operation-specific flags).
-  & $PSCommandPath -Interactive -Root $Root -OutputRoot $OutputRoot -Extensions $Extensions -FlattenSingleRoot:$FlattenSingleRoot -RemoveJunk:$RemoveJunk -MaxParallel:$MaxParallel -MaxExtract:$MaxExtract
-  exit $LASTEXITCODE
-} elseif ($PauseAfter) {
+  if ($script:InteractiveLoop) {
+    Write-Info 'Returning to menu...'
+    Add-DebugLog 'Auto-return to interactive menu.'
+  & $PSCommandPath -Interactive -Root $Root -OutputRoot $OutputRoot -Extensions $Extensions -FlattenSingleRoot:$FlattenSingleRoot -RemoveJunk:$RemoveJunk -MaxParallel:$MaxParallel -MaxExtract:$MaxExtract -DryRun:$DryRun -Overwrite:$Overwrite -ListOnly:$ListOnly -MarkExtracted:$MarkExtracted -SkipIfMarker:$SkipIfMarker -SkipIfNonEmpty:$SkipIfNonEmpty -DebugLogging:$script:DebugLogging
+    exit $LASTEXITCODE
+  } else {
+    $null = Read-Host 'Run complete. Press ENTER to exit'
+    Add-DebugLog 'Interactive (non-menu) session ending.'
+  }
+}
+elseif ($PauseAfter) {
   Read-Host "Press ENTER to close" | Out-Null
+}
+Add-DebugLog 'Script terminating normally.'
+try { Stop-Transcript | Out-Null } catch {}
+if (-not $Interactive -and -not $PauseAfter) {
+  # Failsafe pause so right-click runs don't vanish before user can inspect.
+  Read-Host "Finished (exit $exit). Press ENTER to close (transcript: $global:__EA_TranscriptPath)" | Out-Null
 }
 exit $exit

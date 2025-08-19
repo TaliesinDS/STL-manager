@@ -1,0 +1,18 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250819170257
+Username: MORDOR\akortekaas
+RunAs User: MORDOR\akortekaas
+Configuration Name: 
+Machine: MORDOR (Microsoft Windows NT 10.0.19044.0)
+Host Application: PowerShell.exe -noexit -command Set-Location -literalPath 'C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts'
+Process ID: 21944
+PSVersion: 5.1.19041.6216
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6216
+BuildVersion: 10.0.19041.6216
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************

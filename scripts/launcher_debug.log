@@ -3,3 +3,120 @@
 [DEBUG] Entered :build 
 [DEBUG] Initial PS_ARGS: -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\Extract-Archives.ps1\" -Extensions .rar .zip .7z -DryRun  -PauseAfter 
 [DEBUG] Final PS_ARGS: -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\Extract-Archives.ps1\" -Extensions .rar .zip .7z -DryRun  -PauseAfter 
+[DEBUG] 2025-08-19T17:02:57.8639721+02:00 Script invoked (PID=21944) Args: 
+[DEBUG] 2025-08-19T17:02:57.8722714+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:02:57.8742548+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:02:57.9153776+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170257.txt
+[DEBUG] 2025-08-19T17:02:57.9159060+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:02:57.9208829+02:00 Parameters supplied: Interactive
+[DEBUG] 2025-08-19T17:02:57.9250963+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:03:16.2010565+02:00 Script invoked (PID=22376) Args: 
+[DEBUG] 2025-08-19T17:03:16.2066768+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:16.2089499+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:16.2330635+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170316.txt
+[DEBUG] 2025-08-19T17:03:16.2346607+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:03:16.2439858+02:00 Auto-enabling Interactive mode (no parameters supplied).
+[DEBUG] 2025-08-19T17:03:16.2494870+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:03:20.3650552+02:00 Interactive selection complete. Mode flags => DryRun=True Overwrite=False ListOnly=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:20.3665976+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:03:20.3692439+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:03:20.3707483+02:00 No -Root provided; defaulting Root to CWD: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:20.3871382+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:03:20.4826365+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:03:20.4981891+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:03:20.4991858+02:00 Runtime flags: DryRun=True Overwrite=False ListOnly=False SkipIfMarker=False SkipIfNonEmpty=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:20.5495085+02:00 Summary: Processed=2 Extracted=0 Skipped=0 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:03:20.5559618+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:03:29.5644835+02:00 User chose to rerun interactively.
+[DEBUG] 2025-08-19T17:03:29.5709773+02:00 Script invoked (PID=22376) Args: 
+[DEBUG] 2025-08-19T17:03:29.5725319+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:29.5725319+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:29.5748610+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170329.txt
+[DEBUG] 2025-08-19T17:03:29.5758883+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:03:29.5774123+02:00 Parameters supplied: Interactive, Root, OutputRoot, Extensions, FlattenSingleRoot, RemoveJunk, MaxParallel, MaxExtract
+[DEBUG] 2025-08-19T17:03:29.5784088+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:03:35.5648939+02:00 Interactive selection complete. Mode flags => DryRun=True Overwrite=False ListOnly=True Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:35.5654018+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:03:35.5677186+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:03:35.5712238+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:03:35.6319227+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:03:35.6369151+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:03:35.6374230+02:00 Runtime flags: DryRun=True Overwrite=False ListOnly=True SkipIfMarker=False SkipIfNonEmpty=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:35.6411268+02:00 Summary: Processed=2 Extracted=0 Skipped=2 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:03:35.6456563+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:03:39.7530386+02:00 User chose to rerun interactively.
+[DEBUG] 2025-08-19T17:03:39.7690233+02:00 Script invoked (PID=22376) Args: 
+[DEBUG] 2025-08-19T17:03:39.7700375+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:39.7710342+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:03:39.7722247+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170339.txt
+[DEBUG] 2025-08-19T17:03:39.7740624+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:03:39.7745709+02:00 Parameters supplied: Interactive, Root, OutputRoot, Extensions, FlattenSingleRoot, RemoveJunk, MaxParallel, MaxExtract
+[DEBUG] 2025-08-19T17:03:39.7755670+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:03:53.5465454+02:00 Interactive selection complete. Mode flags => DryRun=False Overwrite=True ListOnly=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:53.5486386+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:03:53.5501436+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:03:53.5515183+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:03:53.6122360+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:03:53.6157995+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:03:53.6169273+02:00 Runtime flags: DryRun=False Overwrite=True ListOnly=False SkipIfMarker=False SkipIfNonEmpty=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:03:53.6706541+02:00 Summary: Processed=2 Extracted=2 Skipped=0 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:03:53.6744317+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:04:17.3401715+02:00 User chose to rerun interactively.
+[DEBUG] 2025-08-19T17:04:17.3436597+02:00 Script invoked (PID=22376) Args: 
+[DEBUG] 2025-08-19T17:04:17.3453092+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:04:17.3463333+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:04:17.3483812+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170417.txt
+[DEBUG] 2025-08-19T17:04:17.3493769+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:04:17.3504130+02:00 Parameters supplied: Interactive, Root, OutputRoot, Extensions, FlattenSingleRoot, RemoveJunk, MaxParallel, MaxExtract
+[DEBUG] 2025-08-19T17:04:17.3511454+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:04:23.0399507+02:00 Interactive selection complete. Mode flags => DryRun=False Overwrite=False ListOnly=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:04:23.0409316+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:04:23.0429317+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:04:23.0449323+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:04:23.1083905+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:04:23.1124083+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:04:23.1133948+02:00 Runtime flags: DryRun=False Overwrite=False ListOnly=False SkipIfMarker=True SkipIfNonEmpty=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:04:23.1482236+02:00 Summary: Processed=2 Extracted=2 Skipped=0 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:04:23.1535467+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:04:43.9306060+02:00 User chose to rerun interactively.
+[DEBUG] 2025-08-19T17:04:43.9330856+02:00 Script invoked (PID=22376) Args: 
+[DEBUG] 2025-08-19T17:04:43.9330856+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:04:43.9344181+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:04:43.9364012+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170443.txt
+[DEBUG] 2025-08-19T17:04:43.9375935+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:04:43.9386301+02:00 Parameters supplied: Interactive, Root, OutputRoot, Extensions, FlattenSingleRoot, RemoveJunk, MaxParallel, MaxExtract
+[DEBUG] 2025-08-19T17:04:43.9396100+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:05:06.0717730+02:00 Interactive selection complete. Mode flags => DryRun=False Overwrite=False ListOnly=False Flatten=True RemoveJunk=True MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:05:06.0737735+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:05:06.0757739+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:05:06.0784491+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:05:06.1406296+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:05:06.1476538+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:05:06.1486238+02:00 Runtime flags: DryRun=False Overwrite=False ListOnly=False SkipIfMarker=True SkipIfNonEmpty=False Flatten=True RemoveJunk=True MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:05:06.2762572+02:00 Summary: Processed=2 Extracted=2 Skipped=0 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:05:06.2815484+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:06:56.9298918+02:00 Script invoked (PID=25408) Args: 
+[DEBUG] 2025-08-19T17:06:56.9359207+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:06:56.9379014+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:06:56.9656744+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170656.txt
+[DEBUG] 2025-08-19T17:06:56.9667227+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:06:56.9757650+02:00 Auto-enabling Interactive mode (no parameters supplied).
+[DEBUG] 2025-08-19T17:06:56.9812700+02:00 Entering interactive selection.
+[DEBUG] 2025-08-19T17:07:00.0774166+02:00 Interactive selection complete. Mode flags => DryRun=True Overwrite=False ListOnly=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:07:00.0787044+02:00 Script start banner.
+[DEBUG] 2025-08-19T17:07:00.0822334+02:00 Printed script start banner.
+[DEBUG] 2025-08-19T17:07:00.0827447+02:00 No -Root provided; defaulting Root to CWD: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:07:00.1000219+02:00 Resolving 7z.exe path.
+[DEBUG] 2025-08-19T17:07:00.1940330+02:00 Resolved 7z.exe: C:\Program Files\7-Zip\7z.exe
+[DEBUG] 2025-08-19T17:07:00.2098569+02:00 Archives discovered: 2
+[DEBUG] 2025-08-19T17:07:00.2108497+02:00 Runtime flags: DryRun=True Overwrite=False ListOnly=False SkipIfMarker=False SkipIfNonEmpty=False Flatten=False RemoveJunk=False MaxExtract=0 MaxParallel=0
+[DEBUG] 2025-08-19T17:07:00.2533883+02:00 Summary: Processed=2 Extracted=0 Skipped=2 Errors=0 ElapsedMin=0
+[DEBUG] 2025-08-19T17:07:00.2589079+02:00 Exit code: 0
+[DEBUG] 2025-08-19T17:07:00.2609313+02:00 Auto-return to interactive menu.
+[DEBUG] 2025-08-19T17:07:00.2629094+02:00 Script invoked (PID=25408) Args: 
+[DEBUG] 2025-08-19T17:07:00.2639091+02:00 Working directory: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:07:00.2647657+02:00 PSScriptRoot: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts
+[DEBUG] 2025-08-19T17:07:00.2668403+02:00 Transcript started: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\transcript_20250819_170700.txt
+[DEBUG] 2025-08-19T17:07:00.2678629+02:00 Reached after transcript start.
+[DEBUG] 2025-08-19T17:07:00.2699813+02:00 Parameters supplied: Interactive, Root, OutputRoot, Extensions, FlattenSingleRoot, RemoveJunk, MaxParallel, MaxExtract, DryRun, Overwrite, ListOnly, MarkExtracted, SkipIfMarker, SkipIfNonEmpty
+[DEBUG] 2025-08-19T17:07:00.2709767+02:00 Entering interactive selection.
