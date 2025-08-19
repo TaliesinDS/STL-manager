@@ -1,0 +1,5 @@
+[DEBUG] Script dir: C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\ 
+[DEBUG] Selected option 1 
+[DEBUG] Entered :build 
+[DEBUG] Initial PS_ARGS: -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\Extract-Archives.ps1\" -Extensions .rar .zip .7z -DryRun  -PauseAfter 
+[DEBUG] Final PS_ARGS: -NoLogo -NoProfile -ExecutionPolicy Bypass -File \"C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\Extract-Archives.ps1\" -Extensions .rar .zip .7z -DryRun  -PauseAfter 
