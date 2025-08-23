@@ -1,3 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+
+# Runtime DB and data
+/data/
+*.db
+*.sqlite3
+
+# Build
+dist/
+build/
+
+# Node
+frontend/node_modules/
+
+# Large model / asset files (do not commit)
+*.stl
+*.obj
+*.zip
+*.rar
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+
 __pycache__/
 *.pyc
 .env

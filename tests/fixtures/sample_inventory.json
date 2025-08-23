@@ -1,0 +1,20 @@
+[
+  {
+    "rel_path": "samples/warrior_01/warrior_01.stl",
+    "filename": "warrior_01.stl",
+    "extension": "stl",
+    "size_bytes": 12345,
+    "is_archive": false,
+    "raw_path_tokens": ["samples", "warrior", "01"],
+    "token_version": 11
+  },
+  {
+    "rel_path": "samples/dragon_01/dragon_01.stl",
+    "filename": "dragon_01.stl",
+    "extension": "stl",
+    "size_bytes": 54321,
+    "is_archive": false,
+    "raw_path_tokens": ["samples", "dragon", "01"],
+    "token_version": 11
+  }
+]

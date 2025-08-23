@@ -1,0 +1,2 @@
+sqlalchemy>=2.0
+pysqlite3-binary; platform_system == 'Windows'
