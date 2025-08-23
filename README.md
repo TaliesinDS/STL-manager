@@ -178,6 +178,8 @@ Troubleshooting notes
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
 ```
 
+Development note: During ad-hoc smoke tests the project may create a temporary database file at `data/stl_manager_test_b.db`. This file is only used for local validation and has been removed; the canonical DB in the workspace is `data/stl_manager_v1.db` (or scripts will create a fresh DB when run).
+
 3. Use the future UI or CLI commands (to be added) for scan & normalization once available.
 
 Nothing is installed globally; deleting the folder removes everything (idempotent local footprint).

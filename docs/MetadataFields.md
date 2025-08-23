@@ -4,6 +4,97 @@ Moved from repository root to `docs/` on 2025-08-16 (repository restructure) –
 
 Purpose: Define all planned metadata fields for the STL Manager project, their intent, data type, allowed values, introduction phase, and notes so early planning stays consistent and we avoid premature complexity.
 
+**Legend:** Fields marked with **(DB)** are already implemented in `db/models.py` (SQLAlchemy models).
+
+### Implementation status (sections 1–11)
+
+| Field | Section | Phase | Implemented | Notes |
+|---|---:|---:|---:|---|
+| id | Core identification | P1 | Yes | `variant.id` (Integer PK) |
+| model_group_id | Core identification | P2 | Yes | `variant.model_group_id` (string) |
+| archive_id | Core identification | P1 | Yes (via join) | `archive` + `variant_archive` join table |
+| root_id | File system inventory | P0 | Yes | `variant.root_id` |
+| rel_path | File system inventory | P0 | Yes | `variant.rel_path` |
+| filename | File system inventory | P0 | Yes | `variant.filename` / `file.filename` |
+| extension | File system inventory | P0 | Yes | `variant.extension`, `file.extension` |
+| size_bytes | File system inventory | P0 | Yes | `variant.size_bytes`, `file.size_bytes` |
+| mtime_iso | File system inventory | P0 | Yes | `variant.mtime_iso`, `file.mtime_iso` |
+| depth | File system inventory | P0 | Yes | `variant.depth`, `file.depth` |
+| is_dir | File system inventory | P0 | Yes | `variant.is_dir`, `file.is_dir` |
+| is_archive | File system inventory | P0 | Yes | `variant.is_archive`, `file.is_archive` |
+| scan_batch_id | File system inventory | P0 | Yes | `variant.scan_batch_id` |
+| source_archives | Provenance / Source | P1 | No | Virtual/derived; rely on `variant_archive` + hashing later |
+| original_archive_filename | Provenance / Source | P1 | No | Not present; could be stored on `archive` |
+| distribution_source | Provenance / Source | P2 | No | Pending (enum) |
+| license_status | Provenance / Source | FUTURE | No | Pending (FUTURE) |
+| designer | Designer & collection | P1 | Yes | `variant.designer` |
+| designer_confidence | Designer & collection | P1 | Yes | `variant.designer_confidence` |
+| collection_id | Designer & collection | P2 | Yes | `variant.collection_id` (string) and `collection` table exists |
+| collection_original_label | Designer & collection | P1 | Yes | `variant.collection_original_label` |
+| collection_cycle | Designer & collection | P1 | Yes | `variant.collection_cycle` |
+| collection_sequence_number | Designer & collection | P1 | Yes | `variant.collection_sequence_number` |
+| collection_theme | Designer & collection | P2 | Yes | `variant.collection_theme` |
+| franchise | Franchise & Character | P2 | Yes | `variant.franchise` |
+| sub_franchise | Franchise & Character | P2 | No | Not implemented separately |
+| character_name / character entity | Franchise & Character | P2 | Yes | `character` table exists (`name`, `aliases`, `actor_likeness`, `actor_confidence`) |
+| actor_likeness | Franchise & Character | P2 | Yes | `character.actor_likeness` |
+| actor_confidence | Franchise & Character | P2 | Yes | `character.actor_confidence` |
+| game_system | Tabletop mapping | P1 | Yes | `variant.game_system` |
+| codex_faction | Tabletop mapping | P1 | Yes | `variant.codex_faction` |
+| codex_unit_name | Tabletop mapping | P2 | Yes | `variant.codex_unit_name` |
+| proxy_type | Tabletop mapping | P2 | Yes | `variant.proxy_type` |
+| multi_unit_proxy_flag | Tabletop mapping | P2 | No | Not present; derive later from relationships |
+| loadout_variants | Tabletop mapping | P2 | Yes | `variant.loadout_variants` (JSON) |
+| supported_loadout_codes | Tabletop mapping | P2 | Yes | `variant.supported_loadout_codes` (JSON) |
+| base_size_mm | Tabletop mapping | P2 | Yes | `variant.base_size_mm` |
+| lineage_family | Tabletop mapping | P1 | Yes | `variant.lineage_family` |
+| lineage_primary | Tabletop mapping | P2 | Yes | `variant.lineage_primary` |
+| lineage_aliases | Tabletop mapping | P2 | Yes | `variant.lineage_aliases` (JSON) |
+| faction_general | Tabletop mapping | P1 | Yes | `variant.faction_general` |
+| faction_path | Tabletop mapping | P2 | Yes | `variant.faction_path` (JSON) |
+| tabletop_role | Tabletop mapping | P2 | Yes | `variant.tabletop_role` |
+| pc_candidate_flag | Tabletop mapping | P1 | Yes | `variant.pc_candidate_flag` |
+| asset_category | Variant dimensions | P1 | Yes | `variant.asset_category` |
+| terrain_subtype | Variant dimensions | P2 | Yes | `variant.terrain_subtype` |
+| vehicle_type | Variant dimensions | P2 | Yes | `variant.vehicle_type` |
+| vehicle_era | Variant dimensions | P2 | Yes | `variant.vehicle_era` |
+| base_theme | Variant dimensions | P2 | Yes | `variant.base_theme` |
+| intended_use_bucket | Variant dimensions | P1 | Yes | `variant.intended_use_bucket` |
+| content_flag | Variant dimensions | P1 | Yes | `variant.content_flag` |
+| nsfw_level / exposures / act_tags | Variant dimensions | P2 | Yes | `variant.nsfw_level`, `nsfw_exposure_top`, `nsfw_exposure_bottom`, `nsfw_act_tags` |
+| segmentation | Variant dimensions | P1 | Yes | `variant.segmentation` |
+| internal_volume | Variant dimensions | P1 | Yes | `variant.internal_volume` |
+| support_state | Variant dimensions | P1 | Yes | `variant.support_state` |
+| has_slicer_project | Variant dimensions | P1 | Yes | `variant.has_slicer_project` |
+| pose_variant | Variant dimensions | P2 | Yes | `variant.pose_variant` |
+| version_num | Variant dimensions | P2 | Yes | `variant.version_num` |
+| part_pack_type | Variant dimensions | P2 | Yes | `variant.part_pack_type` |
+| has_bust_variant | Variant dimensions | P2 | Yes | `variant.has_bust_variant` |
+| scale_ratio_den | Variant dimensions | P1 | Yes | `variant.scale_ratio_den` |
+| height_mm | Variant dimensions | P1 | Yes | `variant.height_mm` |
+| mm_declared_conflict | Variant dimensions | P2 | Yes | `variant.mm_declared_conflict` |
+| style_primary / style_primary_confidence / style_aesthetic_tags | Variant dimensions | P1/P2 | Yes | `variant.style_primary`, `style_primary_confidence`, `style_aesthetic_tags` (JSON) |
+| addon_type | Compatibility & tags | P2 | Yes | `variant.addon_type` |
+| requires_base_model | Compatibility & tags | P2 | Yes | `variant.requires_base_model` |
+| compatibility_scope | Compatibility & tags | P2 | Yes | `variant.compatibility_scope` |
+| compatible_units | Compatibility & tags | P2 | Yes | `variant.compatible_units` (JSON) |
+| compatible_factions | Compatibility & tags | P2 | Yes | `variant.compatible_factions` (JSON) |
+| multi_faction_flag | Compatibility & tags | P2 | Yes | `variant.multi_faction_flag` |
+| compatible_model_group_ids / compatible_variant_ids | Compatibility & tags | P2 | Yes | `variant.compatible_model_group_ids`, `compatible_variant_ids` (JSON) |
+| compatibility_assertions | Compatibility & tags | P2 | Yes | `variant.compatibility_assertions` (JSON) |
+| attachment_points | Compatibility & tags | P2 | Yes | `variant.attachment_points` (JSON) |
+| replaces_parts | Compatibility & tags | P2 | Yes | `variant.replaces_parts` (JSON) |
+| additive_only_flag / clothing_variant_flag / magnet_ready_flag | Compatibility & tags | P2 | Yes | `variant.additive_only_flag`, `clothing_variant_flag`, `magnet_ready_flag` |
+| user_tags / residual_tokens / token_version / normalization_warnings | Tagging / residuals | P1 | Yes | `variant.user_tags`, `variant.residual_tokens`, `variant.token_version`, `variant.normalization_warnings` |
+| notes | Audit / Workflow | P1 | Yes | `variant.notes` (Text) |
+| created_at / updated_at | Audit / Workflow | P1 | Yes | `variant.created_at`, `variant.updated_at` |
+| file table fields | Files / archives / joins | P0 | Yes | `file` table exists; per-file metadata present |
+| archive table fields | Files / archives / joins | P0 | Yes | `archive` table exists |
+| variant_archive join | Files / archives / joins | P1 | Yes | `variant_archive` table exists |
+| vocab_entry / job / audit_log / collection / character tables | Other support | P1–P2 | Yes | present in models |
+
+Fields not explicitly implemented (examples / non-exhaustive): `source_archives` (virtual array), `distribution_source`, `license_status`, `sub_franchise`, `likeness_rights_flag`, `multi_unit_proxy_flag` (derived), `loadout_coverage_summary` (virtual), `rule_edition`, and many geometry-derived fields (triangle_count, manifold_flag, bounding_box_mm, volume_cc, thin_wall_warnings).
+
 Phase Legend:
 - P0 = Phase 0 (initial passive inventory; **no archive extraction**, minimal parsing)
 - P1 = Early enrichment (basic normalization, simple token parsing)
