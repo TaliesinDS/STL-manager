@@ -110,6 +110,49 @@ Phase 3+ Ideas:
 - Web UI for browsing, override layering, residual token mining.
 - (Optional) Postgres / Redis upgrade if local scale or concurrency needs exceed SQLite + thread pool.
 
+## Developer scripts (loaders, dedupe & inspection)
+
+During recent development a set of utility scripts were added to help import and normalize vocab/franchise data and to inspect the DB. These are intended for developer usage and are safe to run in dry-run mode by default.
+
+- `scripts/load_franchises.py` — imports `vocab/franchises/*.json` files and upserts:
+	- `VocabEntry(domain='franchise')` rows using the file `id`/`key` or filename stem as the canonical key.
+	- `Character` rows for entries under each franchise `characters` list.
+	- Behavior: default is a dry-run that reports `would_create` / `would_update` counts; pass `--commit` to apply changes.
+	- New flags:
+		- `--commit` — apply changes to the DB (default is dry-run).
+		- `--dedupe` — run a deduplication pass on `Character` rows before upsert (dry-run unless `--commit`).
+		- `--preview N` — (reserved) preview up to N duplicate groups or sample items.
+	- Dry-run example (PowerShell):
+
+```powershell
+$env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
+& .venv\Scripts\python.exe scripts\load_franchises.py vocab\franchises
+```
+
+	- Commit example (apply dedupe + upsert):
+
+```powershell
+$env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
+& .venv\Scripts\python.exe scripts\load_franchises.py vocab\franchises --dedupe --commit
+```
+
+- `scripts/load_designers.py` — loader for `vocab/designers_tokenmap.md` (conflict-aware upserts into `VocabEntry(domain='designer')`).
+- `scripts/count_franchise_characters.py` — counts how many franchise files include `characters` and the total character entries across the `vocab/franchises` folder (quick pre-check tool).
+- `scripts/inspect_db_characters.py` — lists DB tables and prints a small sample of `Character` rows (useful to confirm DB state and STLMGR_DB_URL target).
+- `scripts/debug_franchise_sample.py` — prints a sample franchise JSON snippet to inspect structure when loader parsing fails.
+
+Notes & safety
+- All loader scripts honor the `STLMGR_DB_URL` environment variable. Example:
+
+```powershell
+$env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
+```
+
+- `load_franchises.py` default dry-run mode lets you review `would_create`/`would_update` counts. Use `--commit` only after you review the dry-run output.
+- Deduplication is conservative and runs only within the same franchise by default (normalized name + normalized franchise). Cross-franchise duplicates are not merged unless you opt-in and modify the dedupe policy.
+
+If you'd like, I can add a `--export-duplicates path/to/file.json` option to output all candidate duplicate groups to a JSON file for manual review before committing.
+
 ## Quick Start (Baseline One‑Click – Planned)
 Until the packaged batch script is finalized the following outlines intended behavior. Below is a concrete
 developer quick-start that works today on Windows (PowerShell).
