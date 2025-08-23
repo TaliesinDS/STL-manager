@@ -1,2 +1,8 @@
 sqlalchemy>=2.0
-pysqlite3-binary; platform_system == 'Windows'
+
+# Note: the Python standard library includes the `sqlite3` module which is
+# sufficient for the project's SQLite usage in most environments. The
+# `pysqlite3-binary` wheel is optional and is known to be unavailable for
+# some Windows/Python combinations; install it only if you specifically need
+# an external SQLite driver. Example (manual):
+#   pip install pysqlite3-binary

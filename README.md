@@ -111,14 +111,56 @@ Phase 3+ Ideas:
 - (Optional) Postgres / Redis upgrade if local scale or concurrency needs exceed SQLite + thread pool.
 
 ## Quick Start (Baseline One‑Click – Planned)
-Until the packaged batch script is finalized the following outlines intended behavior:
+Until the packaged batch script is finalized the following outlines intended behavior. Below is a concrete
+developer quick-start that works today on Windows (PowerShell).
 
 1. Clone / download repo (or portable release zip when available).
-2. Double‑click `scripts/one_click_start_template.bat` (will be copied / renamed to `start_stl_manager.bat` in releases).
-	- Creates `.venv` if absent.
-	- Installs pinned dependencies from `requirements.txt` (generated from `poetry.lock` / pyproject).
-	- Launches FastAPI server on `http://127.0.0.1:8077/` and opens default browser.
-3. Use future UI (when added) or CLI commands (to be added under `stlmgr` Typer entrypoint) for scan & normalization.
+
+2. Developer quick-start (PowerShell)
+
+	 - The repository includes a bootstrap script that creates a virtual environment, installs
+		 dependencies, initializes the SQLite schema, and (optionally) loads a tiny sample fixture for
+		 smoke testing. From the repository root run:
+
+```powershell
+Set-Location 'C:\Users\akortekaas\Documents\GitHub\STL-manager'
+.\scripts\bootstrap_dev.ps1 -InstallSample
+```
+
+	 - If you prefer to run steps manually (or if execution policy blocks the script), the equivalent
+		 manual commands are:
+
+```powershell
+Set-Location 'C:\Users\akortekaas\Documents\GitHub\STL-manager'
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python scripts/init_db.py
+python scripts/load_sample.py   # optional sample import
+```
+
+	 - Expected outcome: the bootstrap prints progress, creates `data/stl_manager.db` (unless you set
+		 `STLMGR_DB_URL`), and — when `-InstallSample` is used — prints the number of inserted sample
+		 records.
+
+Troubleshooting notes
+
+	 - `pysqlite3-binary` was removed from `requirements.txt` because prebuilt wheels are not
+		 available for all Windows/Python combinations; the standard library `sqlite3` is used by
+		 default and is sufficient for the prototype.
+
+	 - If you see `ModuleNotFoundError: No module named 'db'` when running a script directly, make
+		 sure you run it from the repository root, or use the included bootstrap script which ensures
+		 the project root is on `sys.path` before importing.
+
+	 - If PowerShell refuses to run scripts, either run the venv Python directly (see manual steps
+		 above) or temporarily allow execution for the session:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
+```
+
+3. Use the future UI or CLI commands (to be added) for scan & normalization once available.
 
 Nothing is installed globally; deleting the folder removes everything (idempotent local footprint).
 
