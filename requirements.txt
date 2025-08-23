@@ -1,5 +1,7 @@
 sqlalchemy>=2.0
 
+alembic>=1.11
+
 # Note: the Python standard library includes the `sqlite3` module which is
 # sufficient for the project's SQLite usage in most environments. The
 # `pysqlite3-binary` wheel is optional and is known to be unavailable for

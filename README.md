@@ -137,6 +137,24 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python scripts/init_db.py
 python scripts/load_sample.py   # optional sample import
+
+### Alembic (schema migrations)
+
+This repository includes a minimal Alembic scaffold under the `alembic/` folder configured
+to use the SQLAlchemy `Base.metadata` from `db.models`. Alembic is listed in `requirements.txt`.
+
+To generate an actual initial migration (recommended to run locally):
+
+1. Activate your `.venv` and install dependencies:
+	`pip install -r requirements.txt`
+2. Generate an autogenerate revision:
+	`alembic revision --autogenerate -m "initial"`
+3. Inspect the generated migration in `alembic/versions/`, adjust if needed.
+4. Apply the migration:
+	`alembic upgrade head`
+
+If you prefer, keep the provided placeholder migration and replace it with the autogen file
+once you're satisfied with the contents.
 ```
 
 	 - Expected outcome: the bootstrap prints progress, creates `data/stl_manager.db` (unless you set
