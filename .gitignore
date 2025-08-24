@@ -22,6 +22,8 @@ frontend/node_modules/
 *.obj
 *.zip
 *.rar
+# Local sample store (user-added test data)
+sample_store/
 
 # Editor
 .vscode/
