@@ -55,6 +55,8 @@ def run_migration():
         ("game_system TEXT", "game_system"),
         ("codex_faction TEXT", "codex_faction"),
         ("codex_unit_name TEXT", "codex_unit_name"),
+    ("character_name TEXT", "character_name"),
+    ("character_aliases TEXT DEFAULT '[]'", "character_aliases"),
         ("proxy_type TEXT", "proxy_type"),
         ("loadout_variants TEXT DEFAULT '[]'", "loadout_variants"),
         ("supported_loadout_codes TEXT DEFAULT '[]'", "supported_loadout_codes"),

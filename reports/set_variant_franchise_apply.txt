@@ -1,0 +1,7 @@
+Proposed: set Variant 119 franchise -> 'my_hero_academia' (current: None)
+  rel_path: sample_store\azerama - himeko toga - my hero acadamia\nsfw
+Applied: Variant 119 franchise set to 'my_hero_academia'
+Proposed: set Variant 120 franchise -> 'my_hero_academia' (current: None)
+  rel_path: sample_store\azerama - himeko toga - my hero acadamia\sfw
+Applied: Variant 120 franchise set to 'my_hero_academia'
+Done. Applied to 2 variants.

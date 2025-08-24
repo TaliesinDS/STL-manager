@@ -1,0 +1,1 @@
+C:\Python39\python.exe: can't open file 'C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\vocab_dump.py': [Errno 2] No such file or directory

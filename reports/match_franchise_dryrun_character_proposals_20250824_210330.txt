@@ -1,0 +1,52 @@
+Traceback (most recent call last):
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: variant
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\match_franchise_characters.py", line 376, in <module>
+    raise SystemExit(main(_sys.argv[1:]))
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\match_franchise_characters.py", line 371, in main
+    process(apply=args.apply, batch=args.batch)
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\scripts\match_franchise_characters.py", line 199, in process
+    total = q.count()
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3146, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2835, in scalar
+    ret = self.one()
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2808, in one
+    return self._iter().one()  # type: ignore
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\akortekaas\Documents\GitHub\STL-manager\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: variant
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT DISTINCT variant.id AS variant_id, variant.rel_path AS variant_rel_path, variant.filename AS variant_filename, variant.extension AS variant_extension, variant.size_bytes AS variant_size_bytes, variant.mtime_iso AS variant_mtime_iso, variant.is_archive AS variant_is_archive, variant.hash_sha256 AS variant_hash_sha256, variant.designer AS variant_designer, variant.franchise AS variant_franchise, variant.content_flag AS variant_content_flag, variant.root_id AS variant_root_id, variant.scan_batch_id AS variant_scan_batch_id, variant.raw_path_tokens AS variant_raw_path_tokens, variant.depth AS variant_depth, variant.is_dir AS variant_is_dir, variant.model_group_id AS variant_model_group_id, variant.review_status AS variant_review_status, variant.confidence_score AS variant_confidence_score, variant.designer_confidence AS variant_designer_confidence, variant.collection_id AS variant_collection_id, variant.collection_original_label AS variant_collection_original_label, variant.collection_cycle AS variant_collection_cycle, variant.collection_sequence_number AS variant_collection_sequence_number, variant.collection_theme AS variant_collection_theme, variant.game_system AS variant_game_system, variant.codex_faction AS variant_codex_faction, variant.codex_unit_name AS variant_codex_unit_name, variant.character_name AS variant_character_name, variant.character_aliases AS variant_character_aliases, variant.proxy_type AS variant_proxy_type, variant.loadout_variants AS variant_loadout_variants, variant.supported_loadout_codes AS variant_supported_loadout_codes, variant.base_size_mm AS variant_base_size_mm, variant.lineage_family AS variant_lineage_family, variant.lineage_primary AS variant_lineage_primary, variant.lineage_aliases AS variant_lineage_aliases, variant.faction_general AS variant_faction_general, variant.faction_path AS variant_faction_path, variant.tabletop_role AS variant_tabletop_role, variant.pc_candidate_flag AS variant_pc_candidate_flag, variant.human_subtype AS variant_human_subtype, variant.role_confidence AS variant_role_confidence, variant.lineage_confidence AS variant_lineage_confidence, variant.asset_category AS variant_asset_category, variant.terrain_subtype AS variant_terrain_subtype, variant.vehicle_type AS variant_vehicle_type, variant.vehicle_era AS variant_vehicle_era, variant.base_theme AS variant_base_theme, variant.intended_use_bucket AS variant_intended_use_bucket, variant.nsfw_level AS variant_nsfw_level, variant.nsfw_exposure_top AS variant_nsfw_exposure_top, variant.nsfw_exposure_bottom AS variant_nsfw_exposure_bottom, variant.nsfw_act_tags AS variant_nsfw_act_tags, variant.segmentation AS variant_segmentation, variant.internal_volume AS variant_internal_volume, variant.support_state AS variant_support_state, variant.has_slicer_project AS variant_has_slicer_project, variant.pose_variant AS variant_pose_variant, variant.version_num AS variant_version_num, variant.part_pack_type AS variant_part_pack_type, variant.has_bust_variant AS variant_has_bust_variant, variant.scale_ratio_den AS variant_scale_ratio_den, variant.height_mm AS variant_height_mm, variant.mm_declared_conflict AS variant_mm_declared_conflict, variant.style_primary AS variant_style_primary, variant.style_primary_confidence AS variant_style_primary_confidence, variant.style_aesthetic_tags AS variant_style_aesthetic_tags, variant.addon_type AS variant_addon_type, variant.requires_base_model AS variant_requires_base_model, variant.compatibility_scope AS variant_compatibility_scope, variant.compatible_units AS variant_compatible_units, variant.compatible_factions AS variant_compatible_factions, variant.multi_faction_flag AS variant_multi_faction_flag, variant.compatible_model_group_ids AS variant_compatible_model_group_ids, variant.compatible_variant_ids AS variant_compatible_variant_ids, variant.compatibility_assertions AS variant_compatibility_assertions, variant.attachment_points AS variant_attachment_points, variant.replaces_parts AS variant_replaces_parts, variant.additive_only_flag AS variant_additive_only_flag, variant.clothing_variant_flag AS variant_clothing_variant_flag, variant.magnet_ready_flag AS variant_magnet_ready_flag, variant.user_tags AS variant_user_tags, variant.notes AS variant_notes, variant.residual_tokens AS variant_residual_tokens, variant.token_version AS variant_token_version, variant.normalization_warnings AS variant_normalization_warnings, variant.created_at AS variant_created_at, variant.updated_at AS variant_updated_at 
+FROM variant JOIN file ON variant.id = file.variant_id 
+WHERE variant.franchise IS NULL) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)

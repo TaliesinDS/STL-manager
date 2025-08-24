@@ -1,0 +1,42 @@
+Found 20 proposal objects in report reports\match_franchise_dryrun_after_apply.txt
+Would apply to Variant 18: {'faction_general': 'sw', 'normalization_warnings': ['tabletop_no_franchise']}
+Applied to Variant 18
+Would apply to Variant 66: {'franchise': 'vocaloid', 'codex_unit_name': 'hatsune_miku'}
+Applied to Variant 66
+Would apply to Variant 69: {'franchise': 'kill_la_kill', 'faction_general': 'ryuko', 'codex_unit_name': 'ryuko_matoi'}
+Applied to Variant 69
+Would apply to Variant 77: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 77
+Would apply to Variant 78: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 78
+Would apply to Variant 79: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 79
+Would apply to Variant 80: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 80
+Would apply to Variant 82: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 82
+Would apply to Variant 84: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 84
+Would apply to Variant 85: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 85
+Would apply to Variant 86: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 86
+Would apply to Variant 87: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 87
+Would apply to Variant 88: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 88
+Would apply to Variant 89: {'franchise': 'avatar_the_last_airbender', 'faction_general': 'toph', 'codex_unit_name': 'toph_beifong'}
+Applied to Variant 89
+Would apply to Variant 142: {'franchise': 'one_piece', 'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece'}
+Applied to Variant 142
+Would apply to Variant 146: {'franchise': 'one_piece', 'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece'}
+Applied to Variant 146
+Would apply to Variant 149: {'franchise': 'one_piece', 'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece'}
+Applied to Variant 149
+Would apply to Variant 150: {'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece', 'normalization_warnings': ['tabletop_no_franchise']}
+Applied to Variant 150
+Would apply to Variant 153: {'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece', 'normalization_warnings': ['tabletop_no_franchise']}
+Applied to Variant 153
+Would apply to Variant 154: {'faction_general': 'nami', 'codex_unit_name': 'nami_one_piece', 'normalization_warnings': ['tabletop_no_franchise']}
+Applied to Variant 154
+Done. Applied to 20 variants.

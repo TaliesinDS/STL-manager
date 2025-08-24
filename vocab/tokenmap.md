@@ -136,8 +136,8 @@ Phase 1 only sets `content_flag=nsfw` if any strong cue. Fine granularity waits.
 
 ```
 nsfw_cues:
-	strong: ["nude", "naked", "topless", "nsfw", "lewd", "futa"]  # added futa per new content observations
-	weak: ["sexy", "pinup", "pin-up", "lingerie"]  # pinup kept weak (broad range); may stay SFW contextually
+	strong: ["nude", "naked", "topless", "nsfw", "hentai", "lewd", "futa", "smutbase", "nsfw3", "2nsfw", "nsfwbatgirl", "bondagebunny+nsfw"]
+	weak: ["sexy", "pinup", "pin-up", "lingerie", "loli"]  # 'loli' treated as weak by default; flagged for manual review
 	exclude_false_positive_context: ["weapon", "nude_color_scheme"]
 ```
 
@@ -162,6 +162,11 @@ variant_axes:
 		base_only: ["base_pack", "bases_only", "base_set"]
 		accessory: ["bits", "bitz", "accessories"]
 	bust_indicators: ["bust"]
+
+	# Base shape mapping (Phase 1: only activates when tabletop intent is present or 'base' co-occurs)
+	base_shape:
+		round: ["round"]
+		square: ["square", "squared"]
 ```
 
 Logic: If both segmentation tokens appear (e.g., folder has both 'split' and 'merged') -> set segmentation=unknown + warning `segmentation_conflict`.
@@ -208,6 +213,22 @@ Remove before classification; keep in `raw_path_tokens` but exclude from positiv
 
 ```
 stopwords: ["the", "and", "of", "for", "set", "pack", "stl", "model", "models", "mini", "minis", "figure", "figures", "files", "printing", "print"]
+
+```
+# High-frequency stopwords observed in residuals (safe to exclude from aliasing)
+stopwords_additions:
+	- preview
+	- render
+	- renders
+	- previewazerama
+	- readme
+	- img
+	- images
+	- printinfo
+	- infomodel
+	- infoprint
+	- sample
+```
 ```
 
 ---

@@ -1,0 +1,6 @@
+total_variants: 492
+token_version_set: 491
+designer_set: 63
+franchise_set: 18
+residual_tokens_set: 492
+content_flag_set: 23

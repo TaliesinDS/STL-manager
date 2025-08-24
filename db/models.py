@@ -63,6 +63,9 @@ class Variant(Base):
     game_system = Column(String(128), nullable=True, index=True)
     codex_faction = Column(String(256), nullable=True, index=True)
     codex_unit_name = Column(String(256), nullable=True)
+    # Character fields: preferred place to store named characters/aliases
+    character_name = Column(String(256), nullable=True, index=True)
+    character_aliases = Column(JSON, default=list)
     proxy_type = Column(String(64), nullable=True)
     loadout_variants = Column(JSON, default=list)
     supported_loadout_codes = Column(JSON, default=list)

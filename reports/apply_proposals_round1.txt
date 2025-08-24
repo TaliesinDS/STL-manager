@@ -1,0 +1,2 @@
+Found 0 proposal objects in report reports\match_franchise_dryrun_after_apply.txt
+Done. Applied to 0 variants.

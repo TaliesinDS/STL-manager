@@ -1,0 +1,225 @@
+Found 463 candidate variants (franchise is NULL).
+Proposed updates for 47 variants (dry-run=False).
+{
+  "variant_id": 18,
+  "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+  "changes": {
+    "faction_general": "sw"
+  }
+}
+{
+  "variant_id": 91,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\01AhkoNSFW_SplitVersion_STL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 92,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\02AhkoNSFW_PreSupportedSTL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 94,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\04AhkoNSFW_NonSplitVersion_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 97,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\07Ahko_AlternativePieces",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 98,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\01AhkoNurse_SplitVersion_STL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 99,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\02AhkoNurse_PreSupportedSTL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 101,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\04AhkoNurse_NonSplitVersion_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahkonurse"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 104,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\07Ahko_AlternativePieces",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 105,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\01AhkoQueen_SplitVersion_STL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 106,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\02AhkoQueen_PreSupportedSTL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 108,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\04AhkoQueen_NonSplitVersion_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahkoqueen"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 111,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\07Ahko_AlternativePieces",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 112,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\01AhkoSkirt_SplitVersion_STL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 113,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\02AhkoSkirt_PreSupportedSTL_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 115,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\04AhkoSkirt_NonSplitVersion_Azerama",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ],
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 118,
+  "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\07AhkoSkirt_AlternativePieces",
+  "changes": {
+    "character_name": "ahko",
+    "character_aliases": [
+      "ahko"
+    ]
+  }
+}
+{
+  "variant_id": 150,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale uncut Nami CA3D\\1-9scale uncut Nami CA3D",
+  "changes": {
+    "character_name": "nami_one_piece",
+    "character_aliases": [
+      "nami"
+    ]
+  }
+}
+{
+  "variant_id": 153,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D",
+  "changes": {
+    "character_name": "nami_one_piece",
+    "character_aliases": [
+      "nami"
+    ]
+  }
+}
+{
+  "variant_id": 154,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported",
+  "changes": {
+    "character_name": "nami_one_piece",
+    "character_aliases": [
+      "nami"
+    ]
+  }
+}
+Applying updates to DB...
+Apply complete.

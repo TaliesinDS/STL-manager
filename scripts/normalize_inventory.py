@@ -50,6 +50,15 @@ SUPPORT_UNSUPPORTED = {"unsupported", "no_supports", "clean"}
 PART_BUST = {"bust"}
 PART_BASE = {"base_pack", "bases_only", "base_set"}
 PART_ACCESSORY = {"bits", "bitz", "accessories"}
+# Tokens that suggest a tabletop miniature/terrain context. When present,
+# we deliberately avoid assigning a `franchise` automatically because most
+# tabletop hobby STLs (scenery, terrain, independent miniatures) are not
+# franchise-owned in this domain model.
+TABLETOP_HINTS = {
+    "mini", "miniature", "miniatures", "terrain", "scenery", "base",
+    "bases", "bust", "figure", "figurine", "miniaturesupports", "support",
+    "supports", "mm", "scale", "mini_supports"
+}
 
 
 def build_designer_alias_map(session) -> dict[str, str]:
@@ -64,37 +73,116 @@ def build_designer_alias_map(session) -> dict[str, str]:
     return amap
 
 
+def build_franchise_alias_map(session) -> dict[str, str]:
+    """Return alias->canonical mapping from VocabEntry(domain='franchise')."""
+    rows = session.query(VocabEntry).filter_by(domain="franchise").all()
+    fmap: dict[str, str] = {}
+    for r in rows:
+        key = r.key
+        fmap[key.lower()] = key
+        for a in (r.aliases or []):
+            fmap[a.strip().lower()] = key
+    return fmap
+
+
+def build_character_alias_map(session) -> dict[str, str]:
+    """Return alias->canonical mapping from VocabEntry(domain='character')."""
+    rows = session.query(VocabEntry).filter_by(domain="character").all()
+    cmap: dict[str, str] = {}
+    for r in rows:
+        key = r.key
+        cmap[key.lower()] = key
+        for a in (r.aliases or []):
+            cmap[a.strip().lower()] = key
+    return cmap
+
+
 def tokens_from_variant(session, variant: Variant) -> list[str]:
-    toks = []
+    # Build a conservative token set for the variant. To avoid unrelated
+    # "loose" files (previews, archives, other top-level items) contaminating
+    # a variant's tokens, we: (1) prefer tokens derived from the variant's
+    # rel_path and filename, and (2) only include tokens from associated
+    # files when there's contextual evidence they belong to the same variant
+    # (shared tokens, matching filename or rel_path prefix). We also skip
+    # common non-model file extensions (images, archives, etc.).
+    toks: list[str] = []
+    base_tokens: list[str] = []
     # tokens from rel_path
     try:
-        toks += tokenize(Path(variant.rel_path))
+        base_tokens += tokenize(Path(variant.rel_path or ""))
     except Exception:
         pass
     # tokens from variant filename if present
     if variant.filename:
         try:
-            toks += tokenize(Path(variant.filename))
+            base_tokens += tokenize(Path(variant.filename))
         except Exception:
             pass
-    # tokens from associated files
-    for f in getattr(variant, "files", []):
-        try:
-            toks += tokenize(Path(f.filename or ""))
-            toks += tokenize(Path(f.rel_path or ""))
-        except Exception:
-            continue
-    # normalize: lower already done by tokenize; dedupe preserving order
+
+    # seed output with base tokens (deduped as we go)
     seen = set()
-    out = []
-    for t in toks:
-        if t in seen: continue
+    out: list[str] = []
+    for t in base_tokens:
+        if t in seen:
+            continue
         seen.add(t)
         out.append(t)
+
+    # Only include tokens from associated files when they reasonably belong
+    # to the same variant. Skip common preview/archive extensions.
+    MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb'}
+    for f in getattr(variant, "files", []):
+        fname = (f.filename or "")
+        frel = (f.rel_path or "")
+        # decide which path to tokenize for the file
+        token_source = fname or frel
+        if not token_source:
+            continue
+        p = Path(token_source)
+        ext = p.suffix.lower()
+        # Skip obvious non-model files (previews, archives, text, etc.)
+        if ext and ext not in MODEL_EXTS:
+            continue
+        try:
+            file_tokens = tokenize(Path(token_source))
+        except Exception:
+            continue
+
+        # Heuristics to decide whether this file should contribute tokens:
+        # - file path starts with the variant rel_path (strong signal), or
+        # - file name contains the variant filename, or
+        # - the file shares at least one token with the variant base tokens.
+        include = False
+        if variant.rel_path and frel:
+            try:
+                if Path(frel).as_posix().lower().startswith(Path(variant.rel_path or "").as_posix().lower()):
+                    include = True
+            except Exception:
+                pass
+        if not include and variant.filename and fname:
+            if variant.filename.lower() in fname.lower():
+                include = True
+        if not include and base_tokens:
+            if set(file_tokens) & set(base_tokens):
+                include = True
+        # Fallback: if the variant had no base tokens (loose/empty rel_path),
+        # allow file tokens (better to have tokens than none in that case)
+        if not include and not base_tokens:
+            include = True
+
+        if not include:
+            continue
+
+        for t in file_tokens:
+            if t in seen:
+                continue
+            seen.add(t)
+            out.append(t)
+
     return out
 
 
-def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str]):
+def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchise_map: dict[str, str] | None = None, character_map: dict[str, str] | None = None):
     """Return a dictionary of inferred fields and residual tokens."""
     inferred = {
         "designer": None,
@@ -111,10 +199,17 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str]):
         "pc_candidate_flag": False,
         "content_flag": None,
         "residual_tokens": [],
+        "character_hint": None,
+        "character_name": None,
         "normalization_warnings": [],
     }
 
-    for tok in tokens:
+    # Ensure we have a list for co-occurrence checks
+    token_list = list(tokens)
+    # Detect tabletop context conservatively: if any token matches our hints,
+    # treat this variant as tabletop and avoid assigning a franchise automatically.
+    is_tabletop = any(t in TABLETOP_HINTS for t in token_list)
+    for tok in token_list:
         dom = classify_token(tok)
         # Designer: prefer canonical mapping via DB alias map
         if not inferred["designer"] and tok in designer_map:
@@ -124,9 +219,46 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str]):
         if dom == "lineage_family" and not inferred["lineage_family"]:
             inferred["lineage_family"] = tok
             continue
-        if dom == "faction_hint" and not inferred["franchise"]:
-            inferred["franchise"] = tok
-            inferred["faction_hint"] = tok
+        # Faction-like tokens are recorded as a faction hint. Franchise is a
+        # separate higher-level concept (e.g., 'Marvel Cinematic Universe',
+        # 'Harry Potter') and should only be set when a matching franchise
+        # alias exists in the DB. If a token maps to a franchise alias, set
+        # `franchise` (canonical). Otherwise record the token as a
+        # `faction_hint` and add a warning to surface later review.
+        if dom == "faction_hint":
+            # If this token maps to a known franchise alias, decide whether
+            # it's strong enough to set `franchise`. Two-letter tokens (e.g.,
+            # 'sw', 'gw') are weak on their own and require supporting
+            # context: another franchise alias present, or a character/unit
+            # alias present. Otherwise record only a hint and warning.
+            is_franchise_alias = franchise_map and tok in franchise_map
+            if is_franchise_alias and not inferred.get("franchise"):
+                # Strength checks
+                alias_count = sum(1 for c in token_list if franchise_map and c in franchise_map)
+                has_character_hint = character_map and any(c in character_map for c in token_list)
+                strong = len(tok) > 2 or alias_count > 1 or has_character_hint
+                # If this looks like a tabletop item, do NOT auto-assign a
+                # franchise: tabletop STLs (indie minis, terrain, etc.) should
+                # remain franchise-less in this Phase-1 model. Record a
+                # normalization warning and skip franchise assignment.
+                if is_tabletop:
+                    inferred.setdefault("normalization_warnings", [])
+                    if "tabletop_no_franchise" not in inferred["normalization_warnings"]:
+                        inferred["normalization_warnings"].append("tabletop_no_franchise")
+                    # record hint but avoid assigning franchise
+                    if not inferred.get("faction_hint"):
+                        inferred["faction_hint"] = tok
+                    continue
+                if strong:
+                    inferred["franchise"] = franchise_map[tok]
+                    inferred["faction_hint"] = tok
+                    continue
+            # Otherwise record hint only and warn (no automatic franchise)
+            if not inferred.get("faction_hint"):
+                inferred["faction_hint"] = tok
+            inferred.setdefault("normalization_warnings", [])
+            if "faction_without_system" not in inferred["normalization_warnings"]:
+                inferred["normalization_warnings"].append("faction_without_system")
             continue
         if dom == "variant_axis":
             if tok in SEGMENTATION_SPLIT:
@@ -160,6 +292,24 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str]):
             if tok in PART_ACCESSORY:
                 inferred["part_pack_type"] = inferred.get("part_pack_type") or "accessory"
                 continue
+        # Character / codex unit hints: record non-destructively unless
+        # there is stronger contextual resolution (game_system, franchise)
+        # later. We add a warning so these can be reviewed before committing
+        # a `codex_unit_name` value.
+        if franchise_map and tok in franchise_map:
+            # franchise_map handled earlier; skip here
+            pass
+        # Character/unit alias match: non-destructively record the hint and
+        # canonical name for review. We do not auto-assign codex_unit_name
+        # to persistent fields unless later phases confirm game_system + faction.
+        if character_map and not inferred.get("character_hint") and tok in character_map:
+            # Record a character hint and canonical character name for review.
+            inferred["character_hint"] = tok
+            inferred["character_name"] = character_map[tok]
+            inferred.setdefault("normalization_warnings", [])
+            if "character_without_context" not in inferred["normalization_warnings"]:
+                inferred["normalization_warnings"].append("character_without_context")
+            continue
         # Scale detection
         m = SCALE_RATIO_RE.match(tok)
         if m and not inferred["scale_ratio_den"]:
@@ -214,6 +364,13 @@ def apply_updates_to_variant(variant: Variant, inferred: dict, session, force: b
     set_if_empty("franchise", inferred.get("franchise"))
     set_if_empty("lineage_family", inferred.get("lineage_family"))
     set_if_empty("faction_general", inferred.get("faction_hint"))
+    # Populate character fields (name + alias list) conservatively.
+    if inferred.get("character_name"):
+        set_if_empty("character_name", inferred.get("character_name"))
+        # if we have a character hint token, include it in aliases
+        hint = inferred.get("character_hint")
+        if hint:
+            set_if_empty("character_aliases", [hint])
     set_if_empty("segmentation", inferred.get("segmentation"))
     set_if_empty("internal_volume", inferred.get("internal_volume"))
     set_if_empty("support_state", inferred.get("support_state"))
@@ -249,6 +406,8 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
 
     with get_session() as session:
         designer_map = build_designer_alias_map(session)
+        franchise_map = build_franchise_alias_map(session)
+        character_map = build_character_alias_map(session)
 
         # Build base query: only variants with at least one file (simple heuristic)
         q = session.query(Variant).join(File).distinct()
@@ -265,7 +424,7 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                 break
             for v in rows:
                 tokens = tokens_from_variant(session, v)
-                inferred = classify_tokens(tokens, designer_map)
+                inferred = classify_tokens(tokens, designer_map, franchise_map, character_map)
                 inferred["token_version"] = token_map_version
                 changed = apply_updates_to_variant(v, inferred, session, force=force)
                 if changed:
@@ -285,7 +444,7 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                 any_changed = False
                 for v in rows:
                     tokens = tokens_from_variant(session, v)
-                    inferred = classify_tokens(tokens, designer_map)
+                    inferred = classify_tokens(tokens, designer_map, franchise_map, character_map)
                     inferred["token_version"] = token_map_version
                     changed = apply_updates_to_variant(v, inferred, session, force=force)
                     if changed:

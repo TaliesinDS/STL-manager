@@ -1,0 +1,188 @@
+Found 492 candidate variants (franchise is NULL).
+Proposed updates for 60 variants (dry-run=True).
+{
+  "variant_id": 18,
+  "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+  "changes": {
+    "faction_general": "sw",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 66,
+  "rel_path": "sample_store",
+  "changes": {
+    "franchise": "vocaloid",
+    "codex_unit_name": "hatsune_miku"
+  }
+}
+{
+  "variant_id": 69,
+  "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW",
+  "changes": {
+    "franchise": "kill_la_kill",
+    "faction_general": "ryuko",
+    "codex_unit_name": "ryuko_matoi"
+  }
+}
+{
+  "variant_id": 77,
+  "rel_path": "sample_store\\Azerama - Adult Toph",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 78,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_Presupported_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 79,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_ZbrushZtool_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 80,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophBigBaseAndAlternativePieces",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 82,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_CutVersion_STL_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 84,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_BuilPlate192x120mm_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 85,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_CutVersion_STL_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 86,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_Presupported_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 87,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_UncutVersion_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 88,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_ZbrushZtool_Azerama",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 89,
+  "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\TophBigBaseAndAlternativePieces",
+  "changes": {
+    "franchise": "avatar_the_last_airbender",
+    "faction_general": "toph",
+    "codex_unit_name": "toph_beifong"
+  }
+}
+{
+  "variant_id": 119,
+  "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\nsfw",
+  "changes": {
+    "faction_general": "toga",
+    "codex_unit_name": "himiko_toga",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 120,
+  "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\sfw",
+  "changes": {
+    "faction_general": "toga",
+    "codex_unit_name": "himiko_toga",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 142,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Nami",
+  "changes": {
+    "franchise": "one_piece",
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece"
+  }
+}
+{
+  "variant_id": 146,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Nami_Sup",
+  "changes": {
+    "franchise": "one_piece",
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece"
+  }
+}
+{
+  "variant_id": 149,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D",
+  "changes": {
+    "franchise": "one_piece",
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece"
+  }
+}
+{
+  "variant_id": 150,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale uncut Nami CA3D\\1-9scale uncut Nami CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}

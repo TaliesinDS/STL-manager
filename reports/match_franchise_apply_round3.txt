@@ -1,0 +1,200 @@
+Found 474 candidate variants (franchise is NULL).
+Proposed updates for 38 variants (dry-run=False).
+{
+  "variant_id": 156,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 157,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 158,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 159,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 160,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 162,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 163,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 164,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+  "changes": {
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece",
+    "normalization_warnings": [
+      "tabletop_no_franchise"
+    ]
+  }
+}
+{
+  "variant_id": 165,
+  "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version",
+  "changes": {
+    "franchise": "one_piece",
+    "faction_general": "nami",
+    "codex_unit_name": "nami_one_piece"
+  }
+}
+{
+  "variant_id": 232,
+  "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Bodies",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 233,
+  "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 235,
+  "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Bodies",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 236,
+  "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 259,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Bodies",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 260,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Helmets",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 261,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 263,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Bodies",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 264,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Helmets",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 265,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+{
+  "variant_id": 269,
+  "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Bodies",
+  "changes": {
+    "franchise": "darling_in_the_franxx",
+    "faction_general": "002",
+    "codex_unit_name": "zero_two"
+  }
+}
+Applying updates to DB...
+Apply complete.
