@@ -1,0 +1,5229 @@
+{
+  "apply": false,
+  "total_candidates": 425,
+  "summary": {
+    "total_proposals": 397,
+    "with_franchise": 0,
+    "with_character_name": 397,
+    "with_character_aliases": 397,
+    "with_faction_general_hint": 0,
+    "top_franchises": {},
+    "top_characters": {
+      "storedm_samplestore": 19,
+      "body_fey": 18,
+      "heroesinfinite_basesquare": 14,
+      "termi_library": 14,
+      "store_cavaliers": 13,
+      "ratmen_heroesinfinite": 12,
+      "store_powerhand": 12,
+      "store_storegoblin": 10,
+      "ratmen_square": 9,
+      "eatercourts_vampiric": 8,
+      "balazar_temptationsiren": 7,
+      "zombie_eatercourts": 6,
+      "store_lordcarmalian": 6,
+      "supportedtroops_troops": 6,
+      "store_erimila": 5,
+      "store_noranor": 5,
+      "store_cavalier": 5,
+      "store_sword": 5,
+      "store_azerama": 5,
+      "troopsserpent_strikebowguards": 5,
+      "store_troopsserpent": 5,
+      "open_terminator": 5,
+      "storeterminator_terminator": 4,
+      "store_lychee": 4,
+      "storebases_heroesinfinite": 3,
+      "store_samplestore": 3,
+      "ghast_store": 3,
+      "ghoulchampion_sortedmorbheg": 3,
+      "store_commandcorps": 3,
+      "samplestore_storefreeguild": 3,
+      "basesquared_ratmen": 3,
+      "basesquare_round": 3,
+      "troops_ratmen": 3,
+      "store_rock": 3,
+      "sampleswarrior": 2,
+      "samples_dragon": 2,
+      "gwynevel_fey": 2,
+      "supportedlazlus_dmstash": 2,
+      "melwynbase_body": 2,
+      "legswith_box": 2,
+      "store_temptationsiren": 2,
+      "store_intestineslower": 2,
+      "zombie_vampiric": 2,
+      "spikesbody_combinedspikes": 2,
+      "mmbase_courts": 2,
+      "city_fantasyhuman": 2,
+      "envoy_samplestore": 2,
+      "envoy_orae": 2,
+      "steelhelmscities_troops": 2,
+      "store_artisan": 2
+    }
+  },
+  "proposals": [
+    {
+      "variant_id": 1,
+      "rel_path": "samples\\warrior_01",
+      "changes": {
+        "character_name": "sampleswarrior",
+        "character_aliases": [
+          "sampleswarrior"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 2,
+      "rel_path": "samples\\dragon_01",
+      "changes": {
+        "character_name": "samples_dragon",
+        "character_aliases": [
+          "samples dragon"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 3,
+      "rel_path": "samples\\warrior_01",
+      "changes": {
+        "character_name": "sampleswarrior",
+        "character_aliases": [
+          "sampleswarrior"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 4,
+      "rel_path": "samples\\dragon_01",
+      "changes": {
+        "character_name": "samples_dragon",
+        "character_aliases": [
+          "samples dragon"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 5,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Campaign\\September",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 6,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 7,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "soulslys_fey",
+        "character_aliases": [
+          "soulslys fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 8,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\STLs",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 9,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 10,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 11,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "store_erimila",
+        "character_aliases": [
+          "store erimila"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 12,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "store_erimila",
+        "character_aliases": [
+          "store erimila"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 13,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported",
+      "changes": {
+        "character_name": "gwynevel_fey",
+        "character_aliases": [
+          "gwynevel fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 14,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "gwynevel_fey",
+        "character_aliases": [
+          "gwynevel fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 15,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 16,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "supportedlazlus_dmstash",
+        "character_aliases": [
+          "supportedlazlus dmstash"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 17,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\32mm",
+      "changes": {
+        "character_name": "supportedlazlus_dmstash",
+        "character_aliases": [
+          "supportedlazlus dmstash"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 18,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+      "changes": {
+        "character_name": "sesw_store",
+        "character_aliases": [
+          "sesw store"
+        ],
+        "normalization_warnings": [
+          "tabletop_no_franchise",
+          "faction_without_system",
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 19,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 20,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "markaminlys_storedm",
+        "character_aliases": [
+          "markaminlys storedm"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 21,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 22,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 23,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 24,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 25,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "store_noranor",
+        "character_aliases": [
+          "store noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 26,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "store_noranor",
+        "character_aliases": [
+          "store noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 27,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 28,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 29,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 30,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 31,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\LYS",
+      "changes": {
+        "character_name": "supportedzelafel_fey",
+        "character_aliases": [
+          "supportedzelafel fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 32,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\STL",
+      "changes": {
+        "character_name": "supportedzelafel_body",
+        "character_aliases": [
+          "supportedzelafel body"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 33,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 34,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 35,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 36,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 37,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 38,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported",
+      "changes": {
+        "character_name": "store_erimila",
+        "character_aliases": [
+          "store erimila"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 40,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\32mm",
+      "changes": {
+        "character_name": "store_erimila",
+        "character_aliases": [
+          "store erimila"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 41,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\75mm",
+      "changes": {
+        "character_name": "store_erimila",
+        "character_aliases": [
+          "store erimila"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 43,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 44,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "gwynevel_basebase",
+        "character_aliases": [
+          "gwynevel basebase"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 45,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 46,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 47,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 48,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 49,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 50,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 51,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 52,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "melwynbase_body",
+        "character_aliases": [
+          "melwynbase body"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 53,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "melwynbase_body",
+        "character_aliases": [
+          "melwynbase body"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 54,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported",
+      "changes": {
+        "character_name": "store_noranor",
+        "character_aliases": [
+          "store noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 55,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "store_noranor",
+        "character_aliases": [
+          "store noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 56,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "store_noranor",
+        "character_aliases": [
+          "store noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 57,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 58,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 59,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 60,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 61,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 62,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported",
+      "changes": {
+        "character_name": "guardians_unsupported",
+        "character_aliases": [
+          "guardians unsupported"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 63,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "character_name": "body_fey",
+        "character_aliases": [
+          "body fey"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 64,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "character_name": "battlebase_dmstash",
+        "character_aliases": [
+          "battlebase dmstash"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 65,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported",
+      "changes": {
+        "character_name": "storedm_samplestore",
+        "character_aliases": [
+          "storedm samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 67,
+      "rel_path": "sample_store\\60e73ad2721a1_special-lord-of-battle-1",
+      "changes": {
+        "character_name": "speciallord_backpackbody",
+        "character_aliases": [
+          "speciallord backpackbody"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 70,
+      "rel_path": "sample_store\\_Blood Angels Terminator Assault Squad",
+      "changes": {
+        "character_name": "samplestore_storeblood",
+        "character_aliases": [
+          "samplestore storeblood"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 71,
+      "rel_path": "sample_store\\_Sanguinius\\Primarca Angeles Sangrientos.Sanguinius v01",
+      "changes": {
+        "character_name": "eagle_hair",
+        "character_aliases": [
+          "eagle hair"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 72,
+      "rel_path": "sample_store\\august release\\Presupported\\CG",
+      "changes": {
+        "character_name": "captainrhanda_storeaugust",
+        "character_aliases": [
+          "captainrhanda storeaugust"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 73,
+      "rel_path": "sample_store\\august release\\Presupported\\Chariot",
+      "changes": {
+        "character_name": "release_august",
+        "character_aliases": [
+          "release august"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 74,
+      "rel_path": "sample_store\\august release\\Presupported\\Druid",
+      "changes": {
+        "character_name": "store_druidfox",
+        "character_aliases": [
+          "store druidfox"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 75,
+      "rel_path": "sample_store\\august release\\Presupported\\Heroine",
+      "changes": {
+        "character_name": "samplestore_release",
+        "character_aliases": [
+          "samplestore release"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 76,
+      "rel_path": "sample_store\\august release\\Presupported\\Regiment",
+      "changes": {
+        "character_name": "store_nohelmet",
+        "character_aliases": [
+          "store nohelmet"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 121,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\25mm",
+      "changes": {
+        "character_name": "basesheroes",
+        "character_aliases": [
+          "basesheroes"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 122,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\30mm",
+      "changes": {
+        "character_name": "storebases_heroesinfinite",
+        "character_aliases": [
+          "storebases heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 123,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\40mm",
+      "changes": {
+        "character_name": "storebases_heroesinfinite",
+        "character_aliases": [
+          "storebases heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 124,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\50mm",
+      "changes": {
+        "character_name": "storebases_heroesinfinite",
+        "character_aliases": [
+          "storebases heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 125,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc",
+      "changes": {
+        "character_name": "legswith_box",
+        "character_aliases": [
+          "legswith box"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 126,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc\\Presupported",
+      "changes": {
+        "character_name": "legswith_box",
+        "character_aliases": [
+          "legswith box"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 127,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 128,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Diorama base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 129,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Keys - 50mm base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 130,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Secrets - 40mm base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 131,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Diorama base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 132,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Keys - 50mm base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 133,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Secrets - 40mm base",
+      "changes": {
+        "character_name": "balazar_temptationsiren",
+        "character_aliases": [
+          "balazar temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 134,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Bases",
+      "changes": {
+        "character_name": "store_basesbase",
+        "character_aliases": [
+          "store basesbase"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 135,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Greater Demoness",
+      "changes": {
+        "character_name": "store_headlegr",
+        "character_aliases": [
+          "store headlegr"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 136,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Kitbash",
+      "changes": {
+        "character_name": "temptationsiren_hands",
+        "character_aliases": [
+          "temptationsiren hands"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 137,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Mistress",
+      "changes": {
+        "character_name": "store_temptationsiren",
+        "character_aliases": [
+          "store temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 138,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Prince",
+      "changes": {
+        "character_name": "store_intestineslower",
+        "character_aliases": [
+          "store intestineslower"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 139,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Prince\\Prince_stl_supported",
+      "changes": {
+        "character_name": "store_intestineslower",
+        "character_aliases": [
+          "store intestineslower"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 140,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Siren",
+      "changes": {
+        "character_name": "store_temptationsiren",
+        "character_aliases": [
+          "store temptationsiren"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 166,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025",
+      "changes": {
+        "character_name": "store_samplestore",
+        "character_aliases": [
+          "store samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 167,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025\\IMG",
+      "changes": {
+        "character_name": "sample_storeimg",
+        "character_aliases": [
+          "sample storeimg"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 168,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025\\MINI",
+      "changes": {
+        "character_name": "store_samplestore",
+        "character_aliases": [
+          "store samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 169,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vaal-Kan the Firstborn",
+      "changes": {
+        "character_name": "firstbornaxe_rightwing",
+        "character_aliases": [
+          "firstbornaxe rightwing"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 170,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 171,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\Supported STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 172,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 173,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes\\Blagomir The silent",
+      "changes": {
+        "character_name": "silent_lone",
+        "character_aliases": [
+          "silent lone"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 174,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes_ supported\\Blagomir The silent",
+      "changes": {
+        "character_name": "heroessupported_loneheroes",
+        "character_aliases": [
+          "heroessupported loneheroes"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 175,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 176,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported\\Hands",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 177,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 178,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported\\Hands",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 179,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 180,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir on Bloodhunter Dire Bat",
+      "changes": {
+        "character_name": "zombie_eatercourts",
+        "character_aliases": [
+          "zombie eatercourts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 181,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir the Bonelord",
+      "changes": {
+        "character_name": "bonelord_zombie",
+        "character_aliases": [
+          "bonelord zombie"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 182,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "changes": {
+        "character_name": "zombie_vampiric",
+        "character_aliases": [
+          "zombie vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 183,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "changes": {
+        "character_name": "spikesbody_combinedspikes",
+        "character_aliases": [
+          "spikesbody combinedspikes"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 184,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "changes": {
+        "character_name": "zombie_vampiric",
+        "character_aliases": [
+          "zombie vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 185,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrent Gorewarden\\Abhorrant Gorewarden",
+      "changes": {
+        "character_name": "store_keysboy",
+        "character_aliases": [
+          "store keysboy"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 186,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Charnel Throne",
+      "changes": {
+        "character_name": "throne_charnel",
+        "character_aliases": [
+          "throne charnel"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 187,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\STL",
+      "changes": {
+        "character_name": "ghast_store",
+        "character_aliases": [
+          "ghast store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 188,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\Supported STL",
+      "changes": {
+        "character_name": "ghast_store",
+        "character_aliases": [
+          "ghast store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 189,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)",
+      "changes": {
+        "character_name": "ghast_store",
+        "character_aliases": [
+          "ghast store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 190,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 191,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\Supported STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 192,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "changes": {
+        "character_name": "hiexc_unsupported",
+        "character_aliases": [
+          "hiexc unsupported"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 194,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Modern Fantasy Vampire Riders",
+      "changes": {
+        "character_name": "riders_right",
+        "character_aliases": [
+          "riders right"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 195,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "changes": {
+        "character_name": "sortedmorbheg_knightsvampiric",
+        "character_aliases": [
+          "sortedmorbheg knightsvampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 196,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "changes": {
+        "character_name": "spikesbody_combinedspikes",
+        "character_aliases": [
+          "spikesbody combinedspikes"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 197,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 198,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL\\Combined",
+      "changes": {
+        "character_name": "ghoulchampion_sortedmorbheg",
+        "character_aliases": [
+          "ghoulchampion sortedmorbheg"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 199,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL",
+      "changes": {
+        "character_name": "ghoulchampion_sortedmorbheg",
+        "character_aliases": [
+          "ghoulchampion sortedmorbheg"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 200,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\Supported STL",
+      "changes": {
+        "character_name": "eatercourts_vampiric",
+        "character_aliases": [
+          "eatercourts vampiric"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 201,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)",
+      "changes": {
+        "character_name": "ghoulchampion_sortedmorbheg",
+        "character_aliases": [
+          "ghoulchampion sortedmorbheg"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 202,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Spells",
+      "changes": {
+        "character_name": "sample_courts",
+        "character_aliases": [
+          "sample courts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 203,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Ushoran, Mortarch of Delusion",
+      "changes": {
+        "character_name": "sample_mortarch",
+        "character_aliases": [
+          "sample mortarch"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 204,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Ushoran, Mortarch of Delusion\\Modern Fantasy Vampire Master",
+      "changes": {
+        "character_name": "massive_eater",
+        "character_aliases": [
+          "massive eater"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 205,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Varghulf Courtier\\The_Wretch_(75mm_Base_73mm_Height)\\STL",
+      "changes": {
+        "character_name": "mmbase_courts",
+        "character_aliases": [
+          "mmbase courts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 206,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Varghulf Courtier\\The_Wretch_(75mm_Base_73mm_Height)\\STL\\Unsupported",
+      "changes": {
+        "character_name": "mmbase_courts",
+        "character_aliases": [
+          "mmbase courts"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 207,
+      "rel_path": "sample_store\\Flesh-eater Courts\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon in Monster Form",
+      "changes": {
+        "character_name": "courts_inmonster",
+        "character_aliases": [
+          "courts inmonster"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 208,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\1. Mercia Standard",
+      "changes": {
+        "character_name": "store_cavalier",
+        "character_aliases": [
+          "store cavalier"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 209,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\13. Medraut",
+      "changes": {
+        "character_name": "store_cavalier",
+        "character_aliases": [
+          "store cavalier"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 210,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\13. Medraut\\Medraut",
+      "changes": {
+        "character_name": "medraudfootlarm_store",
+        "character_aliases": [
+          "medraudfootlarm store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 211,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal\\Fallen Lineage",
+      "changes": {
+        "character_name": "cavalier_sword",
+        "character_aliases": [
+          "cavalier sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 212,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal\\Human Empire",
+      "changes": {
+        "character_name": "store_cavalier",
+        "character_aliases": [
+          "store cavalier"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 213,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal",
+      "changes": {
+        "character_name": "store_cavalier",
+        "character_aliases": [
+          "store cavalier"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 214,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Medraut",
+      "changes": {
+        "character_name": "store_cavalier",
+        "character_aliases": [
+          "store cavalier"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 215,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\2. Rangers CG",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 216,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\2. Rangers CG\\RangersAlternativeMount",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 217,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\4. CalixCG",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 218,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\40 GrandMasterWolf",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 219,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix",
+      "changes": {
+        "character_name": "horsetail_larm",
+        "character_aliases": [
+          "horsetail larm"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 220,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix\\CalixAlternativeDeers",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 221,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix\\CalixAlternativeUnicorns",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 222,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules\\Combined",
+      "changes": {
+        "character_name": "page_supportedbanner",
+        "character_aliases": [
+          "page supportedbanner"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 223,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules",
+      "changes": {
+        "character_name": "page_pagerules",
+        "character_aliases": [
+          "page pagerules"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 224,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights-Dogs",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 225,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights01",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 226,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights02",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 227,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsBearer",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 228,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsCaptain",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 229,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsMusician",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 230,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\RealmKnightsAlternativeUpperpart",
+      "changes": {
+        "character_name": "store_cavaliers",
+        "character_aliases": [
+          "store cavaliers"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 231,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps",
+      "changes": {
+        "character_name": "store_commandcorps",
+        "character_aliases": [
+          "store commandcorps"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 234,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps",
+      "changes": {
+        "character_name": "store_commandcorps",
+        "character_aliases": [
+          "store commandcorps"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 237,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Mercia Standard",
+      "changes": {
+        "character_name": "store_commandcorps",
+        "character_aliases": [
+          "store commandcorps"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 238,
+      "rel_path": "sample_store\\Freeguild Command Corps\\MerciaKing",
+      "changes": {
+        "character_name": "samplestore_storefreeguild",
+        "character_aliases": [
+          "samplestore storefreeguild"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 239,
+      "rel_path": "sample_store\\Freeguild Command Corps\\SirBors",
+      "changes": {
+        "character_name": "samplestore_storefreeguild",
+        "character_aliases": [
+          "samplestore storefreeguild"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 240,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX",
+      "changes": {
+        "character_name": "macosx_sigmar",
+        "character_aliases": [
+          "macosx sigmar"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 241,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX\\Modern Fantasy Human Gunners",
+      "changes": {
+        "character_name": "city_fantasyhuman",
+        "character_aliases": [
+          "city fantasyhuman"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 242,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\Modern Fantasy Human Gunners",
+      "changes": {
+        "character_name": "city_fantasyhuman",
+        "character_aliases": [
+          "city fantasyhuman"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 243,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\14. Sir Bors",
+      "changes": {
+        "character_name": "sirborsbasestick_sirborsrhand",
+        "character_aliases": [
+          "sirborsbasestick sirborsrhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 244,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\17. Allard, Mercia King",
+      "changes": {
+        "character_name": "allardlhand_allardrhand",
+        "character_aliases": [
+          "allardlhand allardrhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 245,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\6. Wind Knights Pegasus and CG",
+      "changes": {
+        "character_name": "samplestore_griffon",
+        "character_aliases": [
+          "samplestore griffon"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 246,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\7. Wind Knights Alternative Mount and Knights",
+      "changes": {
+        "character_name": "knightlarm_knightbaselow",
+        "character_aliases": [
+          "knightlarm knightbaselow"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 247,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 248,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian\\Lychee",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 249,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian\\Unsupported",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 250,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 251,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon\\Lychee",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 252,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon\\Unsupported",
+      "changes": {
+        "character_name": "store_lordcarmalian",
+        "character_aliases": [
+          "store lordcarmalian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 253,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Garmokh_Supported\\STL_Garmokh_Supported",
+      "changes": {
+        "character_name": "envoy_samplestore",
+        "character_aliases": [
+          "envoy samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 254,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Garmokh_Unsupported",
+      "changes": {
+        "character_name": "envoy_samplestore",
+        "character_aliases": [
+          "envoy samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 255,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Orae_Supported\\STL_Orae_Supported",
+      "changes": {
+        "character_name": "envoy_orae",
+        "character_aliases": [
+          "envoy orae"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 256,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Orae_Unsupported",
+      "changes": {
+        "character_name": "envoy_orae",
+        "character_aliases": [
+          "envoy orae"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 257,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Calix",
+      "changes": {
+        "character_name": "calix_freeguild",
+        "character_aliases": [
+          "calix freeguild"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 258,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops",
+      "changes": {
+        "character_name": "steelhelmscities_troops",
+        "character_aliases": [
+          "steelhelmscities troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 262,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops",
+      "changes": {
+        "character_name": "steelhelmscities_troops",
+        "character_aliases": [
+          "steelhelmscities troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 266,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\One Page Rule\\Combined",
+      "changes": {
+        "character_name": "store_sword",
+        "character_aliases": [
+          "store sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 267,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\One Page Rule",
+      "changes": {
+        "character_name": "store_sword",
+        "character_aliases": [
+          "store sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 268,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Rangers",
+      "changes": {
+        "character_name": "samplestore_storefreeguild",
+        "character_aliases": [
+          "samplestore storefreeguild"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 270,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Helmets",
+      "changes": {
+        "character_name": "steelhelms_steelhelmsscan",
+        "character_aliases": [
+          "steelhelms steelhelmsscan"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 271,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan",
+      "changes": {
+        "character_name": "scan_store",
+        "character_aliases": [
+          "scan store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 272,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Weapons, Arms, Accessories",
+      "changes": {
+        "character_name": "storefreeguild",
+        "character_aliases": [
+          "storefreeguild"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 273,
+      "rel_path": "sample_store\\Goblin\\Artisan Guild Miniatures -  Faldorn Goblins - Gbiza Goblin Pinup\\Alternative Version",
+      "changes": {
+        "character_name": "store_artisan",
+        "character_aliases": [
+          "store artisan"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 274,
+      "rel_path": "sample_store\\Goblin\\Artisan Guild Miniatures -  Faldorn Goblins - Gbiza Goblin Pinup",
+      "changes": {
+        "character_name": "store_artisan",
+        "character_aliases": [
+          "store artisan"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 275,
+      "rel_path": "sample_store\\Goblin\\Bramblehoof, The Mock-Stag",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 276,
+      "rel_path": "sample_store\\Goblin\\Bramblehoof, The Mock-Stag - Christmas Version",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 277,
+      "rel_path": "sample_store\\Goblin\\gaz minis - goblin witch nimue + christmas",
+      "changes": {
+        "character_name": "torsomask_masknsfw",
+        "character_aliases": [
+          "torsomask masknsfw"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 278,
+      "rel_path": "sample_store\\Goblin\\Gith Female Knight",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 279,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Commander",
+      "changes": {
+        "character_name": "store_knightcommander",
+        "character_aliases": [
+          "store knightcommander"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 280,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Jumping",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 281,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Running",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 282,
+      "rel_path": "sample_store\\Goblin\\Gith Psi Knight",
+      "changes": {
+        "character_name": "store_telekinesis",
+        "character_aliases": [
+          "store telekinesis"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 283,
+      "rel_path": "sample_store\\Goblin\\Gith Raiders",
+      "changes": {
+        "character_name": "warrior_gith",
+        "character_aliases": [
+          "warrior gith"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 284,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 285,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord - Christmas Version",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 286,
+      "rel_path": "sample_store\\Goblin\\Goblin Shaman on Runetusk Antlerguard",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 287,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 288,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman - Christmas Version",
+      "changes": {
+        "character_name": "store_storegoblin",
+        "character_aliases": [
+          "store storegoblin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 289,
+      "rel_path": "sample_store\\Goblin\\Runetusk Antlerguard, Guardian of the Shamanic",
+      "changes": {
+        "character_name": "goblin_guardian",
+        "character_aliases": [
+          "goblin guardian"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 290,
+      "rel_path": "sample_store\\Goblin",
+      "changes": {
+        "character_name": "storegoblin_samplestore",
+        "character_aliases": [
+          "storegoblin samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 291,
+      "rel_path": "sample_store\\Infernus Squad",
+      "changes": {
+        "character_name": "store_samplestore",
+        "character_aliases": [
+          "store samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 292,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad",
+      "changes": {
+        "character_name": "storeinfernus_backpackbase",
+        "character_aliases": [
+          "storeinfernus backpackbase"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 293,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers",
+      "changes": {
+        "character_name": "hands_handfree",
+        "character_aliases": [
+          "hands handfree"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 294,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers\\Presupported Flamers",
+      "changes": {
+        "character_name": "infernus_flamerflamer",
+        "character_aliases": [
+          "infernus flamerflamer"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 295,
+      "rel_path": "sample_store\\JARDIN DE MORR",
+      "changes": {
+        "character_name": "needssuports_morrlong",
+        "character_aliases": [
+          "needssuports morrlong"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 296,
+      "rel_path": "sample_store\\JARDIN DE MORR\\MAUSOLEOS\\1",
+      "changes": {
+        "character_name": "roofstack_mausoleumroof",
+        "character_aliases": [
+          "roofstack mausoleumroof"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 297,
+      "rel_path": "sample_store\\JARDIN DE MORR\\MAUSOLEOS\\2",
+      "changes": {
+        "character_name": "store_roses",
+        "character_aliases": [
+          "store roses"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 298,
+      "rel_path": "sample_store\\JARDIN DE MORR\\MAUSOLEOS\\3",
+      "changes": {
+        "character_name": "store_storejardin",
+        "character_aliases": [
+          "store storejardin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 299,
+      "rel_path": "sample_store\\JARDIN DE MORR\\MAUSOLEOS\\4",
+      "changes": {
+        "character_name": "store_storejardin",
+        "character_aliases": [
+          "store storejardin"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 300,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon",
+      "changes": {
+        "character_name": "sample_samplestore",
+        "character_aliases": [
+          "sample samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 301,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon\\Non supported",
+      "changes": {
+        "character_name": "store_headleft",
+        "character_aliases": [
+          "store headleft"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 302,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon\\Pre-supported",
+      "changes": {
+        "character_name": "store_headleft",
+        "character_aliases": [
+          "store headleft"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 303,
+      "rel_path": "sample_store\\Male Ranger",
+      "changes": {
+        "character_name": "arrow_storemale",
+        "character_aliases": [
+          "arrow storemale"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 307,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Church Walls",
+      "changes": {
+        "character_name": "corner_scenerytime",
+        "character_aliases": [
+          "corner scenerytime"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 308,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval Church",
+      "changes": {
+        "character_name": "store_medieval",
+        "character_aliases": [
+          "store medieval"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 309,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval Church\\Church-decor",
+      "changes": {
+        "character_name": "europemedieval_leftcross",
+        "character_aliases": [
+          "europemedieval leftcross"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 310,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval House\\Medieval-House-1.3",
+      "changes": {
+        "character_name": "europemedieval_medievalhouse",
+        "character_aliases": [
+          "europemedieval medievalhouse"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 311,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Farm\\The-Farm",
+      "changes": {
+        "character_name": "farmclip_scenerytime",
+        "character_aliases": [
+          "farmclip scenerytime"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 312,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Farm\\The-Farm\\Cut Version",
+      "changes": {
+        "character_name": "cut_barnroof",
+        "character_aliases": [
+          "cut barnroof"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 313,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Stone Barn\\Stone-Barn-1.2",
+      "changes": {
+        "character_name": "warp_samplestore",
+        "character_aliases": [
+          "warp samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 314,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Stone Barn\\Stone-Barn-1.2\\Cut Version",
+      "changes": {
+        "character_name": "barncut_cut",
+        "character_aliases": [
+          "barncut cut"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 315,
+      "rel_path": "sample_store\\Printable_Scenery_Time_Warp_Europe_OpenLOCK_Modular_Town_Ruins\\Modular-Town-Ruins",
+      "changes": {
+        "character_name": "ruinedwalls_ruins",
+        "character_aliases": [
+          "ruinedwalls ruins"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 321,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\01Sakura_SplitVersion_STL_Azerama",
+      "changes": {
+        "character_name": "store_azerama",
+        "character_aliases": [
+          "store azerama"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 322,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\02Sakura_NonSplitVersion_Azerama",
+      "changes": {
+        "character_name": "store_azerama",
+        "character_aliases": [
+          "store azerama"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 323,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\03Sakura_ZbrushZtool_Azerama",
+      "changes": {
+        "character_name": "store_azerama",
+        "character_aliases": [
+          "store azerama"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 324,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\04SakuraNSFW_Renders_Azerama",
+      "changes": {
+        "character_name": "store_azerama",
+        "character_aliases": [
+          "store azerama"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 325,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama",
+      "changes": {
+        "character_name": "store_azerama",
+        "character_aliases": [
+          "store azerama"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 330,
+      "rel_path": "sample_store\\space-captain-with-honor-guard\\Dminis\\space-captain-with-honor-guard",
+      "changes": {
+        "character_name": "guarddminis_samplestore",
+        "character_aliases": [
+          "guarddminis samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 331,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Crew",
+      "changes": {
+        "character_name": "centrepiececrew_bellrider",
+        "character_aliases": [
+          "centrepiececrew bellrider"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 332,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Machine",
+      "changes": {
+        "character_name": "centrepiece_undead",
+        "character_aliases": [
+          "centrepiece undead"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 333,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 334,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 335,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 336,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "character_name": "basesquared_ratmen",
+        "character_aliases": [
+          "basesquared ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 337,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "character_name": "basesquared_ratmen",
+        "character_aliases": [
+          "basesquared ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 338,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "character_name": "ratmen_nefrascararound",
+        "character_aliases": [
+          "ratmen nefrascararound"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 339,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 340,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 341,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "character_name": "marshaltombshade_sehatararound",
+        "character_aliases": [
+          "marshaltombshade sehatararound"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 342,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "character_name": "oundbase_ratmen",
+        "character_aliases": [
+          "oundbase ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 343,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "character_name": "heroesinfinite_hollowed",
+        "character_aliases": [
+          "heroesinfinite hollowed"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 344,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "character_name": "basesquared_ratmen",
+        "character_aliases": [
+          "basesquared ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 345,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "character_name": "basesquare_round",
+        "character_aliases": [
+          "basesquare round"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 346,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "character_name": "square_memoxomor",
+        "character_aliases": [
+          "square memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 347,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "character_name": "ratmen_hollowed",
+        "character_aliases": [
+          "ratmen hollowed"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 348,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "character_name": "ratmen_hollowed",
+        "character_aliases": [
+          "ratmen hollowed"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 349,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "character_name": "main_memoxomor",
+        "character_aliases": [
+          "main memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 350,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 351,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Modular Parts",
+      "changes": {
+        "character_name": "ratmen_buildingbase",
+        "character_aliases": [
+          "ratmen buildingbase"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 352,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "character_name": "heroesinfinite_memoxomor",
+        "character_aliases": [
+          "heroesinfinite memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 353,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 354,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 355,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 356,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia",
+      "changes": {
+        "character_name": "heroesinfinite_memoxomor",
+        "character_aliases": [
+          "heroesinfinite memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 357,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 358,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 359,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 360,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 361,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 362,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "character_name": "memoxomor_samplestore",
+        "character_aliases": [
+          "memoxomor samplestore"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 363,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 364,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "character_name": "troops_backscrew",
+        "character_aliases": [
+          "troops backscrew"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 365,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 366,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "character_name": "troopsserpent_strikebowguards",
+        "character_aliases": [
+          "troopsserpent strikebowguards"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 367,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "character_name": "troopsserpent_strikebowguards",
+        "character_aliases": [
+          "troopsserpent strikebowguards"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 368,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "character_name": "troopsserpent_strikebowguards",
+        "character_aliases": [
+          "troopsserpent strikebowguards"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 369,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "character_name": "troopsserpent_strikebowguards",
+        "character_aliases": [
+          "troopsserpent strikebowguards"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 370,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "character_name": "troopsserpent_strikebowguards",
+        "character_aliases": [
+          "troopsserpent strikebowguards"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 371,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "character_name": "troops_serpentstrike",
+        "character_aliases": [
+          "troops serpentstrike"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 372,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "character_name": "chariotrevenants_supportedtroops",
+        "character_aliases": [
+          "chariotrevenants supportedtroops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 373,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 374,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 375,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "character_name": "supportedtroops_troops",
+        "character_aliases": [
+          "supportedtroops troops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 376,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "character_name": "chariotrevenants_supportedtroops",
+        "character_aliases": [
+          "chariotrevenants supportedtroops"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 377,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Crew",
+      "changes": {
+        "character_name": "store_centrepiececrew",
+        "character_aliases": [
+          "store centrepiececrew"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 378,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Machine",
+      "changes": {
+        "character_name": "ratmen_memoxomor",
+        "character_aliases": [
+          "ratmen memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 379,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 380,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "character_name": "moxomoraka_unsupported",
+        "character_aliases": [
+          "moxomoraka unsupported"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 381,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 382,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "character_name": "store_unsupportedlord",
+        "character_aliases": [
+          "store unsupportedlord"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 383,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 384,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "character_name": "nefrascararound_ratmen",
+        "character_aliases": [
+          "nefrascararound ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 385,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "character_name": "heroesinfinite_basesquare",
+        "character_aliases": [
+          "heroesinfinite basesquare"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 386,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 387,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "character_name": "marshaltombshade_sehatararound",
+        "character_aliases": [
+          "marshaltombshade sehatararound"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 388,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "character_name": "ratmen_withbow",
+        "character_aliases": [
+          "ratmen withbow"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 389,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "character_name": "basesquare_round",
+        "character_aliases": [
+          "basesquare round"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 390,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "character_name": "ratmen_vezthikround",
+        "character_aliases": [
+          "ratmen vezthikround"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 391,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "character_name": "basesquare_round",
+        "character_aliases": [
+          "basesquare round"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 392,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "character_name": "square_memoxomor",
+        "character_aliases": [
+          "square memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 393,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 394,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "character_name": "oundbase_ratmen",
+        "character_aliases": [
+          "oundbase ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 395,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "character_name": "main_memoxomor",
+        "character_aliases": [
+          "main memoxomor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 396,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 397,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Modular Parts",
+      "changes": {
+        "character_name": "ratmen_buildingbase",
+        "character_aliases": [
+          "ratmen buildingbase"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 398,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 399,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 400,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 401,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "character_name": "ratmen_square",
+        "character_aliases": [
+          "ratmen square"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 402,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 403,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 404,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 405,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 406,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 407,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 408,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 409,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 410,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "character_name": "troops_backscrew",
+        "character_aliases": [
+          "troops backscrew"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 411,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 412,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "character_name": "store_troopsserpent",
+        "character_aliases": [
+          "store troopsserpent"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 413,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "character_name": "store_troopsserpent",
+        "character_aliases": [
+          "store troopsserpent"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 414,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "character_name": "store_troopsserpent",
+        "character_aliases": [
+          "store troopsserpent"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 415,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "character_name": "store_troopsserpent",
+        "character_aliases": [
+          "store troopsserpent"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 416,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "character_name": "store_troopsserpent",
+        "character_aliases": [
+          "store troopsserpent"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 417,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "character_name": "troops_serpentstrike",
+        "character_aliases": [
+          "troops serpentstrike"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 418,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 419,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "character_name": "troops_ratmen",
+        "character_aliases": [
+          "troops ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 420,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "character_name": "troops_ratmen",
+        "character_aliases": [
+          "troops ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 421,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "character_name": "troops_ratmen",
+        "character_aliases": [
+          "troops ratmen"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 422,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "character_name": "ratmen_heroesinfinite",
+        "character_aliases": [
+          "ratmen heroesinfinite"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 423,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3",
+      "changes": {
+        "character_name": "storeterminator_terminator",
+        "character_aliases": [
+          "storeterminator terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 424,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\40mm & 50mm Base",
+      "changes": {
+        "character_name": "store_rock",
+        "character_aliases": [
+          "store rock"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 425,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Flamer Arm",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 426,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Gun Arms",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 427,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Mini Gun Cannon Arm",
+      "changes": {
+        "character_name": "guncannon_lychee",
+        "character_aliases": [
+          "guncannon lychee"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 428,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 1",
+      "changes": {
+        "character_name": "open_terminator",
+        "character_aliases": [
+          "open terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 429,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 2",
+      "changes": {
+        "character_name": "open_terminator",
+        "character_aliases": [
+          "open terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 430,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 3",
+      "changes": {
+        "character_name": "open_terminator",
+        "character_aliases": [
+          "open terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 431,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 4",
+      "changes": {
+        "character_name": "open_terminator",
+        "character_aliases": [
+          "open terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 432,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 5",
+      "changes": {
+        "character_name": "open_terminator",
+        "character_aliases": [
+          "open terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 433,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Sword Arms",
+      "changes": {
+        "character_name": "store_sword",
+        "character_aliases": [
+          "store sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 434,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Cape",
+      "changes": {
+        "character_name": "store_lychee",
+        "character_aliases": [
+          "store lychee"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 435,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Helmets & Faces",
+      "changes": {
+        "character_name": "terminator_helmetsfaces",
+        "character_aliases": [
+          "terminator helmetsfaces"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 436,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Legs",
+      "changes": {
+        "character_name": "store_lychee",
+        "character_aliases": [
+          "store lychee"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 437,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Lychee Scenes",
+      "changes": {
+        "character_name": "store_lychee",
+        "character_aliases": [
+          "store lychee"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 438,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Purity Seals",
+      "changes": {
+        "character_name": "store_lychee",
+        "character_aliases": [
+          "store lychee"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 439,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders",
+      "changes": {
+        "character_name": "terminator_scrollsergeant",
+        "character_aliases": [
+          "terminator scrollsergeant"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 440,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders\\Shoulder Shield",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 441,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders\\Ultra Shoulders",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 442,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Torsos",
+      "changes": {
+        "character_name": "symbol_terminator",
+        "character_aliases": [
+          "symbol terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 443,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\40mm & 50mm Base",
+      "changes": {
+        "character_name": "withlegs_termi",
+        "character_aliases": [
+          "withlegs termi"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 444,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Flamer Arm",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 445,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Gun Arms",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 446,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Mini Gun Cannon Arm",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 447,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 1",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 448,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 2",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 449,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 3",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 450,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 4",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 451,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 5",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 452,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 453,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Sword Arms",
+      "changes": {
+        "character_name": "store_sword",
+        "character_aliases": [
+          "store sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 454,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Cape",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 455,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Helmets & Faces",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 456,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Legs\\Terminator Legs without Purity Seals",
+      "changes": {
+        "character_name": "store_cleansergeant",
+        "character_aliases": [
+          "store cleansergeant"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 457,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Legs",
+      "changes": {
+        "character_name": "store_rock",
+        "character_aliases": [
+          "store rock"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 458,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Purity Seals",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 459,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders",
+      "changes": {
+        "character_name": "clean_shoulderleft",
+        "character_aliases": [
+          "clean shoulderleft"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 460,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders\\Shoulder Shield",
+      "changes": {
+        "character_name": "store_clean",
+        "character_aliases": [
+          "store clean"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 461,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders\\Ultra Shoulders",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 462,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Teleporter Homer",
+      "changes": {
+        "character_name": "store_teleporterhomer",
+        "character_aliases": [
+          "store teleporterhomer"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 463,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Terminator Assembly Images",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 464,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Torsos\\Clean Torsos with Targeters",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 465,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Torsos",
+      "changes": {
+        "character_name": "termi_library",
+        "character_aliases": [
+          "termi library"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 466,
+      "rel_path": "sample_store\\Terminator Squad\\Termies",
+      "changes": {
+        "character_name": "samplestore_terminatorsquad",
+        "character_aliases": [
+          "samplestore terminatorsquad"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 467,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized",
+      "changes": {
+        "character_name": "store_storeterminator",
+        "character_aliases": [
+          "store storeterminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 468,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Bodies",
+      "changes": {
+        "character_name": "storeterminator_terminator",
+        "character_aliases": [
+          "storeterminator terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 469,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Helmets",
+      "changes": {
+        "character_name": "storeterminator_organizedhelmets",
+        "character_aliases": [
+          "storeterminator organizedhelmets"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 470,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Weapons and Arms",
+      "changes": {
+        "character_name": "terminator",
+        "character_aliases": [
+          "terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 471,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Gun Arms",
+      "changes": {
+        "character_name": "store_armwith",
+        "character_aliases": [
+          "store armwith"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 472,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Mini Gun Cannon Arm",
+      "changes": {
+        "character_name": "store_guncannon",
+        "character_aliases": [
+          "store guncannon"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 473,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 1",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 474,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 2",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 475,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 3",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 476,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 4",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 477,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 5",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 478,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms",
+      "changes": {
+        "character_name": "store_powerhand",
+        "character_aliases": [
+          "store powerhand"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 479,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Sword Arms",
+      "changes": {
+        "character_name": "store_sword",
+        "character_aliases": [
+          "store sword"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 480,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Base",
+      "changes": {
+        "character_name": "store_blenderwith",
+        "character_aliases": [
+          "store blenderwith"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 481,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Helmet",
+      "changes": {
+        "character_name": "store_helmetvisor",
+        "character_aliases": [
+          "store helmetvisor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 482,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Legs",
+      "changes": {
+        "character_name": "store_rock",
+        "character_aliases": [
+          "store rock"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 483,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Shoulder",
+      "changes": {
+        "character_name": "store_clean",
+        "character_aliases": [
+          "store clean"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 484,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad",
+      "changes": {
+        "character_name": "store_storeterminator",
+        "character_aliases": [
+          "store storeterminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 485,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Torso",
+      "changes": {
+        "character_name": "storeterminator_sergeant",
+        "character_aliases": [
+          "storeterminator sergeant"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 486,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\@STL_Printer",
+      "changes": {
+        "character_name": "storeterminator_terminator",
+        "character_aliases": [
+          "storeterminator terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 487,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Bodies",
+      "changes": {
+        "character_name": "storeterminator_terminator",
+        "character_aliases": [
+          "storeterminator terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 488,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Helmets",
+      "changes": {
+        "character_name": "store",
+        "character_aliases": [
+          "store"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 489,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set",
+      "changes": {
+        "character_name": "terminatorsquad_storeterminator",
+        "character_aliases": [
+          "terminatorsquad storeterminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 490,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Weapons and Arms",
+      "changes": {
+        "character_name": "terminator",
+        "character_aliases": [
+          "terminator"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 491,
+      "rel_path": "sample_store\\瑟瑟妹子\\分件",
+      "changes": {
+        "character_name": "分件上衣_右腿头发",
+        "character_aliases": [
+          "分件上衣 右腿头发"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 492,
+      "rel_path": "sample_store_orphaned",
+      "changes": {
+        "character_name": "sample_storeorphaned",
+        "character_aliases": [
+          "sample storeorphaned"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    }
+  ]
+}

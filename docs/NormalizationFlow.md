@@ -101,6 +101,19 @@ Conflicts subtract 50% of smaller side (e.g., segmentation both split & merged =
 - All tokens not consumed by successful matches or defined stopwords.
 - Store ordered list `residual_tokens` for later vocab expansion triage.
 
+### 4.10 Franchise/Character Guardrails (Matcher)
+These rules harden franchise/character inference to prevent false positives from generic words and ambiguous names.
+
+- Stop-conflicts (per franchise): Any token listed under `tokens.stop_conflicts` in a franchise manifest is not allowed to map to that franchise (e.g., generic nouns like `gate`).
+- Ambiguous aliases (global): Common names like `angel`, `sakura` are ignored unless there is independent franchise evidence (another alias/token) or a strong character/full-name hit. Ambiguous aliases never count as strong by themselves.
+- Strong-or-supporting-only assignment: The matcher sets `franchise` only if at least one of the following holds:
+	- The token is in that franchise’s `strong_signals`, or
+	- There is strong character evidence for that franchise, or
+	- There is additional independent franchise evidence besides the triggering token (alias + token, two aliases, etc.). A single weak alias is not enough.
+- Tabletop context: Tabletop hints suppress weak assignments; strong evidence still assigns. Weak matches in tabletop context emit hints/warnings only.
+- Token expansion awareness: The matcher may split camelCase/glued tokens and use bigrams; prefer putting full names and surnames in `strong_signals`, and short/generic pieces in `weak_signals` to steer this.
+- Curation tips: Put generic words that also serve as franchise names into that franchise’s `stop_conflicts`. For cross-franchise common given names, consider adding them to the matcher's ambiguous alias list and rely on supporting evidence.
+
 ---
 ## 5. Warnings Assembly
 Aggregate deduplicated list of warning codes in `normalization_warnings` (preserve first occurrence order). Codes documented in token map.

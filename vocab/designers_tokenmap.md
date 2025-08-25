@@ -32,7 +32,6 @@ designers:
 	ca3d: ["ca3d"]
 	jigglystix: ["jigglystix"]
 	torrida: ["torrida", "torrida_minis", "torrida minis"]
-	skarix: ["skarix"]
 	xo3d: ["oxo3d", "xo3d", "oxo_3d"]
 	rubim: ["rubim"]
 	pink_studio: ["pink_studio", "pink studio"]

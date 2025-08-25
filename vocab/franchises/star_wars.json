@@ -9,8 +9,8 @@
   ],
   "tokens": {
   "strong_signals": ["princess_leia", "leia", "leia_organa", "bastila_shan", "bastila"],
-  "weak_signals": ["organa", "shan"],
-    "stop_conflicts": [],
+  "weak_signals": ["organa", "sw", "shan"],
+    "stop_conflicts": ["sw"],
   "notes": "Added Bastila Shan; given names strong; surnames weak; franchise acronym weak." 
   },
   "provenance": {"source": "manual_seed"}

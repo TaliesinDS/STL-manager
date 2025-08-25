@@ -1,0 +1,9 @@
+# Approved original character-style names (single tokens, lowercase)
+# Add one per line. Lines starting with # are ignored.
+elenil
+verina
+zelafel
+lazlus
+markamin
+melywn
+treneal

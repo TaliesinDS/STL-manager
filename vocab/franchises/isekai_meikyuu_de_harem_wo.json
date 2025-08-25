@@ -4,13 +4,14 @@
   "source_version": 1,
   "aliases": ["isekai_meikyuu_de_harem_wo"],
   "characters": [
-    {"canonical": "roxanne_imdhw", "aliases": ["roxanne"]}
+    {"canonical": "roxanne_imdhw", "aliases": ["roxanne"]},
+    {"canonical": "sherry_imdhw", "aliases": ["sherry"]}
   ],
   "tokens": {
-    "strong_signals": ["roxanne_imdhw"],
-    "weak_signals": ["roxanne"],
+    "strong_signals": ["roxanne_imdhw", "sherry_imdhw", "isekai_meikyuu_de_harem_wo"],
+    "weak_signals": ["roxanne", "sherry", "imdhw"],
     "stop_conflicts": [],
-    "notes": "Roxanne may appear in multiple media; qualified form strong." 
+    "notes": "Roxanne and Sherry may appear in multiple media; qualified forms strong. Full franchise alias treated as strong; short-form 'imdhw' is weak support."
   },
   "provenance": {"source": "manual_seed"}
 }

@@ -1,0 +1,44 @@
+{
+  "apply": false,
+  "total_candidates": 425,
+  "summary": {
+    "total_proposals": 2,
+    "with_franchise": 0,
+    "with_character_name": 2,
+    "with_character_aliases": 2,
+    "with_faction_general_hint": 0,
+    "top_franchises": {},
+    "top_characters": {
+      "gwynevel": 1,
+      "noranor": 1
+    }
+  },
+  "proposals": [
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported",
+      "changes": {
+        "character_name": "gwynevel",
+        "character_aliases": [
+          "Gwynevel"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    },
+    {
+      "variant_id": 54,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported",
+      "changes": {
+        "character_name": "noranor",
+        "character_aliases": [
+          "Noranor"
+        ],
+        "normalization_warnings": [
+          "original_character_inferred"
+        ]
+      }
+    }
+  ]
+}

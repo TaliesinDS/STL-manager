@@ -10,7 +10,7 @@
   {"canonical": "asagi_igawa", "aliases": ["asagi", "igawa_asagi"]}
   ],
   "tokens": {
-  "strong_signals": ["igawa_sakura", "yukikaze_mizuki", "shinohara_mari", "asagi_igawa", "asagi"],
+  "strong_signals": ["igawa_sakura", "yukikaze_mizuki", "shinohara_mari", "asagi_igawa", "asagi", "taimanin"],
   "weak_signals": ["sakura", "igawa", "sakura_igawa", "yukikaze", "mizuki", "mari", "shinohara", "igawa_asagi"],
     "stop_conflicts": ["sakura_haruno", "sakura_kinomoto"],
   "notes": "Qualified full names strong; generic components weak with cross-franchise stop conflicts. Added Shinohara Mari earlier; now Asagi Igawa (franchise title character)." 

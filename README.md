@@ -153,6 +153,69 @@ $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
 
 If you'd like, I can add a `--export-duplicates path/to/file.json` option to output all candidate duplicate groups to a JSON file for manual review before committing.
 
+## Franchise & Character Matching (Conservative, Dry‑Run First)
+
+A safe matcher assigns franchises and character names for existing Variants using deterministic rules and vocab manifests under `vocab/franchises/*.json`.
+
+Key properties and guardrails:
+- Strict separation of tabletop factions vs media franchises. Franchise evidence never populates tabletop faction fields; instead, franchise‑level signals are recorded in the Variant field `franchise_hints` (JSON array).
+- Dry‑run by default: prints a summary and can export a detailed JSON proposal file via `--out`. Use `--apply` only after reviewing the report.
+- Ambiguous alias handling: tokens like `"angel"` or `"sakura"` require additional, explicit franchise evidence before they can influence an assignment.
+- Tabletop gating: when tabletop/system hints are present but there is no strong franchise/character alias evidence, the matcher won’t assign a franchise and will only record non‑committal `franchise_hints`.
+- Short/numeric alias suppression in tabletop contexts (e.g., `2b`, `9s`) and general two‑character alias suppression unless explicit support exists.
+- Tokenization improvements: camelCase / alpha‑digit splitting, vocab‑guided segmentation for glued tokens, and conservative bigram expansion; respects franchise `stop_conflicts`.
+
+Original Character (OC) inference (opt‑in):
+- Disabled by default; enable with `--infer-oc` to allow strict inference of original character names from the last folder name in `rel_path` (no franchises are set by OC inference).
+- Optional `--infer-oc-fantasy` further restricts to “fantasy‑looking” names using rarity and suffix heuristics; when available, the `wordfreq` library filters out common English/Dutch words.
+- Whitelist support: maintain `vocab/oc_whitelist.txt` with one name per line (single words or two‑word canonicals like `first_last`). Whitelisted entries bypass rarity checks while still honoring safety filters.
+
+PowerShell examples (Windows):
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///data/stl_manager_v1.db'
+& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --out .\reports\match_franchise_dryrun.json
+
+# Enable OC inference (strict) and restrict to fantasy‑like names
+& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --infer-oc --infer-oc-fantasy --out .\reports\match_franchise_dryrun_with_oc.json
+
+# After review of the dry‑run JSON, apply changes
+& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --apply
+```
+
+Notes:
+- `wordfreq` is listed in `requirements.txt` and is used opportunistically for OC rarity filtering when installed.
+- The matcher writes no changes unless `--apply` is specified; it uses a two‑phase approach (dry‑run proposal, then re‑compute and commit) to ensure DB consistency.
+- Franchise manifests can include `tokens.strong_signals`, `tokens.weak_signals`, and `tokens.stop_conflicts` to guide matching and avoid collisions.
+
+## Flowchart: Database Population & Normalization Passes
+
+The diagram below summarizes the typical, conservative end‑to‑end flow from schema initialization and vocab loading to safe matching and optional OC inference.
+
+```mermaid
+flowchart TD
+	A[Bootstrap / Init DB\ninit_db.py / Alembic] --> B[Load/Update Vocab\nload_franchises.py]
+	B --> C[Quick Token Scan (read‑only)\nquick_scan.py\nJSON report]
+	C --> D[Normalization Helpers\nnormalize_inventory.py\n(tokenization, hints)]
+	D --> E[Franchise/Character Matching (dry‑run)\nmatch_franchise_characters.py --out]
+	E --> F[Review Proposals\nreports/*.json or *.txt]
+	F --> G{Approve?}
+	G -- yes --> H[Apply Assignments\nmatch_franchise_characters.py --apply]
+	G -- no  --> E
+	H --> I[Variants updated\nfranchise, character_name, franchise_hints]
+	I --> J[Optional OC inference (opt‑in)\n--infer-oc [--infer-oc-fantasy]\nwhitelist: vocab/oc_whitelist.txt]
+	J --> K[Iterate / Extend Vocab]
+```
+
+Fallback step list (if your viewer doesn’t render Mermaid):
+- Bootstrap and initialize the database schema (Alembic or `scripts/init_db.py`).
+- Load/refresh franchise manifests with `scripts/load_franchises.py`.
+- Use `scripts/quick_scan.py` to inspect frequent tokens (read‑only JSON report).
+- Tokenization helpers in `scripts/normalize_inventory.py` produce conservative signals and route franchise evidence into `franchise_hints`.
+- Run `scripts/match_franchise_characters.py` in dry‑run mode with `--out` to generate a JSON of proposed changes.
+- Review the report; if it looks good, rerun with `--apply` to commit to SQLite.
+- Optional: enable `--infer-oc` (and `--infer-oc-fantasy`) to infer original names safely; maintain `vocab/oc_whitelist.txt` for precise inclusions.
+
 ## Quick Start (Baseline One‑Click – Planned)
 Until the packaged batch script is finalized the following outlines intended behavior. Below is a concrete
 developer quick-start that works today on Windows (PowerShell).

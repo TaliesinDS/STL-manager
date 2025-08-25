@@ -14,6 +14,7 @@ from typing import Dict, Tuple, List
 
 ROOT = Path(__file__).resolve().parent.parent
 FR_DIR = ROOT / 'vocab' / 'franchises'
+OC_WHITELIST_PATH = ROOT / 'vocab' / 'oc_whitelist.txt'
 
 import sys
 # Ensure project root is on sys.path so `from db...` imports work
@@ -27,12 +28,222 @@ from db.models import Variant
 # Reuse helper functions from normalize_inventory
 from scripts.normalize_inventory import tokens_from_variant, apply_updates_to_variant, TABLETOP_HINTS
 from scripts.quick_scan import classify_token
+try:
+    # Use STOPWORDS to avoid forming bigrams across common words when available
+    from scripts.quick_scan import STOPWORDS as QS_STOPWORDS
+except Exception:
+    QS_STOPWORDS = set()
+
+# Optional: word frequency for English/Dutch common-word filtering
+try:
+    from wordfreq import zipf_frequency as _zipf
+except Exception:
+    _zipf = None
+
+# --- Token expansion helpers (camelCase splitting, glued segmentation, n-grams) ---
+import re as _re
+
+_CAMEL_SPLIT_RE = _re.compile(r"(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])(?=\d)|(?<=\d)(?=[A-Za-z])")
+
+def split_mixed(token: str) -> list[str]:
+    parts = _re.split(_CAMEL_SPLIT_RE, token)
+    out = []
+    for p in parts:
+        p = (p or '').strip().lower()
+        if len(p) >= 2:
+            out.append(p)
+    return out or ([token] if token else [])
+
+def segment_with_vocab(token: str, vocab: set[str]) -> list[str]:
+    s = (token or '').lower()
+    if not s.isalpha() or len(s) < 6:  # only try glued lowercase words of reasonable length
+        return [token]
+    i, out = 0, []
+    while i < len(s):
+        j = len(s)
+        found = None
+        while j > i:
+            cand = s[i:j]
+            if cand in vocab:
+                found = cand
+                break
+            j -= 1
+        if not found:
+            return [token]  # abort if we can't segment cleanly
+        out.append(found)
+        i = j
+    return out if out else [token]
+
+def expand_with_bigrams(tokens: list[str], stopwords: set[str]) -> list[str]:
+    toks = [t for t in tokens if t]
+    expanded = set(toks)
+    for i in range(len(toks) - 1):
+        a, b = toks[i], toks[i+1]
+        if a in stopwords or b in stopwords:
+            continue
+        # Generate a few common join forms
+        for j in (" ", "_", ""):
+            combo = f"{a}{j}{b}"
+            if 2 <= len(combo) <= 40:
+                expanded.add(combo)
+    return list(expanded)
 
 
 # Certain character aliases are too generic to stand alone (e.g., 'angel').
 # Require additional supporting franchise evidence (another alias or
 # franchise token) before accepting these as valid character/franchise matches.
-AMBIGUOUS_ALIASES = {"angel"}
+AMBIGUOUS_ALIASES = {"angel", "sakura"}
+
+# Tokens that should not be considered as names even if they look alphabetic
+NAME_BLOCKLIST = {
+    "nsfw", "sfw", "fullbody", "supported", "presupported", "support", "stl",
+    "files", "models", "model", "print", "prints", "mini", "miniature", "miniatures",
+    "terrain", "scenery", "base", "bases", "v", "v1", "v2", "ver", "version"
+}
+
+PROVIDER_WORDS = {
+    "dm", "stash", "dmstash", "heroesinfinite", "patreon", "myminifactory", "cults3d",
+    "store", "sample", "samplestore", "supported", "presupported", "unsupported",
+    "presupports", "stl", "stls", "lys", "lychee", "ctb", "cbddlp",
+    "files", "models", "campaign", "release", "releases", "bonus", "extras",
+    "nsfw", "sfw", "fullbody", "pack", "set", "parts", "component", "components"
+}
+
+MONTH_WORDS = {"january","february","march","april","may","june","july","august","september","october","november","december"}
+
+GENERIC_OC_BLOCKLIST = {
+    "warrior", "dragon", "chariot", "druid", "hero", "heroine", "archer", "ranger", "rangers",
+    "hands", "helmets", "helmet", "weapons", "weapon", "combined", "bases", "base", "proxy",
+    "female", "male", "girl", "boy", "woman", "man", "soldier", "soldiers", "unit", "units",
+    # extra generic/system/domain words we saw in proposals
+    "bodies", "body", "machine", "regiment", "goblin", "scan", "accessories", "empire", "human",
+    "spells", "throne", "standard", "king", "crew", "captain", "musician", "bearer", "dogs"
+}
+
+# Lightweight fantasy-like name detector
+_FANTASY_SUFFIXES = {"iel","wen","wyn","nor","lin","lil","riel","dil","mir","ril","vel","nel","rel","thor","dor","lor","ion","ian"}
+
+def _load_oc_whitelist(path: Path) -> set[str]:
+    wl: set[str] = set()
+    try:
+        if path.exists():
+            for line in path.read_text(encoding='utf-8').splitlines():
+                s = line.strip()
+                if not s or s.startswith('#'):
+                    continue
+                wl.add(s.lower())
+    except Exception:
+        pass
+    return wl
+
+OC_WHITELIST = _load_oc_whitelist(OC_WHITELIST_PATH)
+
+def is_fantasy_like_name(word: str) -> bool:
+    w = (word or "").strip().lower()
+    if not w.isalpha():
+        return False
+    if len(w) < 5 or len(w) > 16:
+        return False
+    # must contain at least one vowel
+    if not any(ch in "aeiou" for ch in w):
+        return False
+    # avoid triple letters
+    import re as _re
+    if _re.search(r"([a-z])\1\1", w):
+        return False
+    # frequency filter when available: reject common English/Dutch words
+    if _zipf is not None:
+        try:
+            z_en = _zipf(w, "en")
+        except Exception:
+            z_en = -10.0
+        try:
+            z_nl = _zipf(w, "nl")
+        except Exception:
+            z_nl = -10.0
+        # lower is rarer; typical real words are > 3.5. Accept if very rare in both.
+        if (z_en is not None and z_en >= 2.5) or (z_nl is not None and z_nl >= 2.5):
+            return False
+    # whitelist overrides
+    if w in OC_WHITELIST:
+        return True
+    # simple suffix hint (expanded slightly for coverage)
+    extra_suffixes = {"enil","ina","fel","lus","amin","neal"}
+    if any(w.endswith(suf) for suf in (_FANTASY_SUFFIXES | extra_suffixes)):
+        return True
+    # allow uncommon bigrams like 'gw', 'yn', 'ae', 'wy'
+    uncommon = ["gw","yn","ae","wy","vh","yr","qe"]
+    if any(bg in w for bg in uncommon):
+        return True
+    # fallback: if no freq info, do not accept unless suffix/uncommon matched earlier
+    return False
+
+def infer_oc_from_path(rel_path: str, reserved: set[str], fantasy_filter: bool = False) -> tuple[str|None, str|None]:
+    """Infer an original character name from the last folder of rel_path.
+
+    Rules:
+    - Use last path component; split on '-', '_', and spaces.
+    - Keep 1–2 alphabetic words (3–20 chars) not in reserved/blocklists/providers.
+    - Require result length 1 or 2 words; else abstain.
+    - Return lowercase underscore canonical and a prettified alias (space-joined with original casing best-effort).
+    """
+    try:
+        tail = Path(rel_path).name
+    except Exception:
+        tail = rel_path or ""
+    # Replace separators with space
+    import re as _re
+    cleaned = _re.sub(r"[\-_]+", " ", tail)
+    # Skip if the last folder contains any digits (likely a collection/month/etc.)
+    if _re.search(r"\d", cleaned):
+        return None, None
+    parts_raw = [p for p in cleaned.split() if p]
+    # Filter parts
+    parts: list[str] = []
+    for p in parts_raw:
+        pl = p.lower()
+        if not pl.isalpha():
+            continue
+        if pl in NAME_BLOCKLIST or pl in PROVIDER_WORDS or pl in reserved:
+            continue
+        if not (3 <= len(pl) <= 20):
+            continue
+        parts.append(pl)
+    if not parts:
+        return None, None
+    # Abort if parts include months or generic words
+    if any(w in MONTH_WORDS for w in parts):
+        return None, None
+    if any(w in GENERIC_OC_BLOCKLIST for w in parts):
+        return None, None
+    # Prefer first two
+    if len(parts) > 2:
+        # too many words -> likely not a clean OC folder name
+        return None, None
+    if len(parts) == 2:
+        canon_two = f"{parts[0]}_{parts[1]}"
+        # whitelist full canonical two-word OC name
+        if canon_two in OC_WHITELIST:
+            alias = f"{parts[0].capitalize()} {parts[1].capitalize()}"
+            return canon_two, alias
+        if fantasy_filter and (not is_fantasy_like_name(parts[0]) or not is_fantasy_like_name(parts[1])):
+            return None, None
+        canonical = f"{parts[0]}_{parts[1]}"
+        alias = f"{parts[0].capitalize()} {parts[1].capitalize()}"
+        return canonical, alias
+    # single word
+    if len(parts) == 1 and len(parts[0]) >= 4:
+        # whitelist single
+        if parts[0] in OC_WHITELIST:
+            canonical = parts[0]
+            alias = parts[0].capitalize()
+            return canonical, alias
+        if fantasy_filter and not is_fantasy_like_name(parts[0]):
+            return None, None
+        canonical = parts[0]
+        alias = parts[0].capitalize()
+        return canonical, alias
+    return None, None
 
 def load_franchise_maps(fr_dir: Path) -> Tuple[Dict[str, str], Dict[str, Tuple[str, str]], Dict[str, Dict[str, set]]]:
     """Return (franchise_alias_map, character_alias_map, franchise_tokens).
@@ -50,9 +261,19 @@ def load_franchise_maps(fr_dir: Path) -> Tuple[Dict[str, str], Dict[str, Tuple[s
         except Exception:
             continue
         franchise_key = j.get('franchise') or p.stem
-        # franchise aliases
+        # tokens (strong/weak/stop signals) at franchise level
+        tokens_block = j.get('tokens') or {}
+        strong = set((t or '').strip().lower() for t in (tokens_block.get('strong_signals') or []))
+        weak = set((t or '').strip().lower() for t in (tokens_block.get('weak_signals') or []))
+        stop = set((t or '').strip().lower() for t in (tokens_block.get('stop_conflicts') or []))
+        f_tokens[franchise_key] = {'strong': strong, 'weak': weak, 'stop': stop}
+
+        # franchise aliases (exclude those explicitly marked as stop_conflicts)
         for a in (j.get('aliases') or []):
-            fam[str(a).strip().lower()] = franchise_key
+            alias = str(a).strip().lower()
+            if alias and (alias not in stop):
+                fam[alias] = franchise_key
+
         # characters
         for c in (j.get('characters') or []):
             canon = c.get('canonical')
@@ -64,12 +285,6 @@ def load_franchise_maps(fr_dir: Path) -> Tuple[Dict[str, str], Dict[str, Tuple[s
                 if not a:
                     continue
                 cam[str(a).strip().lower()] = (franchise_key, canon)
-
-        # tokens (strong/weak signals) at franchise level
-        tokens_block = j.get('tokens') or {}
-        strong = set((t or '').strip().lower() for t in (tokens_block.get('strong_signals') or []))
-        weak = set((t or '').strip().lower() for t in (tokens_block.get('weak_signals') or []))
-        f_tokens[franchise_key] = {'strong': strong, 'weak': weak}
 
     # Merge standalone characters_tokenmap.md aliases (improves recall)
     chars_map_path = ROOT / 'vocab' / 'characters_tokenmap.md'
@@ -196,7 +411,7 @@ def parse_tokenmap_aliases(path: Path) -> Dict[str, List[str]]:
     return out
 
 
-def process(apply: bool, batch: int, out: str | None = None):
+def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = False, infer_oc_fantasy: bool = False):
     fam, cam, f_tokens = load_franchise_maps(FR_DIR)
     proposals = []
     with get_session() as session:
@@ -213,14 +428,38 @@ def process(apply: bool, batch: int, out: str | None = None):
                 tokens = tokens_from_variant(session, v)
                 if not tokens:
                     continue
-                token_list = list(tokens)
+                # Build vocab set for optional segmentation
+                # Note: these maps are already lowercased aliases
+                vocab_set = set(fam.keys()) | set(cam.keys())
+                for _fk, _tk in f_tokens.items():
+                    vocab_set |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set())
+
+                # 1) split camelCase/alpha-digit
+                split_tokens = []
+                for t in tokens:
+                    ts = split_mixed(t)
+                    split_tokens.extend(ts)
+                # 2) try vocab-driven segmentation for glued lowercase tokens
+                segmented = []
+                for t in split_tokens:
+                    seg = segment_with_vocab(t, vocab_set)
+                    segmented.extend(seg)
+                # 3) bigrams
+                token_list = expand_with_bigrams(segmented, QS_STOPWORDS)
                 # Tabletop context gate: only treat as tabletop when explicit tabletop
                 # hints are present AND there is no stronger franchise/character alias
                 # evidence. This prevents blocking when we clearly have a known IP
                 # (e.g., queens_blade: 'menace').
                 has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
-                # Treat ambiguous aliases as insufficient evidence on their own
-                has_alias_evidence = any(t in fam for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
+                # Treat ambiguous/stop aliases as insufficient evidence on their own
+                def _is_valid_fr_alias(tok: str) -> bool:
+                    if tok not in fam:
+                        return False
+                    frk = fam[tok]
+                    if tok in (f_tokens.get(frk, {}).get('stop', set()) or set()):
+                        return False
+                    return True
+                has_alias_evidence = any(_is_valid_fr_alias(t) for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
                 is_tabletop_ctx = has_tabletop_hint and not has_alias_evidence
 
                 inferred = {
@@ -228,6 +467,7 @@ def process(apply: bool, batch: int, out: str | None = None):
                     'character_hint': None,
                     'character_name': None,
                     'faction_hint': None,
+                    'franchise_hints': [],
                     'normalization_warnings': [],
                     'token_version': None,
                 }
@@ -307,15 +547,30 @@ def process(apply: bool, batch: int, out: str | None = None):
                         if t in fam:
                             candidate_fr = fam[t]
                             f_tok = f_tokens.get(candidate_fr, {'strong': set(), 'weak': set()})
-                            # Consider token strong if explicitly in strong_signals, or
-                            # heuristically if longer than 2 and not purely numeric.
-                            strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char_strong
+                            # Skip aliases explicitly marked as stop/conflicts for that franchise
+                            if t in (f_tok.get('stop', set()) or set()):
+                                continue
+                            # Consider strong only when:
+                            #  - token is explicitly a strong signal, OR
+                            #  - we already have strong character evidence for this franchise, OR
+                            #  - there is other supporting franchise evidence besides this token
+                            def _has_support_for(fr_key: str, exclude_token: str | None = None) -> bool:
+                                sigs = (f_tokens.get(fr_key, {}).get('strong', set()) or set()) | (f_tokens.get(fr_key, {}).get('weak', set()) or set())
+                                for tt in token_list:
+                                    if exclude_token and tt == exclude_token:
+                                        continue
+                                    if tt in sigs:
+                                        return True
+                                    if tt in fam and fam[tt] == fr_key and tt not in (f_tokens.get(fr_key, {}).get('stop', set()) or set()):
+                                        return True
+                                return False
+                            strong = (t in f_tok.get('strong', set())) or has_char_strong or _has_support_for(candidate_fr, exclude_token=t)
                             if is_tabletop_ctx:
-                                # For tabletop items, record hint but do not set
-                                # franchise; downstream processes may use this hint.
+                                # Tabletop: do not populate faction from franchise evidence; keep as franchise hint only
                                 inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
-                                if not inferred.get('faction_hint'):
-                                    inferred['faction_hint'] = t
+                                if t not in (f_tok.get('stop', set()) or set()):
+                                    if t not in inferred['franchise_hints']:
+                                        inferred['franchise_hints'].append(t)
                                 break
                             if strong:
                                 # For non-tabletop strong matches, set franchise but
@@ -323,11 +578,24 @@ def process(apply: bool, batch: int, out: str | None = None):
                                 inferred['franchise'] = candidate_fr
                                 break
                             else:
-                                # record as hint only
-                                if not inferred.get('faction_hint'):
-                                    inferred['faction_hint'] = t
+                                # record as franchise hint only (avoid populating faction from franchise tokens)
+                                if t not in (f_tok.get('stop', set()) or set()):
+                                    if t not in inferred['franchise_hints']:
+                                        inferred['franchise_hints'].append(t)
                                 inferred.setdefault('normalization_warnings', []).append('faction_without_system')
                                 break
+
+                # If still no franchise and no character set, infer OC from path (strict) when enabled and not tabletop context
+                if infer_oc and not inferred['character_name'] and not is_tabletop_ctx:
+                    reserved = set(fam.keys()) | set(cam.keys())
+                    for _fk, _tk in f_tokens.items():
+                        reserved |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set()) | (_tk.get('stop', set()) or set())
+                    reserved |= set(TABLETOP_HINTS) | set(QS_STOPWORDS)
+                    cname, alias = infer_oc_from_path(v.rel_path or "", reserved, fantasy_filter=infer_oc_fantasy)
+                    if cname:
+                        inferred['character_name'] = cname
+                        inferred['character_hint'] = alias
+                        inferred.setdefault('normalization_warnings', []).append('original_character_inferred')
 
                 # Set token_version from tokenmap if available (reuse normalize behavior)
                 # We don't have load_tokenmap here; leave token_version None so other scripts set it.
@@ -425,9 +693,26 @@ def process(apply: bool, batch: int, out: str | None = None):
                         tokens = tokens_from_variant(write_sess, v)
                         if not tokens:
                             continue
-                        token_list = list(tokens)
+                        vocab_set = set(fam.keys()) | set(cam.keys())
+                        for _fk, _tk in f_tokens.items():
+                            vocab_set |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set())
+
+                        split_tokens = []
+                        for t in tokens:
+                            split_tokens.extend(split_mixed(t))
+                        segmented = []
+                        for t in split_tokens:
+                            segmented.extend(segment_with_vocab(t, vocab_set))
+                        token_list = expand_with_bigrams(segmented, QS_STOPWORDS)
                         has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
-                        has_alias_evidence = any(t in fam for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
+                        def _is_valid_fr_alias(tok: str) -> bool:
+                            if tok not in fam:
+                                return False
+                            frk = fam[tok]
+                            if tok in (f_tokens.get(frk, {}).get('stop', set()) or set()):
+                                return False
+                            return True
+                        has_alias_evidence = any(_is_valid_fr_alias(t) for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
                         is_tabletop_ctx = has_tabletop_hint and not has_alias_evidence
 
                         inferred = {
@@ -435,6 +720,7 @@ def process(apply: bool, batch: int, out: str | None = None):
                             'character_hint': None,
                             'character_name': None,
                             'faction_hint': None,
+                            'franchise_hints': [],
                             'normalization_warnings': [],
                             'token_version': None,
                         }
@@ -492,18 +778,47 @@ def process(apply: bool, batch: int, out: str | None = None):
                                 if t in fam:
                                     candidate_fr = fam[t]
                                     f_tok = f_tokens.get(candidate_fr, {'strong': set(), 'weak': set()})
-                                    strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char_strong
+                                    if t in (f_tok.get('stop', set()) or set()):
+                                        continue
+                                    def _has_support_for(fr_key: str, exclude_token: str | None = None) -> bool:
+                                        sigs = (f_tokens.get(fr_key, {}).get('strong', set()) or set()) | (f_tokens.get(fr_key, {}).get('weak', set()) or set())
+                                        for tt in token_list:
+                                            if exclude_token and tt == exclude_token:
+                                                continue
+                                            if tt in sigs:
+                                                return True
+                                            if tt in fam and fam[tt] == fr_key and tt not in (f_tokens.get(fr_key, {}).get('stop', set()) or set()):
+                                                return True
+                                        return False
+                                    strong = (t in f_tok.get('strong', set())) or has_char_strong or _has_support_for(candidate_fr, exclude_token=t)
                                     if is_tabletop_ctx:
                                         inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
-                                        if not inferred.get('faction_hint'):
-                                            inferred['faction_hint'] = t
+                                        if t not in (f_tok.get('stop', set()) or set()):
+                                            if t not in inferred['franchise_hints']:
+                                                inferred['franchise_hints'].append(t)
                                         break
                                     if strong:
                                         inferred['franchise'] = candidate_fr
                                         break
                                     else:
+                                        # record as franchise hint only
                                         inferred.setdefault('normalization_warnings', []).append('faction_without_system')
+                                        if t not in (f_tok.get('stop', set()) or set()):
+                                            if t not in inferred['franchise_hints']:
+                                                inferred['franchise_hints'].append(t)
                                         break
+
+                        # If still no franchise and no character set, infer OC from path (strict) when enabled and not tabletop context
+                        if infer_oc and not inferred['character_name'] and not is_tabletop_ctx:
+                            reserved = set(fam.keys()) | set(cam.keys())
+                            for _fk, _tk in f_tokens.items():
+                                reserved |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set()) | (_tk.get('stop', set()) or set())
+                            reserved |= set(TABLETOP_HINTS) | set(QS_STOPWORDS)
+                            cname, alias = infer_oc_from_path(v.rel_path or "", reserved, fantasy_filter=infer_oc_fantasy)
+                            if cname:
+                                inferred['character_name'] = cname
+                                inferred['character_hint'] = alias
+                                inferred.setdefault('normalization_warnings', []).append('original_character_inferred')
 
                         changed = apply_updates_to_variant(v, inferred, write_sess, force=False)
                         if changed:
@@ -519,12 +834,14 @@ def parse_args(argv):
     ap.add_argument('--batch', type=int, default=200)
     ap.add_argument('--apply', action='store_true')
     ap.add_argument('--out', type=str, help='Write dry-run proposals + summary to this JSON file')
+    ap.add_argument('--infer-oc', action='store_true', help='Enable strict original-character inference from path folders (opt-in)')
+    ap.add_argument('--infer-oc-fantasy', action='store_true', help='When inferring OC, only accept names that look fantasy-like (rarity/suffix heuristics)')
     return ap.parse_args(argv)
 
 
 def main(argv):
     args = parse_args(argv)
-    process(apply=args.apply, batch=args.batch, out=args.out)
+    process(apply=args.apply, batch=args.batch, out=args.out, infer_oc=args.infer_oc, infer_oc_fantasy=args.infer_oc_fantasy)
 
 
 if __name__ == '__main__':

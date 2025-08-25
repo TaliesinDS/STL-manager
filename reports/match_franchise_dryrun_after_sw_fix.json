@@ -1,0 +1,63 @@
+{
+  "apply": false,
+  "total_candidates": 429,
+  "summary": {
+    "total_proposals": 4,
+    "with_franchise": 4,
+    "with_character_name": 4,
+    "with_character_aliases": 4,
+    "with_faction_general_hint": 0,
+    "top_franchises": {
+      "isekai_meikyuu_de_harem_wo": 4
+    },
+    "top_characters": {
+      "sherry_imdhw": 4
+    }
+  },
+  "proposals": [
+    {
+      "variant_id": 326,
+      "rel_path": "sample_store\\Sherry- isekai meikyuu de harem wo\\Sherry_v1",
+      "changes": {
+        "franchise": "isekai_meikyuu_de_harem_wo",
+        "character_name": "sherry_imdhw",
+        "character_aliases": [
+          "sherry"
+        ]
+      }
+    },
+    {
+      "variant_id": 327,
+      "rel_path": "sample_store\\Sherry- isekai meikyuu de harem wo\\Sherry_v1\\fullbody",
+      "changes": {
+        "franchise": "isekai_meikyuu_de_harem_wo",
+        "character_name": "sherry_imdhw",
+        "character_aliases": [
+          "sherry"
+        ]
+      }
+    },
+    {
+      "variant_id": 328,
+      "rel_path": "sample_store\\Sherry- isekai meikyuu de harem wo\\Sherry_v1\\NSFW",
+      "changes": {
+        "franchise": "isekai_meikyuu_de_harem_wo",
+        "character_name": "sherry_imdhw",
+        "character_aliases": [
+          "sherry"
+        ]
+      }
+    },
+    {
+      "variant_id": 329,
+      "rel_path": "sample_store\\Sherry- isekai meikyuu de harem wo\\Sherry_v1\\SFW",
+      "changes": {
+        "franchise": "isekai_meikyuu_de_harem_wo",
+        "character_name": "sherry_imdhw",
+        "character_aliases": [
+          "sherry"
+        ]
+      }
+    }
+  ]
+}

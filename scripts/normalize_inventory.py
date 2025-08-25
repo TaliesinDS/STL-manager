@@ -230,12 +230,11 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         if dom == "lineage_family" and not inferred["lineage_family"]:
             inferred["lineage_family"] = tok
             continue
-        # Faction-like tokens are recorded as a faction hint. Franchise is a
-        # separate higher-level concept (e.g., 'Marvel Cinematic Universe',
-        # 'Harry Potter') and should only be set when a matching franchise
-        # alias exists in the DB. If a token maps to a franchise alias, set
-        # `franchise` (canonical). Otherwise record the token as a
-        # `faction_hint` and add a warning to surface later review.
+    # Faction-like tokens are recorded as a faction hint. Franchise is a
+    # separate higher-level concept (e.g., 'Marvel', 'Naruto') and should
+    # not be stored in faction fields. When a token maps to a franchise
+    # alias, set `franchise` when strong enough; otherwise store the token
+    # in `franchise_hints` (not `faction_hint`).
         if dom == "faction_hint":
             # If this token maps to a known franchise alias, decide whether
             # it's strong enough to set `franchise`. Two-letter tokens (e.g.,
@@ -264,9 +263,10 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
                     inferred["franchise"] = franchise_map[tok]
                     inferred["faction_hint"] = tok
                     continue
-            # Otherwise record hint only and warn (no automatic franchise)
-            if not inferred.get("faction_hint"):
-                inferred["faction_hint"] = tok
+            # Otherwise record franchise hint only and warn (no automatic franchise)
+            inferred.setdefault("franchise_hints", [])
+            if tok not in inferred["franchise_hints"]:
+                inferred["franchise_hints"].append(tok)
             inferred.setdefault("normalization_warnings", [])
             if "faction_without_system" not in inferred["normalization_warnings"]:
                 inferred["normalization_warnings"].append("faction_without_system")
@@ -374,7 +374,15 @@ def apply_updates_to_variant(variant: Variant, inferred: dict, session, force: b
     set_if_empty("designer_confidence", "high" if inferred.get("designer") else None)
     set_if_empty("franchise", inferred.get("franchise"))
     set_if_empty("lineage_family", inferred.get("lineage_family"))
-    set_if_empty("faction_general", inferred.get("faction_hint"))
+    # Do not set faction_general from franchise evidence; only set when a true faction is detected elsewhere
+    # set_if_empty("faction_general", inferred.get("faction_hint"))
+    # But do record franchise hints separately for review
+    if inferred.get("franchise_hints"):
+        cur_hints = variant.franchise_hints or []
+        merged = list(dict.fromkeys(cur_hints + inferred["franchise_hints"]))
+        if merged != cur_hints:
+            variant.franchise_hints = merged
+            changed["franchise_hints"] = merged
     # Populate character fields (name + alias list) conservatively.
     if inferred.get("character_name"):
         set_if_empty("character_name", inferred.get("character_name"))
