@@ -193,19 +193,27 @@ Notes:
 The diagram below summarizes the typical, conservative end‑to‑end flow from schema initialization and vocab loading to safe matching and optional OC inference.
 
 ```mermaid
-flowchart TD
-	A[Bootstrap / Init DB<br/>init_db.py or Alembic] --> B[Load / Update Vocab<br/>load_franchises.py]
-	B --> C[Quick Token Scan (read-only)<br/>quick_scan.py JSON report]
-	C --> D[Normalization Helpers<br/>normalize_inventory.py (tokenization, hints)]
-	D --> E[Franchise/Character Matching (dry-run)<br/>match_franchise_characters.py --out]
-	E --> F[Review Proposals<br/>reports/*.json or *.txt]
-	F --> G{Approve?}
-	G -- yes --> H[Apply Assignments<br/>match_franchise_characters.py --apply]
-	G -- no  --> E
-	H --> I[Variants updated<br/>franchise, character_name, franchise_hints]
-	I --> J[Optional OC inference (opt-in)<br/>--infer-oc [--infer-oc-fantasy]<br/>whitelist: vocab/oc_whitelist.txt]
+graph TD
+	A[Init DB] --> B[Load Vocab]
+	B --> C[Quick Scan]
+	C --> D[Normalization Helpers]
+	D --> E[Match Franchises & Characters]
+	E --> F[Review Proposals]
+	F --> G{Approve}
+	G --|yes|--> H[Apply Changes]
+	G --|no|--> E
+	H --> I[Variants Updated]
+	I --> J[Optional OC Inference]
 	J --> K[Iterate / Extend Vocab]
 ```
+
+Legend / scripts:
+- Init DB: `scripts/init_db.py` or Alembic
+- Load Vocab: `scripts/load_franchises.py`
+- Quick Scan: `scripts/quick_scan.py`
+- Normalization Helpers: `scripts/normalize_inventory.py`
+- Match Franchises & Characters: `scripts/match_franchise_characters.py`
+- Optional OC Inference flags: `--infer-oc`, `--infer-oc-fantasy` (whitelist: `vocab/oc_whitelist.txt`)
 
 Fallback step list (if your viewer doesn’t render Mermaid):
 - Bootstrap and initialize the database schema (Alembic or `scripts/init_db.py`).
