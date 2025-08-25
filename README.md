@@ -194,16 +194,16 @@ The diagram below summarizes the typical, conservative end‑to‑end flow from 
 
 ```mermaid
 flowchart TD
-	A[Bootstrap / Init DB\ninit_db.py / Alembic] --> B[Load/Update Vocab\nload_franchises.py]
-	B --> C[Quick Token Scan (read‑only)\nquick_scan.py\nJSON report]
-	C --> D[Normalization Helpers\nnormalize_inventory.py\n(tokenization, hints)]
-	D --> E[Franchise/Character Matching (dry‑run)\nmatch_franchise_characters.py --out]
-	E --> F[Review Proposals\nreports/*.json or *.txt]
+	A[Bootstrap / Init DB<br/>init_db.py or Alembic] --> B[Load / Update Vocab<br/>load_franchises.py]
+	B --> C[Quick Token Scan (read-only)<br/>quick_scan.py JSON report]
+	C --> D[Normalization Helpers<br/>normalize_inventory.py (tokenization, hints)]
+	D --> E[Franchise/Character Matching (dry-run)<br/>match_franchise_characters.py --out]
+	E --> F[Review Proposals<br/>reports/*.json or *.txt]
 	F --> G{Approve?}
-	G -- yes --> H[Apply Assignments\nmatch_franchise_characters.py --apply]
+	G -- yes --> H[Apply Assignments<br/>match_franchise_characters.py --apply]
 	G -- no  --> E
-	H --> I[Variants updated\nfranchise, character_name, franchise_hints]
-	I --> J[Optional OC inference (opt‑in)\n--infer-oc [--infer-oc-fantasy]\nwhitelist: vocab/oc_whitelist.txt]
+	H --> I[Variants updated<br/>franchise, character_name, franchise_hints]
+	I --> J[Optional OC inference (opt-in)<br/>--infer-oc [--infer-oc-fantasy]<br/>whitelist: vocab/oc_whitelist.txt]
 	J --> K[Iterate / Extend Vocab]
 ```
 
