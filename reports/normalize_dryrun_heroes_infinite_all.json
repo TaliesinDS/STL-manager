@@ -1,0 +1,500 @@
+{
+  "apply": false,
+  "total_examined": 492,
+  "proposals_count": 61,
+  "proposals": [
+    {
+      "variant_id": 121,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\25mm",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 122,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\30mm",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 123,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\40mm",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 124,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\50mm",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 207,
+      "rel_path": "sample_store\\Flesh-eater Courts\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon in Monster Form",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 222,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules\\Combined",
+      "changes": {
+        "designer": "one_page_rules",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 223,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules",
+      "changes": {
+        "designer": "one_page_rules",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 331,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Crew",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 332,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Machine",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 335,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 336,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 337,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 339,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 340,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 341,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 342,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 343,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 344,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 346,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 349,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 350,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 351,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Modular Parts",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 366,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 367,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 368,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 369,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 370,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 371,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 372,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 373,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 374,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 375,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 376,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 377,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Crew",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 378,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Machine",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 382,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 383,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 385,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 386,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 387,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 388,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 389,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 390,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 392,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 393,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 394,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 395,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 396,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 397,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Modular Parts",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 412,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 413,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 414,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 415,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 416,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 417,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 418,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 419,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 420,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 421,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 422,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    }
+  ],
+  "field_summary": {
+    "designer": 61,
+    "designer_confidence": 61
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

@@ -1,0 +1,1687 @@
+{
+  "apply": false,
+  "total_examined": 492,
+  "proposals_count": 202,
+  "proposals": [
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported",
+      "changes": {
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 63,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\32mm",
+      "changes": {
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 64,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\75mm",
+      "changes": {
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 66,
+      "rel_path": "sample_store",
+      "changes": {
+        "lineage_family": "wight"
+      }
+    },
+    {
+      "variant_id": 68,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW\\KLK",
+      "changes": {
+        "designer": "gaz_minis",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 72,
+      "rel_path": "sample_store\\august release\\Presupported\\CG",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 73,
+      "rel_path": "sample_store\\august release\\Presupported\\Chariot",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 74,
+      "rel_path": "sample_store\\august release\\Presupported\\Druid",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 75,
+      "rel_path": "sample_store\\august release\\Presupported\\Heroine",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 76,
+      "rel_path": "sample_store\\august release\\Presupported\\Regiment",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 78,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_Presupported_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 79,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_ZbrushZtool_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 80,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophBigBaseAndAlternativePieces",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 81,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_BuilPlate192x120mm_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 82,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_CutVersion_STL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 83,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_UncutVersion_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 90,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\TophNSFWRenders",
+      "changes": {
+        "designer": "azerama",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 91,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\01AhkoNSFW_SplitVersion_STL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 92,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\02AhkoNSFW_PreSupportedSTL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 93,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\03AhkoNSFW_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 94,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\04AhkoNSFW_NonSplitVersion_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 95,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\05AhkoNSFW_ZbrushZtool_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 96,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\06AhkoNSFW_Renders_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 97,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 98,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\01AhkoNurse_SplitVersion_STL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 99,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\02AhkoNurse_PreSupportedSTL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 100,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\03AhkoNurse_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 101,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\04AhkoNurse_NonSplitVersion_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 102,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\05AhkoNurse_ZbrushZtool_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 103,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\06AhkoNurse_Renders_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 104,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 105,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\01AhkoQueen_SplitVersion_STL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 106,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\02AhkoQueen_PreSupportedSTL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 107,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\03AhkoQueen_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 108,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\04AhkoQueen_NonSplitVersion_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 109,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\05AhkoQueen_ZbrushZtool_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 110,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\06AhkoQueen_Renders_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 111,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 112,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\01AhkoSkirt_SplitVersion_STL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 113,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\02AhkoSkirt_PreSupportedSTL_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 114,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\03AhkoSkirt_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 115,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\04AhkoSkirt_NonSplitVersion_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 116,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\05AhkoSkirt_ZbrushZtool_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 117,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\06AhkoSkirt_Renders_Azerama",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 118,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\07AhkoSkirt_AlternativePieces",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 125,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc",
+      "changes": {
+        "designer": "marta_punkgirl",
+        "designer_confidence": "high",
+        "normalization_warnings": [
+          "lineage_ambiguous_vs_context"
+        ]
+      }
+    },
+    {
+      "variant_id": 126,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc\\Presupported",
+      "changes": {
+        "designer": "marta_punkgirl",
+        "designer_confidence": "high",
+        "normalization_warnings": [
+          "lineage_ambiguous_vs_context"
+        ]
+      }
+    },
+    {
+      "variant_id": 141,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Base",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 142,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Nami",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 143,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS\\Base_Sup",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 144,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 145,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Base_Sup",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 146,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Nami_Sup",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 147,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 148,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D\\Base",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 153,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 154,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 155,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "changes": {
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 157,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami CA3D",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 159,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami CA3D",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 161,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\images",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 175,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 176,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported\\Hands",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 177,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 178,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported\\Hands",
+      "changes": {
+        "lineage_family": "zombie",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 179,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 180,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir on Bloodhunter Dire Bat",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 181,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir the Bonelord",
+      "changes": {
+        "lineage_family": "zombie"
+      }
+    },
+    {
+      "variant_id": 183,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "changes": {
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 184,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "changes": {
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 196,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "changes": {
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 197,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "changes": {
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 275,
+      "rel_path": "sample_store\\Goblin\\Bramblehoof, The Mock-Stag",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 276,
+      "rel_path": "sample_store\\Goblin\\Bramblehoof, The Mock-Stag - Christmas Version",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 277,
+      "rel_path": "sample_store\\Goblin\\gaz minis - goblin witch nimue + christmas",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 278,
+      "rel_path": "sample_store\\Goblin\\Gith Female Knight",
+      "changes": {
+        "lineage_family": "goblin"
+      }
+    },
+    {
+      "variant_id": 279,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Commander",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 280,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Jumping",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 281,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Running",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 282,
+      "rel_path": "sample_store\\Goblin\\Gith Psi Knight",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 283,
+      "rel_path": "sample_store\\Goblin\\Gith Raiders",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 284,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 285,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord - Christmas Version",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 286,
+      "rel_path": "sample_store\\Goblin\\Goblin Shaman on Runetusk Antlerguard",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 287,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 288,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman - Christmas Version",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 289,
+      "rel_path": "sample_store\\Goblin\\Runetusk Antlerguard, Guardian of the Shamanic",
+      "changes": {
+        "normalization_warnings": [
+          "lineage_weak_top_level"
+        ]
+      }
+    },
+    {
+      "variant_id": 304,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Menace",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 306,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Render",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 311,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Farm\\The-Farm",
+      "changes": {
+        "franchise_hints": [
+          "guard"
+        ],
+        "normalization_warnings": [
+          "faction_without_system"
+        ]
+      }
+    },
+    {
+      "variant_id": 317,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Images",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 318,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Optional",
+      "changes": {
+        "content_flag": "nsfw"
+      }
+    },
+    {
+      "variant_id": 330,
+      "rel_path": "sample_store\\space-captain-with-honor-guard\\Dminis\\space-captain-with-honor-guard",
+      "changes": {
+        "franchise_hints": [
+          "guard"
+        ],
+        "normalization_warnings": [
+          "faction_without_system"
+        ]
+      }
+    },
+    {
+      "variant_id": 331,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Crew",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 332,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Machine",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 333,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 334,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 335,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 336,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 337,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 338,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 339,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 340,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 341,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 342,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 343,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 344,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 345,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 346,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 347,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "designer": "moxomor"
+      }
+    },
+    {
+      "variant_id": 348,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "designer": "moxomor"
+      }
+    },
+    {
+      "variant_id": 349,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 350,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 351,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Modular Parts",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 352,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 353,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 354,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 355,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 356,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 357,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 358,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 359,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 360,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 361,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 362,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 363,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 364,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 365,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 366,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 367,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 368,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 369,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 370,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 371,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 372,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 373,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 374,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 375,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 376,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "supported"
+      }
+    },
+    {
+      "variant_id": 377,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Crew",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 378,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Machine",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 379,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 380,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 381,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 382,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high"
+      }
+    },
+    {
+      "variant_id": 383,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 384,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 385,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 386,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 387,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 388,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 389,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 390,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 391,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 392,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 393,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "designer": "moxomor"
+      }
+    },
+    {
+      "variant_id": 394,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "designer": "moxomor"
+      }
+    },
+    {
+      "variant_id": 395,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 396,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 397,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Modular Parts",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 398,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 399,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 400,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 401,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 402,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 403,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 404,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 405,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 406,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 407,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 408,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 409,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 410,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 411,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 412,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 413,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 414,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 415,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 416,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 417,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 418,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 419,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 420,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 421,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead"
+      }
+    },
+    {
+      "variant_id": 422,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "designer": "moxomor",
+        "designer_confidence": "high",
+        "lineage_family": "undead",
+        "support_state": "unsupported"
+      }
+    },
+    {
+      "variant_id": 424,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\40mm & 50mm Base",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 425,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Flamer Arm",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 426,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Gun Arms",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 427,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Mini Gun Cannon Arm",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 428,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 1",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 429,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 2",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 430,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 3",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 431,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 4",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 432,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 5",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 433,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Sword Arms",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 434,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Cape",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 435,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Helmets & Faces",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 436,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Legs",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 437,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Lychee Scenes",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 438,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Purity Seals",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 441,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders\\Ultra Shoulders",
+      "changes": {
+        "support_state": "presupported"
+      }
+    },
+    {
+      "variant_id": 442,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Torsos",
+      "changes": {
+        "support_state": "presupported"
+      }
+    }
+  ],
+  "field_summary": {
+    "support_state": 49,
+    "lineage_family": 99,
+    "designer": 105,
+    "designer_confidence": 101,
+    "content_flag": 44,
+    "normalization_warnings": 18,
+    "franchise_hints": 2
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

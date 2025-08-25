@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Quick exploratory scan to surface high-frequency tokens & obvious metadata candidates.
+r"""Quick exploratory scan to surface high-frequency tokens & obvious metadata candidates.
 Phase: Pre-implementation planning aid (safe: read-only, no archive extraction).
 Supports optional dynamic vocab loading from tokenmap (Markdown) via --tokenmap.
 If provided, designers / lineage families / faction hints / stopwords are parsed from the map; fallback to embedded defaults on error.
@@ -39,12 +39,12 @@ import collections
 import json
 
 # Embedded default vocab (acts as fallback if tokenmap parse not supplied / fails)
-DEFAULT_STOPWORDS = {"the","and","of","for","set","pack","stl","model","models","mini","minis","figure","figures","files","printing","print"}
+DEFAULT_STOPWORDS = {"the","and","of","for","set","pack","stl","model","models","mini","minis","figure","figures","files","printing","print","heroes","infinite","heroes_infinite"}
 DEFAULT_DESIGNER_ALIASES = {"ghamak","ghmk","ghamak_studio","rn_estudio","rn-estudio","rnestudio","archvillain","arch_villain","archvillain_games","avg","puppetswar","puppets_war","tinylegend","azerama","hybris","hybris_studio","moxomor","mezgike","momoji","momoji3d","3dmomoji","moonfigures","3dmoonn","funservicestl","pikky","pikky_prints","esm"}
 DEFAULT_LINEAGE_FAMILY = {"elf","elves","aelf","aelves","human","humans","man","men","dwarf","dwarves","duardin","orc","orcs","ork","orks","orruk","orruks","undead","skeleton","skeletons","ghoul","ghouls","zombie","zombies","wight","wights","demon","daemon","daemons","demons","goblin","goblins","grot","grots","halfling","halflings","hobbit","hobbits","lizardfolk","lizardman","lizardmen","saurus","dragonborn","draconian","drake","vampire","vampires","vampiric","ratfolk","kobold","kobolds"}
 DEFAULT_FACTION_HINTS = {"stormcast","custodes","tau","aeldari","eldar","nurgle","tzeentch","slaanesh","khorne","necron","tyranid","ork","orks","guard","astra","sororitas","votann","skaven","lumineth","seraphon"}
 VARIANT_AXES = {"split","parts","part","multi-part","multi_part","onepiece","one_piece","merged","solidpiece","hollow","hollowed","solid","presupported","pre-supported","pre_supported","supported","unsupported","no_supports","clean","bust","base_pack","bases_only","base_set","bits","bitz","accessories"}
-SCALE_RATIO_RE = re.compile(r"^1[-_:]?([0-9]{1,3})$")
+SCALE_RATIO_RE = re.compile(r"^1[-_:/]([0-9]{1,3})$")
 SCALE_MM_RE = re.compile(r"^([0-9]{2,3})mm$")
 ALLOWED_DENOMS = {4,6,7,9,10,12}
 ARCHIVE_EXTS = {'.zip', '.rar', '.7z', '.cbz', '.cbr'}  # simple set (multi-suffix like .tar.gz not yet handled)
@@ -161,10 +161,14 @@ def tokenize(path: pathlib.Path) -> list[str]:
     s = s.replace('\\', '/')
     comps = [c for c in s.split('/') if c]
     tokens: list[str] = []
+    KNOWN_EXTS = {"stl","obj","3mf","gltf","glb","lys","chitubox","ctb","step","zip","rar","7z","cbz","cbr","png","jpg","jpeg","webp","pdf","txt"}
     for comp in comps:
-        # Remove common file extension if present (keep base name)
+        # Remove file extension only when the dot denotes a likely extension (e.g., file.ext)
         if '.' in comp:
-            comp = comp.rsplit('.', 1)[0]
+            base, ext = comp.rsplit('.', 1)
+            ext_l = ext.lower().strip()
+            if ext_l in KNOWN_EXTS or (ext_l.isalpha() and 1 <= len(ext_l) <= 5):
+                comp = base
         # Lowercase and split on configured separator chars
         raw = comp.lower()
         parts = SPLIT_CHARS.split(raw)

@@ -14,14 +14,14 @@ import sys
 from pathlib import Path
 import json
 import re
-from typing import Iterable
+from typing import Iterable, Tuple, Dict, List, Optional
 
 # Ensure project root is on sys.path so `from db...` imports work
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session
+from db.session import get_session, DB_URL
 from db.models import Variant, File, VocabEntry
 
 # Reuse tokenizer and tokenmap loader from quick_scan to keep behavior consistent
@@ -32,6 +32,7 @@ from scripts.quick_scan import (
     classify_token,
     SCALE_RATIO_RE,
     SCALE_MM_RE,
+    SPLIT_CHARS,
 )
 
 # Lightweight local rule seeds (kept conservative and aligned with tokenmap.md)
@@ -39,6 +40,8 @@ ROLE_POSITIVE = {"hero", "rogue", "wizard", "fighter", "paladin", "cleric", "bar
 ROLE_NEGATIVE = {"horde", "swarm", "minion", "mob", "unit", "regiment"}
 NSFW_STRONG = {"nude", "naked", "topless", "nsfw", "lewd", "futa"}
 NSFW_WEAK = {"sexy", "pinup", "pin-up", "lingerie"}
+# Some tokens are sources/channels (e.g., Telegram groups), not designers; never assign them
+DESIGNER_IGNORE = {"moxomor"}
 
 SEGMENTATION_SPLIT = {"split", "parts", "multi-part", "multi_part", "part"}
 SEGMENTATION_MERGED = {"onepiece", "one_piece", "merged", "solidpiece", "uncut"}
@@ -59,6 +62,123 @@ TABLETOP_HINTS = {
     "bases", "bust", "miniaturesupports", "support", "church", "decor",
     "mm", "scale", "mini_supports", "squad"
 }
+
+# Context heuristics for lineage suppression
+ACTION_VERBS = {"kill", "killing", "slay", "slaying", "vs", "versus", "against", "defeating", "beating", "revenge"}
+SPACE_MARINE_HINTS = {"primaris", "astartes", "adeptus", "templar", "templars", "black", "black_templar", "black_templars", "emperor", "champion", "emperor's", "purity", "seal", "seals", "purity_seal", "purity_seals", "space", "marine", "marines", "space_marine", "space_marines", "bayard", "bayards", "bayard's"}
+ORK_SUBJECT_HINTS = {"nob", "warboss", "boy", "boys", "slugga", "choppa", "grot", "grots", "gretchin"}
+ORX_EQUIV = {"ork", "orc", "orcs"}
+RAT_STRONG = {"rat","ratkin","ratmen","ratman","ratogre","ratogres","rodent","rodents","vermin","vermins"}
+RAT_WEAK = {"gnaw","gnawnine","fang","fangs","claw","claws","scratch","scratchfang","whisker","whiskers","tail","tails","screecher","swarm"}
+UNDEAD_HINTS = {"undead","vampire","vampires","vampiric","wight","wights","skeleton","skeletons","tomb","tombshade","necropolis","damnation","ark"}
+
+# --- Lightweight parsers for selected tokenmap.md domains (conservative) ---
+_TOKENLIST_RE = re.compile(r"^\s*([a-z0-9_]+):\s*\[(.*?)\]\s*$", re.IGNORECASE)
+
+def _split_list(raw: str) -> list[str]:
+    out: list[str] = []
+    for part in raw.split(','):
+        part = part.strip().strip("'\"")
+        if part:
+            out.append(part)
+    return out
+
+def parse_tokenmap_intended_use(path: Path) -> Optional[Dict[str, set]]:
+    """Parse intended_use section from tokenmap.md returning {bucket: set(tokens)} or None."""
+    try:
+        text = path.read_text(encoding='utf-8', errors='ignore')
+    except Exception:
+        return None
+    in_section = False
+    buckets: Dict[str, set] = {}
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            if in_section:
+                # allow blank lines inside code blocks; continue until code fence or next header
+                pass
+        if s.startswith('intended_use:'):
+            in_section = True
+            continue
+        if in_section:
+            m = _TOKENLIST_RE.match(line)
+            if m:
+                key, raw = m.groups()
+                toks = set(_split_list(raw))
+                buckets[key] = toks
+                continue
+            # Heuristic stop: next top-level header or section marker
+            if s.startswith('## ') or s.startswith('---') or s.startswith('```'):
+                if buckets:
+                    break
+    return buckets or None
+
+def parse_tokenmap_general_faction(path: Path) -> Optional[Dict[str, set]]:
+    """Parse general_faction section returning {bucket: set(tokens)} or None."""
+    try:
+        text = path.read_text(encoding='utf-8', errors='ignore')
+    except Exception:
+        return None
+    in_section = False
+    buckets: Dict[str, set] = {}
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            if in_section:
+                pass
+        if s.startswith('general_faction:'):
+            in_section = True
+            continue
+        if in_section:
+            m = _TOKENLIST_RE.match(line)
+            if m:
+                key, raw = m.groups()
+                toks = set(_split_list(raw))
+                buckets[key] = toks
+                continue
+            if s.startswith('## ') or s.startswith('---') or s.startswith('```'):
+                if buckets:
+                    break
+    return buckets or None
+
+
+def parse_designers_aliases(path: Path) -> list[tuple[list[str], str]]:
+    """Parse designers alias list from designers_tokenmap.md and return phrases as
+    a list of (token_sequence, canonical_key). Token sequence is split using the
+    same separators as the tokenizer (spaces/underscore/hyphen). Single-token
+    aliases are ignored here because they are already handled by per-token
+    classify_token via global designer alias sets loaded elsewhere.
+    """
+    phrases: list[tuple[list[str], str]] = []
+    try:
+        text = path.read_text(encoding='utf-8', errors='ignore')
+    except Exception:
+        return phrases
+    in_designers = False
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            if in_designers:
+                in_designers = False
+            continue
+        if s.startswith('designers:'):
+            in_designers = True
+            continue
+        m = _TOKENLIST_RE.match(line)
+        if m and in_designers:
+            canonical, raw = m.groups()
+            # split raw alias list as in quick_scan
+            alias_list = []
+            for part in raw.split(','):
+                part = part.strip().strip("'\"")
+                if part:
+                    alias_list.append(part)
+            for alias in alias_list:
+                # split alias to tokens using SPLIT_CHARS; lowercased
+                toks = [t for t in SPLIT_CHARS.split(alias.lower()) if t]
+                if len(toks) >= 2:
+                    phrases.append((toks, canonical))
+    return phrases
 
 
 def build_designer_alias_map(session) -> dict[str, str]:
@@ -182,7 +302,9 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
     return out
 
 
-def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchise_map: dict[str, str] | None = None, character_map: dict[str, str] | None = None):
+def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchise_map: dict[str, str] | None = None, character_map: dict[str, str] | None = None,
+                    intended_use_map: Optional[Dict[str, set]] = None, general_faction_map: Optional[Dict[str, set]] = None,
+                    designer_phrases: Optional[list[tuple[list[str], str]]] = None):
     """Return a dictionary of inferred fields and residual tokens."""
     inferred = {
         "designer": None,
@@ -202,10 +324,15 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         "character_hint": None,
         "character_name": None,
         "normalization_warnings": [],
+        "intended_use_bucket": None,
     }
 
     # Ensure we have a list for co-occurrence checks
     token_list = list(tokens)
+    # Track lineage candidates with their positional index to bias towards
+    # deeper path segments (tokens closer to the file/final folder appear
+    # later in the token list produced by tokenize()).
+    lineage_candidates: list[tuple[int, str]] = []
     # Conservative tabletop detection: require tabletop hint tokens AND no
     # stronger evidence tokens (designer/franchise/character). This avoids
     # treating artist/collection labels like "minis" or store names as
@@ -220,16 +347,50 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
     if character_map and any(t in character_map for t in token_list):
         has_stronger_context = True
     is_tabletop = has_tabletop_hint and not has_stronger_context
-    for tok in token_list:
+
+    # Optional: intended_use from tokenmap.md (conservative, single bucket; conflict -> warning)
+    if intended_use_map:
+        hits: List[str] = []
+        for bucket, toks in intended_use_map.items():
+            if any(t in toks for t in token_list):
+                hits.append(bucket)
+        if len(hits) == 1:
+            inferred["intended_use_bucket"] = hits[0]
+        elif len(hits) > 1:
+            inferred.setdefault("normalization_warnings", [])
+            if "intended_use_conflict" not in inferred["normalization_warnings"]:
+                inferred["normalization_warnings"].append("intended_use_conflict")
+    # Multi-token designer alias detection from designers_tokenmap.md phrases
+    if not inferred["designer"] and designer_phrases:
+        n = len(token_list)
+        # Prefer longer phrases first to avoid small matches shadowing longer ones
+        for phrase, canon in sorted(designer_phrases, key=lambda pc: -len(pc[0])):
+            L = len(phrase)
+            if L == 0 or L > n:
+                continue
+            for i in range(0, n - L + 1):
+                if token_list[i:i+L] == phrase:
+                    if canon not in DESIGNER_IGNORE:
+                        inferred["designer"] = canon
+                    break
+            if inferred["designer"]:
+                break
+
+    for idx, tok in enumerate(token_list):
         dom = classify_token(tok)
         # Designer: prefer canonical mapping via DB alias map
         if not inferred["designer"] and tok in designer_map:
-            inferred["designer"] = designer_map[tok]
+            cand = designer_map[tok]
+            if cand not in DESIGNER_IGNORE:
+                inferred["designer"] = cand
             continue
         # Direct domain matches from tokenmap small parse
-        if dom == "lineage_family" and not inferred["lineage_family"]:
-            inferred["lineage_family"] = tok
-            continue
+        if dom == "lineage_family":
+            # Defer picking until after the loop so we can choose the deepest
+            # (last) occurrence, reducing false positives from generic top-level
+            # collection names like "goblin" or similar umbrella labels.
+            lineage_candidates.append((idx, tok))
+            # do not continue; other domain checks may still apply to the same token
     # Faction-like tokens are recorded as a faction hint. Franchise is a
     # separate higher-level concept (e.g., 'Marvel', 'Naruto') and should
     # not be stored in faction fields. When a token maps to a franchise
@@ -271,6 +432,13 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
             if "faction_without_system" not in inferred["normalization_warnings"]:
                 inferred["normalization_warnings"].append("faction_without_system")
             continue
+        # General faction buckets (optional, from tokenmap.md), only when tabletop context is likely
+        if general_faction_map and is_tabletop and not inferred.get("faction_general"):
+            for bucket, toks in general_faction_map.items():
+                if tok in toks:
+                    inferred["faction_general"] = bucket
+                    # Do not set any codex/system here; this is a coarse bucket
+                    break
         if dom == "variant_axis":
             if tok in SEGMENTATION_SPLIT:
                 inferred["segmentation"] = "split"
@@ -352,6 +520,97 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         if dom is None:
             inferred["residual_tokens"].append(tok)
 
+    # Heuristic: if no explicit lineage was found, use strong thematic hints near the tail (last ~8 tokens)
+    if not inferred["lineage_family"]:
+        tail = token_list[-8:] if len(token_list) >= 8 else token_list
+        tail_set = set(tail)
+        rat_strong = any(t in tail_set for t in RAT_STRONG)
+        rat_sub = any(('rat' in t) for t in tail)
+        # Count weak rat cues allowing substring matches for select morphemes
+        # to catch names like "darktail" and "gnawnine" that often appear as single tokens.
+        def _has_weak_sub(t: str) -> bool:
+            # require meaningful substrings to reduce false positives like "detail";
+            # trim trailing punctuation when checking suffixes
+            t2 = re.sub(r"[^a-z0-9]+$", "", t)
+            return (
+                (t2.endswith('tail') or t2.endswith('tails')) or
+                ('gnaw' in t2) or ('scratch' in t2) or ('whisk' in t2) or ('fang' in t2) or ('claw' in t2)
+            )
+        rat_weak_count = sum(1 for t in tail if (t in RAT_WEAK) or _has_weak_sub(t))
+        # Adjacent-pair detection: if two adjacent tail tokens together form a strong rat cue
+        # (e.g., "gnawnine" next to "darktail"), prefer ratfolk.
+        rat_adjacent_pair = False
+        if len(tail) >= 2:
+            for i in range(len(tail)-1):
+                a, b = tail[i], tail[i+1]
+                if (_has_weak_sub(a) and _has_weak_sub(b)) or ((a in RAT_WEAK) and _has_weak_sub(b)) or (_has_weak_sub(a) and (b in RAT_WEAK)):
+                    rat_adjacent_pair = True
+                    break
+        undead_hit = any(t in tail_set for t in UNDEAD_HINTS)
+        # Prefer ratfolk when strong or adjacent weak cues exist near the tail.
+        # Adjacent weak-pair is decisive even if generic undead words appear elsewhere in the path.
+        if (rat_strong or rat_sub or rat_adjacent_pair):
+            inferred["lineage_family"] = "ratfolk"
+        elif not rat_strong and not rat_sub and rat_weak_count >= 2:
+            # multiple weak cues plus a 'rat' token somewhere else in the path
+            # previously required a separate 'rat' substring elsewhere; relax to allow tail-driven pairs
+            inferred["lineage_family"] = "ratfolk"
+        elif undead_hit and not (rat_strong or rat_sub or rat_adjacent_pair):
+            inferred["lineage_family"] = "undead"
+
+    # After scanning tokens, if we saw lineage candidates, prefer the deepest
+    # one (largest positional index). This biases towards folder names closer
+    # to the actual model files or the filename itself, which are typically
+    # more specific than generic top-level collection labels.
+    if not inferred["lineage_family"] and lineage_candidates:
+        # Apply context-based suppression for ambiguous 'ork' usage like
+        # "primaris killing ork" (Ork is object). If Space Marine hints are
+        # present, or an action verb immediately precedes the 'ork' token, do
+        # not assign 'ork' unless we also have Ork-specific subject hints.
+        token_set = set(token_list)
+        filtered_candidates: list[tuple[int, str]] = []
+        suppressed = False
+        for idx, tok in lineage_candidates:
+            if tok in ORX_EQUIV:
+                has_sm_context = any(h in token_set for h in SPACE_MARINE_HINTS)
+                local_prev = {token_list[i] for i in range(max(0, idx-2), idx)}
+                has_action_context = any(v in local_prev for v in ACTION_VERBS)
+                has_ork_support = any(h in token_set for h in ORK_SUBJECT_HINTS)
+                if (has_sm_context or has_action_context) and not has_ork_support:
+                    suppressed = True
+                    continue
+            filtered_candidates.append((idx, tok))
+        # Replace candidates with filtered list; if suppression removed all
+        # candidates, leave the list empty to avoid assigning a misleading
+        # lineage from fallback.
+        if filtered_candidates:
+            lineage_candidates = filtered_candidates
+        elif suppressed:
+            lineage_candidates = []
+        if suppressed:
+            inferred.setdefault("normalization_warnings", [])
+            if "lineage_ambiguous_vs_context" not in inferred["normalization_warnings"]:
+                inferred["normalization_warnings"].append("lineage_ambiguous_vs_context")
+        # If multiple candidates, choose the deepest (largest index)
+        if len(lineage_candidates) > 1:
+            _, chosen = max(lineage_candidates, key=lambda it: it[0])
+            inferred["lineage_family"] = chosen
+        elif len(lineage_candidates) == 1:
+            idx, only_tok = lineage_candidates[0]
+            # Heuristic: if the only lineage token is very early in the token
+            # sequence (likely from a top-level umbrella folder), and there are
+            # many tokens overall, treat this as weak evidence and avoid
+            # assignment to reduce false positives such as
+            #   "goblin mayhem and holy angels/.../actual_non_goblin_files.stl"
+            many_tokens = len(token_list) >= 8
+            if idx <= 2 and many_tokens:
+                inferred.setdefault("normalization_warnings", [])
+                if "lineage_weak_top_level" not in inferred["normalization_warnings"]:
+                    inferred["normalization_warnings"].append("lineage_weak_top_level")
+            else:
+                inferred["lineage_family"] = only_tok
+            # else: no candidates remain; leave lineage unset with warnings
+
     return inferred
 
 
@@ -398,6 +657,10 @@ def apply_updates_to_variant(variant: Variant, inferred: dict, session, force: b
     set_if_empty("scale_ratio_den", inferred.get("scale_ratio_den"))
     set_if_empty("height_mm", inferred.get("height_mm"))
     set_if_empty("pc_candidate_flag", inferred.get("pc_candidate_flag"))
+    # Intended use bucket (from tokenmap, gated)
+    set_if_empty("intended_use_bucket", inferred.get("intended_use_bucket"))
+    # General faction (coarse), distinct from franchise-derived signals
+    set_if_empty("faction_general", inferred.get("faction_general"))
     set_if_empty("content_flag", inferred.get("content_flag"))
     # normalization warnings if any
     if inferred.get("normalization_warnings"):
@@ -413,16 +676,93 @@ def apply_updates_to_variant(variant: Variant, inferred: dict, session, force: b
     return changed
 
 
-def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bool):
+def diff_updates_for_variant(variant: Variant, inferred: dict, force: bool = False) -> dict:
+    """Compute what would change if we applied inferred fields to the variant,
+    without mutating the SQLAlchemy object. Mirrors apply_updates_to_variant's logic.
+    """
+    changed = {}
+
+    def would_set(field, value):
+        cur = getattr(variant, field)
+        return (value not in (None, [], {}) and ((cur in (None, "", [], {})) or force) and cur != value)
+
+    # Simple fields that are only set when empty
+    if would_set("raw_path_tokens", inferred.get("residual_tokens") or []):
+        changed["raw_path_tokens"] = inferred.get("residual_tokens") or []
+    if would_set("residual_tokens", inferred.get("residual_tokens") or []):
+        changed["residual_tokens"] = inferred.get("residual_tokens") or []
+    if would_set("token_version", inferred.get("token_version")):
+        changed["token_version"] = inferred.get("token_version")
+    if would_set("designer", inferred.get("designer")):
+        changed["designer"] = inferred.get("designer")
+        # designer_confidence follows designer
+        if would_set("designer_confidence", "high"):
+            changed.setdefault("designer_confidence", "high")
+    if would_set("franchise", inferred.get("franchise")):
+        changed["franchise"] = inferred.get("franchise")
+    if would_set("lineage_family", inferred.get("lineage_family")):
+        changed["lineage_family"] = inferred.get("lineage_family")
+
+    # Merge list fields conservatively
+    if inferred.get("franchise_hints"):
+        cur_hints = variant.franchise_hints or []
+        merged = list(dict.fromkeys(cur_hints + inferred["franchise_hints"]))
+        if merged != cur_hints:
+            changed["franchise_hints"] = merged
+
+    if inferred.get("character_name"):
+        if would_set("character_name", inferred.get("character_name")):
+            changed["character_name"] = inferred.get("character_name")
+        hint = inferred.get("character_hint")
+        if hint:
+            cur_aliases = variant.character_aliases or []
+            new_aliases = [hint] if not cur_aliases else list(dict.fromkeys(cur_aliases + [hint]))
+            if new_aliases != cur_aliases:
+                changed["character_aliases"] = new_aliases
+
+    # Other single-valued fields
+    for fld in ("segmentation","internal_volume","support_state","part_pack_type","has_bust_variant",
+                "scale_ratio_den","height_mm","pc_candidate_flag","intended_use_bucket","faction_general","content_flag"):
+        val = inferred.get(fld)
+        if would_set(fld, val):
+            changed[fld] = val
+
+    # normalization warnings merge
+    if inferred.get("normalization_warnings"):
+        curw = variant.normalization_warnings or []
+        neww = list(curw)
+        for w in inferred.get("normalization_warnings"):
+            if w not in neww:
+                neww.append(w)
+        if neww != curw:
+            changed["normalization_warnings"] = neww
+
+    return changed
+
+
+def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bool, tokenmap_path: Optional[str] = None,
+                     use_intended_use: bool = False, use_general_faction: bool = False, out: Optional[str] = None,
+                     include_fields: Optional[list[str]] = None, exclude_fields: Optional[list[str]] = None,
+                     print_summary: bool = False, ids: Optional[list[int]] = None):
     root = Path(__file__).resolve().parent.parent
     # try to load tokenmap to set token version & domain sets
-    tm_path = root / 'vocab' / 'tokenmap.md'
+    tm_path = Path(tokenmap_path) if tokenmap_path else (root / 'vocab' / 'tokenmap.md')
     if tm_path.exists():
         stats = load_tokenmap(tm_path)
         token_map_version = getattr(sys.modules.get('scripts.quick_scan'), 'TOKENMAP_VERSION', None)
     else:
         token_map_version = None
+    intended_use_map = parse_tokenmap_intended_use(tm_path) if (tm_path.exists() and use_intended_use) else None
+    general_faction_map = parse_tokenmap_general_faction(tm_path) if (tm_path.exists() and use_general_faction) else None
+    # Load designers phrases from vocab/designers_tokenmap.md
+    designers_path = (root / 'vocab' / 'designers_tokenmap.md')
+    designer_phrases = parse_designers_aliases(designers_path) if designers_path.exists() else []
 
+    # Normalize filters
+    include_set = set([f.strip() for f in (include_fields or []) if f.strip()])
+    exclude_set = set([f.strip() for f in (exclude_fields or []) if f.strip()])
+
+    print(f"Using database: {DB_URL}")
     with get_session() as session:
         designer_map = build_designer_alias_map(session)
         franchise_map = build_franchise_alias_map(session)
@@ -430,48 +770,87 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
 
         # Build base query: only variants with at least one file (simple heuristic)
         q = session.query(Variant).join(File).distinct()
+        if ids:
+            q = q.filter(Variant.id.in_(ids))
         if only_missing:
             q = q.filter(Variant.token_version.is_(None))
-
         total = q.count()
         print(f"Found {total} variants to examine (only_missing={only_missing}).")
         offset = 0
         proposed_updates = []
+        field_counts: dict[str, int] = {}
         while True:
             rows = q.limit(batch_size).offset(offset).all()
             if not rows:
                 break
             for v in rows:
                 tokens = tokens_from_variant(session, v)
-                inferred = classify_tokens(tokens, designer_map, franchise_map, character_map)
+                inferred = classify_tokens(tokens, designer_map, franchise_map, character_map,
+                                           intended_use_map=intended_use_map,
+                                           general_faction_map=general_faction_map,
+                                           designer_phrases=designer_phrases)
                 inferred["token_version"] = token_map_version
-                changed = apply_updates_to_variant(v, inferred, session, force=force)
+                # IMPORTANT: do not mutate DB objects during preview; compute a diff instead
+                changed = diff_updates_for_variant(v, inferred, force=force)
                 if changed:
-                    proposed_updates.append({"variant_id": v.id, "rel_path": v.rel_path, "changes": changed})
+                    if include_set:
+                        visible = {k: val for k, val in changed.items() if k in include_set}
+                    else:
+                        visible = {k: val for k, val in changed.items() if k not in exclude_set}
+                    if visible:
+                        proposed_updates.append({"variant_id": v.id, "rel_path": v.rel_path, "changes": visible})
+                        for k in visible.keys():
+                            field_counts[k] = field_counts.get(k, 0) + 1
             offset += batch_size
         print(f"Proposed updates for {len(proposed_updates)} variants (dry-run={not apply}).")
+        if print_summary and field_counts:
+            print("Field change summary:")
+            for k, cnt in sorted(field_counts.items(), key=lambda x: (-x[1], x[0])):
+                print(f"  {k}: {cnt}")
         # Print a small sample
         for s in proposed_updates[:10]:
             print(json.dumps(s, indent=2))
+        # Optional JSON export in dry-run
+        if out:
+            try:
+                out_path = Path(out)
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                payload = {
+                    "apply": bool(apply),
+                    "total_examined": total,
+                    "proposals_count": len(proposed_updates),
+                    "proposals": proposed_updates,
+                    "field_summary": field_counts,
+                    "db_url": DB_URL,
+                }
+                out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding='utf-8')
+                print(f"Wrote JSON export to: {out_path}")
+            except Exception as e:
+                print(f"[warn] failed to write --out JSON: {e}")
         if apply and proposed_updates:
             # commit in batches to limit transaction size
             print("Applying updates to DB...")
             offset = 0
+            total_applied = 0
             while True:
                 rows = q.limit(batch_size).offset(offset).all()
                 if not rows: break
                 any_changed = False
                 for v in rows:
                     tokens = tokens_from_variant(session, v)
-                    inferred = classify_tokens(tokens, designer_map, franchise_map, character_map)
+                    inferred = classify_tokens(tokens, designer_map, franchise_map, character_map,
+                                               intended_use_map=intended_use_map,
+                                               general_faction_map=general_faction_map,
+                                               designer_phrases=designer_phrases)
                     inferred["token_version"] = token_map_version
                     changed = apply_updates_to_variant(v, inferred, session, force=force)
                     if changed:
                         any_changed = True
+                        total_applied += 1
                 if any_changed:
                     session.commit()
                 offset += batch_size
-            print("Apply complete.")
+            print(f"Apply complete. Variants updated: {total_applied}")
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -480,12 +859,27 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--apply', action='store_true', help='Write inferred metadata to DB (default: dry-run)')
     ap.add_argument('--only-missing', action='store_true', help='Only process variants lacking token_version')
     ap.add_argument('--force', action='store_true', help='Overwrite existing fields (use with care)')
+    ap.add_argument('--tokenmap', help='Path to tokenmap.md (defaults to vocab/tokenmap.md)')
+    ap.add_argument('--use-intended-use', action='store_true', help='Enable intended_use_bucket inference from tokenmap.md')
+    ap.add_argument('--use-general-faction', action='store_true', help='Enable general faction bucket inference from tokenmap.md when tabletop context detected')
+    ap.add_argument('--out', help='Write dry-run proposals to this JSON file')
+    ap.add_argument('--include-fields', help='Comma-separated list of fields to include in proposals (reporting only)')
+    ap.add_argument('--exclude-fields', help='Comma-separated list of fields to exclude from proposals (reporting only)')
+    ap.add_argument('--print-summary', action='store_true', help='Print a summary of change counts by field')
+    ap.add_argument('--ids', help='Comma-separated list of Variant IDs to process (scoped run)')
     return ap.parse_args(argv)
 
 
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
-    process_variants(batch_size=args.batch, apply=args.apply, only_missing=args.only_missing, force=args.force)
+    include_fields = [s for s in (args.include_fields.split(',') if args.include_fields else [])]
+    exclude_fields = [s for s in (args.exclude_fields.split(',') if args.exclude_fields else [])]
+    ids = [int(s) for s in args.ids.split(',')] if getattr(args, 'ids', None) else None
+    process_variants(batch_size=args.batch, apply=args.apply, only_missing=args.only_missing, force=args.force,
+                     tokenmap_path=args.tokenmap, use_intended_use=args.use_intended_use,
+                     use_general_faction=args.use_general_faction, out=args.out,
+                     include_fields=include_fields, exclude_fields=exclude_fields,
+                     print_summary=args.print_summary, ids=ids)
     return 0
 
 

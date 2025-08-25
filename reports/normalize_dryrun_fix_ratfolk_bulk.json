@@ -1,0 +1,172 @@
+{
+  "apply": false,
+  "total_examined": 39,
+  "proposals_count": 23,
+  "proposals": [
+    {
+      "variant_id": 333,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 345,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 356,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 357,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 358,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 359,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 360,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 361,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 362,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 363,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 365,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 379,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 381,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 391,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 402,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 403,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 404,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 405,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 406,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 407,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 408,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 409,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    },
+    {
+      "variant_id": 411,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    }
+  ],
+  "field_summary": {
+    "lineage_family": 23
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

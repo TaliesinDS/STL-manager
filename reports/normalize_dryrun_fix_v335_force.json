@@ -1,0 +1,18 @@
+{
+  "apply": false,
+  "total_examined": 1,
+  "proposals_count": 1,
+  "proposals": [
+    {
+      "variant_id": 335,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "lineage_family": "ratfolk"
+      }
+    }
+  ],
+  "field_summary": {
+    "lineage_family": 1
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

@@ -1,0 +1,20 @@
+{
+  "apply": false,
+  "total_examined": 1,
+  "proposals_count": 1,
+  "proposals": [
+    {
+      "variant_id": 333,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "designer": "heroes_infinite",
+        "designer_confidence": "high"
+      }
+    }
+  ],
+  "field_summary": {
+    "designer": 1,
+    "designer_confidence": 1
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

@@ -26,7 +26,6 @@ designers:
 	kuru_figure: ["kuru", "kuru_figure", "kuru figure"]
 	nomnom: ["nomnom"]
 	nympha3d: ["nympha3d", "nympha", "nympha 3d"]
-	moxomor: ["moxomor"]
 	mezgike: ["mezgike"]
 	abe3d: ["abe3d"]
 	ca3d: ["ca3d"]
@@ -127,4 +126,5 @@ designers:
 	three_dartguy: ["3dartguy", "3d_art_guy", "3d art guy"]
 	box_studio: ["box_studio", "box studio"]
 	nutshell_atelier: ["nutshell_atelier", "nutshell atelier"]
+	heroes_infinite: ["heroes_infinite", "heroes infinite", "heroes-infinite"]
 ```
