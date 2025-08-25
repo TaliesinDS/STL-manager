@@ -26,7 +26,13 @@ from db.models import Variant
 
 # Reuse helper functions from normalize_inventory
 from scripts.normalize_inventory import tokens_from_variant, apply_updates_to_variant, TABLETOP_HINTS
+from scripts.quick_scan import classify_token
 
+
+# Certain character aliases are too generic to stand alone (e.g., 'angel').
+# Require additional supporting franchise evidence (another alias or
+# franchise token) before accepting these as valid character/franchise matches.
+AMBIGUOUS_ALIASES = {"angel"}
 
 def load_franchise_maps(fr_dir: Path) -> Tuple[Dict[str, str], Dict[str, Tuple[str, str]], Dict[str, Dict[str, set]]]:
     """Return (franchise_alias_map, character_alias_map, franchise_tokens).
@@ -190,7 +196,7 @@ def parse_tokenmap_aliases(path: Path) -> Dict[str, List[str]]:
     return out
 
 
-def process(apply: bool, batch: int):
+def process(apply: bool, batch: int, out: str | None = None):
     fam, cam, f_tokens = load_franchise_maps(FR_DIR)
     proposals = []
     with get_session() as session:
@@ -208,7 +214,14 @@ def process(apply: bool, batch: int):
                 if not tokens:
                     continue
                 token_list = list(tokens)
-                is_tabletop = any(t in TABLETOP_HINTS for t in token_list)
+                # Tabletop context gate: only treat as tabletop when explicit tabletop
+                # hints are present AND there is no stronger franchise/character alias
+                # evidence. This prevents blocking when we clearly have a known IP
+                # (e.g., queens_blade: 'menace').
+                has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
+                # Treat ambiguous aliases as insufficient evidence on their own
+                has_alias_evidence = any(t in fam for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
+                is_tabletop_ctx = has_tabletop_hint and not has_alias_evidence
 
                 inferred = {
                     'franchise': None,
@@ -221,7 +234,35 @@ def process(apply: bool, batch: int):
 
                 # count franchise alias matches
                 alias_count = sum(1 for t in token_list if t in fam)
-                has_char = any(t in cam for t in token_list)
+                has_char_any = any(t in cam for t in token_list)
+                has_char_strong = False
+
+                def short_or_numeric(tok: str) -> bool:
+                    tl = tok.lower()
+                    if tl.isdigit():
+                        return True
+                    if len(tl) <= 2:
+                        return True
+                    # patterns like '2b', '9s', 'a2'
+                    import re as _re
+                    return bool(_re.fullmatch(r"[a-z]\d|\d[a-z]", tl))
+
+                def has_supporting_fr_tokens(fr_key: str, exclude_token: str | None = None) -> bool:
+                    """Return True if there is independent evidence of this franchise in tokens.
+                    Evidence means: any token (not equal to the current alias) that is either
+                    - a strong/weak signal listed for the franchise, or
+                    - an alias mapping to the franchise via fam.
+                    """
+                    f_tok = f_tokens.get(fr_key, {'strong': set(), 'weak': set()})
+                    sigs = (f_tok.get('strong', set()) | f_tok.get('weak', set()))
+                    for tt in token_list:
+                        if exclude_token and tt == exclude_token:
+                            continue
+                        if tt in sigs:
+                            return True
+                        if tt in fam and fam[tt] == fr_key:
+                            return True
+                    return False
 
                 # Prefer character matches that include canonical franchise
                 # If a character alias is found, prefer to use it but treat very short
@@ -230,19 +271,30 @@ def process(apply: bool, batch: int):
                 for t in token_list:
                     if t in cam:
                         fr, canon = cam[t]
+                        # If alias is ambiguous (e.g., 'angel') and lacks any
+                        # explicit supporting franchise evidence, skip.
+                        if t in AMBIGUOUS_ALIASES:
+                            if (not fr) or (not has_supporting_fr_tokens(fr, exclude_token=t)):
+                                continue
+                        # If alias is short/numeric and we are in tabletop/faction context,
+                        # ignore entirely to avoid false positives (e.g., '002', '2b').
+                        if short_or_numeric(t) and is_tabletop_ctx:
+                            continue
+                        # If alias is short/numeric and lacks any explicit franchise tokens,
+                        # treat as too weak to even set character.
+                        if short_or_numeric(t) and (not fr or not has_supporting_fr_tokens(fr, exclude_token=t)):
+                            continue
                         # record the hint token and canonical character name
                         inferred['character_hint'] = t
                         inferred['character_name'] = canon
-                        if is_tabletop:
-                            # For tabletop items we record character name but do NOT set
-                            # a faction hint from a character alias; only franchise
-                            # tokens should populate `faction_hint`/`faction_general`.
+                        # Determine strength for potential franchise assignment
+                        f_tok = f_tokens.get(fr, {'strong': set(), 'weak': set()})
+                        # Ambiguous aliases should not be considered strong purely by length
+                        is_strong = (t in f_tok.get('strong', set())) or ((len(t) > 2 and not t.isdigit()) and (t not in AMBIGUOUS_ALIASES))
+                        has_char_strong = has_char_strong or is_strong
+                        if is_tabletop_ctx:
                             inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
                         else:
-                            # Non-tabletop: decide whether the character alias is
-                            # a strong franchise indicator (only then set franchise)
-                            f_tok = f_tokens.get(fr, {'strong': set(), 'weak': set()})
-                            is_strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit())
                             if is_strong:
                                 inferred['franchise'] = fr
                             else:
@@ -257,8 +309,8 @@ def process(apply: bool, batch: int):
                             f_tok = f_tokens.get(candidate_fr, {'strong': set(), 'weak': set()})
                             # Consider token strong if explicitly in strong_signals, or
                             # heuristically if longer than 2 and not purely numeric.
-                            strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char
-                            if is_tabletop:
+                            strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char_strong
+                            if is_tabletop_ctx:
                                 # For tabletop items, record hint but do not set
                                 # franchise; downstream processes may use this hint.
                                 inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
@@ -289,73 +341,176 @@ def process(apply: bool, batch: int):
         for p in proposals[:20]:
             print(json.dumps(p, indent=2))
 
+        # Summary (dry-run): counts and top distributions
+        try:
+            total_props = len(proposals)
+            with_franchise = sum(1 for p in proposals if 'franchise' in (p.get('changes') or {}))
+            with_character = sum(1 for p in proposals if 'character_name' in (p.get('changes') or {}))
+            with_aliases = sum(1 for p in proposals if 'character_aliases' in (p.get('changes') or {}))
+            with_faction_hint = sum(1 for p in proposals if 'faction_general' in (p.get('changes') or {}))
+
+            # Top franchises proposed
+            from collections import Counter
+            fr_counter = Counter((p['changes'].get('franchise') for p in proposals if p.get('changes') and p['changes'].get('franchise')))
+            ch_counter = Counter((p['changes'].get('character_name') for p in proposals if p.get('changes') and p['changes'].get('character_name')))
+
+            print("\n--- Summary ---")
+            print(f"Total proposals: {total_props}")
+            print(f"  • with franchise: {with_franchise}")
+            print(f"  • with character_name: {with_character}")
+            print(f"  • with character_aliases added: {with_aliases}")
+            print(f"  • with faction_general hint: {with_faction_hint}")
+            if fr_counter:
+                top_fr = fr_counter.most_common(10)
+                print("Top franchises:")
+                for k, v in top_fr:
+                    print(f"  - {k}: {v}")
+            if ch_counter:
+                top_ch = ch_counter.most_common(10)
+                print("Top characters:")
+                for k, v in top_ch:
+                    print(f"  - {k}: {v}")
+
+            # Optional: write JSON export when --out is provided
+            if out:
+                payload = {
+                    "apply": bool(apply),
+                    "total_candidates": total,
+                    "summary": {
+                        "total_proposals": total_props,
+                        "with_franchise": with_franchise,
+                        "with_character_name": with_character,
+                        "with_character_aliases": with_aliases,
+                        "with_faction_general_hint": with_faction_hint,
+                        "top_franchises": dict(fr_counter.most_common(50)),
+                        "top_characters": dict(ch_counter.most_common(50)),
+                    },
+                    "proposals": proposals,
+                }
+                # Ensure parent directory exists
+                out_path = Path(out)
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding='utf-8')
+                print(f"\nWrote JSON export to: {out_path}")
+        except Exception:
+            # Keep the script resilient even if summary calculation fails
+            pass
+
+        # Important: building proposals above uses apply_updates_to_variant,
+        # which mutates ORM objects in-memory. To ensure the apply phase
+        # detects and commits real changes, roll back any in-memory changes
+        # before proceeding with writes.
+        try:
+            session.rollback()
+        except Exception:
+            pass
+
         if apply and proposals:
             print('Applying updates to DB...')
-            # Re-run to apply in batches and commit
-            offset = 0
-            while True:
-                rows = q.limit(batch).offset(offset).all()
-                if not rows:
-                    break
-                any_changed = False
-                for v in rows:
-                    tokens = tokens_from_variant(session, v)
-                    if not tokens:
-                        continue
-                    token_list = list(tokens)
-                    is_tabletop = any(t in TABLETOP_HINTS for t in token_list)
+            # Close the current session to avoid identity map contamination
+            try:
+                session.close()
+            except Exception:
+                pass
+            # Re-run to apply in a fresh session
+            with get_session() as write_sess:
+                q_apply = write_sess.query(Variant).join(Variant.files).distinct().filter(Variant.franchise.is_(None))
+                offset = 0
+                while True:
+                    rows = q_apply.limit(batch).offset(offset).all()
+                    if not rows:
+                        break
+                    any_changed = False
+                    for v in rows:
+                        tokens = tokens_from_variant(write_sess, v)
+                        if not tokens:
+                            continue
+                        token_list = list(tokens)
+                        has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
+                        has_alias_evidence = any(t in fam for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
+                        is_tabletop_ctx = has_tabletop_hint and not has_alias_evidence
 
-                    inferred = {
-                        'franchise': None,
-                        'character_hint': None,
-                        'character_name': None,
-                        'faction_hint': None,
-                        'normalization_warnings': [],
-                        'token_version': None,
-                    }
-                    alias_count = sum(1 for t in token_list if t in fam)
-                    has_char = any(t in cam for t in token_list)
+                        inferred = {
+                            'franchise': None,
+                            'character_hint': None,
+                            'character_name': None,
+                            'faction_hint': None,
+                            'normalization_warnings': [],
+                            'token_version': None,
+                        }
+                        alias_count = sum(1 for t in token_list if t in fam)
+                        has_char_strong = False
 
-                    for t in token_list:
-                        if t in cam:
-                            fr, canon = cam[t]
-                            inferred['character_hint'] = t
-                            inferred['character_name'] = canon
-                            if is_tabletop:
-                                inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
-                            else:
-                                f_tok = f_tokens.get(fr, {'strong': set(), 'weak': set()})
-                                is_strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit())
-                                if is_strong:
-                                    inferred['franchise'] = fr
-                                else:
-                                    inferred.setdefault('normalization_warnings', []).append('character_alias_weak')
-                            break
+                        def short_or_numeric(tok: str) -> bool:
+                            tl = tok.lower()
+                            if tl.isdigit():
+                                return True
+                            if len(tl) <= 2:
+                                return True
+                            import re as _re
+                            return bool(_re.fullmatch(r"[a-z]\d|\d[a-z]", tl))
 
-                    if not inferred['franchise']:
+                        def has_supporting_fr_tokens(fr_key: str, exclude_token: str | None = None) -> bool:
+                            f_tok = f_tokens.get(fr_key, {'strong': set(), 'weak': set()})
+                            sigs = (f_tok.get('strong', set()) | f_tok.get('weak', set()))
+                            for tt in token_list:
+                                if exclude_token and tt == exclude_token:
+                                    continue
+                                if tt in sigs:
+                                    return True
+                                if tt in fam and fam[tt] == fr_key:
+                                    return True
+                            return False
+
                         for t in token_list:
-                            if t in fam:
-                                candidate_fr = fam[t]
-                                f_tok = f_tokens.get(candidate_fr, {'strong': set(), 'weak': set()})
-                                strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char
-                                if is_tabletop:
+                            if t in cam:
+                                fr, canon = cam[t]
+                                # Skip ambiguous alias unless supporting franchise evidence exists
+                                if t in AMBIGUOUS_ALIASES:
+                                    if (not fr) or (not has_supporting_fr_tokens(fr, exclude_token=t)):
+                                        continue
+                                if short_or_numeric(t) and is_tabletop_ctx:
+                                    continue
+                                if short_or_numeric(t) and (not fr or not has_supporting_fr_tokens(fr, exclude_token=t)):
+                                    continue
+                                inferred['character_hint'] = t
+                                inferred['character_name'] = canon
+                                f_tok = f_tokens.get(fr, {'strong': set(), 'weak': set()})
+                                is_strong = (t in f_tok.get('strong', set())) or ((len(t) > 2 and not t.isdigit()) and (t not in AMBIGUOUS_ALIASES))
+                                has_char_strong = has_char_strong or is_strong
+                                if is_tabletop_ctx:
                                     inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
-                                    if not inferred.get('faction_hint'):
-                                        inferred['faction_hint'] = t
-                                    break
-                                if strong:
-                                    inferred['franchise'] = candidate_fr
-                                    break
                                 else:
-                                    inferred.setdefault('normalization_warnings', []).append('faction_without_system')
-                                    break
+                                    if is_strong:
+                                        inferred['franchise'] = fr
+                                    else:
+                                        inferred.setdefault('normalization_warnings', []).append('character_alias_weak')
+                                break
 
-                    changed = apply_updates_to_variant(v, inferred, session, force=False)
-                    if changed:
-                        any_changed = True
-                if any_changed:
-                    session.commit()
-                offset += batch
+                        if not inferred['franchise']:
+                            for t in token_list:
+                                if t in fam:
+                                    candidate_fr = fam[t]
+                                    f_tok = f_tokens.get(candidate_fr, {'strong': set(), 'weak': set()})
+                                    strong = (t in f_tok.get('strong', set())) or (len(t) > 2 and not t.isdigit()) or alias_count > 1 or has_char_strong
+                                    if is_tabletop_ctx:
+                                        inferred.setdefault('normalization_warnings', []).append('tabletop_no_franchise')
+                                        if not inferred.get('faction_hint'):
+                                            inferred['faction_hint'] = t
+                                        break
+                                    if strong:
+                                        inferred['franchise'] = candidate_fr
+                                        break
+                                    else:
+                                        inferred.setdefault('normalization_warnings', []).append('faction_without_system')
+                                        break
+
+                        changed = apply_updates_to_variant(v, inferred, write_sess, force=False)
+                        if changed:
+                            any_changed = True
+                    if any_changed:
+                        write_sess.commit()
+                    offset += batch
             print('Apply complete.')
 
 
@@ -363,12 +518,13 @@ def parse_args(argv):
     ap = argparse.ArgumentParser(description='Match variants to franchise & characters from franchise manifests')
     ap.add_argument('--batch', type=int, default=200)
     ap.add_argument('--apply', action='store_true')
+    ap.add_argument('--out', type=str, help='Write dry-run proposals + summary to this JSON file')
     return ap.parse_args(argv)
 
 
 def main(argv):
     args = parse_args(argv)
-    process(apply=args.apply, batch=args.batch)
+    process(apply=args.apply, batch=args.batch, out=args.out)
 
 
 if __name__ == '__main__':

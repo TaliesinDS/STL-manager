@@ -2,8 +2,9 @@
 """Clear the `franchise` field for specified Variant IDs.
 
 Usage:
-  python scripts/clear_variant_franchise.py 66 330 331
-  python scripts/clear_variant_franchise.py 66 330 331 --apply
+    python scripts/clear_variant_franchise.py 66 330 331
+    python scripts/clear_variant_franchise.py 66 330 331 --apply
+    python scripts/clear_variant_franchise.py 309 --apply --also-character
 """
 from __future__ import annotations
 from pathlib import Path
@@ -23,6 +24,7 @@ def main():
     p = argparse.ArgumentParser(description="Clear franchise on specified Variant IDs")
     p.add_argument('ids', nargs='+', type=int, help='Variant IDs to clear franchise on')
     p.add_argument('--apply', action='store_true', help='Apply changes to DB')
+    p.add_argument('--also-character', action='store_true', help='Also clear character_name and character_aliases')
     args = p.parse_args()
 
     ids = args.ids
@@ -33,7 +35,13 @@ def main():
             if not v:
                 results.append({"id": vid, "found": False})
                 continue
-            results.append({"id": vid, "found": True, "franchise": v.franchise})
+            results.append({
+                "id": vid,
+                "found": True,
+                "franchise": v.franchise,
+                "character_name": getattr(v, 'character_name', None),
+                "character_aliases": getattr(v, 'character_aliases', None),
+            })
 
         print(json.dumps({"dry_run": not args.apply, "results": results}, indent=2, ensure_ascii=False))
 
@@ -47,6 +55,9 @@ def main():
             if not v:
                 continue
             v.franchise = None
+            if args.also_character:
+                v.character_name = None
+                v.character_aliases = None
         # Commit with simple retry to mitigate transient 'database is locked' errors
         import time
         max_retries = 3

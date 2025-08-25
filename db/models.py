@@ -76,6 +76,7 @@ class Variant(Base):
     lineage_aliases = Column(JSON, default=list)
     faction_general = Column(String(128), nullable=True)
     faction_path = Column(JSON, default=list)
+    franchise_hints = Column(JSON, default=list)
     tabletop_role = Column(String(64), nullable=True)
     pc_candidate_flag = Column(Boolean, default=False)
     human_subtype = Column(String(64), nullable=True)

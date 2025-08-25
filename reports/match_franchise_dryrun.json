@@ -1,0 +1,593 @@
+{
+  "apply": false,
+  "total_candidates": 454,
+  "summary": {
+    "total_proposals": 54,
+    "with_franchise": 26,
+    "with_character_name": 51,
+    "with_character_aliases": 54,
+    "with_faction_general_hint": 0,
+    "top_franchises": {
+      "one_piece": 16,
+      "fate_series": 4,
+      "queens_blade": 3,
+      "kill_la_kill": 1,
+      "avatar_the_last_airbender": 1,
+      "king_of_fighters": 1
+    },
+    "top_characters": {
+      "ahko": 28,
+      "nami_one_piece": 13,
+      "artoria_pendragon": 4,
+      "menace": 3,
+      "ryuko_matoi": 1,
+      "toph_beifong": 1,
+      "angel_kof": 1
+    }
+  },
+  "proposals": [
+    {
+      "variant_id": 68,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW\\KLK",
+      "changes": {
+        "franchise": "kill_la_kill",
+        "character_name": "ryuko_matoi",
+        "character_aliases": [
+          "ryuko"
+        ]
+      }
+    },
+    {
+      "variant_id": 90,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\TophNSFWRenders",
+      "changes": {
+        "franchise": "avatar_the_last_airbender",
+        "character_name": "toph_beifong",
+        "character_aliases": [
+          "toph"
+        ]
+      }
+    },
+    {
+      "variant_id": 91,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\01AhkoNSFW_SplitVersion_STL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 92,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\02AhkoNSFW_PreSupportedSTL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 93,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\03AhkoNSFW_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 94,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\04AhkoNSFW_NonSplitVersion_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 95,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\05AhkoNSFW_ZbrushZtool_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 96,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\06AhkoNSFW_Renders_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 97,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 98,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\01AhkoNurse_SplitVersion_STL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 99,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\02AhkoNurse_PreSupportedSTL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 100,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\03AhkoNurse_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 101,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\04AhkoNurse_NonSplitVersion_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 102,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\05AhkoNurse_ZbrushZtool_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 103,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\06AhkoNurse_Renders_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 104,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 105,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\01AhkoQueen_SplitVersion_STL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 106,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\02AhkoQueen_PreSupportedSTL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 107,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\03AhkoQueen_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 108,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\04AhkoQueen_NonSplitVersion_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 109,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\05AhkoQueen_ZbrushZtool_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 110,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\06AhkoQueen_Renders_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 111,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 112,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\01AhkoSkirt_SplitVersion_STL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 113,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\02AhkoSkirt_PreSupportedSTL_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 114,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\03AhkoSkirt_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 115,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\04AhkoSkirt_NonSplitVersion_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 116,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\05AhkoSkirt_ZbrushZtool_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 117,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\06AhkoSkirt_Renders_Azerama",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 118,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\07AhkoSkirt_AlternativePieces",
+      "changes": {
+        "character_name": "ahko",
+        "character_aliases": [
+          "ahko"
+        ]
+      }
+    },
+    {
+      "variant_id": 141,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Base",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 144,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 150,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale uncut Nami CA3D\\1-9scale uncut Nami CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 151,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\images",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 152,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\PremModels",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 153,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 154,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported",
+      "changes": {
+        "franchise": "one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 155,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 156,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 158,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 159,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 160,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 162,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 163,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 164,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 165,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version",
+      "changes": {
+        "franchise": "one_piece",
+        "character_name": "nami_one_piece",
+        "character_aliases": [
+          "nami"
+        ]
+      }
+    },
+    {
+      "variant_id": 304,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Menace",
+      "changes": {
+        "franchise": "queens_blade",
+        "character_name": "menace",
+        "character_aliases": [
+          "menace"
+        ]
+      }
+    },
+    {
+      "variant_id": 305,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Menace Extra Outfits",
+      "changes": {
+        "franchise": "queens_blade",
+        "character_name": "menace",
+        "character_aliases": [
+          "menace"
+        ]
+      }
+    },
+    {
+      "variant_id": 306,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Render",
+      "changes": {
+        "franchise": "queens_blade",
+        "character_name": "menace",
+        "character_aliases": [
+          "menace"
+        ]
+      }
+    },
+    {
+      "variant_id": 309,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval Church\\Church-decor",
+      "changes": {
+        "franchise": "king_of_fighters",
+        "character_name": "angel_kof",
+        "character_aliases": [
+          "angel"
+        ]
+      }
+    },
+    {
+      "variant_id": 317,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Images",
+      "changes": {
+        "franchise": "fate_series",
+        "character_name": "artoria_pendragon",
+        "character_aliases": [
+          "saber"
+        ]
+      }
+    },
+    {
+      "variant_id": 318,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Optional",
+      "changes": {
+        "franchise": "fate_series",
+        "character_name": "artoria_pendragon",
+        "character_aliases": [
+          "saber"
+        ]
+      }
+    },
+    {
+      "variant_id": 319,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber",
+      "changes": {
+        "franchise": "fate_series",
+        "character_name": "artoria_pendragon",
+        "character_aliases": [
+          "saber"
+        ]
+      }
+    },
+    {
+      "variant_id": 320,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW",
+      "changes": {
+        "franchise": "fate_series",
+        "character_name": "artoria_pendragon",
+        "character_aliases": [
+          "saber"
+        ]
+      }
+    }
+  ]
+}

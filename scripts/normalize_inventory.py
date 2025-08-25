@@ -56,8 +56,8 @@ PART_ACCESSORY = {"bits", "bitz", "accessories"}
 # franchise-owned in this domain model.
 TABLETOP_HINTS = {
     "mini", "miniature", "miniatures", "terrain", "scenery", "base",
-    "bases", "bust", "figure", "figurine", "miniaturesupports", "support",
-    "supports", "mm", "scale", "mini_supports"
+    "bases", "bust", "miniaturesupports", "support", "church", "decor",
+    "mm", "scale", "mini_supports", "squad"
 }
 
 
@@ -206,9 +206,20 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
 
     # Ensure we have a list for co-occurrence checks
     token_list = list(tokens)
-    # Detect tabletop context conservatively: if any token matches our hints,
-    # treat this variant as tabletop and avoid assigning a franchise automatically.
-    is_tabletop = any(t in TABLETOP_HINTS for t in token_list)
+    # Conservative tabletop detection: require tabletop hint tokens AND no
+    # stronger evidence tokens (designer/franchise/character). This avoids
+    # treating artist/collection labels like "minis" or store names as
+    # tabletop context when explicit franchise/character/designer tokens are
+    # present.
+    has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
+    has_stronger_context = False
+    if designer_map and any(t in designer_map for t in token_list):
+        has_stronger_context = True
+    if franchise_map and any(t in franchise_map for t in token_list):
+        has_stronger_context = True
+    if character_map and any(t in character_map for t in token_list):
+        has_stronger_context = True
+    is_tabletop = has_tabletop_hint and not has_stronger_context
     for tok in token_list:
         dom = classify_token(tok)
         # Designer: prefer canonical mapping via DB alias map

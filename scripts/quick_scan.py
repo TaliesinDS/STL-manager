@@ -153,24 +153,36 @@ def load_external_designers(designers_path: pathlib.Path) -> int:
     return added
 
 def tokenize(path: pathlib.Path) -> list[str]:
-    raw = path.stem.lower()
-    parts = SPLIT_CHARS.split(raw)
-    tokens = []
-    for p in parts:
-        p = p.strip()
-        if not p or len(p) < TOKEN_MIN_LEN:
-            continue
-        # Normalize wrapper punctuation and leading markers to reduce noisy variants
-        p = p.strip("()[]{}+")
-        # Remove leading '@' (social/source markers) and trailing '+' artifacts
-        if p.startswith('@'):
-            p = p[1:]
-        # Collapse trailing extension remnants in token (e.g., 'unsupported.stl')
-        if p.endswith('.stl'):
-            p = p[:-4]
-        if not p or len(p) < TOKEN_MIN_LEN:
-            continue
-        tokens.append(p)
+    # Tokenize across all path components (directories + final name) so that
+    # meaningful names embedded in directory structure (e.g., "Store/Artist - Ryuko Matoi/Model")
+    # are not ignored. Preserve original normalization logic per-component.
+    s = str(path)
+    # Normalize Windows backslashes to forward slashes for consistent splitting
+    s = s.replace('\\', '/')
+    comps = [c for c in s.split('/') if c]
+    tokens: list[str] = []
+    for comp in comps:
+        # Remove common file extension if present (keep base name)
+        if '.' in comp:
+            comp = comp.rsplit('.', 1)[0]
+        # Lowercase and split on configured separator chars
+        raw = comp.lower()
+        parts = SPLIT_CHARS.split(raw)
+        for p in parts:
+            p = p.strip()
+            if not p or len(p) < TOKEN_MIN_LEN:
+                continue
+            # Normalize wrapper punctuation and leading markers to reduce noisy variants
+            p = p.strip("()[]{}+")
+            # Remove leading '@' (social/source markers) and trailing '+' artifacts
+            if p.startswith('@'):
+                p = p[1:]
+            # Collapse trailing extension remnants in token (e.g., 'unsupported.stl')
+            if p.endswith('.stl'):
+                p = p[:-4]
+            if not p or len(p) < TOKEN_MIN_LEN:
+                continue
+            tokens.append(p)
     return tokens
 
 def classify_token(tok: str) -> str | None:

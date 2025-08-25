@@ -66,6 +66,7 @@ def run_migration():
         ("lineage_aliases TEXT DEFAULT '[]'", "lineage_aliases"),
         ("faction_general TEXT", "faction_general"),
         ("faction_path TEXT DEFAULT '[]'", "faction_path"),
+    ("franchise_hints TEXT DEFAULT '[]'", "franchise_hints"),
         ("tabletop_role TEXT", "tabletop_role"),
         ("pc_candidate_flag BOOLEAN DEFAULT 0", "pc_candidate_flag"),
         ("human_subtype TEXT", "human_subtype"),

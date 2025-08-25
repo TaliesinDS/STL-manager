@@ -46,6 +46,19 @@ Activate your venv before running scripts (PowerShell):
   - `scripts/test_write_variant.py` — small test to prove DB writes persist.
   - `scripts/fix_skarix_designer.py` — focused fixer to remove mistaken `designer='skarix'` VocabEntry and clear Variant.designer values; supports `--apply`.
 
+Additional matching, migration, and verification scripts
+- `scripts/match_franchise_characters.py` — Automatic matcher that scans `Variant` rows and attempts to infer `franchise` and `character` hints by loading `vocab/franchises/*.json`, `vocab/characters_tokenmap.md`, and `vocab/tokenmap.md`. Produces a dry-run report listing conservative proposals and supports `--apply` to commit. Respects tabletop gating and will not populate `faction_general` from character-first-names for non-tabletop items.
+- `scripts/migrate_add_columns.py` — A safe, small migration helper that adds the `character_name` and `character_aliases` columns to the `variant` table (uses ALTER TABLE). Intended to be run once when upgrading an older DB; creates a DB backup before applying.
+- `scripts/migrate_codex_to_character.py` — Finds variants where `codex_unit_name` is non-empty and `character_name` is empty, and proposes copying `codex_unit_name` → `character_name` (dry-run by default). Use `--apply` to perform the copy. Conservative semantics: only writes when `character_name` is empty unless `--force` is provided.
+- `scripts/export_codex_candidates.py` — Export utility that writes a JSON report of all `Variant` rows with a non-empty `codex_unit_name` for auditing and review. Read-only.
+- `scripts/verify_migration_output.py` — Small verification helper that reads the DB and writes a JSON verification file listing migrated rows (variant id, rel_path, `codex_unit_name`, `character_name`, `character_aliases`). Use after migrations to produce an auditable report.
+- `scripts/apply_proposals_from_report.py` — Reads a matcher or normalizer dry-run report (JSON proposals) and applies the proposals conservatively to the DB. Defaults to dry-run; requires `--apply` to commit. Maps legacy `codex_unit_name` proposals into `character_name` when appropriate.
+- `scripts/apply_vocab_matches.py` — Similar helper that applies proposals generated from vocabulary-based matching (updating `character_name`, `character_aliases`, and safe `franchise` hints). Dry-run by default.
+- `scripts/set_variant_franchise.py` — A small focused utility for manually setting a single `Variant`'s `franchise` (useful for targeted fixes like "var 119 belongs to My Hero Academia"). Requires `--apply` to write.
+- `scripts/create_missing_franchises.py` — Convenience script that creates `VocabEntry(domain='franchise')` rows for franchises found in `vocab/franchises/*.json` when you want franchise token aliases to be present in the DB for normalizer lookup.
+- `scripts/repair_sigmar_variants.py` — Targeted fixer used during debugging to repair variants that were incorrectly matched to Cities of Sigmar; an example of a focused repair script pattern (dry-run default; `--apply` to commit).
+- `scripts/assign_codex_units_aos.py` — Phase-2 style script that assigns `codex_unit_name` to variants when codex extraction is enabled for a specific game system/faction; gated and conservative by default.
+
 ## Recommended pipeline
 
 1. Generate or update inventory (if needed):

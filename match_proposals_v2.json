@@ -1,0 +1,279 @@
+{
+  "dry_run": true,
+  "count": 34,
+  "proposals": [
+    {
+      "variant_id": 62,
+      "rel_path": "sample_store",
+      "proposed": {
+        "franchise": "harry_potter",
+        "franchise_token": "hermione"
+      }
+    },
+    {
+      "variant_id": 65,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW",
+      "proposed": {
+        "franchise": "kill_la_kill",
+        "franchise_token": "ryuko"
+      }
+    },
+    {
+      "variant_id": 73,
+      "rel_path": "sample_store\\Azerama - Adult Toph",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 74,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_Presupported_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 75,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_ZbrushZtool_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 76,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophBigBaseAndAlternativePieces",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 77,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_BuilPlate192x120mm_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 78,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_CutVersion_STL_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 79,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_UncutVersion_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 80,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_BuilPlate192x120mm_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 81,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_CutVersion_STL_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 82,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_Presupported_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 83,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_UncutVersion_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 84,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_ZbrushZtool_Azerama",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 85,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\TophBigBaseAndAlternativePieces",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 86,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\TophNSFWRenders",
+      "proposed": {
+        "franchise": "avatar_the_last_airbender",
+        "franchise_token": "toph"
+      }
+    },
+    {
+      "variant_id": 138,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Nami",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 140,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 142,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Nami_Sup",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 143,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 145,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 147,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\images",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 148,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\PremModels",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 157,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\images",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 161,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version",
+      "proposed": {
+        "franchise": "one_piece",
+        "franchise_token": "nami"
+      }
+    },
+    {
+      "variant_id": 301,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Menace Extra Outfits",
+      "proposed": {
+        "franchise": "queens_blade",
+        "franchise_token": "menace"
+      }
+    },
+    {
+      "variant_id": 302,
+      "rel_path": "sample_store\\Menace_Queen's Blade nsfw\\Menace_Queen's Blade nsfw\\Render",
+      "proposed": {
+        "franchise": "queens_blade",
+        "franchise_token": "menace"
+      }
+    },
+    {
+      "variant_id": 312,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW",
+      "proposed": {
+        "franchise": "fate_series",
+        "franchise_token": "saber"
+      }
+    },
+    {
+      "variant_id": 313,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Images",
+      "proposed": {
+        "franchise": "fate_series",
+        "franchise_token": "saber"
+      }
+    },
+    {
+      "variant_id": 314,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Optional",
+      "proposed": {
+        "franchise": "fate_series",
+        "franchise_token": "saber"
+      }
+    },
+    {
+      "variant_id": 315,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber",
+      "proposed": {
+        "franchise": "fate_series",
+        "franchise_token": "saber"
+      }
+    },
+    {
+      "variant_id": 316,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW",
+      "proposed": {
+        "franchise": "fate_series",
+        "franchise_token": "saber"
+      }
+    },
+    {
+      "variant_id": 328,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Machine",
+      "proposed": {
+        "franchise": "metal_gear_solid",
+        "franchise_token": "big"
+      }
+    },
+    {
+      "variant_id": 374,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Machine",
+      "proposed": {
+        "franchise": "metal_gear_solid",
+        "franchise_token": "big"
+      }
+    }
+  ]
+}
+Dry-run: no changes written. Re-run with --apply to commit proposals.
