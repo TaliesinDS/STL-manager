@@ -43,6 +43,7 @@ codex_units:
         oval_75x25mm: { shape: oval, width_mm: 75, length_mm: 25 }
         oval_75x42mm: { shape: oval, width_mm: 75, length_mm: 42 }
         oval_90x52mm: { shape: oval, width_mm: 90, length_mm: 52 }
+        oval_105x70mm: { shape: oval, width_mm: 105, length_mm: 70 }
         oval_120x92mm: { shape: oval, width_mm: 120, length_mm: 92 }
         oval_170x105mm: { shape: oval, width_mm: 170, length_mm: 105 }
 
@@ -132,7 +133,6 @@ codex_units:
           - repulsor_executioner
           - vindicator
           - whirlwind
-          - rhino
           - razorback
           - drop_pod
           - impulsor
@@ -1225,48 +1225,56 @@ codex_units:
         aliases: ["necron_warrior", "necron_warriors", "warrior", "warriors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       immortals:
         name: "Immortals"
         role: troops
         aliases: ["immortal", "immortals"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       lichguard:
         name: "Lychguard"
         role: elites
         aliases: ["lichguard", "lychguard"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       deathmarks:
         name: "Deathmarks"
         role: elites
         aliases: ["deathmark", "deathmarks"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       destroyers:
         name: "Destroyers"
         role: fast_attack
         aliases: ["destroyer", "destroyers", "lokhust_destroyer", "lokhust_destroyers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_60mm
       heavy_destroyers:
         name: "Heavy Destroyers"
         role: heavy_support
         aliases: ["heavy_destroyer", "heavy_destroyers", "lokhust_heavy_destroyer", "lokhust_heavy_destroyers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_60mm
       skorpekh_destroyers:
         name: "Skorpekh Destroyers"
         role: elites
         aliases: ["skorpekh", "skorpekh_destroyer", "skorpekh_destroyers"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       ophydian_destroyers:
         name: "Ophydian Destroyers"
         role: elites
         aliases: ["ophydian", "ophydian_destroyer", "ophydian_destroyers"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       # Note: In 10th edition, the Plasmacyte is not a standalone unit; it is represented as wargear/ability for certain Destroyer units.
       flayed_ones:
         name: "Flayed Ones"
@@ -1274,72 +1282,84 @@ codex_units:
         aliases: ["flayed_one", "flayed_ones"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       triarch_praetorians:
         name: "Triarch Praetorians"
         role: elites
         aliases: ["triarch_praetorian", "triarch_praetorians", "praetorian", "praetorians"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       tomb_blades:
         name: "Tomb Blades"
         role: fast_attack
         aliases: ["tomb_blade", "tomb_blades"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: oval_75x25mm
       scarab_swarms:
         name: "Canoptek Scarabs"
         role: troops
         aliases: ["scarab", "scarabs", "scarab_swarm", "scarab_swarms"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       canoptek_wraiths:
         name: "Canoptek Wraiths"
         role: fast_attack
         aliases: ["wraith", "wraiths", "canoptek_wraith", "canoptek_wraiths"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: oval_60x35mm
       canoptek_scarabs:
         name: "Canoptek Scarabs"
         role: troops
         aliases: ["canoptek_scarab", "canoptek_scarabs"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       monolith:
         name: "Monolith"
         role: lord_of_war
         aliases: ["monolith"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
       ghost_ark:
         name: "Ghost Ark"
         role: transport
         aliases: ["ghost_ark"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
       doomsday_ark:
         name: "Doomsday Ark"
         role: heavy_support
         aliases: ["doomsday_ark"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
       annihilation_barge:
         name: "Annihilation Barge"
         role: heavy_support
         aliases: ["annihilation_barge"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["necrons"]
+        base_profile: no_base
       night_scythe:
         name: "Night Scythe"
         role: flyer
         aliases: ["night_scythe"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: flying_oval_120x92mm
       doom_scythe:
         name: "Doom Scythe"
         role: flyer
         aliases: ["doom_scythe"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: flying_oval_120x92mm
 
       # Necrons HQs and Characters
       overlord:
@@ -1348,18 +1368,21 @@ codex_units:
         aliases: ["overlord", "necron_overlord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       royal_warden:
         name: "Royal Warden"
         role: hq
         aliases: ["royal_warden", "royal warden"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       catacomb_command_barge:
         name: "Catacomb Command Barge"
         role: hq
         aliases: ["command_barge", "catacomb_command_barge"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
 
       # Cryptek variants
       chronomancer:
@@ -1368,24 +1391,28 @@ codex_units:
         aliases: ["chronomancer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       technomancer:
         name: "Technomancer"
         role: hq
         aliases: ["technomancer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       plasmancer:
         name: "Plasmancer"
         role: hq
         aliases: ["plasmancer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       psychomancer:
         name: "Psychomancer"
         role: hq
         aliases: ["psychomancer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
 
       # Elites and battlefield supports
       hexmark_destroyer:
@@ -1394,12 +1421,14 @@ codex_units:
         aliases: ["hexmark", "hexmark_destroyer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       cryptothralls:
         name: "Cryptothralls"
         role: elites
         aliases: ["cryptothrall", "cryptothralls"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
 
       # Canoptek constructs
       canoptek_reanimator:
@@ -1408,18 +1437,21 @@ codex_units:
         aliases: ["reanimator", "canoptek_reanimator"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_60mm
       canoptek_doomstalker:
         name: "Canoptek Doomstalker"
         role: heavy_support
         aliases: ["doomstalker", "canoptek_doomstalker"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_80mm
       canoptek_spyders:
         name: "Canoptek Spyders"
         role: heavy_support
         aliases: ["canoptek_spyder", "canoptek_spyders", "spyder", "spyders"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_60mm
 
       convergence_of_dominion:
         name: "Convergence of Dominion"
@@ -1428,6 +1460,7 @@ codex_units:
         legal_in_editions: ["9th"]
         legends_in_editions: ["10th"]
         available_to: ["necrons"]
+        base_profile: no_base
 
       gauss_pylon:
         name: "Gauss Pylon"
@@ -1436,6 +1469,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["necrons"]
+        base_profile: no_base
       tomb_citadel:
         name: "Tomb Citadel"
         role: fortification
@@ -1443,6 +1477,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["necrons"]
+        base_profile: no_base
 
       triarch_stalker:
         name: "Triarch Stalker"
@@ -1451,6 +1486,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["necrons"]
+        base_profile: no_base
 
       # Super-heavy and C'tan shards
       tesseract_vault:
@@ -1459,24 +1495,28 @@ codex_units:
         aliases: ["tesseract_vault", "vault"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
       ctan_nightbringer:
         name: "C'tan Shard of the Nightbringer"
         role: lord_of_war
         aliases: ["nightbringer", "ctan_nightbringer", "c'tan_nightbringer", "c'tan shard of the nightbringer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       ctan_deceiver:
         name: "C'tan Shard of the Deceiver"
         role: lord_of_war
         aliases: ["deceiver", "ctan_deceiver", "c'tan_deceiver", "c'tan shard of the deceiver"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
       ctan_void_dragon:
         name: "C'tan Shard of the Void Dragon"
         role: lord_of_war
         aliases: ["void_dragon", "ctan_void_dragon", "c'tan_void_dragon", "c'tan shard of the void dragon"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_60mm
       ctan_transcendent:
         name: "Transcendent C'tan"
         role: lord_of_war
@@ -1484,6 +1524,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["necrons"]
+        base_profile: round_40mm
 
       # Notable Named Characters (Necrons)
       imotekh_the_stormlord:
@@ -1492,42 +1533,49 @@ codex_units:
         aliases: ["imotekh", "imotekh_the_stormlord", "stormlord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       orikan_the_diviner:
         name: "Orikan the Diviner"
         role: hq
         aliases: ["orikan", "orikan_the_diviner"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       trazyn_the_infinite:
         name: "Trazyn the Infinite"
         role: hq
         aliases: ["trazyn", "trazyn_the_infinite"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       illuminor_szeras:
         name: "Illuminor Szeras"
         role: hq
         aliases: ["szeras", "illuminor_szeras"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       anrakyr_the_traveller:
         name: "Anrakyr the Traveller"
         role: hq
         aliases: ["anrakyr", "anrakyr_the_traveller", "anrakyr_the_traveler"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       nemesor_zahndrekh:
         name: "Nemesor Zahndrekh"
         role: hq
         aliases: ["zahndrekh", "nemesor_zahndrekh"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
       vargard_obyron:
         name: "Vargard Obyron"
         role: hq
         aliases: ["obeyron", "obyron", "vargard_obyron"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: round_32mm
 
       # --- Tyranids ---
       termagants:
@@ -1536,90 +1584,105 @@ codex_units:
         aliases: ["termagant", "termagants"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_28_5mm
       hormagaunts:
         name: "Hormagaunts"
         role: troops
         aliases: ["hormagaunt", "hormagaunts"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_28_5mm
       gaunts:
         name: "Gaunts"
         role: troops
         aliases: ["gaunt", "gaunts"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_28_5mm
       genestealers:
         name: "Genestealers"
         role: troops
         aliases: ["genestealer", "genestealers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_32mm
       broodlord:
         name: "Broodlord"
         role: hq
         aliases: ["broodlord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       tyranid_warriors:
         name: "Tyranid Warriors"
         role: troops
         aliases: ["tyranid_warrior", "tyranid_warriors", "warrior", "warriors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       carnifex:
         name: "Carnifex"
         role: heavy_support
         aliases: ["carnifex", "carnifexes", "carnifexs"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_60mm
       hive_tyrant:
         name: "Hive Tyrant"
         role: hq
         aliases: ["hive_tyrant", "hive_tyrants", "tyrant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_60mm
       trygon:
         name: "Trygon"
         role: heavy_support
         aliases: ["trygon", "trygons"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       lictor:
         name: "Lictor"
         role: elites
         aliases: ["lictor", "lictors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       zoanthropes:
         name: "Zoanthropes"
         role: elites
         aliases: ["zoanthrope", "zoanthropes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       neurotyrant:
         name: "Neurotyrant"
         role: hq
         aliases: ["neurotyrant"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_60mm
       biovore:
         name: "Biovore"
         role: heavy_support
         aliases: ["biovore", "biovores"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       pyrovore:
         name: "Pyrovore"
         role: elites
         aliases: ["pyrovore", "pyrovores"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       ripper_swarms:
         name: "Ripper Swarms"
         role: troops
         aliases: ["ripper", "rippers", "ripper_swarm", "ripper_swarms"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
 
       sporocyst:
         name: "Sporocyst"
@@ -1628,12 +1691,14 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: no_base
       tyrannocyte:
         name: "Tyrannocyte"
         role: transport
         aliases: ["tyrannocyte"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: no_base
 
       gargoyles:
         name: "Gargoyles"
@@ -1641,18 +1706,21 @@ codex_units:
         aliases: ["gargoyle", "gargoyles"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: flying_round_32mm
       raveners:
         name: "Raveners"
         role: fast_attack
         aliases: ["ravener", "raveners"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_60x35mm
       tyrant_guard:
         name: "Tyrant Guard"
         role: elites
         aliases: ["tyrant_guard"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_50mm
 
       neurogaunts:
         name: "Neurogaunts"
@@ -1660,46 +1728,54 @@ codex_units:
         aliases: ["neurogaunt", "neurogaunts"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_28_5mm
       von_ryans_leapers:
         name: "Von Ryan's Leapers"
         role: elites
         aliases: ["von_ryans_leapers", "leapers"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       barbgaunts:
         name: "Barbgaunts"
         aliases: ["barbgaunt", "barbgaunts"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       psychophage:
         name: "Psychophage"
         aliases: ["psychophage"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_80mm
       norn_emissary:
         name: "Norn Emissary"
         role: lord_of_war
         aliases: ["norn_emissary"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: oval_170x105mm
       norn_assimilator:
         name: "Norn Assimilator"
         role: lord_of_war
         aliases: ["norn_assimilator"]
         legal_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: oval_170x105mm
       maleceptor:
         name: "Maleceptor"
         role: elites
         aliases: ["maleceptor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       toxicrene:
         name: "Toxicrene"
         role: elites
         aliases: ["toxicrene"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       hive_guard:
         name: "Hive Guard"
         role: heavy_support
@@ -1707,18 +1783,21 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       venomthropes:
         name: "Venomthropes"
         role: elites
         aliases: ["venomthrope", "venomthropes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       winged_hive_tyrant:
         name: "Winged Hive Tyrant"
         role: hq
         aliases: ["winged_hive_tyrant", "flyrant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: flying_oval_120x92mm
 
       exocrine:
         name: "Exocrine"
@@ -1726,24 +1805,28 @@ codex_units:
         aliases: ["exocrine"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       tyrannofex:
         name: "Tyrannofex"
         role: heavy_support
         aliases: ["tyrannofex"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       haruspex:
         name: "Haruspex"
         role: elites
         aliases: ["haruspex"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       tervigon:
         name: "Tervigon"
         role: hq
         aliases: ["tervigon"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
 
       trygon_prime:
         name: "Trygon Prime"
@@ -1751,12 +1834,14 @@ codex_units:
         aliases: ["trygon_prime"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       mawloc:
         name: "Mawloc"
         role: heavy_support
         aliases: ["mawloc"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_120x92mm
       harpy:
         name: "Harpy"
         role: flyer
@@ -1764,6 +1849,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: flying_oval_120x92mm
       hive_crone:
         name: "Hive Crone"
         role: flyer
@@ -1771,6 +1857,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["tyranids"]
+        base_profile: flying_oval_120x92mm
 
       # Tyranid Named
       deathleaper:
@@ -1779,18 +1866,21 @@ codex_units:
         aliases: ["deathleaper"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
       old_one_eye:
         name: "Old One Eye"
         role: hq
         aliases: ["old_one_eye"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_60mm
       parasite_of_mortrex:
         name: "Parasite of Mortrex"
         role: hq
         aliases: ["parasite_of_mortrex", "parasite"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_40mm
 
       # --- Orks ---
       ork_boyz:
