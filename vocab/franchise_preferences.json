@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "franchises": {
+    "warhammer": {
+      "aliases": ["warhammer", "wh", "warhammer_40k", "warhammer 40k", "40k", "age of sigmar", "aos", "sigmar"],
+      "default_intended_use_bucket": "tabletop_intent"
+    },
+    "lord_of_the_rings": {
+      "aliases": ["lord_of_the_rings", "lord of the rings", "lotr", "the hobbit", "hobbit", "middle-earth", "mesbg"],
+      "default_intended_use_bucket": "display_large"
+    }
+  }
+}

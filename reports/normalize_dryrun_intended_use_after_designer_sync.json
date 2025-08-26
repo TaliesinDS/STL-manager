@@ -1,0 +1,1243 @@
+{
+  "apply": false,
+  "total_examined": 492,
+  "proposals_count": 176,
+  "proposals": [
+    {
+      "variant_id": 68,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW\\KLK",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 69,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 77,
+      "rel_path": "sample_store\\Azerama - Adult Toph",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 78,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_Presupported_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 79,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 80,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophBigBaseAndAlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 81,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_BuilPlate192x120mm_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 82,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_CutVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 83,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_UncutVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 84,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_BuilPlate192x120mm_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 85,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_CutVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 86,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_Presupported_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 87,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_UncutVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 88,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 89,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\TophBigBaseAndAlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 90,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\TophNSFWRenders",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 91,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\01AhkoNSFW_SplitVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 92,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\02AhkoNSFW_PreSupportedSTL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 93,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\03AhkoNSFW_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 94,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\04AhkoNSFW_NonSplitVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 95,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\05AhkoNSFW_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 96,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\06AhkoNSFW_Renders_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 97,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 98,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\01AhkoNurse_SplitVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 99,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\02AhkoNurse_PreSupportedSTL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 100,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\03AhkoNurse_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 101,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\04AhkoNurse_NonSplitVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 102,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\05AhkoNurse_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 103,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\06AhkoNurse_Renders_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 104,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 105,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\01AhkoQueen_SplitVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 106,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\02AhkoQueen_PreSupportedSTL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 107,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\03AhkoQueen_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 108,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\04AhkoQueen_NonSplitVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 109,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\05AhkoQueen_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 110,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\06AhkoQueen_Renders_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 111,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\07Ahko_AlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 112,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\01AhkoSkirt_SplitVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 113,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\02AhkoSkirt_PreSupportedSTL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 114,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\03AhkoSkirt_ChituboxBuilPlateM_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 115,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\04AhkoSkirt_NonSplitVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 116,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\05AhkoSkirt_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 117,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\06AhkoSkirt_Renders_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 118,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\07AhkoSkirt_AlternativePieces",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 119,
+      "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\nsfw",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 120,
+      "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\sfw",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 121,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\25mm",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 122,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\30mm",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 123,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\40mm",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 124,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\50mm",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 125,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 126,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc\\Presupported",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 207,
+      "rel_path": "sample_store\\Flesh-eater Courts\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon in Monster Form",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 222,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules\\Combined",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 223,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 231,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 232,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Bodies",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 233,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 234,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 235,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Bodies",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 236,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 240,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 241,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX\\Modern Fantasy Human Gunners",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 242,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\Modern Fantasy Human Gunners",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 258,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 259,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Bodies",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 260,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Helmets",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 261,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 262,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 263,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Bodies",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 264,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Helmets",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 265,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 277,
+      "rel_path": "sample_store\\Goblin\\gaz minis - goblin witch nimue + christmas",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 321,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\01Sakura_SplitVersion_STL_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 322,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\02Sakura_NonSplitVersion_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 323,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\03Sakura_ZbrushZtool_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 324,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama\\04SakuraNSFW_Renders_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 325,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama",
+      "changes": {
+        "intended_use_bucket": "display_large"
+      }
+    },
+    {
+      "variant_id": 331,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Crew",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 332,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Centrepiece\\Machine",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 333,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 334,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 335,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 336,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 337,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 338,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 339,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 340,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 341,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 342,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 343,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 344,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 345,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 346,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 347,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 348,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 349,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 350,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 351,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Modular Parts",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 352,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 353,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 354,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 355,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 356,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 357,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 358,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 359,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 360,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 361,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 362,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 363,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 364,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 365,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 366,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 367,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 368,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 369,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 370,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 371,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 372,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 373,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 374,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 375,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 376,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 377,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Crew",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 378,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Centrepiece\\Machine",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 379,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 380,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Duchess Scratchfang, Monarch of the Ratkin without Cloak",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 381,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Gnawnine Darktail, Grey Prophetess",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 382,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 383,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Mordkarn, Inventor Electroclast",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 384,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Nefrascara, The Swarm Mistress",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 385,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 386,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Sekheta, High Priestess without The Ark of Damnation",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 387,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 388,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Seshatara, Marshal Tombshade with Bow",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 389,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\The Ark of Damnation",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 390,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Vezthik, Marksman Voltwrench",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 391,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Whisperfang, The Silent Claw",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 392,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 393,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 394,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skarix Deathbringer, Great Rodent Demon with Sickles",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 395,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skull Screecher Catapult",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 396,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Sunset Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 397,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Modular Parts",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 398,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 399,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 400,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 401,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers\\Sniper_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 402,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 403,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 404,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 405,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 406,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_D",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 407,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia\\Ratkin_E",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 408,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 409,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 410,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 411,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 412,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 413,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 414,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 415,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 416,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_D",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 417,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards\\Bowguards_E",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 418,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 419,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_A",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 420,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_B",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 421,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants\\Chariot_Crew_C",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 422,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 486,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\@STL_Printer",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 487,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Bodies",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 488,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Helmets",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 489,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    },
+    {
+      "variant_id": 490,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Weapons and Arms",
+      "changes": {
+        "intended_use_bucket": "tabletop_intent"
+      }
+    }
+  ],
+  "field_summary": {
+    "intended_use_bucket": 176
+  },
+  "db_url": "sqlite:///./data/stl_manager_v1.db"
+}

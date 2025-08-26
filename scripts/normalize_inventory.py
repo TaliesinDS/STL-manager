@@ -35,6 +35,58 @@ from scripts.quick_scan import (
     SPLIT_CHARS,
 )
 
+def load_designers_json(path: Path) -> tuple[dict, list[tuple[list[str], str]], dict[str, str]]:
+    """Load designers_tokenmap.json if present.
+    Returns:
+      - alias_map: alias->canonical
+      - phrases: list of (token_sequence, canonical)
+      - specialization: canonical->intended_use_bucket (if provided)
+    """
+    try:
+        import json as _json
+        data = _json.loads(path.read_text(encoding='utf-8'))
+    except Exception:
+        return {}, [], {}
+    designers = (data or {}).get('designers', {})
+    alias_map: dict[str, str] = {}
+    phrases: list[tuple[list[str], str]] = []
+    specialization: dict[str, str] = {}
+    for canon, meta in designers.items():
+        aliases = [a for a in (meta or {}).get('aliases', []) if a]
+        for a in aliases + [canon]:
+            alias_map[a.strip().lower()] = canon
+            toks = [t for t in SPLIT_CHARS.split(a.lower()) if t]
+            if len(toks) >= 2:
+                phrases.append((toks, canon))
+        if (meta or {}).get('intended_use_bucket'):
+            specialization[canon] = meta['intended_use_bucket']
+    return alias_map, phrases, specialization
+
+def load_franchise_preferences(path: Path) -> tuple[list[tuple[list[str], str]], dict[str, str]]:
+    """Load franchise_preferences.json if present.
+    Returns:
+      - franchise_phrases: list of (token_sequence, canonical_franchise)
+      - default_bucket: canonical_franchise -> default intended_use_bucket
+    """
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+    except Exception:
+        return [], {}
+    franchises = (data or {}).get('franchises', {})
+    franchise_phrases: list[tuple[list[str], str]] = []
+    default_bucket: dict[str, str] = {}
+    for canon, meta in franchises.items():
+        aliases = [a for a in (meta or {}).get('aliases', []) if a]
+        for a in aliases + [canon]:
+            toks = [t for t in SPLIT_CHARS.split(a.lower()) if t]
+            if toks:
+                franchise_phrases.append((toks, canon))
+        if (meta or {}).get('default_intended_use_bucket'):
+            default_bucket[canon] = meta['default_intended_use_bucket']
+    # Prefer longer phrases first during matching
+    franchise_phrases.sort(key=lambda pc: -len(pc[0]))
+    return franchise_phrases, default_bucket
+
 # Lightweight local rule seeds (kept conservative and aligned with tokenmap.md)
 ROLE_POSITIVE = {"hero", "rogue", "wizard", "fighter", "paladin", "cleric", "barbarian", "ranger", "sorcerer", "warlock", "bard"}
 ROLE_NEGATIVE = {"horde", "swarm", "minion", "mob", "unit", "regiment"}
@@ -743,7 +795,8 @@ def diff_updates_for_variant(variant: Variant, inferred: dict, force: bool = Fal
 def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bool, tokenmap_path: Optional[str] = None,
                      use_intended_use: bool = False, use_general_faction: bool = False, out: Optional[str] = None,
                      include_fields: Optional[list[str]] = None, exclude_fields: Optional[list[str]] = None,
-                     print_summary: bool = False, ids: Optional[list[int]] = None):
+                     print_summary: bool = False, ids: Optional[list[int]] = None,
+                     use_franchise_preferences: bool = True):
     root = Path(__file__).resolve().parent.parent
     # try to load tokenmap to set token version & domain sets
     tm_path = Path(tokenmap_path) if tokenmap_path else (root / 'vocab' / 'tokenmap.md')
@@ -754,9 +807,26 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
         token_map_version = None
     intended_use_map = parse_tokenmap_intended_use(tm_path) if (tm_path.exists() and use_intended_use) else None
     general_faction_map = parse_tokenmap_general_faction(tm_path) if (tm_path.exists() and use_general_faction) else None
-    # Load designers phrases from vocab/designers_tokenmap.md
-    designers_path = (root / 'vocab' / 'designers_tokenmap.md')
-    designer_phrases = parse_designers_aliases(designers_path) if designers_path.exists() else []
+    # Load designers from JSON (preferred) and fallback to MD phrases
+    designers_json = (root / 'vocab' / 'designers_tokenmap.json')
+    designer_alias_override: dict[str, str] = {}
+    designer_specialization: dict[str, str] = {}
+    designer_phrases: list[tuple[list[str], str]] = []
+    if designers_json.exists():
+        alias_map_json, phrases_json, specialization = load_designers_json(designers_json)
+        designer_alias_override = alias_map_json
+        designer_phrases = phrases_json
+        designer_specialization = specialization
+    else:
+        designers_path = (root / 'vocab' / 'designers_tokenmap.md')
+        designer_phrases = parse_designers_aliases(designers_path) if designers_path.exists() else []
+
+    # Load franchise preferences (optional, enabled by default)
+    franchise_pref_phrases: list[tuple[list[str], str]] = []
+    franchise_pref_default: dict[str, str] = {}
+    fp_json = (root / 'vocab' / 'franchise_preferences.json')
+    if use_franchise_preferences and fp_json.exists():
+        franchise_pref_phrases, franchise_pref_default = load_franchise_preferences(fp_json)
 
     # Normalize filters
     include_set = set([f.strip() for f in (include_fields or []) if f.strip()])
@@ -765,6 +835,9 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
     print(f"Using database: {DB_URL}")
     with get_session() as session:
         designer_map = build_designer_alias_map(session)
+        # If JSON provided aliases, overlay them (prefer explicit JSON over DB)
+        if designer_alias_override:
+            designer_map = {**designer_map, **designer_alias_override}
         franchise_map = build_franchise_alias_map(session)
         character_map = build_character_alias_map(session)
 
@@ -789,6 +862,27 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                            intended_use_map=intended_use_map,
                                            general_faction_map=general_faction_map,
                                            designer_phrases=designer_phrases)
+                # If a designer specialization is defined and we inferred designer, set intended_use conservatively
+                d = inferred.get('designer')
+                if d and (not inferred.get('intended_use_bucket')) and d in designer_specialization:
+                    inferred['intended_use_bucket'] = designer_specialization[d]
+                # If still unset, use franchise preferences by phrase detection in tokens
+                if (not inferred.get('intended_use_bucket')) and franchise_pref_phrases:
+                    tlist = list(tokens)
+                    n = len(tlist)
+                    hit_canon: Optional[str] = None
+                    for phrase, canon in franchise_pref_phrases:
+                        L = len(phrase)
+                        if L == 0 or L > n:
+                            continue
+                        for i in range(0, n - L + 1):
+                            if tlist[i:i+L] == phrase:
+                                hit_canon = canon
+                                break
+                        if hit_canon:
+                            break
+                    if hit_canon and hit_canon in franchise_pref_default:
+                        inferred['intended_use_bucket'] = franchise_pref_default[hit_canon]
                 inferred["token_version"] = token_map_version
                 # IMPORTANT: do not mutate DB objects during preview; compute a diff instead
                 changed = diff_updates_for_variant(v, inferred, force=force)
@@ -842,6 +936,25 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                                intended_use_map=intended_use_map,
                                                general_faction_map=general_faction_map,
                                                designer_phrases=designer_phrases)
+                    d = inferred.get('designer')
+                    if d and (not inferred.get('intended_use_bucket')) and d in designer_specialization:
+                        inferred['intended_use_bucket'] = designer_specialization[d]
+                    if (not inferred.get('intended_use_bucket')) and franchise_pref_phrases:
+                        tlist = list(tokens)
+                        n = len(tlist)
+                        hit_canon: Optional[str] = None
+                        for phrase, canon in franchise_pref_phrases:
+                            L = len(phrase)
+                            if L == 0 or L > n:
+                                continue
+                            for i in range(0, n - L + 1):
+                                if tlist[i:i+L] == phrase:
+                                    hit_canon = canon
+                                    break
+                            if hit_canon:
+                                break
+                        if hit_canon and hit_canon in franchise_pref_default:
+                            inferred['intended_use_bucket'] = franchise_pref_default[hit_canon]
                     inferred["token_version"] = token_map_version
                     changed = apply_updates_to_variant(v, inferred, session, force=force)
                     if changed:
@@ -867,6 +980,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--exclude-fields', help='Comma-separated list of fields to exclude from proposals (reporting only)')
     ap.add_argument('--print-summary', action='store_true', help='Print a summary of change counts by field')
     ap.add_argument('--ids', help='Comma-separated list of Variant IDs to process (scoped run)')
+    ap.add_argument('--no-franchise-preferences', action='store_true', help='Disable intended-use inference from franchise_preferences.json')
     return ap.parse_args(argv)
 
 
@@ -879,7 +993,8 @@ def main(argv: list[str]) -> int:
                      tokenmap_path=args.tokenmap, use_intended_use=args.use_intended_use,
                      use_general_faction=args.use_general_faction, out=args.out,
                      include_fields=include_fields, exclude_fields=exclude_fields,
-                     print_summary=args.print_summary, ids=ids)
+                     print_summary=args.print_summary, ids=ids,
+                     use_franchise_preferences=(not args.no_franchise_preferences))
     return 0
 
 

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Load designers_tokenmap.md into the DB as VocabEntry(domain='designer').
+Load designers_tokenmap (MD or JSON) into the DB as VocabEntry(domain='designer').
 
 Usage:
     .venv\Scripts\Activate.ps1
     python scripts\load_designers.py vocab\designers_tokenmap.md
 """
 import sys
+from typing import Optional
 import re
 import ast
 from pathlib import Path
@@ -23,7 +24,7 @@ except Exception as e:
 FENCE_RE = re.compile(r"^```")
 ENTRY_RE = re.compile(r"^\s*([A-Za-z0-9_\-]+)\s*:\s*(\[.*\])\s*$")
 
-def parse_tokenmap(path: Path):
+def parse_tokenmap_md(path: Path):
     text = path.read_text(encoding="utf8")
     lines = text.splitlines()
     inside = False
@@ -52,6 +53,19 @@ def parse_tokenmap(path: Path):
             aliases = []
         result[key] = aliases
     return result
+
+def parse_tokenmap_json(path: Path):
+    try:
+        import json
+        data = json.loads(path.read_text(encoding='utf8'))
+    except Exception as e:
+        print("ERROR: failed to parse JSON:", e)
+        return {}, {}
+    designers = (data or {}).get('designers', {})
+    aliases = {k: list((v or {}).get('aliases') or []) for k, v in designers.items()}
+    meta = {k: {kk: vv for kk, vv in (v or {}).items() if kk != 'aliases'} for k, v in designers.items()}
+    map_version = (data or {}).get('designers_map_version')
+    return aliases, {"map_version": map_version, "per_key_meta": meta}
 
 
 def normalize_alias(a: str) -> str:
@@ -89,14 +103,14 @@ def detect_conflicts(entries: dict, session):
     db_conflicts = {a: cs for a, cs in combined.items() if len(cs) > 1}
     return infile_conflicts, db_conflicts
 
-def sniff_map_version(path: Path):
+def sniff_map_version_md(path: Path):
     text = path.read_text(encoding="utf8")
     m = re.search(r"designers_map_version\s*:\s*(\d+)", text)
     if m:
         return int(m.group(1))
     return None
 
-def upsert_vocab_entries(session, entries: dict, source_file: str, map_version=None):
+def upsert_vocab_entries(session, entries: dict, source_file: str, map_version=None, extra_meta_per_key: Optional[dict] = None):
     # detect conflicts and annotate meta
     infile_conflicts, db_conflicts = detect_conflicts(entries, session)
     if infile_conflicts:
@@ -113,6 +127,9 @@ def upsert_vocab_entries(session, entries: dict, source_file: str, map_version=N
         meta = {"source_file": str(source_file)}
         if map_version is not None:
             meta["map_version"] = map_version
+        # merge extra meta (e.g., intended_use_bucket from JSON)
+        if extra_meta_per_key and canonical in extra_meta_per_key:
+            meta.update({k: v for k, v in (extra_meta_per_key.get(canonical) or {}).items() if v is not None})
         # attach conflict hints for this canonical if any of its aliases are conflicted
         conflicts_for_key = []
         for a in normalized_aliases + [canonical]:
@@ -133,17 +150,24 @@ def upsert_vocab_entries(session, entries: dict, source_file: str, map_version=N
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python scripts/load_designers.py vocab/designers_tokenmap.md")
+        print("Usage: python scripts/load_designers.py <vocab/designers_tokenmap.(md|json)>")
         sys.exit(2)
     path = Path(sys.argv[1])
     if not path.exists():
         print("File not found:", path)
         sys.exit(2)
-    entries = parse_tokenmap(path)
-    map_version = sniff_map_version(path)
+    extra_meta_per_key = None
+    map_version = None
+    if path.suffix.lower() == '.json':
+        entries, meta = parse_tokenmap_json(path)
+        map_version = (meta or {}).get('map_version')
+        extra_meta_per_key = (meta or {}).get('per_key_meta')
+    else:
+        entries = parse_tokenmap_md(path)
+        map_version = sniff_map_version_md(path)
     session = SessionLocal()
     try:
-        upsert_vocab_entries(session, entries, source_file=path.name, map_version=map_version)
+        upsert_vocab_entries(session, entries, source_file=path.name, map_version=map_version, extra_meta_per_key=extra_meta_per_key)
         print(f"Upserted {len(entries)} designer vocab entries (map_version={map_version})")
     finally:
         session.close()
