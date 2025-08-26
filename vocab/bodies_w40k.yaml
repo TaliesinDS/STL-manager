@@ -1,0 +1,80 @@
+# Warhammer 40K Bodies/Armor Types Vocabulary
+# Purpose: Represent common model body/armor classes and what attachment slots they support.
+# This enables modular matching for kits with swappable hands, backpacks, heads, etc.
+# Not edition-specific; purely visual/structural for normalization.
+
+# Schema per entry
+#
+# bodies:
+#   <slug>:
+#     name: "Readable name"
+#     faction: faction_key
+#     class: "infantry | terminator | gravis | biker | character | primaris | firstborn | jump_infantry"
+#     slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "base", "mount"]
+#     aliases: ["slug", "common tokens"]
+#     notes: "optional"
+
+bodies:
+  sm_infantry_primaris:
+    name: "Space Marine Primaris Infantry Body"
+    faction: space_marines
+    class: primaris
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["primaris_body", "intercessor_body", "primaris"]
+    notes: "Standard Mk X body for Intercessor/Assault variants."
+
+  sm_infantry_firstborn:
+    name: "Space Marine Firstborn Infantry Body"
+    faction: space_marines
+    class: infantry
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["firstborn_body", "tactical_marine_body", "firstborn"]
+
+  sm_terminator:
+    name: "Space Marine Terminator Body"
+    faction: space_marines
+    class: terminator
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["terminator_body", "termi_body", "terminator"]
+
+  sm_gravis:
+    name: "Space Marine Gravis Armour Body"
+    faction: space_marines
+    class: gravis
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["gravis_body", "aggressor_body", "gravis"]
+
+  sm_jump_infantry:
+    name: "Space Marine Jump Infantry Body"
+    faction: space_marines
+    class: jump_infantry
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["assault_marine_body", "jump_pack_body", "jump_infantry"]
+
+  sm_character_captain:
+    name: "Space Marine Captain Body"
+    faction: space_marines
+    class: character
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["captain_body", "captain"]
+
+  sm_character_apothecary:
+    name: "Space Marine Apothecary Body"
+    faction: space_marines
+    class: character
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["apothecary_body", "apothecary"]
+
+  sm_character_techmarine:
+    name: "Space Marine Techmarine Body"
+    faction: space_marines
+    class: character
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base"]
+    aliases: ["techmarine_body", "techmarine"]
+
+  sm_biker:
+    name: "Space Marine Biker Body"
+    faction: space_marines
+    class: biker
+    slots: ["head", "left_hand", "right_hand", "both_hands", "backpack", "shoulder", "torso", "waist", "legs", "base", "mount"]
+    aliases: ["biker_body", "bike_body"]

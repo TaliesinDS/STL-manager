@@ -1,0 +1,944 @@
+# Warhammer 40K Wargear and Loadouts Vocabulary
+# Purpose: Canonicalize visual weapons, shields, and accessories independently of units so
+# the normalizer can identify a base unit and its depicted loadout without exploding
+# the unit manifest into thousands of variants. This file is edition-aware only for
+# availability/legends flags; it does not encode weapon stats.
+
+# Schema per entry
+#
+# wargear:
+#   <slug>:
+#     name: "Human‑readable name"
+#     category: "weapon_ranged | weapon_melee | pistol | heavy_weapon | shield | accessory | support_system"
+#     slot: "right_hand | left_hand | both_hands | backpack | shoulder | base | mount | head"
+#     aliases: ["slug", "spaced alias", "common_synonym"]
+#     legal_in_editions: ["8th", "9th", "10th"]
+#     legends_in_editions: []        # optional, default none
+#     available_to: [faction, ...]   # use same faction keys as in codex_units_w40k.yaml
+#     notes: "optional short note"
+
+wargear:
+  # --- Adeptus Astartes (Space Marines) core ---
+  bolt_rifle:
+    name: "Bolt Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["bolt_rifle", "bolt rifle", "boltrifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+    notes: "Intercessor standard pattern."
+  auto_bolt_rifle:
+    name: "Auto Bolt Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["auto_bolt_rifle", "auto bolt rifle", "autoboltrifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  stalker_bolt_rifle:
+    name: "Stalker Bolt Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["stalker_bolt_rifle", "stalker bolt rifle", "stalker"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  bolt_pistol:
+    name: "Bolt Pistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["bolt_pistol", "bolt pistol", "bpistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "grey_knights"]
+  plasma_pistol:
+    name: "Plasma Pistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["plasma_pistol", "plasma pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights"]
+  plasma_gun:
+    name: "Plasma Gun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["plasma_gun", "plasmagun", "plasma gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights", "genestealer_cults"]
+  melta_gun:
+    name: "Meltagun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["melta_gun", "meltagun", "melta gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights", "genestealer_cults"]
+  flamer:
+    name: "Flamer"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["flamer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights", "genestealer_cults"]
+  grav_gun:
+    name: "Grav-gun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["grav_gun", "grav gun", "gravgun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  heavy_bolter:
+    name: "Heavy Bolter"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["heavy_bolter", "heavy bolter"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum"]
+  lascannon:
+    name: "Lascannon"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["lascannon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "astra_militarum"]
+  missile_launcher:
+    name: "Missile Launcher"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["missile_launcher", "missile launcher", "ml"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "astra_militarum"]
+  chainsword:
+    name: "Chainsword"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["chainsword"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights", "genestealer_cults"]
+  power_sword:
+    name: "Power Sword"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["power_sword", "power sword"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "astra_militarum", "grey_knights"]
+  power_fist:
+    name: "Power Fist"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["power_fist", "power fist"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  thunder_hammer:
+    name: "Thunder Hammer"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["thunder_hammer", "thunder hammer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  storm_shield:
+    name: "Storm Shield"
+    category: shield
+    slot: left_hand
+    aliases: ["storm_shield", "storm shield"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+
+  # Space Marines additional modular kit
+  boltgun:
+    name: "Boltgun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["boltgun", "bolt gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "grey_knights"]
+  storm_bolter:
+    name: "Storm Bolter"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["storm_bolter", "storm bolter"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "grey_knights"]
+  combi_plasma:
+    name: "Combi-plasma"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["combi_plasma", "combi-plasma", "combi plasma"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  combi_melta:
+    name: "Combi-melta"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["combi_melta", "combi-melta", "combi melta"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  combi_flamer:
+    name: "Combi-flamer"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["combi_flamer", "combi-flamer", "combi flamer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  lightning_claw_left:
+    name: "Lightning Claw (Left)"
+    category: weapon_melee
+    slot: left_hand
+    aliases: ["lightning_claw_left", "lightning claw left", "left lightning claw"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  lightning_claw_right:
+    name: "Lightning Claw (Right)"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["lightning_claw_right", "lightning claw right", "right lightning claw"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  force_sword:
+    name: "Force Sword"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["force_sword", "force sword"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "grey_knights"]
+  force_staff:
+    name: "Force Staff"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["force_staff", "force staff"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "grey_knights"]
+  crozius_arcanum:
+    name: "Crozius Arcanum"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["crozius_arcanum", "crozius"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  narthecium:
+    name: "Narthecium"
+    category: accessory
+    slot: left_hand
+    aliases: ["narthecium"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+    notes: "Apothecary tool, often left-hand."
+  reductor:
+    name: "Reductor"
+    category: accessory
+    slot: left_hand
+    aliases: ["reductor", "apothecary reductor"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+    notes: "Apothecary surgical tool."
+  servo_arm:
+    name: "Servo-arm"
+    category: support_system
+    slot: backpack
+    aliases: ["servo_arm", "servo arm"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+    notes: "Techmarine backpack-mounted arm."
+  jump_pack:
+    name: "Jump Pack"
+    category: support_system
+    slot: backpack
+    aliases: ["jump_pack", "jump pack", "jumppack"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines"]
+  power_pack:
+    name: "Power Pack"
+    category: support_system
+    slot: backpack
+    aliases: ["power_pack", "power pack", "backpack"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "chaos_space_marines", "adepta_sororitas", "grey_knights"]
+
+  # --- Aeldari ---
+  shuriken_catapult:
+    name: "Shuriken Catapult"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["shuriken_catapult", "shuriken catapult"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["aeldari"]
+  ranger_long_rifle:
+    name: "Ranger Long Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["ranger_long_rifle", "ranger long rifle", "long rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["aeldari"]
+
+  # --- Drukhari ---
+  splinter_rifle:
+    name: "Splinter Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["splinter_rifle", "splinter rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["drukhari"]
+
+  # --- Necrons ---
+  gauss_flayer:
+    name: "Gauss Flayer"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["gauss_flayer", "gauss flayer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["necrons"]
+  gauss_reaper:
+    name: "Gauss Reaper"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["gauss_reaper", "gauss reaper"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["necrons"]
+
+  # --- Orks ---
+  choppa:
+    name: "Choppa"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["choppa"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+  slugga:
+    name: "Slugga"
+    category: pistol
+    slot: right_hand
+    aliases: ["slugga"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+  big_shoota:
+    name: "Big Shoota"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["big_shoota", "big shoota"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+  rokkit_launcha:
+    name: "Rokkit Launcha"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["rokkit_launcha", "rokkit launcha"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+
+  # --- T'au ---
+  pulse_rifle:
+    name: "Pulse Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["pulse_rifle", "pulse rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  pulse_carbine:
+    name: "Pulse Carbine"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["pulse_carbine", "pulse carbine"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  fusion_blaster:
+    name: "Fusion Blaster"
+    category: weapon_ranged
+    slot: right_hand
+    aliases: ["fusion_blaster", "fusion blaster"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  ion_rifle:
+    name: "Ion Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["ion_rifle", "ion rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+
+  # --- Astra Militarum ---
+  lasgun:
+    name: "Lasgun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["lasgun", "las gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum", "genestealer_cults"]
+  laspistol:
+    name: "Laspistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["laspistol", "las pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum", "genestealer_cults"]
+  grenade_launcher:
+    name: "Grenade Launcher"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["grenade_launcher", "grenade launcher"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum", "genestealer_cults"]
+  sniper_rifle:
+    name: "Sniper Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["sniper_rifle", "sniper rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum"]
+  heavy_stubber:
+    name: "Heavy Stubber"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["heavy_stubber", "heavy stubber"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum", "genestealer_cults"]
+  autocannon:
+    name: "Autocannon"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["autocannon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum"]
+  mortar:
+    name: "Mortar"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["mortar"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["astra_militarum"]
+
+  # --- Adepta Sororitas ---
+  heavy_flamer:
+    name: "Heavy Flamer"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["heavy_flamer", "heavy flamer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adepta_sororitas"]
+  multi_melta:
+    name: "Multi-melta"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["multi_melta", "multi-melta", "multi melta"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adepta_sororitas"]
+  inferno_pistol:
+    name: "Inferno Pistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["inferno_pistol", "inferno pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adepta_sororitas"]
+  eviscerator:
+    name: "Eviscerator"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["eviscerator"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adepta_sororitas"]
+  simulacrum_imperialis:
+    name: "Simulacrum Imperialis"
+    category: accessory
+    slot: backpack
+    aliases: ["simulacrum_imperialis", "simulacrum", "imperialis icon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adepta_sororitas"]
+
+  # --- Chaos Space Marines ---
+  chainaxe:
+    name: "Chainaxe"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["chainaxe", "chain axe"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+  accursed_weapon:
+    name: "Accursed Weapon"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["accursed_weapon", "accursed weapon", "daemon blade"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+
+  # --- Adeptus Custodes ---
+  guardian_spear:
+    name: "Guardian Spear"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["guardian_spear", "guardian spear"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adeptus_custodes"]
+  sentinel_blade:
+    name: "Sentinel Blade"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["sentinel_blade", "sentinel blade"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adeptus_custodes"]
+  presidium_shield:
+    name: "Presidium Shield"
+    category: shield
+    slot: left_hand
+    aliases: ["presidium_shield", "presidium shield", "custodes shield"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adeptus_custodes"]
+  misericordia:
+    name: "Misericordia"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["misericordia", "custodes dagger"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["adeptus_custodes"]
+
+  # --- Grey Knights ---
+  nemesis_force_sword:
+    name: "Nemesis Force Sword"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["nemesis_force_sword", "nemesis sword", "force sword nemesis"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["grey_knights"]
+  nemesis_halberd:
+    name: "Nemesis Halberd"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["nemesis_halberd", "nemesis halberd", "warding halberd"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["grey_knights"]
+  nemesis_daemon_hammer:
+    name: "Nemesis Daemon Hammer"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["nemesis_daemon_hammer", "daemon hammer", "nemesis hammer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["grey_knights"]
+  warding_stave:
+    name: "Warding Stave"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["warding_stave", "warding stave", "nemesis stave"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["grey_knights"]
+
+  # --- Necrons (more) ---
+  tesla_carbine:
+    name: "Tesla Carbine"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["tesla_carbine", "tesla carbine"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["necrons"]
+  gauss_blaster:
+    name: "Gauss Blaster"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["gauss_blaster", "gauss blaster"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["necrons"]
+  warscythe:
+    name: "Warscythe"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["warscythe"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["necrons"]
+
+  # --- Aeldari (more) ---
+  shuriken_pistol:
+    name: "Shuriken Pistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["shuriken_pistol", "shuriken pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["aeldari"]
+  avenger_shuriken_catapult:
+    name: "Avenger Shuriken Catapult"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["avenger_shuriken_catapult", "avenger catapult", "asc"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["aeldari"]
+  fusion_gun:
+    name: "Fusion Gun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["fusion_gun", "fusion gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["aeldari"]
+
+  # --- Drukhari (more) ---
+  splinter_pistol:
+    name: "Splinter Pistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["splinter_pistol", "splinter pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["drukhari"]
+  blaster:
+    name: "Blaster"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["blaster"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["drukhari"]
+  shredder:
+    name: "Shredder"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["shredder"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["drukhari"]
+  agoniser:
+    name: "Agoniser"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["agoniser", "agonizer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["drukhari"]
+
+  # --- Orks (more) ---
+  power_klaw:
+    name: "Power Klaw"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["power_klaw", "power klaw"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+  kustom_shoota:
+    name: "Kustom Shoota"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["kustom_shoota", "kustom shoota"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+
+  # --- T'au (more) ---
+  plasma_rifle_tau:
+    name: "Plasma Rifle (T'au)"
+    category: weapon_ranged
+    slot: right_hand
+    aliases: ["plasma_rifle_tau", "plasma rifle tau", "tau plasma rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  burst_cannon:
+    name: "Burst Cannon"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["burst_cannon", "burst cannon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  cyclic_ion_blaster:
+    name: "Cyclic Ion Blaster"
+    category: weapon_ranged
+    slot: right_hand
+    aliases: ["cyclic_ion_blaster", "cyclic ion blaster", "cib"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+  missile_pod:
+    name: "Missile Pod"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["missile_pod", "missile pod"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tau_empire"]
+
+  # --- Tyranids ---
+  devourer:
+    name: "Devourer"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["devourer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tyranids"]
+  deathspitter:
+    name: "Deathspitter"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["deathspitter"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tyranids"]
+  bonesword:
+    name: "Bonesword"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["bonesword"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tyranids"]
+  scything_talons:
+    name: "Scything Talons"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["scything_talons", "scything talons"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tyranids"]
+  monstrous_scything_talons:
+    name: "Monstrous Scything Talons"
+    category: weapon_melee
+    slot: both_hands
+    aliases: ["monstrous_scything_talons", "monstrous scything talons"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["tyranids"]
+
+  # --- Genestealer Cults ---
+  autogun:
+    name: "Autogun"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["autogun", "auto gun"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+  autopistol:
+    name: "Autopistol"
+    category: pistol
+    slot: right_hand
+    aliases: ["autopistol", "auto pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+  cult_knife:
+    name: "Cult Knife"
+    category: weapon_melee
+    slot: right_hand
+    aliases: ["cult_knife", "cult knife"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+  mining_laser:
+    name: "Mining Laser"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["mining_laser", "mining laser"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+  heavy_stubber_gsc:
+    name: "Heavy Stubber (GSC)"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["heavy_stubber_gsc", "heavy stubber gsc"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+  seismic_cannon:
+    name: "Seismic Cannon"
+    category: heavy_weapon
+    slot: both_hands
+    aliases: ["seismic_cannon", "seismic cannon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["genestealer_cults"]
+
+  # --- Leagues of Votann ---
+  ion_blaster_votann:
+    name: "Ion Blaster"
+    category: weapon_ranged
+    slot: right_hand
+    aliases: ["ion_blaster_votann", "ion blaster"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["leagues_of_votann"]
+  magna_rail_rifle:
+    name: "Magna-rail Rifle"
+    category: weapon_ranged
+    slot: both_hands
+    aliases: ["magna_rail_rifle", "magna-rail rifle", "magna rail rifle"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["leagues_of_votann"]
+
+  # --- Accessories (cross-faction, example) ---
+  backpack_banner:
+    name: "Backpack Banner"
+    category: accessory
+    slot: backpack
+    aliases: ["backpack_banner", "backpack banner", "banner"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+
+  # --- Space Marine Chapter decorative bits ---
+  purity_seal_small:
+    name: "Purity Seal (Small)"
+    category: accessory
+    slot: shoulder
+    aliases: ["purity_seal_small", "purity seal", "small purity seal"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas"]
+  purity_seal_streamer:
+    name: "Purity Seal (Streamer)"
+    category: accessory
+    slot: shoulder
+    aliases: ["purity_seal_streamer", "purity seal streamer", "long purity seal"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas"]
+  pauldron_left_blank:
+    name: "Shoulder Pad (Left, Blank)"
+    category: accessory
+    slot: shoulder
+    aliases: ["pauldron_left_blank", "left shoulder pad", "left pauldron blank", "shoulder pad left"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  pauldron_left_chapter:
+    name: "Shoulder Pad (Left, Chapter Emblem)"
+    category: accessory
+    slot: shoulder
+    aliases: ["pauldron_left_chapter", "left shoulder pad chapter", "chapter pauldron left", "chapter emblem pad left"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  pauldron_right_blank:
+    name: "Shoulder Pad (Right, Blank)"
+    category: accessory
+    slot: shoulder
+    aliases: ["pauldron_right_blank", "right shoulder pad", "right pauldron blank", "shoulder pad right"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  pauldron_right_chapter:
+    name: "Shoulder Pad (Right, Chapter Emblem)"
+    category: accessory
+    slot: shoulder
+    aliases: ["pauldron_right_chapter", "right shoulder pad chapter", "chapter pauldron right", "chapter emblem pad right"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  thurible_censer:
+    name: "Thurible Censer"
+    category: accessory
+    slot: shoulder
+    aliases: ["thurible_censer", "thurible", "censer"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas"]
+  chapter_relic_icon:
+    name: "Chapter Relic Icon"
+    category: accessory
+    slot: backpack
+    aliases: ["chapter_relic_icon", "relic icon", "chapter icon"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+
+  # --- Space Marines decorative add-ons ---
+  tilting_shield:
+    name: "Tilting Shield"
+    category: accessory
+    slot: shoulder
+    aliases: ["tilting_shield", "tilting shield", "knight heraldry shield"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+    notes: "Small heraldic shield mounted on pauldron or chest strap."
+  veteran_laurels:
+    name: "Veteran Laurels"
+    category: accessory
+    slot: head
+    aliases: ["veteran_laurels", "laurels", "veteran wreath"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  kneepad_left_crest:
+    name: "Kneepad (Left, Crest)"
+    category: accessory
+    slot: legs
+    aliases: ["kneepad_left_crest", "left knee crest", "kneepad left crest"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  kneepad_right_crest:
+    name: "Kneepad (Right, Crest)"
+    category: accessory
+    slot: legs
+    aliases: ["kneepad_right_crest", "right knee crest", "kneepad right crest"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  chest_aquila_raised:
+    name: "Chest Aquila (Raised)"
+    category: accessory
+    slot: torso
+    aliases: ["chest_aquila_raised", "raised aquila", "aquila chest"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  chest_aquila_skull_wreath:
+    name: "Chest Aquila (Skull-Wreath)"
+    category: accessory
+    slot: torso
+    aliases: ["chest_aquila_skull_wreath", "skull wreath aquila", "aquila wreath chest"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines"]
+  holster_pistol:
+    name: "Holster (Pistol)"
+    category: accessory
+    slot: waist
+    aliases: ["holster_pistol", "pistol holster", "holstered pistol"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas", "astra_militarum", "chaos_space_marines", "grey_knights", "leagues_of_votann"]
+  frag_grenade_pouch:
+    name: "Frag Grenade Pouch"
+    category: accessory
+    slot: waist
+    aliases: ["frag_grenade_pouch", "frag pouch", "grenade pouch"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas", "astra_militarum", "chaos_space_marines", "grey_knights", "leagues_of_votann"]
+  krak_grenade_pouch:
+    name: "Krak Grenade Pouch"
+    category: accessory
+    slot: waist
+    aliases: ["krak_grenade_pouch", "krak pouch"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas", "chaos_space_marines"]
+  ammo_pouches_double:
+    name: "Ammo Pouches (Double)"
+    category: accessory
+    slot: waist
+    aliases: ["ammo_pouches_double", "ammo pouches", "double pouches"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas", "astra_militarum", "chaos_space_marines", "leagues_of_votann"]
+  tabard_short:
+    name: "Tabard (Short)"
+    category: accessory
+    slot: waist
+    aliases: ["tabard_short", "short tabard"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas"]
+  tabard_long_robe:
+    name: "Tabard/Robe (Long)"
+    category: accessory
+    slot: waist
+    aliases: ["tabard_long_robe", "long tabard", "robe"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["space_marines", "adepta_sororitas"]
+
+  # --- Chaos decorative ---
+  chaos_trophy_rack:
+    name: "Chaos Trophy Rack"
+    category: accessory
+    slot: backpack
+    aliases: ["chaos_trophy_rack", "trophy rack", "skull rack"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+  chaos_spikes:
+    name: "Chaos Spikes"
+    category: accessory
+    slot: shoulder
+    aliases: ["chaos_spikes", "spikes"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+  chaos_chains:
+    name: "Chaos Chains"
+    category: accessory
+    slot: torso
+    aliases: ["chaos_chains", "chains"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+  chaos_horns_helmet:
+    name: "Chaos Horns (Helmet)"
+    category: accessory
+    slot: head
+    aliases: ["chaos_horns_helmet", "horns helmet", "horned helm"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["chaos_space_marines"]
+
+  # --- Ork decorative ---
+  ork_glyph_plate_blank:
+    name: "Ork Glyph Plate (Blank)"
+    category: accessory
+    slot: torso
+    aliases: ["ork_glyph_plate_blank", "glyph plate", "blank plate", "ork plate"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+    notes: "Blank surface intended for painting; no sculpted glyph present."
+  ork_glyph_plate_sculpted:
+    name: "Ork Glyph Plate (Sculpted)"
+    category: accessory
+    slot: torso
+    aliases: ["ork_glyph_plate_sculpted", "sculpted glyph plate", "relief plate"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
+    notes: "Use only when a raised glyph/relief is visibly sculpted. Do not encode specific glyph names here."
+  ork_trukk_armor_plate:
+    name: "Ork Armor Plate"
+    category: accessory
+    slot: shoulder
+    aliases: ["ork_trukk_armor_plate", "armor plate", "armour plate"]
+    legal_in_editions: ["8th", "9th", "10th"]
+    available_to: ["orks"]
