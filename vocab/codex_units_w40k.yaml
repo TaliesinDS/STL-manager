@@ -1,0 +1,2493 @@
+# Warhammer 40K Codex Units (YAML Source of Truth)
+# Schema goals:
+# - De-duplicate unit definitions (name, aliases, optional role)
+# - Express availability by faction and chapter without copy-paste (groups + include/exclude + per-unit rules)
+# - Encode edition legality for filterable coverage views (8th/9th/10th for now)
+# - Keep human-editable in Git (reviews, diffs); compile to DB tables for queries
+#
+# Conventions
+# - Keys are stable snake_case identifiers (e.g., intercessor_squad)
+# - Human-facing names go in `name`
+# - `aliases` are case-insensitive tokens/phrases used by matchers
+# - `legal_in_editions` is a list of edition tags: ["8th","9th","10th"]
+#     - You can refine later with per-edition status if needed (e.g., legends)
+# - Availability:
+#     - Faction/Chapter inherits from `include_groups` and `include_units`
+#     - Carve-outs via `exclude_groups` and `exclude_units`
+#     - Per-unit rules may specify `available_to` and `excluded_from`
+# - Wildcards: "space_marines/*" = all SM chapters
+
+codex_units:
+  warhammer_40k:
+    meta:
+      editions: ["8th", "9th", "10th"]
+
+    # Availability groups avoid duplicating shared Space Marine units across chapters
+    availability_groups:
+      astartes_core_infantry:
+        units:
+          - intercessor_squad
+          - assault_intercessor_squad
+          - heavy_intercessor_squad
+          - aggressor_squad
+          - terminator_squad
+          - terminator_assault_squad
+          - bladeguard_veterans
+          - eradicators
+          - hellblasters
+          - infernus_squad
+          - inceptor_squad
+          - eliminator_squad
+          - infiltrator_squad
+          - incursor_squad
+          - reiver_squad
+          - scout_squad
+          - sternguard_veterans
+          - desolation_squad
+          - devastator_squad
+          - assault_squad
+          - vanguard_veterans
+          - vanguard_veteran_squad_with_jump_packs
+          - assault_intercessors_with_jump_packs
+          - outrider_squad
+          - suppressor_squad
+          - captain
+          - captain_gravis
+          - captain_phobos
+          - captain_terminator
+          - captain_jump_pack
+          - librarian
+          - librarian_phobos
+          - librarian_terminator
+          - apothecary
+          - apothecary_biologis
+          - techmarine
+          - chaplain
+          - chaplain_terminator
+          - chaplain_bike
+          - chaplain_jump_pack
+          - lieutenant
+          - lieutenant_phobos
+          - lieutenant_reiver
+          - lieutenant_combi_weapon
+          - ancient
+          - ancient_terminator
+          - company_champion
+          - judiciar
+          - bladeguard_ancient
+          - company_heroes
+        legal_in_editions: ["8th", "9th", "10th"]
+
+      astartes_core_vehicles:
+        units:
+          - dreadnought
+          - redemptor_dreadnought
+          - ballistus_dreadnought
+          - brutalis_dreadnought
+          - invictor_warsuit
+          - gladiator_tank
+          - gladiator_lancer
+          - gladiator_reaper
+          - gladiator_valiant
+          - land_raider
+          - land_raider_crusader
+          - land_raider_redeemer
+          - predator_annihilator
+          - predator_destructor
+          - repulsor
+          - repulsor_executioner
+          - vindicator
+          - whirlwind
+          - rhino
+          - razorback
+          - drop_pod
+          - impulsor
+          - storm_speeder
+          - storm_speeder_hailstrike
+          - storm_speeder_hammerstrike
+          - storm_speeder_thunderstrike
+          - invader_atv
+          - stormhawk_interceptor
+          - stormraven_gunship
+          - stormtalon_gunship
+          - hammerfall_bunker
+        legal_in_editions: ["8th", "9th", "10th"]
+
+    factions:
+      # Space Marines treated as a super-faction with chapters inheriting shared pools
+      space_marines:
+        name: "Adeptus Astartes (Space Marines)"
+        kind: "super-faction"
+        chapters:
+          ultramarines:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+          blood_angels:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+            include_units: ["sanguinary_guard", "death_company", "sanguinary_priest", "baal_predator", "furioso_dreadnought"]
+          dark_angels:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+            include_units: ["deathwing_terminators", "deathwing_knights", "ravenwing_bikers", "ravenwing_black_knights"]
+          space_wolves:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+            include_units: [
+              "grey_hunters",
+              "blood_claws",
+              "long_fangs",
+              "rune_priest",
+              "wolf_lord",
+              "wolf_guard",
+              "thunderwolf_cavalry",
+              "wulfen",
+              "wolf_priest"
+            ]
+            exclude_units: [
+              "tactical_squad",
+              "assault_squad",
+              "devastator_squad",
+              "librarian",
+              "librarian_phobos",
+              "librarian_terminator",
+              "captain",
+              "captain_gravis",
+              "captain_phobos",
+              "captain_terminator",
+              "captain_jump_pack",
+              "chaplain",
+              "chaplain_terminator",
+              "chaplain_bike",
+              "chaplain_jump_pack",
+              "apothecary",
+              "apothecary_biologis"
+            ]
+          black_templars:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+            include_units: ["emperor_champion", "crusader_squad", "sword_brethren"]
+            exclude_units: ["librarian"]
+          salamanders:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+          imperial_fists:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+          raven_guard:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+          white_scars:
+            include_groups: ["astartes_core_infantry", "astartes_core_vehicles"]
+            include_units: ["khan_on_bike"]
+        # For Space Marines, per-unit rules also use available_to: ["space_marines/*"]
+
+      necrons:
+        name: "Necrons"
+      tyranids:
+        name: "Tyranids"
+      orks:
+        name: "Orks"
+      astra_militarum:
+        name: "Astra Militarum"
+      adeptus_mechanicus:
+        name: "Adeptus Mechanicus"
+      chaos_space_marines:
+        name: "Chaos Space Marines"
+      death_guard:
+        name: "Death Guard"
+      thousand_sons:
+        name: "Thousand Sons"
+      world_eaters:
+        name: "World Eaters"
+      drukhari:
+        name: "Drukhari"
+      aeldari:
+        name: "Aeldari (Craftworlds)"
+      tau_empire:
+        name: "T'au Empire"
+      genestealer_cults:
+        name: "Genestealer Cults"
+      adepta_sororitas:
+        name: "Adepta Sororitas"
+      adeptus_custodes:
+        name: "Adeptus Custodes"
+      grey_knights:
+        name: "Grey Knights"
+      imperial_knights:
+        name: "Imperial Knights"
+      chaos_knights:
+        name: "Chaos Knights"
+      leagues_of_votann:
+        name: "Leagues of Votann"
+      chaos_daemons:
+        name: "Chaos Daemons"
+      inquisition:
+        name: "Inquisition"
+
+    # Unit definitions (de-duplicated). Roles are optional; refine later if desired.
+    units:
+      # --- Space Marines (Infantry/Characters/Shared Vehicles) ---
+      intercessor_squad:
+        name: "Intercessor Squad"
+        role: troops
+        aliases: ["intercessor", "intercessors", "intercessor_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      assault_intercessor_squad:
+        name: "Assault Intercessor Squad"
+        role: troops
+        aliases: ["assault_intercessor", "assault_intercessors", "assault_intercessor_squad"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      heavy_intercessor_squad:
+        name: "Heavy Intercessor Squad"
+        role: troops
+        aliases: ["heavy_intercessor", "heavy_intercessors", "heavy_intercessor_squad"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      tactical_squad:
+        name: "Tactical Squad"
+        role: troops
+        aliases: ["tactical_squad", "tactical_marines", "tactical_marine"]
+        # Note: bare 'tactical' is intentionally omitted (weak token)
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+      aggressor_squad:
+        name: "Aggressor Squad"
+        role: elites
+        aliases: ["aggressor", "aggressors", "aggressor_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      terminator_squad:
+        name: "Terminator Squad"
+        role: elites
+        aliases: ["terminator", "terminators", "terminator_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      bladeguard_veterans:
+        name: "Bladeguard Veterans"
+        role: elites
+        aliases: ["bladeguard", "bladeguard_veteran", "bladeguard_veterans"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      eradicators:
+        name: "Eradicators"
+        role: heavy_support
+        aliases: ["eradicator", "eradicators"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      hellblasters:
+        name: "Hellblasters"
+        role: heavy_support
+        aliases: ["hellblaster", "hellblasters"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      infernus_squad:
+        name: "Infernus Squad"
+        role: troops
+        aliases: ["infernus", "infernus_squad"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+      inceptor_squad:
+        name: "Inceptor Squad"
+        role: fast_attack
+        aliases: ["inceptor", "inceptors", "inceptor_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      sternguard_veterans:
+        name: "Sternguard Veterans"
+        role: elites
+        aliases: ["sternguard", "sternguard_veteran", "sternguard_veterans"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      desolation_squad:
+        name: "Desolation Squad"
+        role: heavy_support
+        aliases: ["desolation", "desolator", "desolators", "desolation_squad"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+      devastator_squad:
+        name: "Devastator Squad"
+        role: heavy_support
+        aliases: ["devastator", "devastators", "devastator_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      assault_squad:
+        name: "Assault Squad"
+        role: fast_attack
+        aliases: ["assault_squad", "assault_marines"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+      vanguard_veterans:
+        name: "Vanguard Veterans"
+        role: elites
+        aliases: ["vanguard_veteran", "vanguard_veterans", "vanguard"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      terminator_assault_squad:
+        name: "Terminator Assault Squad"
+        aliases: ["assault terminators", "assault_terminators", "terminator_assault_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      eliminator_squad:
+        name: "Eliminator Squad"
+        aliases: ["eliminator", "eliminators", "eliminator_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      infiltrator_squad:
+        name: "Infiltrator Squad"
+        aliases: ["infiltrator", "infiltrators", "infiltrator_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      incursor_squad:
+        name: "Incursor Squad"
+        aliases: ["incursor", "incursors", "incursor_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      reiver_squad:
+        name: "Reiver Squad"
+        aliases: ["reiver", "reivers", "reiver_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      scout_squad:
+        name: "Scout Squad"
+        aliases: ["scout", "scouts", "scout_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      vanguard_veteran_squad_with_jump_packs:
+        name: "Vanguard Veteran Squad (Jump Packs)"
+        aliases: ["vanguard veterans with jump packs", "vanguard_veterans_jump_packs", "vanguard_jump_pack"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      assault_intercessors_with_jump_packs:
+        name: "Assault Intercessors with Jump Packs"
+        aliases: ["assault intercessors with jump packs", "assault_intercessors_jump_packs", "assault_intercessor_jump_pack"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+      outrider_squad:
+        name: "Outrider Squad"
+        role: fast_attack
+        aliases: ["outrider", "outriders", "outrider_squad"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      suppressor_squad:
+        name: "Suppressor Squad"
+        aliases: ["suppressor", "suppressors", "suppressor_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      captain:
+        name: "Captain"
+        role: hq
+        aliases: ["captain", "chapter_master"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      librarian:
+        name: "Librarian"
+        role: hq
+        aliases: ["librarian"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Captain variants
+      captain_gravis:
+        name: "Captain in Gravis Armour"
+        role: hq
+        aliases: ["captain gravis", "gravis_captain", "captain_in_gravis"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      captain_phobos:
+        name: "Captain in Phobos Armour"
+        role: hq
+        aliases: ["captain phobos", "phobos_captain", "captain_in_phobos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      captain_terminator:
+        name: "Captain in Terminator Armour"
+        role: hq
+        aliases: ["terminator_captain", "captain terminator", "captain_in_terminator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      captain_jump_pack:
+        name: "Captain with Jump Pack"
+        role: hq
+        aliases: ["jump_pack_captain", "captain jump pack", "captain_with_jump_pack"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Librarian variants
+      librarian_phobos:
+        name: "Librarian in Phobos Armour"
+        role: hq
+        aliases: ["librarian phobos", "phobos_librarian", "librarian_in_phobos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      librarian_terminator:
+        name: "Librarian in Terminator Armour"
+        role: hq
+        aliases: ["terminator_librarian", "librarian terminator", "librarian_in_terminator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Chaplain variants
+      chaplain_terminator:
+        name: "Chaplain in Terminator Armour"
+        role: hq
+        aliases: ["terminator_chaplain", "chaplain terminator", "chaplain_in_terminator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      chaplain_bike:
+        name: "Chaplain on Bike"
+        role: hq
+        aliases: ["bike_chaplain", "chaplain on bike", "chaplain_biker"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      chaplain_jump_pack:
+        name: "Chaplain with Jump Pack"
+        role: hq
+        aliases: ["jump_pack_chaplain", "chaplain jump pack", "chaplain_with_jump_pack"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Lieutenant variants
+      lieutenant_phobos:
+        name: "Lieutenant in Phobos Armour"
+        role: hq
+        aliases: ["phobos_lieutenant", "lieutenant phobos", "lieutenant_in_phobos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      lieutenant_reiver:
+        name: "Lieutenant with Reiver gear"
+        role: hq
+        aliases: ["reiver_lieutenant", "lieutenant reiver", "lieutenant_in_reiver"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      lieutenant_combi_weapon:
+        name: "Lieutenant with Combi-weapon"
+        role: hq
+        aliases: ["lieutenant combi-weapon", "combi_weapon_lieutenant", "lieutenant_combi"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+
+      # Ancient variant and Company Heroes
+      ancient_terminator:
+        name: "Ancient in Terminator Armour"
+        role: elites
+        aliases: ["terminator_ancient", "ancient terminator", "ancient_in_terminator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      company_heroes:
+        name: "Company Heroes"
+        role: elites
+        aliases: ["company heroes", "company_heroes"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+
+      dreadnought:
+        name: "Dreadnought"
+        role: elites
+        aliases: ["dreadnought", "dread"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      redemptor_dreadnought:
+        name: "Redemptor Dreadnought"
+        role: elites
+        aliases: ["redemptor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      invictor_warsuit:
+        name: "Invictor Tactical Warsuit"
+        role: elites
+        aliases: ["invictor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      gladiator_tank:
+        name: "Gladiator Tank"
+        role: heavy_support
+        aliases: ["gladiator", "gladiator_lancer", "gladiator_reaper", "gladiator_valiant"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      land_raider:
+        name: "Land Raider"
+        role: heavy_support
+        aliases: ["land_raider"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      rhino:
+        name: "Rhino"
+        role: transport
+        aliases: ["rhino"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      impulsor:
+        name: "Impulsor"
+        role: transport
+        aliases: ["impulsor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      storm_speeder:
+        name: "Storm Speeder"
+        role: fast_attack
+        aliases: ["storm_speeder", "storm_speeder_hailstrike", "storm_speeder_thunderstrike", "storm_speeder_hammerstrike"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Dreadnought variants
+      ballistus_dreadnought:
+        name: "Ballistus Dreadnought"
+        aliases: ["ballistus", "ballistus_dreadnought"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+      brutalis_dreadnought:
+        name: "Brutalis Dreadnought"
+        aliases: ["brutalis", "brutalis_dreadnought"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+
+      # Gladiator variants
+      gladiator_lancer:
+        name: "Gladiator Lancer"
+        aliases: ["gladiator_lancer"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      gladiator_reaper:
+        name: "Gladiator Reaper"
+        aliases: ["gladiator_reaper"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      gladiator_valiant:
+        name: "Gladiator Valiant"
+        aliases: ["gladiator_valiant"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Land Raider variants
+      land_raider_crusader:
+        name: "Land Raider Crusader"
+        aliases: ["land_raider_crusader", "crusader"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      land_raider_redeemer:
+        name: "Land Raider Redeemer"
+        aliases: ["land_raider_redeemer", "redeemer"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Predator variants
+      predator_annihilator:
+        name: "Predator Annihilator"
+        aliases: ["predator_annihilator", "annihilator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      predator_destructor:
+        name: "Predator Destructor"
+        aliases: ["predator_destructor", "destructor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Repulsor variants
+      repulsor:
+        name: "Repulsor"
+        aliases: ["repulsor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      repulsor_executioner:
+        name: "Repulsor Executioner"
+        aliases: ["repulsor_executioner", "executioner"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Other tanks and artillery
+      hunter:
+        name: "Hunter"
+        aliases: ["hunter"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      stalker:
+        name: "Stalker"
+        aliases: ["stalker"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      vindicator:
+        name: "Vindicator"
+        aliases: ["vindicator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      whirlwind:
+        name: "Whirlwind"
+        aliases: ["whirlwind"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Artillery and specialized infantry
+      thunderfire_cannon:
+        name: "Thunderfire Cannon"
+        role: heavy_support
+        aliases: ["thunderfire", "thunderfire cannon", "thunderfire_cannon"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      centurion_devastators:
+        name: "Centurion Devastators"
+        role: heavy_support
+        aliases: ["centurion_devastators", "centurion devastators", "devastator_centurions", "devastator centurions"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      assault_centurions:
+        name: "Assault Centurions"
+        role: elites
+        aliases: ["assault centurions", "assault_centurions", "centurion assault"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      company_veterans:
+        name: "Company Veterans"
+        role: elites
+        aliases: ["company veterans", "company_veterans"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+      servitors:
+        name: "Servitors"
+        role: elites
+        aliases: ["servitors", "servitor"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+
+      # Transports
+      razorback:
+        name: "Razorback"
+        aliases: ["razorback"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      drop_pod:
+        name: "Drop Pod"
+        aliases: ["drop_pod", "drop pod"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Storm Speeder subtypes
+      storm_speeder_hailstrike:
+        name: "Storm Speeder Hailstrike"
+        aliases: ["storm_speeder_hailstrike", "hailstrike"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      storm_speeder_thunderstrike:
+        name: "Storm Speeder Thunderstrike"
+        aliases: ["storm_speeder_thunderstrike", "thunderstrike"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      storm_speeder_hammerstrike:
+        name: "Storm Speeder Hammerstrike"
+        aliases: ["storm_speeder_hammerstrike", "hammerstrike"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Bikes/ATV
+      bike_squad:
+        name: "Bike Squad"
+        role: fast_attack
+        aliases: ["bikes", "bike squad", "space marine bikes"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      attack_bike_squad:
+        name: "Attack Bike Squad"
+        role: fast_attack
+        aliases: ["attack bike", "attack_bike", "attack_bikes"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      scout_bike_squad:
+        name: "Scout Bike Squad"
+        role: fast_attack
+        aliases: ["scout bikes", "scout_bikes", "scout_bike_squad"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      invader_atv:
+        name: "Invader ATV"
+        aliases: ["invader", "invader_atv", "atv"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # Land Speeders
+      land_speeder:
+        name: "Land Speeder"
+        role: fast_attack
+        aliases: ["land speeder", "land_speeder"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      land_speeder_typhoon:
+        name: "Land Speeder Typhoon"
+        role: fast_attack
+        aliases: ["land speeder typhoon", "land_speeder_typhoon", "typhoon"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      land_speeder_tornado:
+        name: "Land Speeder Tornado"
+        role: fast_attack
+        aliases: ["land speeder tornado", "land_speeder_tornado", "tornado"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+      land_speeder_storm:
+        name: "Land Speeder Storm"
+        role: transport
+        aliases: ["land speeder storm", "land_speeder_storm"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/*"]
+        legends_in_editions: ["10th"]
+
+      # Flyers
+      stormhawk_interceptor:
+        name: "Stormhawk Interceptor"
+        aliases: ["stormhawk", "stormhawk_interceptor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      stormraven_gunship:
+        name: "Stormraven Gunship"
+        aliases: ["stormraven", "stormraven_gunship"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      stormtalon_gunship:
+        name: "Stormtalon Gunship"
+        aliases: ["stormtalon", "stormtalon_gunship"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      stormwolf:
+        name: "Stormwolf"
+        aliases: ["stormwolf"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/space_wolves"]
+      stormfang_gunship:
+        name: "Stormfang Gunship"
+        aliases: ["stormfang", "stormfang_gunship"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/space_wolves"]
+
+      # Fortification
+      hammerfall_bunker:
+        name: "Hammerfall Bunker"
+        aliases: ["hammerfall", "hammerfall_bunker"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # --- Space Marines: Core Characters ---
+      apothecary:
+        name: "Apothecary"
+        role: hq
+        aliases: ["apothecary", "primaris_apothecary", "chief_apothecary"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      apothecary_biologis:
+        name: "Apothecary Biologis"
+        role: hq
+        aliases: ["apothecary biologis", "apothecary_biologis", "biologis"]
+        legal_in_editions: ["10th"]
+        available_to: ["space_marines/*"]
+      techmarine:
+        name: "Techmarine"
+        role: hq
+        aliases: ["techmarine", "primaris_techmarine"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      chaplain:
+        name: "Chaplain"
+        role: hq
+        aliases: ["chaplain", "primaris_chaplain", "master_of_sanctity"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      lieutenant:
+        name: "Lieutenant"
+        role: hq
+        aliases: ["lieutenant", "primaris_lieutenant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      ancient:
+        name: "Ancient"
+        role: elites
+        aliases: ["ancient", "company_ancient", "chapter_ancient"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      company_champion:
+        name: "Company Champion"
+        role: elites
+        aliases: ["company_champion", "champion"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/*"]
+      judiciar:
+        name: "Judiciar"
+        role: elites
+        aliases: ["judiciar"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+      bladeguard_ancient:
+        name: "Bladeguard Ancient"
+        role: elites
+        aliases: ["bladeguard_ancient"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/*"]
+
+      # --- Named Characters: Primarchs (40K-legal) ---
+      roboute_guilliman:
+        name: "Roboute Guilliman"
+        role: lord_of_war
+        aliases: ["roboute_guilliman", "roboute guilliman", "guilliman", "roboute"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/ultramarines"]
+      marneus_calgar:
+        name: "Marneus Calgar"
+        role: hq
+        aliases: ["marneus_calgar", "marneus calgar", "calgar"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/ultramarines"]
+      chief_librarian_tigurius:
+        name: "Chief Librarian Tigurius"
+        role: hq
+        aliases: ["tigurius", "chief librarian tigurius", "chief_librarian_tigurius"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/ultramarines"]
+      cato_sicarius:
+        name: "Captain Cato Sicarius"
+        role: hq
+        aliases: ["cato sicarius", "sicarius", "cato_sicarius"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/ultramarines"]
+        legends_in_editions: ["10th"]
+      lion_el_jonson:
+        name: "Lion El'Jonson"
+        role: lord_of_war
+        aliases: ["lion el'jonson", "lion_el_jonson", "the_lion"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      mortarion:
+        name: "Mortarion"
+        role: lord_of_war
+        aliases: ["mortarion"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["death_guard"]
+      magnus_the_red:
+        name: "Magnus the Red"
+        role: lord_of_war
+        aliases: ["magnus the red", "magnus", "magnus_the_red"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["thousand_sons"]
+      angron:
+        name: "Angron"
+        role: lord_of_war
+        aliases: ["angron", "daemon_primarch_angron"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["world_eaters"]
+
+      # --- Space Marines: Chapter-unique units and exceptions ---
+      emperor_champion:
+        name: "Emperor's Champion"
+        role: hq
+        aliases: ["emperor's champion", "emperors_champion", "emperor_champion"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/black_templars"]
+      crusader_squad:
+        name: "Crusader Squad"
+        role: troops
+        aliases: ["crusader", "crusader_squad", "primaris_crusader_squad"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/black_templars"]
+      sword_brethren:
+        name: "Sword Brethren"
+        role: elites
+        aliases: ["sword_brethren"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["space_marines/black_templars"]
+
+      high_marshal_helbrecht:
+        name: "High Marshal Helbrecht"
+        role: hq
+        aliases: ["high marshal helbrecht", "high_marshal_helbrecht", "helbrecht"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/black_templars"]
+      high_chaplain_grimaldus:
+        name: "High Chaplain Grimaldus"
+        role: hq
+        aliases: ["grimaldus", "high chaplain grimaldus", "high_chaplain_grimaldus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/black_templars"]
+
+      sanguinary_guard:
+        name: "Sanguinary Guard"
+        role: elites
+        aliases: ["sanguinary_guard", "sanguinary"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      commander_dante:
+        name: "Commander Dante"
+        role: hq
+        aliases: ["dante", "commander dante", "commander_dante"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      mephiston:
+        name: "Chief Librarian Mephiston"
+        role: hq
+        aliases: ["mephiston", "lord of death", "chief librarian mephiston"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      astorath:
+        name: "Astorath"
+        role: hq
+        aliases: ["astorath"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      lemartes:
+        name: "Lemartes"
+        role: hq
+        aliases: ["lemartes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      death_company:
+        name: "Death Company"
+        role: elites
+        aliases: ["death_company"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      sanguinary_priest:
+        name: "Sanguinary Priest"
+        role: elites
+        aliases: ["sanguinary_priest"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/blood_angels"]
+      sanguinary_ancient:
+        name: "Sanguinary Ancient"
+        role: elites
+        aliases: ["sanguinary_ancient"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/blood_angels"]
+      baal_predator:
+        name: "Baal Predator"
+        role: heavy_support
+        aliases: ["baal_predator"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/blood_angels"]
+      furioso_dreadnought:
+        name: "Furioso Dreadnought"
+        role: elites
+        aliases: ["furioso", "furioso_dreadnought"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/blood_angels"]
+      death_company_dreadnought:
+        name: "Death Company Dreadnought"
+        role: elites
+        aliases: ["death company dreadnought", "dc dread", "dc_dreadnought"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/blood_angels"]
+
+      deathwing_terminators:
+        name: "Deathwing Terminators"
+        role: elites
+        aliases: ["deathwing", "deathwing_terminators", "deathwing_terminator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      deathwing_knights:
+        name: "Deathwing Knights"
+        role: elites
+        aliases: ["deathwing_knights", "deathwing_knight"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      ezekiel:
+        name: "Ezekiel"
+        role: hq
+        aliases: ["ezekiel", "chief librarian ezekiel"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      asmodai:
+        name: "Asmodai"
+        role: hq
+        aliases: ["asmodai", "master of repentance"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      sammael:
+        name: "Sammael"
+        role: hq
+        aliases: ["sammael"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      ezekiel:
+        name: "Ezekiel"
+        role: hq
+        aliases: ["ezekiel", "chief librarian ezekiel"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      asmodai:
+        name: "Asmodai"
+        role: hq
+        aliases: ["asmodai", "master of repentance"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      samael:
+        name: "Sammael"
+        role: hq
+        aliases: ["sammael"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      ravenwing_bikers:
+        name: "Ravenwing Bikers"
+        role: fast_attack
+        aliases: ["ravenwing", "ravenwing_biker", "ravenwing_bikers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+      ravenwing_black_knights:
+        name: "Ravenwing Black Knights"
+        role: fast_attack
+        aliases: ["ravenwing_black_knights", "black_knights"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/dark_angels"]
+
+      land_speeder_darkshroud:
+        name: "Land Speeder Darkshroud"
+        role: fast_attack
+        aliases: ["darkshroud", "land speeder darkshroud", "land_speeder_darkshroud"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/dark_angels"]
+      land_speeder_vengeance:
+        name: "Land Speeder Vengeance"
+        role: fast_attack
+        aliases: ["vengeance", "land speeder vengeance", "land_speeder_vengeance"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/dark_angels"]
+
+      grey_hunters:
+        name: "Grey Hunters"
+        role: troops
+        aliases: ["grey_hunters", "grey_hunter"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      blood_claws:
+        name: "Blood Claws"
+        role: troops
+        aliases: ["blood_claws", "blood_claw"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      long_fangs:
+        name: "Long Fangs"
+        role: heavy_support
+        aliases: ["long_fangs", "long_fang"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      rune_priest:
+        name: "Rune Priest"
+        role: hq
+        aliases: ["rune_priest"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      wolf_lord:
+        name: "Wolf Lord"
+        role: hq
+        aliases: ["wolf_lord"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      wolf_guard:
+        name: "Wolf Guard"
+        role: elites
+        aliases: ["wolf_guard"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      thunderwolf_cavalry:
+        name: "Thunderwolf Cavalry"
+        role: fast_attack
+        aliases: ["thunderwolf", "thunderwolves", "thunderwolf_cavalry"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      wulfen:
+        name: "Wulfen"
+        role: elites
+        aliases: ["wulfen"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      wolf_priest:
+        name: "Wolf Priest"
+        role: hq
+        aliases: ["wolf_priest"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+
+      logan_grimnar:
+        name: "Logan Grimnar"
+        role: hq
+        aliases: ["logan grimnar", "logan_grimnar"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      ragnar_blackmane:
+        name: "Ragnar Blackmane"
+        role: hq
+        aliases: ["ragnar blackmane", "ragnar_blackmane"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/space_wolves"]
+      ulrik_the_slayer:
+        name: "Ulrik the Slayer"
+        role: hq
+        aliases: ["ulrik the slayer", "ulrik_the_slayer"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["space_marines/space_wolves"]
+        legends_in_editions: ["10th"]
+
+      khan_on_bike:
+        name: "Khan on Bike"
+        role: hq
+        aliases: ["khan", "khan_on_bike"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["space_marines/white_scars"]
+
+      # --- Necrons ---
+      necron_warriors:
+        name: "Necron Warriors"
+        role: troops
+        aliases: ["necron_warrior", "necron_warriors", "warrior", "warriors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      immortals:
+        name: "Immortals"
+        role: troops
+        aliases: ["immortal", "immortals"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      lichguard:
+        name: "Lychguard"
+        role: elites
+        aliases: ["lichguard", "lychguard"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      deathmarks:
+        name: "Deathmarks"
+        role: elites
+        aliases: ["deathmark", "deathmarks"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      destroyers:
+        name: "Destroyers"
+        role: fast_attack
+        aliases: ["destroyer", "destroyers", "lokhust_destroyer", "lokhust_destroyers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      heavy_destroyers:
+        name: "Heavy Destroyers"
+        role: heavy_support
+        aliases: ["heavy_destroyer", "heavy_destroyers", "lokhust_heavy_destroyer", "lokhust_heavy_destroyers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      skorpekh_destroyers:
+        name: "Skorpekh Destroyers"
+        role: elites
+        aliases: ["skorpekh", "skorpekh_destroyer", "skorpekh_destroyers"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["necrons"]
+      ophydian_destroyers:
+        name: "Ophydian Destroyers"
+        role: elites
+        aliases: ["ophydian", "ophydian_destroyer", "ophydian_destroyers"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["necrons"]
+      flayed_ones:
+        name: "Flayed Ones"
+        role: elites
+        aliases: ["flayed_one", "flayed_ones"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      triarch_praetorians:
+        name: "Triarch Praetorians"
+        role: elites
+        aliases: ["triarch_praetorian", "triarch_praetorians", "praetorian", "praetorians"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      tomb_blades:
+        name: "Tomb Blades"
+        role: fast_attack
+        aliases: ["tomb_blade", "tomb_blades"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      scarab_swarms:
+        name: "Canoptek Scarabs"
+        role: troops
+        aliases: ["scarab", "scarabs", "scarab_swarm", "scarab_swarms"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      canoptek_wraiths:
+        name: "Canoptek Wraiths"
+        role: fast_attack
+        aliases: ["wraith", "wraiths", "canoptek_wraith", "canoptek_wraiths"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      canoptek_scarabs:
+        name: "Canoptek Scarabs"
+        role: troops
+        aliases: ["canoptek_scarab", "canoptek_scarabs"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      monolith:
+        name: "Monolith"
+        role: lord_of_war
+        aliases: ["monolith"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      ghost_ark:
+        name: "Ghost Ark"
+        role: transport
+        aliases: ["ghost_ark"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      doomsday_ark:
+        name: "Doomsday Ark"
+        role: heavy_support
+        aliases: ["doomsday_ark"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      annihilation_barge:
+        name: "Annihilation Barge"
+        role: heavy_support
+        aliases: ["annihilation_barge"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["necrons"]
+      night_scythe:
+        name: "Night Scythe"
+        role: flyer
+        aliases: ["night_scythe"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+      doom_scythe:
+        name: "Doom Scythe"
+        role: flyer
+        aliases: ["doom_scythe"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["necrons"]
+
+      # --- Tyranids ---
+      termagants:
+        name: "Termagants"
+        role: troops
+        aliases: ["termagant", "termagants"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      hormagaunts:
+        name: "Hormagaunts"
+        role: troops
+        aliases: ["hormagaunt", "hormagaunts"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      gaunts:
+        name: "Gaunts"
+        role: troops
+        aliases: ["gaunt", "gaunts"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      genestealers:
+        name: "Genestealers"
+        role: troops
+        aliases: ["genestealer", "genestealers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      broodlord:
+        name: "Broodlord"
+        role: hq
+        aliases: ["broodlord"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      tyranid_warriors:
+        name: "Tyranid Warriors"
+        role: troops
+        aliases: ["tyranid_warrior", "tyranid_warriors", "warrior", "warriors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      carnifex:
+        name: "Carnifex"
+        role: heavy_support
+        aliases: ["carnifex", "carnifexes", "carnifexs"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      hive_tyrant:
+        name: "Hive Tyrant"
+        role: hq
+        aliases: ["hive_tyrant", "hive_tyrants", "tyrant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      trygon:
+        name: "Trygon"
+        role: heavy_support
+        aliases: ["trygon", "trygons"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      lictor:
+        name: "Lictor"
+        role: elites
+        aliases: ["lictor", "lictors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      zoanthropes:
+        name: "Zoanthropes"
+        role: elites
+        aliases: ["zoanthrope", "zoanthropes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      neurotyrant:
+        name: "Neurotyrant"
+        role: hq
+        aliases: ["neurotyrant"]
+        legal_in_editions: ["10th"]
+        available_to: ["tyranids"]
+      biovore:
+        name: "Biovore"
+        role: heavy_support
+        aliases: ["biovore", "biovores"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      pyrovore:
+        name: "Pyrovore"
+        role: elites
+        aliases: ["pyrovore", "pyrovores"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+      ripper_swarms:
+        name: "Ripper Swarms"
+        role: troops
+        aliases: ["ripper", "rippers", "ripper_swarm", "ripper_swarms"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+
+      # --- Orks ---
+      ork_boyz:
+        name: "Ork Boyz"
+        role: troops
+        aliases: ["boy", "boyz", "ork_boy", "ork_boyz"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      nobz:
+        name: "Nobz"
+        role: elites
+        aliases: ["nob", "nobz"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      gretchin:
+        name: "Gretchin"
+        role: troops
+        aliases: ["gretchin", "grot", "grots"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      warboss:
+        name: "Warboss"
+        role: hq
+        aliases: ["warboss"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      kommando:
+        name: "Kommandos"
+        role: elites
+        aliases: ["kommando", "kommandos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      stormboyz:
+        name: "Stormboyz"
+        role: fast_attack
+        aliases: ["stormboy", "stormboyz"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      lootas:
+        name: "Lootas"
+        role: heavy_support
+        aliases: ["loota", "lootas"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      burna_boyz:
+        name: "Burna Boyz"
+        role: elites
+        aliases: ["burna", "burna_boy", "burna_boyz"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      mek:
+        name: "Mek"
+        role: elites
+        aliases: ["mek", "big_mek"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      deff_dread:
+        name: "Deff Dread"
+        role: heavy_support
+        aliases: ["deff_dread"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      killa_kan:
+        name: "Killa Kans"
+        role: heavy_support
+        aliases: ["killa_kan", "killa_kans"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      dakkajet:
+        name: "Dakkajet"
+        role: flyer
+        aliases: ["dakkajet"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      battlewagon:
+        name: "Battlewagon"
+        role: transport
+        aliases: ["battlewagon"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+      trukk:
+        name: "Trukk"
+        role: transport
+        aliases: ["trukk", "trukks"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+
+      # --- Astra Militarum ---
+      guardsmen:
+        name: "Guardsmen (Infantry Squad)"
+        role: troops
+        aliases: ["guardsman", "guardsmen", "infantry_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      cadian_shock_troops:
+        name: "Cadian Shock Troops"
+        role: troops
+        aliases: ["cadian", "cadians", "cadian_shock_troops"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["astra_militarum"]
+      command_squad:
+        name: "Command Squad"
+        role: hq
+        aliases: ["command_squad", "command"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      kasrkin:
+        name: "Kasrkin"
+        role: elites
+        aliases: ["kasrkin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      conscripts:
+        name: "Conscripts"
+        role: troops
+        aliases: ["conscript", "conscripts"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["astra_militarum"]
+      ogryn:
+        name: "Ogryn"
+        role: elites
+        aliases: ["ogryn", "ogryns"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      ratlings:
+        name: "Ratlings"
+        role: elites
+        aliases: ["ratling", "ratlings"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["astra_militarum"]
+      bullgryn:
+        name: "Bullgryn"
+        role: elites
+        aliases: ["bullgryn", "bullgryns", "bullgrynz"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["astra_militarum"]
+      chimera:
+        name: "Chimera"
+        role: transport
+        aliases: ["chimera"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      leman_russ:
+        name: "Leman Russ"
+        role: heavy_support
+        aliases: ["leman_russ", "leman_russ_tank", "leman_russ_battle_tank"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      baneblade:
+        name: "Baneblade"
+        role: lord_of_war
+        aliases: ["baneblade"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      sentinel:
+        name: "Sentinel"
+        role: fast_attack
+        aliases: ["sentinel", "sentinels"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+      basilisk:
+        name: "Basilisk"
+        role: heavy_support
+        aliases: ["basilisk"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["astra_militarum"]
+
+      # --- Adeptus Mechanicus ---
+      skitarii_rangers:
+        name: "Skitarii Rangers"
+        role: troops
+        aliases: ["ranger", "rangers", "skitarii_ranger", "skitarii_rangers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      skitarii_vanguard:
+        name: "Skitarii Vanguard"
+        role: troops
+        aliases: ["vanguard", "skitarii_vanguard"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      kataphron_destroyers:
+        name: "Kataphron Destroyers"
+        role: heavy_support
+        aliases: ["kataphron_destroyer", "kataphron_destroyers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      kataphron_breachers:
+        name: "Kataphron Breachers"
+        role: heavy_support
+        aliases: ["kataphron_breacher", "kataphron_breachers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      kastelan_robots:
+        name: "Kastelan Robots"
+        role: heavy_support
+        aliases: ["kastelan", "kastelan_robot", "kastelan_robots"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      ironstrider:
+        name: "Ironstrider Ballistarius / Sydonian Dragoon"
+        role: fast_attack
+        aliases: ["ironstrider", "ironstrider_ballistarius", "sydonian_dragoon"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      pteraxii:
+        name: "Pteraxii"
+        role: fast_attack
+        aliases: ["pteraxii", "pteraxii_skystalkers", "pteraxii_sterilizers"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      serberys:
+        name: "Serberys"
+        role: fast_attack
+        aliases: ["serberys", "serberys_raiders", "serberys_sulphurhounds"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+      techpriest:
+        name: "Tech-Priest"
+        role: hq
+        aliases: ["techpriest", "tech_priest"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+
+      # --- Chaos Space Marines ---
+      cultists:
+        name: "Cultists"
+        role: troops
+        aliases: ["cultist", "cultists"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      chaos_marines:
+        name: "Chaos Space Marines"
+        role: troops
+        aliases: ["chaos_space_marine", "chaos_space_marines", "csm"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      chosen:
+        name: "Chosen"
+        role: elites
+        aliases: ["chosen"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      chaos_terminators:
+        name: "Chaos Terminators"
+        role: elites
+        aliases: ["chaos_terminator", "chaos_terminators"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      possessed:
+        name: "Possessed"
+        role: elites
+        aliases: ["possessed"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      havocs:
+        name: "Havocs"
+        role: heavy_support
+        aliases: ["havoc", "havocs"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      obliterators:
+        name: "Obliterators"
+        role: heavy_support
+        aliases: ["obliterator", "obliterators"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      raptors:
+        name: "Raptors"
+        role: fast_attack
+        aliases: ["raptor", "raptors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      bikers:
+        name: "Bikers"
+        role: fast_attack
+        aliases: ["biker", "bikers", "bike", "bikes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      venomcrawler:
+        name: "Venomcrawler"
+        role: heavy_support
+        aliases: ["venomcrawler"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      heldrake:
+        name: "Heldrake"
+        role: flyer
+        aliases: ["heldrake"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      decimator:
+        name: "Decimator"
+        role: heavy_support
+        aliases: ["decimator"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["chaos_space_marines"]
+
+      # Notable Named Characters (Non-Primarch)
+      abaddon_the_despoiler:
+        name: "Abaddon the Despoiler"
+        role: hq
+        aliases: ["abaddon", "abaddon_the_despoiler"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_space_marines"]
+      kharn_the_betrayer:
+        name: "Khârn the Betrayer"
+        role: hq
+        aliases: ["kharn", "khârn", "kharn_the_betrayer"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["world_eaters", "chaos_space_marines"]
+      typhus:
+        name: "Typhus"
+        role: hq
+        aliases: ["typhus", "typhus_the_traveller"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["death_guard"]
+      ahriman:
+        name: "Ahriman"
+        role: hq
+        aliases: ["ahriman"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["thousand_sons"]
+
+      # Orks Named
+      ghazghkull_thraka:
+        name: "Ghazghkull Thraka"
+        role: hq
+        aliases: ["ghazghkull", "ghazghkull_thraka", "ghaz"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["orks"]
+
+      # Tyranids Named
+      swarmlord:
+        name: "The Swarmlord"
+        role: hq
+        aliases: ["swarmlord", "the_swarmlord"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tyranids"]
+
+      # Necrons Named
+      the_silent_king:
+        name: "The Silent King"
+        role: lord_of_war
+        aliases: ["silent_king", "the_silent_king", "szarekh"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["necrons"]
+
+      # Astra Militarum Named
+      commissar_yarrick:
+        name: "Commissar Yarrick"
+        role: hq
+        aliases: ["yarrick", "commissar_yarrick"]
+        legal_in_editions: ["8th", "9th"]
+        available_to: ["astra_militarum"]
+
+      # Adeptus Mechanicus Named
+      belisarius_cawl:
+        name: "Belisarius Cawl"
+        role: hq
+        aliases: ["cawl", "belisarius_cawl"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_mechanicus"]
+
+      # --- Drukhari ---
+      archon:
+        name: "Archon"
+        role: hq
+        aliases: ["archon"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      succubus:
+        name: "Succubus"
+        role: hq
+        aliases: ["succubus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      haemonculus:
+        name: "Haemonculus"
+        role: hq
+        aliases: ["haemonculus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      kabalite_warriors:
+        name: "Kabalite Warriors"
+        role: troops
+        aliases: ["kabalite", "kabalite_warrior", "kabalite_warriors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      wyches:
+        name: "Wyches"
+        role: troops
+        aliases: ["wych", "wyches"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      wracks:
+        name: "Wracks"
+        role: elites
+        aliases: ["wrack", "wracks"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      incubi:
+        name: "Incubi"
+        role: elites
+        aliases: ["incubus", "incubi"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      talos:
+        name: "Talos"
+        role: heavy_support
+        aliases: ["talos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      cronos:
+        name: "Cronos"
+        role: heavy_support
+        aliases: ["cronos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      raider:
+        name: "Raider"
+        role: transport
+        aliases: ["raider"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      venom:
+        name: "Venom"
+        role: transport
+        aliases: ["venom"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      ravager:
+        name: "Ravager"
+        role: heavy_support
+        aliases: ["ravager"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      reaver_jetbikes:
+        name: "Reaver Jetbikes"
+        role: fast_attack
+        aliases: ["reaver", "reavers", "reaver_jetbikes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+      drazhar:
+        name: "Drazhar"
+        role: elites
+        aliases: ["drazhar"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["drukhari"]
+
+      # --- Aeldari (Craftworlds) ---
+      farseer:
+        name: "Farseer"
+        role: hq
+        aliases: ["farseer"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      autarch:
+        name: "Autarch"
+        role: hq
+        aliases: ["autarch"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      guardian_defenders:
+        name: "Guardian Defenders"
+        role: troops
+        aliases: ["guardian", "guardians", "guardian_defenders"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      dire_avengers:
+        name: "Dire Avengers"
+        role: troops
+        aliases: ["dire_avenger", "dire_avengers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      howling_banshees:
+        name: "Howling Banshees"
+        role: elites
+        aliases: ["howling_banshee", "howling_banshees"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      striking_scorpions:
+        name: "Striking Scorpions"
+        role: elites
+        aliases: ["striking_scorpion", "striking_scorpions"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      fire_dragons:
+        name: "Fire Dragons"
+        role: elites
+        aliases: ["fire_dragon", "fire_dragons"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      swooping_hawks:
+        name: "Swooping Hawks"
+        role: fast_attack
+        aliases: ["swooping_hawk", "swooping_hawks"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      warp_spiders:
+        name: "Warp Spiders"
+        role: fast_attack
+        aliases: ["warp_spider", "warp_spiders"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      wraithguard:
+        name: "Wraithguard"
+        role: elites
+        aliases: ["wraithguard"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      wraithlord:
+        name: "Wraithlord"
+        role: heavy_support
+        aliases: ["wraithlord"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      wave_serpent:
+        name: "Wave Serpent"
+        role: transport
+        aliases: ["wave_serpent"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      avatar_of_khaine:
+        name: "Avatar of Khaine"
+        role: lord_of_war
+        aliases: ["avatar_of_khaine", "avatar"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      wraithknight:
+        name: "Wraithknight"
+        role: lord_of_war
+        aliases: ["wraithknight"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      eldrad_ulthran:
+        name: "Eldrad Ulthran"
+        role: hq
+        aliases: ["eldrad", "eldrad_ulthran"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+      jain_zar:
+        name: "Jain Zar"
+        role: hq
+        aliases: ["jain_zar", "jain zar"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["aeldari"]
+
+      # --- T'au Empire ---
+      tau_commander:
+        name: "Commander"
+        role: hq
+        aliases: ["commander", "tau_commander"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      ethereal:
+        name: "Ethereal"
+        role: hq
+        aliases: ["ethereal"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      fire_warriors:
+        name: "Fire Warriors"
+        role: troops
+        aliases: ["fire_warrior", "fire_warriors", "strike_team"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      breacher_team:
+        name: "Breacher Team"
+        role: troops
+        aliases: ["breacher", "breachers", "breacher_team"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      pathfinders:
+        name: "Pathfinders"
+        role: fast_attack
+        aliases: ["pathfinder", "pathfinders"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      crisis_battlesuits:
+        name: "Crisis Battlesuits"
+        role: elites
+        aliases: ["crisis", "crisis_suit", "crisis_battlesuits"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      stealth_battlesuits:
+        name: "Stealth Battlesuits"
+        role: elites
+        aliases: ["stealth_suit", "stealth_suits", "stealth_battlesuits"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      riptide_battlesuit:
+        name: "Riptide Battlesuit"
+        role: heavy_support
+        aliases: ["riptide"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      ghostkeel_battlesuit:
+        name: "Ghostkeel Battlesuit"
+        role: elites
+        aliases: ["ghostkeel"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      broadside_battlesuit:
+        name: "Broadside Battlesuit"
+        role: heavy_support
+        aliases: ["broadside"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      devilfish:
+        name: "Devilfish"
+        role: transport
+        aliases: ["devilfish"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      hammerhead_gunship:
+        name: "Hammerhead Gunship"
+        role: heavy_support
+        aliases: ["hammerhead", "hammerhead_gunship"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      kroot_carnivores:
+        name: "Kroot Carnivores"
+        role: troops
+        aliases: ["kroot", "kroot_carnivores"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      commander_shadowsun:
+        name: "Commander Shadowsun"
+        role: hq
+        aliases: ["shadowsun", "commander_shadowsun"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+      commander_farsight:
+        name: "Commander Farsight"
+        role: hq
+        aliases: ["farsight", "commander_farsight"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["tau_empire"]
+
+      # --- Genestealer Cults ---
+      patriarch:
+        name: "Patriarch"
+        role: hq
+        aliases: ["patriarch"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      magus:
+        name: "Magus"
+        role: hq
+        aliases: ["magus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      primus:
+        name: "Primus"
+        role: hq
+        aliases: ["primus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      neophyte_hybrids:
+        name: "Neophyte Hybrids"
+        role: troops
+        aliases: ["neophyte", "neophytes", "neophyte_hybrids"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      acolyte_hybrids:
+        name: "Acolyte Hybrids"
+        role: troops
+        aliases: ["acolyte", "acolytes", "acolyte_hybrids"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      aberrants:
+        name: "Aberrants"
+        role: elites
+        aliases: ["aberrant", "aberrants"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      kelermorph:
+        name: "Kelermorph"
+        role: elites
+        aliases: ["kelermorph"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      nexos:
+        name: "Nexos"
+        role: elites
+        aliases: ["nexos"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      atalan_jackals:
+        name: "Atalan Jackals"
+        role: fast_attack
+        aliases: ["atalan_jackals", "jackals"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+      goliath_truck:
+        name: "Goliath Truck"
+        role: transport
+        aliases: ["goliath", "goliath_truck"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["genestealer_cults"]
+
+      # --- Adepta Sororitas ---
+      canoness:
+        name: "Canoness"
+        role: hq
+        aliases: ["canoness"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      palatine:
+        name: "Palatine"
+        role: hq
+        aliases: ["palatine"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      battle_sisters_squad:
+        name: "Battle Sisters Squad"
+        role: troops
+        aliases: ["battle_sisters", "sisters", "battle_sisters_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      repentia_squad:
+        name: "Repentia Squad"
+        role: elites
+        aliases: ["repentia", "repentia_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      retributors:
+        name: "Retributors"
+        role: heavy_support
+        aliases: ["retributor", "retributors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      seraphim:
+        name: "Seraphim"
+        role: fast_attack
+        aliases: ["seraphim"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      dominions:
+        name: "Dominions"
+        role: fast_attack
+        aliases: ["dominion", "dominions"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      immolator:
+        name: "Immolator"
+        role: transport
+        aliases: ["immolator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      exorcist:
+        name: "Exorcist"
+        role: heavy_support
+        aliases: ["exorcist"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      saint_celestine:
+        name: "Saint Celestine"
+        role: hq
+        aliases: ["saint_celestine", "celestine"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adepta_sororitas"]
+      morvenn_vahl:
+        name: "Morvenn Vahl"
+        role: hq
+        aliases: ["morvenn_vahl", "vahl"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["adepta_sororitas"]
+
+      # --- Adeptus Custodes ---
+      shield_captain:
+        name: "Shield-Captain"
+        role: hq
+        aliases: ["shield_captain", "shield-captain"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      custodian_guard:
+        name: "Custodian Guard"
+        role: troops
+        aliases: ["custodian_guard", "custodian"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      wardens:
+        name: "Custodian Wardens"
+        role: elites
+        aliases: ["wardens", "custodian_wardens"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      allarus_terminators:
+        name: "Allarus Terminators"
+        role: elites
+        aliases: ["allarus_terminators", "allarus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      vertus_praetors:
+        name: "Vertus Praetors"
+        role: fast_attack
+        aliases: ["vertus_praetors", "praetors", "jetbikes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      vexilus_praetor:
+        name: "Vexilus Praetor"
+        role: elites
+        aliases: ["vexilus_praetor", "vexilla"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      contemptor_achillus_dreadnought:
+        name: "Contemptor-Achillus Dreadnought"
+        role: elites
+        aliases: ["achillus_dreadnought", "contemptor_achillus"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      trajann_valoris:
+        name: "Trajann Valoris"
+        role: hq
+        aliases: ["trajann_valoris", "valoris"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["adeptus_custodes"]
+      blade_champion:
+        name: "Blade Champion"
+        role: elites
+        aliases: ["blade_champion"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["adeptus_custodes"]
+
+      # --- Grey Knights ---
+      brother_captain:
+        name: "Brother-Captain"
+        role: hq
+        aliases: ["brother_captain", "brother-captain"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      grey_knight_strike_squad:
+        name: "Strike Squad"
+        role: troops
+        aliases: ["strike_squad"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      grey_knight_terminators:
+        name: "Terminators"
+        role: elites
+        aliases: ["grey_knight_terminators", "gk_terminators"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      paladins:
+        name: "Paladins"
+        role: elites
+        aliases: ["paladin", "paladins"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      interceptors:
+        name: "Interceptors"
+        role: fast_attack
+        aliases: ["interceptor", "interceptors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      purifiers:
+        name: "Purifiers"
+        role: elites
+        aliases: ["purifier", "purifiers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      dreadknight:
+        name: "Nemesis Dreadknight"
+        role: heavy_support
+        aliases: ["dreadknight", "nemesis_dreadknight"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      kaldor_draigo:
+        name: "Kaldor Draigo"
+        role: hq
+        aliases: ["draigo", "kaldor_draigo"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      castellann_crowe:
+        name: "Castellan Crowe"
+        role: hq
+        aliases: ["crowe", "castellan_crowe"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+      grand_master_in_dreadknight:
+        name: "Grand Master in Nemesis Dreadknight"
+        role: lord_of_war
+        aliases: ["gmndk", "grand_master_dreadknight"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["grey_knights"]
+
+      # --- Imperial Knights ---
+      knight_paladin:
+        name: "Knight Paladin"
+        role: lord_of_war
+        aliases: ["paladin", "knight_paladin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_errant:
+        name: "Knight Errant"
+        role: lord_of_war
+        aliases: ["errant", "knight_errant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_warden:
+        name: "Knight Warden"
+        role: lord_of_war
+        aliases: ["warden", "knight_warden"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_crusader:
+        name: "Knight Crusader"
+        role: lord_of_war
+        aliases: ["crusader", "knight_crusader"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_gallant:
+        name: "Knight Gallant"
+        role: lord_of_war
+        aliases: ["gallant", "knight_gallant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_castellan:
+        name: "Knight Castellan"
+        role: lord_of_war
+        aliases: ["castellan", "knight_castellan"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      knight_valiant:
+        name: "Knight Valiant"
+        role: lord_of_war
+        aliases: ["valiant", "knight_valiant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      armiger_warglaive:
+        name: "Armiger Warglaive"
+        role: heavy_support
+        aliases: ["armiger_warglaive", "warglaive"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+      armiger_helverin:
+        name: "Armiger Helverin"
+        role: heavy_support
+        aliases: ["armiger_helverin", "helverin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["imperial_knights"]
+
+      # --- Chaos Knights ---
+      knight_desecrator:
+        name: "Knight Desecrator"
+        role: lord_of_war
+        aliases: ["desecrator", "knight_desecrator"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+      knight_despoiler:
+        name: "Knight Despoiler"
+        role: lord_of_war
+        aliases: ["despoiler", "knight_despoiler"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+      knight_rampager:
+        name: "Knight Rampager"
+        role: lord_of_war
+        aliases: ["rampager", "knight_rampager"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+      knight_tyrant:
+        name: "Knight Tyrant"
+        role: lord_of_war
+        aliases: ["tyrant", "knight_tyrant"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+      war_dog_stalker:
+        name: "War Dog Stalker"
+        role: heavy_support
+        aliases: ["war_dog_stalker", "stalker"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+      war_dog_executioner:
+        name: "War Dog Executioner"
+        role: heavy_support
+        aliases: ["war_dog_executioner", "executioner"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_knights"]
+
+      # --- Leagues of Votann ---
+      kahl:
+        name: "Kâhl"
+        role: hq
+        aliases: ["kahl"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      hearthkyn_warriors:
+        name: "Hearthkyn Warriors"
+        role: troops
+        aliases: ["hearthkyn", "hearthkyn_warriors"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      cthonian_berserks:
+        name: "Cthonian Berserks"
+        role: elites
+        aliases: ["cthonian_berserks", "berserks", "berserkers", "berserker"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      einhyr_hearthguard:
+        name: "Einhyr Hearthguard"
+        role: elites
+        aliases: ["einhyr_hearthguard", "hearthguard"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      hernkyn_pioneers:
+        name: "Hernkyn Pioneers"
+        role: fast_attack
+        aliases: ["hernkyn_pioneers", "pioneers"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      sagitaur:
+        name: "Sagitaur"
+        role: transport
+        aliases: ["sagitaur"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      hekaton_land_fortress:
+        name: "Hekaton Land Fortress"
+        role: heavy_support
+        aliases: ["hekaton", "hekaton_land_fortress"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+      uthar_the_destined:
+        name: "Ûthar the Destined"
+        role: hq
+        aliases: ["uthar", "uthar_the_destined"]
+        legal_in_editions: ["9th", "10th"]
+        available_to: ["leagues_of_votann"]
+
+      # --- Chaos Daemons ---
+      bloodletters:
+        name: "Bloodletters"
+        role: troops
+        aliases: ["bloodletter", "bloodletters"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      plaguebearers:
+        name: "Plaguebearers"
+        role: troops
+        aliases: ["plaguebearer", "plaguebearers"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      daemonettes:
+        name: "Daemonettes"
+        role: troops
+        aliases: ["daemonette", "daemonettes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      pink_horrors:
+        name: "Pink Horrors"
+        role: troops
+        aliases: ["pink_horror", "pink_horrors"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      bloodthirster:
+        name: "Bloodthirster"
+        role: lord_of_war
+        aliases: ["bloodthirster"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      great_unclean_one:
+        name: "Great Unclean One"
+        role: lord_of_war
+        aliases: ["guo", "great_unclean_one"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      keeper_of_secrets:
+        name: "Keeper of Secrets"
+        role: lord_of_war
+        aliases: ["keeper_of_secrets"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      lord_of_change:
+        name: "Lord of Change"
+        role: lord_of_war
+        aliases: ["lord_of_change"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      skulltaker:
+        name: "Skulltaker"
+        role: hq
+        aliases: ["skulltaker"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+      the_changeling:
+        name: "The Changeling"
+        role: hq
+        aliases: ["the_changeling", "changeling"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["chaos_daemons"]
+
+      # --- Inquisition (Agents of the Imperium) ---
+      inquisitor:
+        name: "Inquisitor"
+        role: hq
+        aliases: ["inquisitor"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      acolytes:
+        name: "Acolytes"
+        role: elites
+        aliases: ["acolyte", "acolytes"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      daemonhost:
+        name: "Daemonhost"
+        role: elites
+        aliases: ["daemonhost"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      jokaero_weaponsmith:
+        name: "Jokaero Weaponsmith"
+        role: elites
+        aliases: ["jokaero", "jokaero_weaponsmith"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      vindicare_assassin:
+        name: "Vindicare Assassin"
+        role: elites
+        aliases: ["vindicare", "vindicare_assassin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      eversor_assassin:
+        name: "Eversor Assassin"
+        role: elites
+        aliases: ["eversor", "eversor_assassin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      callidus_assassin:
+        name: "Callidus Assassin"
+        role: elites
+        aliases: ["callidus", "callidus_assassin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+      culexus_assassin:
+        name: "Culexus Assassin"
+        role: elites
+        aliases: ["culexus", "culexus_assassin"]
+        legal_in_editions: ["8th", "9th", "10th"]
+        available_to: ["inquisition"]
+
+# NOTE: Faction list and representative units added for Drukhari, Aeldari, T'au, Genestealer Cults, Adepta Sororitas,
+# Adeptus Custodes, Grey Knights, Imperial Knights, Chaos Knights, Leagues of Votann, Chaos Daemons, and Inquisition.
