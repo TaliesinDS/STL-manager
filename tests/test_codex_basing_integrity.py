@@ -2,7 +2,9 @@ import re
 from pathlib import Path
 
 
-CODEx_PATH = Path(r"c:\Users\akortekaas\Documents\GitHub\STL-manager\vocab\codex_units_w40k.yaml")
+# Resolve codex path relative to the repository root (parent of this tests/ directory)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CODEx_PATH = REPO_ROOT / "vocab" / "codex_units_w40k.yaml"
 
 
 def _read_lines():
