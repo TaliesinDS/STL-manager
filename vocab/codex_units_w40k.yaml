@@ -348,6 +348,7 @@ codex_units:
         aliases: ["sternguard", "sternguard_veteran", "sternguard_veterans"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       desolation_squad:
         name: "Desolation Squad"
         role: heavy_support
@@ -489,6 +490,7 @@ codex_units:
         aliases: ["librarian phobos", "phobos_librarian", "librarian_in_phobos"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       librarian_terminator:
         name: "Librarian in Terminator Armour"
         role: hq
@@ -518,6 +520,7 @@ codex_units:
         aliases: ["jump_pack_chaplain", "chaplain jump pack", "chaplain_with_jump_pack"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
 
       # Lieutenant variants
       lieutenant_phobos:
@@ -526,18 +529,21 @@ codex_units:
         aliases: ["phobos_lieutenant", "lieutenant phobos", "lieutenant_in_phobos"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       lieutenant_reiver:
         name: "Lieutenant with Reiver gear"
         role: hq
         aliases: ["reiver_lieutenant", "lieutenant reiver", "lieutenant_in_reiver"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       lieutenant_combi_weapon:
         name: "Lieutenant with Combi-weapon"
         role: hq
         aliases: ["lieutenant combi-weapon", "combi_weapon_lieutenant", "lieutenant_combi"]
         legal_in_editions: ["10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
 
       # Ancient variant and Company Heroes
       ancient_terminator:
@@ -553,6 +559,7 @@ codex_units:
         aliases: ["company heroes", "company_heroes"]
         legal_in_editions: ["10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
 
       dreadnought:
         name: "Dreadnought"
@@ -694,12 +701,14 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
         legends_in_editions: ["10th"]
+        base_profile: no_base
       stalker:
         name: "Stalker"
         aliases: ["stalker"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
         legends_in_editions: ["10th"]
+        base_profile: no_base
       vindicator:
         name: "Vindicator"
         aliases: ["vindicator"]
@@ -1118,18 +1127,21 @@ codex_units:
         aliases: ["baal_predator"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: no_base
       furioso_dreadnought:
         name: "Furioso Dreadnought"
         role: elites
         aliases: ["furioso", "furioso_dreadnought"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_60mm
       death_company_dreadnought:
         name: "Death Company Dreadnought"
         role: elites
         aliases: ["death company dreadnought", "dc dread", "dc_dreadnought"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_60mm
 
       deathwing_terminators:
         name: "Deathwing Terminators"
@@ -3247,6 +3259,7 @@ codex_units:
         aliases: ["ghazghkull", "ghazghkull_thraka", "ghaz"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: round_60mm
 
       # Tyranids Named
       swarmlord:
@@ -3255,6 +3268,7 @@ codex_units:
         aliases: ["swarmlord", "the_swarmlord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: round_60mm
 
       # Necrons Named
       the_silent_king:
@@ -3263,6 +3277,7 @@ codex_units:
         aliases: ["silent_king", "the_silent_king", "szarekh"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["necrons"]
+        base_profile: oval_170x105mm
 
       # Astra Militarum Named
       commissar_yarrick:
@@ -3271,6 +3286,7 @@ codex_units:
         aliases: ["yarrick", "commissar_yarrick"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["astra_militarum"]
+        base_profile: round_32mm
 
       # Adeptus Mechanicus Named
       belisarius_cawl:
@@ -3288,18 +3304,21 @@ codex_units:
         aliases: ["archon"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_32mm
       succubus:
         name: "Succubus"
         role: hq
         aliases: ["succubus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_25mm
       haemonculus:
         name: "Haemonculus"
         role: hq
         aliases: ["haemonculus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_32mm
       kabalite_warriors:
         name: "Kabalite Warriors"
         role: troops
@@ -3376,6 +3395,7 @@ codex_units:
         aliases: ["drazhar"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_40mm
 
       mandrakes:
         name: "Mandrakes"
@@ -3411,6 +3431,7 @@ codex_units:
         aliases: ["court_of_the_archon", "court"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_25mm
       razorwing_jetfighter:
         name: "Razorwing Jetfighter"
         role: flyer
@@ -3459,12 +3480,14 @@ codex_units:
         aliases: ["lelith", "lelith_hesperax"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_25mm
       urien_rakarth:
         name: "Urien Rakarth"
         role: hq
         aliases: ["urien", "urien_rakarth"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: round_32mm
 
       # --- Aeldari (Craftworlds) ---
       farseer:
