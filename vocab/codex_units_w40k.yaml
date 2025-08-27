@@ -33,10 +33,14 @@ codex_units:
         round_80mm: { shape: round, diameter_mm: 80 }
         round_100mm: { shape: round, diameter_mm: 100 }
         round_120mm: { shape: round, diameter_mm: 120 }
+        round_130mm: { shape: round, diameter_mm: 130 }
+        round_90mm: { shape: round, diameter_mm: 90 }
 
         # Round flying bases (mounted on clear stems)
         flying_round_32mm: { shape: round, diameter_mm: 32, flying_stem: true }
         flying_round_40mm: { shape: round, diameter_mm: 40, flying_stem: true }
+        flying_round_90mm: { shape: round, diameter_mm: 90, flying_stem: true }
+        flying_round_100mm: { shape: round, diameter_mm: 100, flying_stem: true }
 
         # Oval cavalry/vehicle bases
         oval_60x35mm: { shape: oval, width_mm: 60, length_mm: 35 }
@@ -266,12 +270,14 @@ codex_units:
         aliases: ["intercessor", "intercessors", "intercessor_squad"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       assault_intercessor_squad:
         name: "Assault Intercessor Squad"
         role: troops
         aliases: ["assault_intercessor", "assault_intercessors", "assault_intercessor_squad"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       heavy_intercessor_squad:
         name: "Heavy Intercessor Squad"
         role: troops
@@ -286,6 +292,7 @@ codex_units:
         # Note: bare 'tactical' is intentionally omitted (weak token)
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       aggressor_squad:
         name: "Aggressor Squad"
         role: elites
@@ -553,48 +560,56 @@ codex_units:
         aliases: ["dreadnought", "dread"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_60mm
       redemptor_dreadnought:
         name: "Redemptor Dreadnought"
         role: elites
         aliases: ["redemptor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_90mm
       invictor_warsuit:
         name: "Invictor Tactical Warsuit"
         role: elites
         aliases: ["invictor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_90mm
       gladiator_tank:
         name: "Gladiator Tank"
         role: heavy_support
         aliases: ["gladiator", "gladiator_lancer", "gladiator_reaper", "gladiator_valiant"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
       land_raider:
         name: "Land Raider"
         role: heavy_support
         aliases: ["land_raider"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       rhino:
         name: "Rhino"
         role: transport
         aliases: ["rhino"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       impulsor:
         name: "Impulsor"
         role: transport
         aliases: ["impulsor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
       storm_speeder:
         name: "Storm Speeder"
         role: fast_attack
         aliases: ["storm_speeder", "storm_speeder_hailstrike", "storm_speeder_thunderstrike", "storm_speeder_hammerstrike"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: flying_round_90mm
 
       # Dreadnought variants
       ballistus_dreadnought:
@@ -602,11 +617,13 @@ codex_units:
         aliases: ["ballistus", "ballistus_dreadnought"]
         legal_in_editions: ["10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_90mm
       brutalis_dreadnought:
         name: "Brutalis Dreadnought"
         aliases: ["brutalis", "brutalis_dreadnought"]
         legal_in_editions: ["10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_90mm
 
       # Gladiator variants
       gladiator_lancer:
@@ -614,16 +631,19 @@ codex_units:
         aliases: ["gladiator_lancer"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
       gladiator_reaper:
         name: "Gladiator Reaper"
         aliases: ["gladiator_reaper"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
       gladiator_valiant:
         name: "Gladiator Valiant"
         aliases: ["gladiator_valiant"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
 
       # Land Raider variants
       land_raider_crusader:
@@ -631,11 +651,13 @@ codex_units:
         aliases: ["land_raider_crusader", "crusader"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       land_raider_redeemer:
         name: "Land Raider Redeemer"
         aliases: ["land_raider_redeemer", "redeemer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
 
       # Predator variants
       predator_annihilator:
@@ -643,11 +665,13 @@ codex_units:
         aliases: ["predator_annihilator", "annihilator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       predator_destructor:
         name: "Predator Destructor"
         aliases: ["predator_destructor", "destructor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
 
       # Repulsor variants
       repulsor:
@@ -655,11 +679,13 @@ codex_units:
         aliases: ["repulsor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
       repulsor_executioner:
         name: "Repulsor Executioner"
         aliases: ["repulsor_executioner", "executioner"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_100mm
 
       # Other tanks and artillery
       hunter:
@@ -679,11 +705,13 @@ codex_units:
         aliases: ["vindicator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       whirlwind:
         name: "Whirlwind"
         aliases: ["whirlwind"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
 
       # Artillery and specialized infantry
       thunderfire_cannon:
@@ -693,6 +721,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
         legends_in_editions: ["10th"]
+        base_profile: no_base
       centurion_devastators:
         name: "Centurion Devastators"
         role: heavy_support
@@ -700,6 +729,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
         legends_in_editions: ["10th"]
+        base_profile: round_50mm
       assault_centurions:
         name: "Assault Centurions"
         role: elites
@@ -707,18 +737,21 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
         legends_in_editions: ["10th"]
+        base_profile: round_50mm
       company_veterans:
         name: "Company Veterans"
         role: elites
         aliases: ["company veterans", "company_veterans"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       servitors:
         name: "Servitors"
         role: elites
         aliases: ["servitors", "servitor"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/*"]
+        base_profile: round_25mm
 
       # Transports
       razorback:
@@ -726,11 +759,13 @@ codex_units:
         aliases: ["razorback"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
       drop_pod:
         name: "Drop Pod"
         aliases: ["drop_pod", "drop pod"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
 
       # Storm Speeder subtypes
       storm_speeder_hailstrike:
@@ -738,16 +773,19 @@ codex_units:
         aliases: ["storm_speeder_hailstrike", "hailstrike"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: flying_round_90mm
       storm_speeder_thunderstrike:
         name: "Storm Speeder Thunderstrike"
         aliases: ["storm_speeder_thunderstrike", "thunderstrike"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: flying_round_90mm
       storm_speeder_hammerstrike:
         name: "Storm Speeder Hammerstrike"
         aliases: ["storm_speeder_hammerstrike", "hammerstrike"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: flying_round_90mm
 
       # Bikes/ATV
       bike_squad:
@@ -854,6 +892,7 @@ codex_units:
         aliases: ["hammerfall", "hammerfall_bunker"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: no_base
 
       # --- Space Marines: Core Characters ---
       apothecary:
@@ -862,54 +901,63 @@ codex_units:
         aliases: ["apothecary", "primaris_apothecary", "chief_apothecary"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       apothecary_biologis:
         name: "Apothecary Biologis"
         role: hq
         aliases: ["apothecary biologis", "apothecary_biologis", "biologis"]
         legal_in_editions: ["10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       techmarine:
         name: "Techmarine"
         role: hq
         aliases: ["techmarine", "primaris_techmarine"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       chaplain:
         name: "Chaplain"
         role: hq
         aliases: ["chaplain", "primaris_chaplain", "master_of_sanctity"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       lieutenant:
         name: "Lieutenant"
         role: hq
         aliases: ["lieutenant", "primaris_lieutenant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       ancient:
         name: "Ancient"
         role: elites
         aliases: ["ancient", "company_ancient", "chapter_ancient"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       company_champion:
         name: "Company Champion"
         role: elites
         aliases: ["company_champion", "champion"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       judiciar:
         name: "Judiciar"
         role: elites
         aliases: ["judiciar"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_32mm
       bladeguard_ancient:
         name: "Bladeguard Ancient"
         role: elites
         aliases: ["bladeguard_ancient"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/*"]
+        base_profile: round_40mm
 
       # --- Named Characters: Primarchs (40K-legal) ---
       roboute_guilliman:
@@ -918,18 +966,21 @@ codex_units:
         aliases: ["roboute_guilliman", "roboute guilliman", "guilliman", "roboute"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/ultramarines"]
+        base_profile: round_60mm
       marneus_calgar:
         name: "Marneus Calgar"
         role: hq
         aliases: ["marneus_calgar", "marneus calgar", "calgar"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/ultramarines"]
+        base_profile: round_40mm
       chief_librarian_tigurius:
         name: "Chief Librarian Tigurius"
         role: hq
         aliases: ["tigurius", "chief librarian tigurius", "chief_librarian_tigurius"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/ultramarines"]
+        base_profile: round_32mm
       cato_sicarius:
         name: "Captain Cato Sicarius"
         role: hq
@@ -937,30 +988,35 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/ultramarines"]
         legends_in_editions: ["10th"]
+        base_profile: round_32mm
       lion_el_jonson:
         name: "Lion El'Jonson"
         role: lord_of_war
         aliases: ["lion el'jonson", "lion_el_jonson", "the_lion"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_60mm
       mortarion:
         name: "Mortarion"
         role: lord_of_war
         aliases: ["mortarion"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_100mm
       magnus_the_red:
         name: "Magnus the Red"
         role: lord_of_war
         aliases: ["magnus the red", "magnus", "magnus_the_red"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_100mm
       angron:
         name: "Angron"
         role: lord_of_war
         aliases: ["angron", "daemon_primarch_angron"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["world_eaters"]
+        base_profile: round_100mm
 
       # --- Space Marines: Chapter-unique units and exceptions ---
       emperor_champion:
@@ -969,18 +1025,21 @@ codex_units:
         aliases: ["emperor's champion", "emperors_champion", "emperor_champion"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/black_templars"]
+        base_profile: round_40mm
       crusader_squad:
         name: "Crusader Squad"
         role: troops
         aliases: ["crusader", "crusader_squad", "primaris_crusader_squad"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/black_templars"]
+        base_profile: round_32mm
       sword_brethren:
         name: "Sword Brethren"
         role: elites
         aliases: ["sword_brethren"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["space_marines/black_templars"]
+        base_profile: round_32mm
 
       high_marshal_helbrecht:
         name: "High Marshal Helbrecht"
@@ -988,12 +1047,14 @@ codex_units:
         aliases: ["high marshal helbrecht", "high_marshal_helbrecht", "helbrecht"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/black_templars"]
+        base_profile: round_60mm
       high_chaplain_grimaldus:
         name: "High Chaplain Grimaldus"
         role: hq
         aliases: ["grimaldus", "high chaplain grimaldus", "high_chaplain_grimaldus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/black_templars"]
+        base_profile: round_60mm
 
       sanguinary_guard:
         name: "Sanguinary Guard"
@@ -1001,48 +1062,56 @@ codex_units:
         aliases: ["sanguinary_guard", "sanguinary"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_32mm
       commander_dante:
         name: "Commander Dante"
         role: hq
         aliases: ["dante", "commander dante", "commander_dante"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_40mm
       mephiston:
         name: "Chief Librarian Mephiston"
         role: hq
         aliases: ["mephiston", "lord of death", "chief librarian mephiston"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_40mm
       astorath:
         name: "Astorath"
         role: hq
         aliases: ["astorath"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_40mm
       lemartes:
         name: "Lemartes"
         role: hq
         aliases: ["lemartes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_40mm
       death_company:
         name: "Death Company"
         role: elites
         aliases: ["death_company"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_32mm
       sanguinary_priest:
         name: "Sanguinary Priest"
         role: elites
         aliases: ["sanguinary_priest"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_32mm
       sanguinary_ancient:
         name: "Sanguinary Ancient"
         role: elites
         aliases: ["sanguinary_ancient"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/blood_angels"]
+        base_profile: round_32mm
       baal_predator:
         name: "Baal Predator"
         role: heavy_support
@@ -1068,60 +1137,70 @@ codex_units:
         aliases: ["deathwing", "deathwing_terminators", "deathwing_terminator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_40mm
       deathwing_knights:
         name: "Deathwing Knights"
         role: elites
         aliases: ["deathwing_knights", "deathwing_knight"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_40mm
       ezekiel:
         name: "Ezekiel"
         role: hq
         aliases: ["ezekiel", "chief librarian ezekiel"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_32mm
       asmodai:
         name: "Asmodai"
         role: hq
         aliases: ["asmodai", "master of repentance"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_32mm
       sammael:
         name: "Sammael"
         role: hq
         aliases: ["sammael"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: oval_60x35mm
       ezekiel:
         name: "Ezekiel"
         role: hq
         aliases: ["ezekiel", "chief librarian ezekiel"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_32mm
       asmodai:
         name: "Asmodai"
         role: hq
         aliases: ["asmodai", "master of repentance"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: round_32mm
       samael:
         name: "Sammael"
         role: hq
         aliases: ["sammael"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: oval_60x35mm
       ravenwing_bikers:
         name: "Ravenwing Bikers"
         role: fast_attack
         aliases: ["ravenwing", "ravenwing_biker", "ravenwing_bikers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: oval_75x25mm
       ravenwing_black_knights:
         name: "Ravenwing Black Knights"
         role: fast_attack
         aliases: ["ravenwing_black_knights", "black_knights"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: oval_75x25mm
 
       land_speeder_darkshroud:
         name: "Land Speeder Darkshroud"
@@ -1129,12 +1208,14 @@ codex_units:
         aliases: ["darkshroud", "land speeder darkshroud", "land_speeder_darkshroud"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: no_base
       land_speeder_vengeance:
         name: "Land Speeder Vengeance"
         role: fast_attack
         aliases: ["vengeance", "land speeder vengeance", "land_speeder_vengeance"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/dark_angels"]
+        base_profile: no_base
 
       grey_hunters:
         name: "Grey Hunters"
@@ -1142,54 +1223,63 @@ codex_units:
         aliases: ["grey_hunters", "grey_hunter"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       blood_claws:
         name: "Blood Claws"
         role: troops
         aliases: ["blood_claws", "blood_claw"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       long_fangs:
         name: "Long Fangs"
         role: heavy_support
         aliases: ["long_fangs", "long_fang"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       rune_priest:
         name: "Rune Priest"
         role: hq
         aliases: ["rune_priest"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       wolf_lord:
         name: "Wolf Lord"
         role: hq
         aliases: ["wolf_lord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       wolf_guard:
         name: "Wolf Guard"
         role: elites
         aliases: ["wolf_guard"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
       thunderwolf_cavalry:
         name: "Thunderwolf Cavalry"
         role: fast_attack
         aliases: ["thunderwolf", "thunderwolves", "thunderwolf_cavalry"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: oval_60x35mm
       wulfen:
         name: "Wulfen"
         role: elites
         aliases: ["wulfen"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_40mm
       wolf_priest:
         name: "Wolf Priest"
         role: hq
         aliases: ["wolf_priest"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_32mm
 
       logan_grimnar:
         name: "Logan Grimnar"
@@ -1197,12 +1287,14 @@ codex_units:
         aliases: ["logan grimnar", "logan_grimnar"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_40mm
       ragnar_blackmane:
         name: "Ragnar Blackmane"
         role: hq
         aliases: ["ragnar blackmane", "ragnar_blackmane"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/space_wolves"]
+        base_profile: round_40mm
       ulrik_the_slayer:
         name: "Ulrik the Slayer"
         role: hq
@@ -1210,6 +1302,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         available_to: ["space_marines/space_wolves"]
         legends_in_editions: ["10th"]
+        base_profile: round_32mm
 
       khan_on_bike:
         name: "Khan on Bike"
@@ -1217,6 +1310,7 @@ codex_units:
         aliases: ["khan", "khan_on_bike"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["space_marines/white_scars"]
+        base_profile: oval_75x25mm
 
       # --- Necrons ---
       necron_warriors:
@@ -2045,6 +2139,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["orks"]
+        base_profile: no_base
       battlewagon_bonebreaka:
         name: "Battlewagon (Bonebreaka)"
         role: heavy_support
@@ -2052,12 +2147,14 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["orks"]
+        base_profile: no_base
       stompa:
         name: "Stompa"
         role: lord_of_war
         aliases: ["stompa"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: no_base
 
       mekboy_workshop:
         name: "Mekboy Workshop"
@@ -2066,6 +2163,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["orks"]
+        base_profile: no_base
 
       # Ork Named
       makari:
@@ -2074,18 +2172,21 @@ codex_units:
         aliases: ["makari"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: round_25mm
       kaptin_badrukk:
         name: "Kaptin Badrukk"
         role: hq
         aliases: ["badrukk", "kaptin_badrukk"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: round_32mm
       boss_snikrot:
         name: "Boss Snikrot"
         role: hq
         aliases: ["snikrot", "boss_snikrot"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: round_32mm
 
       gorkanaut:
         name: "Gorkanaut"
@@ -2093,24 +2194,28 @@ codex_units:
         aliases: ["gorkanaut"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: no_base
       morkanaut:
         name: "Morkanaut"
         role: lord_of_war
         aliases: ["morkanaut"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: no_base
       mek_gunz:
         name: "Mek Gunz"
         role: heavy_support
         aliases: ["mek_gun", "mek_gunz", "mek guns"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: no_base
       deffkilla_wartrike:
         name: "Deffkilla Wartrike"
         role: hq
         aliases: ["deffkilla_wartrike", "wartrike"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: oval_75x42mm
       warboss_on_warbike:
         name: "Warboss on Warbike"
         role: hq
@@ -2712,54 +2817,63 @@ codex_units:
         aliases: ["ranger", "rangers", "skitarii_ranger", "skitarii_rangers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_28_5mm
       skitarii_vanguard:
         name: "Skitarii Vanguard"
         role: troops
         aliases: ["vanguard", "skitarii_vanguard"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_28_5mm
       kataphron_destroyers:
         name: "Kataphron Destroyers"
         role: heavy_support
         aliases: ["kataphron_destroyer", "kataphron_destroyers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_60mm
       kataphron_breachers:
         name: "Kataphron Breachers"
         role: heavy_support
         aliases: ["kataphron_breacher", "kataphron_breachers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_60mm
       kastelan_robots:
         name: "Kastelan Robots"
         role: heavy_support
         aliases: ["kastelan", "kastelan_robot", "kastelan_robots"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_60mm
       ironstrider:
         name: "Ironstrider Ballistarius / Sydonian Dragoon"
         role: fast_attack
         aliases: ["ironstrider", "ironstrider_ballistarius", "sydonian_dragoon"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: oval_105x70mm
       pteraxii:
         name: "Pteraxii"
         role: fast_attack
         aliases: ["pteraxii", "pteraxii_skystalkers", "pteraxii_sterilizers"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: flying_round_32mm
       serberys:
         name: "Serberys"
         role: fast_attack
         aliases: ["serberys", "serberys_raiders", "serberys_sulphurhounds"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: oval_60x35mm
       techpriest:
         name: "Tech-Priest"
         role: hq
         aliases: ["techpriest", "tech_priest"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
 
       onager_dunecrawler:
         name: "Onager Dunecrawler"
@@ -2767,18 +2881,21 @@ codex_units:
         aliases: ["onager", "onager_dunecrawler"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_130mm
       skorpius_disintegrator:
         name: "Skorpius Disintegrator"
         role: heavy_support
         aliases: ["skorpius_disintegrator", "disintegrator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: no_base
       skorpius_dunerider:
         name: "Skorpius Dunerider"
         role: transport
         aliases: ["skorpius_dunerider", "dunerider"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: no_base
 
       archaeopter_stratoraptor:
         name: "Archaeopter Stratoraptor"
@@ -2786,18 +2903,21 @@ codex_units:
         aliases: ["archaeopter", "archaeopter_stratoraptor", "stratoraptor"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: flying_oval_170x105mm
       archaeopter_fusilave:
         name: "Archaeopter Fusilave"
         role: flyer
         aliases: ["archaeopter_fusilave", "fusilave"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: flying_oval_170x105mm
       archaeopter_transvector:
         name: "Archaeopter Transvector"
         role: flyer
         aliases: ["archaeopter_transvector", "transvector"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: flying_oval_170x105mm
 
       sicarian_ruststalkers:
         name: "Sicarian Ruststalkers"
@@ -2805,24 +2925,28 @@ codex_units:
         aliases: ["ruststalkers", "sicarian_ruststalkers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
       sicarian_infiltrators:
         name: "Sicarian Infiltrators"
         role: elites
         aliases: ["infiltrators", "sicarian_infiltrators"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
       fulgurite_electro_priests:
         name: "Fulgurite Electro-Priests"
         role: elites
         aliases: ["fulgurite", "fulgurite_electro_priests", "electro-priests"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
       corpuscarii_electro_priests:
         name: "Corpuscarii Electro-Priests"
         role: elites
         aliases: ["corpuscarii", "corpuscarii_electro_priests", "electro-priests"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
 
       tech_priest_dominus:
         name: "Tech-Priest Dominus"
@@ -2830,18 +2954,21 @@ codex_units:
         aliases: ["dominus", "tech_priest_dominus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_50mm
       tech_priest_manipulus:
         name: "Tech-Priest Manipulus"
         role: hq
         aliases: ["manipulus", "tech_priest_manipulus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_50mm
       tech_priest_enginseer:
         name: "Tech-Priest Enginseer"
         role: hq
         aliases: ["enginseer", "tech_priest_enginseer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: round_32mm
 
       # --- Chaos Space Marines ---
       noctilith_crown:
@@ -2851,78 +2978,91 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       cultists:
         name: "Cultists"
         role: troops
         aliases: ["cultist", "cultists"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_25mm
       chaos_marines:
         name: "Chaos Space Marines"
         role: troops
         aliases: ["chaos_space_marine", "chaos_space_marines", "csm"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       chosen:
         name: "Chosen"
         role: elites
         aliases: ["chosen"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       chaos_terminators:
         name: "Chaos Terminators"
         role: elites
         aliases: ["chaos_terminator", "chaos_terminators"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       possessed:
         name: "Possessed"
         role: elites
         aliases: ["possessed"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       havocs:
         name: "Havocs"
         role: heavy_support
         aliases: ["havoc", "havocs"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       obliterators:
         name: "Obliterators"
         role: heavy_support
         aliases: ["obliterator", "obliterators"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_50mm
       raptors:
         name: "Raptors"
         role: fast_attack
         aliases: ["raptor", "raptors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       bikers:
         name: "Bikers"
         role: fast_attack
         aliases: ["biker", "bikers", "bike", "bikes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: oval_75x25mm
       venomcrawler:
         name: "Venomcrawler"
         role: heavy_support
         aliases: ["venomcrawler"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_100mm
       heldrake:
         name: "Heldrake"
         role: flyer
         aliases: ["heldrake"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: flying_oval_120x92mm
       decimator:
         name: "Decimator"
         role: heavy_support
         aliases: ["decimator"]
         legal_in_editions: ["8th", "9th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_60mm
 
       defiler:
         name: "Defiler"
@@ -2930,36 +3070,42 @@ codex_units:
         aliases: ["defiler"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       forgefiend:
         name: "Forgefiend"
         role: heavy_support
         aliases: ["forgefiend"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       maulerfiend:
         name: "Maulerfiend"
         role: heavy_support
         aliases: ["maulerfiend"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       chaos_rhino:
         name: "Chaos Rhino"
         role: transport
         aliases: ["chaos_rhino", "rhino"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       chaos_predator:
         name: "Chaos Predator"
         role: heavy_support
         aliases: ["chaos_predator", "predator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       chaos_land_raider:
         name: "Chaos Land Raider"
         role: heavy_support
         aliases: ["chaos_land_raider", "land_raider"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
 
       # Chaos Lords
       chaos_lord:
@@ -2968,12 +3114,14 @@ codex_units:
         aliases: ["chaos_lord", "lord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       chaos_lord_terminator:
         name: "Chaos Lord in Terminator Armour"
         role: hq
         aliases: ["chaos_lord_terminator", "terminator_lord"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
 
       sorcerer:
         name: "Sorcerer"
@@ -2981,60 +3129,70 @@ codex_units:
         aliases: ["sorcerer", "chaos_sorcerer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       dark_apostle:
         name: "Dark Apostle"
         role: hq
         aliases: ["dark_apostle"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       warpsmith:
         name: "Warpsmith"
         role: hq
         aliases: ["warpsmith"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       master_of_possession:
         name: "Master of Possession"
         role: hq
         aliases: ["master_of_possession"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       master_of_executions:
         name: "Master of Executions"
         role: hq
         aliases: ["master_of_executions"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_40mm
       lord_discordant:
         name: "Lord Discordant"
         role: hq
         aliases: ["lord_discordant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: oval_120x92mm
       noise_marines:
         name: "Noise Marines"
         role: elites
         aliases: ["noise_marines", "noise_marine"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       warp_talons:
         name: "Warp Talons"
         role: fast_attack
         aliases: ["warp_talon", "warp_talons"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_32mm
       chaos_spawn:
         name: "Chaos Spawn"
         role: fast_attack
         aliases: ["chaos_spawn", "spawn"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: round_50mm
       daemon_prince:
         name: "Daemon Prince"
         role: hq
         aliases: ["daemon_prince"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines", "death_guard", "thousand_sons", "chaos_daemons"]
+        base_profile: round_60mm
 
       # Named (CSM)
       huron_blackheart:
@@ -3121,6 +3279,7 @@ codex_units:
         aliases: ["cawl", "belisarius_cawl"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_mechanicus"]
+        base_profile: oval_105x70mm
 
       # --- Drukhari ---
       archon:
@@ -3275,6 +3434,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["drukhari"]
+        base_profile: round_32mm
       khymerae_pack:
         name: "Khymerae Pack"
         role: fast_attack
@@ -3282,6 +3442,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["drukhari"]
+        base_profile: round_40mm
       clawed_fiends:
         name: "Clawed Fiends"
         role: fast_attack
@@ -3289,6 +3450,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["drukhari"]
+        base_profile: round_50mm
 
       # Drukhari Named
       lelith_hesperax:
@@ -3550,36 +3712,42 @@ codex_units:
         aliases: ["asurmen"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_40mm
       karandras:
         name: "Karandras"
         role: hq
         aliases: ["karandras"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_40mm
       fuegan:
         name: "Fuegan"
         role: hq
         aliases: ["fuegan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_40mm
       baharroth:
         name: "Baharroth"
         role: hq
         aliases: ["baharroth"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_40mm
       maugan_ra:
         name: "Maugan Ra"
         role: hq
         aliases: ["maugan_ra", "maugan ra"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_40mm
       illic_nightspear:
         name: "Illic Nightspear"
         role: hq
         aliases: ["illic", "illic_nightspear"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: round_32mm
 
       # --- T'au Empire ---
       tau_commander:
@@ -4507,12 +4675,14 @@ codex_units:
         aliases: ["crowe", "castellan_crowe"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_32mm
       grand_master_in_dreadknight:
         name: "Grand Master in Nemesis Dreadknight"
         role: lord_of_war
         aliases: ["gmndk", "grand_master_dreadknight"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_100mm
 
       purgation_squad:
         name: "Purgation Squad"
@@ -4520,30 +4690,35 @@ codex_units:
         aliases: ["purgation_squad", "purgation"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_32mm
       grey_knights_librarian:
         name: "Grey Knights Librarian"
         role: hq
         aliases: ["gk_librarian", "grey_knights_librarian"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_32mm
       grey_knights_chaplain:
         name: "Grey Knights Chaplain"
         role: hq
         aliases: ["gk_chaplain", "grey_knights_chaplain"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_32mm
       grey_knights_apothecary:
         name: "Grey Knights Apothecary"
         role: elites
         aliases: ["gk_apothecary", "grey_knights_apothecary"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_32mm
       voldus:
         name: "Grand Master Voldus"
         role: hq
         aliases: ["voldus", "grand_master_voldus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["grey_knights"]
+        base_profile: round_40mm
       stormraven_gunship_gk:
         name: "Stormraven Gunship (Grey Knights)"
         role: flyer
@@ -4551,6 +4726,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["grey_knights"]
+        base_profile: flying_oval_170x105mm
 
       # --- Imperial Knights ---
       knight_paladin:
@@ -4559,54 +4735,63 @@ codex_units:
         aliases: ["paladin", "knight_paladin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_errant:
         name: "Knight Errant"
         role: lord_of_war
         aliases: ["errant", "knight_errant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_warden:
         name: "Knight Warden"
         role: lord_of_war
         aliases: ["warden", "knight_warden"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_crusader:
         name: "Knight Crusader"
         role: lord_of_war
         aliases: ["crusader", "knight_crusader"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_gallant:
         name: "Knight Gallant"
         role: lord_of_war
         aliases: ["gallant", "knight_gallant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_castellan:
         name: "Knight Castellan"
         role: lord_of_war
         aliases: ["castellan", "knight_castellan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_valiant:
         name: "Knight Valiant"
         role: lord_of_war
         aliases: ["valiant", "knight_valiant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       armiger_warglaive:
         name: "Armiger Warglaive"
         role: heavy_support
         aliases: ["armiger_warglaive", "warglaive"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_105x70mm
       armiger_helverin:
         name: "Armiger Helverin"
         role: heavy_support
         aliases: ["armiger_helverin", "helverin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_105x70mm
 
       knight_preceptor:
         name: "Knight Preceptor"
@@ -4614,12 +4799,14 @@ codex_units:
         aliases: ["preceptor", "knight_preceptor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       canis_rex:
         name: "Canis Rex"
         role: lord_of_war
         aliases: ["canis_rex", "canis"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
 
       # --- Chaos Knights ---
       knight_desecrator:
@@ -4628,36 +4815,42 @@ codex_units:
         aliases: ["desecrator", "knight_desecrator"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       knight_despoiler:
         name: "Knight Despoiler"
         role: lord_of_war
         aliases: ["despoiler", "knight_despoiler"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       knight_rampager:
         name: "Knight Rampager"
         role: lord_of_war
         aliases: ["rampager", "knight_rampager"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       knight_tyrant:
         name: "Knight Tyrant"
         role: lord_of_war
         aliases: ["tyrant", "knight_tyrant"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       war_dog_stalker:
         name: "War Dog Stalker"
         role: heavy_support
         aliases: ["war_dog_stalker", "stalker"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_105x70mm
       war_dog_executioner:
         name: "War Dog Executioner"
         role: heavy_support
         aliases: ["war_dog_executioner", "executioner"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_105x70mm
 
       knight_abominant:
         name: "Knight Abominant"
@@ -4665,18 +4858,21 @@ codex_units:
         aliases: ["abominant", "knight_abominant"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       war_dog_brigand:
         name: "War Dog Brigand"
         role: heavy_support
         aliases: ["war_dog_brigand", "brigand"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_105x70mm
       war_dog_karnivore:
         name: "War Dog Karnivore"
         role: heavy_support
         aliases: ["war_dog_karnivore", "karnivore"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_105x70mm
 
       # --- Adeptus Titanicus (Titan Legions) ---
       warhound_titan:
@@ -4685,18 +4881,21 @@ codex_units:
         aliases: ["warhound", "warhound_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_titanicus"]
+        base_profile: no_base
       reaver_titan:
         name: "Reaver Titan"
         role: lord_of_war
         aliases: ["reaver_titan", "reaver_titan_legio"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_titanicus"]
+        base_profile: no_base
       warlord_titan:
         name: "Warlord Titan"
         role: lord_of_war
         aliases: ["warlord_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["adeptus_titanicus"]
+        base_profile: no_base
 
       # --- Chaos Titans ---
       chaos_warhound_titan:
@@ -4705,18 +4904,21 @@ codex_units:
         aliases: ["chaos_warhound", "chaos_warhound_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       chaos_reaver_titan:
         name: "Chaos Reaver Titan"
         role: lord_of_war
         aliases: ["chaos_reaver", "chaos_reaver_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
       chaos_warlord_titan:
         name: "Chaos Warlord Titan"
         role: lord_of_war
         aliases: ["chaos_warlord", "chaos_warlord_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_space_marines"]
+        base_profile: no_base
 
       # --- Aeldari Titans and Super-heavies ---
       revenant_titan:
@@ -4725,36 +4927,42 @@ codex_units:
         aliases: ["revenant_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: no_base
       phantom_titan:
         name: "Phantom Titan"
         role: lord_of_war
         aliases: ["phantom_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: no_base
       scorpion_grav_tank:
         name: "Scorpion Super-heavy Grav-tank"
         role: lord_of_war
         aliases: ["scorpion_grav_tank"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: no_base
       cobra_grav_tank:
         name: "Cobra Super-heavy Grav-tank"
         role: lord_of_war
         aliases: ["cobra_grav_tank"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: no_base
       vampire_raider:
         name: "Vampire Raider"
         role: flyer
         aliases: ["vampire_raider"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: flying_oval_170x105mm
       vampire_hunter:
         name: "Vampire Hunter"
         role: flyer
         aliases: ["vampire_hunter"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["aeldari"]
+        base_profile: flying_oval_170x105mm
 
       # --- Drukhari Super-heavy ---
       tantalus:
@@ -4763,6 +4971,7 @@ codex_units:
         aliases: ["tantalus"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["drukhari"]
+        base_profile: no_base
 
       # --- Tyranid Bio-Titans ---
       hierophant_bio_titan:
@@ -4771,18 +4980,21 @@ codex_units:
         aliases: ["hierophant", "hierophant_bio_titan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: no_base
       barbed_hierodule:
         name: "Barbed Hierodule"
         role: lord_of_war
         aliases: ["barbed_hierodule", "hierodule_barbed"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_170x105mm
       scythed_hierodule:
         name: "Scythed Hierodule"
         role: lord_of_war
         aliases: ["scythed_hierodule", "hierodule_scythed"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: oval_170x105mm
 
       harridan:
         name: "Harridan"
@@ -4790,6 +5002,7 @@ codex_units:
         aliases: ["harridan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["tyranids"]
+        base_profile: flying_oval_170x105mm
 
       # --- Orks Gargantuan Creatures ---
       gargantuan_squiggoth:
@@ -4798,6 +5011,7 @@ codex_units:
         aliases: ["gargantuan_squiggoth", "squiggoth_gargantuan"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["orks"]
+        base_profile: oval_170x105mm
 
       # --- Necron Super-heavies ---
       obelisk:
@@ -4806,6 +5020,7 @@ codex_units:
         aliases: ["obelisk"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: no_base
 
       seraptek_heavy_construct:
         name: "Seraptek Heavy Construct"
@@ -4813,6 +5028,7 @@ codex_units:
         aliases: ["seraptek", "seraptek_heavy_construct"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["necrons"]
+        base_profile: oval_170x105mm
 
 
       # --- Leagues of Votann ---
@@ -4822,48 +5038,56 @@ codex_units:
         aliases: ["kahl"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_32mm
       hearthkyn_warriors:
         name: "Hearthkyn Warriors"
         role: troops
         aliases: ["hearthkyn", "hearthkyn_warriors"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_28_5mm
       cthonian_berserks:
         name: "Cthonian Berserks"
         role: elites
         aliases: ["cthonian_berserks", "berserks", "berserkers", "berserker"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_32mm
       einhyr_hearthguard:
         name: "Einhyr Hearthguard"
         role: elites
         aliases: ["einhyr_hearthguard", "hearthguard"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_40mm
       hernkyn_pioneers:
         name: "Hernkyn Pioneers"
         role: fast_attack
         aliases: ["hernkyn_pioneers", "pioneers"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: oval_75x42mm
       sagitaur:
         name: "Sagitaur"
         role: transport
         aliases: ["sagitaur"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: no_base
       hekaton_land_fortress:
         name: "Hekaton Land Fortress"
         role: heavy_support
         aliases: ["hekaton", "hekaton_land_fortress"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: no_base
       uthar_the_destined:
         name: "Ûthar the Destined"
         role: hq
         aliases: ["uthar", "uthar_the_destined"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_40mm
 
       einhyr_champion:
         name: "Einhyr Champion"
@@ -4871,6 +5095,7 @@ codex_units:
         aliases: ["einhyr_champion"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_40mm
 
       brokhyr_thunderkyn:
         name: "Brôkhyr Thunderkyn"
@@ -4878,18 +5103,21 @@ codex_units:
         aliases: ["brokhyr_thunderkyn", "thunderkyn"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_40mm
       brokhyr_iron_master:
         name: "Brôkhyr Iron-master"
         role: hq
         aliases: ["brokhyr_iron_master", "iron-master"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_32mm
       grimnyr:
         name: "Grimnyr"
         role: hq
         aliases: ["grimnyr"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["leagues_of_votann"]
+        base_profile: round_40mm
 
       # --- Chaos Daemons ---
       bloodletters:
@@ -4898,60 +5126,70 @@ codex_units:
         aliases: ["bloodletter", "bloodletters"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       plaguebearers:
         name: "Plaguebearers"
         role: troops
         aliases: ["plaguebearer", "plaguebearers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       daemonettes:
         name: "Daemonettes"
         role: troops
         aliases: ["daemonette", "daemonettes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       pink_horrors:
         name: "Pink Horrors"
         role: troops
         aliases: ["pink_horror", "pink_horrors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       bloodthirster:
         name: "Bloodthirster"
         role: lord_of_war
         aliases: ["bloodthirster"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
       great_unclean_one:
         name: "Great Unclean One"
         role: lord_of_war
         aliases: ["guo", "great_unclean_one"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_120mm
       keeper_of_secrets:
         name: "Keeper of Secrets"
         role: lord_of_war
         aliases: ["keeper_of_secrets"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
       lord_of_change:
         name: "Lord of Change"
         role: lord_of_war
         aliases: ["lord_of_change"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
       skulltaker:
         name: "Skulltaker"
         role: hq
         aliases: ["skulltaker"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       the_changeling:
         name: "The Changeling"
         role: hq
         aliases: ["the_changeling", "changeling"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
 
       seekers_of_slaanesh:
         name: "Seekers of Slaanesh"
@@ -4959,66 +5197,77 @@ codex_units:
         aliases: ["seekers", "seekers_of_slaanesh"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_60x35mm
       flesh_hounds:
         name: "Flesh Hounds"
         role: fast_attack
         aliases: ["flesh_hound", "flesh_hounds"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_60x35mm
       flamers_of_tzeentch:
         name: "Flamers of Tzeentch"
         role: elites
         aliases: ["flamers", "flamers_of_tzeentch"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       screamers_of_tzeentch:
         name: "Screamers of Tzeentch"
         role: fast_attack
         aliases: ["screamers", "screamers_of_tzeentch", "screamer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_60x35mm
       nurglings:
         name: "Nurglings"
         role: troops
         aliases: ["nurgling", "nurglings"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_40mm
       beasts_of_nurgle:
         name: "Beasts of Nurgle"
         role: elites
         aliases: ["beast_of_nurgle", "beasts_of_nurgle"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_50mm
       skullcannon:
         name: "Skull Cannon"
         role: heavy_support
         aliases: ["skullcannon", "skull_cannon"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_120x92mm
       soul_grinder:
         name: "Soul Grinder"
         role: heavy_support
         aliases: ["soul_grinder"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
       bloodcrushers:
         name: "Bloodcrushers"
         role: fast_attack
         aliases: ["bloodcrusher", "bloodcrushers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_75x42mm
       plague_drones:
         name: "Plague Drones"
         role: fast_attack
         aliases: ["plague_drone", "plague_drones"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_75x42mm
       fiends_of_slaanesh:
         name: "Fiends of Slaanesh"
         role: elites
         aliases: ["fiends", "fiend", "fiends_of_slaanesh"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_75x42mm
       skull_altar:
         name: "Skull Altar"
         role: fortification
@@ -5026,6 +5275,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["chaos_daemons"]
+        base_profile: no_base
 
       # Heralds and Chariots
       changecaster:
@@ -5034,78 +5284,91 @@ codex_units:
         aliases: ["changecaster"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       fluxmaster:
         name: "Fluxmaster"
         role: hq
         aliases: ["fluxmaster"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       fateskimmer:
         name: "Fateskimmer"
         role: hq
         aliases: ["fateskimmer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_120x92mm
       tranceweaver:
         name: "Tranceweaver"
         role: hq
         aliases: ["tranceweaver"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       tormentbringer:
         name: "Tormentbringer"
         role: hq
         aliases: ["tormentbringer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       skullmaster:
         name: "Skullmaster"
         role: hq
         aliases: ["skullmaster"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_75x42mm
       poxbringer:
         name: "Poxbringer"
         role: hq
         aliases: ["poxbringer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_32mm
       epidemius:
         name: "Epidemius"
         role: hq
         aliases: ["epidemius"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_60mm
       herald_of_slaanesh_on_steed:
         name: "Herald of Slaanesh on Steed"
         role: hq
         aliases: ["herald_of_slaanesh_on_steed", "herald_on_steed"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_60x35mm
       hellflayer:
         name: "Hellflayer"
         role: fast_attack
         aliases: ["hellflayer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_120x92mm
       seeker_chariot:
         name: "Seeker Chariot"
         role: fast_attack
         aliases: ["seeker_chariot"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_120x92mm
       exalted_seeker_chariot:
         name: "Exalted Seeker Chariot"
         role: fast_attack
         aliases: ["exalted_seeker_chariot"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_170x105mm
       burning_chariot_of_tzeentch:
         name: "Burning Chariot of Tzeentch"
         role: heavy_support
         aliases: ["burning_chariot", "burning_chariot_of_tzeentch"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: oval_120x92mm
 
       # Daemons Named
       belakor:
@@ -5114,18 +5377,21 @@ codex_units:
         aliases: ["belakor", "be'lakor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons", "chaos_space_marines"]
+        base_profile: round_100mm
       kairos_fateweaver:
         name: "Kairos Fateweaver"
         role: hq
         aliases: ["kairos", "kairos_fateweaver", "fateweaver"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
       skarbrand:
         name: "Skarbrand"
         role: hq
         aliases: ["skarbrand"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["chaos_daemons"]
+        base_profile: round_100mm
 
       # --- Death Guard ---
       plague_marines:
@@ -5134,48 +5400,56 @@ codex_units:
         aliases: ["plague_marine", "plague_marines"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_32mm
       typhus:
         name: "Typhus"
         role: hq
         aliases: ["typhus", "typhus_herald_of_the_plague_god"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_40mm
       lord_of_contagion:
         name: "Lord of Contagion"
         role: hq
         aliases: ["lord_of_contagion"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_40mm
       malignant_plaguecaster:
         name: "Malignant Plaguecaster"
         role: hq
         aliases: ["malignant_plaguecaster"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_32mm
       foul_blightspawn:
         name: "Foul Blightspawn"
         role: elites
         aliases: ["foul_blightspawn"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_40mm
       biologist_putrifier:
         name: "Biologus Putrifier"
         role: elites
         aliases: ["biologus_putrifier", "biologist_putrifier"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_32mm
       tallyman:
         name: "Tallyman"
         role: elites
         aliases: ["tallyman"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_32mm
       plague_surgeon:
         name: "Plague Surgeon"
         role: elites
         aliases: ["plague_surgeon"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_32mm
       chaos_land_raider_dg:
         name: "Chaos Land Raider (Death Guard)"
         role: heavy_support
@@ -5183,42 +5457,49 @@ codex_units:
         legal_in_editions: ["8th", "9th", "10th"]
         legends_in_editions: ["10th"]
         available_to: ["death_guard"]
+        base_profile: no_base
       poxwalkers:
         name: "Poxwalkers"
         role: troops
         aliases: ["poxwalker", "poxwalkers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_25mm
       blightlord_terminators:
         name: "Blightlord Terminators"
         role: elites
         aliases: ["blightlord_terminators", "blightlords"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_40mm
       deathshroud_terminators:
         name: "Deathshroud Terminators"
         role: elites
         aliases: ["deathshroud", "deathshroud_terminators"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_40mm
       foetid_bloat_drone:
         name: "Foetid Bloat-drone"
         role: fast_attack
         aliases: ["bloat_drone", "foetid_bloat_drone"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_60mm
       myphitic_blight_haulers:
         name: "Myphitic Blight-haulers"
         role: fast_attack
         aliases: ["blight_hauler", "myphitic_blight_haulers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: round_80mm
       plagueburst_crawler:
         name: "Plagueburst Crawler"
         role: heavy_support
         aliases: ["plagueburst_crawler", "plagueburst"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["death_guard"]
+        base_profile: no_base
 
       feculent_gnarlmaw:
         name: "Feculent Gnarlmaw"
@@ -5227,6 +5508,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["death_guard"]
+        base_profile: no_base
       miasmic_malignifier:
         name: "Miasmic Malignifier"
         role: fortification
@@ -5234,6 +5516,7 @@ codex_units:
         legal_in_editions: ["9th"]
         legends_in_editions: ["10th"]
         available_to: ["death_guard"]
+        base_profile: no_base
 
       # --- Thousand Sons ---
       rubric_marines:
@@ -5242,36 +5525,42 @@ codex_units:
         aliases: ["rubric_marines", "rubrics"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_32mm
       scarab_occult_terminators:
         name: "Scarab Occult Terminators"
         role: elites
         aliases: ["scarab_occult_terminators", "scarabs"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_40mm
       exalted_sorcerer:
         name: "Exalted Sorcerer"
         role: hq
         aliases: ["exalted_sorcerer"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_32mm
       tzaangors:
         name: "Tzaangors"
         role: troops
         aliases: ["tzaangor", "tzaangors"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_32mm
       sorcerer_in_terminator_armour:
         name: "Sorcerer in Terminator Armour"
         role: hq
         aliases: ["sorcerer_terminator", "sorcerer_in_terminator_armour"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_40mm
       infernal_master:
         name: "Infernal Master"
         role: hq
         aliases: ["infernal_master"]
         legal_in_editions: ["9th", "10th"]
         available_to: ["thousand_sons"]
+        base_profile: round_32mm
       tzaangor_enlightened:
         name: "Tzaangor Enlightened"
         role: fast_attack
@@ -5279,6 +5568,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["thousand_sons"]
+        base_profile: oval_60x35mm
       tzaangor_shaman:
         name: "Tzaangor Shaman"
         role: hq
@@ -5286,6 +5576,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["thousand_sons"]
+        base_profile: oval_60x35mm
       mutalith_vortex_beast:
         name: "Mutalith Vortex Beast"
         role: heavy_support
@@ -5293,6 +5584,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["thousand_sons"]
+        base_profile: oval_120x92mm
 
       # --- World Eaters ---
       khorne_berzerkers:
@@ -5301,30 +5593,35 @@ codex_units:
         aliases: ["berzerkers", "khorne_berzerkers"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["world_eaters"]
+        base_profile: round_32mm
       jakhals:
         name: "Jakhals"
         role: troops
         aliases: ["jakhals"]
         legal_in_editions: ["10th"]
         available_to: ["world_eaters"]
+        base_profile: round_28_5mm
       eightbound:
         name: "Eightbound"
         role: elites
         aliases: ["eightbound"]
         legal_in_editions: ["10th"]
         available_to: ["world_eaters"]
+        base_profile: round_40mm
       exalted_eightbound:
         name: "Exalted Eightbound"
         role: elites
         aliases: ["exalted_eightbound"]
         legal_in_editions: ["10th"]
         available_to: ["world_eaters"]
+        base_profile: round_40mm
       lord_invocatus:
         name: "Lord Invocatus"
         role: hq
         aliases: ["invocatus", "lord_invocatus"]
         legal_in_editions: ["10th"]
         available_to: ["world_eaters"]
+        base_profile: round_40mm
       khorne_lord_on_juggernaut:
         name: "Chaos Lord on Juggernaut"
         role: hq
@@ -5332,6 +5629,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["world_eaters"]
+        base_profile: oval_75x42mm
 
       # --- Inquisition (Agents of the Imperium) ---
       inquisitor:
@@ -5340,48 +5638,56 @@ codex_units:
         aliases: ["inquisitor"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       acolytes:
         name: "Acolytes"
         role: elites
         aliases: ["acolyte", "acolytes"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_28_5mm
       daemonhost:
         name: "Daemonhost"
         role: elites
         aliases: ["daemonhost"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       jokaero_weaponsmith:
         name: "Jokaero Weaponsmith"
         role: elites
         aliases: ["jokaero", "jokaero_weaponsmith"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_40mm
       vindicare_assassin:
         name: "Vindicare Assassin"
         role: elites
         aliases: ["vindicare", "vindicare_assassin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       eversor_assassin:
         name: "Eversor Assassin"
         role: elites
         aliases: ["eversor", "eversor_assassin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       callidus_assassin:
         name: "Callidus Assassin"
         role: elites
         aliases: ["callidus", "callidus_assassin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       culexus_assassin:
         name: "Culexus Assassin"
         role: elites
         aliases: ["culexus", "culexus_assassin"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
 
       # --- Agents of the Imperium ---
       rogue_trader:
@@ -5390,36 +5696,42 @@ codex_units:
         aliases: ["rogue_trader"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_32mm
       voidsmen_at_arms:
         name: "Voidsmen-at-Arms"
         role: troops
         aliases: ["voidsmen", "voidsmen_at_arms"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_28_5mm
       navis_imperialis_breacher_team:
         name: "Navis Imperialis Breacher Team"
         role: troops
         aliases: ["navis_imperialis", "breacher_team", "navis_imperialis_breachers"]
         legal_in_editions: ["10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_32mm
       imperial_navy_officer:
         name: "Imperial Navy Officer"
         role: hq
         aliases: ["imperial_navy_officer", "navy_officer"]
         legal_in_editions: ["10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_32mm
       sanctionite_enforcers:
         name: "Sanctionite Enforcers"
         role: elites
         aliases: ["sanctionite_enforcers", "enforcers"]
         legal_in_editions: ["10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_32mm
       exaction_squad:
         name: "Adeptus Arbites Exaction Squad"
         role: troops
         aliases: ["exaction_squad", "arbites", "adeptus_arbites"]
         legal_in_editions: ["10th"]
         available_to: ["agents_of_the_imperium"]
+        base_profile: round_32mm
 
       # --- Forgeworld Knight Chassis (Imperial Knights) ---
       knight_cerastus_castigator:
@@ -5429,6 +5741,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_cerastus_acheron:
         name: "Cerastus Knight-Acheron"
         role: lord_of_war
@@ -5436,6 +5749,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_cerastus_lancer:
         name: "Cerastus Knight-Lancer"
         role: lord_of_war
@@ -5443,6 +5757,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_cerastus_atropos:
         name: "Cerastus Knight-Atropos"
         role: lord_of_war
@@ -5450,6 +5765,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
       knight_acastus_porphyrion:
         name: "Acastus Knight Porphyrion"
         role: lord_of_war
@@ -5457,6 +5773,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["imperial_knights"]
+        base_profile: oval_170x105mm
 
       # --- Forgeworld Knight Chassis (Chaos Knights) ---
       knight_cerastus_acheron_chaos:
@@ -5466,6 +5783,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       knight_cerastus_castigator_chaos:
         name: "Cerastus Knight-Castigator (Chaos)"
         role: lord_of_war
@@ -5473,6 +5791,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
       knight_cerastus_lancer_chaos:
         name: "Cerastus Knight-Lancer (Chaos)"
         role: lord_of_war
@@ -5480,6 +5799,7 @@ codex_units:
         legal_in_editions: ["8th", "9th"]
         legends_in_editions: ["10th"]
         available_to: ["chaos_knights"]
+        base_profile: oval_170x105mm
 
       inquisitor_coteaz:
         name: "Inquisitor Coteaz"
@@ -5487,24 +5807,28 @@ codex_units:
         aliases: ["coteaz", "inquisitor_coteaz"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_32mm
       inquisitor_karamazov:
         name: "Inquisitor Karamazov"
         role: hq
         aliases: ["karamazov", "inquisitor_karamazov"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_60mm
       crusaders:
         name: "Crusaders"
         role: elites
         aliases: ["crusader", "crusaders"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_28_5mm
       death_cult_assassins:
         name: "Death Cult Assassins"
         role: elites
         aliases: ["death_cult_assassin", "death_cult_assassins"]
         legal_in_editions: ["8th", "9th", "10th"]
         available_to: ["inquisition"]
+        base_profile: round_28_5mm
 
 # NOTE: Faction list and representative units added for Drukhari, Aeldari, T'au, Genestealer Cults, Adepta Sororitas,
 # Adeptus Custodes, Grey Knights, Imperial Knights, Chaos Knights, Leagues of Votann, Chaos Daemons, and Inquisition.
