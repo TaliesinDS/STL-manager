@@ -11,3 +11,7 @@ wordfreq>=3.0.1
 # some Windows/Python combinations; install it only if you specifically need
 # an external SQLite driver. Example (manual):
 #   pip install pysqlite3-binary
+
+# YAML round-trip parser/emitter used by scripts/check_codex_duplicates.py for
+# preserving comments and enforcing flow-style list formatting
+ruamel.yaml>=0.18.0

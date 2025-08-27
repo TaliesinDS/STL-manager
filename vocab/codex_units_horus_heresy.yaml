@@ -1,0 +1,633 @@
+# Warhammer 30K (Horus Heresy) Codex Units (YAML Source of Truth)
+# Schema goals:
+# - De-duplicate unit definitions (name, aliases, optional role)
+# - Express availability by legion and faction without copy-paste (groups + include/exclude + per-unit rules)
+# - Encode edition legality for filterable coverage views (e.g., 1st/2nd/3rd HH)
+# - Keep human-editable in Git (reviews, diffs); compile to DB tables for queries
+#
+# Conventions
+# - Keys are stable snake_case identifiers (e.g., tactical_squad)
+# - Human-facing names go in `name`
+# - `aliases` are case-insensitive tokens/phrases used by matchers
+# - `legal_in_editions` is a list of edition tags: ["1st_HH","2nd_HH","3rd_HH"]
+# - Availability:
+#     - Legion/Faction inherits from `include_groups` and `include_units`
+#     - Carve-outs via `exclude_groups` and `exclude_units`
+#     - Per-unit rules may specify `available_to` and `excluded_from`
+# - Wildcards: "legiones_astartes/*" = all legions
+
+codex_units:
+  warhammer_30k:
+    meta:
+      editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+      base_profiles:
+        round_25mm: {shape: round, diameter_mm: 25}
+        round_32mm: {shape: round, diameter_mm: 32}
+        round_40mm: {shape: round, diameter_mm: 40}
+        round_60mm: {shape: round, diameter_mm: 60}
+        oval_60x35mm: {shape: oval, width_mm: 60, length_mm: 35}
+        oval_90x52mm: {shape: oval, width_mm: 90, length_mm: 52}
+        no_base: {shape: none}
+
+    availability_groups:
+      legiones_astartes_core_infantry:
+        default_base_profile: round_32mm
+        units:
+          - tactical_squad
+          - despoiler_squad
+          - support_squad
+          - terminator_squad
+          - veteran_squad
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+
+    factions:
+      legiones_astartes:
+        name: "Legiones Astartes (Space Marine Legions)"
+        legions:
+          sons_of_horus:
+            include_groups: ["legiones_astartes_core_infantry"]
+          imperial_fists:
+            include_groups: ["legiones_astartes_core_infantry"]
+          ultramarines:
+            include_groups: ["legiones_astartes_core_infantry"]
+          word_bearers:
+            include_groups: ["legiones_astartes_core_infantry"]
+          salamanders:
+            include_groups: ["legiones_astartes_core_infantry"]
+          raven_guard:
+            include_groups: ["legiones_astartes_core_infantry"]
+          iron_hands:
+            include_groups: ["legiones_astartes_core_infantry"]
+          night_lords:
+            include_groups: ["legiones_astartes_core_infantry"]
+          death_guard:
+            include_groups: ["legiones_astartes_core_infantry"]
+          thousand_sons:
+            include_groups: ["legiones_astartes_core_infantry"]
+          world_eaters:
+            include_groups: ["legiones_astartes_core_infantry"]
+          alpha_legion:
+            include_groups: ["legiones_astartes_core_infantry"]
+          iron_warriors:
+            include_groups: ["legiones_astartes_core_infantry"]
+          white_scars:
+            include_groups: ["legiones_astartes_core_infantry"]
+          blood_angels:
+            include_groups: ["legiones_astartes_core_infantry"]
+          emperors_children:
+            include_groups: ["legiones_astartes_core_infantry"]
+
+    units:
+      tactical_squad:
+        name: "Tactical Squad"
+        role: troops
+        aliases: ["tactical_squad", "tactical marines", "tactical"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      despoiler_squad:
+        name: "Despoiler Squad"
+        role: troops
+        aliases: ["despoiler_squad", "despoilers"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      support_squad:
+        name: "Support Squad"
+        role: elites
+        aliases: ["support_squad", "support marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      terminator_squad:
+        name: "Terminator Squad"
+        role: elites
+        aliases: ["terminator_squad", "terminators"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
+      veteran_squad:
+        name: "Veteran Squad"
+        role: elites
+        aliases: ["veteran_squad", "veterans"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      breacher_squad:
+        name: "Breacher Squad"
+        role: troops
+        aliases: ["breacher_squad", "breachers"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      assault_squad:
+        name: "Assault Squad"
+        role: fast_attack
+        aliases: ["assault_squad", "assault marines", "assault"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      recon_squad:
+        name: "Reconnaissance Squad"
+        role: troops
+        aliases: ["recon_squad", "recon marines", "recon"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      seeker_squad:
+        name: "Seeker Squad"
+        role: elites
+        aliases: ["seeker_squad", "seekers"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      destroyer_squad:
+        name: "Destroyer Squad"
+        role: elites
+        aliases: ["destroyer_squad", "destroyers"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      heavy_support_squad:
+        name: "Heavy Support Squad"
+        role: heavy_support
+        aliases: ["heavy_support_squad", "heavy support marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      tactical_support_squad:
+        name: "Tactical Support Squad"
+        role: elites
+        aliases: ["tactical_support_squad", "tactical support marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      command_squad:
+        name: "Command Squad"
+        role: elites
+        aliases: ["command_squad", "command marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      apothecary_detachment:
+        name: "Apothecary Detachment"
+        role: elites
+        aliases: ["apothecary_detachment", "apothecaries"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      techmarine_detachment:
+        name: "Techmarine Detachment"
+        role: elites
+        aliases: ["techmarine_detachment", "techmarines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      contemptor_terminator_squad:
+        name: "Contemptor Terminator Squad"
+        role: elites
+        aliases: ["contemptor_terminator_squad", "contemptor terminators"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
+      cataphractii_terminator_squad:
+        name: "Cataphractii Terminator Squad"
+        role: elites
+        aliases: ["cataphractii_terminator_squad", "cataphractii terminators"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
+      tartaros_terminator_squad:
+        name: "Tartaros Terminator Squad"
+        role: elites
+        aliases: ["tartaros_terminator_squad", "tartaros terminators"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
+      legion_veteran_tactical_squad:
+        name: "Legion Veteran Tactical Squad"
+        role: elites
+        aliases: ["legion_veteran_tactical_squad", "veteran tactical marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      legion_command_squad:
+        name: "Legion Command Squad"
+        role: elites
+        aliases: ["legion_command_squad", "legion command marines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      legion_apothecary_detachment:
+        name: "Legion Apothecary Detachment"
+        role: elites
+        aliases: ["legion_apothecary_detachment", "legion apothecaries"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      legion_techmarine_detachment:
+        name: "Legion Techmarine Detachment"
+        role: elites
+        aliases: ["legion_techmarine_detachment", "legion techmarines"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_32mm
+      contemptor_dreadnought:
+        name: "Contemptor Dreadnought"
+        role: elites
+        aliases: ["contemptor_dreadnought", "contemptor"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_60mm
+      leviathan_dreadnought:
+        name: "Leviathan Dreadnought"
+        role: elites
+        aliases: ["leviathan_dreadnought", "leviathan"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_80mm
+      rhino:
+        name: "Rhino"
+        role: transport
+        aliases: ["rhino"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      predator:
+        name: "Predator"
+        role: heavy_support
+        aliases: ["predator"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_raider:
+        name: "Land Raider"
+        role: heavy_support
+        aliases: ["land_raider"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      spartan_assault_tank:
+        name: "Spartan Assault Tank"
+        role: heavy_support
+        aliases: ["spartan_assault_tank", "spartan"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      sicaran_battle_tank:
+        name: "Sicaran Battle Tank"
+        role: heavy_support
+        aliases: ["sicaran_battle_tank", "sicaran"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_raider_proteus:
+        name: "Land Raider Proteus"
+        role: heavy_support
+        aliases: ["land_raider_proteus", "proteus"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_raider_achilles:
+        name: "Land Raider Achilles"
+        role: heavy_support
+        aliases: ["land_raider_achilles", "achilles"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_raider_phobos:
+        name: "Land Raider Phobos"
+        role: heavy_support
+        aliases: ["land_raider_phobos", "phobos"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      whirlwind:
+        name: "Whirlwind"
+        role: heavy_support
+        aliases: ["whirlwind"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      vindicator:
+        name: "Vindicator"
+        role: heavy_support
+        aliases: ["vindicator"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_speeder:
+        name: "Land Speeder"
+        role: fast_attack
+        aliases: ["land_speeder", "speeder"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      javelin_attack_speeder:
+        name: "Javelin Attack Speeder"
+        role: fast_attack
+        aliases: ["javelin_attack_speeder", "javelin"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      deimos_rhino:
+        name: "Deimos Pattern Rhino"
+        role: transport
+        aliases: ["deimos_rhino", "deimos"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      land_speeder_storm:
+        name: "Land Speeder Storm"
+        role: fast_attack
+        aliases: ["land_speeder_storm", "speeder storm"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      storm_eagle:
+        name: "Storm Eagle"
+        role: flyer
+        aliases: ["storm_eagle", "storm eagle gunship"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      fire_raptor:
+        name: "Fire Raptor"
+        role: flyer
+        aliases: ["fire_raptor", "fire raptor gunship"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      typhon_heavy_siege_tank:
+        name: "Typhon Heavy Siege Tank"
+        role: heavy_support
+        aliases: ["typhon_heavy_siege_tank", "typhon"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      stormbird:
+        name: "Stormbird"
+        role: flyer
+        aliases: ["stormbird"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      mastodon:
+        name: "Mastodon"
+        role: transport
+        aliases: ["mastodon"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      sokar_stormbird:
+        name: "Sokar Pattern Stormbird"
+        role: flyer
+        aliases: ["sokar_stormbird", "sokar pattern stormbird"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      xiphon_interceptor:
+        name: "Xiphon Interceptor"
+        role: flyer
+        aliases: ["xiphon_interceptor", "xiphon"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      damocles_command_rhino:
+        name: "Damocles Command Rhino"
+        role: transport
+        aliases: ["damocles_command_rhino", "damocles"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      sabre_strike_tank:
+        name: "Sabre Strike Tank"
+        role: fast_attack
+        aliases: ["sabre_strike_tank", "sabre"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      fellblade:
+        name: "Fellblade"
+        role: heavy_support
+        aliases: ["fellblade"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      glaive:
+        name: "Glaive"
+        role: heavy_support
+        aliases: ["glaive"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      cerberus:
+        name: "Cerberus"
+        role: heavy_support
+        aliases: ["cerberus"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      malcador:
+        name: "Malcador"
+        role: heavy_support
+        aliases: ["malcador"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      baneblade:
+        name: "Baneblade"
+        role: heavy_support
+        aliases: ["baneblade"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      thunderhawk:
+        name: "Thunderhawk"
+        role: flyer
+        aliases: ["thunderhawk", "thunderhawk gunship"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      arvus_lighter:
+        name: "Arvus Lighter"
+        role: flyer
+        aliases: ["arvus_lighter", "arvus"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      proteus_land_speeder:
+        name: "Proteus Land Speeder"
+        role: fast_attack
+        aliases: ["proteus_land_speeder", "proteus speeder"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      tarantula_sentry_gun:
+        name: "Tarantula Sentry Gun"
+        role: heavy_support
+        aliases: ["tarantula_sentry_gun", "tarantula"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      stormhammer:
+        name: "Stormhammer"
+        role: heavy_support
+        aliases: ["stormhammer"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      stormlord:
+        name: "Stormlord"
+        role: heavy_support
+        aliases: ["stormlord"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      macharius:
+        name: "Macharius"
+        role: heavy_support
+        aliases: ["macharius"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      gorgon:
+        name: "Gorgon"
+        role: transport
+        aliases: ["gorgon"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      crassus:
+        name: "Crassus Armoured Assault Transport"
+        role: transport
+        aliases: ["crassus", "crassus armoured assault transport"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      minotaur:
+        name: "Minotaur Artillery Tank"
+        role: heavy_support
+        aliases: ["minotaur", "minotaur artillery tank"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      dominator:
+        name: "Dominator Tank"
+        role: heavy_support
+        aliases: ["dominator", "dominator tank"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      praetor_armoured_launcher:
+        name: "Praetor Armoured Assault Launcher"
+        role: heavy_support
+        aliases: ["praetor_armoured_launcher", "praetor armoured assault launcher"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      macharius_vanquisher:
+        name: "Macharius Vanquisher"
+        role: heavy_support
+        aliases: ["macharius_vanquisher", "macharius vanquisher"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      macharius_vulcan:
+        name: "Macharius Vulcan"
+        role: heavy_support
+        aliases: ["macharius_vulcan", "macharius vulcan"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      macharius_omega:
+        name: "Macharius Omega"
+        role: heavy_support
+        aliases: ["macharius_omega", "macharius omega"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      malcador_defender:
+        name: "Malcador Defender"
+        role: heavy_support
+        aliases: ["malcador_defender", "malcador defender"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      malcador_annihilator:
+        name: "Malcador Annihilator"
+        role: heavy_support
+        aliases: ["malcador_annihilator", "malcador annihilator"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      malcador_infernus:
+        name: "Malcador Infernus"
+        role: heavy_support
+        aliases: ["malcador_infernus", "malcador infernus"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      cyclops_demolition_vehicle:
+        name: "Cyclops Demolition Vehicle"
+        role: fast_attack
+        aliases: ["cyclops_demolition_vehicle", "cyclops"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      stormblade:
+        name: "Stormblade"
+        role: heavy_support
+        aliases: ["stormblade"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      stormsword:
+        name: "Stormsword"
+        role: heavy_support
+        aliases: ["stormsword"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      shadowsword:
+        name: "Shadowsword"
+        role: heavy_support
+        aliases: ["shadowsword"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      thunderbolt:
+        name: "Thunderbolt"
+        role: flyer
+        aliases: ["thunderbolt", "thunderbolt fighter"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      marauder_bomber:
+        name: "Marauder Bomber"
+        role: flyer
+        aliases: ["marauder_bomber", "marauder bomber"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      marauder_destroyer:
+        name: "Marauder Destroyer"
+        role: flyer
+        aliases: ["marauder_destroyer", "marauder destroyer"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      lightning_fighter:
+        name: "Lightning Fighter"
+        role: flyer
+        aliases: ["lightning_fighter", "lightning"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      vulture_gunship:
+        name: "Vulture Gunship"
+        role: flyer
+        aliases: ["vulture_gunship", "vulture"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
