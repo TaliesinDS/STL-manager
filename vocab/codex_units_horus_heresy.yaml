@@ -295,6 +295,13 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: round_32mm
+      legion_terminator_command_squad:
+        name: "Legion Terminator Command Squad"
+        role: elites
+        aliases: ["terminator command squad", "legion terminator command"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
       legion_praetor:
         name: "Legion Praetor"
         role: hq
@@ -783,6 +790,13 @@ codex_units:
         role: elites
         aliases: ["palatine blades", "emperors children palatine"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/emperors_children"]
+        base_profile: round_32mm
+      sun_killer_squad:
+        name: "Sun Killer Squad"
+        role: heavy_support
+        aliases: ["sun killers", "sun killer squad"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/emperors_children"]
         base_profile: round_32mm
       khenetai_occult_blade_cabal:
@@ -1359,6 +1373,13 @@ codex_units:
         legal_in_editions: ["1st_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: round_32mm
+      legion_primus_nullificator_consul:
+        name: "Primus Nullificator Consul"
+        role: hq
+        aliases: ["primus nullificator", "nullificator consul", "primus nullificator consul"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
       land_raider_phobos:
         name: "Land Raider Phobos"
         role: heavy_support
@@ -1378,6 +1399,20 @@ codex_units:
         role: dedicated_transport
         aliases: ["proteus carrier", "armoured proteus"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      legion_nullificator_squad:
+        name: "Legion Nullificator Squad"
+        role: elites
+        aliases: ["nullificator squad", "nullificators", "legion nullificators"]
+        legal_in_editions: ["2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: round_40mm
+      land_raider_sabrelight:
+        name: "Land Raider Sabre-light"
+        role: heavy_support
+        aliases: ["sabrelight", "sabrelight land raider"]
+        legal_in_editions: ["1st_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
       land_raider_achilles_alpha:
@@ -1811,20 +1846,7 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["taghmata_mechanicum"]
         base_profile: no_base
-      myrmidon_secutors:
-        name: "Myrmidon Secutors"
-        role: elites
-        aliases: ["myrmidon secutor", "secutors"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: round_40mm
-      myrmidon_destructors:
-        name: "Myrmidon Destructors"
-        role: heavy_support
-        aliases: ["myrmidon destructor", "destructors"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: round_40mm
+      # (dedup) Myrmidon Secutors and Destructors are defined earlier
       tech_thralls_adsecularis:
         name: "Tech-Thralls Adsecularis"
         role: troops
@@ -1914,7 +1936,7 @@ codex_units:
       agamatus_jetbike_squadron:
         name: "Agamatus Jetbike Squadron"
         role: fast_attack
-        aliases: ["agamatus", "custodes jetbikes"]
+        aliases: ["agamatus", "agilatus", "custodes jetbikes"]
         legal_in_editions: ["2nd_HH", "3rd_HH"]
         available_to: ["talons_of_the_emperor/adeptus_custodes"]
         base_profile: oval_90x52mm
@@ -2358,13 +2380,6 @@ codex_units:
         legal_in_editions: ["2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
-      typhon_heavy_siege_tank:
-        name: "Typhon Heavy Siege Tank"
-        role: heavy_support
-        aliases: ["typhon_heavy_siege_tank", "typhon"]
-        legal_in_editions: ["2nd_HH", "3rd_HH"]
-        available_to: ["legiones_astartes/*"]
-        base_profile: no_base
       stormbird:
         name: "Stormbird"
         role: flyer
@@ -2393,13 +2408,14 @@ codex_units:
         legal_in_editions: ["2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
-      damocles_command_rhino:
-        name: "Damocles Command Rhino"
-        role: transport
-        aliases: ["damocles_command_rhino", "damocles"]
-        legal_in_editions: ["2nd_HH", "3rd_HH"]
-        available_to: ["legiones_astartes/*"]
-        base_profile: no_base
+      # Duplicate removed: canonical "damocles_command_rhino" is defined earlier with role "dedicated_transport" and full edition coverage.
+      # damocles_command_rhino:
+      #   name: "Damocles Command Rhino"
+      #   role: "transport"
+      #   aliases: ["damocles_command_rhino", "damocles"]
+      #   legal_in_editions: ["2nd_HH", "3rd_HH"]
+      #   available_to: ["legiones_astartes/*"]
+      #   base_profile: "no_base"
       legion_drop_pod:
         name: "Legion Drop Pod"
         role: transport
@@ -2435,13 +2451,14 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
-      sabre_strike_tank:
-        name: "Sabre Strike Tank"
-        role: fast_attack
-        aliases: ["sabre_strike_tank", "sabre"]
-        legal_in_editions: ["2nd_HH", "3rd_HH"]
-        available_to: ["legiones_astartes/*"]
-        base_profile: no_base
+      # Duplicate removed: canonical "sabre_strike_tank" is defined earlier with unified aliases and basing.
+      # sabre_strike_tank:
+      #   name: "Sabre Strike Tank"
+      #   role: "fast_attack"
+      #   aliases: ["sabre_strike_tank", "sabre"]
+      #   legal_in_editions: ["2nd_HH", "3rd_HH"]
+      #   available_to: ["legiones_astartes/*"]
+      #   base_profile: "no_base"
       fellblade:
         name: "Fellblade"
         role: heavy_support
@@ -2834,20 +2851,22 @@ codex_units:
         role: lord_of_war
         aliases: ["the lion", "lion eljonson", "el'jonson"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/dark_angels"]
+        base_profile: round_60mm
       domitar_ferrum_battle_automata:
         name: "Domitar-Ferrum Battle-Automata"
         role: elites
         aliases: ["domitar-ferrum", "domitar ferrum"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["legiones_astartes/iron_hands"]
-        base_profile: round_60mm
-        available_to: ["legiones_astartes/dark_angels"]
+        available_to: ["legiones_astartes/iron_hands", "legiones_astartes/dark_angels"]
         base_profile: round_60mm
       primarch_fulgrim:
         name: "Fulgrim"
         role: lord_of_war
         aliases: ["phoenix lord fulgrim", "primarch fulgrim"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/emperors_children"]
+        base_profile: round_60mm
       militia_carnodon_tank_destroyer_squadron:
         name: "Militia Carnodon Tank Destroyer Squadron"
         role: heavy_support
@@ -2855,13 +2874,13 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["imperialis_militia_and_cults"]
         base_profile: no_base
-        available_to: ["legiones_astartes/emperors_children"]
-        base_profile: round_60mm
       primarch_perturabo:
         name: "Perturabo"
         role: lord_of_war
         aliases: ["primarch perturabo"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/iron_warriors"]
+        base_profile: round_60mm
       knight_armiger_warglaive:
         name: "Knight Armiger Warglaive"
         role: heavy_support
@@ -2883,80 +2902,8 @@ codex_units:
         legal_in_editions: ["2nd_HH", "3rd_HH"]
         available_to: ["knight_households"]
         base_profile: no_base
-        available_to: ["legiones_astartes/iron_warriors"]
-        base_profile: round_60mm
 
-      # Knight Households (Questoris & Cerastus)
-      knight_cerastus_lancer:
-        name: "Cerastus Knight-Lancer"
-        role: lord_of_war
-        aliases: ["cerastus lancer", "knight lancer", "lancer"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_cerastus_castigator:
-        name: "Cerastus Knight-Castigator"
-        role: lord_of_war
-        aliases: ["cerastus castigator", "knight castigator", "castigator"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_cerastus_acheron:
-        name: "Cerastus Knight-Acheron"
-        role: lord_of_war
-        aliases: ["cerastus acheron", "knight acheron", "acheron"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_cerastus_atrapos:
-        name: "Cerastus Knight-Atrapos"
-        role: lord_of_war
-        aliases: ["cerastus atrapós", "cerastus atrapós knight", "knight atrapós", "atrapos"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_questoris_paladin:
-        name: "Questoris Knight Paladin"
-        role: lord_of_war
-        aliases: ["knight paladin", "questoris paladin", "paladin"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_questoris_errant:
-        name: "Questoris Knight Errant"
-        role: lord_of_war
-        aliases: ["knight errant", "questoris errant", "errant"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_questoris_warden:
-        name: "Questoris Knight Warden"
-        role: lord_of_war
-        aliases: ["knight warden", "questoris warden", "warden"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_questoris_crusader:
-        name: "Questoris Knight Crusader"
-        role: lord_of_war
-        aliases: ["knight crusader", "questoris crusader", "crusader"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_questoris_gallant:
-        name: "Questoris Knight Gallant"
-        role: lord_of_war
-        aliases: ["knight gallant", "questoris gallant", "gallant"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
-      knight_acastus_porphyrion:
-        name: "Acastus Knight Porphyrion"
-        role: lord_of_war
-        aliases: ["porphyrion", "acastus porphyrion", "knight porphyrion"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["knight_households"]
-        base_profile: no_base
+      # Knight Households (duplicate block removed; canonical Knight entries are defined earlier under Knight Households)
 
       # Talons of the Emperor (Custodes & Sisters of Silence)
       custodian_guard_squad:
@@ -2983,7 +2930,7 @@ codex_units:
       agamatus_jetbike_squadron:
         name: "Agamatus Jetbike Squadron"
         role: fast_attack
-        aliases: ["agamatus", "custodes jetbikes", "jetbike squadron"]
+        aliases: ["agamatus", "agilatus", "custodes jetbikes", "jetbike squadron"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["talons_of_the_emperor"]
         base_profile: oval_75x42mm
@@ -2994,13 +2941,14 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["talons_of_the_emperor"]
         base_profile: round_40mm
-      telemon_heavy_dreadnought:
-        name: "Telemon Heavy Dreadnought"
-        role: heavy_support
-        aliases: ["telemon", "custodes telemon"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["talons_of_the_emperor"]
-        base_profile: round_80mm
+      # Duplicate removed: canonical "telemon_heavy_dreadnought" is defined earlier under Adeptus Custodes with specific availability and aliases.
+      # telemon_heavy_dreadnought:
+      #   name: "Telemon Heavy Dreadnought"
+      #   role: "heavy_support"
+      #   aliases: ["telemon", "custodes telemon"]
+      #   legal_in_editions: ["2nd_HH", "3rd_HH"]
+      #   available_to: ["talons_of_the_emperor"]
+      #   base_profile: "round_80mm"
       caladius_grav_tank:
         name: "Caladius Grav-Tank"
         role: heavy_support
@@ -3024,34 +2972,31 @@ codex_units:
         base_profile: round_32mm
 
       # Taghmata Mechanicum (additional)
-      triaros_armoured_conveyer:
-        name: "Triaros Armoured Conveyer"
-        role: transport
-        aliases: ["triaros", "triaros conveyer", "armoured conveyer"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: no_base
-      macrocarid_explorator:
-        name: "Macrocarid Explorator"
-        role: transport
-        aliases: ["macrocarid", "explorator"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: no_base
-      krios_battle_tank:
-        name: "Krios Battle Tank"
-        role: heavy_support
-        aliases: ["krios", "krios battle tank"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: no_base
-      myrmidon_destructors:
-        name: "Myrmidon Destructors"
-        role: elites
-        aliases: ["myrmidon", "myrmidon destructors"]
-        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
-        available_to: ["taghmata_mechanicum"]
-        base_profile: round_40mm
+      # Duplicate/misspelt Triaros entry removed; canonical is "triaros_armoured_conveyor" defined earlier
+      # triaros_armoured_conveyer: (removed)
+      #   name: "Triaros Armoured Conveyer"
+      #   role: transport
+      #   aliases: ["triaros", "triaros conveyer", "armoured conveyer"]
+      #   legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+      #   available_to: ["taghmata_mechanicum"]
+      #   base_profile: no_base
+      # Duplicate entry removed; canonical "macrocarid_explorator" defined earlier
+      # macrocarid_explorator: (removed duplicate)
+      #   name: "Macrocarid Explorator"
+      #   role: transport
+      #   aliases: ["macrocarid", "explorator"]
+      #   legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+      #   available_to: ["taghmata_mechanicum"]
+      #   base_profile: no_base
+      # Duplicate entry removed; canonical "krios_battle_tank" defined earlier alongside "krios_venator"
+      # krios_battle_tank: (removed duplicate)
+      #   name: "Krios Battle Tank"
+      #   role: heavy_support
+      #   aliases: ["krios", "krios battle tank"]
+      #   legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+      #   available_to: ["taghmata_mechanicum"]
+      #   base_profile: no_base
+      # (dedup) Myrmidon Destructors defined earlier
 
       primarch_jaghatai_khan:
         name: "Jaghatai Khan"
