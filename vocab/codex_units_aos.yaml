@@ -3239,9 +3239,37 @@ codex_units:
                   base_profile: oval_120x92mm
                   available_to: ["chaos/slaves_to_darkness"]
               swarms: []
-            endless_spells: []
+            endless_spells:
+              eightfold_doom_sigil:
+                name: "Eightfold Doom-Sigil"
+                role: endless_spells
+                aliases: ["eightfold doom-sigil", "eightfold_doom_sigil", "doom-sigil"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["chaos/slaves_to_darkness"]
+              darkfire_daemonrift:
+                name: "Darkfire Daemonrift"
+                role: endless_spells
+                aliases: ["darkfire daemonrift", "darkfire_daemonrift"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["chaos/slaves_to_darkness"]
+              realmscourge_rupture:
+                name: "Realmscourge Rupture"
+                role: endless_spells
+                aliases: ["realmscourge rupture", "realmscourge_rupture"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["chaos/slaves_to_darkness"]
             invocations: []
-            warscroll_terrain: []
+            warscroll_terrain:
+              nexus_chaotica:
+                name: "Nexus Chaotica"
+                legal_in_editions: ["4th"]
+                available_to: ["chaos/slaves_to_darkness"]
             subfactions:
               ravagers:
                 name: "Ravagers"
@@ -4861,7 +4889,6 @@ codex_units:
                 role_overrides:
                   battleline_if: []
             allies: []
-
       Death:
         factions:
           soulblight_gravelords:
@@ -4870,55 +4897,288 @@ codex_units:
               leaders:
                 vampire_lord:
                   name: "Vampire Lord"
+                  role: leader
+                  aliases: ["vampire lord", "vampire_lord"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/soulblight_gravelords"]
                 necromancer:
                   name: "Necromancer"
+                  role: leader
+                  aliases: ["necromancer"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/soulblight_gravelords"]
                 vampire_lord_on_zombie_dragon:
                   name: "Vampire Lord on Zombie Dragon"
+                  role: leader
+                  aliases: ["vampire lord on zombie dragon", "vampire_lord_on_zombie_dragon", "vampire lord on dragon"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["death/soulblight_gravelords"]
+                prince_vhordrai:
+                  name: "Prince Vhordrai"
+                  role: leader
+                  aliases: ["prince vhordrai", "vhordrai"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                wight_king:
+                  name: "Wight King"
+                  role: leader
+                  aliases: ["wight king", "wight_king"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                wight_king_on_steed:
+                  name: "Wight King on Skeletal Steed"
+                  role: leader
+                  aliases: ["wight king on steed", "wight_king_on_steed", "wight king on skeletal steed"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/soulblight_gravelords"]
+                coven_throne:
+                  name: "Coven Throne"
+                  role: leader
+                  aliases: ["coven throne", "coven_throne"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                vengorian_lord:
+                  name: "Vengorian Lord"
+                  role: leader
+                  aliases: ["vengorian lord", "vengorian_lord"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                mannfred_von_carstein:
+                  name: "Mannfred, Mortarch of Night"
+                  role: leader
+                  aliases: ["mannfred", "mannfred von carstein", "mannfred_von_carstein", "mortarch of night"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                neferata:
+                  name: "Neferata, Mortarch of Blood"
+                  role: leader
+                  aliases: ["neferata", "mortarch of blood"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                lauKa_vai_mother_of_nightmares:
+                  name: "Lauka Vai, Mother of Nightmares"
+                  role: leader
+                  aliases: ["lauka vai", "lauka_vai", "mother of nightmares", "lauka_vai_mother_of_nightmares"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                belladamma_volga:
+                  name: "Belladamma Volga, First of the Vyrkos"
+                  role: leader
+                  aliases: ["belladamma volga", "belladamma_volga", "first of the vyrkos"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                radukar_the_wolf:
+                  name: "Radukar the Wolf"
+                  role: leader
+                  aliases: ["radukar the wolf", "radukar_the_wolf"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                radukar_the_beast:
+                  name: "Radukar the Beast"
+                  role: leader
+                  aliases: ["radukar the beast", "radukar_the_beast"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                kritza_the_rat_prince:
+                  name: "Kritza, the Rat Prince"
+                  role: leader
+                  aliases: ["kritza", "the rat prince", "kritza_the_rat_prince"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                lady_annika:
+                  name: "Lady Annika, The Thirsting Blade"
+                  role: leader
+                  aliases: ["lady annika", "lady_annika", "the thirsting blade"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                kado_ezechiar:
+                  name: "Kado Ezechiar"
+                  role: leader
+                  aliases: ["kado ezechiar", "kado_ezechiar", "the hollow king", "hollow king"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                watch_captain_halgrim:
+                  name: "Watch Captain Halgrim"
+                  role: leader
+                  aliases: ["watch captain halgrim", "watch_captain_halgrim", "halgrim"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                torgillius_the_chamberlain:
+                  name: "Torgillius the Chamberlain"
+                  role: leader
+                  aliases: ["torgillius", "torgillius the chamberlain", "torgillius_the_chamberlain"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                gorslav_the_gravekeeper:
+                  name: "Gorslav the Gravekeeper"
+                  role: leader
+                  aliases: ["gorslav", "gorslav the gravekeeper", "gorslav_the_gravekeeper"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
               battleline:
                 skeleton_warriors:
                   name: "Skeleton Warriors"
+                  role: battleline
+                  aliases: ["skeleton warriors", "skeleton_warriors", "skeletons"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["death/soulblight_gravelords"]
                 deadwalker_zombies:
                   name: "Deadwalker Zombies"
+                  role: battleline
+                  aliases: ["deadwalker zombies", "deadwalker_zombies", "zombies"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["death/soulblight_gravelords"]
               infantry:
                 grave_guard:
                   name: "Grave Guard"
+                  role: infantry
+                  aliases: ["grave guard", "grave_guard"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
+                  available_to: ["death/soulblight_gravelords"]
+                vargheists:
+                  name: "Vargheists"
+                  role: infantry
+                  aliases: ["vargheists"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/soulblight_gravelords"]
+                fell_bats:
+                  name: "Fell Bats"
+                  role: infantry
+                  aliases: ["fell bats", "fell_bats"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/soulblight_gravelords"]
+                kosargi_nightguard:
+                  name: "Kosargi Nightguard"
+                  role: infantry
+                  aliases: ["kosargi nightguard", "kosargi_nightguard"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/soulblight_gravelords"]
+                the_crimson_court:
+                  name: "The Crimson Court"
+                  role: infantry
+                  aliases: ["crimson court", "the crimson court", "the_crimson_court"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
                   available_to: ["death/soulblight_gravelords"]
               cavalry:
                 dire_wolves:
                   name: "Dire Wolves"
+                  role: cavalry
+                  aliases: ["dire wolves", "dire_wolves"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["death/soulblight_gravelords"]
+                black_knights:
+                  name: "Black Knights"
+                  role: cavalry
+                  aliases: ["black knights", "black_knights"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/soulblight_gravelords"]
+                blood_knights:
+                  name: "Blood Knights"
+                  role: cavalry
+                  aliases: ["blood knights", "blood_knights"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["death/soulblight_gravelords"]
               monsters: []
-              behemoths: []
+              behemoths:
+                mortis_engine:
+                  name: "Mortis Engine"
+                  role: behemoths
+                  aliases: ["mortis engine", "mortis_engine"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/soulblight_gravelords"]
               artillery: []
-              chariots: []
+              chariots:
+                corpse_cart:
+                  name: "Corpse Cart"
+                  role: chariots
+                  aliases: ["corpse cart", "corpse_cart"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_105x70mm
+                  available_to: ["death/soulblight_gravelords"]
               swarms:
                 bat_swarms:
                   name: "Bat Swarms"
+                  role: swarms
+                  aliases: ["bat swarms", "bat_swarms", "bat swarm"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["death/soulblight_gravelords"]
             endless_spells: []
             invocations: []
-            warscroll_terrain: []
+            manifestations:
+              hand_of_nagash:
+                name: "Hand of Nagash"
+                role: manifestations
+                aliases: ["hand of nagash", "hand_of_nagash"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/soulblight_gravelords"]
+              unholy_reliquary:
+                name: "Unholy Reliquary"
+                role: manifestations
+                aliases: ["unholy reliquary", "unholy_reliquary"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/soulblight_gravelords"]
+              sanguine_swarm:
+                name: "Sanguine Swarm"
+                role: manifestations
+                aliases: ["sanguine swarm", "sanguine_swarm"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/soulblight_gravelords"]
+            warscroll_terrain:
+              cursed_sepulchre:
+                name: "Cursed Sepulchre"
+                role: warscroll_terrain
+                aliases: ["cursed sepulchre", "cursed_sepulchre"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/soulblight_gravelords"]
             subfactions:
               vyrkos:
                 name: "Vyrkos Dynasty"
@@ -4962,35 +5222,47 @@ codex_units:
               leaders:
                 lady_olynder:
                   name: "Lady Olynder, Mortarch of Grief"
+                  role: leader
+                  aliases: ["lady olynder", "lady_olynder", "mortarch of grief"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_60mm
                   available_to: ["death/nighthaunt"]
                   unique: true
                 knight_of_shrouds:
                   name: "Knight of Shrouds"
+                  role: leader
+                  aliases: ["knight of shrouds", "knight_of_shrouds"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/nighthaunt"]
                 spirit_torment:
                   name: "Spirit Torment"
+                  role: leader
+                  aliases: ["spirit torment", "spirit_torment"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["death/nighthaunt"]
               battleline:
                 chainrasp_horde:
                   name: "Chainrasp Horde"
+                  role: battleline
+                  aliases: ["chainrasp horde", "chainrasp_horde", "chainrasps"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["death/nighthaunt"]
               infantry:
                 grimghast_reapers:
                   name: "Grimghast Reapers"
+                  role: infantry
+                  aliases: ["grimghast reapers", "grimghast_reapers"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/nighthaunt"]
               cavalry:
                 hexwraiths:
                   name: "Hexwraiths"
+                  role: cavalry
+                  aliases: ["hexwraiths", "hex_wraiths"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["death/nighthaunt"]
@@ -4998,6 +5270,8 @@ codex_units:
               behemoths:
                 black_coach:
                   name: "Black Coach"
+                  role: behemoths
+                  aliases: ["black coach", "black_coach"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_170x105mm
                   available_to: ["death/nighthaunt"]
@@ -5006,7 +5280,11 @@ codex_units:
               swarms: []
             endless_spells: []
             invocations: []
-            warscroll_terrain: []
+            warscroll_terrain: 
+              nexus_of_grief:
+                name: "Nexus of Grief"
+                legal_in_editions: ["4th"]
+                available_to: ["death/nighthaunt"]
             subfactions:
               emerald_host:
                 name: "Emerald Host"
@@ -5043,16 +5321,22 @@ codex_units:
               leaders:
                 mortisan_boneshaper:
                   name: "Mortisan Boneshaper"
+                  role: leader
+                  aliases: ["mortisan boneshaper", "mortisan_boneshaper"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/ossiarch_bonereapers"]
                 liege_kavalos:
                   name: "Liege-Kavalos"
+                  role: leader
+                  aliases: ["liege-kavalos", "liege_kavalos"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_75x42mm
                   available_to: ["death/ossiarch_bonereapers"]
                 katakros:
                   name: "Katakros, Mortarch of the Necropolis"
+                  role: leader
+                  aliases: ["katakros", "katakros, mortarch of the necropolis", "katakros_mortarch_of_the_necropolis"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["death/ossiarch_bonereapers"]
@@ -5060,18 +5344,24 @@ codex_units:
               battleline:
                 mortek_guard:
                   name: "Mortek Guard"
+                  role: battleline
+                  aliases: ["mortek guard", "mortek_guard"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["death/ossiarch_bonereapers"]
               infantry:
                 immortis_guard:
                   name: "Immortis Guard"
+                  role: infantry
+                  aliases: ["immortis guard", "immortis_guard"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["death/ossiarch_bonereapers"]
               cavalry:
                 kavalos_deathriders:
                   name: "Kavalos Deathriders"
+                  role: cavalry
+                  aliases: ["kavalos deathriders", "kavalos_deathriders"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["death/ossiarch_bonereapers"]
@@ -5079,6 +5369,8 @@ codex_units:
               behemoths:
                 gothizzar_harvester:
                   name: "Gothizzar Harvester"
+                  role: behemoths
+                  aliases: ["gothizzar harvester", "gothizzar_harvester"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_105x70mm
                   available_to: ["death/ossiarch_bonereapers"]
@@ -5090,6 +5382,8 @@ codex_units:
             warscroll_terrain:
               - id: bone_tithe_nexus
                 name: "Bone-tithe Nexus"
+                role: warscroll_terrain
+                aliases: ["bone-tithe nexus", "bone_tithe_nexus", "bonetithe nexus"]
                 legal_in_editions: ["2nd", "3rd"]
                 legends_in_editions: ["4th"]
                 base_profile: no_base
@@ -5144,23 +5438,31 @@ codex_units:
               leaders:
                 abhorrant_archregent:
                   name: "Abhorrant Archregent"
+                  role: leader
+                  aliases: ["abhorrant archregent", "abhorrant_archregent"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/flesh_eater_courts"]
                 abhorrant_ghoul_king:
                   name: "Abhorrant Ghoul King"
+                  role: leader
+                  aliases: ["abhorrant ghoul king", "abhorrant_ghoul_king", "ghoul king"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/flesh_eater_courts"]
               battleline:
                 crypt_ghouls:
                   name: "Crypt Ghouls"
+                  role: battleline
+                  aliases: ["crypt ghouls", "crypt_ghouls", "ghouls"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["death/flesh_eater_courts"]
               infantry:
                 crypt_horrors:
                   name: "Crypt Horrors"
+                  role: infantry
+                  aliases: ["crypt horrors", "crypt_horrors"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_50mm
                   available_to: ["death/flesh_eater_courts"]
@@ -5169,6 +5471,8 @@ codex_units:
               behemoths:
                 terrorgheist:
                   name: "Terrorgheist"
+                  role: behemoths
+                  aliases: ["terrorgheist", "terror gheist", "terror_gheist"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["death/flesh_eater_courts"]
@@ -5180,6 +5484,8 @@ codex_units:
             warscroll_terrain:
               - id: charnel_throne
                 name: "Charnel Throne"
+                role: warscroll_terrain
+                aliases: ["charnel throne", "charnel_throne"]
                 legal_in_editions: ["2nd", "3rd"]
                 legends_in_editions: ["4th"]
                 base_profile: no_base
