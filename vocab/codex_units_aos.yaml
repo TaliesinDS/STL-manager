@@ -162,7 +162,6 @@ codex_units:
           - "order/lumineth_realm_lords"
           - "order/daughters_of_khaine"
         notes: "Order Regiment of Renown; usable in any Order army (3rd ed)."
-
     # Top-level hierarchy
     grand_alliances:
       Order:
@@ -2995,7 +2994,7 @@ codex_units:
                 role_overrides:
                   battleline_if: []
             allies: []
-
+      #
       Chaos:
         factions:
           slaves_to_darkness:
@@ -4703,7 +4702,6 @@ codex_units:
                   available_to: ["chaos/skaven"]
                   unique: true
                   aliases: ["spiteclaws swarm", "spiteclaw's swarm", "spiteclaws_swarm", "spiteclaws"]
-
                 skittershanks_clawpack:
                   name: "Skittershank's Clawpack"
                   role: infantry
@@ -6006,7 +6004,6 @@ codex_units:
                 role_overrides:
                   battleline_if: []
             allies: []
-
       Destruction:
         factions:
           orruk_warclans:
