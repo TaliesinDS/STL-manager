@@ -1200,6 +1200,15 @@ codex_units:
                   legal_in_editions: ["2nd"]
                   base_profile: round_25mm
                   available_to: ["order/cities_of_sigmar"]
+                hexbane_hunters:
+                  name: "Hexbane's Hunters"
+                  role: infantry
+                  aliases: ["hexbane's hunters", "hexbane's hunters", "hexbane_hunters", "haskel hexbane"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/cities_of_sigmar"]
+                  unique: true
               cavalry:
                 freeguild_cavaliers:
                   name: "Freeguild Cavaliers"
@@ -1424,7 +1433,7 @@ codex_units:
                   battleline_if: []
               #
               tempest_eye:
-                name: "Tempest’s Eye"
+                name: "Tempest's Eye"
                 legal_in_editions: ["2nd", "3rd"]
                 unit_types: *unit_types_template
                 role_overrides:
@@ -2897,6 +2906,24 @@ codex_units:
                   base_profile: round_28_5mm
                   available_to: ["order/daughters_of_khaine"]
                   unique: true
+                the_shadeborn:
+                  name: "The Shadeborn"
+                  role: infantry
+                  aliases: ["the shadeborn", "shadeborn", "the_shadeborn"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/daughters_of_khaine"]
+                  unique: true
+                gryselles_arenai:
+                  name: "Gryselle's Arenai"
+                  role: infantry
+                  aliases: ["gryselle's arenai", "gryselle's arenai", "gryselles arenai", "gryselles_arenai"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/daughters_of_khaine"]
+                  unique: true
               cavalry:
                 doomfire_warlocks:
                   name: "Doomfire Warlocks"
@@ -3648,7 +3675,6 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["chaos/disciples_of_tzeentch"]
-
               battleline:
                 kairic_acolytes:
                   name: "Kairic Acolytes"
@@ -3671,7 +3697,6 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["chaos/disciples_of_tzeentch"]
-
               infantry:
                 flamers_of_tzeentch:
                   name: "Flamers of Tzeentch"
@@ -3703,7 +3728,15 @@ codex_units:
                   base_profile: round_32mm
                   available_to: ["chaos/disciples_of_tzeentch"]
                   unique: true
-
+                ephilims_pandaemonium:
+                  name: "Ephilim's Pandaemonium"
+                  role: infantry
+                  aliases: ["ephilims_pandaemonium"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["chaos/disciples_of_tzeentch"]
+                  unique: true
               cavalry:
                 tzaangor_enlightened_on_discs:
                   name: "Tzaangor Enlightened on Discs"
@@ -4670,6 +4703,16 @@ codex_units:
                   available_to: ["chaos/skaven"]
                   unique: true
                   aliases: ["spiteclaws swarm", "spiteclaw's swarm", "spiteclaws_swarm", "spiteclaws"]
+
+                skittershanks_clawpack:
+                  name: "Skittershank's Clawpack"
+                  role: infantry
+                  aliases: ["skittershanks_clawpack", "skittershanks clawpack"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["chaos/skaven"]
+                  unique: true
                 plague_censer_bearers:
                   name: "Plague Censer Bearers"
                   role: infantry
@@ -5099,6 +5142,24 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/soulblight_gravelords"]
+                sepulchral_guard:
+                  name: "Sepulchral Guard"
+                  role: infantry
+                  aliases: ["sepulchral guard", "the sepulchral guard"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_25mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
+                the_exiled_dead:
+                  name: "The Exiled Dead"
+                  role: infantry
+                  aliases: ["the exiled dead", "exiled dead", "deintalos"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_25mm
+                  available_to: ["death/soulblight_gravelords"]
+                  unique: true
               cavalry:
                 dire_wolves:
                   name: "Dire Wolves"
@@ -5386,6 +5447,24 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/nighthaunt"]
+                thorns_of_the_briar_queen:
+                  name: "Thorns of the Briar Queen"
+                  role: infantry
+                  aliases: ["thorns of the briar queen", "briar queen"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_25mm
+                  available_to: ["death/nighthaunt"]
+                  unique: true
+                lady_harrows_mournflight:
+                  name: "Lady Harrow's Mournflight"
+                  role: infantry
+                  aliases: ["lady harrow's mournflight", "mournflight", "lady harrow"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                  unique: true
               cavalry:
                 hexwraiths:
                   name: "Hexwraiths"
@@ -5827,6 +5906,15 @@ codex_units:
                   base_profile: round_32mm
                   available_to: ["death/flesh_eater_courts"]
                   unique: true
+                the_grymwatch:
+                  name: "The Grymwatch"
+                  role: infantry
+                  aliases: ["grymwatch", "the grymwatch"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_25mm
+                  available_to: ["death/flesh_eater_courts"]
+                  unique: true
               cavalry:
                 morbheg_knights:
                   name: "Morbheg Knights"
@@ -6150,6 +6238,33 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["destruction/orruk_warclans"]
+                hedkrakkas_madmob:
+                  name: "Hedkrakka's Madmob"
+                  role: infantry
+                  aliases: ["hedkrakka's madmob", "hedkrakkas_madmob", "hedkrakka"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                morgoks_krushas:
+                  name: "Morgok's Krushas"
+                  role: infantry
+                  aliases: ["morgok's krushas", "morgoks_krushas", "morgok"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                da_kunnin_krew:
+                  name: "Da Kunnin' Krew"
+                  role: infantry
+                  aliases: ["da kunnin' krew", "da_kunnin_krew", "krew"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
               cavalry:
                 gore_gruntas:
                   name: "Gore-gruntas"
@@ -6546,6 +6661,13 @@ codex_units:
                   legends_in_editions: ["4th"]
                   base_profile: oval_170x105mm
                   available_to: ["destruction/gloomspite_gitz"]
+                aleguzzler_gargant:
+                  name: "Aleguzzler Gargant"
+                  role: behemoths
+                  aliases: ["aleguzzler gargant", "aleguzzler_gargant", "gargant"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["destruction/gloomspite_gitz"]
               artillery:
                 arachnarok_spider_with_flinger:
                   name: "Arachnarok Spider with Flinger"
@@ -6900,6 +7022,15 @@ codex_units:
                   aliases: ["kraken eater", "kraken_eater_megagargant", "kraken-eater megagargant"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_130mm
+                cyrenis_razors:
+                  name: "Cyreni's Razors"
+                  role: infantry
+                  aliases: ["cyreni's razors", "cyreni's razors", "cyrenis razors", "cyrenis_razors"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/idoneth_deepkin"]
+                  unique: true
                   available_to: ["destruction/sons_of_behemat"]
                 gatebreaker_megagargant:
                   name: "Gatebreaker Mega-Gargant"
