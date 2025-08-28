@@ -1,0 +1,286 @@
+# Age of Sigmar unit catalog scaffold (no units populated)
+# Structure: codex_units/age_of_sigmar/grand_alliances/faction/unit_type/unit
+# This file intentionally contains empty unit lists; fill them as you go.
+# Example (commented):
+# codex_units usage mirrors 40K/30K files for consistency with tools and tests
+codex_units:
+  age_of_sigmar:
+    meta:
+      schema: v1
+      system: "Age of Sigmar"
+      description: "AoS units organized by Grand Alliance, Faction, and Unit Type; edition-aware."
+      editions: ["2nd", "3rd", "4th"]
+      # Physical base profiles for models (shape/size only; no game rules)
+      base_profiles:
+        # Round bases
+        round_25mm: { shape: round, diameter_mm: 25 }
+        round_28_5mm: { shape: round, diameter_mm: 28.5 }
+        round_32mm: { shape: round, diameter_mm: 32 }
+        round_40mm: { shape: round, diameter_mm: 40 }
+        round_50mm: { shape: round, diameter_mm: 50 }
+        round_60mm: { shape: round, diameter_mm: 60 }
+        round_80mm: { shape: round, diameter_mm: 80 }
+        round_90mm: { shape: round, diameter_mm: 90 }
+        round_100mm: { shape: round, diameter_mm: 100 }
+        round_130mm: { shape: round, diameter_mm: 130 }
+
+        # Round flying bases
+        flying_round_32mm: { shape: round, diameter_mm: 32, flying_stem: true }
+        flying_round_40mm: { shape: round, diameter_mm: 40, flying_stem: true }
+        flying_round_60mm: { shape: round, diameter_mm: 60, flying_stem: true }
+        flying_round_90mm: { shape: round, diameter_mm: 90, flying_stem: true }
+
+        # Oval cavalry/monster/vehicle bases
+        oval_60x35mm: { shape: oval, width_mm: 60, length_mm: 35 }
+        oval_75x42mm: { shape: oval, width_mm: 75, length_mm: 42 }
+        oval_90x52mm: { shape: oval, width_mm: 90, length_mm: 52 }
+        oval_105x70mm: { shape: oval, width_mm: 105, length_mm: 70 }
+        oval_120x92mm: { shape: oval, width_mm: 120, length_mm: 92 }
+        oval_170x105mm: { shape: oval, width_mm: 170, length_mm: 105 }
+
+        # No base (terrain/fortifications only)
+        no_base: { shape: none }
+
+    # Reusable templates and anchors
+    defaults:
+      unit_types_template: &unit_types_template
+        leaders: []        # Hero units (general, wizards, priests, etc.)
+        battleline: []     # Core troops designated as Battleline
+        infantry: []       # Non-battleline foot troops and elites
+        cavalry: []        # Mounted/fast attack units
+        monsters: []       # Monster keyword units (non-hero)
+        behemoths: []      # Large centerpiece models (non-hero); if redundant, keep empty
+        artillery: []      # War engines and shooting platforms
+        chariots: []       # Chariot-type units
+        swarms: []         # Swarm bases (bats, rats, insects, etc.)
+
+    # Unit entry schema (when populating later):
+    # - Either a simple string id, or a map { id: { name, base_profile, legal_in_editions, legends_in_editions? } }
+    # - Per-faction carve-outs can be expressed by which unit_types list(s) include the id
+    # - Faction extras: endless_spells, invocations, warscroll_terrain entries accept either strings or
+    #   maps { id/name, legal_in_editions, legends_in_editions? }
+  # - Convention: if a unit is listed as a plain string, treat it as legal in all editions listed in meta.editions
+
+    # Top-level hierarchy
+    grand_alliances:
+      Order:
+        factions:
+          stormcast_eternals:
+            display_name: "Stormcast Eternals"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          cities_of_sigmar:
+            display_name: "Cities of Sigmar"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          seraphon:
+            display_name: "Seraphon"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          sylvaneth:
+            display_name: "Sylvaneth"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          idoneth_deepkin:
+            display_name: "Idoneth Deepkin"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          fyreslayers:
+            display_name: "Fyreslayers"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []  # Magmic Invocations belong here when added
+            warscroll_terrain: []
+          #
+          kharadron_overlords:
+            display_name: "Kharadron Overlords"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          lumineth_realm_lords:
+            display_name: "Lumineth Realm-lords"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          daughters_of_khaine:
+            display_name: "Daughters of Khaine"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+
+      Chaos:
+        factions:
+          slaves_to_darkness:
+            display_name: "Slaves to Darkness"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          blades_of_khorne:
+            display_name: "Blades of Khorne"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []  # Judgements of Khorne belong here when added
+            warscroll_terrain: []
+          #
+          disciples_of_tzeentch:
+            display_name: "Disciples of Tzeentch"
+            unit_types: *unit_types_template
+            endless_spells: []  # Tzeentch Endless Spells here when added
+            invocations: []
+            warscroll_terrain: []
+          #
+          maggotkin_of_nurgle:
+            display_name: "Maggotkin of Nurgle"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          hedonites_of_slaanesh:
+            display_name: "Hedonites of Slaanesh"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          beasts_of_chaos:
+            display_name: "Beasts of Chaos"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          skaven:
+            display_name: "Skaven"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+
+      Death:
+        factions:
+          soulblight_gravelords:
+            display_name: "Soulblight Gravelords"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          nighthaunt:
+            display_name: "Nighthaunt"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          ossiarch_bonereapers:
+            display_name: "Ossiarch Bonereapers"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          flesh_eater_courts:
+            display_name: "Flesh-eater Courts"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+
+      Destruction:
+        factions:
+          orruk_warclans:
+            display_name: "Orruk Warclans"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          gloomspite_gitz:
+            display_name: "Gloomspite Gitz"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          ogor_mawtribes:
+            display_name: "Ogor Mawtribes"
+            unit_types: *unit_types_template
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+          #
+          sons_of_behemat:
+            display_name: "Sons of Behemat"
+            unit_types:
+              leaders:
+                king_brodd:
+                  name: "King Brodd"
+                  role: leader
+                  aliases: ["king_brodd", "king brodd", "brodd"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_130mm
+                  available_to: ["destruction/sons_of_behemat"]
+              battleline:
+                mancrusher_gargants:
+                  name: "Mancrusher Gargants"
+                  role: battleline
+                  aliases: ["mancrusher", "mancrusher_gargants", "mancrusher gargants"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["destruction/sons_of_behemat"]
+              infantry: []
+              cavalry: []
+              monsters: []
+              behemoths:
+                kraken_eater_megagargant:
+                  name: "Kraken-eater Mega-Gargant"
+                  role: behemoth
+                  aliases: ["kraken eater", "kraken_eater_megagargant", "kraken-eater megagargant"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_130mm
+                  available_to: ["destruction/sons_of_behemat"]
+                gatebreaker_megagargant:
+                  name: "Gatebreaker Mega-Gargant"
+                  role: behemoth
+                  aliases: ["gatebreaker", "gatebreaker_megagargant", "gatebreaker megagargant"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_130mm
+                  available_to: ["destruction/sons_of_behemat"]
+                warstomper_megagargant:
+                  name: "Warstomper Mega-Gargant"
+                  role: behemoth
+                  aliases: ["warstomper", "warstomper_megagargant", "warstomper megagargant"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_130mm
+                  available_to: ["destruction/sons_of_behemat"]
+              artillery: []
+              chariots: []
+              swarms: []
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
+
+    # Note: Per your preference, unit details are inlined under each faction's unit_types.
