@@ -1058,6 +1058,13 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["solar_auxilia"]
         base_profile: round_32mm
+      solar_auxilia_tank_commander:
+        name: "Solar Auxilia Tank Commander"
+        role: hq
+        aliases: ["tank commander", "auxilia tank commander"]
+        legal_in_editions: ["1st_HH", "2nd_HH"]
+        available_to: ["solar_auxilia"]
+        base_profile: round_32mm
       solar_auxilia_engineer_section:
         name: "Solar Auxilia Engineer Section"
         role: elites
@@ -1429,6 +1436,13 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
+      land_raider_prometheus:
+        name: "Land Raider Prometheus"
+        role: heavy_support
+        aliases: ["land raider prometheus", "prometheus"]
+        legal_in_editions: ["1st_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
       predator_destructor:
         name: "Predator Destructor"
         role: heavy_support
@@ -1566,6 +1580,13 @@ codex_units:
         name: "Legion Arquitor Bombard (Morbus)"
         role: heavy_support
         aliases: ["arquitor bombard", "morbus", "deimos arquitor"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/*"]
+        base_profile: no_base
+      legion_arquitor_bombard_graviton_charge_cannon:
+        name: "Legion Arquitor Bombard (Graviton Charge Cannon)"
+        role: heavy_support
+        aliases: ["arquitor graviton", "graviton charge cannon", "deimos arquitor graviton"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/*"]
         base_profile: no_base
@@ -3204,6 +3225,14 @@ codex_units:
         available_to: ["legiones_astartes/space_wolves"]
         base_profile: round_32mm
 
+      maloghurst_the_twisted:
+        name: "Maloghurst the Twisted"
+        role: hq
+        aliases: ["maloghurst", "the twisted"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/sons_of_horus"]
+        base_profile: round_32mm
+
       # More Named Characters — Legiones Astartes
       fafnir_rann:
         name: "Fafnir Rann"
@@ -3251,6 +3280,13 @@ codex_units:
         name: "Raldoron"
         role: hq
         aliases: ["raldoron", "first captain raldoron"]
+        legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
+        available_to: ["legiones_astartes/blood_angels"]
+        base_profile: round_32mm
+      dominion_zephon:
+        name: "Dominion Zephon"
+        role: hq
+        aliases: ["dominion zephon", "zephon"]
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/blood_angels"]
         base_profile: round_32mm
@@ -3352,6 +3388,7 @@ codex_units:
         legal_in_editions: ["1st_HH", "2nd_HH", "3rd_HH"]
         available_to: ["legiones_astartes/sons_of_horus"]
         base_profile: round_32mm
+
 
       # Additional Named Characters and Special Units
       constantin_valdor:
