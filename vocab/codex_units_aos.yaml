@@ -6818,12 +6818,19 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain:
-              - id: great_mawpot
+              great_mawpot:
                 name: "Great Mawpot"
                 role: warscroll_terrain
                 aliases: ["great mawpot", "great_mawpot", "mawpot"]
                 legal_in_editions: ["2nd", "3rd"]
                 legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/ogor_mawtribes"]
+              mawpit:
+                name: "Mawpit"
+                role: warscroll_terrain
+                aliases: ["mawpit"]
+                legal_in_editions: ["4th"]
                 base_profile: no_base
                 available_to: ["destruction/ogor_mawtribes"]
             subfactions:
@@ -6889,23 +6896,31 @@ codex_units:
               behemoths:
                 kraken_eater_megagargant:
                   name: "Kraken-eater Mega-Gargant"
-                  role: behemoth
+                  role: behemoths
                   aliases: ["kraken eater", "kraken_eater_megagargant", "kraken-eater megagargant"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_130mm
                   available_to: ["destruction/sons_of_behemat"]
                 gatebreaker_megagargant:
                   name: "Gatebreaker Mega-Gargant"
-                  role: behemoth
+                  role: behemoths
                   aliases: ["gatebreaker", "gatebreaker_megagargant", "gatebreaker megagargant"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_130mm
                   available_to: ["destruction/sons_of_behemat"]
                 warstomper_megagargant:
                   name: "Warstomper Mega-Gargant"
-                  role: behemoth
+                  role: behemoths
                   aliases: ["warstomper", "warstomper_megagargant", "warstomper megagargant"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_130mm
+                  available_to: ["destruction/sons_of_behemat"]
+                beast_smasher_megagargant:
+                  name: "Beast-smasher Mega-Gargant"
+                  role: behemoths
+                  aliases: ["beast-smasher", "beast_smasher_megagargant", "beast smasher megagargant"]
+                  legal_in_editions: ["3rd"]
+                  legends_in_editions: ["4th"]
                   base_profile: round_130mm
                   available_to: ["destruction/sons_of_behemat"]
               artillery: []
@@ -6922,13 +6937,6 @@ codex_units:
                 role_overrides:
                   battleline_if: []
               #
-               - id: mawpit
-                 name: "Mawpit"
-                 role: warscroll_terrain
-                 aliases: ["mawpit"]
-                 legal_in_editions: ["4th"]
-                 base_profile: no_base
-                 available_to: ["destruction/ogor_mawtribes"]
               breaker_tribe:
                 name: "Breaker Tribe"
                 legal_in_editions: ["2nd", "3rd"]
@@ -6942,4 +6950,39 @@ codex_units:
                 unit_types: *unit_types_template
                 role_overrides:
                   battleline_if: []
+            allies: []
+          #
+          kragnos:
+            display_name: "Kragnos"
+            unit_types:
+              leaders:
+                kragnos_the_end_of_empires:
+                  name: "Kragnos, the End of Empires"
+                  role: leader
+                  aliases: [
+                    "kragnos",
+                    "kragnos the end of empires",
+                    "kragnos_the_end_of_empires",
+                    "end of empires"
+                  ]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: [
+                    "destruction/orruk_warclans",
+                    "destruction/gloomspite_gitz",
+                    "destruction/ogor_mawtribes",
+                    "destruction/sons_of_behemat"
+                  ]
+                  unique: true
+              battleline: []
+              infantry: []
+              cavalry: []
+              monsters: []
+              behemoths: []
+              artillery: []
+              chariots: []
+              swarms: []
+            endless_spells: []
+            invocations: []
+            warscroll_terrain: []
             allies: []
