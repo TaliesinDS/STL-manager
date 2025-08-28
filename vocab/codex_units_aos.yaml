@@ -23,6 +23,7 @@ codex_units:
         round_90mm: { shape: round, diameter_mm: 90 }
         round_100mm: { shape: round, diameter_mm: 100 }
         round_130mm: { shape: round, diameter_mm: 130 }
+        round_160mm: { shape: round, diameter_mm: 160 }
 
         # Round flying bases
         flying_round_32mm: { shape: round, diameter_mm: 32, flying_stem: true }
@@ -61,30 +62,1691 @@ codex_units:
     #   maps { id/name, legal_in_editions, legends_in_editions? }
   # - Convention: if a unit is listed as a plain string, treat it as legal in all editions listed in meta.editions
 
+    # Cross-faction AoS resources
+    # - shared_endless_spells: spells available across multiple factions (e.g., Malign Sorcery)
+    #   entries can be strings or maps { id/name, legal_in_editions, legends_in_editions?, notes? }
+    shared_endless_spells: []
+
+    # - regiments_of_renown: cross-faction warband-like formations
+    #   Each regiment can declare units and availability across factions
+    #   Example schema:
+    #   - id: dourbul_grimscar
+    #     name: "Dourbul Grimscar's Ironfist"
+    #     units: ["ogor_tyrant", "ironguts", "leadbelchers"]
+    #     legal_in_editions: ["3rd"]
+    #     available_to: ["order/cities_of_sigmar", "destruction/ogor_mawtribes"]
+    regiments_of_renown:
+      - id: elthwins_thorns
+        name: "Elthwin's Thorns"
+        legal_in_editions: ["3rd"]
+        units: ["branchwych", "gossamid_archers"]
+        available_to:
+          - "order/stormcast_eternals"
+          - "order/cities_of_sigmar"
+          - "order/seraphon"
+          - "order/sylvaneth"
+          - "order/idoneth_deepkin"
+          - "order/fyreslayers"
+          - "order/kharadron_overlords"
+          - "order/lumineth_realm_lords"
+          - "order/daughters_of_khaine"
+        notes: "Order Regiment of Renown; usable in any Order army (3rd ed)."
+      - id: big_grikks_kruleshots
+        name: "Big Grikk's Kruleshots"
+        legal_in_editions: ["3rd"]
+        units: ["man_skewer_boltboyz", "killaboss_with_stab_grot"]
+        available_to:
+          - "destruction/orruk_warclans"
+          - "destruction/gloomspite_gitz"
+          - "destruction/ogor_mawtribes"
+          - "destruction/sons_of_behemat"
+        notes: "Destruction Regiment of Renown; usable in any Destruction army (3rd ed)."
+      - id: gorgermawpack
+        name: "Gorgermawpack"
+        legal_in_editions: ["3rd"]
+        units: ["ogor_tyrant", "gorgers"]
+        available_to:
+          - "destruction/orruk_warclans"
+          - "destruction/gloomspite_gitz"
+          - "destruction/ogor_mawtribes"
+          - "destruction/sons_of_behemat"
+        notes: "Destruction Regiment of Renown; usable in any Destruction army (3rd ed)."
+      - id: veremords_shamblers
+        name: "Veremord's Shamblers"
+        legal_in_editions: ["3rd"]
+        units: ["necromancer", "deadwalker_zombies"]
+        available_to:
+          - "death/soulblight_gravelords"
+          - "death/nighthaunt"
+          - "death/ossiarch_bonereapers"
+          - "death/flesh_eater_courts"
+        notes: "Death Regiment of Renown; usable in any Death army (3rd ed)."
+      - id: coven_of_thryx
+        name: "The Coven of Thryx"
+        legal_in_editions: ["3rd"]
+        units: ["magister", "flamers_of_tzeentch"]
+        available_to:
+          - "chaos/slaves_to_darkness"
+          - "chaos/blades_of_khorne"
+          - "chaos/disciples_of_tzeentch"
+          - "chaos/maggotkin_of_nurgle"
+          - "chaos/hedonites_of_slaanesh"
+          - "chaos/beasts_of_chaos"
+          - "chaos/skaven"
+        notes: "Chaos Regiment of Renown; usable in any Chaos army (3rd ed)."
+      - id: hargaxs_pit_beasts
+        name: "Hargax's Pit-Beasts"
+        legal_in_editions: ["3rd"]
+        units: ["ogroid_myrmidon", "fomoroid_crusher", "mindstealer_sphiranx"]
+        available_to:
+          - "chaos/slaves_to_darkness"
+          - "chaos/blades_of_khorne"
+          - "chaos/disciples_of_tzeentch"
+          - "chaos/maggotkin_of_nurgle"
+          - "chaos/hedonites_of_slaanesh"
+          - "chaos/beasts_of_chaos"
+          - "chaos/skaven"
+        notes: "Chaos Regiment of Renown; usable in any Chaos army (3rd ed)."
+      - id: norgrimms_rune_throng
+        name: "Norgrimm's Rune Throng"
+        legal_in_editions: ["3rd"]
+        units: ["warden_king", "irondrakes", "dispossessed_warriors"]
+        available_to:
+          - "order/stormcast_eternals"
+          - "order/cities_of_sigmar"
+          - "order/seraphon"
+          - "order/sylvaneth"
+          - "order/idoneth_deepkin"
+          - "order/fyreslayers"
+          - "order/kharadron_overlords"
+          - "order/lumineth_realm_lords"
+          - "order/daughters_of_khaine"
+        notes: "Order Regiment of Renown; usable in any Order army (3rd ed)."
+
     # Top-level hierarchy
     grand_alliances:
       Order:
         factions:
           stormcast_eternals:
             display_name: "Stormcast Eternals"
-            unit_types: *unit_types_template
-            endless_spells: []
+            unit_types:
+              leaders:
+                lord_celestant:
+                  name: "Lord-Celestant"
+                  role: leader
+                  aliases: ["lord celestant", "lord_celestant"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_relictor:
+                  name: "Lord-Relictor"
+                  role: leader
+                  aliases: ["lord relicktor", "lord_relictor"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_incantor:
+                  name: "Knight-Incantor"
+                  role: leader
+                  aliases: ["knight incantor", "knight_incantor"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_arcanum:
+                  name: "Knight-Arcanum"
+                  role: leader
+                  aliases: ["knight arcanum", "knight_arcanum"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_judicator:
+                  name: "Knight-Judicator"
+                  role: leader
+                  aliases: ["knight judicator", "knight_judicator"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_arcanum:
+                  name: "Lord-Arcanum"
+                  role: leader
+                  aliases: ["lord arcanum", "lord_arcanum"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_arcanum_on_gryph_charger:
+                  name: "Lord-Arcanum on Gryph-charger"
+                  role: leader
+                  aliases: ["lord arcanum on gryph charger", "lord_arcanum_on_gryph_charger"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_celestant_on_dracoth:
+                  name: "Lord-Celestant on Dracoth"
+                  role: leader
+                  aliases: ["lord celestant on dracoth", "lord_celestant_on_dracoth"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_celestant_on_stardrake:
+                  name: "Lord-Celestant on Stardrake"
+                  role: leader
+                  aliases: ["lord celestant on stardrake", "lord_celestant_on_stardrake"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/stormcast_eternals"]
+                drakesworn_templar:
+                  name: "Drakesworn Templar"
+                  role: leader
+                  aliases: ["drakesworn templar", "drakesworn_templar"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/stormcast_eternals"]
+                celestant_prime:
+                  name: "Celestant-Prime, Hammer of Sigmar"
+                  role: leader
+                  aliases: ["celestant-prime", "celestant_prime", "hammer of sigmar"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_100mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                bastian_carthalos:
+                  name: "Bastian Carthalos"
+                  role: leader
+                  aliases: ["bastian", "bastian_carthalos", "lord-commander"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                yndrasta:
+                  name: "Yndrasta, the Celestial Spear"
+                  role: leader
+                  aliases: ["yndrasta", "the celestial spear"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                knight_vexillor:
+                  name: "Knight-Vexillor"
+                  role: leader
+                  aliases: ["knight vexillor", "knight_vexillor"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_heraldor:
+                  name: "Knight-Heraldor"
+                  role: leader
+                  aliases: ["knight heraldor", "knight_heraldor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_azyros:
+                  name: "Knight-Azyros"
+                  role: leader
+                  aliases: ["knight azyros", "knight_azyros"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_venator:
+                  name: "Knight-Venator"
+                  role: leader
+                  aliases: ["knight venator", "knight_venator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_zephyros:
+                  name: "Knight-Zephyros"
+                  role: leader
+                  aliases: ["knight zephyros", "knight_zephyros"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_castellant:
+                  name: "Lord-Castellant"
+                  role: leader
+                  aliases: ["lord castellant", "lord_castellant"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_veritant:
+                  name: "Lord-Veritant"
+                  role: leader
+                  aliases: ["lord veritant", "lord_veritant"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_exorcist:
+                  name: "Lord-Exorcist"
+                  role: leader
+                  aliases: ["lord exorcist", "lord_exorcist"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_ordinator:
+                  name: "Lord-Ordinator"
+                  role: leader
+                  aliases: ["lord ordinator", "lord_ordinator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_draconis:
+                  name: "Knight-Draconis"
+                  role: leader
+                  aliases: ["knight draconis", "knight_draconis"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_imperatant:
+                  name: "Lord-Imperatant"
+                  role: leader
+                  aliases: ["lord imperatant", "lord_imperatant"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                aventis_firestrike:
+                  name: "Aventis Firestrike, Magister of Hammerhal"
+                  role: leader
+                  aliases: ["aventis firestrike", "lord-arcanum on tauralon", "lord_arcanum_on_tauralon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                lord_arcanum_on_tauralon:
+                  name: "Lord-Arcanum on Tauralon"
+                  role: leader
+                  aliases: ["lord arcanum on tauralon", "lord_arcanum_on_tauralon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/stormcast_eternals"]
+                astreia_solbright:
+                  name: "Astreia Solbright"
+                  role: leader
+                  aliases: ["astreia", "astreia_solbright", "lord-arcanum on dracoline"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                lord_arcanum_on_celestial_dracoline:
+                  name: "Lord-Arcanum on Celestial Dracoline"
+                  role: leader
+                  aliases: ["lord arcanum on celestial dracoline", "lord_arcanum_on_celestial_dracoline", "lord-arcanum on dracoline"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                lord_aquilor:
+                  name: "Lord-Aquilor"
+                  role: leader
+                  aliases: ["lord aquilor", "lord_aquilor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                knight_questor:
+                  name: "Knight-Questor"
+                  role: leader
+                  aliases: ["knight questor", "knight_questor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                neave_blacktalon:
+                  name: "Neave Blacktalon"
+                  role: leader
+                  aliases: ["blacktalon", "neave_blacktalon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                gardus_steelsoul:
+                  name: "Gardus Steelsoul"
+                  role: leader
+                  aliases: ["gardus", "gardus_steelsoul"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                vandus_hammerhand:
+                  name: "Vandus Hammerhand"
+                  role: leader
+                  aliases: ["vandus", "vandus_hammerhand", "lord-celestant vandus"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                gavriel_sureheart:
+                  name: "Gavriel Sureheart"
+                  role: leader
+                  aliases: ["gavriel", "gavriel_sureheart"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                errant_questor:
+                  name: "Errant-Questor"
+                  role: leader
+                  aliases: ["errant questor", "errant_questor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                ionus_cryptborn:
+                  name: "Ionus Cryptborn, Warden of Lost Souls"
+                  role: leader
+                  aliases: ["ionus cryptborn", "ionus_cryptborn"]
+                  legal_in_editions: ["4th"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+              battleline:
+                liberators:
+                  name: "Liberators"
+                  role: battleline
+                  aliases: ["liberators", "liberator"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vindictors:
+                  name: "Vindictors"
+                  role: battleline
+                  aliases: ["vindictors", "vindictor"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                sequitors:
+                  name: "Sequitors"
+                  role: battleline
+                  aliases: ["sequitors", "sequitor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+              infantry:
+                judicators:
+                  name: "Judicators"
+                  role: infantry
+                  aliases: ["judicators", "judicator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                judicators_with_skybolt_bows:
+                  name: "Judicators with Skybolt Bows"
+                  role: infantry
+                  aliases: ["judicators skybolt", "judicators with bows"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                judicators_with_boltstorm_crossbows:
+                  name: "Judicators with Boltstorm Crossbows"
+                  role: infantry
+                  aliases: ["judicators crossbows", "judicators with crossbows"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                castigators:
+                  name: "Castigators"
+                  role: infantry
+                  aliases: ["castigators", "castigator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                retributors:
+                  name: "Retributors"
+                  role: infantry
+                  aliases: ["retributors", "retributor"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                protectors:
+                  name: "Protectors"
+                  role: infantry
+                  aliases: ["protectors", "protector"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                decimators:
+                  name: "Decimators"
+                  role: infantry
+                  aliases: ["decimators", "decimator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                annihilators:
+                  name: "Annihilators"
+                  role: infantry
+                  aliases: ["annihilators", "annihilator"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                annihilators_with_meteoric_grandhammers:
+                  name: "Annihilators with Meteoric Grandhammers"
+                  role: infantry
+                  aliases: ["annihilators grandhammers", "annihilators with grandhammers"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                annihilators_with_shields:
+                  name: "Annihilators with Shields"
+                  role: infantry
+                  aliases: ["annihilators shields", "annihilators with shields"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                prosecutors_with_celestial_hammers:
+                  name: "Prosecutors with Celestial Hammers"
+                  role: infantry
+                  aliases: ["prosecutors", "prosecutors with hammers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                prosecutors_with_stormcall_javelins:
+                  name: "Prosecutors with Stormcall Javelins"
+                  role: infantry
+                  aliases: ["prosecutors with javelins"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vanguard_raptors:
+                  name: "Vanguard-Raptors"
+                  role: infantry
+                  aliases: ["vanguard raptors", "vanguard_raptors"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vanguard_hunters:
+                  name: "Vanguard-Hunters"
+                  role: infantry
+                  aliases: ["vanguard hunters", "vanguard_hunters"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vanguard_raptors_longstrike_crossbows:
+                  name: "Vanguard-Raptors with Longstrike Crossbows"
+                  role: infantry
+                  aliases: ["longstrike raptors", "raptors longstrike"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vanguard_raptors_hurricane_crossbows:
+                  name: "Vanguard-Raptors with Hurricane Crossbows"
+                  role: infantry
+                  aliases: ["hurricane raptors", "raptors hurricane"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                evocators:
+                  name: "Evocators"
+                  role: infantry
+                  aliases: ["evocators", "evocator"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                praetors:
+                  name: "Praetors"
+                  role: infantry
+                  aliases: ["praetors", "praetor"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vanquishers:
+                  name: "Vanquishers"
+                  role: infantry
+                  aliases: ["vanquishers", "vanquisher"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                vigilors:
+                  name: "Vigilors"
+                  role: infantry
+                  aliases: ["vigilors", "vigilor"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                gryph_hounds:
+                  name: "Gryph-hounds"
+                  role: infantry
+                  aliases: ["gryph hounds", "gryph-hounds", "gryph_hounds"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                steelhearts_champions:
+                  name: "Steelheart's Champions"
+                  role: infantry
+                  aliases: ["steelhearts champions", "steelheart's champions", "steelhearts_champions"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                the_farstriders:
+                  name: "The Farstriders"
+                  role: infantry
+                  aliases: ["farstriders", "the farstriders", "the_farstriders"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                stormsires_cursebreakers:
+                  name: "Stormsire's Cursebreakers"
+                  role: infantry
+                  aliases: ["stormsire's cursebreakers", "stormsires_cursebreakers", "cursebreakers"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                ironsouls_condemnors:
+                  name: "Ironsoul's Condemnors"
+                  role: infantry
+                  aliases: ["ironsoul's condemnors", "ironsouls_condemnors", "condemnors"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                questor_soulsworn:
+                  name: "Questor Soulsworn"
+                  role: infantry
+                  aliases: ["questor soulsworn", "questor_soulsworn"]
+                  legal_in_editions: ["3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                xandires_truthseekers:
+                  name: "Xandire's Truthseekers"
+                  role: infantry
+                  aliases: ["xandire's truthseekers", "xandires_truthseekers", "truthseekers"]
+                  legal_in_editions: ["3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                storm_of_celestus:
+                  name: "Storm of Celestus"
+                  role: infantry
+                  aliases: ["storm of celestus", "storm_of_celestus"]
+                  legal_in_editions: ["3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                domitans_stormcoven:
+                  name: "Domitan's Stormcoven"
+                  role: infantry
+                  aliases: ["domitan's stormcoven", "domitans_stormcoven", "stormcoven"]
+                  legal_in_editions: ["3rd"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                blacktalons:
+                  name: "Blacktalons"
+                  role: infantry
+                  aliases: ["blacktalons"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+              cavalry:
+                vanguard_palladors:
+                  name: "Vanguard-Palladors"
+                  role: cavalry
+                  aliases: ["vanguard palladors", "vanguard_palladors"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                dracothian_guard_fulminators:
+                  name: "Dracothian Guard Fulminators"
+                  role: cavalry
+                  aliases: ["fulminators", "dracothian guard fulminators"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                dracothian_guard_tempestors:
+                  name: "Dracothian Guard Tempestors"
+                  role: cavalry
+                  aliases: ["tempestors", "dracothian guard tempestors"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                dracothian_guard_concussors:
+                  name: "Dracothian Guard Concussors"
+                  role: cavalry
+                  aliases: ["concussors", "dracothian guard concussors"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                evocators_on_dracolines:
+                  name: "Evocators on Dracolines"
+                  role: cavalry
+                  aliases: ["evocators on dracolines", "evocators_dracolines"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+                dracothian_guard_desolators:
+                  name: "Dracothian Guard Desolators"
+                  role: cavalry
+                  aliases: ["desolators", "dracothian guard desolators"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+              monsters:
+                stormdrake_guard:
+                  name: "Stormdrake Guard"
+                  role: monsters
+                  aliases: ["stormdrake guard", "stormdrake_guard"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/stormcast_eternals"]
+              behemoths:
+                karazai_the_scarred:
+                  name: "Karazai the Scarred"
+                  role: behemoth
+                  aliases: ["karazai", "karazai_the_scarred"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_160mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+                krondys_son_of_dracothion:
+                  name: "Krondys, Son of Dracothion"
+                  role: behemoth
+                  aliases: ["krondys", "krondys_son_of_dracothion"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_160mm
+                  available_to: ["order/stormcast_eternals"]
+                  unique: true
+              artillery:
+                celestar_ballista:
+                  name: "Celestar Ballista"
+                  role: artillery
+                  aliases: ["celestar ballista", "celestar_ballista"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/stormcast_eternals"]
+              chariots:
+                stormstrike_chariot:
+                  name: "Stormstrike Chariot"
+                  role: chariots
+                  aliases: ["stormstrike chariot", "stormcast chariot"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/stormcast_eternals"]
+              swarms:
+                aetherwings:
+                  name: "Aetherwings"
+                  role: swarms
+                  aliases: ["aetherwings", "aetherwing"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_32mm
+                  available_to: ["order/stormcast_eternals"]
+            endless_spells: ["everblaze_comet"]
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              hammers_of_sigmar:
+                name: "Hammers of Sigmar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              anvils_of_the_heldenhammer:
+                name: "Anvils of the Heldenhammer"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              knights_excelsior:
+                name: "Knights Excelsior"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              celestial_vindicators:
+                name: "Celestial Vindicators"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              hallowed_knights:
+                name: "Hallowed Knights"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              astral_templars:
+                name: "Astral Templars"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              tempest_lords:
+                name: "Tempest Lords"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              celestial_warbringers:
+                name: "Celestial Warbringers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+            allies: []  # items: "order/<faction>" or { source: "order/<faction>", legal_in_editions: ["3rd"], notes: "..." }
           #
           cities_of_sigmar:
             display_name: "Cities of Sigmar"
-            unit_types: *unit_types_template
+            unit_types:
+              leaders:
+                freeguild_marshal:
+                  name: "Freeguild Marshal"
+                  role: leader
+                  aliases: ["freeguild marshal", "freeguild_marshal"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_general:
+                  name: "Freeguild General"
+                  role: leader
+                  aliases: ["freeguild general", "freeguild_general", "freeguild captain", "freeguild_captain"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_general_on_griffon:
+                  name: "Freeguild General on Griffon"
+                  role: leader
+                  aliases: ["freeguild general on griffon", "freeguild_general_on_griffon", "general on griffon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_cavalier_marshal:
+                  name: "Freeguild Cavalier-Marshal"
+                  role: leader
+                  aliases: ["freeguild cavalier-marshal", "freeguild_cavalier_marshal", "cavalier marshal"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["order/cities_of_sigmar"]
+                alchemite_warforger:
+                  name: "Alchemite Warforger"
+                  role: leader
+                  aliases: ["alchemite warforger", "alchemite_warforger"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                battlemage:
+                  name: "Battlemage"
+                  role: leader
+                  aliases: ["battlemage"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                luminark_of_hysh_with_battlemage:
+                  name: "Luminark of Hysh with Battlemage"
+                  role: leader
+                  aliases: ["luminark of hysh with battlemage", "luminark_with_battlemage", "luminark_of_hysh_with_battlemage"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/cities_of_sigmar"]
+                celestial_hurricanum_with_battlemage:
+                  name: "Celestial Hurricanum with Battlemage"
+                  role: leader
+                  aliases: ["celestial hurricanum with battlemage", "hurricanum with battlemage", "celestial_hurricanum_with_battlemage"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/cities_of_sigmar"]
+                sorceress:
+                  name: "Sorceress"
+                  role: leader
+                  aliases: ["sorceress"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                sorceress_on_black_dragon:
+                  name: "Sorceress on Black Dragon"
+                  role: leader
+                  aliases: ["sorceress on black dragon", "sorceress_on_black_dragon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                dreadlord:
+                  name: "Dreadlord"
+                  role: leader
+                  aliases: ["dreadlord"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                dreadlord_on_black_dragon:
+                  name: "Dreadlord on Black Dragon"
+                  role: leader
+                  aliases: ["dreadlord on black dragon", "dreadlord_on_black_dragon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                black_ark_fleetmaster:
+                  name: "Black Ark Fleetmaster"
+                  role: leader
+                  aliases: ["black ark fleetmaster", "black_ark_fleetmaster", "fleetmaster"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                anointed:
+                  name: "Anointed"
+                  role: leader
+                  aliases: ["anointed"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                anointed_on_frostheart_phoenix:
+                  name: "Anointed on Frostheart Phoenix"
+                  role: leader
+                  aliases: ["anointed on frostheart phoenix", "anointed_on_frostheart_phoenix"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                anointed_on_flamespyre_phoenix:
+                  name: "Anointed on Flamespyre Phoenix"
+                  role: leader
+                  aliases: ["anointed on flamespyre phoenix", "anointed_on_flamespyre_phoenix"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                runelord:
+                  name: "Runelord"
+                  role: leader
+                  aliases: ["runelord"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                warden_king:
+                  name: "Warden King"
+                  role: leader
+                  aliases: ["warden king", "warden_king"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                cogsmith:
+                  name: "Cogsmith"
+                  role: leader
+                  aliases: ["cogsmith"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                nomad_prince:
+                  name: "Nomad Prince"
+                  role: leader
+                  aliases: ["nomad prince", "nomad_prince"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                waywatcher:
+                  name: "Waywatcher"
+                  role: leader
+                  aliases: ["waywatcher"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                witch_hunter:
+                  name: "Witch Hunter"
+                  role: leader
+                  aliases: ["witch hunter", "witch_hunter"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                excelsior_warpriest:
+                  name: "Excelsior Warpriest"
+                  role: leader
+                  aliases: ["excelsior warpriest", "warpriest", "excelsior_warpriest"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_32mm
+                  available_to: ["order/cities_of_sigmar"]
+                fusil_major_on_ogor_warhulk:
+                  name: "Fusil-Major on Ogor Warhulk"
+                  role: leader
+                  aliases: ["fusil-major on ogor warhulk", "fusil_major_on_ogor_warhulk"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                war_altar_of_sigmar:
+                  name: "War Altar of Sigmar"
+                  role: leader
+                  aliases: ["war altar of sigmar", "war_altar_of_sigmar"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                pontifex_zenestra:
+                  name: "Pontifex Zenestra, Matriarch of the Great Basilica"
+                  role: leader
+                  aliases: ["pontifex zenestra", "zenestra", "pontifex_zenestra"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["order/cities_of_sigmar"]
+                  unique: true
+              battleline:
+                freeguild_steelhelms:
+                  name: "Freeguild Steelhelms"
+                  role: battleline
+                  aliases: ["freeguild steelhelms", "steelhelms", "freeguild_steelhelms"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+              infantry:
+                freeguild_fusiliers:
+                  name: "Freeguild Fusiliers"
+                  role: infantry
+                  aliases: ["freeguild fusiliers", "fusiliers", "freeguild_fusiliers"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_command_corps:
+                  name: "Freeguild Command Corps"
+                  role: infantry
+                  aliases: ["freeguild command corps", "command corps", "freeguild_command_corps"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/cities_of_sigmar"]
+                wildercorps_hunters:
+                  name: "Wildercorps Hunters"
+                  role: infantry
+                  aliases: ["wildercorps hunters", "wildercorps_hunters"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_28_5mm
+                  available_to: ["order/cities_of_sigmar"]
+                flagellants:
+                  name: "Flagellants"
+                  role: infantry
+                  aliases: ["flagellants"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                glade_guard:
+                  name: "Glade Guard"
+                  role: infantry
+                  aliases: ["glade guard", "glade_guard"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_guard:
+                  name: "Freeguild Guard"
+                  role: infantry
+                  aliases: ["freeguild guard", "freeguild_guard"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_handgunners:
+                  name: "Freeguild Handgunners"
+                  role: infantry
+                  aliases: ["freeguild handgunners", "handgunners", "freeguild_handgunners"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                freeguild_crossbowmen:
+                  name: "Freeguild Crossbowmen"
+                  role: infantry
+                  aliases: ["freeguild crossbowmen", "crossbowmen", "freeguild_crossbowmen"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                greatswords:
+                  name: "Greatswords"
+                  role: infantry
+                  aliases: ["greatswords"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                black_ark_corsairs:
+                  name: "Black Ark Corsairs"
+                  role: infantry
+                  aliases: ["black ark corsairs", "corsairs", "black_ark_corsairs"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                darkshards:
+                  name: "Darkshards"
+                  role: infantry
+                  aliases: ["darkshards"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                bleakswords:
+                  name: "Bleakswords"
+                  role: infantry
+                  aliases: ["bleakswords"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                dreadspears:
+                  name: "Dreadspears"
+                  role: infantry
+                  aliases: ["dreadspears"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                executioners:
+                  name: "Executioners"
+                  role: infantry
+                  aliases: ["executioners"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                black_guard:
+                  name: "Black Guard"
+                  role: infantry
+                  aliases: ["black guard", "black_guard"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                phoenix_guard:
+                  name: "Phoenix Guard"
+                  role: infantry
+                  aliases: ["phoenix guard", "phoenix_guard"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                shadow_warriors:
+                  name: "Shadow Warriors"
+                  role: infantry
+                  aliases: ["shadow warriors", "shadow_warriors"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                sisters_of_the_watch:
+                  name: "Sisters of the Watch"
+                  role: infantry
+                  aliases: ["sisters of the watch", "sisters_of_the_watch"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                eternal_guard:
+                  name: "Eternal Guard"
+                  role: infantry
+                  aliases: ["eternal guard", "eternal_guard"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                wildwood_rangers:
+                  name: "Wildwood Rangers"
+                  role: infantry
+                  aliases: ["wildwood rangers", "wildwood_rangers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                longbeards:
+                  name: "Longbeards"
+                  role: infantry
+                  aliases: ["longbeards"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                ironbreakers:
+                  name: "Ironbreakers"
+                  role: infantry
+                  aliases: ["ironbreakers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                hammerers:
+                  name: "Hammerers"
+                  role: infantry
+                  aliases: ["hammerers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                irondrakes:
+                  name: "Irondrakes"
+                  role: infantry
+                  aliases: ["irondrakes"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+                dispossessed_warriors:
+                  name: "Warriors"
+                  role: infantry
+                  aliases: ["warriors", "dispossessed warriors", "dispossessed_warriors"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_25mm
+                  available_to: ["order/cities_of_sigmar"]
+              cavalry:
+                freeguild_cavaliers:
+                  name: "Freeguild Cavaliers"
+                  role: cavalry
+                  aliases: ["freeguild cavaliers", "cavaliers", "freeguild_cavaliers"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["order/cities_of_sigmar"]
+                demigryph_knights:
+                  name: "Demigryph Knights"
+                  role: cavalry
+                  aliases: ["demigryph knights", "demigryph_knights"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_75x42mm
+                  available_to: ["order/cities_of_sigmar"]
+                pistoliers:
+                  name: "Pistoliers"
+                  role: cavalry
+                  aliases: ["pistoliers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/cities_of_sigmar"]
+                outriders:
+                  name: "Outriders"
+                  role: cavalry
+                  aliases: ["outriders"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/cities_of_sigmar"]
+                drakespawn_knights:
+                  name: "Drakespawn Knights"
+                  role: cavalry
+                  aliases: ["drakespawn knights", "drakespawn_knights", "cold one knights"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/cities_of_sigmar"]
+                wild_riders:
+                  name: "Wild Riders"
+                  role: cavalry
+                  aliases: ["wild riders", "wild_riders"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/cities_of_sigmar"]
+                sisters_of_the_thorn:
+                  name: "Sisters of the Thorn"
+                  role: cavalry
+                  aliases: ["sisters of the thorn", "sisters_of_the_thorn"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/cities_of_sigmar"]
+              monsters:
+                war_hydra:
+                  name: "War Hydra"
+                  role: monster
+                  aliases: ["war hydra", "war_hydra"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                kharibdyss:
+                  name: "Kharibdyss"
+                  role: monster
+                  aliases: ["kharibdyss"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                flamespyre_phoenix:
+                  name: "Flamespyre Phoenix"
+                  role: monster
+                  aliases: ["flamespyre phoenix", "flamespyre_phoenix"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                frostheart_phoenix:
+                  name: "Frostheart Phoenix"
+                  role: monster
+                  aliases: ["frostheart phoenix", "frostheart_phoenix"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+              behemoths:
+                steam_tank:
+                  name: "Steam Tank"
+                  role: behemoth
+                  aliases: ["steam tank", "steam_tank"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                celestial_hurricanum:
+                  name: "Celestial Hurricanum"
+                  role: behemoth
+                  aliases: ["celestial hurricanum", "celestial_hurricanum", "hurricanum"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/cities_of_sigmar"]
+                luminark_of_hysh:
+                  name: "Luminark of Hysh"
+                  role: behemoth
+                  aliases: ["luminark of hysh", "luminark_of_hysh", "luminark"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/cities_of_sigmar"]
+                dragonlord:
+                  name: "Dragonlord"
+                  role: behemoth
+                  aliases: ["dragonlord", "prince on dragon", "prince_on_dragon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+              artillery:
+                ironweld_great_cannon:
+                  name: "Ironweld Great Cannon"
+                  role: artillery
+                  aliases: ["ironweld great cannon", "great cannon", "ironweld_great_cannon"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/cities_of_sigmar"]
+                helblaster_volley_gun:
+                  name: "Helblaster Volley Gun"
+                  role: artillery
+                  aliases: ["helblaster volley gun", "helblaster_volley_gun"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/cities_of_sigmar"]
+                helstorm_rocket_battery:
+                  name: "Helstorm Rocket Battery"
+                  role: artillery
+                  aliases: ["helstorm rocket battery", "helstorm_rocket_battery"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                organ_gun:
+                  name: "Organ Gun"
+                  role: artillery
+                  aliases: ["organ gun", "organ_gun"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/cities_of_sigmar"]
+                duardin_cannon:
+                  name: "Cannon (Duardin)"
+                  role: artillery
+                  aliases: ["cannon", "duardin cannon", "duardin_cannon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/cities_of_sigmar"]
+                grudge_thrower:
+                  name: "Grudge Thrower"
+                  role: artillery
+                  aliases: ["grudge thrower", "grudge_thrower"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                repeater_bolt_thrower:
+                  name: "Repeater Bolt Thrower"
+                  role: artillery
+                  aliases: ["repeater bolt thrower", "repeater_bolt_thrower"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_105x70mm
+                  available_to: ["order/cities_of_sigmar"]
+                gyrocopter:
+                  name: "Gyrocopter"
+                  role: artillery
+                  aliases: ["gyrocopter"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/cities_of_sigmar"]
+                gyrobomber:
+                  name: "Gyrobomber"
+                  role: artillery
+                  aliases: ["gyrobomber"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/cities_of_sigmar"]
+              chariots:
+                scourgerunner_chariot:
+                  name: "Scourgerunner Chariot"
+                  role: chariot
+                  aliases: ["scourgerunner chariot", "scourgerunner_chariot"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+                drakespawn_chariot:
+                  name: "Drakespawn Chariot"
+                  role: chariot
+                  aliases: ["drakespawn chariot", "drakespawn_chariot"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/cities_of_sigmar"]
+              swarms: []
             endless_spells: []
             invocations: []
-            warscroll_terrain: []
+            warscroll_terrain:
+              []
+            # Put CoS units under their City subfaction when applicable (e.g., Phoenicium)
+            subfactions:
+              hammerhal:
+                name: "Hammerhal"
+                aliases: ["Hammerhal Aqsha", "Hammerhal Ghyra"]
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              hallowheart:
+                name: "Hallowheart"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              greywater_fastness:
+                name: "Greywater Fastness"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              living_city:
+                name: "The Living City"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              tempest_eye:
+                name: "Tempest’s Eye"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              phoenicium:
+                name: "The Phoenicium"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           seraphon:
             display_name: "Seraphon"
-            unit_types: *unit_types_template
+            unit_types:
+              leaders:
+                slann_starmaster:
+                  name: "Slann Starmaster"
+                  role: leader
+                  aliases: ["slann starmaster", "slann_starmaster", "slann"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_80mm
+                  available_to: ["order/seraphon"]
+                lord_kroak:
+                  name: "Lord Kroak"
+                  role: leader
+                  aliases: ["lord kroak", "kroak", "lord_kroak"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_80mm
+                  available_to: ["order/seraphon"]
+                  unique: true
+                saurus_oldblood_on_carnosaur:
+                  name: "Saurus Oldblood on Carnosaur"
+                  role: leader
+                  aliases: ["saurus oldblood on carnosaur", "oldblood on carnosaur", "saurus_oldblood_on_carnosaur"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/seraphon"]
+                saurus_scar_veteran_on_carnosaur:
+                  name: "Saurus Scar-Veteran on Carnosaur"
+                  role: leader
+                  aliases: ["saurus scar-veteran on carnosaur", "scar-veteran on carnosaur", "saurus_scar_veteran_on_carnosaur"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/seraphon"]
+                skink_oracle_on_troglodon:
+                  name: "Skink Oracle on Troglodon"
+                  role: leader
+                  aliases: ["skink oracle on troglodon", "oracle on troglodon", "skink_oracle_on_troglodon"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/seraphon"]
+                saurus_astrolith_bearer:
+                  name: "Saurus Astrolith Bearer"
+                  role: leader
+                  aliases: ["saurus astrolith bearer", "astrolith bearer", "saurus_astrolith_bearer"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["order/seraphon"]
+                skink_starseer:
+                  name: "Skink Starseer"
+                  role: leader
+                  aliases: ["skink starseer", "starseer", "skink_starseer"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                skink_starpriest:
+                  name: "Skink Starpriest"
+                  role: leader
+                  aliases: ["skink starpriest", "starpriest", "skink_starpriest"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                skink_priest:
+                  name: "Skink Priest"
+                  role: leader
+                  aliases: ["skink priest", "priest", "skink_priest"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                terradon_chief:
+                  name: "Terradon Chief"
+                  role: leader
+                  aliases: ["terradon chief", "terradon_chief"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/seraphon"]
+                ripperdactyl_chief:
+                  name: "Ripperdactyl Chief"
+                  role: leader
+                  aliases: ["ripperdactyl chief", "ripperdactyl_chief"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/seraphon"]
+                saurus_scar_veteran_on_aggradon:
+                  name: "Saurus Scar-Veteran on Aggradon"
+                  role: leader
+                  aliases: ["saurus scar-veteran on aggradon", "scar-veteran on aggradon", "saurus_scar_veteran_on_aggradon"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["order/seraphon"]
+                skink_chief_on_stegadon:
+                  name: "Skink Chief on Stegadon"
+                  role: leader
+                  aliases: ["skink chief on stegadon", "chief on stegadon", "skink_chief_on_stegadon"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/seraphon"]
+                saurus_oldblood:
+                  name: "Saurus Oldblood"
+                  role: leader
+                  aliases: ["saurus oldblood", "oldblood", "saurus_oldblood"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                saurus_sunblood:
+                  name: "Saurus Sunblood"
+                  role: leader
+                  aliases: ["saurus sunblood", "sunblood", "saurus_sunblood"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                saurus_scar_veteran_on_cold_one:
+                  name: "Saurus Scar-Veteran on Cold One"
+                  role: leader
+                  aliases: ["scar-veteran on cold one", "saurus scar-veteran on cold one", "saurus_scar_veteran_on_cold_one"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+                saurus_eternity_warden:
+                  name: "Saurus Eternity Warden"
+                  role: leader
+                  aliases: ["saurus eternity warden", "eternity warden", "saurus_eternity_warden"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_40mm
+                  available_to: ["order/seraphon"]
+                saurus_scar_veteran:
+                  name: "Saurus Scar-Veteran"
+                  role: leader
+                  aliases: ["saurus scar-veteran", "scar-veteran", "saurus_scar_veteran"]
+                  legal_in_editions: ["2nd"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+              battleline:
+                saurus_warriors:
+                  name: "Saurus Warriors"
+                  role: battleline
+                  aliases: ["saurus warriors", "saurus_warriors", "warriors"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                skinks:
+                  name: "Skinks"
+                  role: battleline
+                  aliases: ["skinks", "skink"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_25mm
+                  available_to: ["order/seraphon"]
+              infantry:
+                saurus_guard:
+                  name: "Saurus Guard"
+                  role: infantry
+                  aliases: ["saurus guard", "saurus_guard", "temple guard"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["order/seraphon"]
+                kroxigor:
+                  name: "Kroxigor"
+                  role: infantry
+                  aliases: ["kroxigor"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["order/seraphon"]
+                kroxigor_warspawned:
+                  name: "Kroxigor Warspawned"
+                  role: infantry
+                  aliases: ["kroxigor warspawned", "kroxigor_warspawned"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["order/seraphon"]
+                chameleon_skinks:
+                  name: "Chameleon Skinks"
+                  role: infantry
+                  aliases: ["chameleon skinks", "chameleon_skinks"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: round_25mm
+                  available_to: ["order/seraphon"]
+                hunters_of_huanchi:
+                  name: "Hunters of Huanchi"
+                  role: infantry
+                  aliases: ["hunters of huanchi", "hunters_of_huanchi"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_25mm
+                  available_to: ["order/seraphon"]
+                starblood_stalkers:
+                  name: "The Starblood Stalkers"
+                  role: infantry
+                  aliases: ["starblood stalkers", "the starblood stalkers", "starblood_stalkers"]
+                  legal_in_editions: ["3rd"]
+                  base_profile: round_25mm
+                  unique: true
+                  available_to: ["order/seraphon"]
+              cavalry:
+                aggradon_lancers:
+                  name: "Aggradon Lancers"
+                  role: cavalry
+                  aliases: ["aggradon lancers", "aggradon_lancers"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["order/seraphon"]
+                raptadon_chargers:
+                  name: "Raptadon Chargers"
+                  role: cavalry
+                  aliases: ["raptadon chargers", "raptadon_chargers"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+                raptadon_hunters:
+                  name: "Raptadon Hunters"
+                  role: cavalry
+                  aliases: ["raptadon hunters", "raptadon_hunters"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+                terradon_riders:
+                  name: "Terradon Riders"
+                  role: cavalry
+                  aliases: ["terradon riders", "terradon_riders"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/seraphon"]
+                ripperdactyl_riders:
+                  name: "Ripperdactyl Riders"
+                  role: cavalry
+                  aliases: ["ripperdactyl riders", "ripperdactyl_riders"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: flying_round_60mm
+                  available_to: ["order/seraphon"]
+                saurus_knights:
+                  name: "Saurus Knights"
+                  role: cavalry
+                  aliases: ["saurus knights", "saurus_knights"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+              monsters: []
+              behemoths:
+                stegadon:
+                  name: "Stegadon"
+                  role: behemoth
+                  aliases: ["stegadon"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/seraphon"]
+                engine_of_the_gods:
+                  name: "Engine of the Gods"
+                  role: behemoth
+                  aliases: ["engine of the gods", "engine_of_the_gods"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/seraphon"]
+                bastiladon:
+                  name: "Bastiladon"
+                  role: behemoth
+                  aliases: ["bastiladon"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["order/seraphon"]
+                dread_saurian:
+                  name: "Dread Saurian"
+                  role: behemoth
+                  aliases: ["dread saurian", "dread_saurian"]
+                  legal_in_editions: ["2nd"]
+                  legends_in_editions: ["3rd"]
+                  base_profile: oval_170x105mm
+                  available_to: ["order/seraphon"]
+              artillery:
+                salamander_hunting_pack:
+                  name: "Salamander Hunting Pack"
+                  role: artillery
+                  aliases: ["salamander", "salamander with handlers", "salamander_hunting_pack"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+                razordon_hunting_pack:
+                  name: "Razordon Hunting Pack"
+                  role: artillery
+                  aliases: ["razordon", "razordon with handlers", "razordon_hunting_pack"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+                spawn_of_chotec:
+                  name: "Spawn of Chotec"
+                  role: artillery
+                  aliases: ["spawn of chotec", "spawn_of_chotec"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["order/seraphon"]
+              chariots: []
+              swarms: []
             endless_spells: []
             invocations: []
-            warscroll_terrain: []
+            warscroll_terrain:
+              - id: realmshaper_engine
+                name: "Realmshaper Engine"
+                legal_in_editions: ["2nd", "3rd", "4th"]
+                base_profile: no_base
+            subfactions:
+              dracothions_tail:
+                name: "Dracothion's Tail"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              fangs_of_sotek:
+                name: "Fangs of Sotek"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              koatls_claw:
+                name: "Koatl's Claw"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+              #
+              thunder_lizard:
+                name: "Thunder Lizard"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides: { battleline_if: [] }
+            allies: []
           #
           sylvaneth:
             display_name: "Sylvaneth"
@@ -92,6 +1754,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              gnarlroot:
+                name: "Gnarlroot"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              heartwood:
+                name: "Heartwood"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              ironbark:
+                name: "Ironbark"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              dreadwood:
+                name: "Dreadwood"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              winterleaf:
+                name: "Winterleaf"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              harvestboon:
+                name: "Harvestboon"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           idoneth_deepkin:
             display_name: "Idoneth Deepkin"
@@ -99,6 +1804,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              ionrach:
+                name: "Ionrach"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              fuethan:
+                name: "Fuethan"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              morphan:
+                name: "Mor'phan"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              nautilar:
+                name: "Nautilar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              briomdar:
+                name: "Briomdar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              dhom_hain:
+                name: "Dhom-Hain"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           fyreslayers:
             display_name: "Fyreslayers"
@@ -106,6 +1854,35 @@ codex_units:
             endless_spells: []
             invocations: []  # Magmic Invocations belong here when added
             warscroll_terrain: []
+            subfactions:
+              vostarg:
+                name: "Vostarg"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              greyfyrd:
+                name: "Greyfyrd"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              hermdar:
+                name: "Hermdar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              lofnir:
+                name: "Lofnir"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           kharadron_overlords:
             display_name: "Kharadron Overlords"
@@ -113,6 +1890,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              barak_nar:
+                name: "Barak-Nar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              barak_zilfin:
+                name: "Barak-Zilfin"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              barak_zon:
+                name: "Barak-Zon"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              barak_mhornar:
+                name: "Barak-Mhornar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              barak_thryng:
+                name: "Barak-Thryng"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              barak_urbaz:
+                name: "Barak-Urbaz"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           lumineth_realm_lords:
             display_name: "Lumineth Realm-lords"
@@ -120,6 +1940,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              zaitrec:
+                name: "Zaitrec"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              syar:
+                name: "Syar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              iliatha:
+                name: "Iliatha"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              alumnia:
+                name: "Alumnia"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              ymetrica:
+                name: "Ymetrica"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              helon:
+                name: "Helon"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           daughters_of_khaine:
             display_name: "Daughters of Khaine"
@@ -127,6 +1990,35 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              hagg_nar:
+                name: "Hagg Nar"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              draichi_ganeth:
+                name: "Draichi Ganeth"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              khailebron:
+                name: "Khailebron"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              the_kraith:
+                name: "The Kraith"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
 
       Chaos:
         factions:
@@ -136,6 +2028,35 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              ravagers:
+                name: "Ravagers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              cabalists:
+                name: "Cabalists"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              despoilers:
+                name: "Despoilers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              knights_of_the_empty_throne:
+                name: "Knights of the Empty Throne"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           blades_of_khorne:
             display_name: "Blades of Khorne"
@@ -143,6 +2064,35 @@ codex_units:
             endless_spells: []
             invocations: []  # Judgements of Khorne belong here when added
             warscroll_terrain: []
+            subfactions:
+              goretide:
+                name: "Goretide"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              bloodlords:
+                name: "Bloodlords"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              reapers_of_vengeance:
+                name: "Reapers of Vengeance"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              the_flayed:
+                name: "The Flayed"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           disciples_of_tzeentch:
             display_name: "Disciples of Tzeentch"
@@ -150,6 +2100,49 @@ codex_units:
             endless_spells: []  # Tzeentch Endless Spells here when added
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              eternal_conflagration:
+                name: "Eternal Conflagration"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              hosts_duplicitous:
+                name: "Hosts Duplicitous"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              hosts_arcanum:
+                name: "Hosts Arcanum"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              cult_of_the_transient_form:
+                name: "Cult of the Transient Form"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              guild_of_summoners:
+                name: "Guild of Summoners"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              pyrofane_cult:
+                name: "Pyrofane Cult"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           maggotkin_of_nurgle:
             display_name: "Maggotkin of Nurgle"
@@ -157,6 +2150,35 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              blessed_sons:
+                name: "The Blessed Sons"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              droning_guard:
+                name: "The Droning Guard"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              drowned_men:
+                name: "The Drowned Men"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              befouling_host:
+                name: "Befouling Host"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           hedonites_of_slaanesh:
             display_name: "Hedonites of Slaanesh"
@@ -164,6 +2186,28 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              invaders:
+                name: "Invaders"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              pretenders:
+                name: "Pretenders"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              godseekers:
+                name: "Godseekers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           beasts_of_chaos:
             display_name: "Beasts of Chaos"
@@ -171,6 +2215,28 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              allherd:
+                name: "Allherd"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              darkwalkers:
+                name: "Darkwalkers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              gavespawn:
+                name: "Gavespawn"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           skaven:
             display_name: "Skaven"
@@ -178,6 +2244,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              masterclan:
+                name: "Masterclan"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              skryre:
+                name: "Clans Skryre"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              eshin:
+                name: "Clans Eshin"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              moulder:
+                name: "Clans Moulder"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              pestilens:
+                name: "Clans Pestilens"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              verminus:
+                name: "Clans Verminus"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
 
       Death:
         factions:
@@ -187,6 +2296,42 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              vyrkos:
+                name: "Vyrkos Dynasty"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              kastelai:
+                name: "Kastelai Dynasty"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              avengorii:
+                name: "Avengorii Dynasty"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              legion_of_blood:
+                name: "Legion of Blood"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              legion_of_night:
+                name: "Legion of Night"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           nighthaunt:
             display_name: "Nighthaunt"
@@ -194,6 +2339,35 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              emerald_host:
+                name: "Emerald Host"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              scarlet_doom:
+                name: "Scarlet Doom"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              grieving_legion:
+                name: "Grieving Legion"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              quicksilver_dead:
+                name: "Quicksilver Dead"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           ossiarch_bonereapers:
             display_name: "Ossiarch Bonereapers"
@@ -201,6 +2375,49 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              petrifex_elite:
+                name: "Petrifex Elite"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              mortis_praetorians:
+                name: "Mortis Praetorians"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              null_myriad:
+                name: "Null Myriad"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              ivory_host:
+                name: "Ivory Host"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              crematorians:
+                name: "Crematorians"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              stalliarch_lords:
+                name: "Stalliarch Lords"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           flesh_eater_courts:
             display_name: "Flesh-eater Courts"
@@ -208,6 +2425,35 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              hollowmourne:
+                name: "Hollowmourne"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              blisterskin:
+                name: "Blisterskin"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              gristlegore:
+                name: "Gristlegore"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              morgaunt:
+                name: "Morgaunt"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
 
       Destruction:
         factions:
@@ -217,6 +2463,70 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              ironsunz:
+                name: "Ironsunz"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              bloodtoofs:
+                name: "Bloodtoofs"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              da_choppas:
+                name: "Da Choppas"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              icebone:
+                name: "Icebone"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              drakkfoot:
+                name: "Drakkfoot"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              bonegrinz:
+                name: "Bonegrinz"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              big_yellers:
+                name: "Big Yellers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              grinnin_blades:
+                name: "Grinnin' Blades"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              skulbugz:
+                name: "Skulbugz"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           gloomspite_gitz:
             display_name: "Gloomspite Gitz"
@@ -224,6 +2534,28 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              jaws_of_mork:
+                name: "Jaws of Mork"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              gloggs_megamob:
+                name: "Glogg's Megamob"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              badsnatchers:
+                name: "Badsnatchers"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           ogor_mawtribes:
             display_name: "Ogor Mawtribes"
@@ -231,6 +2563,42 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              boulderhead:
+                name: "Boulderhead"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              bloodgullet:
+                name: "Bloodgullet"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              underguts:
+                name: "Underguts"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              thunderbellies:
+                name: "Thunderbellies"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              winterbite:
+                name: "Winterbite"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
           #
           sons_of_behemat:
             display_name: "Sons of Behemat"
@@ -243,6 +2611,7 @@ codex_units:
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: round_130mm
                   available_to: ["destruction/sons_of_behemat"]
+                  unique: true
               battleline:
                 mancrusher_gargants:
                   name: "Mancrusher Gargants"
@@ -282,5 +2651,32 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain: []
+            subfactions:
+              taker_tribe:
+                name: "Taker Tribe"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              breaker_tribe:
+                name: "Breaker Tribe"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+              #
+              stomper_tribe:
+                name: "Stomper Tribe"
+                legal_in_editions: ["2nd", "3rd"]
+                unit_types: *unit_types_template
+                role_overrides:
+                  battleline_if: []
+            allies: []
 
-    # Note: Per your preference, unit details are inlined under each faction's unit_types.
+  # Note: Per your preference, unit details are inlined under each faction's unit_types.
+  # Optional AoS-specific scaffolding added:
+  # - subfactions: {} (per faction) for things like Temple/Court/Clade rules; may include role_overrides later
+  # - allies: [] (per faction) to reflect allies/coalition allowances with edition-aware entries
+  # - shared_endless_spells: [] (top-level) for cross-faction spells
+  # - regiments_of_renown: [] (top-level) for cross-faction warband formations
