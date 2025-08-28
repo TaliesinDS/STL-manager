@@ -5242,6 +5242,85 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["death/nighthaunt"]
+                guardian_of_souls:
+                  name: "Guardian of Souls"
+                  role: leader
+                  aliases: ["guardian of souls", "guardian_of_souls", "guardian of souls with nightmare lantern", "guardian_of_souls_with_nightmare_lantern"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                knight_of_shrouds_on_steed:
+                  name: "Knight of Shrouds on Ethereal Steed"
+                  role: leader
+                  aliases: ["knight of shrouds on ethereal steed", "knight_of_shrouds_on_ethereal_steed", "knight_of_shrouds_on_steed"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/nighthaunt"]
+                dreadblade_harrow:
+                  name: "Dreadblade Harrow"
+                  role: leader
+                  aliases: ["dreadblade harrow", "dreadblade_harrow"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/nighthaunt"]
+                lord_executioner:
+                  name: "Lord Executioner"
+                  role: leader
+                  aliases: ["lord executioner", "lord_executioner"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/nighthaunt"]
+                reikenor_the_grimhailer:
+                  name: "Reikenor the Grimhailer"
+                  role: leader
+                  aliases: ["reikenor the grimhailer", "reikenor_the_grimhailer", "reikenor"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/nighthaunt"]
+                  unique: true
+                kurdoss_valentian:
+                  name: "Kurdoss Valentian, The Craven King"
+                  role: leader
+                  aliases: ["kurdoss", "kurdoss valentian", "kurdoss_valentian", "the craven king"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["death/nighthaunt"]
+                  unique: true
+                krulghast_cruciator:
+                  name: "Krulghast Cruciator"
+                  role: leader
+                  aliases: ["krulghast cruciator", "krulghast_cruciator"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/nighthaunt"]
+                scriptor_mortis:
+                  name: "Scriptor Mortis"
+                  role: leader
+                  aliases: ["scriptor mortis", "scriptor_mortis"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/nighthaunt"]
+                tomb_banshee:
+                  name: "Tomb Banshee"
+                  role: leader
+                  aliases: ["tomb banshee", "tomb_banshee"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                cairn_wraith:
+                  name: "Cairn Wraith"
+                  role: leader
+                  aliases: ["cairn wraith", "cairn_wraith"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                awlrach_the_drowner:
+                  name: "Awlrach the Drowner"
+                  role: leader
+                  aliases: ["awlrach", "awlrach the drowner", "awlrach_the_drowner"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["death/nighthaunt"]
               battleline:
                 chainrasp_horde:
                   name: "Chainrasp Horde"
@@ -5255,6 +5334,55 @@ codex_units:
                   name: "Grimghast Reapers"
                   role: infantry
                   aliases: ["grimghast reapers", "grimghast_reapers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                bladegheist_revenants:
+                  name: "Bladegheist Revenants"
+                  role: infantry
+                  aliases: ["bladegheist revenants", "bladegheist_revenants"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                dreadscythe_harridans:
+                  name: "Dreadscythe Harridans"
+                  role: infantry
+                  aliases: ["dreadscythe harridans", "dreadscythe_harridans"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                glaivewraith_stalkers:
+                  name: "Glaivewraith Stalkers"
+                  role: infantry
+                  aliases: ["glaivewraith stalkers", "glaivewraith_stalkers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                myrmourn_banshees:
+                  name: "Myrmourn Banshees"
+                  role: infantry
+                  aliases: ["myrmourn banshees", "myrmourn_banshees"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/nighthaunt"]
+                spirit_hosts:
+                  name: "Spirit Hosts"
+                  role: infantry
+                  aliases: ["spirit hosts", "spirit_hosts", "spirit host"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/nighthaunt"]
+                chainghasts:
+                  name: "Chainghasts"
+                  role: infantry
+                  aliases: ["chainghasts", "chainghast"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/nighthaunt"]
+                craventhrone_guard:
+                  name: "Craventhrone Guard"
+                  role: infantry
+                  aliases: ["craventhrone guard", "craventhrone_guard"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/nighthaunt"]
@@ -5278,12 +5406,39 @@ codex_units:
               artillery: []
               chariots: []
               swarms: []
-            endless_spells: []
+            endless_spells:
+              shyish_reaper:
+                name: "Shyish Reaper"
+                role: endless_spells
+                aliases: ["shyish reaper", "shyish_reaper", "reaper"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/nighthaunt"]
+              vault_of_souls:
+                name: "Vault of Souls"
+                role: endless_spells
+                aliases: ["vault of souls", "vault_of_souls"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/nighthaunt"]
+              mortalis_terminexus:
+                name: "Mortalis Terminexus"
+                role: endless_spells
+                aliases: ["mortalis terminexus", "mortalis_terminexus", "terminexus"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/nighthaunt"]
             invocations: []
             warscroll_terrain: 
               nexus_of_grief:
                 name: "Nexus of Grief"
+                role: warscroll_terrain
+                aliases: ["nexus of grief", "nexus_of_grief"]
                 legal_in_editions: ["4th"]
+                base_profile: no_base
                 available_to: ["death/nighthaunt"]
             subfactions:
               emerald_host:
@@ -5341,6 +5496,50 @@ codex_units:
                   base_profile: oval_120x92mm
                   available_to: ["death/ossiarch_bonereapers"]
                   unique: true
+                arkhan_the_black:
+                  name: "Arkhan the Black, Mortarch of Sacrament"
+                  role: leader
+                  aliases: ["arkhan the black", "arkhan_the_black", "mortarch of sacrament", "arkhan"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                  unique: true
+                mortisan_soulreaper:
+                  name: "Mortisan Soulreaper"
+                  role: leader
+                  aliases: ["mortisan soulreaper", "mortisan_soulreaper", "soulreaper"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                mortisan_soulmason:
+                  name: "Mortisan Soulmason"
+                  role: leader
+                  aliases: ["mortisan soulmason", "mortisan_soulmason", "soulmason"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                mortisan_ossifector:
+                  name: "Mortisan Ossifector"
+                  role: leader
+                  aliases: ["mortisan ossifector", "mortisan_ossifector", "ossifector"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                arch_kavalos_zandtos:
+                  name: "Arch-Kavalos Zandtos"
+                  role: leader
+                  aliases: ["arch-kavalos zandtos", "arch_kavalos_zandtos", "zandtos"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                  unique: true
+                vokmortian:
+                  name: "Vokmortian, Master of the Bone-Tithe"
+                  role: leader
+                  aliases: ["vokmortian", "vokmortian, master of the bone-tithe", "vokmortian_master_of_the_bone_tithe", "master of the bone-tithe"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/ossiarch_bonereapers"]
               battleline:
                 mortek_guard:
                   name: "Mortek Guard"
@@ -5355,7 +5554,36 @@ codex_units:
                   role: infantry
                   aliases: ["immortis guard", "immortis_guard"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
-                  base_profile: round_40mm
+                  base_profile: round_50mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                necropolis_stalkers:
+                  name: "Necropolis Stalkers"
+                  role: infantry
+                  aliases: ["necropolis stalkers", "necropolis_stalkers", "stalkers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                morghast_archai:
+                  name: "Morghast Archai"
+                  role: infantry
+                  aliases: ["morghast archai", "morghast_archai", "archai"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                morghast_harbingers:
+                  name: "Morghast Harbingers"
+                  role: infantry
+                  aliases: ["morghast harbingers", "morghast_harbingers", "harbingers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/ossiarch_bonereapers"]
+                kainans_reapers:
+                  name: "Kainan's Reapers"
+                  role: infantry
+                  aliases: ["kainan's reapers", "kainans_reapers", "kainans reapers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
                   available_to: ["death/ossiarch_bonereapers"]
               cavalry:
                 kavalos_deathriders:
@@ -5374,10 +5602,41 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_105x70mm
                   available_to: ["death/ossiarch_bonereapers"]
-              artillery: []
+              artillery:
+                mortek_crawler:
+                  name: "Mortek Crawler"
+                  role: artillery
+                  aliases: ["mortek crawler", "mortek_crawler", "catapult"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["death/ossiarch_bonereapers"]
               chariots: []
               swarms: []
-            endless_spells: []
+            endless_spells:
+              bone_tithe_shrieker:
+                name: "Bone-tithe Shrieker"
+                role: endless_spells
+                aliases: ["bone-tithe shrieker", "bone_tithe_shrieker", "shrieker"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/ossiarch_bonereapers"]
+              soulstealer_carrion:
+                name: "Soulstealer Carrion"
+                role: endless_spells
+                aliases: ["soulstealer carrion", "soulstealer_carrion", "carrion"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/ossiarch_bonereapers"]
+              nightmare_predator:
+                name: "Nightmare Predator"
+                role: endless_spells
+                aliases: ["nightmare predator", "nightmare_predator", "predator"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/ossiarch_bonereapers"]
             invocations: []
             warscroll_terrain:
               - id: bone_tithe_nexus
@@ -5450,6 +5709,85 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/flesh_eater_courts"]
+                abhorrant_gorewarden:
+                  name: "Abhorrant Gorewarden"
+                  role: leader
+                  aliases: ["abhorrant gorewarden", "gorewarden"]
+                  legal_in_editions: ["4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["death/flesh_eater_courts"]
+                abhorrant_ghoul_king_on_royal_terrorgheist:
+                  name: "Abhorrant Ghoul King on Royal Terrorgheist"
+                  role: leader
+                  aliases: ["abhorrant ghoul king on terrorgheist", "abhorrant ghoul king on royal terrorgheist", "aghk on terrorgheist", "abhorrant_ghoul_king_on_royal_terrorgheist"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/flesh_eater_courts"]
+                abhorrant_ghoul_king_on_royal_zombie_dragon:
+                  name: "Abhorrant Ghoul King on Royal Zombie Dragon"
+                  role: leader
+                  aliases: ["abhorrant ghoul king on zombie dragon", "aghk on zombie dragon", "abhorrant_ghoul_king_on_royal_zombie_dragon"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/flesh_eater_courts"]
+                crypt_ghast_courtier:
+                  name: "Crypt Ghast Courtier"
+                  role: leader
+                  aliases: ["crypt ghast courtier", "crypt_ghast_courtier", "ghast courtier"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/flesh_eater_courts"]
+                crypt_haunter_courtier:
+                  name: "Crypt Haunter Courtier"
+                  role: leader
+                  aliases: ["crypt haunter courtier", "crypt_haunter_courtier", "haunter courtier"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/flesh_eater_courts"]
+                crypt_infernal_courtier:
+                  name: "Crypt Infernal Courtier"
+                  role: leader
+                  aliases: ["crypt infernal courtier", "crypt_infernal_courtier", "infernal courtier"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/flesh_eater_courts"]
+                varghulf_courtier:
+                  name: "Varghulf Courtier"
+                  role: leader
+                  aliases: ["varghulf courtier", "varghulf_courtier", "varghulf"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["death/flesh_eater_courts"]
+                marrowscroll_herald:
+                  name: "Marrowscroll Herald"
+                  role: leader
+                  aliases: ["marrowscroll herald", "marrowscroll_herald", "herald"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/flesh_eater_courts"]
+                royal_decapitator:
+                  name: "Royal Decapitator"
+                  role: leader
+                  aliases: ["royal decapitator", "royal_decapitator", "decapitator"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["death/flesh_eater_courts"]
+                grand_justice_gormayne:
+                  name: "Grand Justice Gormayne"
+                  role: leader
+                  aliases: ["grand justice gormayne", "grand_justice_gormayne", "gormayne"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/flesh_eater_courts"]
+                  unique: true
+                ushoran_mortarch_of_delusion:
+                  name: "Ushoran, Mortarch of Delusion"
+                  role: leader
+                  aliases: ["ushoran", "ushoran, mortarch of delusion", "mortarch of delusion", "ushoran_mortarch_of_delusion"]
+                  legal_in_editions: ["4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/flesh_eater_courts"]
+                  unique: true
               battleline:
                 crypt_ghouls:
                   name: "Crypt Ghouls"
@@ -5466,20 +5804,81 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_50mm
                   available_to: ["death/flesh_eater_courts"]
-              cavalry: []
+                crypt_flayers:
+                  name: "Crypt Flayers"
+                  role: infantry
+                  aliases: ["crypt flayers", "crypt_flayers", "flayers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["death/flesh_eater_courts"]
+                cryptguard:
+                  name: "Cryptguard"
+                  role: infantry
+                  aliases: ["cryptguard", "crypt guard"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/flesh_eater_courts"]
+                the_royal_beastflayers:
+                  name: "The Royal Beastflayers"
+                  role: infantry
+                  aliases: ["royal beastflayers", "the royal beastflayers", "the_royal_beastflayers", "beastflayers"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/flesh_eater_courts"]
+                  unique: true
+              cavalry:
+                morbheg_knights:
+                  name: "Morbheg Knights"
+                  role: cavalry
+                  aliases: ["morbheg knights", "morbheg_knights", "knights"]
+                  legal_in_editions: ["4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["death/flesh_eater_courts"]
               monsters: []
               behemoths:
                 terrorgheist:
-                  name: "Terrorgheist"
+                  name: "Royal Terrorgheist"
                   role: behemoths
-                  aliases: ["terrorgheist", "terror gheist", "terror_gheist"]
+                  aliases: ["royal terrorgheist", "terrorgheist", "terror gheist", "terror_gheist"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["death/flesh_eater_courts"]
+                royal_zombie_dragon:
+                  name: "Royal Zombie Dragon"
+                  role: behemoths
+                  aliases: ["royal zombie dragon", "zombie dragon", "zombie_dragon"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["death/flesh_eater_courts"]
               artillery: []
               chariots: []
               swarms: []
-            endless_spells: []
+            endless_spells:
+              chalice_of_ushoran:
+                name: "Chalice of Ushoran"
+                role: endless_spells
+                aliases: ["chalice of ushoran", "chalice_of_ushoran"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/flesh_eater_courts"]
+              cadaverous_barricade:
+                name: "Cadaverous Barricade"
+                role: endless_spells
+                aliases: ["cadaverous barricade", "cadaverous_barricade"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/flesh_eater_courts"]
+              corpsemare_stampede:
+                name: "Corpsemare Stampede"
+                role: endless_spells
+                aliases: ["corpsemare stampede", "corpsemare_stampede"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["death/flesh_eater_courts"]
             invocations: []
             warscroll_terrain:
               - id: charnel_throne
@@ -5528,67 +5927,273 @@ codex_units:
               leaders:
                 megaboss_on_maw_krusha:
                   name: "Megaboss on Maw-krusha"
+                  role: leader
+                  aliases: ["megaboss on maw-krusha", "megaboss_on_maw_krusha", "mawkrusha"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/orruk_warclans"]
+                gordrakk_fist_of_gork:
+                  name: "Gordrakk, Fist of Gork"
+                  role: leader
+                  aliases: ["gordrakk", "gordrakk fist of gork", "gordrakk_fist_of_gork"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                hobgrot_honcho:
+                  name: "Hobgrot Honcho"
+                  role: leader
+                  aliases: ["hobgrot honcho", "hobgrot_honcho", "hobgrot slittaboss", "hobgrot_slittaboss"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                megaboss:
+                  name: "Orruk Megaboss"
+                  role: leader
+                  aliases: ["megaboss", "orruk megaboss", "orruk_megaboss"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["destruction/orruk_warclans"]
+                orruk_warchanter:
+                  name: "Orruk Warchanter"
+                  role: leader
+                  aliases: ["orruk warchanter", "orruk_warchanter", "warchanter"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
                 weirdnob_shaman:
                   name: "Weirdnob Shaman"
+                  role: leader
+                  aliases: ["weirdnob shaman", "weirdnob_shaman", "shaman"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/orruk_warclans"]
+                murknob_with_belcha_banna:
+                  name: "Murknob with Belcha-banna"
+                  role: leader
+                  aliases: ["murknob", "murknob with belcha-banna", "murknob_with_belcha_banna", "belcha-banna"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
                 killaboss_on_great_gnashtoof:
                   name: "Killaboss on Great Gnashtoof"
+                  role: leader
+                  aliases: ["killaboss on great gnashtoof", "killaboss_on_great_gnashtoof", "gnashtoof"]
                   legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["destruction/orruk_warclans"]
+                killaboss_with_stab_grot:
+                  name: "Killaboss with Stab-grot"
+                  role: leader
+                  aliases: ["killaboss with stab-grot", "killaboss_with_stab_grot", "stab grot"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                swampcalla_shaman_with_pot_grot:
+                  name: "Swampcalla Shaman with Pot-grot"
+                  role: leader
+                  aliases: ["swampcalla shaman", "swampcalla_shaman", "swampcalla shaman with pot-grot", "swampcalla_shaman_with_pot_grot", "pot grot"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                snatchaboss_on_sludgeraker_beast:
+                  name: "Snatchaboss on Sludgeraker Beast"
+                  role: leader
+                  aliases: ["snatchaboss on sludgeraker beast", "snatchaboss_on_sludgeraker_beast", "sludgeraker"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["destruction/orruk_warclans"]
+                swampboss_skumdrekk:
+                  name: "Swampboss Skumdrekk"
+                  role: leader
+                  aliases: ["swampboss skumdrekk", "swampboss_skumdrekk", "skumdrekk"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                killaboss_on_corpse_rippa_vulcha:
+                  name: "Killaboss on Corpse-rippa Vulcha"
+                  role: leader
+                  aliases: ["killaboss on corpse-rippa vulcha", "killaboss_on_corpse_rippa_vulcha", "corpse-rippa vulcha", "vulcha"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/orruk_warclans"]
+                gobsprakk_the_mouth_of_mork:
+                  name: "Gobsprakk, The Mouth of Mork"
+                  role: leader
+                  aliases: ["gobsprakk", "gobsprakk the mouth of mork", "gobsprakk_the_mouth_of_mork"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                breaka_boss_on_mirebrute_troggoth:
+                  name: "Breaka-boss on Mirebrute Troggoth"
+                  role: leader
+                  aliases: ["breaka-boss on mirebrute troggoth", "breaka_boss_on_mirebrute_troggoth", "breaka-boss"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_90x52mm
+                  available_to: ["destruction/orruk_warclans"]
+                ardboy_big_boss:
+                  name: "Ardboy Big Boss"
+                  role: leader
+                  aliases: ["ardboy big boss", "ardboy_big_boss", "big boss"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                zoggrok_anvilsmasha:
+                  name: "Zoggrok Anvilsmasha"
+                  role: leader
+                  aliases: ["zoggrok anvilsmasha", "zoggrok_anvilsmasha", "anvilsmasha"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                  unique: true
+                wardokk:
+                  name: "Wardokk"
+                  role: leader
+                  aliases: ["wardokk", "wardok"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                maniak_weirdnob:
+                  name: "Maniak Weirdnob"
+                  role: leader
+                  aliases: ["maniak weirdnob", "maniak_weirdnob"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
                   base_profile: oval_75x42mm
                   available_to: ["destruction/orruk_warclans"]
                 wurrgog_prophet:
                   name: "Wurrgog Prophet"
+                  role: leader
+                  aliases: ["wurrgog prophet", "wurrgog_prophet"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                savage_big_boss:
+                  name: "Savage Big Boss"
+                  role: leader
+                  aliases: ["savage big boss", "savage_big_boss", "bonesplitterz big boss", "bonesplitterz_big_boss"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/orruk_warclans"]
               battleline:
                 orruk_ardboys:
                   name: "Orruk Ardboys"
+                  role: battleline
+                  aliases: ["orruk ardboys", "orruk_ardboys", "ardboys"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/orruk_warclans"]
                 gutrippaz:
                   name: "Gutrippaz"
+                  role: battleline
+                  aliases: ["gutrippaz"]
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/orruk_warclans"]
                 savage_orruks:
                   name: "Savage Orruks"
+                  role: battleline
+                  aliases: ["savage orruks", "savage_orruks"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                hobgrot_slittaz:
+                  name: "Hobgrot Slittaz"
+                  role: battleline
+                  aliases: ["hobgrot slittaz", "hobgrot_slittaz", "hobgrots"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_25mm
                   available_to: ["destruction/orruk_warclans"]
               infantry:
                 orruk_brutes:
                   name: "Orruk Brutes"
+                  role: infantry
+                  aliases: ["orruk brutes", "orruk_brutes", "brutes"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/orruk_warclans"]
                 man_skewer_boltboyz:
                   name: "Man-skewer Boltboyz"
+                  role: infantry
+                  aliases: ["man-skewer boltboyz", "man_skewer_boltboyz", "boltboyz"]
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                savage_orruk_arrowboys:
+                  name: "Savage Orruk Arrowboys"
+                  role: infantry
+                  aliases: ["savage orruk arrowboys", "savage_orruk_arrowboys", "arrowboys"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/orruk_warclans"]
+                brute_ragerz:
+                  name: "Brute Ragerz"
+                  role: infantry
+                  aliases: ["brute ragerz", "brute_ragerz", "ragerz"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                weirdbrute_wrekkaz:
+                  name: "Weirdbrute Wrekkaz"
+                  role: infantry
+                  aliases: ["weirdbrute wrekkaz", "weirdbrute_wrekkaz", "wrekkaz"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/orruk_warclans"]
+                savage_big_stabbas:
+                  name: "Savage Big Stabbas"
+                  role: infantry
+                  aliases: ["savage big stabbas", "savage_big_stabbas", "big stabbas"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
                   available_to: ["destruction/orruk_warclans"]
               cavalry:
                 gore_gruntas:
                   name: "Gore-gruntas"
+                  role: cavalry
+                  aliases: ["gore-gruntas", "gore_gruntas"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_90x52mm
+                  available_to: ["destruction/orruk_warclans"]
+                savage_boarboyz:
+                  name: "Savage Boarboyz"
+                  role: cavalry
+                  aliases: ["savage boarboyz", "savage_boarboyz", "boarboyz"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_75x42mm
+                  available_to: ["destruction/orruk_warclans"]
+                savage_boarboy_maniaks:
+                  name: "Savage Boarboy Maniaks"
+                  role: cavalry
+                  aliases: ["savage boarboy maniaks", "savage_boarboy_maniaks", "boarboy maniaks"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: oval_75x42mm
                   available_to: ["destruction/orruk_warclans"]
               monsters:
                 marshcrawla_sloggoth:
                   name: "Marshcrawla Sloggoth"
+                  role: monsters
+                  aliases: ["marshcrawla sloggoth", "marshcrawla_sloggoth", "sloggoth"]
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: oval_120x92mm
+                  available_to: ["destruction/orruk_warclans"]
+                mirebrute_troggoth:
+                  name: "Mirebrute Troggoth"
+                  role: monsters
+                  aliases: ["mirebrute troggoth", "mirebrute_troggoth", "troggoth"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: oval_90x52mm
                   available_to: ["destruction/orruk_warclans"]
               behemoths: []
               artillery:
                 beast_skewer_killbow:
                   name: "Beast-skewer Killbow"
+                  role: artillery
+                  aliases: ["beast-skewer killbow", "beast_skewer_killbow", "killbow"]
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/orruk_warclans"]
@@ -5596,7 +6201,50 @@ codex_units:
               swarms: []
             endless_spells: []
             invocations: []
-            warscroll_terrain: []
+            manifestations:
+              foot_of_gork:
+                name: "Foot of Gork"
+                role: manifestations
+                aliases: ["foot of gork", "foot_of_gork"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
+              gork_roara:
+                name: "Gork-Roara"
+                role: manifestations
+                aliases: ["gork-roara", "gork_roara"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
+              morkspit:
+                name: "Morkspit"
+                role: manifestations
+                aliases: ["morkspit"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
+              marsh:
+                name: "Marsh"
+                role: manifestations
+                aliases: ["marsh"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
+            warscroll_terrain:
+              bossrokk_tower:
+                name: "Bossrokk Tower"
+                role: warscroll_terrain
+                aliases: ["bossrokk tower", "bossrokk_tower", "waaagh tower", "waaagh_tower"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
+              skaregob_totem:
+                name: "Skaregob Totem"
+                role: warscroll_terrain
+                aliases: ["skaregob totem", "skaregob_totem"]
+                legal_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/orruk_warclans"]
             subfactions:
               ironsunz:
                 name: "Ironsunz"
@@ -5668,68 +6316,245 @@ codex_units:
               leaders:
                 loonboss:
                   name: "Loonboss"
+                  role: leader
+                  aliases: ["loonboss", "loon_boss"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                gobbapalooza:
+                  name: "Gobbapalooza"
+                  role: leader
+                  aliases: ["gobbapalooza"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                madcap_shaman:
+                  name: "Madcap Shaman"
+                  role: leader
+                  aliases: ["madcap shaman", "madcap_shaman", "shaman"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                webspinner_shaman:
+                  name: "Webspinner Shaman"
+                  role: leader
+                  aliases: ["webspinner shaman", "webspinner_shaman", "spider shaman"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/gloomspite_gitz"]
                 skragrott_the_loonking:
                   name: "Skragrott, The Loonking"
+                  role: leader
+                  aliases: ["skragrott", "skragrott the loonking", "skragrott_the_loonking", "loonking"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/gloomspite_gitz"]
                   unique: true
                 fungoid_cave_shaman:
                   name: "Fungoid Cave-Shaman"
+                  role: leader
+                  aliases: ["fungoid cave-shaman", "fungoid_cave_shaman", "fungoid cave shaman"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                loonboss_on_giant_cave_squig:
+                  name: "Loonboss on Giant Cave Squig"
+                  role: leader
+                  aliases: ["loonboss on giant cave squig", "loonboss_on_giant_cave_squig", "giant cave squig"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                squigboss_with_gnasha_squig:
+                  name: "Squigboss with Gnasha-squig"
+                  role: leader
+                  aliases: ["squigboss", "squigboss with gnasha-squig", "squigboss_with_gnasha_squig"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                webspinner_shaman_on_arachnarok_spider:
+                  name: "Webspinner Shaman on Arachnarok Spider"
+                  role: leader
+                  aliases: ["webspinner shaman on arachnarok spider", "webspinner_shaman_on_arachnarok_spider", "arachnarok shaman", "arachnarok spider shaman"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                webspinner_shaman_on_gigantic_spider:
+                  name: "Webspinner Shaman on Gigantic Spider"
+                  role: leader
+                  aliases: ["webspinner shaman on gigantic spider", "webspinner_shaman_on_gigantic_spider", "gigantic spider shaman"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                loonboss_on_mangler_squigs:
+                  name: "Loonboss on Mangler Squigs"
+                  role: leader
+                  aliases: ["loonboss on mangler squigs", "loonboss_on_mangler_squigs", "mangler squigs boss"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                dankhold_troggboss:
+                  name: "Dankhold Troggboss"
+                  role: leader
+                  aliases: ["dankhold troggboss", "dankhold_troggboss", "troggboss"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                scuttleboss_on_gigantic_spider:
+                  name: "Scuttleboss on Gigantic Spider"
+                  role: leader
+                  aliases: ["scuttleboss on gigantic spider", "scuttleboss_on_gigantic_spider", "scuttleboss"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: oval_60x35mm
                   available_to: ["destruction/gloomspite_gitz"]
               battleline:
                 moonclan_stabbas:
                   name: "Moonclan Stabbas"
+                  role: battleline
+                  aliases: ["moonclan stabbas", "moonclan_stabbas", "stabbas"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_25mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                moonclan_shootas:
+                  name: "Moonclan Shootas"
+                  role: battleline
+                  aliases: ["moonclan shootas", "moonclan_shootas", "shootas"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["destruction/gloomspite_gitz"]
                 squig_herd:
                   name: "Squig Herd"
+                  role: battleline
+                  aliases: ["squig herd", "squig_herd", "squigs"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/gloomspite_gitz"]
               infantry:
                 loon_smasha_fanatics:
                   name: "Loonsmasha Fanatics"
+                  role: infantry
+                  aliases: ["loonsmasha fanatics", "loon_smasha_fanatics", "fanatics"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                zarbags_gitz:
+                  name: "Zarbag's Gitz"
+                  role: infantry
+                  aliases: ["zarbag's gitz", "zarbags_gitz", "zarbag"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_25mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                  unique: true
+                sporesplatta_fanatics:
+                  name: "Sporesplatta Fanatics"
+                  role: infantry
+                  aliases: ["sporesplatta fanatics", "sporesplatta_fanatics", "fanatics"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_32mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                sneaky_snufflers:
+                  name: "Sneaky Snufflers"
+                  role: infantry
+                  aliases: ["sneaky snufflers", "sneaky_snufflers", "snufflers"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/gloomspite_gitz"]
                 rippas_snarlfangs:
                   name: "Rippa's Snarlfangs"
+                  role: infantry
+                  aliases: ["rippa's snarlfangs", "rippas_snarlfangs", "snarlfangs"]
                   legal_in_editions: ["2nd", "3rd"]
                   legends_in_editions: ["4th"]
                   base_profile: oval_60x35mm
                   available_to: ["destruction/gloomspite_gitz"]
                   unique: true
+                mollogs_mob:
+                  name: "Mollog's Mob"
+                  role: infantry
+                  aliases: ["mollog's mob", "mollogs_mob", "mollog"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_50mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                  unique: true
               cavalry:
+                spider_riders:
+                  name: "Spider Riders"
+                  role: cavalry
+                  aliases: ["spider riders", "spider_riders", "spider riders unit"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["destruction/gloomspite_gitz"]
                 boingrot_bounders:
                   name: "Boingrot Bounders"
+                  role: cavalry
+                  aliases: ["boingrot bounders", "boingrot_bounders", "bounders"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["destruction/gloomspite_gitz"]
                 squig_hoppers:
                   name: "Squig Hoppers"
+                  role: cavalry
+                  aliases: ["squig hoppers", "squig_hoppers", "hoppers"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_60x35mm
                   available_to: ["destruction/gloomspite_gitz"]
-              monsters: []
+              monsters:
+                fellwater_troggoths:
+                  name: "Fellwater Troggoths"
+                  role: monsters
+                  aliases: ["fellwater troggoths", "fellwater_troggoths", "troggoths"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                rockgut_troggoths:
+                  name: "Rockgut Troggoths"
+                  role: monsters
+                  aliases: ["rockgut troggoths", "rockgut_troggoths", "troggoths"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["destruction/gloomspite_gitz"]
               behemoths:
                 mangler_squigs:
                   name: "Mangler Squigs"
+                  role: behemoths
+                  aliases: ["mangler squigs", "mangler_squigs", "manglers"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/gloomspite_gitz"]
                 arachnarok_spider:
                   name: "Arachnarok Spider"
+                  role: behemoths
+                  aliases: ["arachnarok spider", "arachnarok_spider", "arachnarok"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_170x105mm
                   available_to: ["destruction/gloomspite_gitz"]
-              artillery: []
+                dankhold_troggoth:
+                  name: "Dankhold Troggoth"
+                  role: behemoths
+                  aliases: ["dankhold troggoth", "dankhold_troggoth", "troggoth"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_60mm
+                  available_to: ["destruction/gloomspite_gitz"]
+                skitterstrand_arachnarok:
+                  name: "Skitterstrand Arachnarok"
+                  role: behemoths
+                  aliases: ["skitterstrand arachnarok", "skitterstrand_arachnarok"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["destruction/gloomspite_gitz"]
+              artillery:
+                arachnarok_spider_with_flinger:
+                  name: "Arachnarok Spider with Flinger"
+                  role: artillery
+                  aliases: ["arachnarok spider with flinger", "arachnarok_spider_with_flinger", "flinger"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: oval_170x105mm
+                  available_to: ["destruction/gloomspite_gitz"]
               chariots: []
               swarms: []
             endless_spells:
@@ -5757,10 +6582,20 @@ codex_units:
                 legends_in_editions: ["4th"]
                 base_profile: no_base
                 available_to: ["destruction/gloomspite_gitz"]
+              scrapskuttles_arachnacauldron:
+                name: "Scrapskuttle's Arachnacauldron"
+                role: endless_spells
+                aliases: ["scrapskuttle's arachnacauldron", "scrapskuttles_arachnacauldron", "arachnacauldron"]
+                legal_in_editions: ["2nd", "3rd"]
+                legends_in_editions: ["4th"]
+                base_profile: no_base
+                available_to: ["destruction/gloomspite_gitz"]
             invocations: []
             warscroll_terrain:
               - id: bad_moon_loonshrine
                 name: "Bad Moon Loonshrine"
+                role: warscroll_terrain
+                aliases: ["bad moon loonshrine", "bad_moon_loonshrine", "loonshrine"]
                 legal_in_editions: ["2nd", "3rd"]
                 legends_in_editions: ["4th"]
                 base_profile: no_base
@@ -5794,74 +6629,187 @@ codex_units:
               leaders:
                 tyrant:
                   name: "Tyrant"
+                  role: leader
+                  aliases: ["tyrant", "ogor tyrant", "ogor_tyrant"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
                 slaughtermaster:
                   name: "Slaughtermaster"
+                  role: leader
+                  aliases: ["slaughtermaster", "ogor slaughtermaster", "ogor_slaughtermaster"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                butcher:
+                  name: "Butcher"
+                  role: leader
+                  aliases: ["butcher", "ogor butcher", "ogor_butcher"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                firebelly:
+                  name: "Firebelly"
+                  role: leader
+                  aliases: ["firebelly", "ogor firebelly", "ogor_firebelly"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
                 frostlord_on_stonehorn:
                   name: "Frostlord on Stonehorn"
+                  role: leader
+                  aliases: ["frostlord on stonehorn", "frostlord_on_stonehorn", "stonehorn frostlord"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                frostlord_on_thundertusk:
+                  name: "Frostlord on Thundertusk"
+                  role: leader
+                  aliases: ["frostlord on thundertusk", "frostlord_on_thundertusk", "thundertusk frostlord"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                frostlord_on_thundertusk:
+                  name: "Frostlord on Thundertusk"
+                  role: leader
+                  aliases: ["frostlord on thundertusk", "frostlord_on_thundertusk", "thundertusk frostlord"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                huskard_on_stonehorn:
+                  name: "Huskard on Stonehorn"
+                  role: leader
+                  aliases: ["huskard on stonehorn", "huskard_on_stonehorn", "stonehorn huskard"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                huskard_on_thundertusk:
+                  name: "Huskard on Thundertusk"
+                  role: leader
+                  aliases: ["huskard on thundertusk", "huskard_on_thundertusk", "thundertusk huskard"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                icebrow_hunter:
+                  name: "Icebrow Hunter"
+                  role: leader
+                  aliases: ["icebrow hunter", "icebrow_hunter", "hunter"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                bloodpelt_hunter:
+                  name: "Bloodpelt Hunter"
+                  role: leader
+                  aliases: ["bloodpelt hunter", "bloodpelt_hunter", "hunter"]
+                  legal_in_editions: ["3rd", "4th"]
+                  base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
               battleline:
                 ogor_gluttons:
                   name: "Ogor Gluttons"
+                  role: battleline
+                  aliases: ["ogor gluttons", "ogor_gluttons", "gluttons"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
               infantry:
                 ironguts:
                   name: "Ironguts"
+                  role: infantry
+                  aliases: ["ironguts", "ogor ironguts", "ogor_ironguts"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
                 leadbelchers:
                   name: "Leadbelchers"
+                  role: infantry
+                  aliases: ["leadbelchers", "ogor leadbelchers", "ogor_leadbelchers"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_40mm
                   available_to: ["destruction/ogor_mawtribes"]
                 gnoblars:
                   name: "Gnoblars"
+                  role: infantry
+                  aliases: ["gnoblars", "gnoblar", "ogor gnoblars", "ogor_gnoblars"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_25mm
                   available_to: ["destruction/ogor_mawtribes"]
                 hrothgorns_mantrappers:
                   name: "Hrothgorn's Mantrappers"
+                  role: infantry
+                  aliases: ["hrothgorn's mantrappers", "hrothgorns_mantrappers", "hrothgorn"]
                   legal_in_editions: ["2nd", "3rd"]
                   legends_in_editions: ["4th"]
                   base_profile: round_32mm
                   available_to: ["destruction/ogor_mawtribes"]
                   unique: true
+                maneaters:
+                  name: "Maneaters"
+                  role: infantry
+                  aliases: ["maneaters", "ogor maneaters", "ogor_maneaters"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_40mm
+                  available_to: ["destruction/ogor_mawtribes"]
               cavalry:
                 mournfang_pack:
                   name: "Mournfang Pack"
+                  role: cavalry
+                  aliases: ["mournfang pack", "mournfang_pack", "mournfangs"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_75x42mm
                   available_to: ["destruction/ogor_mawtribes"]
-              monsters: []
+                frost_sabres:
+                  name: "Frost Sabres"
+                  role: cavalry
+                  aliases: ["frost sabres", "frost_sabres", "frost sabers", "frost_sabers"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: oval_60x35mm
+                  available_to: ["destruction/ogor_mawtribes"]
               behemoths:
                 stonehorn_beastriders:
                   name: "Stonehorn Beastriders"
+                  role: behemoths
+                  aliases: ["stonehorn beastriders", "stonehorn_beastriders", "stonehorn"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/ogor_mawtribes"]
                 thundertusk_beastriders:
                   name: "Thundertusk Beastriders"
+                  role: behemoths
+                  aliases: ["thundertusk beastriders", "thundertusk_beastriders", "thundertusk"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
+                  available_to: ["destruction/ogor_mawtribes"]
+              monsters:
+                yhetees:
+                  name: "Yhetees"
+                  role: monsters
+                  aliases: ["yhetees", "yhetee"]
+                  legal_in_editions: ["2nd", "3rd", "4th"]
+                  base_profile: round_50mm
+                  available_to: ["destruction/ogor_mawtribes"]
+                gorgers:
+                  name: "Gorgers"
+                  role: monsters
+                  aliases: ["gorgers", "gorger"]
+                  legal_in_editions: ["2nd", "3rd"]
+                  legends_in_editions: ["4th"]
+                  base_profile: round_50mm
                   available_to: ["destruction/ogor_mawtribes"]
               artillery:
                 ironblaster:
                   name: "Ironblaster"
+                  role: artillery
+                  aliases: ["ironblaster", "ogor ironblaster", "ogor_ironblaster"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/ogor_mawtribes"]
                 gnoblar_scraplauncher:
                   name: "Gnoblar Scraplauncher"
+                  role: artillery
+                  aliases: ["gnoblar scraplauncher", "gnoblar_scraplauncher", "scraplauncher"]
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: oval_120x92mm
                   available_to: ["destruction/ogor_mawtribes"]
@@ -5872,6 +6820,8 @@ codex_units:
             warscroll_terrain:
               - id: great_mawpot
                 name: "Great Mawpot"
+                role: warscroll_terrain
+                aliases: ["great mawpot", "great_mawpot", "mawpot"]
                 legal_in_editions: ["2nd", "3rd"]
                 legends_in_editions: ["4th"]
                 base_profile: no_base
@@ -5972,6 +6922,13 @@ codex_units:
                 role_overrides:
                   battleline_if: []
               #
+               - id: mawpit
+                 name: "Mawpit"
+                 role: warscroll_terrain
+                 aliases: ["mawpit"]
+                 legal_in_editions: ["4th"]
+                 base_profile: no_base
+                 available_to: ["destruction/ogor_mawtribes"]
               breaker_tribe:
                 name: "Breaker Tribe"
                 legal_in_editions: ["2nd", "3rd"]
