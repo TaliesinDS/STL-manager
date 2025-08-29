@@ -406,8 +406,29 @@ def text_for_variant(v: Variant) -> str:
         pass
     return norm_text(" ".join(parts))
 
+def _path_segments(rel_path: Optional[str]) -> List[str]:
+    """Return normalized path segments from a rel_path, filtering noise tokens.
 
-def score_match(alias_phrase: str, unit: UnitRef, v_text: str, sys_hint: Optional[str]) -> float:
+    Example: "Freeguild Cavaliers\\5. Calix\\CalixAlternativeDeers" ->
+      ["freeguild cavaliers", "5 calix", "calixalternativedeers"]
+    """
+    if not rel_path:
+        return []
+    raw = re.split(r"[\\/]+", rel_path)
+    segs: List[str] = []
+    NOISE = {
+        "stl", "supported stl", "unsupported", "presupported", "__macosx",
+        "combined", "lychee", "one page rules", "opr",
+    }
+    for s in raw:
+        n = norm_text(s)
+        if not n or n in NOISE:
+            continue
+        segs.append(n)
+    return segs
+
+
+def score_match(alias_phrase: str, unit: UnitRef, v_text: str, sys_hint: Optional[str], seg_set: Optional[Set[str]] = None) -> float:
     # base scores
     score = 10.0
     # longer phrases weigh a bit more
@@ -418,6 +439,9 @@ def score_match(alias_phrase: str, unit: UnitRef, v_text: str, sys_hint: Optiona
     # light faction boost if faction token present in text
     if unit.faction_key and re.search(rf"\b{re.escape(unit.faction_key)}\b", v_text):
         score += 2.0
+    # Strong boost when the alias exactly equals a path segment (unit folder certainty)
+    if seg_set and alias_phrase in seg_set:
+        score += 6.0
     return score
 
 
@@ -427,6 +451,7 @@ def find_best_matches(
     sys_hint: Optional[str],
     mount_children: Optional[Dict[str, List[UnitRef]]] = None,
     spells_by_faction: Optional[Dict[str, List[UnitRef]]] = None,
+    path_segment_set: Optional[Set[str]] = None,
 ) -> List[Tuple[UnitRef, float, str]]:
     # First collect all matched phrases
     matched: Dict[str, List[UnitRef]] = {}
@@ -460,7 +485,7 @@ def find_best_matches(
     results: List[Tuple[UnitRef, float, str]] = []
     for phrase in kept:
         for ref in matched[phrase]:
-            results.append((ref, score_match(phrase, ref, v_text, sys_hint), phrase))
+            results.append((ref, score_match(phrase, ref, v_text, sys_hint, path_segment_set), phrase))
 
     results.sort(key=lambda x: x[1], reverse=True)
     # Inject mounted candidates and apply mount bias if context detected
@@ -505,6 +530,14 @@ def main() -> None:
             "Use to skip container-only folders like 'sample_store'."
         ),
     )
+    parser.add_argument(
+        "--include-container-folders",
+        action="store_true",
+        help=(
+            "Include container-only folders (folders with no files where subfolders are already variants) in the report. "
+            "By default these are skipped to reduce noise."
+        ),
+    )
     args = parser.parse_args()
 
     reports_dir = ROOT / "reports"
@@ -527,7 +560,8 @@ def main() -> None:
     total = 0
     applied = 0
     skipped_nonwarhammer = 0
-    skipped_containers = 0
+    skipped_containers_equals = 0
+    skipped_containers_auto = 0
     proposals: List[Dict[str, Any]] = []
 
     with get_session() as session:
@@ -546,8 +580,50 @@ def main() -> None:
             q = q.limit(args.limit)
         variants = session.execute(q).scalars().all()
 
+        # Precompute normalized rel_paths for container detection
+        all_rel_paths: List[str] = []
+        for v in variants:
+            try:
+                all_rel_paths.append((v.rel_path or "").strip().lower())
+            except Exception:
+                all_rel_paths.append("")
+
         # Prepare exclude set (lowercased)
         exclude_equals = set(s.lower() for s in (args.exclude_path_equals or []))
+
+        # Helper to decide whether a variant has meaningful files (ignore OS noise files)
+        NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
+
+        def _is_noise_filename(name: str) -> bool:
+            n = (name or "").strip().lower()
+            if not n:
+                return False
+            if n in NOISE_FILENAMES:
+                return True
+            # AppleDouble resource fork files, e.g., '._.DS_Store'
+            if n.startswith("._"):
+                core = n[2:]
+                if core in NOISE_FILENAMES:
+                    return True
+            return False
+
+        def _has_meaningful_files(variant: Variant) -> bool:
+            try:
+                files = getattr(variant, 'files', []) or []
+                for f in files:
+                    # Skip directories
+                    if getattr(f, 'is_dir', False):
+                        continue
+                    name = (getattr(f, 'filename', '') or '').strip().lower()
+                    if not name:
+                        continue
+                    if _is_noise_filename(name):
+                        continue
+                    # at least one non-noise file exists
+                    return True
+            except Exception:
+                return False
+            return False
 
         for v in variants:
             total += 1
@@ -557,11 +633,31 @@ def main() -> None:
             except Exception:
                 rel_lower = ""
             if rel_lower and rel_lower in exclude_equals:
-                skipped_containers += 1
+                skipped_containers_equals += 1
                 continue
+            # Auto-skip container-only variants: no files, and there exists another variant whose rel_path starts with this rel_path + path sep
+            if not args.include_container_folders:
+                has_files = _has_meaningful_files(v)
+                if (rel_lower and not has_files):
+                    sep_candidates = ["\\", "/"]
+                    prefix_matches = False
+                    for sep in sep_candidates:
+                        prefix = rel_lower + sep
+                        # any other rel_path that starts with this prefix
+                        for rp in all_rel_paths:
+                            if rp and rp != rel_lower and rp.startswith(prefix):
+                                prefix_matches = True
+                                break
+                        if prefix_matches:
+                            break
+                    if prefix_matches:
+                        skipped_containers_auto += 1
+                        continue
             v_text = text_for_variant(v)
+            # Precompute normalized path segments for unit-folder certainty boosts
+            seg_set: Set[str] = set(_path_segments(v.rel_path))
             sys_h = system_hint(v_text) or (v.game_system.lower() if v.game_system else None)
-            matches = find_best_matches(unit_idx, v_text, sys_h, mount_children, spells_by_faction)
+            matches = find_best_matches(unit_idx, v_text, sys_h, mount_children, spells_by_faction, seg_set)
             chap_hint, subf_hint = find_chapter_hint(v_text)  # e.g., blood_angels / ravenwing from top folder names
 
             accepted: Optional[Tuple[UnitRef, float, str]] = None
@@ -709,7 +805,11 @@ def main() -> None:
             "total_variants": total,
             "applied": applied,
             "skipped_nonwarhammer": skipped_nonwarhammer,
-            "skipped_containers": skipped_containers,
+            "skipped_containers": skipped_containers_equals + skipped_containers_auto,
+            "skipped_containers_detail": {
+                "equals": skipped_containers_equals,
+                "auto": skipped_containers_auto,
+            },
             "proposals": proposals,
         }, f, ensure_ascii=False, indent=2)
 
@@ -718,8 +818,14 @@ def main() -> None:
         print(f"Applied matches: {applied}/{total}")
     if skipped_nonwarhammer:
         print(f"Skipped (non-Warhammer/no-hint): {skipped_nonwarhammer}")
-    if skipped_containers:
-        print(f"Skipped (container rel_path equals): {skipped_containers} -> {', '.join(args.exclude_path_equals or [])}")
+    total_containers = skipped_containers_equals + skipped_containers_auto
+    if total_containers:
+        msg = []
+        if skipped_containers_equals:
+            msg.append(f"equals={skipped_containers_equals} -> {', '.join(args.exclude_path_equals or [])}")
+        if skipped_containers_auto:
+            msg.append(f"auto={skipped_containers_auto}")
+        print(f"Skipped (containers): {total_containers} ({'; '.join(msg)})")
 
 
 if __name__ == "__main__":

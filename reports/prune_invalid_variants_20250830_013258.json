@@ -1,0 +1,14 @@
+{
+  "ts": "2025-08-29T23:32:58.547105Z",
+  "apply": false,
+  "delete_path_equals": [
+    "sample_store"
+  ],
+  "candidates": [],
+  "counts": {
+    "equals": 0,
+    "container_only": 0,
+    "noise_only": 0,
+    "total": 0
+  }
+}

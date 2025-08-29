@@ -1,0 +1,479 @@
+{
+  "ts": "2025-08-29T23:30:03.476447Z",
+  "apply": true,
+  "delete_path_equals": [
+    "sample_store"
+  ],
+  "candidates": [
+    {
+      "variant_id": 6,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 13,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 19,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 22,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 33,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 36,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 45,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 48,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 51,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 54,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 57,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 62,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 65,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 69,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 77,
+      "rel_path": "sample_store\\Azerama - Adult Toph",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 125,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 127,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 138,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Prince",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 144,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 147,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 149,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 154,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 165,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 172,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 189,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 192,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 195,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 199,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 201,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 205,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Varghulf Courtier\\The_Wretch_(75mm_Base_73mm_Height)\\STL",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 209,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\13. Medraut",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 213,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 215,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\2. Rangers CG",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 219,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 223,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 231,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 234,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 240,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 247,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 250,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 258,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 262,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 267,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\One Page Rule",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 271,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 274,
+      "rel_path": "sample_store\\Goblin\\Artisan Guild Miniatures -  Faldorn Goblins - Gbiza Goblin Pinup",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 292,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 293,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 300,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 308,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval Church",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 311,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Farm\\The-Farm",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 313,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - The Stone Barn\\Stone-Barn-1.2",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 316,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW\\Saber_NSFW_SFW",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 320,
+      "rel_path": "sample_store\\Saber_NSFW_SFW\\Saber_NSFW_SFW",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 325,
+      "rel_path": "sample_store\\SakuraNSFW_Azerama",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 326,
+      "rel_path": "sample_store\\Sherry- isekai meikyuu de harem wo\\Sherry_v1",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 352,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Fireclaw Snipers",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 356,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratkin Militia",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 362,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 366,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Serpent Strike Bowguards",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 376,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Sunset Chariot Revenants",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 398,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Fireclaw Snipers",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 402,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratkin Militia",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 408,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 412,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Serpent Strike Bowguards",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 422,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Sunset Chariot Revenants",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 423,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 439,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 452,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 457,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Legs",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 459,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 465,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Torsos",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 467,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 478,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 484,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad",
+      "filename": null,
+      "reason": "container_only"
+    },
+    {
+      "variant_id": 489,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set",
+      "filename": null,
+      "reason": "container_only"
+    }
+  ],
+  "counts": {
+    "equals": 0,
+    "container_only": 77,
+    "noise_only": 0,
+    "total": 77
+  },
+  "backup": "C:\\Users\\akortekaas\\Documents\\GitHub\\STL-manager\\data\\stl_manager_v1.db.20250830_013003.bak",
+  "deleted": 77
+}
