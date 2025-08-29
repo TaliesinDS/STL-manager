@@ -21,6 +21,7 @@ scripts/      Utility / exploratory scripts (quick_scan.py, one_click_start_temp
 prompts/      Reusable prompt/style definition assets (e.g., bernadette_banner_style_prompt.txt)
 DECISIONS.md  Versioned rationale & token_map_version change log
 README.md     This file
+docs/PROGRESS.md Project progress log (milestones, current sprint, dev log)
 ```
 
 All large / high‑churn vocab domains (designers, codex unit lists) are externalized under `vocab/` so diffs stay readable and expansion doesn’t obscure structural taxonomy changes. Core token map (`vocab/tokenmap.md`) contains only stable, high-signal mappings plus sentinels:

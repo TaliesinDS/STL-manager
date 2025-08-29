@@ -140,6 +140,13 @@ class Variant(Base):
 
     # Relationship to physical files belonging to this variant
     files = relationship("File", back_populates="variant", cascade="all, delete-orphan")
+    # Relationships to codex units (via association table)
+    unit_links = relationship("VariantUnitLink", back_populates="variant", cascade="all, delete-orphan")
+    # Convenience read-only relationship listing units linked to this variant
+    units = relationship("Unit", secondary="variant_unit_link", viewonly=True)
+    # Relationships to parts (wargear/bodies) via association table
+    part_links = relationship("VariantPartLink", back_populates="variant", cascade="all, delete-orphan")
+    parts = relationship("Part", secondary="variant_part_link", viewonly=True)
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Variant id={self.id} path={self.rel_path} file={self.filename}>"
@@ -275,3 +282,235 @@ class Character(Base):
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Character id={self.id} name={self.name}>"
+
+
+# =========================
+# Codex/Units Normalization
+# =========================
+
+class GameSystem(Base):
+    """A tabletop game system, e.g., Warhammer 40,000, Age of Sigmar, Horus Heresy.
+
+    key examples: 'w40k', 'aos', 'heresy', 'old_world'.
+    """
+
+    __tablename__ = "game_system"
+
+    id = Column(Integer, primary_key=True)
+    key = Column(String(64), unique=True, nullable=False, index=True)
+    name = Column(String(128), nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    factions = relationship("Faction", back_populates="system", cascade="all, delete-orphan")
+    units = relationship("Unit", back_populates="system")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<GameSystem {self.key}:{self.name}>"
+
+
+class Faction(Base):
+    """Faction within a game system; supports hierarchy via parent_id (e.g., Space Marines -> Dark Angels chapter)."""
+
+    __tablename__ = "faction"
+
+    id = Column(Integer, primary_key=True)
+    system_id = Column(Integer, ForeignKey("game_system.id", ondelete="CASCADE"), nullable=False, index=True)
+    key = Column(String(128), nullable=False, index=True)  # canonical snake_case token
+    name = Column(String(256), nullable=False)
+    parent_id = Column(Integer, ForeignKey("faction.id", ondelete="CASCADE"), nullable=True, index=True)
+    # Optional convenience fields
+    full_path = Column(JSON, default=list)  # e.g., ["imperium", "adeptus_astartes", "dark_angels"]
+    aliases = Column(JSON, default=list)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    system = relationship("GameSystem", back_populates="factions")
+    parent = relationship("Faction", remote_side=[id], backref="children")
+    units = relationship("Unit", back_populates="faction")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<Faction {self.key} system={self.system_id}>"
+
+
+class Unit(Base):
+    """A codex unit entry from YAML SSOT.
+
+    Stores edition availability and base profile as simple strings/JSON for portability.
+    """
+
+    __tablename__ = "unit"
+
+    id = Column(Integer, primary_key=True)
+    system_id = Column(Integer, ForeignKey("game_system.id", ondelete="CASCADE"), nullable=False, index=True)
+    faction_id = Column(Integer, ForeignKey("faction.id", ondelete="SET NULL"), nullable=True, index=True)
+
+    key = Column(String(128), nullable=False, index=True)  # canonical snake_case YAML id
+    name = Column(String(256), nullable=False, index=True)
+    role = Column(String(64), nullable=True, index=True)  # e.g., HQ, Troops, Leader, etc.
+    unique_flag = Column(Boolean, default=False)
+    # category allows system-specific types (e.g., 'unit', 'endless_spell', 'manifestation', 'invocation', 'terrain', 'regiment')
+    category = Column(String(64), nullable=True, index=True)
+
+    # JSON fields reflecting YAML structure
+    aliases = Column(JSON, default=list)
+    legal_in_editions = Column(JSON, default=list)  # e.g., ["10e"], ["10e","legends_10e"], ["aos4"]
+    available_to = Column(JSON, default=dict)  # e.g., {"chapters": ["dark_angels"], ...}
+    base_profile_key = Column(String(64), nullable=True)  # e.g., "infantry_25", "cavalry_60_35", etc.
+    # attributes captures extra per-system fields that don't merit first-class columns yet
+    attributes = Column(JSON, default=dict)
+    # raw_data stores the full YAML node for perfect fidelity and future migrations
+    raw_data = Column(JSON, default=dict)
+
+    # Provenance
+    source_file = Column(String(512), nullable=True)  # vocab file path relative to repo
+    source_anchor = Column(String(256), nullable=True)  # optional YAML path or group
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    system = relationship("GameSystem", back_populates="units")
+    faction = relationship("Faction", back_populates="units")
+    alias_rows = relationship("UnitAlias", back_populates="unit", cascade="all, delete-orphan")
+    variant_links = relationship("VariantUnitLink", back_populates="unit", cascade="all, delete-orphan")
+    variants = relationship("Variant", secondary="variant_unit_link", viewonly=True)
+    # Parts linked to this unit (manual or inferred)
+    part_links = relationship("UnitPartLink", back_populates="unit", cascade="all, delete-orphan")
+    parts = relationship("Part", secondary="unit_part_link", viewonly=True)
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<Unit {self.key} ({self.name}) system={self.system_id}>"
+
+
+class UnitAlias(Base):
+    __tablename__ = "unit_alias"
+
+    id = Column(Integer, primary_key=True)
+    unit_id = Column(Integer, ForeignKey("unit.id", ondelete="CASCADE"), nullable=False, index=True)
+    alias = Column(String(256), nullable=False, index=True)
+
+    unit = relationship("Unit", back_populates="alias_rows")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<UnitAlias unit={self.unit_id} alias={self.alias}>"
+
+
+class VariantUnitLink(Base):
+    """Association between a scanned Variant (model folder/file) and a codex Unit.
+
+    Stores match metadata so we can audit how a link was established.
+    """
+
+    __tablename__ = "variant_unit_link"
+
+    id = Column(Integer, primary_key=True)
+    variant_id = Column(Integer, ForeignKey("variant.id", ondelete="CASCADE"), nullable=False, index=True)
+    unit_id = Column(Integer, ForeignKey("unit.id", ondelete="CASCADE"), nullable=False, index=True)
+    is_primary = Column(Boolean, default=True)
+    match_method = Column(String(64), nullable=True)  # e.g., "token", "manual", "yaml-guided"
+    match_confidence = Column(Float, nullable=True)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    variant = relationship("Variant", back_populates="unit_links")
+    unit = relationship("Unit", back_populates="variant_links")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<VariantUnitLink v={self.variant_id} u={self.unit_id} primary={self.is_primary}>"
+
+
+# =========================
+# Parts (Wargear/Bodies)
+# =========================
+
+class Part(Base):
+    """A modular 3D model part such as wargear (weapons, accessories) or body types.
+
+    Designed to index third-party add-on parts and decorative bits. Not full units.
+    """
+
+    __tablename__ = "part"
+
+    id = Column(Integer, primary_key=True)
+    system_id = Column(Integer, ForeignKey("game_system.id", ondelete="CASCADE"), nullable=False, index=True)
+    faction_id = Column(Integer, ForeignKey("faction.id", ondelete="SET NULL"), nullable=True, index=True)
+
+    key = Column(String(128), nullable=False, index=True)
+    name = Column(String(256), nullable=False, index=True)
+    part_type = Column(String(64), nullable=False, index=True)  # e.g., 'wargear', 'body', 'decor'
+    category = Column(String(64), nullable=True, index=True)  # e.g., weapon_ranged, character class, etc.
+    slot = Column(String(64), nullable=True, index=True)  # singular slot for wargear (left_hand, backpack, etc.)
+    slots = Column(JSON, default=list)  # multi-slot support (e.g., bodies)
+
+    aliases = Column(JSON, default=list)
+    legal_in_editions = Column(JSON, default=list)
+    legends_in_editions = Column(JSON, default=list)
+    available_to = Column(JSON, default=list)  # list of faction keys
+
+    attributes = Column(JSON, default=dict)  # any extra fields from YAML
+    raw_data = Column(JSON, default=dict)
+
+    source_file = Column(String(512), nullable=True)
+    source_anchor = Column(String(256), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    system = relationship("GameSystem")
+    faction = relationship("Faction")
+    alias_rows = relationship("PartAlias", back_populates="part", cascade="all, delete-orphan")
+    variant_links = relationship("VariantPartLink", back_populates="part", cascade="all, delete-orphan")
+    variants = relationship("Variant", secondary="variant_part_link", viewonly=True)
+    unit_links = relationship("UnitPartLink", back_populates="part", cascade="all, delete-orphan")
+    units = relationship("Unit", secondary="unit_part_link", viewonly=True)
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<Part {self.part_type}:{self.key} ({self.name}) system={self.system_id}>"
+
+
+class PartAlias(Base):
+    __tablename__ = "part_alias"
+
+    id = Column(Integer, primary_key=True)
+    part_id = Column(Integer, ForeignKey("part.id", ondelete="CASCADE"), nullable=False, index=True)
+    alias = Column(String(256), nullable=False, index=True)
+
+    part = relationship("Part", back_populates="alias_rows")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<PartAlias part={self.part_id} alias={self.alias}>"
+
+
+class VariantPartLink(Base):
+    """Association between a scanned Variant (model) and a Part (wargear/body/decor)."""
+
+    __tablename__ = "variant_part_link"
+
+    id = Column(Integer, primary_key=True)
+    variant_id = Column(Integer, ForeignKey("variant.id", ondelete="CASCADE"), nullable=False, index=True)
+    part_id = Column(Integer, ForeignKey("part.id", ondelete="CASCADE"), nullable=False, index=True)
+    is_primary = Column(Boolean, default=False)  # parts are typically secondary to a full model
+    match_method = Column(String(64), nullable=True)
+    match_confidence = Column(Float, nullable=True)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    variant = relationship("Variant", back_populates="part_links")
+    part = relationship("Part", back_populates="variant_links")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<VariantPartLink v={self.variant_id} p={self.part_id} primary={self.is_primary}>"
+
+
+class UnitPartLink(Base):
+    """Association between a codex Unit and a Part to express compatibility/recommendations."""
+
+    __tablename__ = "unit_part_link"
+
+    id = Column(Integer, primary_key=True)
+    unit_id = Column(Integer, ForeignKey("unit.id", ondelete="CASCADE"), nullable=False, index=True)
+    part_id = Column(Integer, ForeignKey("part.id", ondelete="CASCADE"), nullable=False, index=True)
+    relation_type = Column(String(32), nullable=True)  # e.g., 'compatible', 'recommended', 'required'
+    required_slot = Column(String(64), nullable=True)  # optional slot constraint
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    unit = relationship("Unit", back_populates="part_links")
+    part = relationship("Part", back_populates="unit_links")
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        return f"<UnitPartLink u={self.unit_id} p={self.part_id} rel={self.relation_type}>"
