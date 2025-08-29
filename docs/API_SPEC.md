@@ -15,6 +15,11 @@ Principles:
 - Bulk edits are asynchronous jobs with status tracking.
 - Derived fields never overwritten by normalization when manual override present.
 
+Scope additions (2025-08-29):
+- Add Units and Parts resources to support tabletop browsing and dual return types (full models + parts/mods)
+- Add linking endpoints: Variant↔Unit, Variant↔Part, Unit↔Part
+- Add combined unit detail endpoint that returns both linked variants and parts
+
 Auth (Future):
 - Initial single-user mode: static API key header X-API-Key.
 - Later: OAuth2 / JWT; roles (admin, curator, viewer).
@@ -93,6 +98,21 @@ Sample response:
 GET /api/v1/variants/{id}
 - Returns full detail (all metadata fields + override map + warnings + audit summary counts).
 - Includes `characters` array when linked: each { character_id, name, aliases, franchise, info_url }.
+
+GET /api/v1/variants/{id}/units
+- Lists Units linked to this Variant (via `variant_unit_link`).
+Response data example:
+```
+{
+	"success": true,
+	"data": {
+		"variant_id": "uuid-1",
+		"units": [
+			{ "unit_id": "u-abc", "unit_key": "intercessors", "name": "Intercessors", "game_system": "w40k", "faction": "adeptus_astartes", "is_primary": true }
+		]
+	}
+}
+```
 
 GET /api/v1/variants/{id}/proxy-candidates
 - Returns list of units the variant can proxy (directly or via loadout kits), with summary of completeness.
@@ -173,6 +193,19 @@ Response returns created rows (id, normalized fields).
 DELETE /api/v1/variants/{id}/proxy-assertions/{assertion_id}
 - Removes granular proxy assertion (soft delete with audit).
 
+POST /api/v1/variants/{id}/unit-links
+```
+{
+	"links": [
+		{ "unit_id": "u-abc", "is_primary": true, "match_method": "manual", "match_confidence": 0.95, "notes": "confirmed" }
+	]
+}
+```
+Response returns created rows (id, normalized fields).
+
+DELETE /api/v1/variants/{id}/unit-links/{link_id}
+- Removes a Variant↔Unit link (soft delete with audit).
+
 PATCH /api/v1/variants/{id}
 Request:
 ```
@@ -193,6 +226,95 @@ DELETE /api/v1/variants/{id}/overrides/{field}
 POST /api/v1/variants/normalize (optional immediate re-run)
 Request: { "variant_ids": ["uuid-1", "uuid-2"], "force": false }
 - Skips fields with overrides.
+
+## 2A. Unit Resources
+Represents a tabletop unit entry normalized from codex YAML (40K/AoS/Heresy).
+
+GET /api/v1/units?filters&cursor=...
+- Filters: system_key=w40k, faction_key=grey_knights, role=troops, category=unit, legal_in_editions__any=10e.
+Response:
+```
+{
+	"success": true,
+	"data": {
+		"results": [ { "id": "u-abc", "key": "intercessors", "name": "Intercessors", "system_key": "w40k", "faction_key": "adeptus_astartes", "role": "troops" } ],
+		"next_cursor": null
+	}
+}
+```
+
+GET /api/v1/units/{id}
+- Returns full unit record including attributes, raw_data, and provenance.
+
+GET /api/v1/units/{id}/variants
+- Lists linked Variants (via `variant_unit_link`). Optional `primary_only=true`.
+
+GET /api/v1/units/{id}/parts
+- Lists explicitly linked compatible/recommended/required Parts (via `unit_part_link`). Optional filters: relation_type, required_slot.
+
+GET /api/v1/units/{id}/bundle
+- Returns a combined view for the Unit: linked variants and parts in one payload.
+Response:
+```
+{
+	"success": true,
+	"data": {
+		"unit": { "id": "u-abc", "key": "intercessors", "name": "Intercessors" },
+		"variants": [ { "id": "v-1", "rel_path": "...", "filename": "...", "is_primary": true } ],
+		"parts": [ { "id": "p-1", "key": "bolt_rifle", "name": "Bolt Rifle", "relation_type": "compatible", "required_slot": "right_hand" } ]
+	}
+}
+```
+
+POST /api/v1/units/{id}/parts
+```
+{
+	"links": [ { "part_id": "p-1", "relation_type": "compatible", "required_slot": "right_hand", "notes": "SM Primaris" } ]
+}
+```
+Response returns created link rows.
+
+DELETE /api/v1/units/{id}/parts/{link_id}
+- Removes a Unit↔Part link (soft delete with audit).
+
+GET /api/v1/factions?system_key=w40k&parent_id=null
+- Lists factions (optionally scoped by system and parent).
+
+GET /api/v1/game-systems
+- Lists available game systems and display names.
+
+## 2B. Part Resources
+Represents modular parts (wargear, bodies, decor) ingested from YAML.
+
+GET /api/v1/parts?filters&cursor=...
+- Filters: system_key=w40k, faction_key=adeptus_astartes, part_type=wargear, category=weapon_ranged, slot=right_hand, available_to__any=space_marines.
+Response:
+```
+{
+	"success": true,
+	"data": {
+		"results": [ { "id": "p-1", "key": "bolt_rifle", "name": "Bolt Rifle", "part_type": "wargear", "slot": "right_hand" } ],
+		"next_cursor": null
+	}
+}
+```
+
+GET /api/v1/parts/{id}
+- Returns full part record including attributes, raw_data, and provenance.
+
+GET /api/v1/parts/{id}/variants
+- Lists Variants linked to this Part (via `variant_part_link`).
+
+POST /api/v1/variants/{id}/parts
+```
+{
+	"links": [ { "part_id": "p-1", "match_method": "token", "match_confidence": 0.9, "notes": "shoulder pad set" } ]
+}
+```
+Response returns created `variant_part_link` rows.
+
+DELETE /api/v1/variants/{id}/parts/{link_id}
+- Removes a Variant↔Part link (soft delete with audit).
 
 ## 3. Bulk Operations
 POST /api/v1/bulk/variants/update
@@ -335,7 +457,8 @@ GET /api/v1/normalize/status/{job_id}
 ## 9. Search (Full-Text / Token)
 GET /api/v1/search?q=archer+forest&limit=50
 - Unified search across canonical names, aliases, residual_tokens, user_tags.
-Response includes hits by type (variant, franchise, designer) with score.
+- Types covered: variant, unit, part, franchise, designer.
+Response includes hits by type with score.
 
 ## 10. Jobs Endpoint (Unified)
 GET /api/v1/jobs?types=bulk_update,normalization_run&status=running
@@ -349,6 +472,8 @@ GET /api/v1/system/versions
 		"api_version": "1.0.0",
 		"token_map_version": 9,
 		"designers_map_version": 1,
+		"codex_units_version": { "w40k": "<hash-or-date>", "aos": "<hash-or-date>", "heresy": "<hash-or-date>" },
+		"parts_vocab_version": { "wargear_w40k": "<hash-or-date>", "bodies_w40k": "<hash-or-date>" },
 		"schema_hash": "abc123def",
 		"build_commit": "<git sha>"
 	}
@@ -386,6 +511,8 @@ GET /api/v1/system/versions
 - GraphQL overlay needed? (Maybe later for complex querying.)
 - Multi-tenant isolation? (Not in scope now.)
 - Delta feed for synchronization beyond audit (e.g., change stream).
+- How should inferred unit↔part compatibility be exposed vs explicit `unit_part_link`? Separate endpoint (`/units/{id}/compatible-parts?inferred=true`) or flag in results?
+- Do we need a `PUT /units/{id}/bundle` edit endpoint to allow atomic link updates for variants and parts in one transaction?
 
 ## 18. Sample OpenAPI Skeleton (Abbreviated)
 ```

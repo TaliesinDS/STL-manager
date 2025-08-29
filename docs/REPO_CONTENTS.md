@@ -12,6 +12,7 @@ This document explains what to keep in this repository, what to exclude, and whe
 - Source code: `stl_manager/` or top-level folders `api/`, `core/`, `db/`, `jobs/`, `cli/`, `services/`, `schemas/`.
 - Vocabulary & normalization maps: `vocab/` (e.g., `tokenmap.md`, `designers_tokenmap.md`).
 - Documentation & planning: `docs/` (including this file) and `README.md`.
+  - Progress log: `docs/PROGRESS.md` (milestones, current sprint, dev log; linked from README)
 - Database schema & migrations: `db/models.py`, `db/migrations/`, `alembic/` (if present).
 - Tests & fixtures: `tests/` (include only tiny fixtures useful for CI).
 - Frontend source: `frontend/` (TypeScript/React/Vite sources).

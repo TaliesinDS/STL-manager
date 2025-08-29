@@ -28,6 +28,8 @@ Scope: End-to-end stack recommendations for STL Manager across phases (P0–P3+)
 
 If/when multi-user or >500k variant scale is reached, Postgres + Redis remain *optional upgrade modules* activated by explicit config; they are **not** part of the minimal one-click bundle.
 
+Note (2025-08-29 alignment): Since rev 1.1 we added tabletop Units + Parts vocab ingestion (40K) and links (Variant↔Unit, Variant↔Part, Unit↔Part). The stack choices below remain valid; a few sections call out these additions explicitly.
+
 ---
 ## High-Level Component Map
 | Domain | Function | Phase Intro | Baseline (Local/Free, No External Service) | Upgrade Path (Optional) | Notes |
@@ -65,8 +67,12 @@ Alternative deferred: Rust or Go for performance-sensitive geometry hashing; onl
 - Use a `Ruleset` dataclass reading vocab manifests + token map with version id (hash for integrity).
 
 ### 3. Vocabulary & Manifests
-- Continue storing in Git (Markdown/JSON). Add a lightweight loader that caches a computed `ruleset_digest` (SHA256) to short-circuit re-normalization when unchanged.
-- Validation script: schema check (JSON Schema) + duplicate alias detection.
+- Continue storing in Git (Markdown/JSON/YAML). Add a lightweight loader that caches a computed `ruleset_digest` (SHA256) to short-circuit re-normalization when unchanged.
+- Validation script: schema check (JSON Schema for JSON manifests) + duplicate alias detection.
+- Tabletop vocab files (Phase 2 gated but present now for ingestion):
+  - Units: `vocab/codex_units_w40k.yaml`, `codex_units_aos.yaml`, `codex_units_horus_heresy.yaml`
+  - Parts (40K first): `vocab/wargear_w40k.yaml`, `vocab/bodies_w40k.yaml`
+- YAML parsing: `ruamel.yaml` round‑trip loader with duplicate key tolerance; preserve full node snapshot in DB `raw_data` fields.
 
 ### 4. Database
 Phase strategy:
@@ -75,6 +81,8 @@ Phase strategy:
 Migration: Alembic migrations written from day one; tests run under both SQLite (fast) and Postgres (CI service container) to catch dialect drift.
 Schema patterns:
 - Core tables: `variant`, `archive`, `vocab_*` (cache of file-based vocab), `override`, `audit_log`, `job`.
+- Tabletop entities: `game_system`, `faction`, `unit`, `unit_alias`, association `variant_unit_link`.
+- Parts entities: `part`, `part_alias`, associations `variant_part_link`, `unit_part_link` (for compatibility/recommendations/requirements).
 - Use surrogate integer/UUID primary keys (UUID v7 library once stable or Postgres `gen_random_uuid()`).
 - Partial index example: GIN on `residual_tokens` for array containment search.
 
@@ -83,6 +91,12 @@ Schema patterns:
 SQLite accessed via SQLAlchemy (sync engine) to avoid event loop complexity early; can switch to async if needed. No external services required.
 Optional SSE endpoint for job progress uses simple generator; no dependency on Redis.
 Rate limiting unnecessary single-user; disabled by default.
+
+Endpoints alignment (see `docs/API_SPEC.md`):
+- Variants (+ overrides, bulk, jobs) as before; plus links: Variant↔Unit and Variant↔Part.
+- Units: list/detail, `.../variants`, `.../parts`, and combined `.../bundle` for the dual-return UI.
+- Parts: list/detail, `.../variants`.
+- Discovery: `game-systems`, `factions`.
 
 ### 6. Background Jobs
 Baseline: In-process thread pool (e.g., `concurrent.futures.ThreadPoolExecutor`) managing a simple SQLite-backed `job` table with state transitions.
@@ -101,6 +115,8 @@ Runtime Distribution: Pre-built static assets (HTML/CSS/JS) placed under `ui_dis
 Styling/Components: Mantine (MIT). All dependencies bundled in build output.
 State/Data: TanStack Query for caching + polling/SSE.
 Auth: Initially single static API key stored in memory; UI exposes a settings modal to change it.
+
+Unit detail UX (tabletop): two-pane view returning both full models and parts/mods.
 
 ### 9. File / Asset Handling
 - Keep raw STL directory read-only for Phase 0/1 (no moving/renaming). Add an abstraction service later if remote store (S3 / MinIO) required.
@@ -253,6 +269,7 @@ mypy
 pytest
 python-dotenv
 alembic            # still useful for migrations even on SQLite
+ruamel.yaml        # YAML loader for units/parts vocab ingestion
 trimesh ; extra == "geometry"
 meshio  ; extra == "geometry"
 ```

@@ -2,7 +2,7 @@
 
 Personal project to inventory and eventually manage a very large 3D model library (STL, OBJ, slicer project files, preview images, nested archives) using conservative, deterministic normalization phases.
 
-Status: Phase 0 (passive inventory & vocabulary design) transitioning toward Phase 1 (deterministic low‑risk normalization).
+Status: Phase 0 (passive inventory & vocabulary design) transitioning toward Phase 1 (deterministic low‑risk normalization). Tabletop Units + Parts (40K-first) YAML ingestion and DB linking are now available for developer use.
 
 Project Constraints (baseline):
 - 100% local, offline-friendly (no required external services / cloud).
@@ -11,6 +11,11 @@ Project Constraints (baseline):
 - Deterministic normalization before any probabilistic / ML features.
 
 See `docs/TECH_STACK_PROPOSAL.md` (rev 1.1) for full architecture rationale.
+
+What’s new (2025‑08‑29):
+- Tabletop vocab ingestion for Units (40K/AoS/Heresy) and Parts (40K wargear + bodies).
+- DB schema supports `game_system`, `faction`, `unit` (+aliases), and `part` (+aliases), with association tables to link Variants ↔ Units and Variants/Units ↔ Parts.
+- See `docs/SCHEMA_codex_and_linking.md` for the schema, and `docs/API_SPEC.md` for endpoints including `GET /units/{id}/bundle` (dual return: full models + parts).
 
 ## Repository Layout (2025-08-16 Restructure)
 
@@ -52,6 +57,11 @@ Upcoming Near Sequence (High-Level):
 5. Introduce audit logging & FTS search facets.
 6. (Optional) PyInstaller single‑EXE packaging.
 7. Geometry hashing (opt‑in) & dedupe suggestions.
+
+Tabletop Units/Parts (now available):
+- YAML SSOT lives under `vocab/` (e.g., `codex_units_w40k.yaml`, `codex_units_aos.yaml`, `codex_units_horus_heresy.yaml`, `wargear_w40k.yaml`, `bodies_w40k.yaml`).
+- Loader script `scripts/load_codex_from_yaml.py` ingests these into the DB (dry‑run by default when no `--commit`).
+- Relationships: `variant_unit_link`, `variant_part_link`, and `unit_part_link` enable filtering by system/faction/unit and returning parts alongside models.
 
 ## Quick Exploratory Token Scan (Planning Aid)
 
@@ -142,6 +152,28 @@ $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
 - `scripts/inspect_db_characters.py` — lists DB tables and prints a small sample of `Character` rows (useful to confirm DB state and STLMGR_DB_URL target).
 - `scripts/debug_franchise_sample.py` — prints a sample franchise JSON snippet to inspect structure when loader parsing fails.
 
+- Tabletop Units/Parts loader — `scripts/load_codex_from_yaml.py`:
+	- Ingests Units (40K/AoS/Heresy) or Parts (40K wargear/bodies) YAML. Stores full-fidelity `raw_data` and normalized fields, idempotent upserts, and (re)creates alias rows.
+	- PowerShell examples (Windows):
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///data/stl_manager_v1.db'
+# Load 40K units
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml
+# Load AoS units
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml
+# Load Horus Heresy units
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml
+# Load 40K wargear + bodies parts
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml
+```
+
+Notes:
+- Default behavior is a safe run that writes nothing unless the loader is implemented with an explicit `--commit` flag; check `scripts/load_codex_from_yaml.py -h` for current flags.
+- Schema and linking details: `docs/SCHEMA_codex_and_linking.md`.
+- API routes for units/parts and combined unit bundle: `docs/API_SPEC.md`.
+
 Notes & safety
 - All loader scripts honor the `STLMGR_DB_URL` environment variable. Example:
 
@@ -153,6 +185,14 @@ $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
 - Deduplication is conservative and runs only within the same franchise by default (normalized name + normalized franchise). Cross-franchise duplicates are not merged unless you opt-in and modify the dedupe policy.
 
 If you'd like, I can add a `--export-duplicates path/to/file.json` option to output all candidate duplicate groups to a JSON file for manual review before committing.
+
+Integrity tests (tabletop basing):
+- A curated test validates `base_profile` placements and structure of the 40K/AoS manifests.
+- Run via VS Code task “Run integrity tests (basing HH)” or directly:
+
+```powershell
+& .\.venv\Scripts\python.exe -m pytest -q tests\test_codex_basing_integrity.py
+```
 
 ## Franchise & Character Matching (Conservative, Dry‑Run First)
 
@@ -299,10 +339,17 @@ Development note: During ad-hoc smoke tests the project may create a temporary d
 
 Nothing is installed globally; deleting the folder removes everything (idempotent local footprint).
 
+## Tabletop Browsing (Developer Preview)
+- After loading units/parts, you can begin linking Variants to Units/Parts via scripts or the future UI.
+- The planned endpoint `GET /api/v1/units/{id}/bundle` returns both linked full models and compatible parts for a selected unit.
+- See `docs/API_SPEC.md` (Units/Parts resources) and `docs/SCHEMA_codex_and_linking.md` for data shapes and example queries.
+
 ## Minimal Runtime Dependencies
 Baseline (Phase 1) runtime requires only the embedded Python environment (or forthcoming single EXE) and SQLite (bundled with Python). Optional extras (only when enabled):
 - Geometry: `trimesh`, `meshio` (installed via extras or included in EXE variant).
 - Postgres / Redis: NOT required; upgrade path only.
+
+YAML parsing: `ruamel.yaml` is included in `requirements.txt` and used by the codex/parts loader to preserve structure and tolerate duplicate keys.
 
 ## Local Configuration (Planned)
 Future `CONFIG.yaml` (or `.env`) will define:
