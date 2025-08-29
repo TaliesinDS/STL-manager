@@ -16,6 +16,14 @@
 #     legends_in_editions: []        # optional, default none
 #     available_to: [faction, ...]   # use same faction keys as in codex_units_w40k.yaml
 #     notes: "optional short note"
+#     # optional: connector metadata for physical fit; preserved to DB under part.attributes.connectors
+#     connectors:
+#       - role: plug           # plug | socket
+#         type: balljoint      # balljoint | peg | tab | magnet | flat
+#         standard_key: titanforge_modular  # freeform standard name
+#         size_mm: 4.0         # nominal size for fit
+#         positions: [right_shoulder]  # logical mount points
+#         system_keys: [w40k, heresy]
 
 wargear:
   # --- Adeptus Astartes (Space Marines) core ---
@@ -27,6 +35,13 @@ wargear:
     legal_in_editions: ["8th", "9th", "10th"]
     available_to: ["space_marines"]
     notes: "Intercessor standard pattern."
+    # Example: declare physical connector standard for modular builds (optional)
+    # connectors:
+    #   - role: plug
+    #     type: balljoint
+    #     standard_key: titanforge_modular
+    #     size_mm: 4.0
+    #     positions: [right_shoulder]
   auto_bolt_rifle:
     name: "Auto Bolt Rifle"
     category: weapon_ranged

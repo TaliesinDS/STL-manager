@@ -93,6 +93,37 @@ Third-party modular parts are modeled as first-class entries so they can be inge
 - `raw_data` JSON full YAML node snapshot
 - `source_file`, `source_anchor`
 
+Connector metadata (lightweight, optional):
+- Store connector/fit details inside `part.attributes.connectors` as an array of objects. No migration needed; loader already preserves unknown keys into `attributes`.
+- Suggested shape (both for plugs on wargear and sockets on bodies):
+	- `role`: `plug` | `socket`
+	- `type`: `balljoint` | `peg` | `tab` | `magnet` | `flat`
+	- `standard_key`: freeform token, e.g., `titanforge_modular`, `gw_primaris_ball_4mm`, `gw_terminator_shoulder_large`
+	- `size_mm`: number (nominal diameter for ball/peg; width for tab)
+	- `tolerance_mm`: number (optional; +/- fit guidance)
+	- `positions`: array of logical mount points, e.g., `left_shoulder`, `right_shoulder`, `neck`, `backpack`, `waist`
+	- `system_keys`: `["w40k", "heresy"]` (optional scope)
+	- `fit_class`: `exact` | `near` | `needs_trim` (optional, curator-added)
+	- `notes`: string (optional)
+
+Example (wargear, plug):
+```
+attributes: {
+	connectors: [
+		{ role: "plug", type: "balljoint", standard_key: "titanforge_modular", size_mm: 4.0, positions: ["right_shoulder"], system_keys: ["w40k","heresy"] }
+	]
+}
+```
+
+Example (body, socket):
+```
+attributes: {
+	connectors: [
+		{ role: "socket", type: "balljoint", standard_key: "titanforge_modular", size_mm: 4.0, positions: ["right_shoulder","left_shoulder"] }
+	]
+}
+```
+
 #### `part_alias`
 - `id` (PK)
 - `part_id` → `part.id`
@@ -143,6 +174,7 @@ Upsert keys:
 ## Linking Variants to Parts
 - Automatic: the matcher can recognize tokens like `shoulder`, `pauldron`, `bolt_rifle`, etc., then insert `(variant_id, part_key)` into `variant_part_link` with `match_method = 'token'` or similar.
 - Manual: UI flow to search `Part` by `name`/`alias` and add a link for ambiguous packs.
+ - Connector-aware inference (future): intersect `plug` on wargear with compatible `socket` on a body by `standard_key`/`type`/`size_mm` to surface likely fits; store explicit assertions in `unit_part_link` or a future `compatibility` table.
 
 ## Linking Units to Parts
 - Seed compatibility tables via curated rules (e.g., Space Marine Intercessors → `bolt_rifle`, `power_pack`, `pauldron_left_*`, purity seals).

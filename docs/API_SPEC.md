@@ -301,6 +301,7 @@ Response:
 
 GET /api/v1/parts/{id}
 - Returns full part record including attributes, raw_data, and provenance.
+	- Connector metadata (optional) is returned under `attributes.connectors` with the shape documented in `SCHEMA_codex_and_linking.md`.
 
 GET /api/v1/parts/{id}/variants
 - Lists Variants linked to this Part (via `variant_part_link`).
