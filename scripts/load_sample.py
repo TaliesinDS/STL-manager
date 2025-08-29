@@ -17,14 +17,54 @@ def load_sample(fixture_path: Path) -> int:
 
     inserted_variants = 0
     inserted_files = 0
+    skipped_root_items = 0
     # Group items by their parent folder (variant rel_path directory)
+    # and skip any files that live directly under the top-level container
+    # folder "sample_store". These are considered loose files/archives and
+    # should not create a Variant nor be inserted as File rows.
     groups: dict[str, list[dict]] = {}
+    IGNORED_LEAF_FOLDERS = {
+        "hands",
+        "supported",
+        "unsupported",
+        "stl",
+        "supported stl",
+        "unsupported stl",
+        "supported_stl",
+        "unsupported_stl",
+        "lys",
+    }
     for it in items:
-        folder = str(Path(it.get("rel_path")).parent)
+        rel = it.get("rel_path") or ""
+        parent = Path(rel).parent
+        # Collapse trivial trailing folders by walking up until a non-trivial parent
+        try:
+            while parent.name.lower() in IGNORED_LEAF_FOLDERS:
+                parent = parent.parent
+        except Exception:
+            pass
+        folder = parent.as_posix()
+        if folder.lower() == "sample_store":
+            skipped_root_items += 1
+            continue
         groups.setdefault(folder, []).append(it)
+
+    # Qualifying model/project extensions (treated as 3D-print files)
+    MODEL_EXTS = {".stl", ".obj", ".3mf", ".gltf", ".glb", ".step", ".stp", ".lys", ".chitubox", ".ctb", ".ztl"}
 
     with get_session() as session:
         for folder, files in groups.items():
+            # Only create a Variant if the folder contains at least one model or archive file
+            has_qualifying = False
+            for f in files:
+                ext = (f.get("extension") or "").lower()
+                if f.get("is_archive", False) or ext in MODEL_EXTS:
+                    has_qualifying = True
+                    break
+            if not has_qualifying:
+                # Skip junk/preview-only folders; do not create a Variant
+                continue
+
             # Create a Variant record for the folder
             first = files[0]
             v = Variant(
@@ -55,6 +95,9 @@ def load_sample(fixture_path: Path) -> int:
                 inserted_files += 1
 
         session.commit()
+
+    if skipped_root_items:
+        print(f"Skipped {skipped_root_items} loose file(s) directly under sample_store (not inserted).")
 
     return inserted_variants, inserted_files
 

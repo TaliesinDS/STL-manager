@@ -1,0 +1,2224 @@
+{
+  "ts": "2025-08-29T19:54:37.834071Z",
+  "apply": false,
+  "limit": 200,
+  "systems": [
+    "w40k",
+    "aos",
+    "heresy"
+  ],
+  "min_score": 12.0,
+  "delta": 3.0,
+  "overwrite": false,
+  "total_variants": 200,
+  "applied": 0,
+  "proposals": [
+    {
+      "variant_id": 1,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 2,
+      "rel_path": "samples\\dragon_01",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 3,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 4,
+      "rel_path": "samples\\dragon_01",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 5,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Campaign\\September",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 6,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 7,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 8,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\STLs",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 9,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 10,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 11,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 12,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 13,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 14,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 15,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 16,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 17,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 18,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 19,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 20,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 21,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 22,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 23,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 24,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 25,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 26,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 27,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 28,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 29,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 30,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 31,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 32,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 33,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 34,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 35,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 36,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 37,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 38,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 40,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 41,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 43,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 44,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 45,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 46,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 47,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 48,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 49,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 50,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 51,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 52,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 53,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 54,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 55,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 56,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 57,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 58,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 59,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 60,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 61,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 62,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 63,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 64,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 65,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 66,
+      "rel_path": "sample_store",
+      "filename": null,
+      "system_hint": "w40k",
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 44,
+          "unit_key": "redemptor_dreadnought",
+          "unit_name": "Redemptor Dreadnought",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 15.1,
+          "via": "redemptor dreadnought"
+        },
+        {
+          "unit_id": 34,
+          "unit_key": "librarian_terminator",
+          "unit_name": "Librarian in Terminator Armour",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 15.0,
+          "via": "terminator librarian"
+        },
+        {
+          "unit_id": 31,
+          "unit_key": "captain_terminator",
+          "unit_name": "Captain in Terminator Armour",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 14.8,
+          "via": "terminator captain"
+        },
+        {
+          "unit_id": 172,
+          "unit_key": "psychomancer",
+          "unit_name": "Psychomancer",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 14.2,
+          "via": "psychomancer"
+        },
+        {
+          "unit_id": 43,
+          "unit_key": "dreadnought",
+          "unit_name": "Dreadnought",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 14.1,
+          "via": "dreadnought"
+        }
+      ]
+    },
+    {
+      "variant_id": 67,
+      "rel_path": "sample_store\\60e73ad2721a1_special-lord-of-battle-1",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 68,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW\\KLK",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 69,
+      "rel_path": "sample_store\\[Gaz minis] Ryuko Matoi +NSFW",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 70,
+      "rel_path": "sample_store\\_Blood Angels Terminator Assault Squad",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 17,
+          "unit_key": "terminator_assault_squad",
+          "unit_name": "Terminator Assault Squad",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 12.4,
+          "via": "terminator assault squad"
+        },
+        {
+          "unit_id": 15,
+          "unit_key": "assault_squad",
+          "unit_name": "Assault Squad",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 11.3,
+          "via": "assault squad"
+        },
+        {
+          "unit_id": 765,
+          "unit_key": "assault_squad",
+          "unit_name": "Assault Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 11.3,
+          "via": "assault squad"
+        },
+        {
+          "unit_id": 879,
+          "unit_key": "legion_assault_squad",
+          "unit_name": "Legion Assault Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 11.3,
+          "via": "assault squad"
+        },
+        {
+          "unit_id": 6,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 11.0,
+          "via": "terminator"
+        }
+      ]
+    },
+    {
+      "variant_id": 71,
+      "rel_path": "sample_store\\_Sanguinius\\Primarca Angeles Sangrientos.Sanguinius v01",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 72,
+      "rel_path": "sample_store\\august release\\Presupported\\CG",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 73,
+      "rel_path": "sample_store\\august release\\Presupported\\Chariot",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 74,
+      "rel_path": "sample_store\\august release\\Presupported\\Druid",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 75,
+      "rel_path": "sample_store\\august release\\Presupported\\Heroine",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 76,
+      "rel_path": "sample_store\\august release\\Presupported\\Regiment",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 77,
+      "rel_path": "sample_store\\Azerama - Adult Toph",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 78,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_Presupported_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 79,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\Toph_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 80,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophBigBaseAndAlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 81,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_BuilPlate192x120mm_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 82,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_CutVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 83,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\NSFW\\TophNSFW_UncutVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 84,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_BuilPlate192x120mm_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 85,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_CutVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 86,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_Presupported_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 87,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_UncutVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 88,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\Toph_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 89,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\SFW\\TophBigBaseAndAlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 90,
+      "rel_path": "sample_store\\Azerama - Adult Toph\\TophNSFWRenders",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 91,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\01AhkoNSFW_SplitVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 92,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\02AhkoNSFW_PreSupportedSTL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 93,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\03AhkoNSFW_ChituboxBuilPlateM_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 94,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\04AhkoNSFW_NonSplitVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 95,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\05AhkoNSFW_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 96,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\06AhkoNSFW_Renders_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 97,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_NSFW_Azerama\\07Ahko_AlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 98,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\01AhkoNurse_SplitVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 99,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\02AhkoNurse_PreSupportedSTL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 100,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\03AhkoNurse_ChituboxBuilPlateM_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 101,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\04AhkoNurse_NonSplitVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 102,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\05AhkoNurse_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 103,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\06AhkoNurse_Renders_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 104,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Nurse_Azerama\\07Ahko_AlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 105,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\01AhkoQueen_SplitVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 106,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\02AhkoQueen_PreSupportedSTL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 107,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\03AhkoQueen_ChituboxBuilPlateM_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 108,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\04AhkoQueen_NonSplitVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 109,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\05AhkoQueen_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 110,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\06AhkoQueen_Renders_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 111,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Queen_Azerama\\07Ahko_AlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 112,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\01AhkoSkirt_SplitVersion_STL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 113,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\02AhkoSkirt_PreSupportedSTL_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 114,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\03AhkoSkirt_ChituboxBuilPlateM_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 115,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\04AhkoSkirt_NonSplitVersion_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 116,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\05AhkoSkirt_ZbrushZtool_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 117,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\06AhkoSkirt_Renders_Azerama",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 118,
+      "rel_path": "sample_store\\Azerama - Ahko (+NSFW)\\Ahko_Skirt_Azerama\\07AhkoSkirt_AlternativePieces",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 119,
+      "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\nsfw",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 120,
+      "rel_path": "sample_store\\azerama - himeko toga - my hero acadamia\\sfw",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 121,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\25mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 122,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\30mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 123,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\40mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 124,
+      "rel_path": "sample_store\\Bases - Heroes Infinite - Wizard's Guild\\50mm",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 125,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 126,
+      "rel_path": "sample_store\\Bayard revenge (primaris killing ork, BT version + normal)\\marta_PunkGirl\\boi-kills-orc\\Presupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 127,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 128,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 129,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 130,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 131,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 132,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 133,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 134,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Bases",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 135,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Greater Demoness",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 136,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Kitbash",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 137,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Mistress",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 138,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Prince",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 139,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Prince\\Prince_stl_supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 140,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Siren",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 141,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 142,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D\\1-6scale Nami CA3D\\Nami",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 143,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS\\Base_Sup",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 144,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 145,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Base_Sup",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 146,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL\\Nami_Sup",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 147,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-6scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 148,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D\\Base",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 149,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale Nami CA3D\\1-9scale Nami CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 150,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\1-9scale uncut Nami CA3D\\1-9scale uncut Nami CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 151,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\images",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 152,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami\\PremModels",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 153,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 154,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 155,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami CA3D Pre Supported\\1-6scale Nami CA3D Pre Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 156,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 157,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 158,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 159,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 160,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 161,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami (+NSFW)\\images",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 162,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-6 scale Nami NSFW CA3D\\1-6 scale Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 163,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale Nami NSFW CA3D\\1-9 scale Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 164,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version\\1-9 scale uncut Nami NSFW CA3D\\1-9 scale uncut Nami NSFW CA3D",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 165,
+      "rel_path": "sample_store\\Ca 3d Studios - Nami NSFW Version",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 166,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 167,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025\\IMG",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 168,
+      "rel_path": "sample_store\\E.S Monster - Poison Ivy March 2025\\MINI",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 169,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vaal-Kan the Firstborn",
+      "filename": null,
+      "system_hint": null,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 170,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1823,
+          "unit_key": "abhorrant_archregent",
+          "unit_name": "Abhorrant Archregent",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant archregent"
+        },
+        {
+          "unit_id": 96,
+          "unit_key": "company_champion",
+          "unit_name": "Company Champion",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 10.8,
+          "via": "champion"
+        }
+      ]
+    },
+    {
+      "variant_id": 171,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1823,
+          "unit_key": "abhorrant_archregent",
+          "unit_name": "Abhorrant Archregent",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant archregent"
+        },
+        {
+          "unit_id": 96,
+          "unit_key": "company_champion",
+          "unit_name": "Company Champion",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 10.8,
+          "via": "champion"
+        }
+      ]
+    },
+    {
+      "variant_id": 172,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1823,
+          "unit_key": "abhorrant_archregent",
+          "unit_name": "Abhorrant Archregent",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant archregent"
+        },
+        {
+          "unit_id": 96,
+          "unit_key": "company_champion",
+          "unit_name": "Company Champion",
+          "system_key": "w40k",
+          "faction_key": null,
+          "score": 10.8,
+          "via": "champion"
+        }
+      ]
+    },
+    {
+      "variant_id": 173,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes\\Blagomir The silent",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 174,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes_ supported\\Blagomir The silent",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 175,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 176,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported\\Hands",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 177,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 178,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported\\Hands",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 179,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 180,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir on Bloodhunter Dire Bat",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 181,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir the Bonelord",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 182,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 183,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 184,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant ghoul king"
+        },
+        {
+          "unit_id": 1824,
+          "unit_key": "abhorrant_ghoul_king",
+          "unit_name": "Abhorrant Ghoul King",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "ghoul king"
+        }
+      ]
+    },
+    {
+      "variant_id": 185,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrent Gorewarden\\Abhorrant Gorewarden",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1825,
+          "unit_key": "abhorrant_gorewarden",
+          "unit_name": "Abhorrant Gorewarden",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "abhorrant gorewarden"
+        },
+        {
+          "unit_id": 1825,
+          "unit_key": "abhorrant_gorewarden",
+          "unit_name": "Abhorrant Gorewarden",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "gorewarden"
+        }
+      ]
+    },
+    {
+      "variant_id": 186,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Charnel Throne",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 187,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "crypt ghast courtier"
+        },
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.4,
+          "via": "ghast courtier"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.2,
+          "via": "crypt ghouls"
+        },
+        {
+          "unit_id": 1839,
+          "unit_key": "cryptguard",
+          "unit_name": "Cryptguard",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "cryptguard"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 10.6,
+          "via": "ghouls"
+        }
+      ]
+    },
+    {
+      "variant_id": 188,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "crypt ghast courtier"
+        },
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.4,
+          "via": "ghast courtier"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.2,
+          "via": "crypt ghouls"
+        },
+        {
+          "unit_id": 1839,
+          "unit_key": "cryptguard",
+          "unit_name": "Cryptguard",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "cryptguard"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 10.6,
+          "via": "ghouls"
+        }
+      ]
+    },
+    {
+      "variant_id": 189,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.0,
+          "via": "crypt ghast courtier"
+        },
+        {
+          "unit_id": 1828,
+          "unit_key": "crypt_ghast_courtier",
+          "unit_name": "Crypt Ghast Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.4,
+          "via": "ghast courtier"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.2,
+          "via": "crypt ghouls"
+        },
+        {
+          "unit_id": 1839,
+          "unit_key": "cryptguard",
+          "unit_name": "Cryptguard",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.0,
+          "via": "cryptguard"
+        },
+        {
+          "unit_id": 1836,
+          "unit_key": "crypt_ghouls",
+          "unit_name": "Crypt Ghouls",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 10.6,
+          "via": "ghouls"
+        }
+      ]
+    },
+    {
+      "variant_id": 190,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.2,
+          "via": "crypt haunter courtier"
+        },
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.6,
+          "via": "haunter courtier"
+        },
+        {
+          "unit_id": 1837,
+          "unit_key": "crypt_horrors",
+          "unit_name": "Crypt Horrors",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.3,
+          "via": "crypt horrors"
+        }
+      ]
+    },
+    {
+      "variant_id": 191,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.2,
+          "via": "crypt haunter courtier"
+        },
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.6,
+          "via": "haunter courtier"
+        },
+        {
+          "unit_id": 1837,
+          "unit_key": "crypt_horrors",
+          "unit_name": "Crypt Horrors",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.3,
+          "via": "crypt horrors"
+        }
+      ]
+    },
+    {
+      "variant_id": 192,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.2,
+          "via": "crypt haunter courtier"
+        },
+        {
+          "unit_id": 1829,
+          "unit_key": "crypt_haunter_courtier",
+          "unit_name": "Crypt Haunter Courtier",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.6,
+          "via": "haunter courtier"
+        },
+        {
+          "unit_id": 1837,
+          "unit_key": "crypt_horrors",
+          "unit_name": "Crypt Horrors",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 11.3,
+          "via": "crypt horrors"
+        }
+      ]
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": [
+        {
+          "unit_id": 1834,
+          "unit_key": "grand_justice_gormayne",
+          "unit_name": "Grand Justice Gormayne",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 12.2,
+          "via": "grand justice gormayne"
+        },
+        {
+          "unit_id": 1834,
+          "unit_key": "grand_justice_gormayne",
+          "unit_name": "Grand Justice Gormayne",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 10.8,
+          "via": "gormayne"
+        }
+      ]
+    },
+    {
+      "variant_id": 194,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Modern Fantasy Vampire Riders",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 195,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 196,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 197,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 198,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL\\Combined",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 199,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 200,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    }
+  ]
+}

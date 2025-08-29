@@ -32,6 +32,13 @@ def build_inventory(root: Path) -> list[dict]:
     for p in sorted(root.rglob('*')):
         if p.is_dir():
             continue
+        # Skip files located directly under the top-level sample_store root
+        # (we only want to inventory files inside subfolders for now)
+        try:
+            if p.parent.resolve() == root:
+                continue
+        except Exception:
+            pass
         rel = p.relative_to(Path(__file__).resolve().parent.parent)
         items.append({
             "rel_path": str(rel).replace('\\\\', '/'),

@@ -84,6 +84,20 @@ $env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
 & .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py --yaml
 ```
 
+Match variants to Units (dry-run first):
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
+# Dry-run: writes JSON proposals to reports/ (default file name includes timestamp)
+& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --limit 200 --systems w40k aos heresy --min-score 12 --delta 3
+
+# Apply after reviewing proposals (populate Variant fields and create VariantUnitLink)
+& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --apply --systems w40k aos heresy --min-score 12 --delta 3
+
+# Overwrite existing assignments if needed
+& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --apply --overwrite --systems w40k aos heresy
+```
+
 ## Quick Exploratory Token Scan (Planning Aid)
 
 Added `scripts/quick_scan.py` to surface high-frequency filename tokens and highlight potential new metadata dimensions you might have overlooked (designers, factions, scale denominators, lineage families, variant cues).

@@ -300,9 +300,16 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
         seen.add(t)
         out.append(t)
 
+    # Guard: if this variant is the top-level container (e.g., 'sample_store'),
+    # do not include tokens from associated files. Historically, loose files
+    # under the root were lumped into a single variant; we treat the container
+    # as non-variant and avoid aggregating its child file tokens.
+    if (variant.rel_path or '').strip().lower() == 'sample_store':
+        return out
+
     # Only include tokens from associated files when they reasonably belong
     # to the same variant. Skip common preview/archive extensions.
-    MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb'}
+    MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb', '.ztl', '.step', '.stp', '.lys', '.chitubox', '.ctb'}
     for f in getattr(variant, "files", []):
         fname = (f.filename or "")
         frel = (f.rel_path or "")

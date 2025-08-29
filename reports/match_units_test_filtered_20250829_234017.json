@@ -1,0 +1,1234 @@
+{
+  "ts": "2025-08-29T21:40:51.013709Z",
+  "apply": false,
+  "limit": 200,
+  "systems": null,
+  "min_score": 12.0,
+  "delta": 3.0,
+  "overwrite": false,
+  "exclude_path_equals": [
+    "sample_store"
+  ],
+  "total_variants": 200,
+  "applied": 0,
+  "skipped_nonwarhammer": 96,
+  "skipped_containers": 0,
+  "proposals": [
+    {
+      "variant_id": 1,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 3,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 5,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Campaign\\September",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 6,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 7,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 8,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\STLs",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 9,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 10,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 11,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 12,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 13,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 14,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 15,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 16,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 17,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 18,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 19,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 20,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 21,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 22,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 23,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 24,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 25,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 26,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 27,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 28,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 29,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 30,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 31,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 32,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 33,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 34,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 35,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 36,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 37,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 38,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 40,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 41,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 43,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 44,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 45,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 46,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 47,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 48,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 49,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 50,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 51,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 52,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 53,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 54,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 55,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 56,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 57,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 58,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 59,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 60,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 61,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 62,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 63,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 64,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 65,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 67,
+      "rel_path": "sample_store\\60e73ad2721a1_special-lord-of-battle-1",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 70,
+      "rel_path": "sample_store\\_Blood Angels Terminator Assault Squad",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": "blood_angels",
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 17,
+        "unit_key": "terminator_assault_squad",
+        "unit_name": "Terminator Assault Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 12.4,
+        "via": "terminator assault squad"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 71,
+      "rel_path": "sample_store\\_Sanguinius\\Primarca Angeles Sangrientos.Sanguinius v01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 127,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 128,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 129,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 130,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 131,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 132,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 133,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 136,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Kitbash",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 169,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vaal-Kan the Firstborn",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 170,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 171,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 172,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 175,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 177,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 179,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 180,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir on Bloodhunter Dire Bat",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 181,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir the Bonelord",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 182,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 183,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 184,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1824,
+        "unit_key": "abhorrant_ghoul_king",
+        "unit_name": "Abhorrant Ghoul King",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant ghoul king"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 185,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrent Gorewarden\\Abhorrant Gorewarden",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1825,
+        "unit_key": "abhorrant_gorewarden",
+        "unit_name": "Abhorrant Gorewarden",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "abhorrant gorewarden"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 186,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Charnel Throne",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 187,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1828,
+        "unit_key": "crypt_ghast_courtier",
+        "unit_name": "Crypt Ghast Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "crypt ghast courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 188,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1828,
+        "unit_key": "crypt_ghast_courtier",
+        "unit_name": "Crypt Ghast Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "crypt ghast courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 189,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1828,
+        "unit_key": "crypt_ghast_courtier",
+        "unit_name": "Crypt Ghast Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.0,
+        "via": "crypt ghast courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 190,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1829,
+        "unit_key": "crypt_haunter_courtier",
+        "unit_name": "Crypt Haunter Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.2,
+        "via": "crypt haunter courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 191,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1829,
+        "unit_key": "crypt_haunter_courtier",
+        "unit_name": "Crypt Haunter Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.2,
+        "via": "crypt haunter courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 192,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1829,
+        "unit_key": "crypt_haunter_courtier",
+        "unit_name": "Crypt Haunter Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.2,
+        "via": "crypt haunter courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1834,
+        "unit_key": "grand_justice_gormayne",
+        "unit_name": "Grand Justice Gormayne",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.2,
+        "via": "grand justice gormayne"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 194,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Modern Fantasy Vampire Riders",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 195,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 196,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 197,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 198,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL\\Combined",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 199,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 200,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 201,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 203,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Ushoran, Mortarch of Delusion",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "accepted": {
+        "unit_id": 1835,
+        "unit_key": "ushoran_mortarch_of_delusion",
+        "unit_name": "Ushoran, Mortarch of Delusion",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 12.8,
+        "via": "ushoran mortarch of delusion"
+      },
+      "ambiguous": []
+    }
+  ]
+}

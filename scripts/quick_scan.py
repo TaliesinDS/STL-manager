@@ -161,7 +161,7 @@ def tokenize(path: pathlib.Path) -> list[str]:
     s = s.replace('\\', '/')
     comps = [c for c in s.split('/') if c]
     tokens: list[str] = []
-    KNOWN_EXTS = {"stl","obj","3mf","gltf","glb","lys","chitubox","ctb","step","zip","rar","7z","cbz","cbr","png","jpg","jpeg","webp","pdf","txt"}
+    KNOWN_EXTS = {"stl","obj","3mf","gltf","glb","lys","chitubox","ctb","step","ztl","zip","rar","7z","cbz","cbr","png","jpg","jpeg","webp","pdf","txt"}
     for comp in comps:
         # Remove file extension only when the dot denotes a likely extension (e.g., file.ext)
         if '.' in comp:

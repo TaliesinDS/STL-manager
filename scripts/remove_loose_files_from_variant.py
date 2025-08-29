@@ -32,7 +32,7 @@ from db.models import Variant, File
 from scripts.quick_scan import tokenize
 
 
-MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb'}
+MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb', '.ztl', '.step', '.stp', '.lys', '.chitubox', '.ctb'}
 
 
 def should_detach_file(variant: Variant, f: File, base_tokens: List[str]) -> bool:
