@@ -21,6 +21,11 @@ For each model archive or directory leaf (candidate record):
 
 Token source string: join of relevant path segments plus (optionally) filename stems (without extension) if leaf folder name is overly generic (e.g., "files"). Phase 1: folder names only.
 
+YAML SSOT (Tabletop Units & Parts):
+- External vocab under `vocab/` defines canonical Units (40K/AoS/Heresy) and Parts (wargear, bodies) using a nested schema.
+- A dedicated loader (`scripts/load_codex_from_yaml.py`) ingests those manifests into normalized tables (`game_system`, `faction`, `unit`, `unit_alias`, `part`, `part_alias`) and preserves full-fidelity `raw_data`.
+- The normalization/matching passes may use these tables as authoritative lookup for tabletop context and to create `variant_unit_link` / `variant_part_link` associations.
+
 ---
 ## 2. Preprocessing
 1. Lowercase.

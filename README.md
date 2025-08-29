@@ -16,6 +16,7 @@ What’s new (2025‑08‑29):
 - Tabletop vocab ingestion for Units (40K/AoS/Heresy) and Parts (40K wargear + bodies).
 - DB schema supports `game_system`, `faction`, `unit` (+aliases), and `part` (+aliases), with association tables to link Variants ↔ Units and Variants/Units ↔ Parts.
 - See `docs/SCHEMA_codex_and_linking.md` for the schema, and `docs/API_SPEC.md` for endpoints including `GET /units/{id}/bundle` (dual return: full models + parts).
+ - Loader supports nested YAML schemas under `codex_units.<system>` including AoS grand alliances and Heresy legions, plus AoS faction-level and shared special sections (endless spells, invocations, terrain, regiments of renown).
 
 ## Repository Layout (2025-08-16 Restructure)
 
@@ -62,6 +63,26 @@ Tabletop Units/Parts (now available):
 - YAML SSOT lives under `vocab/` (e.g., `codex_units_w40k.yaml`, `codex_units_aos.yaml`, `codex_units_horus_heresy.yaml`, `wargear_w40k.yaml`, `bodies_w40k.yaml`).
 - Loader script `scripts/load_codex_from_yaml.py` ingests these into the DB (dry‑run by default when no `--commit`).
 - Relationships: `variant_unit_link`, `variant_part_link`, and `unit_part_link` enable filtering by system/faction/unit and returning parts alongside models.
+ - PowerShell examples (Windows):
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --system aos --commit
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --system heresy --commit
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --commit
+```
+
+Quick verification helper:
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
+# DB-only counts
+& .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py
+# Compare DB counts vs YAML (AoS is approximate due to list/dict schema)
+& .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py --yaml
+```
 
 ## Quick Exploratory Token Scan (Planning Aid)
 

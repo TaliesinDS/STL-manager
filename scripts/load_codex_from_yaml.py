@@ -189,7 +189,7 @@ def main() -> None:
                 session.add(PartAlias(part_id=p.id, alias=a))
             return p
 
-        # Detect which schema to ingest: codex units vs parts
+    # Detect which schema to ingest: codex units vs parts
         is_parts_wargear = isinstance(data.get("wargear"), dict)
         is_parts_bodies = isinstance(data.get("bodies"), dict)
 
@@ -237,8 +237,33 @@ def main() -> None:
 
         else:
             # Units ingestion
-            # The YAML schemas differ slightly per file; we expect a top-level 'factions' object for 40K/AoS
-            factions_obj = data.get("factions") or {}
+            # Support two schemas:
+            #  1) Flat schema (top-level contains 'factions' and optionally 'units')
+            #  2) Nested schema under 'codex_units' with system-specific key, e.g., codex_units.warhammer_40k
+
+            units_root = data
+            # If nested codex_units schema detected, pivot into it
+            if isinstance(data.get("codex_units"), dict):
+                sys_branch_map = {
+                    "w40k": "warhammer_40k",
+                    "aos": "age_of_sigmar",
+                    "heresy": "horus_heresy",
+                    "old_world": "old_world",
+                }
+                preferred_key = sys_branch_map.get(sys_key)
+                branch = None
+                if preferred_key and isinstance(data["codex_units"].get(preferred_key), dict):
+                    branch = data["codex_units"][preferred_key]
+                else:
+                    # Fallback: if only one branch exists, take it
+                    branches = [v for v in data["codex_units"].values() if isinstance(v, dict)]
+                    if len(branches) == 1:
+                        branch = branches[0]
+                if branch is not None:
+                    units_root = branch
+
+            # The YAML schemas differ slightly per file; normally we expect a 'factions' object
+            factions_obj = units_root.get("factions") or {}
 
             def handle_units(faction_key: Optional[str], faction_name: Optional[str], units_obj: Dict[str, Any], source_anchor: Optional[str] = None, parent: Optional[Faction] = None, force_category: Optional[str] = None) -> None:
                 faction: Optional[Faction] = None
@@ -251,7 +276,9 @@ def main() -> None:
                     unique_flag = bool(u_node.get("unique", False))
                     aliases = list(u_node.get("aliases", []) or [])
                     legal = list(u_node.get("legal_in_editions", []) or [])
-                    available_to = dict(u_node.get("available_to", {}) or {})
+                    # available_to may be a list (e.g., ["space_marines/*"]) or a dict by system; store as-is
+                    at_raw = u_node.get("available_to")
+                    available_to = at_raw if at_raw is not None else {}
                     base_profile = u_node.get("base_profile") or u_node.get("base_profile_key")
                     category = force_category or u_node.get("category") or "unit"
                     # Everything not part of the core columns becomes attributes
@@ -262,9 +289,12 @@ def main() -> None:
                                 source_file=str(yaml_path.as_posix()), source_anchor=source_anchor,
                                 category=category, attributes=extra_attrs, raw_data=u_node)
 
-            # 40K/AoS top-level: factions: { key: { name, units, subfactions? } }
+            # If the schema provided factions, register them (and their children) for reference
+            # 40K/AoS top-level: factions: { key: { name, units, subfactions?/chapters/... } }
             for f_key, f in factions_obj.items():
                 f_name = f.get("name") or f_key.replace("_", " ").title()
+                # Ensure the top-level faction exists even if it has no direct 'units' block
+                parent_top = upsert_faction(session, system, f_key, f_name)
                 # units directly under faction
                 if isinstance(f.get("units"), dict):
                     handle_units(f_key, f_name, f.get("units"), source_anchor=f"factions.{f_key}.units")
@@ -282,7 +312,7 @@ def main() -> None:
 
                 # subfactions or chapters etc.
                 # For 40K we may have `chapters` or similar keys under available_to; here we look for nested structures named consistently
-                for subkey in ("subfactions", "chapters", "orders", "septs", "dynasties", "hives", "temples"):
+                for subkey in ("subfactions", "chapters", "orders", "septs", "dynasties", "hives", "temples", "legions"):
                     if isinstance(f.get(subkey), dict):
                         for sf_key, sf in f[subkey].items():
                             sf_name = sf.get("name") or sf_key.replace("_", " ").title()
@@ -290,6 +320,104 @@ def main() -> None:
                             subf = upsert_faction(session, system, sf_key, sf_name, parent=parent)
                             if isinstance(sf.get("units"), dict):
                                 handle_units(sf_key, sf_name, sf.get("units"), source_anchor=f"factions.{f_key}.{subkey}.{sf_key}.units", parent=parent)
+
+            # Some schemas (like w40k codex_units) keep a top-level 'units' block not nested under factions
+            top_units = units_root.get("units")
+            if isinstance(top_units, dict):
+                handle_units(None, None, top_units, source_anchor="units")
+
+            # AoS: grand alliances structure (Order/Chaos/Death/Destruction)
+            if isinstance(units_root.get("grand_alliances"), dict):
+                editions = []
+                try:
+                    editions = list((units_root.get("meta", {}) or {}).get("editions", []) or [])
+                except Exception:
+                    editions = []
+
+                role_by_unit_type = {
+                    "leaders": "leader",
+                    "battleline": "battleline",
+                    "infantry": "infantry",
+                    "cavalry": "cavalry",
+                    "monsters": "monster",
+                    "behemoths": "behemoth",
+                    "artillery": "artillery",
+                    "chariots": "chariot",
+                    "swarms": "swarm",
+                }
+
+                for ga_name, ga in units_root["grand_alliances"].items():
+                    # grand alliance as a top-level faction node for hierarchy convenience
+                    ga_key = str(ga_name).strip().lower()
+                    ga_parent = upsert_faction(session, system, ga_key, ga_name)
+                    factions_map = (ga or {}).get("factions") or {}
+                    for fac_key, fac_node in factions_map.items():
+                        fac_name = fac_node.get("display_name") or fac_key.replace("_", " ").title()
+                        # ensure faction exists under the GA parent
+                        _fac = upsert_faction(session, system, fac_key, fac_name, parent=ga_parent)
+                        unit_types = (fac_node or {}).get("unit_types") or {}
+                        for utype, entries in unit_types.items():
+                            # Normalize to dict of unit_key -> node
+                            norm: Dict[str, Any] = {}
+                            if isinstance(entries, dict):
+                                norm = entries
+                            elif isinstance(entries, list):
+                                # list of unit ids -> default node using meta.editions and derived role
+                                for uid in entries:
+                                    if not isinstance(uid, str):
+                                        continue
+                                    norm[uid] = {
+                                        "name": uid.replace("_", " ").title(),
+                                        "role": role_by_unit_type.get(utype),
+                                        "legal_in_editions": editions,
+                                        "available_to": [f"{ga_key}/{fac_key}"],
+                                    }
+                            if norm:
+                                handle_units(
+                                    fac_key,
+                                    fac_name,
+                                    norm,
+                                    source_anchor=f"grand_alliances.{ga_name}.factions.{fac_key}.unit_types.{utype}",
+                                    parent=ga_parent,
+                                )
+
+                        # AoS faction-level special sections under a faction (e.g., endless_spells, invocations, warscroll_terrain)
+                        fac_special_map = {
+                            "endless_spells": "endless_spell",
+                            "manifestations": "manifestation",
+                            "invocations": "invocation",
+                            "warscroll_terrain": "terrain",
+                        }
+                        for sect, cat in fac_special_map.items():
+                            val = fac_node.get(sect)
+                            if isinstance(val, dict):
+                                handle_units(
+                                    fac_key,
+                                    fac_name,
+                                    val,
+                                    source_anchor=f"grand_alliances.{ga_name}.factions.{fac_key}.{sect}",
+                                    parent=ga_parent,
+                                    force_category=cat,
+                                )
+                            elif isinstance(val, list):
+                                conv: Dict[str, Any] = {}
+                                for item in val:
+                                    if isinstance(item, str):
+                                        conv[item] = {"name": item.replace("_", " ").title()}
+                                    elif isinstance(item, dict):
+                                        kid = item.get("id") or item.get("key")
+                                        if not kid:
+                                            continue
+                                        conv[kid] = dict(item)
+                                if conv:
+                                    handle_units(
+                                        fac_key,
+                                        fac_name,
+                                        conv,
+                                        source_anchor=f"grand_alliances.{ga_name}.factions.{fac_key}.{sect}",
+                                        parent=ga_parent,
+                                        force_category=cat,
+                                    )
 
             # AoS: top-level shared sections (e.g., shared_endless_spells, regiments_of_renown)
             top_special_map = {
@@ -300,9 +428,24 @@ def main() -> None:
                 "shared_terrain": "terrain",
             }
             for sect, cat in top_special_map.items():
-                if isinstance(data.get(sect), dict):
+                # Look under the selected units_root (works for both flat and nested schemas)
+                val = units_root.get(sect)
+                if isinstance(val, dict):
                     # No faction context; treat as cross-faction. faction=None, but category set.
-                    handle_units(None, None, data.get(sect), source_anchor=sect, force_category=cat)
+                    handle_units(None, None, val, source_anchor=sect, force_category=cat)
+                elif isinstance(val, list):
+                    # Convert list of maps with id/name into dict form
+                    conv: Dict[str, Any] = {}
+                    for item in val:
+                        if isinstance(item, str):
+                            conv[item] = {"name": item.replace("_", " ").title()}
+                        elif isinstance(item, dict):
+                            kid = item.get("id") or item.get("key")
+                            if not kid:
+                                continue
+                            conv[kid] = dict(item)
+                    if conv:
+                        handle_units(None, None, conv, source_anchor=sect, force_category=cat)
 
         if args.commit:
             session.commit()

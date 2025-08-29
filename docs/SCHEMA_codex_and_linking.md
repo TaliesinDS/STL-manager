@@ -148,13 +148,54 @@ Purpose: lets the normalizer mark a scanned variant as a part package (e.g., "Ul
 
 Purpose: expresses compatibility or recommendations so the unit detail view can list relevant parts/mods alongside full models.
 
+## Supported YAML Schemas and Sections (Units)
+
+The loader accepts both flat and nested SSOT schemas and adapts per system:
+
+- Warhammer 40,000 (W40K)
+	- Root: `codex_units.warhammer_40k`
+	- Ingests:
+		- Top-level `units`
+		- `factions.{faction}.units`
+		- Known nested subkeys under a faction: `subfactions`, `chapters`, `orders`, `septs`, `dynasties`, `hives`, `temples`
+	- `available_to` can be a dict (chapter-gated) or list (wildcards like `"space_marines/*"`).
+
+- Horus Heresy (30K)
+	- Root: `codex_units.warhammer_30k`
+	- Ingests:
+		- Top-level `units`
+		- `factions` including a `legions` subkey (recognized like other nested subkeys)
+	- Factions are upserted even if they don’t list `units` directly (to preserve hierarchy).
+
+- Age of Sigmar (AoS)
+	- Root: `codex_units.age_of_sigmar`
+	- Ingests:
+		- `grand_alliances.{GA}.factions.{faction}.unit_types.{leaders|battleline|...}`
+			(both dict- and list-style entries are supported; list entries derive `name`, `role`, and `legal_in_editions` from `meta.editions`)
+		- Faction-level special sections (imported as `unit` rows with `category`):
+			- `endless_spells` → `endless_spell`
+			- `manifestations` → `manifestation`
+			- `invocations` → `invocation`
+			- `warscroll_terrain` → `terrain`
+		- Top-level shared sections (cross-faction; no `faction_id`):
+			- `shared_endless_spells` → `endless_spell`
+			- `regiments_of_renown` → `regiment`
+			- `shared_manifestations` → `manifestation`
+			- `shared_invocations` → `invocation`
+			- `shared_terrain` → `terrain`
+
+Notes:
+- Every ingested unit preserves the full YAML node in `unit.raw_data` and non-core fields in `unit.attributes`.
+- `unit_alias` rows are rebuilt on each run based on `unit.aliases`.
+
 ## Minimal Loader Flow
 1. Parse YAML (ruamel.yaml already in requirements).
-2. Upsert `game_system` rows for `w40k`, `aos`, `heresy`.
-3. If the file is a units manifest (has top-level `factions:`), then:
-	- Upsert `faction` hierarchy
-	- Upsert `unit` rows with `attributes` + `raw_data`
-	- Rebuild `unit_alias` rows
+2. Upsert `game_system` rows for `w40k`, `aos`, `heresy`, `old_world` (if used).
+3. Units manifests:
+	- Detect schema branch: nested under `codex_units.<system_branch>` (preferred) or flat with top-level `factions`/`units`.
+	- Upsert `faction` hierarchy from `factions` (including nested `subfactions/chapters/orders/septs/dynasties/hives/temples/legions`).
+	- AoS: traverse `grand_alliances → factions → unit_types` and ingest entries; include faction-level and top-level special sections as `unit` rows with appropriate `category`.
+	- Upsert `unit` rows (store `attributes` + `raw_data`) and rebuild `unit_alias` rows.
 4. If the file is a parts manifest:
 	- `wargear_w40k.yaml`: iterate `wargear:` mapping → upsert `part` with `part_type = 'wargear'`, `category`, `slot`, `aliases`, `available_to`, and snapshots
 	- `bodies_w40k.yaml`: iterate `bodies:` mapping → upsert `part` with `part_type = 'body'`, `category` from `class`, `slots`, `aliases`; ensure faction rows exist for `faction:` keys
@@ -295,3 +336,29 @@ WHERE s.key = 'w40k';
 - Loader runs idempotently; re-running on updated YAML updates/creates Units without duplicates.
 - Existing tests remain green; add later tests for basic loader/link queries.
  - For a unit, the UI returns both full models and relevant parts; parts vocab for wargear/bodies ingests cleanly and can be linked to both units and variants.
+
+## Loader CLI Usage
+
+Basic examples (PowerShell on Windows):
+
+```powershell
+$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
+
+# Load 40K units
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --commit
+
+# Load Age of Sigmar units (schema under codex_units.age_of_sigmar)
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --system aos --commit
+
+# Load Horus Heresy units (schema under codex_units.warhammer_30k)
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --system heresy --commit
+
+# Load 40K parts (wargear, bodies)
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --commit
+```
+
+Flags:
+- `--system {w40k|aos|heresy|old_world}`: optional override when file name inference is ambiguous.
+- `--commit`: apply changes (omit for a dry-run; the loader will rollback after validation).
+- `--db-url`: explicit SQLAlchemy URL; defaults to `STLMGR_DB_URL` or `sqlite:///./data/stl_manager.db`.
