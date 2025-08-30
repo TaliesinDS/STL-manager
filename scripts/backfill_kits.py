@@ -41,6 +41,14 @@ KIT_CHILD_TOKENS: Set[str] = {
     "weapon", "weapons", "ranged", "melee", "flamer", "flamers",
     "bits", "bitz", "accessories", "options",
     "shields", "backpacks", "shoulder pads", "pauldrons",
+    # Additional real-world labels we've seen
+    "shoulders", "legs", "bases", "base",
+}
+
+# Parent folder name hints that strongly imply a modular kit container
+KIT_PARENT_HINTS: Set[str] = {
+    "complete library", "full kit", "all parts", "modular", "complete set",
+    "upgrade set", "bits library", "bitz library", "kit", "complete pack", "full pack",
 }
 
 NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
@@ -137,13 +145,32 @@ def _is_kit_container(parent_rel_lower: str, all_rel_lowers: List[str]) -> Tuple
     """
     child_segs = _immediate_child_segments(parent_rel_lower, all_rel_lowers)
     matched_set: Set[str] = set()
+    # Map common synonyms to canonical tokens
+    def _add_match(token: str, seg: str) -> None:
+        # unify synonyms
+        if token == "shoulders":
+            matched_set.add("shoulder pads")
+        elif token in ("base", "bases"):
+            matched_set.add("bases")
+        else:
+            matched_set.add(token)
+
     for seg in child_segs:
         for tok in KIT_CHILD_TOKENS:
             # word-boundary substring match to support multi-word tokens like 'shoulder pads'
             if re.search(rf"\b{re.escape(tok)}\b", seg):
-                matched_set.add(tok)
+                _add_match(tok, seg)
     matched = sorted(matched_set)
+    child_count = len(child_segs)
+    # Primary rule: at least two distinct kit child categories
     if len(matched) >= 2:
+        return (True, matched)
+
+    # Secondary rule: parent name hints + enough children
+    parent_base = re.split(r"[\\/]+", parent_rel_lower)[-1]
+    parent_base_norm = _norm(parent_base)
+    if any(h in parent_base_norm for h in KIT_PARENT_HINTS) and child_count >= 3:
+        # If no direct matches, still consider as a kit using whatever weak matches we have
         return (True, matched)
 
     # Fallback: handle double-named folder patterns where an immediate child name
@@ -161,7 +188,12 @@ def _is_kit_container(parent_rel_lower: str, all_rel_lowers: List[str]) -> Tuple
             for seg in inner_child_segs:
                 for tok in KIT_CHILD_TOKENS:
                     if re.search(rf"\b{re.escape(tok)}\b", seg):
-                        inner_matched.add(tok)
+                        if tok == "shoulders":
+                            inner_matched.add("shoulder pads")
+                        elif tok in ("base", "bases"):
+                            inner_matched.add("bases")
+                        else:
+                            inner_matched.add(tok)
             inner_matched_sorted = sorted(inner_matched)
             if len(inner_matched_sorted) >= 2:
                 return (True, inner_matched_sorted)
@@ -259,9 +291,18 @@ def backfill(create_virtual_parents: bool, group_children: bool, apply: bool, ou
             for seg in segs:
                 for tok in KIT_CHILD_TOKENS:
                     if re.search(rf"\b{re.escape(tok)}\b", seg):
-                        matched_set.add(tok)
+                        if tok == "shoulders":
+                            matched_set.add("shoulder pads")
+                        elif tok in ("base", "bases"):
+                            matched_set.add("bases")
+                        else:
+                            matched_set.add(tok)
             matched = sorted(matched_set)
-            if len(matched) >= 2:
+            parent_base = parent.split("\\")[-1].split("/")[-1]
+            parent_base_norm = _norm(parent_base)
+            has_hint = any(h in _norm(parent_base) for h in KIT_PARENT_HINTS)
+            # Primary: 2+ matches; Secondary: hint + at least 3 children
+            if len(matched) >= 2 or (has_hint and len(segs) >= 3):
                 virtual_kits[parent] = matched
 
         changes: List[Change] = []
@@ -364,18 +405,27 @@ def backfill(create_virtual_parents: bool, group_children: bool, apply: bool, ou
             PREFERRED = [
                 "bodies", "body", "heads", "helmet", "helmets", "head",
                 "weapons", "weapon", "arms", "arm", "shields", "backpacks",
-                "shoulder pads", "pauldrons", "accessories", "options", "torsos", "torso"
+                "shoulder pads", "pauldrons", "accessories", "options", "torsos", "torso",
+                "shoulders", "legs", "bases", "base"
             ]
             chosen: Optional[str] = None
             for tok in PREFERRED:
                 if re.search(rf"\b{re.escape(tok)}\b", seg_norm):
-                    chosen = tok
+                    # normalize synonyms
+                    if tok == "shoulders":
+                        chosen = "shoulder pads"
+                    elif tok in ("base", "bases"):
+                        chosen = "bases"
+                    else:
+                        chosen = tok
                     break
             if not chosen:
                 if re.search(r"\bhand(s)?\b", seg_norm):
                     chosen = "arms"
                 elif re.search(r"\bflamer(s)?\b", seg_norm):
                     chosen = "weapons"
+                elif re.search(r"\bshoulder(s)?\b", seg_norm):
+                    chosen = "shoulder pads"
             if apply and chosen:
                 try:
                     v.part_pack_type = chosen

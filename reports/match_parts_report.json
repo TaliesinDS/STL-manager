@@ -1,0 +1,13 @@
+{
+  "db_url": "sqlite:///./data/stl_manager.db",
+  "apply": false,
+  "create_missing_parts": true,
+  "system_key": "w40k",
+  "faction_key": null,
+  "changes": [],
+  "counts": {
+    "linked": 0,
+    "created_parts": 0,
+    "skipped_children": 41
+  }
+}

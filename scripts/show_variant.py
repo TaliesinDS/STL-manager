@@ -7,9 +7,27 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session
+from db.session import get_session, DB_URL
 from db.models import Variant
 import json
+
+def rebind_db(db_url: str | None) -> None:
+    if not db_url:
+        return
+    try:
+        from sqlalchemy import create_engine as _ce
+        from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+        import db.session as _dbs
+        try:
+            _dbs.engine.dispose()
+        except Exception:
+            pass
+        _dbs.DB_URL = db_url
+        _dbs.engine = _ce(db_url, future=True)
+        _dbs.SessionLocal = _sm(bind=_dbs.engine, autoflush=False, autocommit=False, class_=_S)
+    except Exception as e:
+        print(f"Failed to reconfigure DB session for URL {db_url}: {e}")
+
 
 def show(ids: list[int]):
     with get_session() as session:
@@ -29,8 +47,15 @@ def show(ids: list[int]):
             print(json.dumps({"variant_id": vid, "data": data}, indent=2, ensure_ascii=False))
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: python scripts/show_variant.py <id> [id2 ...]")
+    import argparse
+    ap = argparse.ArgumentParser(description="Show Variant rows by id")
+    ap.add_argument("ids", nargs="+", help="Variant ids to display (space-separated)")
+    ap.add_argument("--db-url", dest="db_url", help="Override DB URL (else uses STLMGR_DB_URL or default)")
+    args = ap.parse_args()
+    rebind_db(args.db_url)
+    try:
+        ids = [int(x) for x in args.ids]
+    except Exception as e:
+        print(f"Error parsing ids: {e}")
         raise SystemExit(2)
-    ids = [int(x) for x in sys.argv[1:]]
     show(ids)
