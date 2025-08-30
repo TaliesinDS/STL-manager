@@ -138,6 +138,11 @@ class Variant(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    # Kit/container relationships (self-referential)
+    parent_id = Column(Integer, ForeignKey("variant.id", ondelete="SET NULL"), nullable=True, index=True)
+    is_kit_container = Column(Boolean, default=False, index=True)
+    kit_child_types = Column(JSON, default=list)
+
     # Relationship to physical files belonging to this variant
     files = relationship("File", back_populates="variant", cascade="all, delete-orphan")
     # Relationships to codex units (via association table)
@@ -147,6 +152,8 @@ class Variant(Base):
     # Relationships to parts (wargear/bodies) via association table
     part_links = relationship("VariantPartLink", back_populates="variant", cascade="all, delete-orphan")
     parts = relationship("Part", secondary="variant_part_link", viewonly=True)
+    # Parent/children self-relation
+    parent = relationship("Variant", remote_side=[id], backref="children", foreign_keys=[parent_id])
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Variant id={self.id} path={self.rel_path} file={self.filename}>"

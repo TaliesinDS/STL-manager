@@ -5,12 +5,14 @@ import json
 import os
 import re
 from collections import defaultdict
+import hashlib
 from dataclasses import dataclass, asdict
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple, Set
 
 from sqlalchemy import select
+from sqlalchemy.exc import OperationalError
 
 import sys
 ROOT = Path(__file__).resolve().parents[1]
@@ -179,9 +181,17 @@ def build_unit_alias_index(session) -> Tuple[
     mount_children: Dict[str, List[UnitRef]] = defaultdict(list)
     spells_by_faction: Dict[str, List[UnitRef]] = defaultdict(list)
     # Select only the columns we need to avoid touching fields that may not exist in older DBs
-    unit_rows = session.execute(
-        select(Unit.id, Unit.system_id, Unit.faction_id, Unit.key, Unit.name, Unit.aliases, Unit.category)
-    ).all()
+    try:
+        unit_rows = session.execute(
+            select(Unit.id, Unit.system_id, Unit.faction_id, Unit.key, Unit.name, Unit.aliases, Unit.category)
+        ).all()
+        have_category = True
+    except OperationalError:
+        # Older DB without 'category' column
+        unit_rows = session.execute(
+            select(Unit.id, Unit.system_id, Unit.faction_id, Unit.key, Unit.name, Unit.aliases)
+        ).all()
+        have_category = False
     for u in unit_rows:
         u_id = u.id
         u_system_id = u.system_id
@@ -189,7 +199,7 @@ def build_unit_alias_index(session) -> Tuple[
         u_key = u.key
         u_name = u.name
         u_aliases = u.aliases
-        u_category = u.category
+        u_category = (u.category if have_category else None)
         phrases: List[str] = []
         # primary name & key forms
         if u_name:
@@ -500,6 +510,7 @@ def find_best_matches(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Match Variants to Warhammer Units by token/alias heuristics.")
+    parser.add_argument("--db-url", help="Override database URL (defaults to STLMGR_DB_URL env var or sqlite:///./data/stl_manager.db)")
     parser.add_argument("--limit", type=int, default=0, help="Process at most N variants (0 = all)")
     parser.add_argument("--systems", nargs="*", default=None, help="Only consider units from these systems (e.g., w40k aos heresy)")
     parser.add_argument("--min-score", type=float, default=12.0, help="Minimum score threshold to accept a match")
@@ -538,7 +549,39 @@ def main() -> None:
             "By default these are skipped to reduce noise."
         ),
     )
+    parser.add_argument(
+        "--include-kit-children",
+        action="store_true",
+        help=(
+            "Include kit children (e.g., bodies/heads/weapons sub-variants under a kit container) in the report. "
+            "By default these are collapsed under the kit container to produce one result per kit."
+        ),
+    )
+    parser.add_argument(
+        "--group-kit-children",
+        action="store_true",
+        help=(
+            "When applying matches, also assign a common model_group_id to all kit children under a kit container so the UI can aggregate them."
+        ),
+    )
     args = parser.parse_args()
+
+    # Reconfigure DB session if a URL override is provided (fixes Windows env var quoting issues)
+    if args.db_url:
+        try:
+            from sqlalchemy import create_engine as _ce
+            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            import db.session as _dbs
+            try:
+                _dbs.engine.dispose()
+            except Exception:
+                pass
+            _dbs.DB_URL = args.db_url
+            _dbs.engine = _ce(args.db_url, future=True)
+            _dbs.SessionLocal = _sm(bind=_dbs.engine, autoflush=False, autocommit=False, class_=_S)
+        except Exception as e:
+            print(f"Failed to reconfigure DB session for URL {args.db_url}: {e}", file=sys.stderr)
+            return
 
     reports_dir = ROOT / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)
@@ -562,6 +605,8 @@ def main() -> None:
     skipped_nonwarhammer = 0
     skipped_containers_equals = 0
     skipped_containers_auto = 0
+    kit_containers_included = 0
+    skipped_kit_children = 0
     proposals: List[Dict[str, Any]] = []
 
     with get_session() as session:
@@ -580,7 +625,7 @@ def main() -> None:
             q = q.limit(args.limit)
         variants = session.execute(q).scalars().all()
 
-        # Precompute normalized rel_paths for container detection
+        # Precompute normalized rel_paths for container detection and immediate child segment names
         all_rel_paths: List[str] = []
         for v in variants:
             try:
@@ -588,10 +633,44 @@ def main() -> None:
             except Exception:
                 all_rel_paths.append("")
 
-        # Prepare exclude set (lowercased)
-        exclude_equals = set(s.lower() for s in (args.exclude_path_equals or []))
+        # Helper: get immediate child segment names for a given parent rel_path
+        def _immediate_child_segments(parent_rel_lower: str) -> Set[str]:
+            segs: Set[str] = set()
+            if not parent_rel_lower:
+                return segs
+            for sep in ("\\", "/"):
+                prefix = parent_rel_lower + sep
+                plen = len(prefix)
+                for rp in all_rel_paths:
+                    if rp and rp != parent_rel_lower and rp.startswith(prefix):
+                        rest = rp[plen:]
+                        # take only the next segment
+                        nxt = re.split(r"[\\/]+", rest)[0]
+                        n = norm_text(nxt)
+                        if n:
+                            segs.add(n)
+            return segs
 
-        # Helper to decide whether a variant has meaningful files (ignore OS noise files)
+        KIT_CHILD_TOKENS: Set[str] = {
+            "body", "bodies", "torsos", "torso",
+            "head", "heads", "helmet", "helmets",
+            "arm", "arms", "left arm", "right arm",
+            "weapon", "weapons", "ranged", "melee",
+            "bits", "bitz", "accessories", "options",
+            "shields", "backpacks", "shoulder pads", "pauldrons",
+        }
+
+        def _is_kit_container(parent_rel_lower: str) -> Tuple[bool, List[str]]:
+            """Heuristic: container-only folder that aggregates modular subfolders like bodies/heads/weapons.
+
+            Returns (is_kit, matched_child_types)
+            """
+            child_segs = _immediate_child_segments(parent_rel_lower)
+            matched = sorted([s for s in child_segs if s in KIT_CHILD_TOKENS])
+            # require at least two distinct kit child types to consider it a kit container
+            return (len(matched) >= 2, matched)
+
+    # Helper to decide whether a variant has meaningful files (ignore OS noise files)
         NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
 
         def _is_noise_filename(name: str) -> bool:
@@ -610,6 +689,10 @@ def main() -> None:
         def _has_meaningful_files(variant: Variant) -> bool:
             try:
                 files = getattr(variant, 'files', []) or []
+                MEANINGFUL_EXTS = {
+                    "stl", "obj", "ztl",
+                    "lys", "lychee", "3mf", "step", "stp",
+                }
                 for f in files:
                     # Skip directories
                     if getattr(f, 'is_dir', False):
@@ -619,11 +702,135 @@ def main() -> None:
                         continue
                     if _is_noise_filename(name):
                         continue
-                    # at least one non-noise file exists
-                    return True
+                    ext = (getattr(f, 'extension', '') or '').strip().lower()
+                    # Treat only actual model/CAD/slicer files as meaningful for container-detection purposes.
+                    # Archives (zip/rar/7z) and preview images should NOT force inclusion of a container-only folder.
+                    if ext in MEANINGFUL_EXTS:
+                        # at least one meaningful model/archive exists
+                        return True
             except Exception:
                 return False
             return False
+
+        def _has_meaningful_model_files(variant: Variant) -> bool:
+            """Stricter version for container collapsing: ignore archives and previews entirely.
+
+            Returns True only if actual model/slicer/CAD files are present at this variant level.
+            """
+            return _has_meaningful_files(variant)
+
+        # Precompute meaningful files and parent/child relationships for kit collapsing
+        rel_lower_index: Dict[str, Variant] = {}
+        for v in variants:
+            try:
+                rel_lower_index[(v.rel_path or "").strip().lower()] = v
+            except Exception:
+                continue
+
+        # Quick helpers reusing container detection logic
+        def _has_any_child_variants(parent_rel_lower: str) -> bool:
+            for sep in ("\\", "/"):
+                prefix = parent_rel_lower + sep
+                for rp in all_rel_paths:
+                    if rp and rp != parent_rel_lower and rp.startswith(prefix):
+                        return True
+            return False
+
+        # Build kit container map: rel_lower -> (kit_types)
+        # Prefer database flags; fall back to heuristic path-based detection for legacy DBs.
+        kit_container_map: Dict[str, List[str]] = {}
+        for v in variants:
+            try:
+                rel_lower = (v.rel_path or "").strip().lower()
+            except Exception:
+                rel_lower = ""
+            if not rel_lower:
+                continue
+            # If DB says it's a kit container, trust it and take recorded kit_child_types when available
+            try:
+                if getattr(v, 'is_kit_container', False):
+                    kt = []
+                    try:
+                        for t in (getattr(v, 'kit_child_types', []) or []):
+                            if isinstance(t, str):
+                                kt.append(norm_text(t))
+                    except Exception:
+                        kt = []
+                    kit_container_map[rel_lower] = kt
+                    continue
+            except Exception:
+                pass
+            # Otherwise, consider heuristic container style (no meaningful model files) with children
+            if not _has_meaningful_model_files(v) and _has_any_child_variants(rel_lower):
+                is_kit, kit_types = _is_kit_container(rel_lower)
+                if is_kit:
+                    kit_container_map[rel_lower] = kit_types
+
+        # Build a parent->children index to detect virtual kit parents even if the parent Variant doesn't exist
+        parent_children_map: Dict[str, Set[str]] = defaultdict(set)
+        parent_children_variants: Dict[str, List[Variant]] = defaultdict(list)
+        def _parent_of(rel_lower: str) -> str:
+            if not rel_lower:
+                return ""
+            i1 = rel_lower.rfind("\\")
+            i2 = rel_lower.rfind("/")
+            idx = max(i1, i2)
+            if idx <= 0:
+                return ""
+            return rel_lower[:idx]
+        for v in variants:
+            rel_lower = (getattr(v, 'rel_path', '') or '').strip().lower()
+            if not rel_lower:
+                continue
+            parent_rel = _parent_of(rel_lower)
+            if not parent_rel:
+                continue
+            # immediate child segment name under this parent (preserving sep)
+            child_seg = ""
+            for sep in ("\\", "/"):
+                prefix = parent_rel + sep
+                if rel_lower.startswith(prefix) and len(rel_lower) > len(prefix):
+                    rest = rel_lower[len(prefix):]
+                    child_seg = re.split(r"[\\/]+", rest)[0]
+                    break
+            child_seg_norm = norm_text(child_seg)
+            if child_seg_norm:
+                parent_children_map[parent_rel].add(child_seg_norm)
+                parent_children_variants[parent_rel].append(v)
+
+        virtual_kit_container_map: Dict[str, List[str]] = {}
+        for parent_rel, child_segs in parent_children_map.items():
+            matched = sorted([s for s in child_segs if s in KIT_CHILD_TOKENS])
+            if len(matched) >= 2 and parent_rel not in kit_container_map:
+                virtual_kit_container_map[parent_rel] = matched
+
+        def _find_kit_parent_rel(child_rel_lower: str) -> Optional[str]:
+            if not child_rel_lower:
+                return None
+            # Check real kit parents
+            for parent_rel in kit_container_map.keys():
+                for sep in ("\\", "/"):
+                    prefix = parent_rel + sep
+                    if child_rel_lower != parent_rel and child_rel_lower.startswith(prefix):
+                        return parent_rel
+            # Check virtual kit parents
+            for parent_rel in virtual_kit_container_map.keys():
+                for sep in ("\\", "/"):
+                    prefix = parent_rel + sep
+                    if child_rel_lower != parent_rel and child_rel_lower.startswith(prefix):
+                        return parent_rel
+            return None
+
+        # Prepare exclude set (lowercased)
+        exclude_equals = set(s.lower() for s in (args.exclude_path_equals or []))
+
+        # Build id -> variant for quick parent lookup
+        id_index: Dict[int, Variant] = {}
+        for v in variants:
+            try:
+                id_index[int(v.id)] = v
+            except Exception:
+                pass
 
         for v in variants:
             total += 1
@@ -637,7 +844,7 @@ def main() -> None:
                 continue
             # Auto-skip container-only variants: no files, and there exists another variant whose rel_path starts with this rel_path + path sep
             if not args.include_container_folders:
-                has_files = _has_meaningful_files(v)
+                has_files = _has_meaningful_model_files(v)
                 if (rel_lower and not has_files):
                     sep_candidates = ["\\", "/"]
                     prefix_matches = False
@@ -651,8 +858,28 @@ def main() -> None:
                         if prefix_matches:
                             break
                     if prefix_matches:
-                        skipped_containers_auto += 1
-                        continue
+                        # Exception: keep container if it looks like a modular kit (bodies/heads/weapons...)
+                        is_kit, kit_types = _is_kit_container(rel_lower)
+                        if is_kit:
+                            kit_containers_included += 1
+                        else:
+                            skipped_containers_auto += 1
+                            continue
+
+            # Collapse kit children into their parent kit container for reporting (unless explicitly included)
+            if not args.include_kit_children:
+                db_parent_id = None
+                try:
+                    db_parent_id = getattr(v, 'parent_id', None)
+                except Exception:
+                    db_parent_id = None
+                if db_parent_id:
+                    skipped_kit_children += 1
+                    continue
+                kit_parent_rel = _find_kit_parent_rel(rel_lower)
+                if kit_parent_rel:
+                    skipped_kit_children += 1
+                    continue
             v_text = text_for_variant(v)
             # Precompute normalized path segments for unit-folder certainty boosts
             seg_set: Set[str] = set(_path_segments(v.rel_path))
@@ -682,6 +909,58 @@ def main() -> None:
                         else:
                             ambiguous = matches[:5]
 
+            # Kit reporting metadata (DB-aware)
+            # Prefer DB flags for kit containers and children; fall back to heuristics for legacy entries.
+            is_kit_flag = False
+            kit_child_types: List[str] = []
+            try:
+                if getattr(v, 'is_kit_container', False):
+                    is_kit_flag = True
+                    try:
+                        kit_child_types = [norm_text(t) for t in (getattr(v, 'kit_child_types', []) or []) if isinstance(t, str)]
+                    except Exception:
+                        kit_child_types = []
+                else:
+                    is_kit_flag, kit_child_types = _is_kit_container(rel_lower)
+            except Exception:
+                is_kit_flag, kit_child_types = _is_kit_container(rel_lower)
+
+            kit_parent_rel: Optional[str] = None
+            kit_child_label: Optional[str] = None
+            # DB parent relationship
+            db_parent_id = None
+            try:
+                db_parent_id = getattr(v, 'parent_id', None)
+            except Exception:
+                db_parent_id = None
+            if db_parent_id:
+                parent_v = id_index.get(int(db_parent_id))
+                if parent_v:
+                    kit_parent_rel = getattr(parent_v, 'rel_path', None)
+                    # Prefer stored part_pack_type as the child label when present
+                    lab = None
+                    try:
+                        lab = getattr(v, 'part_pack_type', None)
+                    except Exception:
+                        lab = None
+                    if lab:
+                        kit_child_label = norm_text(str(lab))
+                # If DB parent exists we won't compute heuristic child label further
+            if not kit_parent_rel:
+                # Heuristic fallback: derive from path structure
+                kpr = _find_kit_parent_rel(rel_lower)
+                if kpr:
+                    kit_parent_rel = kpr
+                    for sep in ("\\", "/"):
+                        prefix = kpr + sep
+                        if rel_lower.startswith(prefix) and len(rel_lower) > len(prefix):
+                            rest = rel_lower[len(prefix):]
+                            nxt = re.split(r"[\\/]+", rest)[0]
+                            lab = norm_text(nxt)
+                            if lab:
+                                kit_child_label = lab
+                            break
+
             prop = {
                 "variant_id": v.id,
                 "rel_path": v.rel_path,
@@ -689,6 +968,13 @@ def main() -> None:
                 "system_hint": sys_h,
                 "chapter_hint": chap_hint,
                 "subfaction_hint": subf_hint,
+                "kit_container": is_kit_flag,
+                **({"kit_child_types": kit_child_types} if is_kit_flag else {}),
+                **({
+                    "kit_child_of": True,
+                    "kit_parent_rel": kit_parent_rel,
+                    "kit_child_label": kit_child_label,
+                } if kit_parent_rel else {"kit_child_of": False}),
                 "accepted": None,
                 "ambiguous": [
                     {
@@ -753,6 +1039,29 @@ def main() -> None:
                         v.codex_faction = chap_hint
                     elif ref.faction_key:
                         v.codex_faction = ref.faction_key
+                    # If this is a kit container, tag the variant as a squad kit for downstream UI/logic
+                    if is_kit_flag:
+                        try:
+                            v.part_pack_type = v.part_pack_type or "squad_kit"
+                            if not v.segmentation:
+                                v.segmentation = "multi-part"
+                            # Optionally group all children under this kit parent using a shared model_group_id
+                            if args.group_kit_children:
+                                group_id = v.model_group_id or f"kit:{v.id}"
+                                v.model_group_id = group_id
+                                # propagate grouping to children
+                                parent_rel = (v.rel_path or "").strip().lower()
+                                for child_rel, child_v in rel_lower_index.items():
+                                    for sep in ("\\", "/"):
+                                        prefix = parent_rel + sep
+                                        if child_rel != parent_rel and child_rel.startswith(prefix):
+                                            try:
+                                                if not child_v.model_group_id:
+                                                    child_v.model_group_id = group_id
+                                            except Exception:
+                                                pass
+                        except Exception:
+                            pass
                     # Create or replace link
                     if args.overwrite:
                         session.query(VariantUnitLink).filter(VariantUnitLink.variant_id == v.id).delete()
@@ -796,6 +1105,7 @@ def main() -> None:
         json.dump({
             "ts": datetime.utcnow().isoformat() + "Z",
             "apply": args.apply,
+            "include_kit_children": args.include_kit_children,
             "limit": args.limit,
             "systems": args.systems,
             "min_score": args.min_score,
@@ -810,8 +1120,24 @@ def main() -> None:
                 "equals": skipped_containers_equals,
                 "auto": skipped_containers_auto,
             },
+            "skipped_kit_children": skipped_kit_children,
+            "kit_containers_included": kit_containers_included,
             "proposals": proposals,
         }, f, ensure_ascii=False, indent=2)
+
+    # If applying with grouping enabled, propagate grouping to virtual kit children even when parent variant doesn't exist
+    if args.apply and args.group_kit_children:
+        with get_session() as session:
+            for parent_rel, kit_types in virtual_kit_container_map.items():
+                # deterministic, compact group id based on parent path
+                gid = "kit:" + hashlib.md5(parent_rel.encode("utf-8")).hexdigest()[:12]
+                for child_v in parent_children_variants.get(parent_rel, []):
+                    try:
+                        if not child_v.model_group_id:
+                            child_v.model_group_id = gid
+                    except Exception:
+                        pass
+            session.commit()
 
     print(f"Report written: {out_path}")
     if args.apply:

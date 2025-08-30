@@ -1,0 +1,51 @@
+{
+  "ts": "2025-08-30T18:08:50.832203Z",
+  "db_url": "sqlite:///./data/stl_manager_v1.db",
+  "apply": true,
+  "create_virtual_parents": false,
+  "group_children": true,
+  "changes": [
+    {
+      "variant_id": 291,
+      "rel_path": "sample_store\\Infernus Squad",
+      "action": "mark_parent",
+      "details": {
+        "kit_child_types": [
+          "flamers",
+          "hands"
+        ]
+      }
+    },
+    {
+      "variant_id": 294,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers\\Presupported Flamers",
+      "action": "link_child",
+      "details": {
+        "parent_id": 291,
+        "parent_rel": "sample_store\\Infernus Squad"
+      }
+    },
+    {
+      "variant_id": 291,
+      "rel_path": "sample_store\\Infernus Squad",
+      "action": "set_group_id",
+      "details": {
+        "model_group_id": "kit:29cad5debdad"
+      }
+    },
+    {
+      "variant_id": 294,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers\\Presupported Flamers",
+      "action": "set_group_id",
+      "details": {
+        "model_group_id": "kit:29cad5debdad"
+      }
+    }
+  ],
+  "counts": {
+    "marked_kit_parents": 1,
+    "created_virtual_parents": 0,
+    "linked_children": 1,
+    "grouped_children": 1
+  }
+}

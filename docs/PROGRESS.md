@@ -2,7 +2,7 @@
 
 A lightweight, living log of milestones, active work, and recent changes. Keep updates short and practical.
 
-Last updated: 2025-08-29
+Last updated: 2025-08-30
 
 ## Status Overview
 - Phase: 0 → 1 transition (inventory → deterministic normalization)
@@ -29,6 +29,7 @@ Last updated: 2025-08-29
 - [x] Franchise manifests + loader + matcher (dry‑run/apply pipeline)
 - [x] Repo restructure (docs/ and vocab/ separation)
 - [x] Quick Scan improvements (dirs, archives, JSON)
+- [x] Kit containers: DB schema fields (`parent_id`, `is_kit_container`, `kit_child_types`) + backfill + matcher/report collapse by default
 - [ ] Unit ↔ Part linking policy (seed curated compatibility rules)
 - [ ] API/UI: unit detail returns two result types (full models + parts/mods)
 - [ ] Tests: parts ingestion/linking coverage; Alembic migrations for new tables
@@ -39,6 +40,7 @@ Last updated: 2025-08-29
 - Implement initial `UnitPartLink` seeds for Space Marines (Intercessors/Terminator/Gravis; chapter shoulder pads; purity seals; packs)
 - Add API endpoints/queries to fetch parts alongside variants for a unit
 - Add unit tests for parts ingestion and linkage
+ - Validate kit parents/children across wider sample; ensure composite child labels map into `kit_child_types` and children persist `part_pack_type`
 
 ## Dev Log (reverse chronological)
 - 2025-08-29
@@ -70,6 +72,12 @@ Run integrity tests:
 Run parts loader (dry-run default):
 ```powershell
 & .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db
+```
+
+Run kit backfill and inspect matcher report with children:
+```powershell
+& .\.venv\Scripts\python.exe .\scripts\backfill_kits.py --create-virtual-parents --group-children --apply --out .\reports\backfill_kits_$(Get-Date -f yyyyMMdd_HHmmss)_apply.json
+& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --limit 200 --systems w40k aos heresy --min-score 12 --delta 3 --include-kit-children --out .\reports\match_units_with_children_$(Get-Date -f yyyyMMdd_HHmmss).json
 ```
 
 ## Useful Links

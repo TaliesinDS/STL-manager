@@ -99,6 +99,10 @@ GET /api/v1/variants/{id}
 - Returns full detail (all metadata fields + override map + warnings + audit summary counts).
 - Includes `characters` array when linked: each { character_id, name, aliases, franchise, info_url }.
 
+Kit container fields (if present on this variant):
+- `parent_id` (number|null), `is_kit_container` (bool), `kit_child_types` (array of strings), and child `part_pack_type` (string) are exposed on the Variant resource.
+The API treats these as read-only except via dedicated normalization/backfill jobs.
+
 GET /api/v1/variants/{id}/units
 - Lists Units linked to this Variant (via `variant_unit_link`).
 Response data example:

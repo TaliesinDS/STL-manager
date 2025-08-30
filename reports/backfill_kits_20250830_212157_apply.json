@@ -1,0 +1,35 @@
+{
+  "ts": "2025-08-30T19:21:57.622661Z",
+  "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/data/stl_manager_v1.db",
+  "apply": true,
+  "create_virtual_parents": false,
+  "group_children": false,
+  "changes": [
+    {
+      "variant_id": 292,
+      "rel_path": "sample_store/Infernus Squad/Infernus Squad",
+      "action": "mark_parent",
+      "details": {
+        "kit_child_types": [
+          "flamers",
+          "hands"
+        ]
+      }
+    },
+    {
+      "variant_id": 293,
+      "rel_path": "sample_store/Infernus Squad/Infernus Squad/hands and flamers",
+      "action": "link_child",
+      "details": {
+        "parent_id": 292,
+        "parent_rel": "sample_store/Infernus Squad/Infernus Squad"
+      }
+    }
+  ],
+  "counts": {
+    "marked_kit_parents": 1,
+    "created_virtual_parents": 0,
+    "linked_children": 1,
+    "grouped_children": 0
+  }
+}

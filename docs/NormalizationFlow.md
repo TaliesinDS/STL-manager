@@ -141,6 +141,8 @@ Aggregate deduplicated list of warning codes in `normalization_warnings` (preser
 - internal_volume (enum hollowed|solid|null)
 - support_state (enum presupported|supported|unsupported|null)
 - part_pack_type (enum bust_only|base_only|accessory|null)
+Note on modular kits:
+- When a variant is identified as a kit child (via immediate child folder under a parent), the backfill normalizer sets child `part_pack_type` to a normalized label (e.g., `bodies`, `helmets`, `weapons`, `arms`, `accessories`). Parents are marked with `is_kit_container=true` and aggregate `kit_child_types`. Reports collapse kit children by default; enabling `--include-kit-children` shows `kit_child_label` per child.
 - has_bust_variant (bool|null) [derived if bust_indicators present]
 - height_mm (int|null)
 - scale_ratio_den (int|null)

@@ -208,6 +208,33 @@ Upsert keys:
 - `(unit.system_id, unit.key)`
 
 ## Linking Variants to Units
+## Variant: Kit Containers (Modular Kits)
+
+Some scanned releases are modular kits with immediate child folders like `Bodies`, `Helmets`, `Weapons`, `Arms`, `Accessories`. To model these as a single logical item, the `variant` table includes:
+
+- `parent_id` (self‑FK): links a child variant (e.g., `Bodies`) to its kit container parent variant.
+- `is_kit_container` (bool): marks the parent variant as a kit container.
+- `kit_child_types` (JSON array): aggregated distinct child type labels (e.g., `["bodies","helmets","weapons","arms","accessories"]`).
+- `part_pack_type` (string, on children): persists the child9s part type derived from the immediate child folder label (normalized token from the set above).
+
+Backfill helper: `scripts/backfill_kits.py`
+- Detects real or virtual kit parents from the directory structure and marks/creates them.
+- Links children via `parent_id`, sets `is_kit_container`, and aggregates `kit_child_types` on the parent.
+- Sets `part_pack_type` on children and tags real parents with `part_pack_type='squad_kit'`.
+- Optionally groups siblings via a shared `model_group_id`.
+
+Matcher/report integration:
+- Reports collapse kit children by default; parents include `kit_child_types`.
+- With `--include-kit-children`, children are listed and include `kit_child_label` matching their derived `part_pack_type`.
+
+Example parent/child state after backfill (abbreviated):
+```
+variant(id=495, rel_path='.../freeguild steelhelms/...', is_kit_container=True, kit_child_types=["accessories","arms","bodies","helmets","weapons"])  
+	├─ variant(id=263, part_pack_type='bodies')
+	├─ variant(id=264, part_pack_type='helmets')
+	└─ variant(id=265, part_pack_type='weapons')
+```
+
 - Automatic: your existing matcher can emit `(variant_id, unit_key, system_key, confidence)` when it finds a strong match. Resolve `system_id` and `unit_id` to insert `variant_unit_link`.
 - Manual: UI can let you search Units by `name`/`alias` and add a link.
 - Multiple links: allowed; set one `is_primary = true` if needed.

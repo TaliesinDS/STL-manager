@@ -30,6 +30,16 @@ MEANINGFUL_EXTS = {
 # Archives are considered meaningful (contain models inside)
 ARCHIVE_EXTS = {"zip", "rar", "7z"}
 
+# Child folder tokens that imply a modular squad kit (preserve such containers)
+KIT_CHILD_TOKENS: Set[str] = {
+    "body", "bodies", "torsos", "torso",
+    "head", "heads", "helmet", "helmets",
+    "arm", "arms", "left arm", "right arm",
+    "weapon", "weapons", "ranged", "melee",
+    "bits", "bitz", "accessories", "options",
+    "shields", "backpacks", "shoulder pads", "pauldrons",
+}
+
 
 def _norm(s: str | None) -> str:
     return (s or "").strip().lower()
@@ -47,6 +57,12 @@ def _is_noise_filename(name: str) -> bool:
         if core in NOISE_FILENAMES:
             return True
     return False
+
+
+def _norm_text(s: str | None) -> str:
+    s = (s or "").strip().lower()
+    # Collapse underscores/dashes/spaces
+    return re.sub(r"[\s_\-]+", " ", s)
 
 
 def _has_meaningful_files(v: Variant) -> bool:
@@ -90,6 +106,29 @@ def _has_child_variants(v: Variant, all_rel_paths_lower: List[str]) -> bool:
     return False
 
 
+def _is_kit_container_rel(rel_path: str | None, all_rel_paths_lower: List[str]) -> tuple[bool, list[str]]:
+    """Detect if a container folder looks like a modular kit (bodies/heads/weapons...).
+
+    Returns (is_kit, matched_child_types)
+    """
+    rel_lower = _norm(rel_path)
+    if not rel_lower:
+        return (False, [])
+    child_segs: Set[str] = set()
+    for sep in ("\\", "/"):
+        prefix = rel_lower + sep
+        plen = len(prefix)
+        for rp in all_rel_paths_lower:
+            if rp and rp != rel_lower and rp.startswith(prefix):
+                rest = rp[plen:]
+                nxt = re.split(r"[\\/]+", rest)[0]
+                n = _norm_text(nxt)
+                if n:
+                    child_segs.add(n)
+    matched = sorted([s for s in child_segs if s in KIT_CHILD_TOKENS])
+    return (len(matched) >= 2, matched)
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="Prune invalid variants: container-only, noise-only, and known containers.")
     p.add_argument("--apply", action="store_true", help="Actually delete from DB (default: dry-run)")
@@ -124,6 +163,7 @@ def main() -> None:
             "equals": 0,
             "container_only": 0,
             "noise_only": 0,
+            "kit_containers_preserved": 0,
             "total": 0,
         },
     }
@@ -135,6 +175,7 @@ def main() -> None:
         all_rel_paths = [_norm(v.rel_path) for v in variants]
 
         to_delete: List[int] = []
+        preserved_kit_ids: List[int] = []
         for v in variants:
             rel_lower = _norm(v.rel_path)
             reason: str | None = None
@@ -143,11 +184,26 @@ def main() -> None:
             if rel_lower and rel_lower in equals_set:
                 reason = "equals"
             else:
-                # 2) Container-only: no meaningful files but has child variants under it
-                if not _has_meaningful_files(v) and _has_child_variants(v, all_rel_paths):
+                # 2) Container-only: no meaningful files but has child variants under it.
+                # SAFETY: do not delete if the variant has any File rows at all.
+                has_any_files = bool(getattr(v, 'files', []) or [])
+                if not has_any_files and not _has_meaningful_files(v) and _has_child_variants(v, all_rel_paths):
+                    # Preserve kit-like containers
+                    is_kit, matched = _is_kit_container_rel(v.rel_path, all_rel_paths)
+                    if is_kit:
+                        preserved_kit_ids.append(v.id)
+                        results["counts"]["kit_containers_preserved"] += 1  # type: ignore[index]
+                        results["candidates"].append({
+                            "variant_id": v.id,
+                            "rel_path": v.rel_path,
+                            "filename": v.filename,
+                            "reason": "kit_container_preserved",
+                            "kit_child_types": matched,
+                        })
+                        continue
                     reason = "container_only"
                 # 3) Noise-only: has files, but all are OS noise (e.g., .DS_Store/Thumbs.db)
-                elif _only_noise_files(v):
+                elif not has_any_files and _only_noise_files(v):
                     reason = "noise_only"
 
             if reason:

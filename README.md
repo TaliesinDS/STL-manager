@@ -272,6 +272,7 @@ The diagram below summarizes the typical, conservative end‑to‑end flow from 
 graph TD
 	A[Init DB] --> B[Load Vocab]
 	B --> C[Quick Scan]
+
 	C --> D[Normalization Helpers]
 	D --> E[Match Franchises & Characters]
 	E --> F[Review Proposals]

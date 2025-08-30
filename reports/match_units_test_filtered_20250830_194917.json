@@ -1,0 +1,5260 @@
+{
+  "ts": "2025-08-30T17:50:32.766228Z",
+  "apply": false,
+  "include_kit_children": true,
+  "limit": 0,
+  "systems": null,
+  "min_score": 12.0,
+  "delta": 3.0,
+  "overwrite": false,
+  "exclude_path_equals": [
+    "sample_store"
+  ],
+  "total_variants": 417,
+  "applied": 0,
+  "skipped_nonwarhammer": 189,
+  "skipped_containers": 0,
+  "skipped_containers_detail": {
+    "equals": 0,
+    "auto": 0
+  },
+  "skipped_kit_children": 0,
+  "kit_containers_included": 6,
+  "proposals": [
+    {
+      "variant_id": 1,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 3,
+      "rel_path": "samples\\warrior_01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 5,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Campaign\\September",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 7,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 8,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Bonded Souls - Supported\\Supported\\STLs",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 9,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 10,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Elenil - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 11,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 12,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Erimila - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 14,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 15,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Gwynevel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 16,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 17,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 18,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Lazlus - Supported\\Supported\\STL\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 20,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 21,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Markamin - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 23,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 24,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Melwyn - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 25,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 26,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Noranor - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 27,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 28,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Treneal - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 29,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 30,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Verina - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 31,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\LYS",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 32,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Supported\\Zelafel - Supported\\Supported\\STL",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 34,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 35,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Bonded Souls - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 37,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 38,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Elenil - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 40,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 41,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Erimila - Unuspported\\Unuspported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 43,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 44,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Gwynevel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 46,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 47,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Lazlus - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 49,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 50,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Markamin - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 52,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 53,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Melywn - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 55,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 56,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Noranor - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 58,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 59,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Treneal - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 60,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 61,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Verina - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 63,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\32mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 64,
+      "rel_path": "sample_store\\(DM Stash) 2021-09 - Guardians of the Fey.7z\\(DM Stash) 2021-09 - Guardians of the Fey\\Unsupported\\Zelafel - Unsupported\\Unsupported\\75mm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 67,
+      "rel_path": "sample_store\\60e73ad2721a1_special-lord-of-battle-1",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 70,
+      "rel_path": "sample_store\\_Blood Angels Terminator Assault Squad",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": "blood_angels",
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 17,
+        "unit_key": "terminator_assault_squad",
+        "unit_name": "Terminator Assault Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 12.4,
+        "via": "terminator assault squad"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 71,
+      "rel_path": "sample_store\\_Sanguinius\\Primarca Angeles Sangrientos.Sanguinius v01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1147,
+        "unit_key": "primarch_sanguinius",
+        "unit_name": "Sanguinius",
+        "system_key": "heresy",
+        "faction_key": null,
+        "score": 17.0,
+        "via": "sanguinius"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 128,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 129,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 130,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Original STLs\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 131,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Diorama base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 132,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Keys - 50mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 133,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarium Miniatures - Court of Balazar - Keeper of Keys & Keeper of Secrets\\Presupported\\Keeper of Secrets - 40mm base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 136,
+      "rel_path": "sample_store\\Bestiarum Miniatures - Agony and Temptation - Siren\\Bestiarum Miniatures - Agony and Temptation - Kitbash",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 169,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vaal-Kan the Firstborn",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 170,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 171,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Archregent\\Vampiric Undead - Ghoul Champion (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1823,
+        "unit_key": "abhorrant_archregent",
+        "unit_name": "Abhorrant Archregent",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.0,
+        "via": "abhorrant archregent"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 173,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes\\Blagomir The silent",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 174,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Cardinal\\Lone Heroes_ supported\\Blagomir The silent",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 177,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Supported",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 179,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Cast'N'Play - Hidden Crypt - Undying Bat Mount\\Unsupported",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 180,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir on Bloodhunter Dire Bat",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 181,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Drakenmir the Bonelord",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 183,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 184,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrant Ghoul king on Zombie Draggon, Terrorgheists\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 185,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Abhorrent Gorewarden\\Abhorrant Gorewarden",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1825,
+        "unit_key": "abhorrant_gorewarden",
+        "unit_name": "Abhorrant Gorewarden",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.0,
+        "via": "abhorrant gorewarden"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 186,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Charnel Throne",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 2014,
+        "unit_key": "charnel_throne",
+        "unit_name": "Charnel Throne",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 20.4,
+        "via": "charnel throne"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 187,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1828,
+        "unit_key": "crypt_ghast_courtier",
+        "unit_name": "Crypt Ghast Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 15.0,
+        "via": "crypt ghast courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 188,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Ghast Courtier, Crypt Ghouls, Cryptguard\\Vampiric Undead - Ghouls (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1828,
+        "unit_key": "crypt_ghast_courtier",
+        "unit_name": "Crypt Ghast Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 15.0,
+        "via": "crypt ghast courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 190,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1829,
+        "unit_key": "crypt_haunter_courtier",
+        "unit_name": "Crypt Haunter Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 15.2,
+        "via": "crypt haunter courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 191,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Crypt Haunter Courtier, Crypt Horrors\\Vampiric Undead - Ghoul Horrors (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1829,
+        "unit_key": "crypt_haunter_courtier",
+        "unit_name": "Crypt Haunter Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 15.2,
+        "via": "crypt haunter courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 193,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Grand Justice Gormayne\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon, the Defiled Judge",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1834,
+        "unit_key": "grand_justice_gormayne",
+        "unit_name": "Grand Justice Gormayne",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.2,
+        "via": "grand justice gormayne"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 194,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Modern Fantasy Vampire Riders",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1842,
+        "unit_key": "morbheg_knights",
+        "unit_name": "Morbheg Knights",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 19.5,
+        "via": "morbheg knights"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 196,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1842,
+        "unit_key": "morbheg_knights",
+        "unit_name": "Morbheg Knights",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 20.5,
+        "via": "morbheg knights"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 197,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undead - Bat Dragon (04.04.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1842,
+        "unit_key": "morbheg_knights",
+        "unit_name": "Morbheg Knights",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 20.5,
+        "via": "morbheg knights"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 198,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\STL\\Combined",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1842,
+        "unit_key": "morbheg_knights",
+        "unit_name": "Morbheg Knights",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 19.5,
+        "via": "morbheg knights"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 200,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Morbheg Knights\\Vampiric Undread - Ghoul Champion on Beast (04.01.24)\\Supported STL",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1842,
+        "unit_key": "morbheg_knights",
+        "unit_name": "Morbheg Knights",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 19.5,
+        "via": "morbheg knights"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 202,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Spells",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 203,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Ushoran, Mortarch of Delusion",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1835,
+        "unit_key": "ushoran_mortarch_of_delusion",
+        "unit_name": "Ushoran, Mortarch of Delusion",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.8,
+        "via": "ushoran mortarch of delusion"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 204,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Ushoran, Mortarch of Delusion\\Modern Fantasy Vampire Master",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1835,
+        "unit_key": "ushoran_mortarch_of_delusion",
+        "unit_name": "Ushoran, Mortarch of Delusion",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 21.8,
+        "via": "ushoran mortarch of delusion"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 206,
+      "rel_path": "sample_store\\Flesh-eater Courts\\_sorted\\Varghulf Courtier\\The_Wretch_(75mm_Base_73mm_Height)\\STL\\Unsupported",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1831,
+        "unit_key": "varghulf_courtier",
+        "unit_name": "Varghulf Courtier",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 20.7,
+        "via": "varghulf courtier"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 207,
+      "rel_path": "sample_store\\Flesh-eater Courts\\Heroes Infinite - A Dance with the Vampires 2 - Archatreon in Monster Form",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 208,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\1. Mercia Standard",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1327,
+        "unit_key": "freeguild_cavalier_marshal",
+        "unit_name": "Freeguild Cavalier-Marshal",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.6,
+        "via": "freeguild cavalier marshal"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 210,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\13. Medraut\\Medraut",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1327,
+        "unit_key": "freeguild_cavalier_marshal",
+        "unit_name": "Freeguild Cavalier-Marshal",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.6,
+        "via": "freeguild cavalier marshal"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 211,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal\\Fallen Lineage",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1327,
+        "unit_key": "freeguild_cavalier_marshal",
+        "unit_name": "Freeguild Cavalier-Marshal",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.6,
+        "via": "freeguild cavalier marshal"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 212,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Freeguild Cavalier-Marshal\\Human Empire",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1327,
+        "unit_key": "freeguild_cavalier_marshal",
+        "unit_name": "Freeguild Cavalier-Marshal",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.6,
+        "via": "freeguild cavalier marshal"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 214,
+      "rel_path": "sample_store\\Freeguild Cavalier-Marshal\\Medraut",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1327,
+        "unit_key": "freeguild_cavalier_marshal",
+        "unit_name": "Freeguild Cavalier-Marshal",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.6,
+        "via": "freeguild cavalier marshal"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 216,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\2. Rangers CG\\RangersAlternativeMount",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 217,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\4. CalixCG",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 218,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\40 GrandMasterWolf",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 220,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix\\CalixAlternativeDeers",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 221,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\5. Calix\\CalixAlternativeUnicorns",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 222,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\One Page Rules\\Combined",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 224,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights-Dogs",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 225,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights01",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 226,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnights02",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 227,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsBearer",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 228,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsCaptain",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 229,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\Free Guild Cavaliers\\WolfKnightsMusician",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 230,
+      "rel_path": "sample_store\\Freeguild Cavaliers\\RealmKnightsAlternativeUpperpart",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1377,
+        "unit_key": "freeguild_cavaliers",
+        "unit_name": "Freeguild Cavaliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 17.9,
+        "via": "freeguild cavaliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 232,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Bodies",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 233,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\__MACOSX\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 235,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Bodies",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 236,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Cities of Sigmar Command Corps\\Cities of Sigmar Command Corps\\Weapons, Arms, Heads, Accessories",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 237,
+      "rel_path": "sample_store\\Freeguild Command Corps\\Mercia Standard",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 238,
+      "rel_path": "sample_store\\Freeguild Command Corps\\MerciaKing",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 239,
+      "rel_path": "sample_store\\Freeguild Command Corps\\SirBors",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1352,
+        "unit_key": "freeguild_command_corps",
+        "unit_name": "Freeguild Command Corps",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.3,
+        "via": "freeguild command corps"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 241,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\__MACOSX\\Modern Fantasy Human Gunners",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1351,
+        "unit_key": "freeguild_fusiliers",
+        "unit_name": "Freeguild Fusiliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.9,
+        "via": "freeguild fusiliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 242,
+      "rel_path": "sample_store\\Freeguild Fusiliers\\City of Sigmar Gunners\\Modern Fantasy Human Gunners",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1351,
+        "unit_key": "freeguild_fusiliers",
+        "unit_name": "Freeguild Fusiliers",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.9,
+        "via": "freeguild fusiliers"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 243,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\14. Sir Bors",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 244,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\17. Allard, Mercia King",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 245,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\6. Wind Knights Pegasus and CG",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 246,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\7. Wind Knights Alternative Mount and Knights",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 248,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian\\Lychee",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 249,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian\\Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 251,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon\\Lychee",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 252,
+      "rel_path": "sample_store\\Freeguild General on Griffon\\Lord Carmalian on Winged Hippollyon\\Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1326,
+        "unit_key": "freeguild_general_on_griffon",
+        "unit_name": "Freeguild General on Griffon",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 20.3,
+        "via": "freeguild general on griffon"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 253,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Garmokh_Supported\\STL_Garmokh_Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 254,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Garmokh_Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 255,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Orae_Supported\\STL_Orae_Supported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 256,
+      "rel_path": "sample_store\\Freeguild Marshal and Relic Envoy\\STL_Orae_Unsupported",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 257,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Calix",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 259,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Bodies",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\__macosx\\cities of sigmar troops",
+      "kit_child_label": "bodies",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 260,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Helmets",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\__macosx\\cities of sigmar troops",
+      "kit_child_label": "helmets",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 261,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\__MACOSX\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\__macosx\\cities of sigmar troops",
+      "kit_child_label": "weapons arms accessories",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 263,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Bodies",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\cities of sigmar troops",
+      "kit_child_label": "bodies",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 264,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Helmets",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\cities of sigmar troops",
+      "kit_child_label": "helmets",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 265,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Cities of Sigmar Troops\\Cities of Sigmar Troops\\Weapons, Arms, Accessories",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\cities of sigmar troops",
+      "kit_child_label": "weapons arms accessories",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 266,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\One Page Rule\\Combined",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 268,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Rangers",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 269,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Bodies",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\scan",
+      "kit_child_label": "bodies",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 270,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Helmets",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\scan",
+      "kit_child_label": "helmets",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 272,
+      "rel_path": "sample_store\\Freeguild Steelhelms\\Scan\\Weapons, Arms, Accessories",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\freeguild steelhelms\\scan",
+      "kit_child_label": "weapons arms accessories",
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 279,
+      "rel_path": "sample_store\\Goblin\\Gith Knight Commander",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 283,
+      "rel_path": "sample_store\\Goblin\\Gith Raiders",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 284,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 285,
+      "rel_path": "sample_store\\Goblin\\Gobgrizzle, Goblin Warlord - Christmas Version",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 286,
+      "rel_path": "sample_store\\Goblin\\Goblin Shaman on Runetusk Antlerguard",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 287,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 288,
+      "rel_path": "sample_store\\Goblin\\Grimble Sootcloak, Goblin Shaman - Christmas Version",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 289,
+      "rel_path": "sample_store\\Goblin\\Runetusk Antlerguard, Guardian of the Shamanic",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 290,
+      "rel_path": "sample_store\\Goblin",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 291,
+      "rel_path": "sample_store\\Infernus Squad",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 10,
+        "unit_key": "infernus_squad",
+        "unit_name": "Infernus Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.4,
+        "via": "infernus squad"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 294,
+      "rel_path": "sample_store\\Infernus Squad\\Infernus Squad\\hands and flamers\\Presupported Flamers",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 10,
+        "unit_key": "infernus_squad",
+        "unit_name": "Infernus Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.4,
+        "via": "infernus squad"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 301,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon\\Non supported",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 302,
+      "rel_path": "sample_store\\Kh'a_Larrh_chaos_dragon\\Pre-supported",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 303,
+      "rel_path": "sample_store\\Male Ranger",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 309,
+      "rel_path": "sample_store\\Printable Scenery - Time Warp Europe - Medieval Church\\Church-decor",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 330,
+      "rel_path": "sample_store\\space-captain-with-honor-guard\\Dminis\\space-captain-with-honor-guard",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 336,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 346,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 349,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Machines & Monsters\\Skull Screecher Catapult",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 351,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Modular Parts",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 364,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Supported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 382,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Heroes\\Lord Osirion, Monarch of the Undead",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 392,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Lord Osirion on Sunset Chariot",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 395,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Machines & Monsters\\Skull Screecher Catapult",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 397,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Modular Parts",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 410,
+      "rel_path": "sample_store\\t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS\\1\\Unsupported\\Troops\\Ratogre Doomfiends\\Ratogre_B",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": null,
+      "ambiguous": []
+    },
+    {
+      "variant_id": 424,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\40mm & 50mm Base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 425,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Flamer Arm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 426,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Gun Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 427,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Mini Gun Cannon Arm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 428,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 1",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 429,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 2",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 430,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 3",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 431,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 4",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 432,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Powerhand Arms\\Arm 5",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 433,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Arms with Weapons\\Sword Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 434,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Cape",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 435,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Helmets & Faces",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 436,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Legs",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 437,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Lychee Scenes",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 438,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Purity Seals",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 440,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders\\Shoulder Shield",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 441,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Shoulders\\Ultra Shoulders",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 442,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\0_Presupported Files & Lychee Scenes\\Torsos",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 443,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\40mm & 50mm Base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 444,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Flamer Arm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 445,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Gun Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 446,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Mini Gun Cannon Arm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 447,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 1",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 448,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 2",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 449,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 3",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 450,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 4",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 451,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Powerhand Arms\\Arm 5",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 453,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Arms with Weapons\\Sword Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 454,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Cape",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 455,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Helmets & Faces",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 456,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Legs\\Terminator Legs without Purity Seals",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 458,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Purity Seals",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 460,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders\\Shoulder Shield",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 461,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Shoulders\\Ultra Shoulders",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 462,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Teleporter Homer",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 463,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Terminator Assembly Images",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 464,
+      "rel_path": "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library\\Torsos\\Clean Torsos with Targeters",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 466,
+      "rel_path": "sample_store\\Terminator Squad\\Termies",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 468,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Bodies",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator scan organized",
+      "kit_child_label": "bodies",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 469,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Helmets",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator scan organized",
+      "kit_child_label": "helmets",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 470,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator Scan Organized\\Weapons and Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator scan organized",
+      "kit_child_label": "weapons and arms",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 471,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Gun Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 472,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Mini Gun Cannon Arm",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 473,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 1",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 474,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 2",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 475,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 3",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 476,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 4",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 477,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Powerhand Arms\\Arm 5",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 479,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Arm with weapon\\Sword Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "arm with weapon",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 480,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Base",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "base",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 481,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Helmet",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "helmet",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 482,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Legs",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "legs",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 483,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Shoulder",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "shoulder",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 485,
+      "rel_path": "sample_store\\Terminator Squad\\Terminator squad\\Torso",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\terminator squad",
+      "kit_child_label": "torso",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 486,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\@STL_Printer",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\warhammer terminator set",
+      "kit_child_label": "stl printer",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 487,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Bodies",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\warhammer terminator set",
+      "kit_child_label": "bodies",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 488,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Helmets",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\warhammer terminator set",
+      "kit_child_label": "helmets",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 490,
+      "rel_path": "sample_store\\Terminator Squad\\Warhammer Terminator Set\\Weapons and Arms",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": true,
+      "kit_parent_rel": "sample_store\\terminator squad\\warhammer terminator set",
+      "kit_child_label": "weapons and arms",
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 493,
+      "rel_path": "sample_store/Flesh-eater Courts/_sorted/Abhorrant Ghoul king on Zombie Draggon, Terrorgheists",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": false,
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1826,
+        "unit_key": "abhorrant_ghoul_king_on_royal_terrorgheist",
+        "unit_name": "Abhorrant Ghoul King on Royal Terrorgheist",
+        "system_key": "aos",
+        "faction_key": "flesh_eater_courts",
+        "score": 18.5,
+        "via": "mount_hint"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 1827,
+          "unit_key": "abhorrant_ghoul_king_on_royal_zombie_dragon",
+          "unit_name": "Abhorrant Ghoul King on Royal Zombie Dragon",
+          "system_key": "aos",
+          "faction_key": "flesh_eater_courts",
+          "score": 16.0,
+          "via": "mount_hint"
+        }
+      ]
+    },
+    {
+      "variant_id": 494,
+      "rel_path": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\__macosx\\cities of sigmar troops",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "bodies",
+        "helmets"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 495,
+      "rel_path": "sample_store\\freeguild steelhelms\\cities of sigmar troops\\cities of sigmar troops",
+      "filename": null,
+      "system_hint": "aos",
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "bodies",
+        "helmets"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 21.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 496,
+      "rel_path": "sample_store\\freeguild steelhelms\\scan",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "bodies",
+        "helmets"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 1350,
+        "unit_key": "freeguild_steelhelms",
+        "unit_name": "Freeguild Steelhelms",
+        "system_key": "aos",
+        "faction_key": "cities_of_sigmar",
+        "score": 18.0,
+        "via": "freeguild steelhelms"
+      },
+      "ambiguous": []
+    },
+    {
+      "variant_id": 497,
+      "rel_path": "sample_store\\terminator squad\\terminator scan organized",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "bodies",
+        "helmets"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 498,
+      "rel_path": "sample_store\\terminator squad\\terminator squad",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "helmet",
+        "torso"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    },
+    {
+      "variant_id": 499,
+      "rel_path": "sample_store\\terminator squad\\warhammer terminator set",
+      "filename": null,
+      "system_hint": null,
+      "chapter_hint": null,
+      "subfaction_hint": null,
+      "kit_container": true,
+      "kit_child_types": [
+        "bodies",
+        "helmets"
+      ],
+      "kit_child_of": false,
+      "accepted": {
+        "unit_id": 6,
+        "unit_key": "terminator_squad",
+        "unit_name": "Terminator Squad",
+        "system_key": "w40k",
+        "faction_key": null,
+        "score": 17.6,
+        "via": "terminator squad"
+      },
+      "ambiguous": [],
+      "also_accepted": [
+        {
+          "unit_id": 762,
+          "unit_key": "terminator_squad",
+          "unit_name": "Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        },
+        {
+          "unit_id": 863,
+          "unit_key": "legion_terminator_squad",
+          "unit_name": "Legion Terminator Squad",
+          "system_key": "heresy",
+          "faction_key": null,
+          "score": 17.6,
+          "via": "terminator squad"
+        }
+      ]
+    }
+  ]
+}

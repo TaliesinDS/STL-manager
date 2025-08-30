@@ -1,0 +1,21 @@
+{
+  "ts": "2025-08-30T19:08:17.364846Z",
+  "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/data/stl_manager_v1.db",
+  "apply": true,
+  "create_virtual_parents": false,
+  "group_children": true,
+  "changes": [
+    {
+      "variant_id": 291,
+      "rel_path": "sample_store\\Infernus Squad",
+      "action": "unmark_parent",
+      "details": {}
+    }
+  ],
+  "counts": {
+    "marked_kit_parents": 0,
+    "created_virtual_parents": 0,
+    "linked_children": 0,
+    "grouped_children": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ts": "2025-08-30T18:05:53.525017Z",
+  "db_url": "sqlite:///./data/stl_manager_v1.db",
+  "apply": true,
+  "create_virtual_parents": false,
+  "group_children": true,
+  "changes": [],
+  "counts": {
+    "marked_kit_parents": 0,
+    "created_virtual_parents": 0,
+    "linked_children": 0,
+    "grouped_children": 0
+  }
+}
