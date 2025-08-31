@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Delete a Variant and all associated rows (files, unit/part links) by id or rel_path.
 
-Dry-run by default; use --apply to commit. Example (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --id 66 --apply
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --rel-path sample_store --apply
+Dry-run by default; use --apply to commit. Prefer passing --db-url over setting env vars.
+Examples (PowerShell):
+    .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --id 66 --apply
+    .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --rel-path sample_store --apply
 """
 from __future__ import annotations
 
@@ -16,13 +17,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session
-from db.models import Variant
-
-
-def find_variant(session, vid: int | None, rel_path: str | None) -> Variant | None:
+def find_variant(session, Variant, vid: int | None, rel_path: str | None):
     if vid is not None:
-        return session.query(Variant).get(vid)
+        return session.get(Variant, vid)
     if rel_path:
         return session.query(Variant).filter(Variant.rel_path == rel_path).first()
     return None
@@ -30,6 +27,7 @@ def find_variant(session, vid: int | None, rel_path: str | None) -> Variant | No
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description="Delete a Variant and cascaded rows (dry-run by default)")
+    ap.add_argument('--db-url', dest='db_url', help='Database URL (overrides STLMGR_DB_URL)')
     ap.add_argument('--id', type=int, help='Variant id to delete')
     ap.add_argument('--rel-path', help='Variant rel_path to delete (exact match)')
     ap.add_argument('--apply', action='store_true', help='Commit deletion')
@@ -39,8 +37,16 @@ def main(argv: list[str]) -> int:
         print('Provide --id or --rel-path')
         return 2
 
+    # Defer imports until after we know the DB target
+    if args.db_url:
+        import os
+        os.environ["STLMGR_DB_URL"] = args.db_url
+
+    from db.session import get_session  # type: ignore
+    from db.models import Variant  # type: ignore
+
     with get_session() as session:
-        v = find_variant(session, args.id, args.rel_path)
+        v = find_variant(session, Variant, args.id, args.rel_path)
         if not v:
             print(json.dumps({"found": False, "id": args.id, "rel_path": args.rel_path}))
             return 0

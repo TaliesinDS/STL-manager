@@ -136,6 +136,12 @@ Additional matching, migration, and verification scripts
 .venv\Scripts\python.exe scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --include-kit-children --apply
 ```
 
+Example (2025-08-31) — command used to generate the attached systems-filtered report `reports\match_units_test_filtered_20250831_183224.json`:
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --systems w40k aos heresy --include-kit-children --out reports/match_units_test_filtered.json --append-timestamp
+```
+
 7. Run Franchise/Characters matcher (dry-run → review JSON → apply):
 
 ```powershell

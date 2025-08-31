@@ -1,7 +1,7 @@
 {
-  "ts": "2025-08-31T16:53:43.203376Z",
+  "ts": "2025-08-31T16:53:47.277797Z",
   "db_url": "sqlite:///./.pytest-tmp/stl_manager_e2e.db",
-  "apply": false,
+  "apply": true,
   "create_virtual_parents": false,
   "group_children": false,
   "changes": [

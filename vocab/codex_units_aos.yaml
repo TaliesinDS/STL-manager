@@ -835,7 +835,7 @@ codex_units:
                 freeguild_marshal:
                   name: "Freeguild Marshal"
                   role: leader
-                  aliases: ["freeguild marshal", "freeguild_marshal"]
+                  aliases: ["freeguild marshal", "freeguild_marshal", "freeguild marshal and relic envoy", "freeguild marshal with relic envoy"]
                   legal_in_editions: ["3rd", "4th"]
                   base_profile: round_28_5mm
                   available_to: ["order/cities_of_sigmar"]

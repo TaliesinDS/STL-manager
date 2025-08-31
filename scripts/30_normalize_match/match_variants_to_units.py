@@ -15,7 +15,10 @@ from sqlalchemy import select
 from sqlalchemy.exc import OperationalError
 
 import sys
-ROOT = Path(__file__).resolve().parents[1]
+# Ensure repository root is on sys.path for imports like 'db.models'
+# __file__ is .../scripts/30_normalize_match/match_variants_to_units.py
+# parents[2] -> repo root
+ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -40,7 +43,7 @@ def system_hint(text: str) -> Optional[str]:
     if any(k in t for k in ["w40k", "40k", "wh40k", "warhammer 40"]):
         return "w40k"
     # Direct AoS keywords
-    if any(k in t for k in ["aos", "age of sigmar", "sigmar"]):
+    if any(k in t for k in ["aos", "age of sigmar", "sigmar", "freeguild"]):
         return "aos"
     # Heuristic: presence of known AoS faction tokens implies AoS system
     AOS_FACTION_TOKENS = [
@@ -564,6 +567,21 @@ def main() -> None:
             "When applying matches, also assign a common model_group_id to all kit children under a kit container so the UI can aggregate them."
         ),
     )
+    parser.add_argument(
+        "--intended-use",
+        nargs="*",
+        default=None,
+        help=(
+            "Only process variants whose intended_use_bucket is one of these values (e.g., tabletop_intent display_large)."
+        ),
+    )
+    parser.add_argument(
+        "--tabletop-only",
+        action="store_true",
+        help=(
+            "Shortcut for --intended-use tabletop_intent to restrict report to tabletop models only."
+        ),
+    )
     args = parser.parse_args()
 
     # Reconfigure DB session if a URL override is provided (fixes Windows env var quoting issues)
@@ -621,6 +639,23 @@ def main() -> None:
             }
 
         q = select(Variant)
+        # Apply intended_use_bucket filter when requested
+        intended_filters: Optional[List[str]] = None
+        if args.tabletop_only:
+            intended_filters = ["tabletop_intent"]
+        elif args.intended_use:
+            intended_filters = [s for s in args.intended_use if s]
+        if intended_filters:
+            try:
+                from sqlalchemy import or_
+                clauses = []
+                for val in intended_filters:
+                    clauses.append(Variant.intended_use_bucket == val)
+                if clauses:
+                    q = q.where(or_(*clauses))
+            except Exception:
+                # Fallback for older SQLAlchemy or missing column (should not happen with current models)
+                q = q.where(Variant.intended_use_bucket.in_(intended_filters))
         if args.limit and args.limit > 0:
             q = q.limit(args.limit)
         variants = session.execute(q).scalars().all()
