@@ -72,45 +72,20 @@ Tabletop Units/Parts (now available):
  - PowerShell examples (Windows):
 
 ```powershell
-$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --commit
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --system aos --commit
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --system heresy --commit
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --commit
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
 ```
 
 Quick verification helper:
-
-```powershell
-$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
-# DB-only counts
-& .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py
-# Compare DB counts vs YAML (AoS is approximate due to list/dict schema)
-& .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py --yaml
-```
-
-Canonical path (with explicit DB URL):
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\60_reports_analysis\report_codex_counts.py --db-url sqlite:///./data/stl_manager_v1.db --yaml
 ```
 
 Match variants to Units (dry-run first):
-
-```powershell
-$env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
-# Dry-run: writes JSON proposals to reports/ (default file name includes timestamp)
-& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --limit 200 --systems w40k aos heresy --min-score 12 --delta 3
-
-# Apply after reviewing proposals (populate Variant fields and create VariantUnitLink)
-& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --apply --systems w40k aos heresy --min-score 12 --delta 3
-
-# Overwrite existing assignments if needed
-& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --apply --overwrite --systems w40k aos heresy
-```
-
-Canonical path (with explicit DB URL):
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --limit 200 --systems w40k aos heresy --min-score 12 --delta 3
@@ -122,16 +97,16 @@ Canonical path (with explicit DB URL):
 
 Added `scripts/quick_scan.py` to surface high-frequency filename tokens and highlight potential new metadata dimensions you might have overlooked (designers, factions, scale denominators, lineage families, variant cues).
 
-PowerShell example:
+PowerShell example (canonical script path):
 
 ```
-python scripts/quick_scan.py --root D:\Models --limit 60000 --extensions .stl .obj .chitubox .lys --json-out quick_scan_report.json
+python scripts/10_inventory/quick_scan.py --root D:\Models --limit 60000 --extensions .stl .obj .chitubox .lys --json-out quick_scan_report.json
 ```
 
 With dynamic vocab from tokenmap (recommended after updates to `vocab/tokenmap.md`):
 
 ```
-python scripts/quick_scan.py --root D:\Models --tokenmap vocab\tokenmap.md --json-out quick_scan_report.json
+python scripts/10_inventory/quick_scan.py --root D:\Models --tokenmap vocab\tokenmap.md --json-out quick_scan_report.json
 ```
 
 Double‑click option:
@@ -157,7 +132,7 @@ What it does NOT do:
 — JSON optional (use --json-out). Without it: stdout only. Redirect if desired:
 
 ```
-python scripts/quick_scan.py --root D:\Models > quick_scan_report.txt
+python scripts/10_inventory/quick_scan.py --root D:\Models > quick_scan_report.txt
 ```
 
 ## Planned Scripts / Roadmap
@@ -180,7 +155,7 @@ Phase 3+ Ideas:
 
 During recent development a set of utility scripts were added to help import and normalize vocab/franchise data and to inspect the DB. These are intended for developer usage and are safe to run in dry-run mode by default.
 
-- `scripts/load_franchises.py` — imports `vocab/franchises/*.json` files and upserts:
+- `scripts/20_loaders/load_franchises.py` — imports `vocab/franchises/*.json` files and upserts:
 	- `VocabEntry(domain='franchise')` rows using the file `id`/`key` or filename stem as the canonical key.
 	- `Character` rows for entries under each franchise `characters` list.
 	- Behavior: default is a dry-run that reports `would_create` / `would_update` counts; pass `--commit` to apply changes.
@@ -192,22 +167,22 @@ During recent development a set of utility scripts were added to help import and
 
 ```powershell
 $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
-& .venv\Scripts\python.exe scripts\load_franchises.py vocab\franchises
+& .venv\Scripts\python.exe scripts\20_loaders\load_franchises.py vocab\franchises
 ```
 
 	- Commit example (apply dedupe + upsert):
 
 ```powershell
 $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
-& .venv\Scripts\python.exe scripts\load_franchises.py vocab\franchises --dedupe --commit
+& .venv\Scripts\python.exe scripts\20_loaders\load_franchises.py vocab\franchises --dedupe --commit
 ```
 
-- `scripts/load_designers.py` — loader for `vocab/designers_tokenmap.md` (conflict-aware upserts into `VocabEntry(domain='designer')`).
-- `scripts/count_franchise_characters.py` — counts how many franchise files include `characters` and the total character entries across the `vocab/franchises` folder (quick pre-check tool).
-- `scripts/inspect_db_characters.py` — lists DB tables and prints a small sample of `Character` rows (useful to confirm DB state and STLMGR_DB_URL target).
-- `scripts/debug_franchise_sample.py` — prints a sample franchise JSON snippet to inspect structure when loader parsing fails.
+- `scripts/20_loaders/load_designers.py` — loader for `vocab/designers_tokenmap.md` (conflict-aware upserts into `VocabEntry(domain='designer')`).
+- `scripts/60_reports_analysis/count_franchise_characters.py` — counts how many franchise files include `characters` and the total character entries across the `vocab/franchises` folder (quick pre-check tool).
+- `scripts/60_reports_analysis/inspect_db_characters.py` — lists DB tables and prints a small sample of `Character` rows (useful to confirm DB state and STLMGR_DB_URL target).
+- `scripts/60_reports_analysis/debug_franchise_sample.py` — prints a sample franchise JSON snippet to inspect structure when loader parsing fails.
 
-- Tabletop Units/Parts loader — `scripts/load_codex_from_yaml.py`:
+- Tabletop Units/Parts loader — `scripts/20_loaders/load_codex_from_yaml.py`:
 	- Ingests Units (40K/AoS/Heresy) or Parts (40K wargear/bodies) YAML. Stores full-fidelity `raw_data` and normalized fields, idempotent upserts, and (re)creates alias rows.
 	- PowerShell examples (Windows):
 
@@ -225,7 +200,7 @@ $env:STLMGR_DB_URL = 'sqlite:///data/stl_manager_v1.db'
 ```
 
 Notes:
-- Default behavior is a safe run that writes nothing unless the loader is implemented with an explicit `--commit` flag; check `scripts/load_codex_from_yaml.py -h` for current flags.
+- Default behavior is a safe run that writes nothing unless the loader is implemented with an explicit `--commit` flag; check `scripts/20_loaders/load_codex_from_yaml.py -h` for current flags.
 - Schema and linking details: `docs/SCHEMA_codex_and_linking.md`.
 - API routes for units/parts and combined unit bundle: `docs/API_SPEC.md`.
 
@@ -270,13 +245,13 @@ PowerShell examples (Windows):
 
 ```powershell
 $env:STLMGR_DB_URL = 'sqlite:///data/stl_manager_v1.db'
-& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --out .\reports\match_franchise_dryrun.json
+& .venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///data/stl_manager_v1.db --batch 500 --out .\reports\match_franchise_dryrun.json
 
 # Enable OC inference (strict) and restrict to fantasy‑like names
-& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --infer-oc --infer-oc-fantasy --out .\reports\match_franchise_dryrun_with_oc.json
+& .venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///data/stl_manager_v1.db --batch 500 --infer-oc --infer-oc-fantasy --out .\reports\match_franchise_dryrun_with_oc.json
 
 # After review of the dry‑run JSON, apply changes
-& .venv\Scripts\python.exe scripts\match_franchise_characters.py --batch 500 --apply
+& .venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///data/stl_manager_v1.db --batch 500 --apply
 ```
 
 Notes:
@@ -290,36 +265,64 @@ The diagram below summarizes the typical, conservative end‑to‑end flow from 
 
 ```mermaid
 graph TD
-	A[Init DB] --> B[Load Vocab]
-	B --> C[Quick Scan]
+	A[Bootstrap DB] --> B[Load Designers & Franchises]
+	B --> C[Load Codex Units & Parts]
+	C --> D[Quick Scan (optional)]
 
-	C --> D[Normalization Helpers]
-	D --> E[Match Franchises & Characters]
-	E --> F[Review Proposals]
-	F --> G{Approve}
-	G --|yes|--> H[Apply Changes]
-	G --|no|--> E
-	H --> I[Variants Updated]
-	I --> J[Optional OC Inference]
-	J --> K[Iterate / Extend Vocab]
+	D --> E[Normalize Inventory (dry‑run)]
+	E --> F[Match Units (with kit children)]
+	E --> G[Match Franchises & Characters]
+
+	F --> H[Review Proposals]
+	G --> H
+	H --> I{Approve}
+	I --|yes|--> J[Apply Proposals]
+	I --|no|--> E
+
+	J --> K[Verify Applied Matches]
+	K --> L[Kits Backfill]
+	L --> M[Cleanup/Repair (dry‑run)]
+	M --> N[Reports / Counts]
+	N --> O[Iterate / Extend Vocab]
 ```
 
-Legend / scripts:
-- Init DB: `scripts/init_db.py` or Alembic
-- Load Vocab: `scripts/load_franchises.py`
-- Quick Scan: `scripts/quick_scan.py`
-- Normalization Helpers: `scripts/normalize_inventory.py`
-- Match Franchises & Characters: `scripts/match_franchise_characters.py`
-- Optional OC Inference flags: `--infer-oc`, `--infer-oc-fantasy` (whitelist: `vocab/oc_whitelist.txt`)
+Legend / scripts (canonical paths; shims exist at legacy locations):
+- Bootstrap DB: `scripts/00_bootstrap/bootstrap_db.py` (A)
+- Load Designers: `scripts/20_loaders/load_designers.py` (B)
+- Load Franchises: `scripts/20_loaders/load_franchises.py` (B)
+- Load Codex Units/Parts: `scripts/20_loaders/load_codex_from_yaml.py` (C)
+- Quick Scan: `scripts/10_inventory/quick_scan.py` (D)
+- Normalize Inventory: `scripts/30_normalize_match/normalize_inventory.py` (E)
+- Match Units: `scripts/30_normalize_match/match_variants_to_units.py` (F)
+- Match Franchises & Characters: `scripts/30_normalize_match/match_franchise_characters.py` (G)
+- Apply Proposals (generic): `scripts/30_normalize_match/apply_proposals_from_report.py` (J)
+- Verify Applied Matches: `scripts/60_reports_analysis/verify_applied_matches.py` (K)
+- Kits Backfill: `scripts/40_kits/backfill_kits.py` (L)
+- Cleanup/Repair (safe subset): `scripts/50_cleanup_repair/prune_invalid_variants.py`, `scripts/50_cleanup_repair/repair_orphan_variants.py` (M)
+- Reports / Counts: `scripts/60_reports_analysis/report_codex_counts.py` (N)
+- Optional OC Inference flags supported by franchise matcher: `--infer-oc`, `--infer-oc-fantasy` (whitelist: `vocab/oc_whitelist.txt`)
 
 Fallback step list (if your viewer doesn’t render Mermaid):
-- Bootstrap and initialize the database schema (Alembic or `scripts/init_db.py`).
-- Load/refresh franchise manifests with `scripts/load_franchises.py`.
-- Use `scripts/quick_scan.py` to inspect frequent tokens (read‑only JSON report).
-- Tokenization helpers in `scripts/normalize_inventory.py` produce conservative signals and route franchise evidence into `franchise_hints`.
-- Run `scripts/match_franchise_characters.py` in dry‑run mode with `--out` to generate a JSON of proposed changes.
-- Review the report; if it looks good, rerun with `--apply` to commit to SQLite.
-- Optional: enable `--infer-oc` (and `--infer-oc-fantasy`) to infer original names safely; maintain `vocab/oc_whitelist.txt` for precise inclusions.
+1) Bootstrap the database schema: `scripts/00_bootstrap/bootstrap_db.py --db-url <URL>`.
+2) Load vocab:
+	- Designers: `scripts/20_loaders/load_designers.py --db-url <URL> --apply`.
+	- Franchises: `scripts/20_loaders/load_franchises.py --db-url <URL> --apply`.
+	- Codex units/parts (40K/AoS/Heresy; wargear/bodies): `scripts/20_loaders/load_codex_from_yaml.py --file <vocab.yaml> --db-url <URL> --commit`.
+3) (Optional) Quick scan filenames: `scripts/10_inventory/quick_scan.py`.
+4) Normalize inventory:
+	- Dry‑run to JSON report: `scripts/30_normalize_match/normalize_inventory.py --db-url <URL> --out reports/normalize_*.json`.
+	- Apply changes: `scripts/30_normalize_match/normalize_inventory.py --db-url <URL> --apply`.
+5) Matchers:
+	- Units (with kit children): `scripts/30_normalize_match/match_variants_to_units.py --db-url <URL> --include-kit-children --out reports/match_units_*.json` (dry‑run), then `--apply`.
+	- Franchises/Characters: `scripts/30_normalize_match/match_franchise_characters.py --db-url <URL> --out reports/match_franchise_*.json` (dry‑run), then `--apply`.
+6) Verify: `scripts/60_reports_analysis/verify_applied_matches.py --db-url <URL> --out reports/verify_*.json`.
+7) Kits backfill: `scripts/40_kits/backfill_kits.py --db-url <URL> --out reports/backfill_kits_*.json` (dry‑run), then `--apply`.
+8) Cleanup/Repair (safe subset, dry‑run):
+	- `scripts/50_cleanup_repair/prune_invalid_variants.py --db-url <URL>`
+	- `scripts/50_cleanup_repair/repair_orphan_variants.py --db-url <URL>`
+9) Reports/Counts: `scripts/60_reports_analysis/report_codex_counts.py --db-url <URL> --yaml`.
+
+For a friendly, step‑by‑step guide and how to run these with tests, see `docs/WORKFLOW_TESTS.md`. The detailed test plan is in `docs/SCRIPTS_WORKFLOW_TEST_PLAN.md`.
 
 ## Quick Start (Baseline One‑Click – Planned)
 Until the packaged batch script is finalized the following outlines intended behavior. Below is a concrete
@@ -346,8 +349,13 @@ Set-Location 'C:\Users\akortekaas\Documents\GitHub\STL-manager'
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-python scripts/init_db.py
-python scripts/load_sample.py   # optional sample import
+
+# Initialize DB (safe to re-run)
+python scripts/00_bootstrap/bootstrap_db.py --db-url sqlite:///./data/stl_manager_v1.db --use-metadata
+
+# Optional: create a tiny inventory JSON and load it
+python scripts/10_inventory/create_sample_inventory.py --out data/sample_quick_scan.json
+python scripts/20_loaders/load_sample.py --file data/sample_quick_scan.json --db-url sqlite:///./data/stl_manager_v1.db
 
 ### Alembic (schema migrations)
 
