@@ -127,9 +127,59 @@ Additional matching, migration, and verification scripts
 .venv\Scripts\python.exe scripts\30_normalize_match\normalize_inventory.py --db-url sqlite:///./data/stl_manager_v1.db --apply
 ```
 
-6. Re-run `debug_variant_fields.py` / `show_variant.py` / `inspect_inference.py` to validate results.
+6. Run Unit matcher (dry-run → review JSON → apply):
 
-7. Run the sync script after editing tokenmaps to detect/remove drift:
+```powershell
+.venv\Scripts\python.exe scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --include-kit-children --out reports/match_units_dryrun.json
+
+# After reviewing the report, apply:
+.venv\Scripts\python.exe scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --include-kit-children --apply
+```
+
+7. Run Franchise/Characters matcher (dry-run → review JSON → apply):
+
+```powershell
+.venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///./data/stl_manager_v1.db --batch 500 --out reports/match_franchise_dryrun.json
+
+# Optional stricter OC inference
+.venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///./data/stl_manager_v1.db --batch 500 --infer-oc --infer-oc-fantasy --out reports/match_franchise_dryrun_with_oc.json
+
+# After reviewing the report(s), apply:
+.venv\Scripts\python.exe scripts\30_normalize_match\match_franchise_characters.py --db-url sqlite:///./data/stl_manager_v1.db --batch 500 --apply
+```
+
+Alternative apply path (when you want to curate JSON first):
+
+```powershell
+.venv\Scripts\python.exe scripts\30_normalize_match\apply_proposals_from_report.py --db-url sqlite:///./data/stl_manager_v1.db --file reports\match_franchise_dryrun.json --apply
+```
+
+8. Backfill kits (mark parents, link children):
+
+```powershell
+.venv\Scripts\python.exe scripts\40_kits\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --out reports/backfill_kits_dryrun.json
+
+# Apply after review
+.venv\Scripts\python.exe scripts\40_kits\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --apply
+```
+
+9. Verify applied matches and emit reports:
+
+```powershell
+.venv\Scripts\python.exe scripts\60_reports_analysis\verify_applied_matches.py --db-url sqlite:///./data/stl_manager_v1.db --out reports/verify_matches.json
+.venv\Scripts\python.exe scripts\60_reports_analysis\report_codex_counts.py --db-url sqlite:///./data/stl_manager_v1.db --yaml
+```
+
+10. Optional cleanup/repair (safe subset; dry-run first):
+
+```powershell
+.venv\Scripts\python.exe scripts\50_cleanup_repair\prune_invalid_variants.py --db-url sqlite:///./data/stl_manager_v1.db
+.venv\Scripts\python.exe scripts\50_cleanup_repair\repair_orphan_variants.py --db-url sqlite:///./data/stl_manager_v1.db
+```
+
+11. Re-run `debug_variant_fields.py` / `show_variant.py` / `inspect_inference.py` to validate results.
+
+12. Run the sync script after editing tokenmaps to detect/remove drift:
 
 ```powershell
 .venv\Scripts\python.exe scripts\20_loaders\sync_designers_from_tokenmap.py vocab\designers_tokenmap.md --db-url sqlite:///./data/stl_manager_v1.db
