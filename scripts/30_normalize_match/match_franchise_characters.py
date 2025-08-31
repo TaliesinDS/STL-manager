@@ -28,6 +28,11 @@ from db.models import Variant
 # Reuse helper functions from normalize_inventory
 from scripts.normalize_inventory import tokens_from_variant, apply_updates_to_variant, TABLETOP_HINTS
 from scripts.quick_scan import classify_token
+from scripts.lib.alias_rules import (
+    AMBIGUOUS_ALIASES,
+    is_short_or_numeric as shared_short_or_numeric,
+    has_supporting_franchise_tokens as shared_has_support,
+)
 try:
     # Use STOPWORDS to avoid forming bigrams across common words when available
     from scripts.quick_scan import STOPWORDS as QS_STOPWORDS
@@ -89,10 +94,7 @@ def expand_with_bigrams(tokens: list[str], stopwords: set[str]) -> list[str]:
     return list(expanded)
 
 
-# Certain character aliases are too generic to stand alone (e.g., 'angel').
-# Require additional supporting franchise evidence (another alias or
-# franchise token) before accepting these as valid character/franchise matches.
-AMBIGUOUS_ALIASES = {"angel", "sakura"}
+# AMBIGUOUS_ALIASES now imported from scripts.lib.alias_rules
 
 # Tokens that should not be considered as names even if they look alphabetic
 NAME_BLOCKLIST = {
@@ -478,31 +480,10 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                 has_char_strong = False
 
                 def short_or_numeric(tok: str) -> bool:
-                    tl = tok.lower()
-                    if tl.isdigit():
-                        return True
-                    if len(tl) <= 2:
-                        return True
-                    # patterns like '2b', '9s', 'a2'
-                    import re as _re
-                    return bool(_re.fullmatch(r"[a-z]\d|\d[a-z]", tl))
+                    return shared_short_or_numeric(tok)
 
                 def has_supporting_fr_tokens(fr_key: str, exclude_token: str | None = None) -> bool:
-                    """Return True if there is independent evidence of this franchise in tokens.
-                    Evidence means: any token (not equal to the current alias) that is either
-                    - a strong/weak signal listed for the franchise, or
-                    - an alias mapping to the franchise via fam.
-                    """
-                    f_tok = f_tokens.get(fr_key, {'strong': set(), 'weak': set()})
-                    sigs = (f_tok.get('strong', set()) | f_tok.get('weak', set()))
-                    for tt in token_list:
-                        if exclude_token and tt == exclude_token:
-                            continue
-                        if tt in sigs:
-                            return True
-                        if tt in fam and fam[tt] == fr_key:
-                            return True
-                    return False
+                    return shared_has_support(fr_key, token_list, fam, f_tokens, exclude_token=exclude_token)
 
                 # Prefer character matches that include canonical franchise
                 # If a character alias is found, prefer to use it but treat very short
@@ -728,25 +709,10 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                         has_char_strong = False
 
                         def short_or_numeric(tok: str) -> bool:
-                            tl = tok.lower()
-                            if tl.isdigit():
-                                return True
-                            if len(tl) <= 2:
-                                return True
-                            import re as _re
-                            return bool(_re.fullmatch(r"[a-z]\d|\d[a-z]", tl))
+                            return shared_short_or_numeric(tok)
 
                         def has_supporting_fr_tokens(fr_key: str, exclude_token: str | None = None) -> bool:
-                            f_tok = f_tokens.get(fr_key, {'strong': set(), 'weak': set()})
-                            sigs = (f_tok.get('strong', set()) | f_tok.get('weak', set()))
-                            for tt in token_list:
-                                if exclude_token and tt == exclude_token:
-                                    continue
-                                if tt in sigs:
-                                    return True
-                                if tt in fam and fam[tt] == fr_key:
-                                    return True
-                            return False
+                            return shared_has_support(fr_key, token_list, fam, f_tokens, exclude_token=exclude_token)
 
                         for t in token_list:
                             if t in cam:

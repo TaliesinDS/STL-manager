@@ -19,7 +19,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from db.session import SessionLocal
-from db.models import VocabEntry
+from db.models import VocabEntry, Variant
 
 FENCE_RE = re.compile(r"^```")
 ENTRY_RE = re.compile(r"^\s*([A-Za-z0-9_\-]+)\s*:\s*(\[.*\])\s*$")
@@ -72,6 +72,129 @@ def parse_tokenmap_json(path: Path):
 
 def normalize_alias(a: str) -> str:
     return a.strip().lower()
+
+
+def build_alias_map(entries: dict[str, list[str]]) -> dict[str, str]:
+    """Return mapping of normalized alias -> canonical key from provided entries."""
+    alias_map: dict[str, str] = {}
+    for canonical, aliases in (entries or {}).items():
+        alias_map[normalize_alias(canonical)] = canonical
+        for a in aliases or []:
+            alias_map[normalize_alias(a)] = canonical
+    return alias_map
+
+
+def reconcile_renamed_designers(session, entries: dict[str, list[str]], update_variants: bool = False) -> dict:
+    """Detect legacy designer keys in DB that now resolve to a different canonical in the tokenmap and reconcile.
+
+    Steps per legacy key:
+    - Ensure target canonical VocabEntry exists
+    - Merge aliases (authoritative from tokenmap + DB + old key)
+    - Optionally update Variant.designer values to target canonical
+    - Delete legacy VocabEntry
+    Returns a summary dict with counts and samples.
+    """
+    alias_map = build_alias_map(entries)
+
+    def resolve_target_for_db_row(ve: VocabEntry) -> str | None:
+        # Prefer mapping by exact key, else by any of its aliases
+        key_norm = normalize_alias(ve.key)
+        if key_norm in alias_map:
+            return alias_map[key_norm]
+        for a in (ve.aliases or []):
+            na = normalize_alias(a)
+            if na in alias_map:
+                return alias_map[na]
+        return None
+
+    db_rows: list[VocabEntry] = session.query(VocabEntry).filter_by(domain="designer").all()
+    rename_actions: list[tuple[str, str]] = []
+    for ve in db_rows:
+        tgt = resolve_target_for_db_row(ve)
+        if not tgt:
+            continue
+        if tgt != ve.key:
+            rename_actions.append((ve.key, tgt))
+
+    # De-duplicate and avoid cycles
+    unique_actions = []
+    seen = set()
+    for old, new in rename_actions:
+        if old == new:
+            continue
+        key = (old, new)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_actions.append((old, new))
+
+    updated_variants = 0
+    merged_aliases_for = {}
+    deleted_vocab = []
+
+    for old_key, new_key in unique_actions:
+        legacy = session.query(VocabEntry).filter_by(domain="designer", key=old_key).one_or_none()
+        target = session.query(VocabEntry).filter_by(domain="designer", key=new_key).one_or_none()
+        if not target:
+            # Create target if missing
+            target = VocabEntry(domain="designer", key=new_key, aliases=[], meta={})
+            session.add(target)
+            session.flush()
+
+        # Merge aliases: authoritative from file
+        file_aliases = list((entries.get(new_key) or []))
+        merged = []
+        def _extend(vals):
+            nonlocal merged
+            for v in vals or []:
+                v = (v or "").strip()
+                if not v:
+                    continue
+                if v not in merged:
+                    merged.append(v)
+
+        _extend(file_aliases)
+        _extend(target.aliases)
+        if legacy:
+            _extend(legacy.aliases)
+            # Keep old canonical as an alias for back-compat
+            if old_key not in merged:
+                merged.append(old_key)
+
+        target.aliases = merged
+
+        # Meta: track previous_keys
+        meta = dict(target.meta or {})
+        prev = set(meta.get("previous_keys", []))
+        prev.add(old_key)
+        meta["previous_keys"] = sorted(prev)
+        target.meta = meta
+
+        # Optionally update variants to point to new canonical
+        if update_variants and legacy:
+            legacy_norms = {normalize_alias(legacy.key)} | {normalize_alias(a) for a in (legacy.aliases or [])}
+            # Iterate all designer-tagged variants and normalize in Python (DB may contain various casings)
+            for v in session.query(Variant).filter(Variant.designer.isnot(None)).all():
+                dn = normalize_alias(str(v.designer))
+                if dn in legacy_norms:
+                    v.designer = new_key
+                    updated_variants += 1
+
+        if legacy:
+            deleted_vocab.append(old_key)
+            session.delete(legacy)
+
+        merged_aliases_for[old_key] = {"into": new_key, "aliases": merged}
+
+    if unique_actions or updated_variants or deleted_vocab:
+        session.commit()
+
+    return {
+        "rename_actions": unique_actions,
+        "updated_variants": updated_variants,
+        "deleted_vocab": deleted_vocab,
+        "merged_aliases": merged_aliases_for,
+    }
 
 
 def detect_conflicts(entries: dict, session):
@@ -159,6 +282,8 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Load designers tokenmap into DB (dry-run by default)")
     p.add_argument("path", help="Path to designers_tokenmap.(md|json)")
     p.add_argument("--commit", action="store_true", help="Apply changes to the DB (default: dry-run)")
+    p.add_argument("--reconcile-renamed", action="store_true", help="When --commit, reconcile legacy designer keys to new canonical names from tokenmap")
+    p.add_argument("--update-variants", action="store_true", help="When reconciling, also update Variant.designer to the new canonical name")
     args = p.parse_args(argv)
 
     path = Path(args.path)
@@ -179,6 +304,14 @@ def main(argv: list[str] | None = None) -> int:
     try:
         upsert_vocab_entries(session, entries, source_file=path.name, map_version=map_version, extra_meta_per_key=extra_meta_per_key)
         print(f"Upserted {len(entries)} designer vocab entries (map_version={map_version})")
+        if args.commit and args.reconcile_renamed:
+            summary = reconcile_renamed_designers(session, entries, update_variants=args.update_variants)
+            print("Reconcile summary:")
+            print(f"  renames: {len(summary.get('rename_actions', []))}")
+            print(f"  updated_variants: {summary.get('updated_variants', 0)}")
+            if summary.get("rename_actions"):
+                sample = summary["rename_actions"][:10]
+                print(f"  sample renames: {sample}")
     finally:
         session.close()
     return 0

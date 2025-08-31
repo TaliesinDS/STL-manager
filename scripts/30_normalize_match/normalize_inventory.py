@@ -17,12 +17,13 @@ import re
 from typing import Iterable, Tuple, Dict, List, Optional
 
 # Ensure project root is on sys.path so `from db...` imports work
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# scripts/30_normalize_match/ -> scripts -> repo root
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from db.session import get_session, DB_URL
-from db.models import Variant, File, VocabEntry
+from db.models import Variant, File, VocabEntry, Character
 
 # Reuse tokenizer and tokenmap loader from quick_scan to keep behavior consistent
 from scripts.quick_scan import (
@@ -33,6 +34,10 @@ from scripts.quick_scan import (
     SCALE_RATIO_RE,
     SCALE_MM_RE,
     SPLIT_CHARS,
+)
+from scripts.lib.alias_rules import (
+    AMBIGUOUS_ALIASES,
+    is_short_or_numeric as _short_or_numeric,
 )
 
 def load_designers_json(path: Path) -> tuple[dict, list[tuple[list[str], str]], dict[str, str]]:
@@ -114,6 +119,7 @@ TABLETOP_HINTS = {
     "bases", "bust", "miniaturesupports", "support", "church", "decor",
     "mm", "scale", "mini_supports", "squad"
 }
+
 
 # Context heuristics for lineage suppression
 ACTION_VERBS = {"kill", "killing", "slay", "slaying", "vs", "versus", "against", "defeating", "beating", "revenge"}
@@ -258,14 +264,23 @@ def build_franchise_alias_map(session) -> dict[str, str]:
 
 
 def build_character_alias_map(session) -> dict[str, str]:
-    """Return alias->canonical mapping from VocabEntry(domain='character')."""
-    rows = session.query(VocabEntry).filter_by(domain="character").all()
+    """Return alias->canonical mapping from the Character table.
+
+    Canonical is the Character.name (snake_case). All aliases from the row's
+    `aliases` JSON array are mapped to that canonical. The canonical key itself
+    is also mapped so direct mentions like 'nami_one_piece' hit as well.
+    """
+    rows = session.query(Character).all()
     cmap: dict[str, str] = {}
     for r in rows:
-        key = r.key
+        key = (r.name or "").strip()
+        if not key:
+            continue
         cmap[key.lower()] = key
         for a in (r.aliases or []):
-            cmap[a.strip().lower()] = key
+            if not a:
+                continue
+            cmap[str(a).strip().lower()] = key
     return cmap
 
 
@@ -388,6 +403,23 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
 
     # Ensure we have a list for co-occurrence checks
     token_list = list(tokens)
+
+    # Minimal bigram expansion to catch two-word character aliases like 'poison ivy'
+    # and their snake_case variants 'poison_ivy'. Prefer matches on these longer
+    # forms before considering shorter ambiguous tokens like 'ivy'.
+    def _expand_with_bigrams(toks: list[str]) -> list[str]:
+        out = set(toks)
+        for i in range(len(toks) - 1):
+            a, b = toks[i], toks[i+1]
+            if not a or not b:
+                continue
+            # Only combine alphabetic tokens to reduce noise
+            if a.isalnum() and b.isalnum():
+                out.add(f"{a}_{b}")
+                out.add(f"{a} {b}")
+        return list(out)
+
+    alias_token_list = _expand_with_bigrams(token_list)
     # Track lineage candidates with their positional index to bias towards
     # deeper path segments (tokens closer to the file/final folder appear
     # later in the token list produced by tokenize()).
@@ -398,14 +430,48 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
     # tabletop context when explicit franchise/character/designer tokens are
     # present.
     has_tabletop_hint = any(t in TABLETOP_HINTS for t in token_list)
+    # Evaluate character evidence with gating to avoid counting weak aliases like '002'
+    def _has_franchise_alias(tokens: list[str]) -> bool:
+        return bool(franchise_map and any(t in franchise_map for t in tokens))
+
+    def _is_valid_character_token(tok: str) -> bool:
+        if not (character_map and tok in character_map):
+            return False
+        # Suppress extremely short/numeric codes unless there is supporting franchise evidence
+        if _short_or_numeric(tok) and not _has_franchise_alias(token_list):
+            return False
+        # Suppress ambiguous aliases unless there is supporting franchise evidence
+        if tok in AMBIGUOUS_ALIASES and not _has_franchise_alias(token_list):
+            return False
+        return True
+
     has_stronger_context = False
     if designer_map and any(t in designer_map for t in token_list):
         has_stronger_context = True
-    if franchise_map and any(t in franchise_map for t in token_list):
+    if franchise_map and any(t in franchise_map for t in alias_token_list):
         has_stronger_context = True
-    if character_map and any(t in character_map for t in token_list):
+    if any(_is_valid_character_token(t) for t in alias_token_list):
         has_stronger_context = True
     is_tabletop = has_tabletop_hint and not has_stronger_context
+
+    # Pre-pass: prefer multi-token character aliases present in alias_token_list
+    # (e.g., 'poison_ivy' from tokens ['poison','ivy']). Choose the longest match first.
+    if character_map and not inferred.get("character_hint"):
+        candidates = [t for t in alias_token_list if t in character_map]
+        if candidates:
+            # sort by length desc to prefer longer, more specific aliases
+            for cand in sorted(candidates, key=lambda s: (-len(s), s)):
+                # gating: same as below
+                if _short_or_numeric(cand) and not _has_franchise_alias(alias_token_list):
+                    continue
+                if cand in AMBIGUOUS_ALIASES and not _has_franchise_alias(alias_token_list):
+                    continue
+                inferred["character_hint"] = cand
+                inferred["character_name"] = character_map[cand]
+                inferred.setdefault("normalization_warnings", [])
+                if "character_without_context" not in inferred["normalization_warnings"]:
+                    inferred["normalization_warnings"].append("character_without_context")
+                break
 
     # Optional: intended_use from tokenmap.md (conservative, single bucket; conflict -> warning)
     if intended_use_map:
@@ -541,6 +607,14 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         # canonical name for review. We do not auto-assign codex_unit_name
         # to persistent fields unless later phases confirm game_system + faction.
         if character_map and not inferred.get("character_hint") and tok in character_map:
+            # Only accept reasonable character aliases; ignore short/numeric or ambiguous
+            # ones unless there is franchise evidence present in the same token list.
+            if _short_or_numeric(tok) and not _has_franchise_alias(alias_token_list):
+                # too weak on its own
+                continue
+            if tok in AMBIGUOUS_ALIASES and not _has_franchise_alias(alias_token_list):
+                # ambiguous without support
+                continue
             # Record a character hint and canonical character name for review.
             inferred["character_hint"] = tok
             inferred["character_name"] = character_map[tok]
@@ -804,7 +878,8 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                      include_fields: Optional[list[str]] = None, exclude_fields: Optional[list[str]] = None,
                      print_summary: bool = False, ids: Optional[list[int]] = None,
                      use_franchise_preferences: bool = True):
-    root = Path(__file__).resolve().parent.parent
+    # Use repository root (two levels up from scripts/30_normalize_match)
+    root = PROJECT_ROOT
     # try to load tokenmap to set token version & domain sets
     tm_path = Path(tokenmap_path) if tokenmap_path else (root / 'vocab' / 'tokenmap.md')
     if tm_path.exists():
