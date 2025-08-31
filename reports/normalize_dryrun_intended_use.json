@@ -1,8 +1,0 @@
-{
-  "apply": false,
-  "total_examined": 492,
-  "proposals_count": 0,
-  "proposals": [],
-  "field_summary": {},
-  "db_url": "sqlite:///./data/stl_manager_v1.db"
-}

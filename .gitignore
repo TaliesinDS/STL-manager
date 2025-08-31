@@ -47,6 +47,11 @@ __pycache__/
 build/
 dist/
 notes/
+# Reports (generated artifacts)
+/reports/test_artifacts/**
+/reports/**/*.json
+!/reports/*.md
+!/reports/README.md
 # Optional future patterns (uncomment if you choose to exclude)
 # *.stl
 # *.obj

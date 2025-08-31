@@ -1,2 +1,0 @@
-Found 0 missing franchise keys (variants reference them but no VocabEntry exists).
-Dry-run: no changes made. Use --apply to create VocabEntry rows.

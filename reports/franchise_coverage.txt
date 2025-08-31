@@ -1,3 +1,0 @@
-variant_id	rel_path	franchise	vocab_exists
-119	sample_store\azerama - himeko toga - my hero acadamia\nsfw	my_hero_academia	yes
-120	sample_store\azerama - himeko toga - my hero acadamia\sfw	my_hero_academia	yes
