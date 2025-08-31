@@ -1,20 +1,48 @@
 #!/usr/bin/env python3
+"""
+Compatibility shim: delegates to scripts/60_reports_analysis/verify_migration_output.py
+"""
+from __future__ import annotations
+
+import importlib.util
 import sys
 from pathlib import Path
+from types import ModuleType
 
-# Ensure project root is on sys.path for imports
-ROOT = Path(__file__).resolve().parent.parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "60_reports_analysis" / "verify_migration_output.py"
+MODULE_NAME = "scripts.60_reports_analysis.verify_migration_output"
 
-from db.session import get_session
-from db.models import Variant
-import json
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
 
-ids=[66,69,77,78,79,80,82,84,85,86,87,88,89,142,146,149,150,153,154]
-out=[]
-with get_session() as s:
-    rows=s.query(Variant).filter(Variant.id.in_(ids)).all()
-    for v in rows:
-        out.append({'variant_id':v.id,'rel_path':v.rel_path,'codex_unit_name':v.codex_unit_name,'character_name':v.character_name,'character_aliases':v.character_aliases})
-print(json.dumps(out,ensure_ascii=False,indent=2))
+
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
+
+
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        return 0
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
+    try:
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

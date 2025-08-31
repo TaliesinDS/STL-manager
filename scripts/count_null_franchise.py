@@ -1,18 +1,49 @@
-#!/usr/bin/env python3
+"""Compatibility shim for scripts.count_null_franchise.
+
+Canonical module moved to scripts/60_reports_analysis/count_null_franchise.py.
+This shim loads it via importlib and re-exports public symbols, including main().
+"""
 from __future__ import annotations
-from pathlib import Path
+
+import importlib.util
 import sys
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+from pathlib import Path
+from types import ModuleType
 
-from db.session import get_session
-from db.models import Variant
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+_IMPL_PATH = _ROOT / "scripts" / "60_reports_analysis" / "count_null_franchise.py"
 
-def main():
-    with get_session() as s:
-        c = s.query(Variant).filter(Variant.franchise.is_(None)).count()
-    print(c)
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-if __name__ == '__main__':
-    main()
+if not _IMPL_PATH.is_file():
+    raise FileNotFoundError(f"Relocated count_null_franchise not found at {_IMPL_PATH}")
+
+_SPEC = importlib.util.spec_from_file_location(
+    "scripts.count_null_franchise_impl", str(_IMPL_PATH)
+)
+if _SPEC is None or _SPEC.loader is None:
+    raise ImportError(f"Unable to load spec for {_IMPL_PATH}")
+_MOD: ModuleType = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MOD  # type: ignore[attr-defined]
+_SPEC.loader.exec_module(_MOD)
+
+__all__ = [n for n in dir(_MOD) if not n.startswith("_")]
+_g = globals()
+for name in __all__:
+    _g[name] = getattr(_MOD, name)
+
+
+def main(argv: list[str] | None = None) -> int:  # type: ignore[override]
+    impl_main = getattr(_MOD, "main", None)
+    if callable(impl_main):
+        try:
+            return int(impl_main(argv or []))  # type: ignore[misc]
+        except TypeError:
+            return int(impl_main())  # type: ignore[call-arg]
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

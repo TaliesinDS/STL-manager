@@ -1,84 +1,47 @@
-#!/usr/bin/env python3
-"""Scan sample inventory JSON and report tokens captured only when tokenizing
-directory components (i.e., tokens that were previously omitted when only
-tokenizing Path.stem).
-
-Usage:
-  .venv\Scripts\python.exe scripts\scan_sample_inventory.py
+"""
+Compatibility shim: delegates to canonical implementation in scripts/10_inventory/scan_sample_inventory.py
 """
 from __future__ import annotations
+
+import importlib.util
 import sys
-import json
 from pathlib import Path
+from types import ModuleType
 
-# Ensure project root importability
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "10_inventory" / "scan_sample_inventory.py"
+MODULE_NAME = "scripts.10_inventory.scan_sample_inventory"
 
-from scripts.quick_scan import tokenize
-
-
-def tokenize_stem(path: str) -> list[str]:
-    """Emulate the old behavior that only tokenized Path.stem."""
-    p = Path(path)
-    stem = p.stem.lower()
-    # reuse split logic from quick_scan but simplified
-    import re
-    SPLIT_CHARS = re.compile(r"[\s_\-]+")
-    parts = SPLIT_CHARS.split(stem)
-    out = []
-    for p in parts:
-        p = p.strip()
-        if not p or len(p) < 2:
-            continue
-        p = p.strip("()[]{}+")
-        if p.startswith('@'):
-            p = p[1:]
-        if p.endswith('.stl'):
-            p = p[:-4]
-        if not p or len(p) < 2:
-            continue
-        out.append(p)
-    return out
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
 
 
-def main(argv: list[str]) -> int:
-    fixture = PROJECT_ROOT / 'tests' / 'fixtures' / 'sample_inventory.json'
-    if not fixture.exists():
-        print("sample_inventory.json not found at tests/fixtures; nothing to scan.")
-        return 2
-    data = json.loads(fixture.read_text(encoding='utf-8'))
-    rels = [r.get('rel_path') for r in data if r.get('rel_path')]
-
-    full_tokens = set()
-    stem_tokens = set()
-    per_row_new = []
-    for rp in rels:
-        toks_full = set(tokenize(Path(rp)))
-        toks_stem = set(tokenize_stem(rp))
-        full_tokens.update(toks_full)
-        stem_tokens.update(toks_stem)
-        new = sorted(toks_full - toks_stem)
-        if new:
-            per_row_new.append({'rel_path': rp, 'new_tokens': new})
-
-    only_in_full = sorted(full_tokens - stem_tokens)
-
-    print(f"Total rel_path rows scanned: {len(rels)}")
-    print(f"Unique tokens (full path): {len(full_tokens)}")
-    print(f"Unique tokens (stem-only): {len(stem_tokens)}")
-    print("\nTokens captured only when tokenizing full path (directory components):")
-    for t in only_in_full:
-        print(f"  {t}")
-
-    print("\nSample rows with newly-captured tokens (first 50):")
-    for r in per_row_new[:50]:
-        print(f"- {r['rel_path']}")
-        print(f"  new: {r['new_tokens']}")
-
-    return 0
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
 
 
-if __name__ == '__main__':
-    raise SystemExit(main(sys.argv))
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        raise SystemExit("canonical module missing main()")
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
+    try:
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

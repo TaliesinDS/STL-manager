@@ -1,71 +1,45 @@
-#!/usr/bin/env python3
-"""Set `Variant.franchise` for specific variant IDs in a conservative way.
-
-Dry-run by default; use `--apply` to write. Will only set the field when
-empty unless `--force` is supplied. Adds a normalization warning
-`franchise_assigned_manual` when applied.
-"""
+"""Compatibility shim: delegates to canonical implementation in scripts/50_cleanup_repair/set_variant_franchise.py"""
 from __future__ import annotations
 
-import argparse
-from pathlib import Path
+import importlib.util
 import sys
-import json
+from pathlib import Path
+from types import ModuleType
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "50_cleanup_repair" / "set_variant_franchise.py"
+MODULE_NAME = "scripts.50_cleanup_repair.set_variant_franchise"
 
-from db.session import get_session
-from db.models import Variant
-
-
-def process(ids: list[int], franchise: str, apply: bool, force: bool):
-    changed = []
-    with get_session() as session:
-        for vid in ids:
-            v = session.query(Variant).filter_by(id=vid).one_or_none()
-            if not v:
-                print(f"Variant {vid} not found; skipping")
-                continue
-            cur = v.franchise
-            will_set = False
-            if cur in (None, "") or force:
-                will_set = True
-            if not will_set:
-                print(f"Variant {vid} already has franchise='{cur}'; use --force to overwrite")
-                continue
-
-            print(f"Proposed: set Variant {vid} franchise -> '{franchise}' (current: {cur})")
-            # show other context briefly
-            print(f"  rel_path: {v.rel_path}")
-            if apply:
-                v.franchise = franchise
-                curw = v.normalization_warnings or []
-                if 'franchise_assigned_manual' not in curw:
-                    curw = list(curw) + ['franchise_assigned_manual']
-                v.normalization_warnings = curw
-                session.commit()
-                print(f"Applied: Variant {vid} franchise set to '{franchise}'")
-                changed.append(vid)
-
-    print(f"Done. Applied to {len(changed)} variants.")
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
 
 
-def parse_args(argv):
-    ap = argparse.ArgumentParser(description='Set franchise on variant ids')
-    ap.add_argument('--ids', nargs='+', type=int, required=True, help='Variant IDs to update')
-    ap.add_argument('--franchise', required=True, help='Franchise key to set')
-    ap.add_argument('--apply', action='store_true', help='Write changes to DB')
-    ap.add_argument('--force', action='store_true', help='Overwrite existing franchise')
-    return ap.parse_args(argv)
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
 
 
-def main(argv):
-    args = parse_args(argv)
-    process(ids=args.ids, franchise=args.franchise, apply=args.apply, force=args.force)
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
 
 
-if __name__ == '__main__':
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        raise SystemExit("canonical module missing main()")
     import sys as _sys
-    raise SystemExit(main(_sys.argv[1:]))
+    _argv = _sys.argv[1:] if argv is None else argv
+    try:
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

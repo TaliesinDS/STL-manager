@@ -124,7 +124,7 @@ What it does (Phase 0 safe):
 - Splits stems (and now directory names) on `_ - space` unless `--skip-dirs` provided.
 - Optionally loads designers / lineage / faction aliases / stopwords from `vocab/tokenmap.md` via `--tokenmap` (falls back to embedded defaults if parsing fails). Designers list auto-loads from `vocab/designers_tokenmap.md` if present (or legacy root with warning).
 - Supports ignore list & domain summary via `--ignore-file` (newline tokens, `#` comments) and `--emit-known-summary` to print counts of classified domains and suppress noisy frequent known/ambiguous tokens from the unknown list.
-	- If `--ignore-file` is omitted the script auto-loads `ignored_tokens.txt` from the scripts directory when present.
+	- If `--ignore-file` is omitted the script auto-loads `ignored_tokens.txt` using this search order: `scripts/30_normalize_match/ignored_tokens.txt` (canonical), then `vocab/ignored_tokens.txt`, then alongside the script (legacy).
 - Optional `--include-archives` adds archive filenames (.zip .rar .7z .cbz .cbr) to token stream (still no extraction) and reports `scanned_archives` in JSON.
 - Counts token frequencies and classifies against a minimal embedded vocab subset (sync with `tokenmap.md`).
 - Prints top unknown tokens (candidates for expansion into designer aliases, factions, lineage, style, etc.).
@@ -374,6 +374,14 @@ Development note: During ad-hoc smoke tests the project may create a temporary d
 3. Use the future UI or CLI commands (to be added) for scan & normalization once available.
 
 Nothing is installed globally; deleting the folder removes everything (idempotent local footprint).
+
+### CLI notes and helpers
+- Prefer passing `--db-url` on commands that support it; otherwise scripts honor `STLMGR_DB_URL`.
+- Read-only verification scripts:
+	- `scripts/60_reports_analysis/verify_tokens_written.py [--db-url URL] [--like "%Ryuko%"]` — prints sample file/variant residual tokens.
+	- `scripts/60_reports_analysis/verify_migration_output.py [--db-url URL] [--ids 1,2,3]` — dumps selected `Variant` rows as JSON.
+- Franchise alias sync (safe by default):
+	- `scripts/20_loaders/sync_franchise_tokens_to_vocab.py [--db-url URL] [--apply]` — dry-run unless `--apply`.
 
 ## Tabletop Browsing (Developer Preview)
 - After loading units/parts, you can begin linking Variants to Units/Parts via scripts or the future UI.

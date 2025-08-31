@@ -1,35 +1,38 @@
 #!/usr/bin/env python3
-"""Report which Variant.franchise keys exist and whether they have a
-corresponding VocabEntry(domain='franchise', key=...).
-
-Outputs a simple tab-separated report to stdout.
-"""
 from __future__ import annotations
 
-from pathlib import Path
+import importlib.util
 import sys
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session
-from db.models import Variant, VocabEntry
+from pathlib import Path
 
 
-def run():
-    out_lines = ["variant_id\trel_path\tfranchise\tvocab_exists"]
-    with get_session() as session:
-        rows = session.query(Variant).filter(Variant.franchise.isnot(None)).all()
-        # Build set of existing franchise keys
-        vrows = session.query(VocabEntry).filter_by(domain='franchise').all()
-        existing = {v.key for v in vrows}
-        for v in rows:
-            key = v.franchise or ""
-            exists = 'yes' if key in existing else 'no'
-            out_lines.append(f"{v.id}\t{v.rel_path}\t{key}\t{exists}")
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '60_reports_analysis' / 'report_franchise_coverage.py'
 
-    print('\n'.join(out_lines))
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.60_reports_analysis.report_franchise_coverage', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.60_reports_analysis.report_franchise_coverage'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    if hasattr(mod, 'main'):
+        try:
+            return int(mod.main(argv))  # type: ignore[arg-type]
+        except TypeError:
+            return int(mod.main())  # type: ignore[call-arg]
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
 
 
 if __name__ == '__main__':
-    run()
+    raise SystemExit(main(sys.argv[1:]))

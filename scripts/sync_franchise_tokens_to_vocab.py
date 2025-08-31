@@ -1,61 +1,47 @@
-from pathlib import Path
+"""
+Compatibility shim: delegates to scripts/20_loaders/sync_franchise_tokens_to_vocab.py
+"""
+from __future__ import annotations
+
+import importlib.util
 import sys
-import json
+from pathlib import Path
+from types import ModuleType
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "20_loaders" / "sync_franchise_tokens_to_vocab.py"
+MODULE_NAME = "scripts.20_loaders.sync_franchise_tokens_to_vocab"
 
-from db.session import SessionLocal
-from db.models import VocabEntry
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
 
-fr_dir = PROJECT_ROOT / 'vocab' / 'franchises'
 
-def load_tokens_for_franchise(path: Path):
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
+
+
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        return 0
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
     try:
-        obj = json.loads(path.read_text(encoding='utf8'))
-    except Exception:
-        return None
-    key = obj.get('franchise') or obj.get('key') or path.stem
-    tokens = obj.get('tokens', {}) or {}
-    aliases = set(obj.get('aliases') or [])
-    # include strong/weak/stop tokens as aliases so DB alias map finds them
-    for s in tokens.get('strong_signals', []) or []:
-        aliases.add(str(s).strip().lower())
-    for w in tokens.get('weak_signals', []) or []:
-        aliases.add(str(w).strip().lower())
-    for st in tokens.get('stop_conflicts', []) or []:
-        aliases.add(str(st).strip().lower())
-    return key, sorted(a for a in aliases if a)
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
 
 
-def main():
-    session = SessionLocal()
-    created = 0
-    updated = 0
-    try:
-        for jf in sorted(fr_dir.glob('*.json')):
-            info = load_tokens_for_franchise(jf)
-            if not info:
-                continue
-            key, aliases = info
-            ve = session.query(VocabEntry).filter_by(domain='franchise', key=key).one_or_none()
-            if ve:
-                # merge aliases
-                cur = set(ve.aliases or [])
-                new = set(aliases)
-                merged = sorted(cur.union(new))
-                if merged != (ve.aliases or []):
-                    ve.aliases = merged
-                    updated += 1
-            else:
-                ve = VocabEntry(domain='franchise', key=key, aliases=aliases, meta={'source':'vocab/franchises'})
-                session.add(ve)
-                created += 1
-        session.commit()
-    finally:
-        session.close()
-    print(f'Committed franchise alias sync: created={created} updated={updated}')
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    raise SystemExit(main())

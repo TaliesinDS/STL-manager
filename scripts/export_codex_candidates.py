@@ -1,40 +1,38 @@
 #!/usr/bin/env python3
-"""Export variants that currently have non-empty codex_unit_name for audit.
-Writes a timestamped JSON file into reports/ with fields: variant_id, rel_path,
-codex_unit_name, character_name, character_aliases.
-"""
 from __future__ import annotations
-from pathlib import Path
-from datetime import datetime
-import json
+
+import importlib.util
 import sys
-
-ROOT = Path(__file__).resolve().parent.parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session
-from db.models import Variant
+from pathlib import Path
 
 
-def main():
-    ts = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
-    out_path = ROOT / 'reports' / f'codex_unit_name_candidates_{ts}.json'
-    results = []
-    with get_session() as session:
-        rows = session.query(Variant).filter(Variant.codex_unit_name.isnot(None), Variant.codex_unit_name != '').all()
-        for v in rows:
-            results.append({
-                'variant_id': v.id,
-                'rel_path': v.rel_path,
-                'codex_unit_name': v.codex_unit_name,
-                'character_name': getattr(v, 'character_name', None),
-                'character_aliases': getattr(v, 'character_aliases', None),
-            })
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(f'Wrote {out_path}')
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '60_reports_analysis' / 'export_codex_candidates.py'
+
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.60_reports_analysis.export_codex_candidates', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.60_reports_analysis.export_codex_candidates'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    if hasattr(mod, 'main'):
+        try:
+            return int(mod.main(argv))  # type: ignore[arg-type]
+        except TypeError:
+            return int(mod.main())  # type: ignore[call-arg]
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
 
 
 if __name__ == '__main__':
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

@@ -1,3 +1,5 @@
+# DEPRECATED MIRROR — canonical copy lives at scripts/30_normalize_match/ignored_tokens.txt
+# Keep this file in sync temporarily for backward-compat; prefer using the canonical path.
 # High-frequency generic tokens to suppress from unknown list so new vocab surfaces
 # You can add/remove lines; lines starting with # are ignored.
 # Anatomy / generic parts

@@ -1,26 +1,38 @@
 #!/usr/bin/env python3
-import json, re
+from __future__ import annotations
+
+import importlib.util
+import sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent
-IN = ROOT / 'reports' / 'normalization_stdout.txt'
-OUT = ROOT / 'reports' / 'normalization_proposals.json'
-text = IN.read_text(encoding='utf-8') if IN.exists() else ''
-props = []
-# capture JSON objects like {"variant_id": 123, ...}
-for m in re.finditer(r'\{\s*\"variant_id\".*?\n\}', text, flags=re.DOTALL):
-    candidate = m.group(0)
-    try:
-        props.append(json.loads(candidate))
-    except Exception:
-        pass
-# Also try to capture lines that start with '{' and appear to be JSON per-line
-for ln in text.splitlines():
-    ln = ln.strip()
-    if ln.startswith('{') and ln.endswith('}'):
+
+
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '60_reports_analysis' / 'parse_normalization_stdout.py'
+
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.60_reports_analysis.parse_normalization_stdout', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.60_reports_analysis.parse_normalization_stdout'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    if hasattr(mod, 'main'):
         try:
-            props.append(json.loads(ln))
-        except Exception:
-            pass
-OUT.parent.mkdir(parents=True, exist_ok=True)
-OUT.write_text(json.dumps(props, indent=2, ensure_ascii=False), encoding='utf-8')
-print('wrote', OUT, 'with', len(props), 'proposal objects')
+            return int(mod.main(argv))  # type: ignore[arg-type]
+        except TypeError:
+            return int(mod.main())  # type: ignore[call-arg]
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv[1:]))

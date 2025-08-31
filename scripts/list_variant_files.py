@@ -1,30 +1,38 @@
 #!/usr/bin/env python3
-from pathlib import Path
+from __future__ import annotations
+
+import importlib.util
 import sys
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-from db.session import get_session
-from db.models import Variant
+from pathlib import Path
 
-if len(sys.argv) < 2:
-    print('Usage: python scripts/list_variant_files.py <variant_id>')
-    raise SystemExit(2)
 
-vid = int(sys.argv[1])
-with get_session() as session:
-    v = session.query(Variant).get(vid)
-    if not v:
-        print(f'Variant {vid} not found')
-        raise SystemExit(1)
-    files = getattr(v, 'files', [])
-    out = []
-    for f in files:
-        out.append({
-            'id': f.id,
-            'filename': f.filename,
-            'rel_path': f.rel_path,
-            'size_bytes': f.size_bytes,
-            'hash_sha256': f.hash_sha256
-        })
-    print(out)
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '90_util' / 'list_variant_files.py'
+
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.90_util.list_variant_files', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.90_util.list_variant_files'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    if hasattr(mod, 'main'):
+        try:
+            return int(mod.main(argv))  # type: ignore[arg-type]
+        except TypeError:
+            return int(mod.main())  # type: ignore[call-arg]
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv[1:]))

@@ -1,24 +1,33 @@
-from pathlib import Path
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import importlib.util
 import sys
-proj = Path(__file__).resolve().parent.parent
-if str(proj) not in sys.path:
-    sys.path.insert(0, str(proj))
-from db.session import get_session
-from db.models import VocabEntry, Variant
-with get_session() as s:
-    total_vocab = s.query(VocabEntry).count()
-    franchises = s.query(VocabEntry).filter_by(domain='franchise').count()
-    characters = s.query(VocabEntry).filter_by(domain='character').count()
-    print('VocabEntry total:', total_vocab)
-    print('franchise entries:', franchises)
-    print('character entries:', characters)
-    print('\nSample franchise rows:')
-    for r in s.query(VocabEntry).filter_by(domain='franchise').limit(5):
-        print('-', r.key, 'aliases=', (r.aliases or [])[:10])
-    print('\nSample character rows:')
-    for r in s.query(VocabEntry).filter_by(domain='character').limit(5):
-        print('-', r.key, 'aliases=', (r.aliases or [])[:10])
-    vt = s.query(Variant).count()
-    vt_tokens = s.query(Variant).filter(Variant.residual_tokens != None).count()
-    print('\nVariants total:', vt)
-    print('Variants with residual_tokens not null:', vt_tokens)
+from pathlib import Path
+
+
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '60_reports_analysis' / 'inspect_vocab_and_variants.py'
+
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.60_reports_analysis.inspect_vocab_and_variants', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.60_reports_analysis.inspect_vocab_and_variants'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv[1:]))

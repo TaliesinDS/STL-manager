@@ -1,57 +1,48 @@
 #!/usr/bin/env python3
-"""Verify that applied proposals were written to the DB.
-Reads match_proposals_v3.json and prints variant id, rel_path, franchise, character_name.
 """
-import json
-from pathlib import Path
+Compatibility shim: delegates to scripts/60_reports_analysis/verify_applied_matches.py
+"""
+from __future__ import annotations
+
+import importlib.util
 import sys
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-from db.session import get_session
-from db.models import Variant
+from pathlib import Path
+from types import ModuleType
 
-PROPOSALS = PROJECT_ROOT / 'match_proposals_v3.json'
-if not PROPOSALS.exists():
-    print('No match_proposals_v3.json found.')
-    raise SystemExit(2)
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "60_reports_analysis" / "verify_applied_matches.py"
+MODULE_NAME = "scripts.60_reports_analysis.verify_applied_matches"
 
-with PROPOSALS.open('r', encoding='utf8') as fh:
-    raw = fh.read()
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
+
+
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
+
+
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        return 0
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
     try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
-        # File may contain trailing log lines after the JSON (e.g. "Dry-run: ...").
-        # Extract the first top-level JSON object by matching braces.
-        start = raw.find('{')
-        if start == -1:
-            print('No JSON object found in proposals file.')
-            raise SystemExit(2)
-        depth = 0
-        end = None
-        for i in range(start, len(raw)):
-            ch = raw[i]
-            if ch == '{':
-                depth += 1
-            elif ch == '}':
-                depth -= 1
-                if depth == 0:
-                    end = i + 1
-                    break
-        if end is None:
-            print('Could not find end of JSON object in proposals file.')
-            raise SystemExit(2)
-        snippet = raw[start:end]
-        data = json.loads(snippet)
-ids = [p['variant_id'] for p in data.get('proposals', [])]
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
 
-with get_session() as session:
-    rows = session.query(Variant).filter(Variant.id.in_(ids)).all()
-    by_id = {r.id: r for r in rows}
-    print('{:>6}  {:<60}  {:<30}  {}'.format('id','rel_path','franchise','character_name'))
-    for vid in ids:
-        v = by_id.get(vid)
-        if not v:
-            print(f'{vid:6}  MISSING')
-            continue
-        print('{:6}  {:<60}  {:<30}  {}'.format(v.id, (v.rel_path or '')[:60], (v.franchise or '')[:30], (v.character_name or '')))
+
+if __name__ == "__main__":
+    raise SystemExit(main())

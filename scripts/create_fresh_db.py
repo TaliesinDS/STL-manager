@@ -1,24 +1,43 @@
-"""Create a fresh SQLite DB file from SQLAlchemy metadata.
+"""Deprecated wrapper: use scripts/00_bootstrap/bootstrap_db.py with --use-metadata.
 
-This script creates `data/stl_manager_fresh.db` (overwriting if present) and calls
-Base.metadata.create_all() to create tables.
+Example (PowerShell):
+  .\.venv\Scripts\python.exe scripts\00_bootstrap\bootstrap_db.py \
+      --db-url sqlite:///./data/stl_manager_fresh.db --use-metadata
 """
-import os
-from sqlalchemy import create_engine
+from __future__ import annotations
 
-ROOT = os.path.dirname(os.path.dirname(__file__))
-os.chdir(ROOT)
+import sys
+from pathlib import Path
 
-from db.models import Base
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-DB_PATH = os.path.join('data', 'stl_manager_fresh.db')
-DB_URL = f"sqlite:///{DB_PATH}"
 
-os.makedirs('data', exist_ok=True)
-if os.path.exists(DB_PATH):
-    os.remove(DB_PATH)
+def main(argv: list[str] | None = None) -> int:
+    import importlib.util
+    from types import ModuleType
+    impl_path = _ROOT / "scripts" / "00_bootstrap" / "bootstrap_db.py"
+    spec = importlib.util.spec_from_file_location("scripts.bootstrap_db_impl", str(impl_path))
+    if spec is None or spec.loader is None:
+        print("[error] Cannot locate canonical bootstrapper at", impl_path)
+        return 2
+    mod: ModuleType = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault("scripts.bootstrap_db_impl", mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    fn = getattr(mod, "main", None)
+    if callable(fn):
+        # Force metadata mode by appending flag if not present
+        args = list(argv or [])
+        if "--use-metadata" not in args:
+            args.append("--use-metadata")
+        try:
+            return int(fn(args))
+        except TypeError:
+            return int(fn())  # type: ignore[misc]
+    return 0
 
-engine = create_engine(DB_URL)
-print('Creating fresh DB at', DB_PATH)
-Base.metadata.create_all(bind=engine)
-print('Done')
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

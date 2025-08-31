@@ -1,6 +1,6 @@
 # Scripts README
 
-This document describes the helper scripts in `scripts/`, their purpose, inputs/outputs, and safe usage patterns. The scripts are organized into stages: scan/tokenize, ingest/load, normalize/compare, hashing/inspection, and diagnostics/fixers. Most scripts default to dry-run behavior and require `--apply` (and sometimes `--force`) to write changes to the database.
+This document describes the helper scripts in `scripts/`, their purpose, inputs/outputs, and safe usage patterns. Scripts are organized by stage folders described in `docs/SCRIPTS_ORGANIZATION.md`. Most scripts default to dry-run behavior and require `--apply` (and sometimes `--force`) to write changes to the database.
 
 ## Key environment
 
@@ -16,6 +16,29 @@ Activate your venv before running scripts (PowerShell):
 .\.venv\Scripts\Activate.ps1
 ```
 
+## CLI quick-reference
+
+- Defaults are dry-run; add `--apply` to write. Prefer `--db-url` to select the database.
+- Root files are shims; the Canonical column shows the staged source.
+
+| Script (entrypoint) | Canonical | Purpose | Writes? | Key flags/options |
+|---|---|---|---|---|
+| `scripts/quick_scan.py` | `scripts/10_inventory/quick_scan.py` | Tokenize filenames/paths; plan vocab | No | `--root`, `--ignore-file`, `--out` |
+| `scripts/create_sample_inventory.py` | `scripts/10_inventory/create_sample_inventory.py` | Build inventory JSON from folders | No | `--root`, `--out` |
+| `scripts/load_sample.py` | (same) | Ingest inventory JSON into DB | Yes | `--db-url`, `--apply` |
+| `scripts/compute_hashes.py` | `scripts/10_inventory/compute_hashes.py` | Compute SHA-256 for File rows | Yes (with apply) | `--db-url`, `--apply`, `--limit` |
+| `scripts/load_codex_from_yaml.py` | (same) | Load YAML codex (40K/HH/AoS) | Yes | `--file`, `--db-url`, `--apply` |
+| `scripts/load_designers.py` | `scripts/20_loaders/load_designers.py` | Load designers tokenmap into vocab | Yes | `--db-url`, `--apply`, `--file` |
+| `scripts/load_franchises.py` | `scripts/20_loaders/load_franchises.py` | Load franchises manifests into vocab | Yes | `--db-url`, `--apply` |
+| `scripts/sync_designers_from_tokenmap.py` | `scripts/20_loaders/sync_designers_from_tokenmap.py` | Report stale designer vocab and orphaned Variant.designer; optionally clear/delete | Yes (with apply) | `--db-url`, `--apply`, `--delete-vocab`, `<tokenmap.md>` |
+| `scripts/sync_characters_to_vocab.py` | `scripts/20_loaders/sync_characters_to_vocab.py` | Aggregate characters from `vocab/franchises/*.json` into vocab | Yes (with apply) | `--db-url`, `--apply`, `--franchise` |
+| `scripts/normalize_inventory.py` | (same) | Normalize variants using tokenmaps and vocab | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--only-missing` |
+| `scripts/match_franchise_characters.py` | `scripts/30_normalize_match/match_franchise_characters.py` | Franchise/character matcher | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--out` |
+| `scripts/match_variants_to_units.py` | `scripts/30_normalize_match/match_variants_to_units.py` | Unit matcher (40K/HH/AoS) | No/Yes (report/apply) | `--db-url`, `--apply`, `--systems`, `--include-kit-children`, `--out` |
+| `scripts/backfill_kits.py` | `scripts/40_kits/backfill_kits.py` | Mark/link kits and group children | Yes (with apply) | `--db-url`, `--apply`, `--limit` |
+| `scripts/delete_variant.py` | `scripts/50_cleanup_repair/delete_variant.py` | Targeted variant delete | Yes | `--db-url`, `--id`, `--apply` |
+| `scripts/verify_*` | `scripts/60_reports_analysis/*` | Small verification/report helpers | No | `--db-url`, script-specific |
+
 ## Common safety flags
 
 - `--apply` — commit proposed changes to the DB (default is dry-run).  
@@ -25,9 +48,10 @@ Activate your venv before running scripts (PowerShell):
 
 ## Primary scripts and contracts
 
-- `scripts/quick_scan.py` — tokenizes filenames/paths and contains `tokenize()`, `classify_token()` and tokenmap loaders. Read-only. Used by other scripts.
+- `scripts/quick_scan.py` — tokenizes filenames/paths and contains `tokenize()`, `classify_token()` and tokenmap loaders. Read-only. Used by other scripts. If `--ignore-file` is omitted it searches `ignored_tokens.txt` in this order: script directory (legacy), `scripts/30_normalize_match/` (canonical), then `vocab/`.
 
-- `scripts/create_sample_inventory.py` — (inventory generator) walks sample folders and emits an inventory JSON. Output used by the loader. Read-only.
+- `scripts/create_sample_inventory.py` — compatibility shim forwarding to `scripts/10_inventory/create_sample_inventory.py`.
+  - Canonical: `scripts/10_inventory/create_sample_inventory.py` (walks sample folders and emits an inventory JSON used by the loader). Read-only.
 
 - `scripts/load_sample.py` — reads inventory JSON and inserts/updates `Variant` and `File` rows. Writes to DB.
 
@@ -35,15 +59,16 @@ Activate your venv before running scripts (PowerShell):
 
 - `scripts/normalize_inventory.py` — normalization engine: reads `Variant` + `File` rows, tokenizes, infers fields (designer, franchise, support_state, height_mm, flags, etc.) using the tokenmap and DB `VocabEntry` alias map. Dry-run by default; use `--apply` to commit and `--force` to overwrite. Supports `--batch` and `--only-missing`.
 
-- `scripts/sync_designers_from_tokenmap.py` — compares `vocab/designers_tokenmap.md` to DB `VocabEntry` rows, reports stale vocab, detects orphaned `Variant.designer` values (designer string not present in tokenmap aliases), and optionally clears designer fields and deletes stale vocab entries with `--apply` and `--delete-vocab`.
+- `scripts/sync_designers_from_tokenmap.py` — compatibility shim to canonical `scripts/20_loaders/sync_designers_from_tokenmap.py`; compares `vocab/designers_tokenmap.md` to DB `VocabEntry` rows, reports stale vocab, detects orphaned `Variant.designer` values, and optionally clears designer fields and deletes stale vocab entries with `--apply` and `--delete-vocab`. Supports `--db-url`.
 
-- `scripts/compute_hashes.py` — compute SHA-256 for `File` rows (dry-run by default; may write when run with apply flags).
+- `scripts/compute_hashes.py` — compatibility shim forwarding to `scripts/10_inventory/compute_hashes.py`.
+  - Canonical: `scripts/10_inventory/compute_hashes.py` — compute SHA-256 for `File` rows (dry-run by default; may write when run with apply flags).
 
 - Diagnostics & quick-fix utilities:
   - `scripts/debug_variant_fields.py` — counts normalized fields and prints sample variants.
   - `scripts/show_variant.py` — prints full Variant row(s) as JSON.
   - `scripts/inspect_inference.py` — run inference for a single Variant id and print proposed inferred values.
-  - `scripts/test_write_variant.py` — small test to prove DB writes persist.
+    (test harness moved under `tests/`; use `tests/test_write_variant.py`.)
   - `scripts/fix_skarix_designer.py` — focused fixer to remove mistaken `designer='skarix'` VocabEntry and clear Variant.designer values; supports `--apply`.
 
 Additional matching, migration, and verification scripts
@@ -57,7 +82,19 @@ Additional matching, migration, and verification scripts
 - `scripts/set_variant_franchise.py` — A small focused utility for manually setting a single `Variant`'s `franchise` (useful for targeted fixes like "var 119 belongs to My Hero Academia"). Requires `--apply` to write.
 - `scripts/create_missing_franchises.py` — Convenience script that creates `VocabEntry(domain='franchise')` rows for franchises found in `vocab/franchises/*.json` when you want franchise token aliases to be present in the DB for normalizer lookup.
 - `scripts/repair_sigmar_variants.py` — Targeted fixer used during debugging to repair variants that were incorrectly matched to Cities of Sigmar; an example of a focused repair script pattern (dry-run default; `--apply` to commit).
-- `scripts/assign_codex_units_aos.py` — Phase-2 style script that assigns `codex_unit_name` to variants when codex extraction is enabled for a specific game system/faction; gated and conservative by default.
+- `scripts/assign_codex_units_aos.py` — deprecated wrapper; use `scripts/match_variants_to_units.py --systems aos`.
+- `scripts/sync_characters_to_vocab.py` — compatibility shim to canonical `scripts/20_loaders/sync_characters_to_vocab.py`; aggregates characters from `vocab/franchises/*.json` and upserts `VocabEntry(domain='character')`. Dry-run by default; `--apply` to write. Supports `--db-url` and `--franchise` filter.
+
+## Normalization helpers
+
+- `scripts/apply_sample_folder_tokens.py` — compatibility shim forwarding to `scripts/30_normalize_match/apply_sample_folder_tokens.py`.
+  - Canonical: `scripts/30_normalize_match/apply_sample_folder_tokens.py` — merges tokens captured from folder paths into Variant/File residual_tokens. Dry-run by default; `--apply` writes. Example:
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\apply_sample_folder_tokens.py --inventory .\tests\fixtures\sample_inventory.json --apply
+```
+
+  - Canonical ignore list: `scripts/30_normalize_match/ignored_tokens.txt` (also used by `quick_scan.py` via fallback search).
 
 ## Recommended pipeline
 
@@ -114,6 +151,10 @@ Use `--apply --delete-vocab` to commit clearing and deletion when you are confid
 - Optionally add a pre-commit hook that runs `debug_variant_fields.py` or a quick `inspect_inference.py` spot-check for changed files.
 
 ## Contributing
+
+### Compatibility shims
+
+During migration, many root-level scripts are thin shims that dynamically import and forward to their canonical counterparts under the staged folders (e.g., `scripts/50_cleanup_repair/delete_variant.py`). This keeps legacy entrypoints working. Prefer invoking the canonical paths in new automation, and update any personal notes to point to the staged locations.
 
 When adding new scripts, follow these guidelines:
 - Default to dry-run behavior; require an explicit `--apply` to write to DB.  

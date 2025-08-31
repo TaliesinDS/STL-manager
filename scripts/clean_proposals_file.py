@@ -1,61 +1,48 @@
-#!/usr/bin/env python3
-"""Clean a proposals file by keeping only JSON objects (one per line).
+"""Compatibility shim for scripts.clean_proposals_file.
 
-Some tools accidentally append stray JSON values (arrays/strings). This
-utility will read the input file, skip any line that doesn't parse to a
-JSON object (dict), and write a cleaned output file. By default it writes
-to the same directory with a `.clean` suffix to avoid accidental data loss.
+Canonical module moved to scripts/60_reports_analysis/clean_proposals_file.py.
+This shim loads it via importlib and re-exports public symbols, including main().
 """
 from __future__ import annotations
-import argparse
-import json
-from pathlib import Path
+
+import importlib.util
 import sys
+from pathlib import Path
+from types import ModuleType
+
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+_IMPL_PATH = _ROOT / "scripts" / "60_reports_analysis" / "clean_proposals_file.py"
+
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+if not _IMPL_PATH.is_file():
+    raise FileNotFoundError(f"Relocated clean_proposals_file not found at {_IMPL_PATH}")
+
+_SPEC = importlib.util.spec_from_file_location(
+    "scripts.clean_proposals_file_impl", str(_IMPL_PATH)
+)
+if _SPEC is None or _SPEC.loader is None:
+    raise ImportError(f"Unable to load spec for {_IMPL_PATH}")
+_MOD: ModuleType = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MOD  # type: ignore[attr-defined]
+_SPEC.loader.exec_module(_MOD)
+
+__all__ = [n for n in dir(_MOD) if not n.startswith("_")]
+_g = globals()
+for name in __all__:
+    _g[name] = getattr(_MOD, name)
 
 
-def clean_file(in_path: Path, out_path: Path) -> int:
-    kept = 0
-    skipped = 0
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with in_path.open('r', encoding='utf-8') as fh_in, out_path.open('w', encoding='utf-8') as fh_out:
-        for i, line in enumerate(fh_in, start=1):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                obj = json.loads(line)
-            except Exception:
-                skipped += 1
-                print(f"[warn] skipping malformed JSON at line {i}")
-                continue
-            if not isinstance(obj, dict):
-                skipped += 1
-                print(f"[warn] skipping non-object JSON at line {i}: {type(obj).__name__}")
-                continue
-            fh_out.write(json.dumps(obj, ensure_ascii=False))
-            fh_out.write('\n')
-            kept += 1
-    print(f"Clean complete: kept={kept} skipped={skipped} (wrote {out_path})")
+def main(argv: list[str]) -> int:  # type: ignore[override]
+    impl_main = getattr(_MOD, "main", None)
+    if callable(impl_main):
+        try:
+            return int(impl_main(argv))  # type: ignore[misc]
+        except TypeError:
+            return int(impl_main())  # type: ignore[call-arg]
     return 0
-
-
-def parse_args(argv: list[str]):
-    ap = argparse.ArgumentParser(description='Clean proposals file (keep only JSON objects)')
-    ap.add_argument('--in', dest='infile', required=True)
-    ap.add_argument('--out', dest='outfile', required=False)
-    return ap.parse_args(argv)
-
-
-def main(argv: list[str]) -> int:
-    args = parse_args(argv)
-    ip = Path(args.infile)
-    if not ip.exists():
-        print(f'Input not found: {ip}', file=sys.stderr); return 2
-    if args.outfile:
-        op = Path(args.outfile)
-    else:
-        op = ip.with_suffix(ip.suffix + '.clean')
-    return clean_file(ip, op)
 
 
 if __name__ == '__main__':

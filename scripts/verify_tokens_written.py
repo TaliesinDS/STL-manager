@@ -1,23 +1,48 @@
-from pathlib import Path
+"""
+Compatibility shim: delegates to scripts/60_reports_analysis/verify_tokens_written.py
+"""
+from __future__ import annotations
+
+import importlib.util
 import sys
-proj = Path(__file__).resolve().parent.parent
-if str(proj) not in sys.path:
-    sys.path.insert(0, str(proj))
-from db.session import get_session
-from db.models import File, Variant
-with get_session() as s:
-    # find a file with 'Ryuko' in rel_path (case-insensitive not supported in sqlite LIKE by default)
-    f = s.query(File).filter(File.rel_path.like('%Ryuko%')).first()
-    if f:
-        print('Found file with Ryuko: id', f.id)
-        print('rel_path:', f.rel_path)
-        print('file residual_tokens sample:', (f.residual_tokens or [])[:20])
-        v = s.query(Variant).get(f.variant_id)
-        print('variant residual_tokens sample:', (v.residual_tokens or [])[:20])
-    else:
-        print('No Ryuko file found; printing sample file id=1 tokens')
-        f2 = s.query(File).get(1)
-        print('File 1 rel_path:', f2.rel_path)
-        print('File 1 residual_tokens:', (f2.residual_tokens or [])[:40])
-        v2 = s.query(Variant).get(f2.variant_id)
-        print('Variant 1 residual_tokens:', (v2.residual_tokens or [])[:40])
+from pathlib import Path
+from types import ModuleType
+
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "60_reports_analysis" / "verify_tokens_written.py"
+MODULE_NAME = "scripts.60_reports_analysis.verify_tokens_written"
+
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
+
+
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
+
+
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        # canonical has top-level script body only; emulate running it
+        return 0
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
+    try:
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

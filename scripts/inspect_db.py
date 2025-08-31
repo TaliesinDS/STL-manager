@@ -1,37 +1,49 @@
-"""Simple DB inspector: prints counts and a few sample rows for Variant, File, Archive, Collection, Character.
+"""Compatibility shim for scripts.inspect_db.
+
+Canonical module moved to scripts/60_reports_analysis/inspect_db.py.
+This shim loads it via importlib and re-exports public symbols, including main().
 """
-from pathlib import Path
+from __future__ import annotations
+
+import importlib.util
 import sys
+from pathlib import Path
+from types import ModuleType
 
-proj_root = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(proj_root))
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+_IMPL_PATH = _ROOT / "scripts" / "60_reports_analysis" / "inspect_db.py"
 
-from db.session import get_session
-from db.models import Variant, File, Archive, Collection, Character
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
+if not _IMPL_PATH.is_file():
+    raise FileNotFoundError(f"Relocated inspect_db not found at {_IMPL_PATH}")
 
-def inspect():
-    with get_session() as session:
-        v_count = session.query(Variant).count()
-        f_count = session.query(File).count()
-        a_count = session.query(Archive).count()
-        c_count = session.query(Collection).count()
-        ch_count = session.query(Character).count()
+_SPEC = importlib.util.spec_from_file_location(
+    "scripts.inspect_db_impl", str(_IMPL_PATH)
+)
+if _SPEC is None or _SPEC.loader is None:
+    raise ImportError(f"Unable to load spec for {_IMPL_PATH}")
+_MOD: ModuleType = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MOD  # type: ignore[attr-defined]
+_SPEC.loader.exec_module(_MOD)
 
-        print(f"Variants: {v_count}")
-        print(f"Files:    {f_count}")
-        print(f"Archives: {a_count}")
-        print(f"Collections: {c_count}")
-        print(f"Characters: {ch_count}\n")
-
-        print("Sample Variants:")
-        for v in session.query(Variant).limit(5):
-            print(f"- id={v.id} rel_path={v.rel_path} filename={v.filename} files={len(v.files)}")
-
-        print("\nSample Files:")
-        for f in session.query(File).limit(5):
-            print(f"- id={f.id} rel_path={f.rel_path} filename={f.filename} hash={f.hash_sha256}")
+__all__ = [n for n in dir(_MOD) if not n.startswith("_")]
+_g = globals()
+for name in __all__:
+    _g[name] = getattr(_MOD, name)
 
 
-if __name__ == '__main__':
-    inspect()
+def main(argv: list[str] | None = None) -> int:  # type: ignore[override]
+    impl_main = getattr(_MOD, "main", None)
+    if callable(impl_main):
+        try:
+            return int(impl_main(argv))  # type: ignore[misc]
+        except TypeError:
+            return int(impl_main())  # type: ignore[call-arg]
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

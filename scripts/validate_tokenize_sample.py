@@ -1,36 +1,47 @@
-#!/usr/bin/env python3
-"""Validate tokenizer behavior for sample paths.
-
-Usage:
-  .venv\Scripts\python.exe scripts\validate_tokenize_sample.py
-  .venv\Scripts\python.exe scripts\validate_tokenize_sample.py "path1" "path2"
-
-This script imports `tokenize` from `scripts.quick_scan` and prints token lists
-for one or more sample paths so you can verify directory components are
-included in tokenization (e.g., artist/store names, character names).
+"""
+Compatibility shim: delegates to canonical implementation in scripts/10_inventory/validate_tokenize_sample.py
 """
 from __future__ import annotations
+
+import importlib.util
 import sys
 from pathlib import Path
-import sys
-from pathlib import Path as _P
-# Ensure project root is on sys.path so 'scripts' package is importable when run from repo root
-PROJECT_ROOT = _P(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-from scripts.quick_scan import tokenize
+from types import ModuleType
+
+ROOT = Path(__file__).resolve().parent
+PROJECT = ROOT.parent
+CANON = PROJECT / "scripts" / "10_inventory" / "validate_tokenize_sample.py"
+MODULE_NAME = "scripts.10_inventory.validate_tokenize_sample"
+
+if str(PROJECT) not in sys.path:
+    sys.path.insert(0, str(PROJECT))
 
 
-def main(argv: list[str]) -> int:
-    samples = argv[1:] if len(argv) > 1 else [r"sample_store\[Gaz minis] Ryuko Matoi +NSFW\KLK\model.stl"]
-    for s in samples:
-        p = Path(s)
-        toks = tokenize(p)
-        print(f"Path: {s}")
-        print("Tokens:", toks)
-        print()
-    return 0
+def _load() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot locate canonical script at {CANON}")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault(MODULE_NAME, mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    return mod
 
 
-if __name__ == '__main__':
-    raise SystemExit(main(sys.argv))
+_m = _load()
+globals().update({k: v for k, v in _m.__dict__.items() if not k.startswith("__")})
+
+
+def main(argv: list[str] | None = None) -> int:
+    fn = getattr(_m, "main", None)
+    if fn is None:
+        raise SystemExit("canonical module missing main()")
+    import sys as _sys
+    _argv = _sys.argv[1:] if argv is None else argv
+    try:
+        return int(fn(_argv))  # type: ignore[misc]
+    except TypeError:
+        return int(fn())  # type: ignore[misc]
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

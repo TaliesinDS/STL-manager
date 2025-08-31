@@ -1,35 +1,38 @@
-#!/usr/bin/env python3
-"""Check which DB URL the app is using and print a quick summary.
+"""Deprecated wrapper: use scripts/60_reports_analysis/inspect_db.py instead.
 
-Prints:
- - Effective DB_URL
- - Local SQLite path when applicable
- - Count of variants with a non-empty `franchise`
- - A small sample of variants with franchise set
+This script forwards to the canonical inspector and is kept for backward compatibility.
 """
-from pathlib import Path
+from __future__ import annotations
+
 import sys
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+from pathlib import Path
 
-from db.session import DB_URL, engine
-from sqlalchemy import text
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-print('Effective DB_URL:', DB_URL)
-if DB_URL.startswith('sqlite:///'):
-    local_path = DB_URL.replace('sqlite:///', '')
-    print('Local SQLite file path:', Path(local_path).resolve())
 
-try:
-    with engine.connect() as conn:
-        r = conn.execute(text("select count(*) from variant where franchise is not null and franchise != ''"))
-        total = r.scalar()
-        print('Variants with franchise set:', total)
-        print('\nSample rows (id, franchise, rel_path):')
-        rows = conn.execute(text("select id, franchise, rel_path from variant where franchise is not null and franchise != '' order by id limit 20")).fetchall()
-        for row in rows:
-            print(f"{row[0]:6}  {row[1]:<30}  {row[2]}")
-except Exception as e:
-    print('Error querying DB:', e)
-    raise
+def main(argv: list[str] | None = None) -> int:
+    # Always use path-based dynamic import: folder name starts with a digit and isn't importable via dotted path
+    import importlib.util
+    from types import ModuleType
+    impl_path = _ROOT / "scripts" / "60_reports_analysis" / "inspect_db.py"
+    spec = importlib.util.spec_from_file_location("scripts.inspect_db_impl", str(impl_path))
+    if spec is None or spec.loader is None:
+        print("[error] Cannot locate canonical inspector at", impl_path)
+        return 2
+    mod: ModuleType = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault("scripts.inspect_db_impl", mod)
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+    fn = getattr(mod, "main", None)
+    if callable(fn):
+        try:
+            return int(fn(argv or []))
+        except TypeError:
+            return int(fn())  # type: ignore[misc]
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

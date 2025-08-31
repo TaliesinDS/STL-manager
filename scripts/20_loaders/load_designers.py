@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+"""
+Load designers_tokenmap (MD or JSON) into the DB as VocabEntry(domain='designer').
+
+Canonical location: scripts/20_loaders/load_designers.py
+"""
+from __future__ import annotations
+
+import sys
+import re
+import ast
+from pathlib import Path
+from typing import Optional
+from collections import defaultdict
+
+# Ensure project root on sys.path for db imports regardless of CWD
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from db.session import SessionLocal
+from db.models import VocabEntry
+
+FENCE_RE = re.compile(r"^```")
+ENTRY_RE = re.compile(r"^\s*([A-Za-z0-9_\-]+)\s*:\s*(\[.*\])\s*$")
+
+
+def parse_tokenmap_md(path: Path):
+    text = path.read_text(encoding="utf8")
+    lines = text.splitlines()
+    inside = False
+    result = {}
+    for ln in lines:
+        if FENCE_RE.match(ln.strip()):
+            inside = not inside
+            continue
+        if not inside:
+            continue
+        ln = ln.rstrip()
+        if not ln or ln.lstrip().startswith("#"):
+            continue
+        m = ENTRY_RE.match(ln)
+        if not m:
+            continue
+        key = m.group(1).strip()
+        aliases_str = m.group(2)
+        try:
+            aliases = ast.literal_eval(aliases_str)
+            if not isinstance(aliases, (list, tuple)):
+                aliases = [aliases]
+            aliases = [str(a) for a in aliases]
+        except Exception as e:
+            print(f"WARN: failed to parse aliases for {key}: {e}")
+            aliases = []
+        result[key] = aliases
+    return result
+
+
+def parse_tokenmap_json(path: Path):
+    try:
+        import json
+        data = json.loads(path.read_text(encoding='utf8'))
+    except Exception as e:
+        print("ERROR: failed to parse JSON:", e)
+        return {}, {}
+    designers = (data or {}).get('designers', {})
+    aliases = {k: list((v or {}).get('aliases') or []) for k, v in designers.items()}
+    meta = {k: {kk: vv for kk, vv in (v or {}).items() if kk != 'aliases'} for k, v in designers.items()}
+    map_version = (data or {}).get('designers_map_version')
+    return aliases, {"map_version": map_version, "per_key_meta": meta}
+
+
+def normalize_alias(a: str) -> str:
+    return a.strip().lower()
+
+
+def detect_conflicts(entries: dict, session):
+    """Detect alias collisions within the provided entries and against existing DB rows.
+    Returns a tuple (infile_conflicts, db_conflicts) where each is a dict alias->set(canonicals).
+    """
+    infile_map = defaultdict(set)
+    for canonical, aliases in entries.items():
+        # include canonical itself as an alias for detection
+        infile_map[normalize_alias(canonical)].add(canonical)
+        for a in aliases:
+            infile_map[normalize_alias(a)].add(canonical)
+
+    infile_conflicts = {a: cs for a, cs in infile_map.items() if len(cs) > 1}
+
+    # build existing alias map from DB
+    db_rows = session.query(VocabEntry).filter_by(domain="designer").all()
+    db_map = defaultdict(set)
+    for r in db_rows:
+        db_map[normalize_alias(r.key)].add(r.key)
+        for a in (r.aliases or []):
+            db_map[normalize_alias(a)].add(r.key)
+
+    # conflicts where alias maps to multiple canonicals across file+db
+    combined = defaultdict(set)
+    for a, cs in infile_map.items():
+        combined[a].update(cs)
+    for a, cs in db_map.items():
+        combined[a].update(cs)
+
+    db_conflicts = {a: cs for a, cs in combined.items() if len(cs) > 1}
+    return infile_conflicts, db_conflicts
+
+
+def sniff_map_version_md(path: Path):
+    text = path.read_text(encoding="utf8")
+    m = re.search(r"designers_map_version\s*:\s*(\d+)", text)
+    if m:
+        return int(m.group(1))
+    return None
+
+
+def upsert_vocab_entries(session, entries: dict, source_file: str, map_version=None, extra_meta_per_key: Optional[dict] = None):
+    # detect conflicts and annotate meta
+    infile_conflicts, db_conflicts = detect_conflicts(entries, session)
+    if infile_conflicts:
+        print("Found in-file alias conflicts (alias -> canonicals):")
+        for a, cs in infile_conflicts.items():
+            print(f"  {a} -> {sorted(list(cs))}")
+    if db_conflicts:
+        print("Found conflicts with existing DB entries (alias -> canonicals):")
+        for a, cs in db_conflicts.items():
+            print(f"  {a} -> {sorted(list(cs))}")
+
+    for canonical, aliases in entries.items():
+        normalized_aliases = [a.strip() for a in aliases if a and a.strip()]
+        meta = {"source_file": str(source_file)}
+        if map_version is not None:
+            meta["map_version"] = map_version
+        # merge extra meta (e.g., intended_use_bucket from JSON)
+        if extra_meta_per_key and canonical in extra_meta_per_key:
+            meta.update({k: v for k, v in (extra_meta_per_key.get(canonical) or {}).items() if v is not None})
+        # attach conflict hints for this canonical if any of its aliases are conflicted
+        conflicts_for_key = []
+        for a in normalized_aliases + [canonical]:
+            na = normalize_alias(a)
+            if na in db_conflicts or na in infile_conflicts:
+                conflicts_for_key.append(na)
+        if conflicts_for_key:
+            meta["conflicts_with"] = list(sorted(set(conflicts_for_key)))
+
+        ve = session.query(VocabEntry).filter_by(domain="designer", key=canonical).one_or_none()
+        if ve:
+            ve.aliases = normalized_aliases
+            ve.meta = meta
+        else:
+            ve = VocabEntry(domain="designer", key=canonical, aliases=normalized_aliases, meta=meta)
+            session.add(ve)
+    session.commit()
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+
+    p = argparse.ArgumentParser(description="Load designers tokenmap into DB (dry-run by default)")
+    p.add_argument("path", help="Path to designers_tokenmap.(md|json)")
+    p.add_argument("--commit", action="store_true", help="Apply changes to the DB (default: dry-run)")
+    args = p.parse_args(argv)
+
+    path = Path(args.path)
+    if not path.exists():
+        print("File not found:", path)
+        return 2
+    extra_meta_per_key = None
+    map_version = None
+    if path.suffix.lower() == '.json':
+        entries, meta = parse_tokenmap_json(path)
+        map_version = (meta or {}).get('map_version')
+        extra_meta_per_key = (meta or {}).get('per_key_meta')
+    else:
+        entries = parse_tokenmap_md(path)
+        map_version = sniff_map_version_md(path)
+
+    session = SessionLocal()
+    try:
+        upsert_vocab_entries(session, entries, source_file=path.name, map_version=map_version, extra_meta_per_key=extra_meta_per_key)
+        print(f"Upserted {len(entries)} designer vocab entries (map_version={map_version})")
+    finally:
+        session.close()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

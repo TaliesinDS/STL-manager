@@ -1,21 +1,49 @@
-#!/usr/bin/env python3
-import json
+"""Compatibility shim for scripts.count_franchise_characters.
+
+Canonical module moved to scripts/60_reports_analysis/count_franchise_characters.py.
+This shim loads it via importlib and re-exports public symbols, including main().
+"""
+from __future__ import annotations
+
+import importlib.util
+import sys
 from pathlib import Path
+from types import ModuleType
 
-files = sorted(Path('vocab/franchises').glob('*.json'))
-total_files = len(files)
-files_with_chars = 0
-total_chars = 0
-for p in files:
-    try:
-        obj = json.loads(p.read_text(encoding='utf8'))
-        chars = obj.get('characters') or []
-        if chars:
-            files_with_chars += 1
-            total_chars += len(chars)
-    except Exception as e:
-        print('ERR', p, e)
+_HERE = Path(__file__).resolve()
+_ROOT = _HERE.parent.parent
+_IMPL_PATH = _ROOT / "scripts" / "60_reports_analysis" / "count_franchise_characters.py"
 
-print('files_total', total_files)
-print('files_with_characters', files_with_chars)
-print('total_characters', total_chars)
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+if not _IMPL_PATH.is_file():
+    raise FileNotFoundError(f"Relocated count_franchise_characters not found at {_IMPL_PATH}")
+
+_SPEC = importlib.util.spec_from_file_location(
+    "scripts.count_franchise_characters_impl", str(_IMPL_PATH)
+)
+if _SPEC is None or _SPEC.loader is None:
+    raise ImportError(f"Unable to load spec for {_IMPL_PATH}")
+_MOD: ModuleType = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MOD  # type: ignore[attr-defined]
+_SPEC.loader.exec_module(_MOD)
+
+__all__ = [n for n in dir(_MOD) if not n.startswith("_")]
+_g = globals()
+for name in __all__:
+    _g[name] = getattr(_MOD, name)
+
+
+def main(argv: list[str] | None = None) -> int:  # type: ignore[override]
+    impl_main = getattr(_MOD, "main", None)
+    if callable(impl_main):
+        try:
+            return int(impl_main(argv or []))  # type: ignore[misc]
+        except TypeError:
+            return int(impl_main())  # type: ignore[call-arg]
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

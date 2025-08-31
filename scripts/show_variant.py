@@ -1,61 +1,38 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+
+import importlib.util
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session, DB_URL
-from db.models import Variant
-import json
+def _load_and_run(argv: list[str] | None = None) -> int:
+    here = Path(__file__).resolve()
+    scripts_dir = here.parent
+    canonical = scripts_dir / '90_util' / 'show_variant.py'
 
-def rebind_db(db_url: str | None) -> None:
-    if not db_url:
-        return
-    try:
-        from sqlalchemy import create_engine as _ce
-        from sqlalchemy.orm import sessionmaker as _sm, Session as _S
-        import db.session as _dbs
+    proj_root = scripts_dir.parent
+    if str(proj_root) not in sys.path:
+        sys.path.insert(0, str(proj_root))
+
+    spec = importlib.util.spec_from_file_location('scripts.90_util.show_variant', canonical)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f'Cannot import canonical script at: {canonical}')
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules['scripts.90_util.show_variant'] = mod
+    spec.loader.exec_module(mod)  # type: ignore[attr-defined]
+
+    if hasattr(mod, 'main'):
         try:
-            _dbs.engine.dispose()
-        except Exception:
-            pass
-        _dbs.DB_URL = db_url
-        _dbs.engine = _ce(db_url, future=True)
-        _dbs.SessionLocal = _sm(bind=_dbs.engine, autoflush=False, autocommit=False, class_=_S)
-    except Exception as e:
-        print(f"Failed to reconfigure DB session for URL {db_url}: {e}")
+            return int(mod.main(argv))  # type: ignore[arg-type]
+        except TypeError:
+            return int(mod.main())  # type: ignore[call-arg]
+    return 0
 
 
-def show(ids: list[int]):
-    with get_session() as session:
-        for vid in ids:
-            v = session.query(Variant).get(vid)
-            if not v:
-                print(f"Variant id={vid} not found")
-                continue
-            raw = {c.name: getattr(v, c.name) for c in v.__table__.columns}
-            data = {}
-            for k, val in raw.items():
-                try:
-                    json.dumps(val)
-                    data[k] = val
-                except Exception:
-                    data[k] = str(val)
-            print(json.dumps({"variant_id": vid, "data": data}, indent=2, ensure_ascii=False))
+def main(argv: list[str] | None = None) -> int:
+    return _load_and_run(argv)
+
 
 if __name__ == '__main__':
-    import argparse
-    ap = argparse.ArgumentParser(description="Show Variant rows by id")
-    ap.add_argument("ids", nargs="+", help="Variant ids to display (space-separated)")
-    ap.add_argument("--db-url", dest="db_url", help="Override DB URL (else uses STLMGR_DB_URL or default)")
-    args = ap.parse_args()
-    rebind_db(args.db_url)
-    try:
-        ids = [int(x) for x in args.ids]
-    except Exception as e:
-        print(f"Error parsing ids: {e}")
-        raise SystemExit(2)
-    show(ids)
+    raise SystemExit(main(sys.argv[1:]))
