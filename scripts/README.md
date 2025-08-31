@@ -145,6 +145,9 @@ Use `--apply --delete-vocab` to commit clearing and deletion when you are confid
 - Wrong DB target: always ensure `STLMGR_DB_URL` points to the DB file your GUI is inspecting.  
 - SQLAlchemy warning about `Query.get()`: harmless; consider updating scripts to `Session.get()` to silence it.
 
+Windows archive extractor logs
+- The PowerShell helper `windows_tools/Extract-Archives.ps1` now defaults its `-LogCsv` output to the repo `reports/` folder (e.g., `reports/Extract-Archives_log_<timestamp>.csv`). Override with `-LogCsv <path>` to customize.
+
 ## CI / automation ideas
 
 - Run `scripts/sync_designers_from_tokenmap.py` in dry-run in CI on PRs that modify any tokenmap to flag DB drift.  

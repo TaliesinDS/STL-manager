@@ -47,7 +47,7 @@
   Create a .extracted marker file inside each destination folder on success.
 
 .PARAMETER LogCsv
-  Path to CSV log file (default: Extract-Archives_log_<timestamp>.csv under current directory).
+  Path to CSV log file (default: ./reports/Extract-Archives_log_<timestamp>.csv under the repo root).
 
 .PARAMETER SkipIfMarker
   Skip archives whose target dir already contains a .extracted marker.
@@ -401,8 +401,23 @@ elseif (-not $DryRun) {
 
 # Prepare logging
 if (-not $LogCsv) {
-    $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-    $LogCsv = Join-Path -Path (Get-Location) -ChildPath "Extract-Archives_log_$timestamp.csv"
+  # Default logs under repo's reports/ folder for consistency with Python scripts
+  $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
+  try {
+    $repoRootPath = (Resolve-Path -LiteralPath (Join-Path -Path $PSScriptRoot -ChildPath '..\..')).Path
+  } catch {
+    # Fallback to current directory if resolution fails
+    $repoRootPath = (Get-Location).Path
+  }
+  $reportsDir = Join-Path -Path $repoRootPath -ChildPath 'reports'
+  if (-not (Test-Path -LiteralPath $reportsDir)) {
+    if (-not $DryRun) {
+      try { New-Item -ItemType Directory -Path $reportsDir -Force | Out-Null } catch { Write-Warn "Failed to create reports directory '$reportsDir': $($_.Exception.Message)" }
+    } else {
+      Write-Info "[DryRun] Would create reports directory: $reportsDir"
+    }
+  }
+  $LogCsv = Join-Path -Path $reportsDir -ChildPath "Extract-Archives_log_$timestamp.csv"
 }
 $log = New-Object System.Collections.Generic.List[Object]
 
