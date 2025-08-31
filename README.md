@@ -4,6 +4,12 @@ Personal project to inventory and eventually manage a very large 3D model librar
 
 Status: Phase 0 (passive inventory & vocabulary design) transitioning toward Phase 1 (deterministic low‑risk normalization). Tabletop Units + Parts (40K-first) YAML ingestion and DB linking are now available for developer use.
 
+Related docs:
+- Workflow tests (plain-English): see `docs/WORKFLOW_TESTS.md`.
+- Workflow test plan (detailed): see `docs/SCRIPTS_WORKFLOW_TEST_PLAN.md`.
+- Schema and linking details: see `docs/SCHEMA_codex_and_linking.md`.
+- API shapes (developer preview): see `docs/API_SPEC.md`.
+
 Project Constraints (baseline):
 - 100% local, offline-friendly (no required external services / cloud).
 - Free & open-source dependencies only.
@@ -61,7 +67,7 @@ Upcoming Near Sequence (High-Level):
 
 Tabletop Units/Parts (now available):
 - YAML SSOT lives under `vocab/` (e.g., `codex_units_w40k.yaml`, `codex_units_aos.yaml`, `codex_units_horus_heresy.yaml`, `wargear_w40k.yaml`, `bodies_w40k.yaml`).
-- Loader script `scripts/load_codex_from_yaml.py` ingests these into the DB (dry‑run by default when no `--commit`).
+- Loader script `scripts/20_loaders/load_codex_from_yaml.py` ingests these into the DB (dry‑run by default unless `--commit` is passed). A compatibility shim also exists at `scripts/load_codex_from_yaml.py`.
 - Relationships: `variant_unit_link`, `variant_part_link`, and `unit_part_link` enable filtering by system/faction/unit and returning parts alongside models.
  - PowerShell examples (Windows):
 
@@ -84,6 +90,12 @@ $env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
 & .\.venv\Scripts\python.exe .\scripts\report_codex_counts.py --yaml
 ```
 
+Canonical path (with explicit DB URL):
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\60_reports_analysis\report_codex_counts.py --db-url sqlite:///./data/stl_manager_v1.db --yaml
+```
+
 Match variants to Units (dry-run first):
 
 ```powershell
@@ -96,6 +108,14 @@ $env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
 
 # Overwrite existing assignments if needed
 & .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --apply --overwrite --systems w40k aos heresy
+```
+
+Canonical path (with explicit DB URL):
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --limit 200 --systems w40k aos heresy --min-score 12 --delta 3
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --apply --systems w40k aos heresy --min-score 12 --delta 3
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --apply --overwrite --systems w40k aos heresy
 ```
 
 ## Quick Exploratory Token Scan (Planning Aid)
@@ -383,6 +403,15 @@ Nothing is installed globally; deleting the folder removes everything (idempoten
 - Franchise alias sync (safe by default):
 	- `scripts/20_loaders/sync_franchise_tokens_to_vocab.py [--db-url URL] [--apply]` — dry-run unless `--apply`.
 
+### Testing & CI
+- End-to-end workflow tests live under `tests/workflow/`.
+- Friendly guide: `docs/WORKFLOW_TESTS.md`. Detailed plan: `docs/SCRIPTS_WORKFLOW_TEST_PLAN.md`.
+- Quick run (Windows PowerShell):
+
+```powershell
+c:/Users/akortekaas/Documents/GitHub/STL-manager/.venv/Scripts/python.exe -m pytest -q -k workflow
+```
+
 ## Tabletop Browsing (Developer Preview)
 - After loading units/parts, you can begin linking Variants to Units/Parts via scripts or the future UI.
 - The planned endpoint `GET /api/v1/units/{id}/bundle` returns both linked full models and compatible parts for a selected unit.
@@ -394,6 +423,14 @@ Baseline (Phase 1) runtime requires only the embedded Python environment (or for
 - Postgres / Redis: NOT required; upgrade path only.
 
 YAML parsing: `ruamel.yaml` is included in `requirements.txt` and used by the codex/parts loader to preserve structure and tolerate duplicate keys.
+
+## Terminology (quick reference)
+- Variant: a DB record representing a model folder (can be a container) that may contain files (STL/OBJ/etc.). Often corresponds to a directory in your library.
+- Kit: a Variant that acts as a parent container for part packs (e.g., bodies/heads/weapons). Children are sub-Variants.
+- Codex / Vocab: structured YAML/JSON under `vocab/` with known units, factions, and parts, plus aliases for matching.
+- Dry-run: execute logic and produce reports without changing the DB.
+- Apply: execute logic and persist changes back to the DB.
+- Shim: a compatibility wrapper script kept at legacy locations that forwards to the canonical script under `scripts/<phase>/...`.
 
 ## Local Configuration (Planned)
 Future `CONFIG.yaml` (or `.env`) will define:

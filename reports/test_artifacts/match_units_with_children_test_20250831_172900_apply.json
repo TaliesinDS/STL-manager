@@ -1,0 +1,24 @@
+{
+  "ts": "2025-08-31T15:29:00.331352Z",
+  "apply": true,
+  "include_kit_children": true,
+  "limit": 50,
+  "systems": null,
+  "min_score": 12.0,
+  "delta": 3.0,
+  "overwrite": false,
+  "exclude_path_equals": [
+    "sample_store"
+  ],
+  "total_variants": 0,
+  "applied": 0,
+  "skipped_nonwarhammer": 0,
+  "skipped_containers": 0,
+  "skipped_containers_detail": {
+    "equals": 0,
+    "auto": 0
+  },
+  "skipped_kit_children": 0,
+  "kit_containers_included": 0,
+  "proposals": []
+}

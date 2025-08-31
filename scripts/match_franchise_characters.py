@@ -40,12 +40,18 @@ for name in __all__:
 
 def main(argv: list[str]) -> int:  # type: ignore[override]
     impl_main = getattr(_MOD, "main", None)
-    if callable(impl_main):
-        try:
-            return int(impl_main(argv))  # type: ignore[misc]
-        except TypeError:
-            return int(impl_main())  # type: ignore[call-arg]
-    return 0
+    if not callable(impl_main):
+        return 0
+    try:
+        res = impl_main(argv)  # type: ignore[misc]
+    except TypeError:
+        # Some impl mains take no argv
+        res = impl_main()  # type: ignore[call-arg]
+    # Normalize None to 0
+    try:
+        return int(res) if res is not None else 0
+    except Exception:
+        return 0
 
 
 if __name__ == "__main__":
