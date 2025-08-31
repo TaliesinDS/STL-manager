@@ -265,25 +265,25 @@ The diagram below summarizes the typical, conservative end‑to‑end flow from 
 
 ```mermaid
 graph TD
-	A[Bootstrap DB] --> B[Load Designers & Franchises]
-	B --> C[Load Codex Units & Parts]
-	C --> D[Quick Scan (optional)]
+    A[Bootstrap DB] --> B[Load Designers & Franchises]
+    B --> C[Load Codex Units & Parts]
+    C --> D[Quick Scan - optional]
 
-	D --> E[Normalize Inventory (dry‑run)]
-	E --> F[Match Units (with kit children)]
-	E --> G[Match Franchises & Characters]
+    D --> E[Normalize Inventory - dry run]
+    E --> F[Match Units - include kit children]
+    E --> G[Match Franchises & Characters]
 
-	F --> H[Review Proposals]
-	G --> H
-	H --> I{Approve}
-	I --|yes|--> J[Apply Proposals]
-	I --|no|--> E
+    F --> H[Review Proposals]
+    G --> H
+    H --> I{Approve?}
+    I -->|yes| J[Apply Proposals]
+    I -->|no| E
 
-	J --> K[Verify Applied Matches]
-	K --> L[Kits Backfill]
-	L --> M[Cleanup/Repair (dry‑run)]
-	M --> N[Reports / Counts]
-	N --> O[Iterate / Extend Vocab]
+    J --> K[Verify Applied Matches]
+    K --> L[Kits Backfill]
+    L --> M[Cleanup and Repair - dry run]
+    M --> N[Reports and Counts]
+    N --> O[Iterate and Extend Vocab]
 ```
 
 Legend / scripts (canonical paths; shims exist at legacy locations):
