@@ -7,7 +7,9 @@
     {"canonical": "hinoa_monster_hunter", "aliases": ["hinoa"]},
     {"canonical": "minoto_monster_hunter", "aliases": ["minoto"]},
     {"canonical": "gemma_monster_hunter", "aliases": ["gemma"]}
-  ],
+  ,
+    {"canonical": "fiorayne_monster_hunter", "aliases": ["fiorayne"]}
+],
   "tokens": {
   "strong_signals": ["hinoa_monster_hunter", "minoto_monster_hunter", "gemma_monster_hunter", "hinoa", "minoto"],
   "weak_signals": ["gemma"],

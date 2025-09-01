@@ -5,7 +5,10 @@
   "aliases": ["steins_gate", "steins;gate"],
   "characters": [
     {"canonical": "makise_kurisu", "aliases": ["kurisu", "makise", "kurisu_makise"]}
-  ],
+  ,
+    {"canonical": "kurisu_makise", "aliases": ["kurisu", "makise"]},
+    {"canonical": "mayuri_shiina", "aliases": ["mayuri", "shiina"]}
+],
   "tokens": {
     "strong_signals": ["makise_kurisu"],
     "weak_signals": ["kurisu", "makise"],

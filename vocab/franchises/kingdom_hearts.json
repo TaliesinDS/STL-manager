@@ -5,7 +5,9 @@
   "aliases": ["kingdom_hearts", "kh"],
   "characters": [
     {"canonical": "aqua_kingdom_hearts", "aliases": ["aqua"]}
-  ],
+  ,
+    {"canonical": "kairi_kingdom_hearts", "aliases": ["kairi"]}
+],
   "tokens": {
     "strong_signals": ["aqua_kingdom_hearts"],
     "weak_signals": ["aqua", "kh"],

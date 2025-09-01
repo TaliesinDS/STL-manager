@@ -15,7 +15,15 @@
   {"canonical": "yae_miko", "aliases": ["yae", "miko", "yae_miko"]},
   {"canonical": "shenhe", "aliases": ["shenhe"]},
   {"canonical": "mavuika", "aliases": ["mavuika"]}
-  ],
+  ,
+    {"canonical": "ganyu", "aliases": ["ganyu"]},
+    {"canonical": "keqing", "aliases": ["keqing"]},
+    {"canonical": "yoimiya", "aliases": ["yoimiya", "naganohara_yoimiya"]},
+    {"canonical": "ningguang", "aliases": ["ningguang"]},
+    {"canonical": "beidou", "aliases": ["beidou"]},
+    {"canonical": "yelan", "aliases": ["yelan"]},
+    {"canonical": "yanfei", "aliases": ["yanfei"]}
+],
   "tokens": {
   "strong_signals": ["raiden", "nahida", "lumine", "eula", "fischl", "hu_tao", "kamisato_ayaka", "ayaka", "yae_miko", "shenhe", "mavuika"],
   "weak_signals": ["genshin", "hu", "tao", "kamisato", "lisa", "yae", "miko"],

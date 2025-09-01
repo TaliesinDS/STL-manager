@@ -7,7 +7,10 @@
     {"canonical": "princess_peach", "aliases": ["peach"]},
     {"canonical": "bowsette", "aliases": ["bowsette"]},
     {"canonical": "chompette", "aliases": ["chompette"]}
-  ],
+  ,
+    {"canonical": "princess_daisy", "aliases": ["daisy", "princess_daisy"]},
+    {"canonical": "rosalina_mario", "aliases": ["rosalina"]}
+],
   "tokens": {
   "strong_signals": ["mario", "bowsette", "chompette"],
   "weak_signals": ["peach"],

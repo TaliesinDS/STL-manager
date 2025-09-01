@@ -6,7 +6,9 @@
   "characters": [
   {"canonical": "seven_of_nine", "aliases": ["seven_of_nine", "seven"]},
   {"canonical": "nyota_uhura", "aliases": ["uhura", "nyota"]}
-  ],
+  ,
+  {"canonical": "deanna_troi", "aliases": ["deanna", "troi"]}
+],
   "tokens": {
   "strong_signals": ["seven_of_nine", "uhura", "nyota_uhura"],
   "weak_signals": ["seven", "nyota"],

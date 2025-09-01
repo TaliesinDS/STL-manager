@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "christie_monteiro", "aliases": ["christie", "monteiro"]},
     {"canonical": "lucky_chloe", "aliases": ["lucky", "chloe"]}
-  ],
+  ,
+    {"canonical": "ling_xiaoyu", "aliases": ["xiaoyu"]},
+    {"canonical": "anna_williams", "aliases": ["anna", "williams"]}
+],
   "tokens": {
   "strong_signals": ["christie_monteiro", "lucky_chloe"],
   "weak_signals": ["christie", "monteiro", "lucky", "chloe"],

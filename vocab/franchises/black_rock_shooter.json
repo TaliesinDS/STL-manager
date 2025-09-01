@@ -5,7 +5,10 @@
   "aliases": ["black_rock_shooter"],
   "characters": [
     {"canonical": "mato_kuroi", "aliases": ["mato", "kuroi"]}
-  ],
+  ,
+    {"canonical": "black_rock_shooter", "aliases": ["brs", "black_rock_shooter"]},
+    {"canonical": "dead_master", "aliases": ["dead_master"]}
+],
   "tokens": {
     "strong_signals": ["mato_kuroi"],
     "weak_signals": ["mato", "kuroi"],

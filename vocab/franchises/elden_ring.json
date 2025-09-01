@@ -7,7 +7,11 @@
     {"canonical": "recluse_elden_ring", "aliases": ["recluse"]},
     {"canonical": "marika_elden_ring", "aliases": ["marika"]},
     {"canonical": "eltanin_elden_ring", "aliases": ["eltanin"]}
-  ],
+  ,
+    {"canonical": "malenia_elden_ring", "aliases": ["malenia", "blade_of_miquella"]},
+    {"canonical": "ranni_elden_ring", "aliases": ["ranni", "ranni_the_witch"]},
+    {"canonical": "melina_elden_ring", "aliases": ["melina"]}
+],
   "tokens": {
   "strong_signals": ["recluse_elden_ring", "marika_elden_ring"],
   "weak_signals": ["recluse", "marika", "eltanin_elden_ring", "eltanin"],

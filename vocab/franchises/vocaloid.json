@@ -5,7 +5,10 @@
   "aliases": ["vocaloid"],
   "characters": [
     {"canonical": "hatsune_miku", "aliases": ["miku", "hatsune", "hatsune_miku"]}
-  ],
+  ,
+    {"canonical": "rin_kagamine", "aliases": ["rin", "kagamine_rin"]},
+    {"canonical": "megurine_luka", "aliases": ["luka", "megurine_luka"]}
+],
   "tokens": {
     "strong_signals": ["hatsune_miku", "miku"],
     "weak_signals": ["hatsune"],

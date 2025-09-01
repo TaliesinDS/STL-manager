@@ -5,7 +5,9 @@
   "aliases": ["spice_and_wolf"],
   "characters": [
     {"canonical": "holo", "aliases": []}
-  ],
+  ,
+    {"canonical": "holo_spice", "aliases": ["holo", "holo_the_wise_wolf"]}
+],
   "tokens": {
     "strong_signals": ["holo"],
     "weak_signals": [],

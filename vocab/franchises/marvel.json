@@ -19,7 +19,22 @@
   , {"canonical": "peggy_carter", "aliases": ["agent_carter", "peggy", "carter"]}
   , {"canonical": "she_hulk", "aliases": ["she_hulk", "shehulk", "jennifer_walters", "jennifer", "walters"]}
   , {"canonical": "iron_widow_marvel", "aliases": ["iron_widow"]}
-  ],
+  ,
+    {"canonical": "black_cat", "aliases": ["black_cat", "felicia_hardy", "felicia", "hardy"]},
+    {"canonical": "elektra", "aliases": ["elektra", "elektra_natchios", "natchios"]},
+    {"canonical": "gamora", "aliases": ["gamora"]},
+    {"canonical": "nebula", "aliases": ["nebula"]},
+    {"canonical": "mystique", "aliases": ["mystique", "raven_darkholme", "darkholme"]},
+    {"canonical": "silk", "aliases": ["silk", "cindy_moon", "cindy", "moon"]},
+    {"canonical": "spider_woman", "aliases": ["spider_woman", "jessica_drew", "jessica", "drew"]},
+    {"canonical": "wasp_nadia", "aliases": ["nadia_van_dyne", "nadia", "van_dyne"]},
+    {"canonical": "x_23", "aliases": ["x23", "laura_kinney", "laura", "kinney"]},
+    {"canonical": "spider_man", "aliases": ["spider_man", "peter_parker", "peter", "parker"]},
+    {"canonical": "wolverine", "aliases": ["wolverine", "logan", "james_howlett"]},
+    {"canonical": "iron_man", "aliases": ["iron_man", "tony_stark", "tony", "stark"]},
+    {"canonical": "captain_america", "aliases": ["captain_america", "steve_rogers", "steve", "rogers"]},
+    {"canonical": "thor", "aliases": ["thor"]}
+],
   "tokens": {
   "strong_signals": ["scarlet", "wanda", "rogue", "spider_gwen", "emma_frost", "hope_summers", "mantis", "psylocke", "kitty_pryde", "shadowcat", "invisible_woman", "sue_storm", "peggy_carter", "agent_carter", "she_hulk", "shehulk", "iron_widow_marvel", "iron_widow"],
   "weak_signals": ["marvel", "natasha", "carol", "gwen", "stacy", "cassie", "emma", "frost", "hope", "summers", "black_widow", "blackwidow", "maximoff", "betsy", "braddock", "betsy_braddock", "kitty", "pryde", "invisible", "peggy", "carter", "jennifer", "walters", "jennifer_walters"],

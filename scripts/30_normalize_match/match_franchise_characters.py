@@ -12,13 +12,14 @@ import json
 from pathlib import Path
 from typing import Dict, Tuple, List
 
-ROOT = Path(__file__).resolve().parent.parent
+# scripts/30_normalize_match/* -> repo root is two levels up
+ROOT = Path(__file__).resolve().parents[2]
 FR_DIR = ROOT / 'vocab' / 'franchises'
 OC_WHITELIST_PATH = ROOT / 'vocab' / 'oc_whitelist.txt'
 
 import sys
 # Ensure project root is on sys.path so `from db...` imports work
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -92,6 +93,82 @@ def expand_with_bigrams(tokens: list[str], stopwords: set[str]) -> list[str]:
             if 2 <= len(combo) <= 40:
                 expanded.add(combo)
     return list(expanded)
+
+
+def choose_best_franchise(
+    token_list: list[str],
+    fam: Dict[str, str],
+    cam: Dict[str, Tuple[str, str]],
+    f_tokens: Dict[str, Dict[str, set]],
+) -> tuple[str | None, str | None, float]:
+    """Score candidate franchises from token evidence and return (franchise, character, score).
+
+    Scoring heuristics (conservative):
+    - Character alias evidence outranks franchise alias evidence.
+    - Longer aliases and multi-token joins (e.g., 'poison_ivy') beat short names like 'ivy'.
+    - Strong signals from the franchise manifest add weight; weak adds small weight.
+    - Ambiguous or short/numeric aliases are only considered when there is supporting evidence.
+    """
+    candidates: Dict[str, Dict[str, object]] = {}
+
+    def _add_score(fr: str, inc: float, char: str | None = None) -> None:
+        row = candidates.setdefault(fr, {"score": 0.0, "char": None})
+        row["score"] = float(row["score"]) + inc
+        if char and row.get("char") is None:
+            row["char"] = char
+
+    # Evaluate character aliases first
+    for t in token_list:
+        if t in cam:
+            fr, ch = cam[t]
+            # Ambiguity/short gating: require supporting tokens for weak evidence
+            if t in AMBIGUOUS_ALIASES or shared_short_or_numeric(t):
+                if not shared_has_support(fr, token_list, fam, f_tokens, exclude_token=t):
+                    continue
+            # base score for character alias
+            score = 4.0
+            # bonus for multi-token alias forms and length (specificity)
+            if ("_" in t) or (" " in t):
+                score += 3.0
+            score += min(len(t), 30) / 12.0  # small length bias
+            # strong signal boost if listed as strong token for franchise
+            if t in (f_tokens.get(fr, {}).get("strong", set()) or set()):
+                score += 2.0
+            # ambiguous penalty (still allowed when support exists)
+            if t in AMBIGUOUS_ALIASES:
+                score -= 1.0
+            _add_score(fr, score, ch)
+
+    # Franchise alias evidence (lower weight)
+    for t in token_list:
+        if t in fam:
+            fr = fam[t]
+            if t in (f_tokens.get(fr, {}).get("stop", set()) or set()):
+                continue
+            score = 1.0
+            if t in (f_tokens.get(fr, {}).get("strong", set()) or set()):
+                score += 2.0
+            elif t in (f_tokens.get(fr, {}).get("weak", set()) or set()):
+                score += 0.5
+            if ("_" in t) or (" " in t):
+                score += 0.5
+            _add_score(fr, score)
+
+    # Pick best above a minimal threshold
+    best_fr: str | None = None
+    best_char: str | None = None
+    best_score = 0.0
+    for fr, row in candidates.items():
+        sc = float(row.get("score", 0.0))
+        if sc > best_score:
+            best_fr = fr
+            best_char = row.get("char") or None  # type: ignore[assignment]
+            best_score = sc
+    # require decisive evidence
+    threshold = 4.0
+    if best_score >= threshold:
+        return best_fr, best_char, best_score
+    return None, None, 0.0
 
 
 # AMBIGUOUS_ALIASES now imported from scripts.lib.alias_rules
@@ -464,6 +541,9 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                 has_alias_evidence = any(_is_valid_fr_alias(t) for t in token_list) or any((t in cam) and (t not in AMBIGUOUS_ALIASES) for t in token_list)
                 is_tabletop_ctx = has_tabletop_hint and not has_alias_evidence
 
+                # Try a scoring pass to resolve collisions (prefers specific character forms)
+                best_fr, best_char, best_score = choose_best_franchise(token_list, fam, cam, f_tokens)
+
                 inferred = {
                     'franchise': None,
                     'character_hint': None,
@@ -484,6 +564,13 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
 
                 def has_supporting_fr_tokens(fr_key: str, exclude_token: str | None = None) -> bool:
                     return shared_has_support(fr_key, token_list, fam, f_tokens, exclude_token=exclude_token)
+
+                # Prefer scoring-derived decision when not tabletop-blocked
+                if best_fr and not is_tabletop_ctx:
+                    inferred['franchise'] = best_fr
+                    if best_char:
+                        inferred['character_name'] = best_char
+                        inferred['character_hint'] = best_char
 
                 # Prefer character matches that include canonical franchise
                 # If a character alias is found, prefer to use it but treat very short

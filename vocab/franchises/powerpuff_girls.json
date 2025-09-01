@@ -11,7 +11,11 @@
     {"canonical": "mojo_jojo", "aliases": ["mojo", "mojojojo"]},
     {"canonical": "professor_utonium", "aliases": ["utonium"]},
     {"canonical": "him", "aliases": []}
-  ],
+  ,
+    {"canonical": "blossom_powerpuff", "aliases": ["blossom"]},
+    {"canonical": "bubbles_powerpuff", "aliases": ["bubbles"]},
+    {"canonical": "buttercup_powerpuff", "aliases": ["buttercup"]}
+],
   "tokens": {
     "strong_signals": ["powerpuff", "mojojojo"],
     "weak_signals": ["blossom", "bubbles", "buttercup", "utonium"],

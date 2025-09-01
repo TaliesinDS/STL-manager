@@ -5,7 +5,10 @@
   "aliases": ["kobayashi_dragon_maid", "dragon_maid"],
   "characters": [
     {"canonical": "kanna_kamui", "aliases": ["kanna", "kamui_kanna"]}
-  ],
+  ,
+    {"canonical": "tohru_dragon_maid", "aliases": ["tohru", "tooru"]},
+    {"canonical": "lucoa_dragon_maid", "aliases": ["lucoa", "quetzalcoatl"]}
+],
   "tokens": {
     "strong_signals": ["kanna_kamui"],
     "weak_signals": ["kanna"],

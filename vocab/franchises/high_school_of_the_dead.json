@@ -6,7 +6,9 @@
   "characters": [
   {"canonical": "saeko_busujima", "aliases": ["saeko", "busujima"]},
   {"canonical": "shizuka_marikawa", "aliases": ["shizuka", "marikawa"]}
-  ],
+  ,
+  {"canonical": "rei_miyamoto", "aliases": ["rei", "miyamoto"]}
+],
   "tokens": {
   "strong_signals": ["saeko_busujima", "saeko", "shizuka_marikawa", "shizuka"],
   "weak_signals": ["busujima", "marikawa"],

@@ -13,7 +13,10 @@
   {"canonical": "mococo_abyssgard", "aliases": ["mococo", "abyssgard"]},
   {"canonical": "nanashi_mumei", "aliases": ["mumei", "nanashi"]}
   ,{"canonical": "pekomama", "aliases": ["pekomama"]}
-  ],
+  ,
+  {"canonical": "mori_calliope", "aliases": ["mori", "calliope"]},
+  {"canonical": "shirakami_fubuki", "aliases": ["fubuki", "shirakami"]}
+],
   "tokens": {
   "strong_signals": ["gawr_gura", "gura", "ninomae_inanis", "marine_houshou", "marine", "nerissa_ravencroft", "nerissa", "ouro_kronii", "kronii", "fuwawa_abyssgard", "fuwawa", "mococo_abyssgard", "mococo", "nanashi_mumei", "mumei", "pekomama"],
   "weak_signals": ["gawr", "ina", "ninomae", "inanis", "houshou", "ravencroft", "ouro", "abyssgard", "nanashi"],

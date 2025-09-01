@@ -5,7 +5,10 @@
   "aliases": ["magic_the_gathering", "mtg"],
   "characters": [
     {"canonical": "liliana_vess", "aliases": ["liliana", "vess"]}
-  ],
+  ,
+    {"canonical": "chandra_nalaar", "aliases": ["chandra", "nalaar"]},
+    {"canonical": "nissa_revane", "aliases": ["nissa", "revane"]}
+],
   "tokens": {
     "strong_signals": ["liliana_vess"],
     "weak_signals": ["liliana", "vess", "mtg"],

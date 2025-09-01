@@ -18,6 +18,12 @@ Project Constraints (baseline):
 
 See `docs/TECH_STACK_PROPOSAL.md` (rev 1.1) for full architecture rationale.
 
+What’s new (2025‑08‑31):
+- Shared alias rules extracted to `scripts/lib/alias_rules.py` and reused by both the normalizer and the franchise matcher.
+- Normalizer now performs conservative bigram character aliasing and prefers multi‑token aliases (e.g., `poison_ivy` from “poison ivy”) over shorter ambiguous tokens.
+- Short/numeric and ambiguous alias gating unified between normalizer and matcher (prevents `002 -> zero_two` without clear franchise evidence).
+- Deprecated `scripts/common` — old helpers were removed; shared helpers live under `scripts/lib/`.
+
 What’s new (2025‑08‑29):
 - Tabletop vocab ingestion for Units (40K/AoS/Heresy) and Parts (40K wargear + bodies).
 - DB schema supports `game_system`, `faction`, `unit` (+aliases), and `part` (+aliases), with association tables to link Variants ↔ Units and Variants/Units ↔ Parts.
@@ -29,7 +35,7 @@ What’s new (2025‑08‑29):
 ```
 docs/         Planning & specifications (API_SPEC, MetadataFields, NormalizationFlow, PLANNING, DesiredFeatures, TECH_STACK_PROPOSAL)
 vocab/        Modular vocab files (tokenmap, designers_tokenmap, codex_units_*.md, franchises/ manifests)
-scripts/      Utility / exploratory scripts (quick_scan.py, one_click_start_template.bat, future normalization passes)
+scripts/      Utility / exploratory scripts organized by phase; shared helpers in `scripts/lib/` (see docs/SCRIPTS_ORGANIZATION.md)
 prompts/      Reusable prompt/style definition assets (e.g., bernadette_banner_style_prompt.txt)
 DECISIONS.md  Versioned rationale & token_map_version change log
 README.md     This file
@@ -229,12 +235,26 @@ Integrity tests (tabletop basing):
 A safe matcher assigns franchises and character names for existing Variants using deterministic rules and vocab manifests under `vocab/franchises/*.json`.
 
 Key properties and guardrails:
-- Strict separation of tabletop factions vs media franchises. Franchise evidence never populates tabletop faction fields; instead, franchise‑level signals are recorded in the Variant field `franchise_hints` (JSON array).
-- Dry‑run by default: prints a summary and can export a detailed JSON proposal file via `--out`. Use `--apply` only after reviewing the report.
-- Ambiguous alias handling: tokens like `"angel"` or `"sakura"` require additional, explicit franchise evidence before they can influence an assignment.
-- Tabletop gating: when tabletop/system hints are present but there is no strong franchise/character alias evidence, the matcher won’t assign a franchise and will only record non‑committal `franchise_hints`.
-- Short/numeric alias suppression in tabletop contexts (e.g., `2b`, `9s`) and general two‑character alias suppression unless explicit support exists.
-- Tokenization improvements: camelCase / alpha‑digit splitting, vocab‑guided segmentation for glued tokens, and conservative bigram expansion; respects franchise `stop_conflicts`.
+
+Normalizer quick commands (Windows PowerShell):
+
+```powershell
+$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db";
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\normalize_inventory.py `
+	--batch 500 `
+	--print-summary `
+	--include-fields character_name,character_aliases,franchise,franchise_hints `
+	--out ("reports/normalize_characters_full_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+
+# Apply after review
+$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db";
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\normalize_inventory.py `
+	--batch 500 `
+	--apply `
+	--print-summary `
+	--include-fields character_name,character_aliases,franchise,franchise_hints `
+	--out ("reports/normalize_characters_apply_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+```
 
 Original Character (OC) inference (opt‑in):
 - Disabled by default; enable with `--infer-oc` to allow strict inference of original character names from the last folder name in `rel_path` (no franchises are set by OC inference).

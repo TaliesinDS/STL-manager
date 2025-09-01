@@ -5,7 +5,10 @@
   "aliases": ["symphogear"],
   "characters": [
     {"canonical": "misono_hibiki", "aliases": ["hibiki", "misono"]}
-  ],
+  ,
+    {"canonical": "tachibana_hibiki", "aliases": ["hibiki", "tachibana"]},
+    {"canonical": "yukine_chris", "aliases": ["chris", "yukine"]}
+],
   "tokens": {
     "strong_signals": ["hibiki"],
     "weak_signals": ["misono"],

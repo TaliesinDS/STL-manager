@@ -5,7 +5,9 @@
   "aliases": ["sao", "sword_art_online"],
   "characters": [
     {"canonical": "asuna_yuuki", "aliases": ["asuna", "yuuki"]}
-  ],
+  ,
+    {"canonical": "sinon_sao", "aliases": ["sinon"]}
+],
   "tokens": {
     "strong_signals": ["asuna", "yuuki"],
     "weak_signals": ["sao"],

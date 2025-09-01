@@ -6,7 +6,11 @@
   "characters": [
     {"canonical": "skadi_arknights", "aliases": ["skadi"]},
     {"canonical": "nian_arknights", "aliases": ["nian"]}
-  ],
+  ,
+    {"canonical": "amiya_ak", "aliases": ["amiya"]},
+    {"canonical": "blaze_ak", "aliases": ["blaze"]},
+    {"canonical": "texas_ak", "aliases": ["texas"]}
+],
   "tokens": {
   "strong_signals": ["skadi_arknights", "nian_arknights", "nian"],
   "weak_signals": ["skadi"],

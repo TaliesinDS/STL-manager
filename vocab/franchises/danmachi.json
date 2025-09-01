@@ -6,7 +6,9 @@
   "characters": [
     {"canonical": "ais_wallenstein", "aliases": ["ais", "wallenstein"]},
     {"canonical": "hestia", "aliases": []}
-  ],
+  ,
+    {"canonical": "hestia_danmachi", "aliases": ["hestia"]}
+],
   "tokens": {
     "strong_signals": ["wallenstein", "hestia"],
     "weak_signals": ["ais"],

@@ -9,7 +9,9 @@
   {"canonical": "cathyl_centaur", "aliases": ["cathyl"]},
   {"canonical": "meroune_lorelei", "aliases": ["meroune", "lorelei"]},
   {"canonical": "lilith_monster_musume", "aliases": ["lilith"]}
-  ],
+  ,
+    {"canonical": "papi_harpy", "aliases": ["papi"]}
+],
   "tokens": {
   "strong_signals": ["papi_harpy", "miia_lamia", "cathyl_centaur", "meroune_lorelei", "meroune", "lilith_monster_musume"],
   "weak_signals": ["papi", "miia", "cathyl", "lorelei", "lilith"],

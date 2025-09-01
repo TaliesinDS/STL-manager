@@ -7,7 +7,9 @@
   {"canonical": "megumin", "aliases": ["megumin"]},
   {"canonical": "yunyun_konosuba", "aliases": ["yunyun", "yunyun_maid"]},
   {"canonical": "darkness_konosuba", "aliases": ["darkness"]}
-  ],
+  ,
+  {"canonical": "aqua_konosuba", "aliases": ["aqua"]}
+],
   "tokens": {
   "strong_signals": ["megumin", "yunyun_konosuba", "darkness_konosuba", "darkness"],
   "weak_signals": ["yunyun", "yunyun_maid"],

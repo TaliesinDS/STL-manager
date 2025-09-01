@@ -5,7 +5,9 @@
   "aliases": ["wuthering_waves"],
   "characters": [
     {"canonical": "yinlin", "aliases": []}
-  ],
+  ,
+    {"canonical": "baizhi", "aliases": ["baizhi"]}
+],
   "tokens": {
     "strong_signals": ["yinlin"],
     "weak_signals": [],

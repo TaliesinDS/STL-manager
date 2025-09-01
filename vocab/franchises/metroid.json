@@ -5,7 +5,9 @@
   "aliases": ["metroid"],
   "characters": [
     {"canonical": "zero_suit_samus", "aliases": ["samus", "samus_aran", "zero_suit_samus"]}
-  ],
+  ,
+    {"canonical": "samus_aran", "aliases": ["samus", "aran"]}
+],
   "tokens": {
     "strong_signals": ["zero_suit_samus", "samus_aran"],
     "weak_signals": ["samus"],

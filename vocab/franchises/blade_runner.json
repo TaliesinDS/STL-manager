@@ -5,7 +5,10 @@
   "aliases": ["blade_runner"],
   "characters": [
     {"canonical": "jori_ana_de_armas", "aliases": ["ana_de_armas_character", "ana_de_armas_blade_runner"]}
-  ],
+  ,
+    {"canonical": "rachel_blade_runner", "aliases": ["rachel"]},
+    {"canonical": "pris_blade_runner", "aliases": ["pris"]}
+],
   "tokens": {
     "strong_signals": ["ana_de_armas_blade_runner"],
     "weak_signals": ["ana_de_armas_character", "blade_runner"],

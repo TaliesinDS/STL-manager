@@ -6,7 +6,13 @@
   "characters": [
     {"canonical": "annie_leonhart", "aliases": ["annie", "leonhart"]},
     {"canonical": "sasha_braus", "aliases": ["sasha", "braus"]}
-  ],
+  ,
+    {"canonical": "mikasa_ackerman", "aliases": ["mikasa", "mikasa_ackerman"]},
+    {"canonical": "historia_reiss", "aliases": ["historia", "historia_reiss", "krista_lenz", "krista"]},
+    {"canonical": "hange_zoe", "aliases": ["hange", "hanji", "hange_zoe", "hanji_zoe"]},
+    {"canonical": "eren_yeager", "aliases": ["eren", "eren_yeager", "yeager", "jaeger"]},
+    {"canonical": "levi_ackerman", "aliases": ["levi", "levi_ackerman"]}
+],
   "tokens": {
   "strong_signals": ["annie_leonhart", "annie", "sasha_braus", "sasha"],
   "weak_signals": ["leonhart", "aot", "braus"],

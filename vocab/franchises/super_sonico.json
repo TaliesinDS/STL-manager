@@ -5,7 +5,9 @@
   "aliases": ["super_sonico"],
   "characters": [
     {"canonical": "sonico", "aliases": ["sonico", "sonico_neko"]}
-  ],
+  ,
+    {"canonical": "super_sonico", "aliases": ["sonico", "super_sonico"]}
+],
   "tokens": {
     "strong_signals": ["sonico"],
     "weak_signals": ["sonico_neko"],

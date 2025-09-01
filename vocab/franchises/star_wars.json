@@ -6,7 +6,11 @@
   "characters": [
     {"canonical": "princess_leia", "aliases": ["leia", "leia_organa", "organa"]},
     {"canonical": "bastila_shan", "aliases": ["bastila", "shan"]}
-  ],
+  ,
+    {"canonical": "ahsoka_tano", "aliases": ["ahsoka", "tano"]},
+    {"canonical": "padme_amidala", "aliases": ["padme", "amidala"]},
+    {"canonical": "rey_skywalker", "aliases": ["rey"]}
+],
   "tokens": {
   "strong_signals": ["princess_leia", "leia", "leia_organa", "bastila_shan", "bastila"],
   "weak_signals": ["organa", "sw", "shan"],

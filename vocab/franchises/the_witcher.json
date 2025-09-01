@@ -6,7 +6,10 @@
   "characters": [
   {"canonical": "ciri_the_witcher", "aliases": ["ciri"]},
   {"canonical": "triss_merigold", "aliases": ["triss", "merigold"]}
-  ],
+  ,
+  {"canonical": "yennefer_of_vengerberg", "aliases": ["yennefer", "vengerberg"]},
+  {"canonical": "ciri", "aliases": ["ciri", "cirilla"]}
+],
   "tokens": {
   "strong_signals": ["ciri", "triss", "triss_merigold"],
   "weak_signals": ["witcher", "merigold"],

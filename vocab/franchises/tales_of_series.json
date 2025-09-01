@@ -5,7 +5,11 @@
   "aliases": ["tales_of", "tales_series"],
   "characters": [
     {"canonical": "pascal_tales_of_graces", "aliases": ["pascal"]}
-  ],
+  ,
+    {"canonical": "velvet_crowe", "aliases": ["velvet", "crowe"]},
+    {"canonical": "edna_tales", "aliases": ["edna"]},
+    {"canonical": "alisha_diphda", "aliases": ["alisha", "diphda"]}
+],
   "tokens": {
     "strong_signals": ["pascal_tales_of_graces"],
     "weak_signals": ["pascal"],

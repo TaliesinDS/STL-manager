@@ -5,7 +5,9 @@
   "aliases": ["kakegurui"],
   "characters": [
     {"canonical": "yumeko_jabami", "aliases": ["yumeko", "jabami"]}
-  ],
+  ,
+    {"canonical": "kirari_momobami", "aliases": ["kirari", "momobami"]}
+],
   "tokens": {
     "strong_signals": ["yumeko", "yumeko_jabami"],
     "weak_signals": ["jabami"],

@@ -6,7 +6,9 @@
   "characters": [
     {"canonical": "erza_scarlet", "aliases": ["erza", "scarlet"]},
     {"canonical": "lucy_heartfilia", "aliases": ["lucy", "heartfilia"]}
-  ],
+  ,
+    {"canonical": "juvia_lockser", "aliases": ["juvia", "lockser"]}
+],
   "tokens": {
     "strong_signals": ["erza_scarlet", "erza", "lucy_heartfilia", "lucy"],
     "weak_signals": ["scarlet", "heartfilia"],

@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "cammy", "aliases": []},
     {"canonical": "ibuki_street_fighter", "aliases": ["ibuki"]}
-  ],
+  ,
+    {"canonical": "chun_li", "aliases": ["chunli", "chun-li"]},
+    {"canonical": "juri_han", "aliases": ["juri", "han"]}
+],
   "tokens": {
   "strong_signals": ["cammy", "ibuki_street_fighter", "ibuki"],
   "weak_signals": [],

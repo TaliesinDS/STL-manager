@@ -9,7 +9,9 @@
     {"canonical": "poppi_xenoblade", "aliases": ["poppi"]},
     {"canonical": "melia_xenoblade", "aliases": ["melia"]},
     {"canonical": "nia_xenoblade", "aliases": ["nia"]}
-  ],
+  ,
+    {"canonical": "brighid_xenoblade", "aliases": ["brighid"]}
+],
   "tokens": {
     "strong_signals": ["pyra_xenoblade", "mythra_xenoblade", "poppi_xenoblade", "melia_xenoblade", "nia_xenoblade", "pyra", "mythra"],
     "weak_signals": ["poppi", "melia", "nia", "xenoblade"],

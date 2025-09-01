@@ -6,7 +6,11 @@
   "characters": [
     {"canonical": "yukari_yakumo", "aliases": ["yukari", "yakumo"]},
     {"canonical": "sakuya_izayoi", "aliases": ["sakuya", "izayoi"]}
-  ],
+  ,
+    {"canonical": "reimu_hakurei", "aliases": ["reimu", "hakurei"]},
+    {"canonical": "marisa_kirisame", "aliases": ["marisa", "kirisame"]},
+    {"canonical": "remilia_scarlet", "aliases": ["remilia", "scarlet"]}
+],
   "tokens": {
   "strong_signals": ["yukari", "yukari_yakumo", "sakuya_izayoi", "sakuya"],
   "weak_signals": ["yakumo", "izayoi"],

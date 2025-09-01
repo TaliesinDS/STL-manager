@@ -7,7 +7,9 @@
     {"canonical": "asuka_langley", "aliases": ["asuka"]},
     {"canonical": "rei_ayanami", "aliases": ["rei", "ayanami_rei"]},
     {"canonical": "misato_katsuragi", "aliases": ["misato", "katsuragi"]}
-  ],
+  ,
+    {"canonical": "mari_makinami", "aliases": ["mari", "makinami"]}
+],
   "tokens": {
   "strong_signals": ["asuka", "ayanami", "ayanami_rei", "misato_katsuragi", "misato"],
   "weak_signals": ["rei", "evangelion", "katsuragi"],

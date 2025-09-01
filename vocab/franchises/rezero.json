@@ -7,7 +7,9 @@
     {"canonical": "rem_rezero", "aliases": ["rem"]},
     {"canonical": "emilia_rezero", "aliases": ["emilia"]},
     {"canonical": "puck_rezero", "aliases": ["puck"]}
-  ],
+  ,
+    {"canonical": "ram_rezero", "aliases": ["ram"]}
+],
   "tokens": {
     "strong_signals": ["rem_rezero", "emilia_rezero", "puck_rezero"],
     "weak_signals": ["rem", "emilia", "puck", "rezero"],

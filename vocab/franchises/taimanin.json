@@ -8,7 +8,9 @@
   {"canonical": "yukikaze_mizuki", "aliases": ["yukikaze", "mizuki"]},
   {"canonical": "shinohara_mari", "aliases": ["mari_shinohara", "mari", "shinohara"]},
   {"canonical": "asagi_igawa", "aliases": ["asagi", "igawa_asagi"]}
-  ],
+  ,
+    {"canonical": "sakura_igawa", "aliases": ["sakura", "igawa"]}
+],
   "tokens": {
   "strong_signals": ["igawa_sakura", "yukikaze_mizuki", "shinohara_mari", "asagi_igawa", "asagi", "taimanin"],
   "weak_signals": ["sakura", "igawa", "sakura_igawa", "yukikaze", "mizuki", "mari", "shinohara", "igawa_asagi"],

@@ -5,7 +5,10 @@
   "aliases": ["the_boys"],
   "characters": [
     {"canonical": "stormfront_the_boys", "aliases": ["stormfront"]}
-  ],
+  ,
+    {"canonical": "starlight_the_boys", "aliases": ["starlight", "annie_january"]},
+    {"canonical": "queen_maeve", "aliases": ["maeve", "queen_maeve"]}
+],
   "tokens": {
     "strong_signals": ["stormfront_the_boys", "stormfront"],
     "weak_signals": [],

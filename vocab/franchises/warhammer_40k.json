@@ -5,7 +5,12 @@
   "aliases": ["warhammer_40k", "40k"],
   "characters": [
     {"canonical": "lelith_heperax", "aliases": ["lelith", "heperax"]}
-  ],
+  ,
+    {"canonical": "saint_celestine", "aliases": ["celestine", "saint_celestine"]},
+    {"canonical": "morvenn_vahl", "aliases": ["morvenn", "vahl"]},
+    {"canonical": "yvraine", "aliases": ["yvraine"]},
+    {"canonical": "jain_zar", "aliases": ["jain_zar", "jain", "zar"]}
+],
   "tokens": {
     "strong_signals": ["lelith_heperax"],
     "weak_signals": ["lelith", "heperax", "40k"],

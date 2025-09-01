@@ -5,7 +5,16 @@
   "aliases": ["girls_frontline", "girlsfrontline", "gfl"],
   "characters": [
     {"canonical": "pa15", "aliases": ["pa_15", "pa15_gfl"]}
-  ],
+  ,
+    {"canonical": "ump45", "aliases": ["ump45", "ump_45"]},
+    {"canonical": "ump9", "aliases": ["ump9", "ump_9"]},
+    {"canonical": "m4a1", "aliases": ["m4a1", "m4_a1"]},
+    {"canonical": "m4_sopmod_ii", "aliases": ["m4_sopmod_ii", "sopmod", "sopmod_ii"]},
+    {"canonical": "ar15_gfl", "aliases": ["ar15", "ar_15", "m16_sister", "st_ar15"]},
+    {"canonical": "hk416", "aliases": ["hk416", "hk_416"]},
+    {"canonical": "g11", "aliases": ["g11"]},
+    {"canonical": "kiana_gfl", "aliases": ["kiana"]}
+],
   "tokens": {
     "strong_signals": ["pa15", "pa_15"],
     "weak_signals": ["gfl"],

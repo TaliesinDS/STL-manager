@@ -14,7 +14,11 @@
     {"canonical": "alisaie_leveilleur", "aliases": ["alisaie", "leveilleur"]},
   {"canonical": "yshtola_rhul", "aliases": ["yshtola", "y_shtola"]},
   {"canonical": "yuffie_kisaragi", "aliases": ["yuffie", "kisaragi"]}
-  ],
+  ,
+    {"canonical": "aerith_gainsborough", "aliases": ["aerith", "gainsborough"]},
+    {"canonical": "lightning_ff", "aliases": ["lightning", "claire_farron", "farron"]},
+    {"canonical": "terra_branford", "aliases": ["terra", "branford"]}
+],
   "tokens": {
     "strong_signals": [
       "tifa_lockhart", "tifa",

@@ -6,7 +6,9 @@
   "characters": [
   {"canonical": "lupusregina", "aliases": ["lupusregina_beta", "lupu"]},
   {"canonical": "albedo_overlord", "aliases": ["albedo"]}
-  ],
+  ,
+  {"canonical": "shalltear_bloodfallen", "aliases": ["shalltear"]}
+],
   "tokens": {
   "strong_signals": ["lupusregina", "albedo_overlord"],
   "weak_signals": ["lupu", "albedo"],

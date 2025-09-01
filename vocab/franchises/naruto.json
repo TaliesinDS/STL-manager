@@ -8,7 +8,11 @@
     {"canonical": "ino_yamanaka", "aliases": ["ino", "yamanaka"]},
     {"canonical": "hinata_hyuga", "aliases": ["hinata", "hyuga"]},
     {"canonical": "sakura_haruno", "aliases": ["sakura", "haruno"]}
-  ],
+  ,
+    {"canonical": "tsunade", "aliases": ["tsunade", "senju_tsunade"]},
+    {"canonical": "temari", "aliases": ["temari"]},
+    {"canonical": "konan", "aliases": ["konan"]}
+],
   "tokens": {
   "strong_signals": ["mitarashi", "yamanaka", "hyuga", "haruno"],
   "weak_signals": ["anko", "ino", "hinata", "sakura"],

@@ -5,7 +5,9 @@
   "aliases": ["bayonetta"],
   "characters": [
     {"canonical": "bayonetta", "aliases": []}
-  ],
+  ,
+    {"canonical": "jeanne", "aliases": ["jeanne"]}
+],
   "tokens": {
     "strong_signals": ["bayonetta"],
     "weak_signals": [],

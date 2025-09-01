@@ -8,7 +8,11 @@
   {"canonical": "karin_blue_archive", "aliases": ["karin"]},
   {"canonical": "hoshino_blue_archive", "aliases": ["hoshino"]},
   {"canonical": "hina_sorasaki", "aliases": ["hina", "sorasaki"]}
-  ],
+  ,
+  {"canonical": "azusa_blue_archive", "aliases": ["azusa"]},
+  {"canonical": "aris_blue_archive", "aliases": ["aris"]},
+  {"canonical": "koharu_blue_archive", "aliases": ["koharu"]}
+],
   "tokens": {
   "strong_signals": ["asuna_blue_archive", "karin_blue_archive", "hoshino_blue_archive", "hina_sorasaki", "hina"],
   "weak_signals": ["asuna", "karin", "hoshino", "sorasaki"],

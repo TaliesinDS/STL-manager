@@ -8,7 +8,10 @@
   {"canonical": "galadriel", "aliases": []},
   {"canonical": "tauriel", "aliases": ["tauriel"]},
   {"canonical": "sauron", "aliases": ["sauron"]}
-  ],
+  ,
+    {"canonical": "eowyn_lotr", "aliases": ["eowyn"]},
+    {"canonical": "galadriel_lotr", "aliases": ["galadriel"]}
+],
   "tokens": {
   "strong_signals": ["arwen", "galadriel", "tauriel", "sauron"],
     "weak_signals": ["lotr"],

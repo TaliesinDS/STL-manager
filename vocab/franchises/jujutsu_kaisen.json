@@ -5,7 +5,9 @@
   "aliases": ["jjk"],
   "characters": [
     {"canonical": "nobara_kugisaki", "aliases": ["nobara", "kugisaki"]}
-  ],
+  ,
+    {"canonical": "maki_zenin", "aliases": ["maki", "zenin"]}
+],
   "tokens": {
     "strong_signals": ["nobara_kugisaki", "nobara"],
     "weak_signals": ["kugisaki"],

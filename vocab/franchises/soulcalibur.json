@@ -5,7 +5,10 @@
   "aliases": ["soul_calibur", "soul_edge"],
   "characters": [
     {"canonical": "ivy_valentine", "aliases": ["ivy", "valentine"]}
-  ],
+  ,
+    {"canonical": "taki_soulcalibur", "aliases": ["taki"]},
+    {"canonical": "sophitia", "aliases": ["sophitia"]}
+],
   "tokens": {
     "strong_signals": ["ivy_valentine"],
     "weak_signals": ["ivy"],

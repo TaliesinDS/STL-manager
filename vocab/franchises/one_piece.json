@@ -10,7 +10,11 @@
     {"canonical": "nami_one_piece", "aliases": ["nami"]},
   {"canonical": "nico_robin", "aliases": ["robin", "nico", "nico_robin"]},
   {"canonical": "vivi_one_piece", "aliases": ["vivi", "nefertari_vivi"]}
-  ],
+  ,
+    {"canonical": "boa_hancock", "aliases": ["boa", "hancock"]},
+    {"canonical": "yamato_one_piece", "aliases": ["yamato"]},
+    {"canonical": "reiju_vinsmoke", "aliases": ["reiju", "vinsmoke_reiju"]}
+],
   "tokens": {
   "strong_signals": ["zoro", "luffy", "chopper", "nami_one_piece", "nami", "nico_robin", "robin", "vivi_one_piece", "vivi"],
   "weak_signals": ["nico", "nefertari_vivi"],

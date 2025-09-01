@@ -7,7 +7,12 @@
     {"canonical": "mei_overwatch", "aliases": ["mei"]},
   {"canonical": "d_va", "aliases": ["dva", "d.va"]},
   {"canonical": "widowmaker_overwatch", "aliases": ["widowmaker"]}
-  ],
+  ,
+    {"canonical": "mercy_overwatch", "aliases": ["mercy", "angela_ziegler", "ziegler"]},
+    {"canonical": "tracer_overwatch", "aliases": ["tracer"]},
+    {"canonical": "ashe_overwatch", "aliases": ["ashe"]},
+    {"canonical": "dva_overwatch", "aliases": ["dva", "d.va"]}
+],
   "tokens": {
   "strong_signals": ["mei_overwatch", "d_va", "dva", "d.va", "widowmaker_overwatch", "widowmaker"],
   "weak_signals": ["mei"],

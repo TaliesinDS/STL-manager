@@ -7,7 +7,10 @@
     {"canonical": "yrel", "aliases": ["yrel"]},
   {"canonical": "lady_vashj", "aliases": ["vashj", "lady_vashj"]},
   {"canonical": "sylvanas_windrunner", "aliases": ["sylvanas", "windrunner"]}
-  ],
+  ,
+    {"canonical": "jaina_proudmoore", "aliases": ["jaina", "proudmoore"]},
+    {"canonical": "tyrande_whisperwind", "aliases": ["tyrande", "whisperwind"]}
+],
   "tokens": {
   "strong_signals": ["yrel", "lady_vashj", "sylvanas", "sylvanas_windrunner"],
   "weak_signals": ["vashj", "windrunner"],

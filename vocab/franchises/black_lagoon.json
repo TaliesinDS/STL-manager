@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "roberta_black_lagoon", "aliases": ["roberta"]}
   , {"canonical": "revy_black_lagoon", "aliases": ["revy"]}
-  ],
+  ,
+    {"canonical": "revy", "aliases": ["revy"]},
+    {"canonical": "balalaika", "aliases": ["balalaika"]}
+],
   "tokens": {
   "strong_signals": ["roberta_black_lagoon", "revy_black_lagoon", "revy"],
   "weak_signals": ["roberta"],

@@ -8,7 +8,10 @@
     {"canonical": "hilda_fire_emblem", "aliases": ["hilda"]},
     {"canonical": "petra_macneary", "aliases": ["petra"]}
   , {"canonical": "ingrid_galatea", "aliases": ["ingrid", "galatea"]}
-  ],
+  ,
+    {"canonical": "lucina", "aliases": ["lucina"]},
+    {"canonical": "bernadetta_von_varley", "aliases": ["bernadetta", "von_varley"]}
+],
   "tokens": {
   "strong_signals": ["edelgard", "hilda_fire_emblem", "petra_macneary", "ingrid_galatea", "ingrid"],
   "weak_signals": ["hilda", "petra", "galatea"],

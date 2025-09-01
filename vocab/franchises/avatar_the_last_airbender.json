@@ -5,7 +5,12 @@
   "aliases": ["avatar_the_last_airbender", "avatar_last_airbender", "atla"],
   "characters": [
     {"canonical": "toph_beifong", "aliases": ["toph", "beifong"]}
-  ],
+  ,
+    {"canonical": "katara", "aliases": ["katara"]},
+    {"canonical": "toph", "aliases": ["toph"]},
+    {"canonical": "aang", "aliases": ["aang"]},
+    {"canonical": "zuko", "aliases": ["zuko"]}
+],
   "tokens": {
     "strong_signals": ["toph_beifong", "toph"],
     "weak_signals": ["beifong", "atla"],

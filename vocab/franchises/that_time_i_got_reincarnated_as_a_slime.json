@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "shuna_tensura", "aliases": ["shuna"]},
     {"canonical": "milim_nava", "aliases": ["milim", "nava"]}
-  ],
+  ,
+    {"canonical": "shion_slime", "aliases": ["shion"]},
+    {"canonical": "shuna_slime", "aliases": ["shuna"]}
+],
   "tokens": {
   "strong_signals": ["shuna_tensura", "shuna", "milim_nava", "milim"],
   "weak_signals": ["nava"],

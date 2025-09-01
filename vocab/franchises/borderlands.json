@@ -5,7 +5,9 @@
   "aliases": ["borderlands"],
   "characters": [
     {"canonical": "mad_moxxi", "aliases": ["moxxi"]}
-  ],
+  ,
+    {"canonical": "tiny_tina_borderlands", "aliases": ["tiny_tina", "tina"]}
+],
   "tokens": {
     "strong_signals": ["mad_moxxi"],
     "weak_signals": ["moxxi"],

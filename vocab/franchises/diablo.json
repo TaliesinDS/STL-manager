@@ -7,7 +7,9 @@
     {"canonical": "lilith_diablo", "aliases": ["lilith"]},
   {"canonical": "tyrael", "aliases": []},
   {"canonical": "countess", "aliases": ["the_countess", "countess"]}
-  ],
+  ,
+    {"canonical": "andariel", "aliases": ["andariel"]}
+],
   "tokens": {
   "strong_signals": ["tyrael", "countess"],
   "weak_signals": ["lilith", "diablo", "the_countess"],

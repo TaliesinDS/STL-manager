@@ -7,7 +7,11 @@
     {"canonical": "ada_wong", "aliases": ["ada", "wong"]},
     {"canonical": "claire_redfield", "aliases": ["claire", "redfield"]},
     {"canonical": "jill_valentine", "aliases": ["jill", "valentine"]}
-  ],
+  ,
+    {"canonical": "lady_dimitrescu", "aliases": ["dimitrescu", "alcina"]},
+    {"canonical": "sherry_birkin", "aliases": ["sherry", "birkin"]},
+    {"canonical": "rebecca_chambers", "aliases": ["rebecca", "chambers"]}
+],
   "tokens": {
   "strong_signals": ["ada_wong", "claire_redfield", "claire", "jill_valentine", "jill"],
   "weak_signals": ["ada", "wong", "redfield", "valentine"],

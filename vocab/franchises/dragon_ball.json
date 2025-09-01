@@ -7,7 +7,10 @@
     {"canonical": "android_18", "aliases": ["android18", "android_18"]},
   {"canonical": "bulma", "aliases": ["bulma"]},
   {"canonical": "android_21", "aliases": ["android21", "android_21"]}
-  ],
+  ,
+    {"canonical": "chi_chi", "aliases": ["chichi", "chi-chi"]},
+    {"canonical": "videl", "aliases": ["videl"]}
+],
   "tokens": {
   "strong_signals": ["android_18", "android18", "bulma", "android_21", "android21"],
   "weak_signals": ["android"],

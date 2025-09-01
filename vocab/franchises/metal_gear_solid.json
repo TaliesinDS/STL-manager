@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "solid_snake", "aliases": ["snake"]},
     {"canonical": "big_boss", "aliases": []}
-  ],
+  ,
+    {"canonical": "quiet_mgs", "aliases": ["quiet"]},
+    {"canonical": "sniper_wolf", "aliases": ["sniper_wolf"]}
+],
   "tokens": {
     "strong_signals": ["solid", "snake", "big", "boss"],
     "weak_signals": ["metal", "gear"],

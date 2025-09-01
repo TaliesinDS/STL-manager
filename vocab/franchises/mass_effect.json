@@ -5,7 +5,10 @@
   "aliases": ["mass_effect"],
   "characters": [
     {"canonical": "tali_zorah", "aliases": ["tali", "zorah"]}
-  ],
+  ,
+    {"canonical": "miranda_lawson", "aliases": ["miranda", "lawson"]},
+    {"canonical": "liara_tsoni", "aliases": ["liara", "t'soni", "tsoni"]}
+],
   "tokens": {
     "strong_signals": ["tali_zorah"],
     "weak_signals": ["tali", "zorah"],

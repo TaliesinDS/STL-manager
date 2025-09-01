@@ -9,7 +9,10 @@
   {"canonical": "ganondorf", "aliases": ["ganon"]},
   {"canonical": "riju_zelda", "aliases": ["riju"]},
   {"canonical": "midna_zelda", "aliases": ["midna"]}
-  ],
+  ,
+    {"canonical": "mipha_zelda", "aliases": ["mipha"]},
+    {"canonical": "urbosa_zelda", "aliases": ["urbosa"]}
+],
   "tokens": {
   "strong_signals": ["ganondorf", "ganon", "riju_zelda", "riju", "midna_zelda", "midna"],
   "weak_signals": ["link", "zelda"],

@@ -6,7 +6,9 @@
   "characters": [
     {"canonical": "qbee", "aliases": ["qbee", "q-bee"]},
     {"canonical": "morrigan_ainsland", "aliases": ["morrigan", "ainsland"]}
-  ],
+  ,
+    {"canonical": "felicia_darkstalkers", "aliases": ["felicia"]}
+],
   "tokens": {
   "strong_signals": ["qbee", "morrigan_ainsland", "morrigan"],
   "weak_signals": ["ainsland"],

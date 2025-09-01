@@ -9,7 +9,10 @@
   {"canonical": "ironmouse", "aliases": ["ironmouse"]},
   {"canonical": "misono_hibiki", "aliases": ["misono", "hibiki"]},
   {"canonical": "shylily", "aliases": ["shylily"]}
-  ],
+  ,
+    {"canonical": "ironmouse_vtuber", "aliases": ["ironmouse"]},
+    {"canonical": "nyanners_vtuber", "aliases": ["nyanners"]}
+],
   "tokens": {
   "strong_signals": ["silvervale", "usada_pekora", "pekora", "ironmouse", "misono_hibiki", "shylily"],
   "weak_signals": ["vtuber", "vtubers", "usada", "misono", "hibiki"],

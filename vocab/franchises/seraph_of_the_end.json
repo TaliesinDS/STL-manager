@@ -5,7 +5,9 @@
   "aliases": ["seraph_of_the_end", "owari_no_seraph"],
   "characters": [
     {"canonical": "hiiragi_utena", "aliases": ["hiiragi", "utena"]}
-  ],
+  ,
+    {"canonical": "krul_tepes", "aliases": ["krul", "tepes"]}
+],
   "tokens": {
     "strong_signals": ["hiiragi", "utena"],
     "weak_signals": ["seraph"],

@@ -5,7 +5,11 @@
   "aliases": ["skullgirls"],
   "characters": [
     {"canonical": "eliza", "aliases": ["eliza_skullgirls"]}
-  ],
+  ,
+    {"canonical": "filia_skullgirls", "aliases": ["filia"]},
+    {"canonical": "parasoul_skullgirls", "aliases": ["parasoul"]},
+    {"canonical": "valentine_skullgirls", "aliases": ["valentine"]}
+],
   "tokens": {
     "strong_signals": ["eliza_skullgirls"],
     "weak_signals": ["eliza"],

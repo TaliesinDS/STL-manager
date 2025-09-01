@@ -5,7 +5,11 @@
   "aliases": ["hyperdimension_neptunia", "neptunia"],
   "characters": [
     {"canonical": "iris_heart", "aliases": ["iris_heart", "irisheart"]}
-  ],
+  ,
+    {"canonical": "noire_neptunia", "aliases": ["noire"]},
+    {"canonical": "vert_neptunia", "aliases": ["vert"]},
+    {"canonical": "blanc_neptunia", "aliases": ["blanc"]}
+],
   "tokens": {
     "strong_signals": ["iris_heart"],
     "weak_signals": ["irisheart"],

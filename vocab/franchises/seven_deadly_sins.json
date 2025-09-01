@@ -7,7 +7,9 @@
     {"canonical": "diane", "aliases": ["diane_sds"]},
   {"canonical": "elizabeth_liones", "aliases": ["elizabeth", "liones"]},
   {"canonical": "merlin_sds", "aliases": ["merlin"]}
-  ],
+  ,
+    {"canonical": "diane_seven_deadly_sins", "aliases": ["diane"]}
+],
   "tokens": {
   "strong_signals": ["elizabeth_liones", "liones", "diane_sds", "merlin_sds"],
   "weak_signals": ["elizabeth", "diane", "seven_deadly_sins", "merlin"],

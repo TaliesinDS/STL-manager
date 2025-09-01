@@ -6,7 +6,9 @@
   "characters": [
     {"canonical": "jibril_ngnl", "aliases": ["jibril"]}
   , {"canonical": "stephanie_dola", "aliases": ["stephanie", "steph", "dola"]}
-  ],
+  ,
+    {"canonical": "shiro", "aliases": ["shiro"]}
+],
   "tokens": {
   "strong_signals": ["jibril_ngnl", "stephanie_dola"],
   "weak_signals": ["jibril", "stephanie", "steph", "dola"],

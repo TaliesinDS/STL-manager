@@ -12,7 +12,9 @@
   {"canonical": "anby_demara", "aliases": ["anby", "demara"]},
   {"canonical": "tsukishiro_yanagi", "aliases": ["tsukishiro", "yanagi"]}
   ,{"canonical": "evelyn_chevalier", "aliases": ["evelyn", "chevalier"]}
-  ],
+  ,
+    {"canonical": "rina", "aliases": ["rina"]}
+],
   "tokens": {
   "strong_signals": ["nekomiya_mana", "nicole_demara", "nicole", "ellen_joe", "ellen", "burnice_white", "burnice", "vivian_zenless", "vivian", "anby_demara", "anby", "tsukishiro_yanagi", "evelyn_chevalier"],
   "weak_signals": ["mana", "nekomiya", "demara", "joe", "white", "zzz", "tsukishiro", "yanagi", "evelyn", "chevalier"],

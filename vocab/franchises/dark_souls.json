@@ -5,7 +5,10 @@
   "aliases": ["dark_souls"],
   "characters": [
     {"canonical": "gwynevere_dark_souls", "aliases": ["gwynevere"]}
-  ],
+  ,
+    {"canonical": "gwynevere", "aliases": ["gwynevere"]},
+    {"canonical": "fire_keeper_dark_souls", "aliases": ["fire_keeper", "firekeeper"]}
+],
   "tokens": {
     "strong_signals": ["gwynevere_dark_souls"],
     "weak_signals": ["gwynevere", "dark_souls"],

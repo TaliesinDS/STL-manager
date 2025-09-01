@@ -5,7 +5,10 @@
   "aliases": ["castlevania"],
   "characters": [
     {"canonical": "lenore_castlevania", "aliases": ["lenore"]}
-  ],
+  ,
+    {"canonical": "sypha_belnades", "aliases": ["sypha", "belnades"]},
+    {"canonical": "carmilla_castlevania", "aliases": ["carmilla"]}
+],
   "tokens": {
     "strong_signals": ["lenore_castlevania"],
     "weak_signals": ["lenore"],

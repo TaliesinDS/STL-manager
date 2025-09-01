@@ -5,7 +5,11 @@
   "aliases": ["ddlc", "doki_doki_literature_club"],
   "characters": [
     {"canonical": "monika_ddlc", "aliases": ["monika"]}
-  ],
+  ,
+    {"canonical": "sayori_ddlc", "aliases": ["sayori"]},
+    {"canonical": "yuri_ddlc", "aliases": ["yuri"]},
+    {"canonical": "natsuki_ddlc", "aliases": ["natsuki"]}
+],
   "tokens": {
     "strong_signals": ["monika_ddlc"],
     "weak_signals": ["monika"],

@@ -5,7 +5,12 @@
   "aliases": ["sucker_punch"],
   "characters": [
     {"canonical": "sweet_pea_sucker_punch", "aliases": ["sweet_pea", "sweetpea"]}
-  ],
+  ,
+    {"canonical": "baby_doll_sucker_punch", "aliases": ["babydoll", "baby_doll"]},
+    {"canonical": "rocket_sucker_punch", "aliases": ["rocket"]},
+    {"canonical": "amber_sucker_punch", "aliases": ["amber"]},
+    {"canonical": "blondie_sucker_punch", "aliases": ["blondie"]}
+],
   "tokens": {
     "strong_signals": ["sweet_pea_sucker_punch", "sweet_pea", "sweetpea"],
     "weak_signals": [],

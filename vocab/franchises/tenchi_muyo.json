@@ -5,7 +5,10 @@
   "aliases": ["tenchi_muyo"],
   "characters": [
     {"canonical": "ryoko_hakubi", "aliases": ["ryoko", "hakubi"]}
-  ],
+  ,
+    {"canonical": "ryoko_tenchi", "aliases": ["ryoko"]},
+    {"canonical": "ayeka_masaki", "aliases": ["ayeka", "masaki"]}
+],
   "tokens": {
     "strong_signals": ["ryoko_hakubi", "ryoko"],
     "weak_signals": ["hakubi"],

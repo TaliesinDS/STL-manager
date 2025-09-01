@@ -6,7 +6,9 @@
   "characters": [
     {"canonical": "guts", "aliases": []},
     {"canonical": "griffith", "aliases": []}
-  ],
+  ,
+    {"canonical": "casca", "aliases": ["casca"]}
+],
   "tokens": {
     "strong_signals": ["guts", "griffith"],
     "weak_signals": ["berserk"],

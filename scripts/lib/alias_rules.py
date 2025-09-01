@@ -4,7 +4,25 @@ import re
 from typing import Dict, List, Optional
 
 # Ambiguous aliases that require supporting franchise evidence
-AMBIGUOUS_ALIASES = {"angel", "sakura"}
+# 'ivy' collides between DC's Poison Ivy and Soulcalibur's Ivy Valentine
+# Extend with generic titles/vocations that appear frequently in folder names
+# and should never match a character on their own.
+_GENERIC_TITLE_TOKENS = {
+    # roles / vocations
+    "priestess", "priest", "warrior", "knight", "mage", "wizard", "witch",
+    "sorceress", "sorcerer", "monk", "druid", "paladin", "barbarian",
+    "assassin", "archer", "ranger", "fighter", "cleric", "shaman",
+    "necromancer", "acolyte", "bishop",
+    # military/common
+    "guard", "soldier", "captain", "commander", "general",
+    # nobility/titles
+    "queen", "king", "princess", "prince", "empress", "emperor",
+    "lord", "lady",
+    # super generic descriptors
+    "hero", "heroine",
+}
+
+AMBIGUOUS_ALIASES = {"angel", "sakura", "ivy"} | _GENERIC_TITLE_TOKENS
 
 
 def is_short_or_numeric(tok: str) -> bool:

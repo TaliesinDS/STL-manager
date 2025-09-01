@@ -6,7 +6,10 @@
   "characters": [
     {"canonical": "denji", "aliases": []},
     {"canonical": "power", "aliases": []}
-  ],
+  ,
+    {"canonical": "makima", "aliases": ["makima"]},
+    {"canonical": "reze", "aliases": ["reze"]}
+],
   "tokens": {
     "strong_signals": ["denji"],
     "weak_signals": ["power"],

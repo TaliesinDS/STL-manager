@@ -8,7 +8,9 @@
     {"canonical": "ron_weasley", "aliases": ["ron"]},
   {"canonical": "albus_dumbledore", "aliases": ["dumbledore"]},
   {"canonical": "luna_lovegood", "aliases": ["luna", "lovegood"]}
-  ],
+  ,
+    {"canonical": "ginny_weasley", "aliases": ["ginny", "weasley"]}
+],
   "tokens": {
   "strong_signals": ["hermione", "dumbledore", "luna_lovegood", "luna"],
   "weak_signals": ["weasley", "hogwarts", "lovegood"],

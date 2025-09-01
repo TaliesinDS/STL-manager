@@ -5,7 +5,9 @@
   "aliases": ["ditf", "darling_in_the_franxx"],
   "characters": [
     {"canonical": "zero_two", "aliases": ["zero_two", "002"]}
-  ],
+  ,
+    {"canonical": "ichigo_dif", "aliases": ["ichigo"]}
+],
   "tokens": {
     "strong_signals": ["zero_two"],
     "weak_signals": ["002"],

@@ -5,7 +5,10 @@
   "aliases": ["goblin_slayer"],
   "characters": [
     {"canonical": "cow_girl", "aliases": ["ushikai_musume", "cow_girl"]}
-  ],
+  ,
+    {"canonical": "priestess_gs", "aliases": ["priestess"]},
+    {"canonical": "sword_maiden_gs", "aliases": ["sword_maiden"]}
+],
   "tokens": {
     "strong_signals": ["cow_girl"],
     "weak_signals": ["ushikai_musume"],

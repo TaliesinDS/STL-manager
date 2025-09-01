@@ -7,7 +7,13 @@
     {"canonical": "rachel_doa", "aliases": ["doa_rachel", "rachel_doa"]},
     {"canonical": "kasumi_doa", "aliases": ["kasumi"]},
     {"canonical": "tina_armstrong_doa", "aliases": ["tina", "armstrong"]}
-  ],
+  ,
+    {"canonical": "ayane_doa", "aliases": ["ayane"]},
+    {"canonical": "marie_rose_doa", "aliases": ["marie_rose", "marie"]},
+    {"canonical": "honoka_doa", "aliases": ["honoka"]},
+    {"canonical": "hitomi_doa", "aliases": ["hitomi"]},
+    {"canonical": "helena_douglas_doa", "aliases": ["helena", "douglas"]}
+],
   "tokens": {
   "strong_signals": ["rachel_doa", "doa_rachel", "kasumi_doa", "tina_armstrong_doa"],
   "weak_signals": ["rachel", "doa", "kasumi", "tina", "armstrong"],

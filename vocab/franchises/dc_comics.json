@@ -9,7 +9,20 @@
   {"canonical": "supergirl", "aliases": []},
   {"canonical": "poison_ivy", "aliases": ["ivy", "poison_ivy"]},
   {"canonical": "death_sandman", "aliases": ["death"]}
-  ],
+  ,
+    {"canonical": "wonder_woman", "aliases": ["wonder_woman", "diana", "diana_prince"]},
+    {"canonical": "zatanna", "aliases": ["zatanna", "zatanna_zatara", "zatara"]},
+    {"canonical": "raven", "aliases": ["raven", "rachel_roth", "rachel"]},
+    {"canonical": "starfire", "aliases": ["starfire", "koriand'r", "kori"]},
+    {"canonical": "power_girl", "aliases": ["power_girl", "kara_zor_l", "kara"]},
+    {"canonical": "huntress_dc", "aliases": ["huntress", "helena_bertinelli", "helena"]},
+    {"canonical": "black_canary", "aliases": ["black_canary", "dinah_lance", "dinah"]},
+    {"canonical": "batgirl", "aliases": ["batgirl", "barbara_gordon", "barbara", "babs"]},
+    {"canonical": "batman", "aliases": ["batman", "bruce_wayne", "bruce", "wayne"]},
+    {"canonical": "superman", "aliases": ["superman", "clark_kent", "clark", "kent"]},
+    {"canonical": "the_flash", "aliases": ["flash", "the_flash", "barry_allen", "barry"]},
+    {"canonical": "green_lantern", "aliases": ["green_lantern", "hal_jordan", "hal", "jordan"]}
+],
   "tokens": {
   "strong_signals": ["harley", "catwoman", "supergirl", "poison_ivy", "death_sandman"],
   "weak_signals": ["dc", "ivy", "death"],

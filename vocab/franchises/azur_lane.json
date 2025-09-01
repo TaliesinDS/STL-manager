@@ -8,7 +8,14 @@
   {"canonical": "st_louis", "aliases": ["st_louis", "saint_louis"]},
   {"canonical": "richelieu", "aliases": ["richelieu"]},
   {"canonical": "tosa", "aliases": ["tosa"]}
-  ],
+  ,
+  {"canonical": "enterprise_azl", "aliases": ["enterprise", "cv6", "big_e"]},
+  {"canonical": "bismarck_azl", "aliases": ["bismarck"]},
+  {"canonical": "tirpitz_azl", "aliases": ["tirpitz"]},
+  {"canonical": "akagi_azl", "aliases": ["akagi"]},
+  {"canonical": "kaga_azl", "aliases": ["kaga"]},
+  {"canonical": "hms_belfast", "aliases": ["belfast"]}
+],
   "tokens": {
   "strong_signals": ["le_malin", "st_louis", "richelieu", "tosa"],
   "weak_signals": ["saint_louis"],

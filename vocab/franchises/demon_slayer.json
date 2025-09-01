@@ -8,7 +8,9 @@
     {"canonical": "shinobu_kocho", "aliases": ["shinobu", "kocho"]},
     {"canonical": "mitsuri_kanroji", "aliases": ["mitsuri", "kanroji"]},
     {"canonical": "nezuko_kamado", "aliases": ["nezuko", "kamado"]}
-  ],
+  ,
+    {"canonical": "kanao_tsuyuri", "aliases": ["kanao", "tsuyuri"]}
+],
   "tokens": {
     "strong_signals": ["daki", "shinobu", "kocho", "mitsuri", "kanroji", "nezuko"],
     "weak_signals": ["demon_slayer", "kamado"],

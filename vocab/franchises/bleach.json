@@ -13,7 +13,11 @@
   {"canonical": "nemu_kurotsuchi", "aliases": ["nemu", "kurotsuchi"]}
   ,{"canonical": "soi_fon", "aliases": ["soi_fon", "soifon", "sui_feng"]}
   ,{"canonical": "orihime_inoue", "aliases": ["orihime", "inoue"]}
-  ],
+  ,
+    {"canonical": "yoruichi_shihoin", "aliases": ["yoruichi", "shihoin"]},
+    {"canonical": "ichigo_kurosaki", "aliases": ["ichigo", "kurosaki"]},
+    {"canonical": "byakuya_kuchiki", "aliases": ["byakuya", "kuchiki"]}
+],
   "tokens": {
   "strong_signals": ["rangiku", "matsumoto", "neliel", "nel", "harribel", "halibel", "hallibel", "rukia", "lisa_yadomaru", "hiyori_sarugaki", "hiyori", "soi_fon", "soifon", "sui_feng", "nemu_kurotsuchi", "nemu", "orihime_inoue", "orihime"],
   "weak_signals": ["bleach", "tier", "kuchiki", "yadomaru", "sarugaki", "lisa", "kurotsuchi", "inoue"],

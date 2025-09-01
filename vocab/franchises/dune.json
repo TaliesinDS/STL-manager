@@ -5,7 +5,9 @@
   "aliases": ["dune"],
   "characters": [
     {"canonical": "chani", "aliases": []}
-  ],
+  ,
+    {"canonical": "chani_dune", "aliases": ["chani"]}
+],
   "tokens": {
     "strong_signals": ["chani"],
     "weak_signals": [],

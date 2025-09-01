@@ -9,7 +9,11 @@
     {"canonical": "anby_demara", "aliases": ["anby", "demara"]},
     {"canonical": "kafka", "aliases": []},
   {"canonical": "acheron_hsr", "aliases": ["acheron"]}
-  ],
+  ,
+    {"canonical": "bronya", "aliases": ["bronya"]},
+    {"canonical": "himeko", "aliases": ["himeko"]},
+    {"canonical": "fu_xuan", "aliases": ["fu_xuan", "fuxuan"]}
+],
   "tokens": {
   "strong_signals": ["seele", "kiana", "anby", "kafka", "acheron_hsr", "acheron"],
   "weak_signals": ["honkai", "demara"],
