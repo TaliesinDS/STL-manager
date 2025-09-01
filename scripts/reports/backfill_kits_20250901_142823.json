@@ -1,0 +1,14 @@
+{
+  "ts": "2025-09-01T12:28:22.948653Z",
+  "db_url": "sqlite:///./.pytest-tmp/stl_manager_e2e.db",
+  "apply": false,
+  "create_virtual_parents": false,
+  "group_children": false,
+  "changes": [],
+  "counts": {
+    "marked_kit_parents": 0,
+    "created_virtual_parents": 0,
+    "linked_children": 0,
+    "grouped_children": 0
+  }
+}

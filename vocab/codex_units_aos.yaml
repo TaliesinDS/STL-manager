@@ -5779,6 +5779,13 @@ codex_units:
                   legal_in_editions: ["2nd", "3rd", "4th"]
                   base_profile: round_32mm
                   available_to: ["death/flesh_eater_courts"]
+                abhorrant_cardinal:
+                  name: "Abhorrant Cardinal"
+                  role: leader
+                  aliases: ["abhorrant cardinal", "abhorrant_cardinal"]
+                  legal_in_editions: ["4th"]
+                  base_profile: round_32mm
+                  available_to: ["death/flesh_eater_courts"]
                 abhorrant_ghoul_king:
                   name: "Abhorrant Ghoul King"
                   role: leader

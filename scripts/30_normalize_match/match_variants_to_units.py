@@ -24,9 +24,13 @@ if str(ROOT) not in sys.path:
 
 from db.models import Variant, Unit, GameSystem, Faction, VariantUnitLink  # type: ignore
 from db.session import get_session  # type: ignore
+from scripts.lib.alias_rules import AMBIGUOUS_ALIASES  # type: ignore
 
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
+# Ambiguous/generic aliases that are too weak to accept on their own
+# Reuse the central list used by normalization/character matching for consistency
+GENERIC_ROLE_ALIASES: Set[str] = set(AMBIGUOUS_ALIASES)
 
 
 def norm_text(s: str) -> str:
@@ -348,6 +352,38 @@ AOS_FACTION_TOKENS_MAP: Dict[str, str] = {
     "ossiarch bonereapers": "ossiarch_bonereapers",
 }
 
+# AoS: map leaf faction keys to their Grand Alliance for fallback/path expansion
+AOS_LEAF_TO_GRAND: Dict[str, str] = {
+    # Order
+    "stormcast_eternals": "order",
+    "cities_of_sigmar": "order",
+    "fyreslayers": "order",
+    "kharadron_overlords": "order",
+    "lumineth_realm_lords": "order",
+    "idoneth_deepkin": "order",
+    "daughters_of_khaine": "order",
+    "seraphon": "order",
+    "sylvaneth": "order",
+    # Chaos
+    "slaves_to_darkness": "chaos",
+    "blades_of_khorne": "chaos",
+    "disciples_of_tzeentch": "chaos",
+    "maggotkin_of_nurgle": "chaos",
+    "hedonites_of_slaanesh": "chaos",
+    "beasts_of_chaos": "chaos",
+    "skaven": "chaos",
+    # Death
+    "flesh_eater_courts": "death",
+    "soulblight_gravelords": "death",
+    "nighthaunt": "death",
+    "ossiarch_bonereapers": "death",
+    # Destruction
+    "gloomspite_gitz": "destruction",
+    "orruk_warclans": "destruction",
+    "ogor_mawtribes": "destruction",
+    "sons_of_behemat": "destruction",
+}
+
 
 def detect_spell_context(v_text_norm: str) -> bool:
     return bool(re.search(r"\b(spell|spells|endless spell|endless spells|manifestation|invocation)s?\b", v_text_norm))
@@ -449,12 +485,20 @@ def score_match(alias_phrase: str, unit: UnitRef, v_text: str, sys_hint: Optiona
     # system consistency boost
     if sys_hint and unit.system_key == sys_hint:
         score += 3.0
+    # cross-system penalty: if we have a system hint that contradicts the unit's system, penalize
+    if sys_hint and unit.system_key and unit.system_key != sys_hint:
+        score -= 6.0
     # light faction boost if faction token present in text
     if unit.faction_key and re.search(rf"\b{re.escape(unit.faction_key)}\b", v_text):
         score += 2.0
     # Strong boost when the alias exactly equals a path segment (unit folder certainty)
     if seg_set and alias_phrase in seg_set:
-        score += 6.0
+        # Do not boost for generic single-word role tokens (e.g., 'rangers')
+        if alias_phrase not in GENERIC_ROLE_ALIASES:
+            score += 6.0
+    # Generic alias penalty: avoid accepting units based solely on ambiguous single-word roles
+    if alias_phrase in GENERIC_ROLE_ALIASES:
+        score -= 8.0
     return score
 
 
@@ -909,10 +953,297 @@ def main() -> None:
                 except Exception:
                     db_parent_id = None
                 if db_parent_id:
+                    # Minimal hint-only enrichment for kit children before skipping
+                    if args.apply:
+                        try:
+                            v_text = text_for_variant(v)
+                            # Try to get parent variant from index
+                            parent_v = None
+                            try:
+                                parent_v = id_index.get(int(db_parent_id))
+                            except Exception:
+                                parent_v = None
+                            # System guess from text
+                            sys_guess = system_hint(v_text)
+                            v_norm = norm_text(v_text)
+                            aos_leaf = detect_aos_faction_hint(v_norm)
+                            new_fp: Optional[List[str]] = None
+                            new_leaf: Optional[str] = None
+                            if aos_leaf:
+                                new_leaf = aos_leaf
+                                ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
+                                new_fp = [ga, aos_leaf] if ga else [aos_leaf]
+                            else:
+                                ch, sf = find_chapter_hint(v_norm)
+                                leaf = sf or ch
+                                if leaf:
+                                    new_leaf = leaf
+                                    try:
+                                        fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
+                                        if fac_row is not None:
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if not tmp:
+                                                chain: List[str] = []
+                                                cur = fac_row; guard = 0
+                                                while cur is not None and guard < 20:
+                                                    k = getattr(cur, 'key', None)
+                                                    if isinstance(k, str) and k:
+                                                        chain.append(k)
+                                                    pid = getattr(cur, 'parent_id', None)
+                                                    if not pid:
+                                                        break
+                                                    cur = session.get(Faction, pid)
+                                                    guard += 1
+                                                if chain:
+                                                    tmp = list(reversed(chain))
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                    except Exception:
+                                        pass
+                            # If no hint-derived faction, propagate from parent or Unit lookup by parent name
+                            if (not new_leaf and not new_fp) and parent_v:
+                                try:
+                                    p_fp = getattr(parent_v, 'faction_path', None)
+                                    if isinstance(p_fp, list) and p_fp:
+                                        new_fp = list(p_fp)
+                                        new_leaf = new_fp[-1]
+                                    elif getattr(parent_v, 'codex_faction', None):
+                                        cf = parent_v.codex_faction
+                                        fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
+                                        if fac_row is not None:
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if not tmp:
+                                                chain: List[str] = []
+                                                cur = fac_row; guard = 0
+                                                while cur is not None and guard < 20:
+                                                    k = getattr(cur, 'key', None)
+                                                    if isinstance(k, str) and k:
+                                                        chain.append(k)
+                                                    pid = getattr(cur, 'parent_id', None)
+                                                    if not pid:
+                                                        break
+                                                    cur = session.get(Faction, pid)
+                                                    guard += 1
+                                                if chain:
+                                                    tmp = list(reversed(chain))
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                                new_leaf = new_fp[-1]
+                                    # Last attempt: look up Unit by parent codex_unit_name
+                                    if (not new_fp) and getattr(parent_v, 'codex_unit_name', None):
+                                        try:
+                                            uname = parent_v.codex_unit_name
+                                            urow = session.execute(select(Unit).where(Unit.name == uname)).scalars().first()
+                                            if urow and getattr(urow, 'faction_id', None):
+                                                f = session.get(Faction, urow.faction_id)
+                                                if f is not None:
+                                                    tmp = getattr(f, 'full_path', None) or None
+                                                    if not tmp and getattr(f, 'key', None):
+                                                        tmp = [f.key]
+                                                    if tmp:
+                                                        new_fp = list(tmp)
+                                                        new_leaf = new_fp[-1]
+                                        except Exception:
+                                            pass
+                                except Exception:
+                                    pass
+                            # Propagate codex_unit_name and game_system from parent when available
+                            try:
+                                if (args.overwrite or not getattr(v, 'codex_unit_name', None)) and parent_v and getattr(parent_v, 'codex_unit_name', None):
+                                    v.codex_unit_name = parent_v.codex_unit_name
+                            except Exception:
+                                pass
+                            try:
+                                if args.overwrite or not getattr(v, 'game_system', None):
+                                    if parent_v and getattr(parent_v, 'game_system', None):
+                                        v.game_system = parent_v.game_system
+                                    elif sys_guess:
+                                        v.game_system = sys_guess
+                                    elif aos_leaf:
+                                        v.game_system = 'aos'
+                            except Exception:
+                                pass
+                            if new_leaf or new_fp:
+                                try:
+                                    if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
+                                        v.codex_faction = new_leaf
+                                except Exception:
+                                    pass
+                                try:
+                                    if isinstance(new_fp, list) and new_fp:
+                                        existing_fp = getattr(v, 'faction_path', None)
+                                        cf_try = getattr(v, 'codex_faction', None)
+                                        should_set = False
+                                        if args.overwrite or not existing_fp:
+                                            should_set = True
+                                        elif isinstance(existing_fp, list):
+                                            if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
+                                                if not existing_fp or (cf_try and existing_fp == [cf_try]):
+                                                    should_set = True
+                                        if should_set:
+                                            # AoS expansion
+                                            if len(new_fp) == 1:
+                                                leaf = new_fp[0]
+                                                ga = AOS_LEAF_TO_GRAND.get(leaf)
+                                                if ga:
+                                                    new_fp = [ga, leaf]
+                                            v.faction_path = new_fp
+                                            try:
+                                                v.faction_general = new_fp[0]
+                                            except Exception:
+                                                pass
+                                        # Ensure codex_faction present
+                                        try:
+                                            if args.overwrite or not getattr(v, 'codex_faction', None):
+                                                v.codex_faction = new_fp[-1]
+                                        except Exception:
+                                            pass
+                                except Exception:
+                                    pass
+                        except Exception:
+                            pass
                     skipped_kit_children += 1
                     continue
                 kit_parent_rel = _find_kit_parent_rel(rel_lower)
                 if kit_parent_rel:
+                    # Minimal hint-only enrichment for kit children before skipping
+                    if args.apply:
+                        try:
+                            v_text = text_for_variant(v)
+                            # Try to get parent variant by rel path
+                            parent_v = rel_lower_index.get(kit_parent_rel)
+                            sys_guess = system_hint(v_text)
+                            aos_leaf = detect_aos_faction_hint(norm_text(v_text))
+                            new_fp: Optional[List[str]] = None
+                            new_leaf: Optional[str] = None
+                            if aos_leaf:
+                                new_leaf = aos_leaf
+                                ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
+                                new_fp = [ga, aos_leaf] if ga else [aos_leaf]
+                            else:
+                                ch, sf = find_chapter_hint(norm_text(v_text))
+                                leaf = sf or ch
+                                if leaf:
+                                    new_leaf = leaf
+                                    try:
+                                        fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
+                                        if fac_row is not None:
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if not tmp:
+                                                chain: List[str] = []
+                                                cur = fac_row; guard = 0
+                                                while cur is not None and guard < 20:
+                                                    k = getattr(cur, 'key', None)
+                                                    if isinstance(k, str) and k:
+                                                        chain.append(k)
+                                                    pid = getattr(cur, 'parent_id', None)
+                                                    if not pid:
+                                                        break
+                                                    cur = session.get(Faction, pid)
+                                                    guard += 1
+                                                if chain:
+                                                    tmp = list(reversed(chain))
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                    except Exception:
+                                        pass
+                            # If no hint-derived faction, propagate from parent or Unit lookup by parent name
+                            if (not new_leaf and not new_fp) and parent_v:
+                                try:
+                                    p_fp = getattr(parent_v, 'faction_path', None)
+                                    if isinstance(p_fp, list) and p_fp:
+                                        new_fp = list(p_fp)
+                                    elif getattr(parent_v, 'codex_faction', None):
+                                        cf = parent_v.codex_faction
+                                        fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
+                                        if fac_row is not None:
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if not tmp:
+                                                chain: List[str] = []
+                                                cur = fac_row; guard = 0
+                                                while cur is not None and guard < 20:
+                                                    k = getattr(cur, 'key', None)
+                                                    if isinstance(k, str) and k:
+                                                        chain.append(k)
+                                                    pid = getattr(cur, 'parent_id', None)
+                                                    if not pid:
+                                                        break
+                                                    cur = session.get(Faction, pid)
+                                                    guard += 1
+                                                if chain:
+                                                    tmp = list(reversed(chain))
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                                new_leaf = cf
+                                    # Last attempt: look up Unit by parent codex_unit_name
+                                    if (not new_fp) and getattr(parent_v, 'codex_unit_name', None):
+                                        try:
+                                            uname = parent_v.codex_unit_name
+                                            urow = session.execute(select(Unit).where(Unit.name == uname)).scalars().first()
+                                            if urow and getattr(urow, 'faction_id', None):
+                                                f = session.get(Faction, urow.faction_id)
+                                                if f is not None:
+                                                    tmp = getattr(f, 'full_path', None) or None
+                                                    if not tmp and getattr(f, 'key', None):
+                                                        tmp = [f.key]
+                                                    if tmp:
+                                                        new_fp = list(tmp)
+                                                        new_leaf = tmp[-1]
+                                        except Exception:
+                                            pass
+                                except Exception:
+                                    pass
+                            # Propagate codex_unit_name and game_system from parent when available
+                            try:
+                                if (args.overwrite or not getattr(v, 'codex_unit_name', None)) and parent_v and getattr(parent_v, 'codex_unit_name', None):
+                                    v.codex_unit_name = parent_v.codex_unit_name
+                            except Exception:
+                                pass
+                            try:
+                                if args.overwrite or not getattr(v, 'game_system', None):
+                                    if parent_v and getattr(parent_v, 'game_system', None):
+                                        v.game_system = parent_v.game_system
+                                    elif sys_guess:
+                                        v.game_system = sys_guess
+                                    elif aos_leaf:
+                                        v.game_system = 'aos'
+                            except Exception:
+                                pass
+                            if new_leaf or new_fp:
+                                try:
+                                    if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
+                                        v.codex_faction = new_leaf
+                                except Exception:
+                                    pass
+                                try:
+                                    if isinstance(new_fp, list) and new_fp:
+                                        existing_fp = getattr(v, 'faction_path', None)
+                                        cf_try = getattr(v, 'codex_faction', None)
+                                        should_set = False
+                                        if args.overwrite or not existing_fp:
+                                            should_set = True
+                                        elif isinstance(existing_fp, list):
+                                            if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
+                                                if not existing_fp or (cf_try and existing_fp == [cf_try]):
+                                                    should_set = True
+                                        if should_set:
+                                            # AoS expansion
+                                            if len(new_fp) == 1:
+                                                leaf = new_fp[0]
+                                                ga = AOS_LEAF_TO_GRAND.get(leaf)
+                                                if ga:
+                                                    new_fp = [ga, leaf]
+                                            v.faction_path = new_fp
+                                        try:
+                                            fg = getattr(v, 'faction_general', None)
+                                            if args.overwrite or not fg or (isinstance(fg, str) and cf_try and fg == cf_try):
+                                                v.faction_general = new_fp[0]
+                                        except Exception:
+                                            pass
+                                except Exception:
+                                    pass
+                        except Exception:
+                            pass
                     skipped_kit_children += 1
                     continue
             v_text = text_for_variant(v)
@@ -1051,31 +1382,208 @@ def main() -> None:
                     ]
 
                 if args.apply:
-                    # Optionally skip if already has links/fields and not overwriting
-                    if not args.overwrite:
-                        if v.game_system or v.codex_unit_name:
-                            # Even if we don't overwrite, still record the proposal if it passes reporting filter below
-                            has_any_hint = (sys_h is not None) or bool(matches)
-                            if args.include_unhinted or has_any_hint:
-                                proposals.append(prop)
-                            else:
-                                skipped_nonwarhammer += 1
-                            continue
+                    # If not overwriting and variant already has core fields, we'll enrich but not modify core fields/links.
+                    existing_core = False
+                    if not args.overwrite and (v.game_system or v.codex_unit_name):
+                        existing_core = True
                     # Set variant columns. If multiple accepted across systems, avoid
                     # forcing a single game_system; otherwise set to the primary.
-                    if not also_accepted:
-                        v.game_system = ref.system_key
-                    v.codex_unit_name = ref.unit_name
-                    # Prefer explicit subfaction > chapter from path; otherwise
-                    # fall back to unit's faction.
-                    if subf_hint:
-                        v.codex_faction = subf_hint
-                    elif chap_hint:
-                        v.codex_faction = chap_hint
-                    elif ref.faction_key:
-                        v.codex_faction = ref.faction_key
+                    if not existing_core:
+                        if not also_accepted:
+                            v.game_system = ref.system_key
+                        v.codex_unit_name = ref.unit_name
+                        # Single source of truth: prefer Unit table faction over token-derived hints
+                        if ref.faction_key:
+                            v.codex_faction = ref.faction_key
+                        elif subf_hint:
+                            v.codex_faction = subf_hint
+                        elif chap_hint:
+                            v.codex_faction = chap_hint
+                    # Enrich with additional codex-derived metadata when available
+                    try:
+                        urow = session.get(Unit, ref.unit_id)
+                    except Exception:
+                        urow = None
+                    if urow is not None:
+                        # Game system from matched unit (fill if missing even when also_accepted exists)
+                        try:
+                            if args.overwrite or not getattr(v, 'game_system', None):
+                                if getattr(ref, 'system_key', None):
+                                    v.game_system = ref.system_key
+                        except Exception:
+                            pass
+
+                        # Tabletop role from Unit.role
+                        try:
+                            if args.overwrite or not getattr(v, 'tabletop_role', None):
+                                if getattr(urow, 'role', None):
+                                    v.tabletop_role = urow.role
+                        except Exception:
+                            pass
+
+                        # Ensure intended_use_bucket defaults for tabletop-like variants once system/faction is known
+                        try:
+                            if args.apply and (args.overwrite or not getattr(v, 'intended_use_bucket', None)):
+                                if getattr(v, 'game_system', None) or getattr(v, 'codex_faction', None) or getattr(ref, 'system_key', None):
+                                    v.intended_use_bucket = 'tabletop_intent'
+                        except Exception:
+                            pass
+
+                        # Faction path enrichment: always compute a candidate path, then upgrade if it's better
+                        try:
+                            new_fp: Optional[List[str]] = None
+                            # Prefer Unit.faction relationship
+                            fobj = getattr(urow, 'faction', None)
+                            if fobj is not None:
+                                # If variant has no codex_faction yet, set leaf faction key from Unit
+                                try:
+                                    if args.overwrite or not getattr(v, 'codex_faction', None):
+                                        k = getattr(fobj, 'key', None)
+                                        if isinstance(k, str) and k:
+                                            v.codex_faction = k
+                                except Exception:
+                                    pass
+                                tmp = getattr(fobj, 'full_path', None) or None
+                                if tmp:
+                                    new_fp = list(tmp)
+                                else:
+                                    k = getattr(fobj, 'key', None)
+                                    if isinstance(k, str) and k:
+                                        new_fp = [k]
+                            # Try via faction_id if relationship wasn’t loaded
+                            if new_fp is None and getattr(urow, 'faction_id', None):
+                                try:
+                                    fobj2 = session.get(Faction, getattr(urow, 'faction_id'))
+                                    if fobj2 is not None:
+                                        tmp = getattr(fobj2, 'full_path', None) or None
+                                        if tmp:
+                                            new_fp = list(tmp)
+                                        else:
+                                            k = getattr(fobj2, 'key', None)
+                                            if isinstance(k, str) and k:
+                                                new_fp = [k]
+                                except Exception:
+                                    pass
+                            # As a last resort, derive from Unit.available_to when it points to a single root
+                            if new_fp is None and (args.overwrite or not getattr(v, 'codex_faction', None)):
+                                try:
+                                    avail = getattr(urow, 'available_to', None)
+                                    root_key = None
+                                    if isinstance(avail, (list, tuple)) and len(avail) == 1:
+                                        entry = str(avail[0])
+                                        root_key = entry.split('/*')[0] if '/*' in entry else entry
+                                    # If we found a plausible root_key, prefer it
+                                    if root_key:
+                                        # Validate it exists in Faction table and pick its full path if available
+                                        fac_row = session.execute(select(Faction).where(Faction.key == root_key)).scalars().first()
+                                        if fac_row is not None:
+                                            # Set codex_faction if still empty
+                                            if args.overwrite or not getattr(v, 'codex_faction', None):
+                                                v.codex_faction = root_key
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                            else:
+                                                new_fp = [root_key]
+                                except Exception:
+                                    pass
+                            # Fallback: derive from codex_faction by walking parent chain
+                            if new_fp is None:
+                                try:
+                                    cf = getattr(v, 'codex_faction', None)
+                                    if isinstance(cf, str) and cf:
+                                        fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
+                                        if fac_row is not None:
+                                            tmp = getattr(fac_row, 'full_path', None) or None
+                                            if not tmp:
+                                                try:
+                                                		# Build by climbing parents
+                                                    chain: List[str] = []
+                                                    cur = fac_row
+                                                    guard = 0
+                                                    while cur is not None and guard < 20:
+                                                        k = getattr(cur, 'key', None)
+                                                        if isinstance(k, str) and k:
+                                                            chain.append(k)
+                                                        pid = getattr(cur, 'parent_id', None)
+                                                        if not pid:
+                                                            break
+                                                        cur = session.get(Faction, pid)
+                                                        guard += 1
+                                                    if chain:
+                                                        tmp = list(reversed(chain))
+                                                except Exception:
+                                                    tmp = None
+                                            if tmp:
+                                                new_fp = list(tmp)
+                                except Exception:
+                                    pass
+
+                            # Decide whether to set/upgrade
+                            if isinstance(new_fp, list) and new_fp:
+                                # Expand AoS leaf faction to include Grand Alliance if path has only a leaf
+                                if len(new_fp) == 1:
+                                    leaf = new_fp[0]
+                                    ga = AOS_LEAF_TO_GRAND.get(leaf)
+                                    if ga:
+                                        new_fp = [ga, leaf]
+                                existing_fp = getattr(v, 'faction_path', None)
+                                cf_try = getattr(v, 'codex_faction', None)
+                                should_set = False
+                                if args.overwrite or not existing_fp:
+                                    should_set = True
+                                elif isinstance(existing_fp, list):
+                                    # Upgrade if new path is longer or different and existing is leaf/equal to codex_faction
+                                    if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
+                                        if not existing_fp or (cf_try and existing_fp == [cf_try]):
+                                            should_set = True
+                                if should_set:
+                                    v.faction_path = new_fp
+                                # Set/upgrade faction_general: upgrade when existing equals leaf or is missing
+                                try:
+                                    fg = getattr(v, 'faction_general', None)
+                                    if args.overwrite or not fg or (isinstance(fg, str) and cf_try and fg == cf_try):
+                                        v.faction_general = new_fp[0]
+                                except Exception:
+                                    pass
+                                # Backfill codex_faction from leaf if missing
+                                try:
+                                    if args.overwrite or not getattr(v, 'codex_faction', None):
+                                        v.codex_faction = new_fp[-1]
+                                except Exception:
+                                    pass
+                        except Exception:
+                            pass
+
+                        # Asset category: map special Unit.category types to Variant.asset_category
+                        try:
+                            cat = getattr(urow, 'category', None)
+                            if cat:
+                                mapped = None
+                                if cat in {"endless_spell", "manifestation", "invocation"}:
+                                    mapped = "spell"
+                                elif cat == "terrain":
+                                    mapped = "terrain"
+                                elif cat == "regiment":
+                                    mapped = "regiment"
+                                if mapped and (args.overwrite or not getattr(v, 'asset_category', None)):
+                                    v.asset_category = mapped
+                        except Exception:
+                            pass
+
+                        # Base size (safe subset): only set for single-diameter profiles like infantry_25
+                        try:
+                            bpk = getattr(urow, 'base_profile_key', None)
+                            if bpk and (args.overwrite or getattr(v, 'base_size_mm', None) in (None, 0)):
+                                m = re.fullmatch(r"[a-z0-9]+_(\d{2,3})", str(bpk))
+                                if m:
+                                    size = int(m.group(1))
+                                    if 10 <= size <= 200:
+                                        v.base_size_mm = size
+                        except Exception:
+                            pass
                     # If this is a kit container, tag the variant as a squad kit for downstream UI/logic
-                    if is_kit_flag:
+                    if is_kit_flag and not existing_core:
                         try:
                             v.part_pack_type = v.part_pack_type or "squad_kit"
                             if not v.segmentation:
@@ -1097,32 +1605,33 @@ def main() -> None:
                                                 pass
                         except Exception:
                             pass
-                    # Create or replace link
-                    if args.overwrite:
-                        session.query(VariantUnitLink).filter(VariantUnitLink.variant_id == v.id).delete()
-                    # Primary link (top score)
-                    session.add(
-                        VariantUnitLink(
-                            variant_id=v.id,
-                            unit_id=ref.unit_id,
-                            is_primary=True,
-                            match_method="token",
-                            match_confidence=min(1.0, score / 20.0),
-                            notes=f"via='{via}' sys_hint='{sys_h or ''}' chapter_hint='{chap_hint or ''}' subfaction_hint='{subf_hint or ''}'",
-                        )
-                    )
-                    # Additional co-accepted links (e.g., cross-system duplicates)
-                    for r in also_accepted:
+                    # Create or replace link (skip link mutations when preserving existing core)
+                    if not existing_core:
+                        if args.overwrite:
+                            session.query(VariantUnitLink).filter(VariantUnitLink.variant_id == v.id).delete()
+                        # Primary link (top score)
                         session.add(
                             VariantUnitLink(
                                 variant_id=v.id,
-                                unit_id=r[0].unit_id,
-                                is_primary=False,
+                                unit_id=ref.unit_id,
+                                is_primary=True,
                                 match_method="token",
-                                match_confidence=min(1.0, r[1] / 20.0),
-                                notes=f"via='{r[2]}' sys_hint='{sys_h or ''}' chapter_hint='{chap_hint or ''}' subfaction_hint='{subf_hint or ''}' co-accepted",
+                                match_confidence=min(1.0, score / 20.0),
+                                notes=f"via='{via}' sys_hint='{sys_h or ''}' chapter_hint='{chap_hint or ''}' subfaction_hint='{subf_hint or ''}'",
                             )
                         )
+                        # Additional co-accepted links (e.g., cross-system duplicates)
+                        for r in also_accepted:
+                            session.add(
+                                VariantUnitLink(
+                                    variant_id=v.id,
+                                    unit_id=r[0].unit_id,
+                                    is_primary=False,
+                                    match_method="token",
+                                    match_confidence=min(1.0, r[1] / 20.0),
+                                    notes=f"via='{r[2]}' sys_hint='{sys_h or ''}' chapter_hint='{chap_hint or ''}' subfaction_hint='{subf_hint or ''}' co-accepted",
+                                )
+                            )
                     applied += 1
 
             # Reporting filter: exclude variants with no Warhammer hints and no matches unless explicitly included
@@ -1131,6 +1640,93 @@ def main() -> None:
                 proposals.append(prop)
             else:
                 skipped_nonwarhammer += 1
+
+            # Hint-only enrichment: if no accepted match and applying, populate coarse faction from text hints
+            if args.apply and not accepted:
+                try:
+                    # Try AoS faction from path tokens
+                    aos_leaf = detect_aos_faction_hint(norm_text(v_text))
+                    new_fp: Optional[List[str]] = None
+                    new_leaf: Optional[str] = None
+                    sys_guess = system_hint(v_text)
+                    if aos_leaf:
+                        new_leaf = aos_leaf
+                        ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
+                        new_fp = [ga, aos_leaf] if ga else [aos_leaf]
+                        # Set system to aos if confident
+                        try:
+                            if args.overwrite or not getattr(v, 'game_system', None):
+                                v.game_system = 'aos'
+                        except Exception:
+                            pass
+                    else:
+                        # Try Space Marine chapter hint
+                        ch, sf = chap_hint, subf_hint
+                        leaf = sf or ch
+                        if leaf:
+                            new_leaf = leaf
+                            # Build via Faction table if present to get parent (e.g., space_marines)
+                            try:
+                                fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
+                                if fac_row is not None:
+                                    tmp = getattr(fac_row, 'full_path', None) or None
+                                    if not tmp:
+                                        chain: List[str] = []
+                                        cur = fac_row; guard = 0
+                                        while cur is not None and guard < 20:
+                                            k = getattr(cur, 'key', None)
+                                            if isinstance(k, str) and k:
+                                                chain.append(k)
+                                            pid = getattr(cur, 'parent_id', None)
+                                            if not pid:
+                                                break
+                                            cur = session.get(Faction, pid)
+                                            guard += 1
+                                        if chain:
+                                            tmp = list(reversed(chain))
+                                    if tmp:
+                                        new_fp = list(tmp)
+                            except Exception:
+                                pass
+
+                    # Apply if we derived anything
+                    if new_leaf or new_fp:
+                        try:
+                            if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
+                                v.codex_faction = new_leaf
+                        except Exception:
+                            pass
+                        # If we didn’t set system yet, use sys_guess
+                        try:
+                            if args.overwrite or not getattr(v, 'game_system', None):
+                                if sys_guess:
+                                    v.game_system = sys_guess
+                        except Exception:
+                            pass
+                        try:
+                            if isinstance(new_fp, list) and new_fp:
+                                existing_fp = getattr(v, 'faction_path', None)
+                                cf_try = getattr(v, 'codex_faction', None)
+                                should_set = False
+                                if args.overwrite or not existing_fp:
+                                    should_set = True
+                                elif isinstance(existing_fp, list):
+                                    if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
+                                        if not existing_fp or (cf_try and existing_fp == [cf_try]):
+                                            should_set = True
+                                if should_set:
+                                    v.faction_path = new_fp
+                                # Coarse bucket
+                                try:
+                                    fg = getattr(v, 'faction_general', None)
+                                    if args.overwrite or not fg or (isinstance(fg, str) and cf_try and fg == cf_try):
+                                        v.faction_general = new_fp[0]
+                                except Exception:
+                                    pass
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
 
         if args.apply:
             session.commit()

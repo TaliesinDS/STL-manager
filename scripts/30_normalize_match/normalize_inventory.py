@@ -877,7 +877,8 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                      use_intended_use: bool = False, use_general_faction: bool = False, out: Optional[str] = None,
                      include_fields: Optional[list[str]] = None, exclude_fields: Optional[list[str]] = None,
                      print_summary: bool = False, ids: Optional[list[int]] = None,
-                     use_franchise_preferences: bool = True):
+                     use_franchise_preferences: bool = True,
+                     default_tabletop_when_system: bool = True):
     # Use repository root (two levels up from scripts/30_normalize_match)
     root = PROJECT_ROOT
     # try to load tokenmap to set token version & domain sets
@@ -965,6 +966,11 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                             break
                     if hit_canon and hit_canon in franchise_pref_default:
                         inferred['intended_use_bucket'] = franchise_pref_default[hit_canon]
+                # Final fallback: if this variant is clearly a tabletop unit (has a game system or codex faction
+                # already assigned by other matchers), default intended_use_bucket to 'tabletop_intent' unless disabled.
+                if default_tabletop_when_system and (not inferred.get('intended_use_bucket')):
+                    if getattr(v, 'game_system', None) or getattr(v, 'codex_faction', None) or getattr(v, 'faction_general', None):
+                        inferred['intended_use_bucket'] = 'tabletop_intent'
                 inferred["token_version"] = token_map_version
                 # IMPORTANT: do not mutate DB objects during preview; compute a diff instead
                 changed = diff_updates_for_variant(v, inferred, force=force)
@@ -1037,6 +1043,10 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                 break
                         if hit_canon and hit_canon in franchise_pref_default:
                             inferred['intended_use_bucket'] = franchise_pref_default[hit_canon]
+                    # Final fallback: default tabletop when system/faction present
+                    if default_tabletop_when_system and (not inferred.get('intended_use_bucket')):
+                        if getattr(v, 'game_system', None) or getattr(v, 'codex_faction', None) or getattr(v, 'faction_general', None):
+                            inferred['intended_use_bucket'] = 'tabletop_intent'
                     inferred["token_version"] = token_map_version
                     changed = apply_updates_to_variant(v, inferred, session, force=force)
                     if changed:
@@ -1063,6 +1073,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--print-summary', action='store_true', help='Print a summary of change counts by field')
     ap.add_argument('--ids', help='Comma-separated list of Variant IDs to process (scoped run)')
     ap.add_argument('--no-franchise-preferences', action='store_true', help='Disable intended-use inference from franchise_preferences.json')
+    ap.add_argument('--no-default-tabletop-when-system', dest='default_tabletop_when_system', action='store_false',
+                    help="Do not default intended_use_bucket to 'tabletop_intent' when game_system or codex_faction is present")
     return ap.parse_args(argv)
 
 
@@ -1076,7 +1088,8 @@ def main(argv: list[str]) -> int:
                      use_general_faction=args.use_general_faction, out=args.out,
                      include_fields=include_fields, exclude_fields=exclude_fields,
                      print_summary=args.print_summary, ids=ids,
-                     use_franchise_preferences=(not args.no_franchise_preferences))
+                     use_franchise_preferences=(not args.no_franchise_preferences),
+                     default_tabletop_when_system=getattr(args, 'default_tabletop_when_system', True))
     return 0
 
 

@@ -25,8 +25,11 @@
           "legs",
           "torso"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -52,8 +55,11 @@
           "legs",
           "torso"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -76,7 +82,10 @@
           "wings",
           "75"
         ],
-        "support_state": "supported"
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -96,8 +105,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -120,7 +132,10 @@
           "body",
           "75"
         ],
-        "support_state": "supported"
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -146,8 +161,11 @@
           "arm",
           "legs"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -167,8 +185,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -194,8 +215,11 @@
           "arm",
           "legs"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -218,7 +242,10 @@
           "body",
           "75"
         ],
-        "support_state": "supported"
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -241,7 +268,10 @@
           "body",
           "75"
         ],
-        "support_state": "supported"
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -261,8 +291,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -282,8 +315,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -303,8 +339,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -329,7 +368,10 @@
           "peaceful",
           "75"
         ],
-        "support_state": "supported"
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -351,8 +393,11 @@
           "base",
           "bodies"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -374,8 +419,11 @@
           "base",
           "bodies"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -396,8 +444,11 @@
           "body",
           "wings"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -418,8 +469,11 @@
           "body",
           "wings"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -440,8 +494,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -462,8 +519,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -483,8 +543,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -506,8 +569,11 @@
           "body1",
           "body2"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -527,8 +593,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -548,8 +617,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -569,8 +641,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -590,8 +665,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -612,8 +690,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -636,8 +717,11 @@
           "body1",
           "body2"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -657,8 +741,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -678,8 +765,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -699,8 +789,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -720,8 +813,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -741,8 +837,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -762,8 +861,11 @@
           "base",
           "body"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -785,8 +887,11 @@
           "body",
           "peaceful"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 32
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -808,8 +913,11 @@
           "body",
           "peaceful"
         ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
         "support_state": "unsupported",
-        "height_mm": 75
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -858,6 +966,9 @@
           "weapon",
           "full"
         ],
+        "designer": "gaz_minis",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1120,7 +1231,10 @@
           "simplebaseback",
           "simplebasefront"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "support_state": "presupported",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1139,6 +1253,9 @@
           "cut",
           "uncut"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1180,6 +1297,9 @@
           "baserockfrontb",
           "facemad"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1199,7 +1319,10 @@
           "02tophnsfw",
           "infoprint"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "segmentation": "split",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1230,6 +1353,9 @@
           "legright",
           "torso"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1251,6 +1377,9 @@
           "simplebase",
           "azerama1"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1269,7 +1398,10 @@
           "simplebase",
           "02toph"
         ],
-        "segmentation": "split"
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "segmentation": "split",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1301,7 +1433,10 @@
           "pants",
           "simplebaseback",
           "simplebasefront"
-        ]
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1334,7 +1469,10 @@
           "simplebaseback",
           "simplebasefront"
         ],
-        "support_state": "presupported"
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "support_state": "presupported",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1352,7 +1490,10 @@
           "bigbase",
           "fullbody",
           "simplebase"
-        ]
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1369,7 +1510,10 @@
           "infoprint",
           "tophcut",
           "tophuncut"
-        ]
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1411,7 +1555,10 @@
           "baserockfronta",
           "baserockfrontb",
           "facemad"
-        ]
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -1448,6 +1595,9 @@
           "rentarohead",
           "torso"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1485,6 +1635,9 @@
           "rentarohead",
           "torso"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1503,6 +1656,9 @@
           "ahkoskirt",
           "bp02base"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1520,6 +1676,9 @@
           "ahkonsfw",
           "body"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1536,7 +1695,10 @@
           "ahkonsfw",
           "nonsplit"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "segmentation": "split",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1553,6 +1715,9 @@
           "altbaseback",
           "altbasefront"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1594,6 +1759,9 @@
           "block02",
           "block03"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1635,6 +1803,9 @@
           "presupportedblock02",
           "presupportedblock03"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1653,6 +1824,9 @@
           "bp01body",
           "bp02base"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1671,6 +1845,9 @@
           "base",
           "body"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1688,7 +1865,10 @@
           "ahkonurse",
           "nonsplit"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "segmentation": "split",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1706,6 +1886,9 @@
           "altbaseback",
           "altbasefront"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1755,6 +1938,9 @@
           "utohat",
           "utohead"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1804,6 +1990,9 @@
           "presupportedutohat",
           "presupportedutohead"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1823,6 +2012,9 @@
           "bp02base",
           "bp03legs"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1841,6 +2033,9 @@
           "base",
           "body"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1858,7 +2053,10 @@
           "ahkoqueen",
           "nonsplit"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "segmentation": "split",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1876,6 +2074,9 @@
           "altbaseback",
           "altbasefront"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1914,6 +2115,9 @@
           "utohat",
           "utohead"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1953,6 +2157,9 @@
           "presupportedutohat",
           "presupportedutohead"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1971,6 +2178,9 @@
           "bp01body",
           "bp02base"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -1988,6 +2198,9 @@
           "base",
           "body"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2005,7 +2218,10 @@
           "ahkoskirt",
           "nonsplit"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
         "segmentation": "split",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2023,6 +2239,9 @@
           "altbaseback",
           "altbasefront"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2052,6 +2271,9 @@
           "bp02bodyhead",
           "nonsplitbody"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2091,7 +2313,10 @@
           "unsplitbody",
           "waistboxleft",
           "waistboxright"
-        ]
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2118,7 +2343,10 @@
           "12",
           "13"
         ],
-        "height_mm": 25
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
+        "height_mm": 25,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2142,7 +2370,10 @@
           "09",
           "10"
         ],
-        "height_mm": 30
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
+        "height_mm": 30,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2161,7 +2392,10 @@
           "04",
           "05"
         ],
-        "height_mm": 40
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
+        "height_mm": 40,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2178,7 +2412,10 @@
           "02",
           "03"
         ],
-        "height_mm": 50
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
+        "height_mm": 50,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2220,6 +2457,9 @@
           "mk",
           "torso"
         ],
+        "designer": "marta_punkgirl",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent",
         "normalization_warnings": [
           "lineage_ambiguous_vs_context"
         ]
@@ -2265,7 +2505,10 @@
           "mk",
           "torso"
         ],
+        "designer": "marta_punkgirl",
+        "designer_confidence": "high",
         "support_state": "presupported",
+        "intended_use_bucket": "tabletop_intent",
         "normalization_warnings": [
           "lineage_ambiguous_vs_context"
         ]
@@ -2296,7 +2539,10 @@
           "keepers",
           "p1",
           "p2"
-        ]
+        ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2323,7 +2569,10 @@
           "50",
           "mm"
         ],
-        "height_mm": 50
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "height_mm": 50,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2348,7 +2597,10 @@
           "stls",
           "base"
         ],
-        "height_mm": 40
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "height_mm": 40,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2375,7 +2627,10 @@
           "p1",
           "p2"
         ],
-        "support_state": "supported"
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2401,8 +2656,11 @@
           "50",
           "mm"
         ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 50
+        "height_mm": 50,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2426,8 +2684,11 @@
           "base",
           "lys"
         ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
         "support_state": "supported",
-        "height_mm": 40
+        "height_mm": 40,
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2450,7 +2711,10 @@
           "base5",
           "base"
         ],
-        "support_state": "supported"
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2473,7 +2737,10 @@
           "body",
           "head",
           "legr"
-        ]
+        ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2495,7 +2762,10 @@
           "fallen",
           "warrior",
           "hands"
-        ]
+        ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2514,7 +2784,10 @@
           "lower",
           "upper"
         ],
-        "segmentation": "split"
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "segmentation": "split",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2536,7 +2809,10 @@
           "body",
           "upper",
           "wing"
-        ]
+        ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2559,7 +2835,10 @@
           "upper",
           "wing"
         ],
-        "support_state": "supported"
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2574,7 +2853,10 @@
           "agony",
           "temptation",
           "siren"
-        ]
+        ],
+        "designer": "bestiarum_miniatures",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -2593,7 +2875,10 @@
           "base",
           "part1",
           "part2"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2617,7 +2902,10 @@
           "pants",
           "stick",
           "torso"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2640,7 +2928,10 @@
           "part1",
           "part2"
         ],
-        "support_state": "supported"
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2667,7 +2958,10 @@
           "stick",
           "torso"
         ],
-        "support_state": "supported"
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2689,7 +2983,10 @@
           "part1",
           "part2"
         ],
-        "support_state": "supported"
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2716,7 +3013,10 @@
           "stick",
           "torso"
         ],
-        "support_state": "supported"
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2735,7 +3035,10 @@
           "base",
           "part1",
           "part2"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2759,7 +3062,10 @@
           "pants",
           "stick",
           "torso"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2778,7 +3084,10 @@
           "ca3d",
           "base",
           "merge"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2801,7 +3110,10 @@
           "art",
           "video",
           "uroki"
-        ]
+        ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -2829,6 +3141,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2860,7 +3175,10 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
         "support_state": "supported",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2888,6 +3206,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2916,6 +3237,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2943,6 +3267,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2963,6 +3290,9 @@
           "base",
           "merge"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -2982,6 +3312,9 @@
           "ca3d",
           "base"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -3010,6 +3343,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -3038,6 +3374,9 @@
           "stick",
           "torso"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -3058,6 +3397,9 @@
           "ca3d",
           "base"
         ],
+        "designer": "ca3d",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -3074,7 +3416,10 @@
           "ivy",
           "march",
           "2025"
-        ]
+        ],
+        "designer": "es_monster",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -3090,7 +3435,10 @@
           "ivy",
           "march",
           "2025"
-        ]
+        ],
+        "designer": "es_monster",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large"
       }
     },
     {
@@ -3206,7 +3554,6 @@
           "on",
           "draggon,",
           "terrorgheists",
-          "cast'n'play",
           "hidden",
           "crypt",
           "undying",
@@ -3221,8 +3568,11 @@
           "rider",
           "rwing"
         ],
+        "designer": "cast_n_play",
+        "designer_confidence": "high",
         "lineage_family": "zombie",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -3430,8 +3780,11 @@
           "excl",
           "exc"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "vampires",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -3821,8 +4174,11 @@
           "right",
           "tail"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "vampires",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4250,7 +4606,10 @@
           "sword",
           "female"
         ],
-        "support_state": "supported"
+        "designer": "one_page_rules",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4281,7 +4640,10 @@
           "shield",
           "sword"
         ],
-        "support_state": "supported"
+        "designer": "one_page_rules",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4488,7 +4850,8 @@
           "003",
           "004",
           "005"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4558,7 +4921,8 @@
           "048",
           "049"
         ],
-        "part_pack_type": "accessory"
+        "part_pack_type": "accessory",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4579,7 +4943,8 @@
           "003",
           "004",
           "005"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4648,7 +5013,8 @@
           "048",
           "049"
         ],
-        "part_pack_type": "accessory"
+        "part_pack_type": "accessory",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4824,7 +5190,8 @@
           "037",
           "040"
         ],
-        "lineage_family": "human"
+        "lineage_family": "human",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -4935,7 +5302,8 @@
           "037",
           "040"
         ],
-        "lineage_family": "human"
+        "lineage_family": "human",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5360,7 +5728,8 @@
           "005",
           "006",
           "007"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5391,7 +5760,8 @@
           "012",
           "013",
           "014"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5448,7 +5818,8 @@
           "036",
           "037"
         ],
-        "part_pack_type": "accessory"
+        "part_pack_type": "accessory",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5471,7 +5842,8 @@
           "005",
           "006",
           "007"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5501,7 +5873,8 @@
           "012",
           "013",
           "014"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5557,7 +5930,8 @@
           "036",
           "037"
         ],
-        "part_pack_type": "accessory"
+        "part_pack_type": "accessory",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5585,7 +5959,10 @@
           "sergeant",
           "boar"
         ],
-        "support_state": "supported"
+        "designer": "one_page_rules",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5608,7 +5985,10 @@
           "spear",
           "sword"
         ],
-        "support_state": "supported"
+        "designer": "one_page_rules",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -5781,8 +6161,11 @@
           "version",
           "alt"
         ],
+        "designer": "artisan_guild_miniatures",
+        "designer_confidence": "high",
         "lineage_family": "goblins",
         "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
         "content_flag": "nsfw_weak"
       }
     },
@@ -5801,8 +6184,11 @@
           "base",
           "dagger"
         ],
+        "designer": "artisan_guild_miniatures",
+        "designer_confidence": "high",
         "lineage_family": "goblins",
         "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
         "content_flag": "nsfw_weak"
       }
     },
@@ -5878,7 +6264,10 @@
           "xmas",
           "present"
         ],
+        "designer": "gaz_minis",
+        "designer_confidence": "high",
         "height_mm": 25,
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw",
         "normalization_warnings": [
           "lineage_weak_top_level"
@@ -6486,7 +6875,10 @@
           "clip",
           "openlock",
           "4.3"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6512,7 +6904,10 @@
           "middle",
           "right",
           "tower"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6539,7 +6934,10 @@
           "right",
           "top",
           "tower"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6566,7 +6964,10 @@
           "big10",
           "big2",
           "10"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6603,9 +7004,12 @@
           "w5",
           "wcorner"
         ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
         "franchise_hints": [
           "guard"
         ],
+        "intended_use_bucket": "tabletop_intent",
         "normalization_warnings": [
           "faction_without_system"
         ]
@@ -6633,7 +7037,10 @@
           "v1.0",
           "right",
           "barnlv1"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6657,7 +7064,10 @@
           "floor1",
           "roof",
           "small"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6682,7 +7092,10 @@
           "v1.2",
           "v1.1",
           "roof"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6740,7 +7153,10 @@
           "8b",
           "9a",
           "9b"
-        ]
+        ],
+        "designer": "printable_scenery",
+        "designer_confidence": "high",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -6817,6 +7233,9 @@
           "sakuralegleftbot",
           "sakuralegleftup"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -6833,6 +7252,9 @@
           "sakurauncut",
           "sakurauncutbase"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -6849,6 +7271,9 @@
           "sakuracut",
           "sakurauncut"
         ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
         "content_flag": "nsfw"
       }
     },
@@ -6996,8 +7421,11 @@
           "wheel",
           "right"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7026,8 +7454,11 @@
           "right",
           "wheel(x4"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7051,8 +7482,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7080,8 +7514,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7105,8 +7542,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7130,8 +7570,11 @@
           "base",
           "squared"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7155,8 +7598,11 @@
           "base",
           "squared"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7180,8 +7626,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7205,8 +7654,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7235,8 +7687,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7260,8 +7715,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7289,8 +7747,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7314,9 +7775,12 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
         "internal_volume": "hollowed",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7340,8 +7804,11 @@
           "base",
           "squared"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7365,8 +7832,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7396,8 +7866,11 @@
           "hi",
           "excl"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7428,9 +7901,12 @@
           "staff",
           "tail"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "demon",
         "internal_volume": "hollowed",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7463,9 +7939,12 @@
           "tail",
           "weapon"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "demon",
         "internal_volume": "hollowed",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7496,8 +7975,11 @@
           "main",
           "arm"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7522,8 +8004,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7560,9 +8045,12 @@
           "wooden",
           "platform"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
         "segmentation": "split",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7588,8 +8076,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7615,8 +8106,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7642,8 +8136,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7665,8 +8162,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7689,8 +8189,11 @@
           "square",
           "support"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7712,8 +8215,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7735,8 +8241,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7760,8 +8269,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7783,8 +8295,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7811,8 +8326,11 @@
           "backscrew",
           "blade"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7834,8 +8352,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7858,8 +8379,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7882,8 +8406,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7906,8 +8433,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7930,8 +8460,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7956,8 +8489,11 @@
           "excl",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -7979,8 +8515,11 @@
           "revenants",
           "axle"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8005,8 +8544,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8031,8 +8573,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8057,8 +8602,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "supported"
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8082,8 +8630,11 @@
           "wheel",
           "right"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8112,8 +8663,11 @@
           "right",
           "wheel(x4"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8137,8 +8691,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8166,8 +8723,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8191,8 +8751,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8216,8 +8779,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8241,8 +8807,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8266,8 +8835,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8291,8 +8863,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8321,8 +8896,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8346,8 +8924,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8375,8 +8956,11 @@
           "base",
           "exclusive"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8400,8 +8984,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8425,8 +9012,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8450,8 +9040,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8481,8 +9074,11 @@
           "hi",
           "excl"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8513,8 +9109,11 @@
           "staff",
           "tail"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "demon",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8547,8 +9146,11 @@
           "tail",
           "weapon"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "demon",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8579,8 +9181,11 @@
           "main",
           "arm"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8605,8 +9210,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8643,9 +9251,12 @@
           "wooden",
           "platform"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
         "segmentation": "split",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8671,8 +9282,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8698,8 +9312,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8725,8 +9342,11 @@
           "gunner",
           "shield"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8748,8 +9368,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8771,8 +9394,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8794,8 +9420,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8817,8 +9446,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8842,8 +9474,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8865,8 +9500,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8893,8 +9531,11 @@
           "backscrew",
           "blade"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8916,8 +9557,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "ratfolk",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8941,8 +9585,11 @@
           "unsupporte",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8965,8 +9612,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -8989,8 +9639,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9013,8 +9666,11 @@
           "base",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9039,8 +9695,11 @@
           "excl",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9062,8 +9721,11 @@
           "revenants",
           "axle"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9088,8 +9750,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9114,8 +9779,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -9140,8 +9808,11 @@
           "horse",
           "square"
         ],
+        "designer": "heroes_infinite",
+        "designer_confidence": "high",
         "lineage_family": "undead",
-        "support_state": "unsupported"
+        "support_state": "unsupported",
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -10541,7 +11212,8 @@
           "003",
           "004",
           "005"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -10566,7 +11238,8 @@
           "008",
           "009",
           "010"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -10604,7 +11277,8 @@
           "021",
           "022",
           "023"
-        ]
+        ],
+        "intended_use_bucket": "tabletop_intent"
       }
     },
     {
@@ -10662,8 +11336,11 @@
   ],
   "field_summary": {
     "raw_path_tokens": 397,
+    "designer": 220,
+    "designer_confidence": 220,
     "support_state": 210,
     "height_mm": 47,
+    "intended_use_bucket": 235,
     "content_flag": 54,
     "segmentation": 11,
     "normalization_warnings": 18,
