@@ -2,4 +2,23 @@ version: 1
 publisher: webstore
 
 designer_key: printable_scenery
-collections: []
+collections:
+  - id: printable_scenery__time_warp_europe
+    name: Time Warp Europe
+    cycle: ''
+    theme: time_warp_europe
+    publisher: webstore
+    source_urls: []
+    aliases:
+    - Time Warp Europe
+    - Time Warp Europe - Church Walls
+    - Time Warp Europe - Medieval Church
+    - Time Warp Europe - Medieval House
+    - Time Warp Europe - The Farm
+    - Time Warp Europe - The Stone Barn
+    match:
+      path_patterns:
+      - "(?i)time[-_ ]warp[-_ ]europe"
+      sequence_number_regex:
+      - "^(\\d{1,2})[._ -]"
+      - "[ _-](\\d{1,2})[ _-]"

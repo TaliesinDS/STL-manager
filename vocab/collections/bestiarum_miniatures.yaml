@@ -108,3 +108,33 @@ collections:
   - https://www.myminifactory.com/users/Bestiarum%20Miniatures/collection/desert-of-giant-skulls
   aliases:
   - Desert of Giant Skulls
+  
+- id: bestiarum_miniatures__agony_and_temptation
+  name: Agony and Temptation
+  cycle: ''
+  theme: agony_and_temptation
+  publisher: patreon
+  source_urls: []
+  aliases:
+  - Agony and Temptation
+  match:
+    path_patterns:
+    - "(?i)agony[-_ ]and[-_ ]temptation"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+
+- id: bestiarum_miniatures__court_of_balazar
+  name: Court of Balazar
+  cycle: ''
+  theme: court_of_balazar
+  publisher: patreon
+  source_urls: []
+  aliases:
+  - Court of Balazar
+  match:
+    path_patterns:
+    - "(?i)court[-_ ]of[-_ ]balazar"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"

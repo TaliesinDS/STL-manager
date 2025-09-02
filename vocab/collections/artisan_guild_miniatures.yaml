@@ -3,108 +3,126 @@ publisher: patreon
 
 designer_key: artisan_guild_miniatures
 collections:
-- id: artisan_guild_miniatures__2022_01_example_alpha
-  name: "Example Alpha"
-  cycle: "2022-01"
-  theme: example_alpha
-  publisher: patreon
-  source_urls: []
-  aliases: ["Example Alpha", "January 2022"]
-  match:
-    path_patterns: ["(?i)example[-_ ]alpha"]
-    sequence_number_regex:
-    - "^(\\d{1,2})[._ -]"
-    - "[ _-](\\d{1,2})[ _-]"
-- id: artisan_guild_miniatures__2022_02_example_beta
-  name: "Example Beta"
-  cycle: "2022-02"
-  theme: example_beta
-  publisher: patreon
-  source_urls: []
-  aliases: ["Example Beta", "February 2022"]
-  match:
-    path_patterns: ["(?i)example[-_ ]beta"]
-    sequence_number_regex:
-    - "^(\\d{1,2})[._ -]"
-    - "[ _-](\\d{1,2})[ _-]"
-- id: artisan_guild_miniatures__2022_03_example_gamma
-  name: "Example Gamma"
-  cycle: "2022-03"
-  theme: example_gamma
-  publisher: patreon
-  source_urls: []
-  aliases: ["Example Gamma", "March 2022"]
-  match:
-    path_patterns: ["(?i)example[-_ ]gamma"]
-    sequence_number_regex:
-    - "^(\\d{1,2})[._ -]"
-    - "[ _-](\\d{1,2})[ _-]"
-- id: artisan_guild_miniatures__2022_04_example_delta
-  name: "Example Delta"
-  cycle: "2022-04"
-  theme: example_delta
-  publisher: patreon
-  source_urls: []
-  aliases: ["Example Delta", "April 2022"]
-  match:
-    path_patterns: ["(?i)example[-_ ]delta"]
-    sequence_number_regex:
-    - "^(\\d{1,2})[._ -]"
-    - "[ _-](\\d{1,2})[ _-]"
-- id: artisan_guild_miniatures__2022_05_example_epsilon
-  name: "Example Epsilon"
-  cycle: "2022-05"
-  theme: example_epsilon
-  publisher: patreon
-  source_urls: []
-  aliases: ["Example Epsilon", "May 2022"]
-  match:
-    path_patterns: ["(?i)example[-_ ]epsilon"]
-    sequence_number_regex:
-    - "^(\\d{1,2})[._ -]"
-    - "[ _-](\\d{1,2})[ _-]"
-- id: artisan_guild_miniatures__cavalries
-  name: Cavalries
-  cycle: ''
-  theme: cavalries
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Artisan_Guild/collection/cavalries
-  aliases:
-  - Cavalries
-- id: artisan_guild_miniatures__vanguard_collection
-  name: Vanguard Collection
-  cycle: ''
-  theme: vanguard_collection
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Artisan_Guild/collection/vanguard-collection
-  aliases:
-  - Vanguard Collection
-- id: artisan_guild_miniatures__complete_supported
-  name: COMPLETE & SUPPORTED
-  cycle: ''
-  theme: complete_supported
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Artisan_Guild/collection/complete-supported
-  aliases:
-  - COMPLETE & SUPPORTED
-- id: artisan_guild_miniatures__fantasy_pinup
-  name: Fantasy Pinup
-  cycle: ''
-  theme: fantasy_pinup
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Artisan_Guild/collection/fantasy-pinup
-  aliases:
-  - Fantasy Pinup
-- id: artisan_guild_miniatures__dragons
-  name: Dragons
-  cycle: ''
-  theme: dragons
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Artisan_Guild/collection/dragons
-  aliases:
-  - Dragons
+  - id: artisan_guild_miniatures__faldorn_goblins
+    name: Faldorn Goblins
+    cycle: ''
+    theme: faldorn_goblins
+    version: 1
+    publisher: patreon
+
+    designer_key: artisan_guild_miniatures
+    collections:
+      - id: artisan_guild_miniatures__faldorn_goblins
+        name: Faldorn Goblins
+        cycle: ''
+        theme: faldorn_goblins
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - Faldorn Goblins
+        match:
+          path_patterns:
+          - "(?i)faldorn[-_ ]goblins"
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__2022_01_example_alpha
+        name: "Example Alpha"
+        cycle: "2022-01"
+        theme: example_alpha
+        publisher: patreon
+        source_urls: []
+        aliases: ["Example Alpha", "January 2022"]
+        match:
+          path_patterns: ["(?i)example[-_ ]alpha"]
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__2022_02_example_beta
+        name: "Example Beta"
+        cycle: "2022-02"
+        theme: example_beta
+        publisher: patreon
+        source_urls: []
+        aliases: ["Example Beta", "February 2022"]
+        match:
+          path_patterns: ["(?i)example[-_ ]beta"]
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__2022_03_example_gamma
+        name: "Example Gamma"
+        cycle: "2022-03"
+        theme: example_gamma
+        publisher: patreon
+        source_urls: []
+        aliases: ["Example Gamma", "March 2022"]
+        match:
+          path_patterns: ["(?i)example[-_ ]gamma"]
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__2022_04_example_delta
+        name: "Example Delta"
+        cycle: "2022-04"
+        theme: example_delta
+        publisher: patreon
+        source_urls: []
+        aliases: ["Example Delta", "April 2022"]
+        match:
+          path_patterns: ["(?i)example[-_ ]delta"]
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__2022_05_example_epsilon
+        name: "Example Epsilon"
+        cycle: "2022-05"
+        theme: example_epsilon
+        publisher: patreon
+        source_urls: []
+        aliases: ["Example Epsilon", "May 2022"]
+        match:
+          path_patterns: ["(?i)example[-_ ]epsilon"]
+          sequence_number_regex:
+          - "^(\\d{1,2})[._ -]"
+          - "[ _-](\\d{1,2})[ _-]"
+      - id: artisan_guild_miniatures__cavalries
+        name: Cavalries
+        cycle: ''
+        theme: cavalries
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - Cavalries
+      - id: artisan_guild_miniatures__vanguard_collection
+        name: Vanguard Collection
+        cycle: ''
+        theme: vanguard_collection
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - Vanguard Collection
+      - id: artisan_guild_miniatures__complete_supported
+        name: COMPLETE & SUPPORTED
+        cycle: ''
+        theme: complete_supported
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - COMPLETE & SUPPORTED
+      - id: artisan_guild_miniatures__fantasy_pinup
+        name: Fantasy Pinup
+        cycle: ''
+        theme: fantasy_pinup
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - Fantasy Pinup
+      - id: artisan_guild_miniatures__dragons
+        name: Dragons
+        cycle: ''
+        theme: dragons
+        publisher: patreon
+        source_urls: []
+        aliases:
+        - Dragons

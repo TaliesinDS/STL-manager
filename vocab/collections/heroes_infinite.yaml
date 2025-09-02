@@ -65,6 +65,34 @@ collections:
   - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/eclipsed-by-darkness-inquisition-vs-the-void-elves
   aliases:
   - 'Eclipsed by Darkness: Inquisition vs the Void Elves'
+- id: heroes_infinite__a_dance_with_the_vampires_2
+  name: 'A Dance with the Vampires 2'
+  cycle: ''
+  theme: a_dance_with_the_vampires_2
+  publisher: myminifactory
+  source_urls: []
+  aliases:
+  - 'A Dance with the Vampires 2'
+  match:
+    path_patterns:
+    - "(?i)a[-_ ]dance[-_ ]with[-_ ]the[-_ ]vampires[-_ ]2"
+    sequence_number_regex:
+    - "^(?!\\d{2}mm)(\\d{1,2})[._ -]"
+    - "(?<!mm)[ _-](\\d{1,2})[ _-]"
+- id: heroes_infinite__archatreon_in_monster_form
+  name: 'Archatreon in Monster Form'
+  cycle: ''
+  theme: archatreon_in_monster_form
+  publisher: myminifactory
+  source_urls: []
+  aliases:
+  - 'Archatreon in Monster Form'
+  match:
+    path_patterns:
+    - "(?i)archatreon[-_ ]in[-_ ]monster[-_ ]form"
+    sequence_number_regex:
+    - "^(?!\\d{2}mm)(\\d{1,2})[._ -]"
+    - "(?<!mm)[ _-](\\d{1,2})[ _-]"
 - id: heroes_infinite__ratmen_vermins_in_the_undead_necropolis
   name: 'Ratmen Vermins in the Undead Necropolis'
   cycle: ''

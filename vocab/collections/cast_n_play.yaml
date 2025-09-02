@@ -108,3 +108,21 @@ collections:
   - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-the-grand-tournament
   aliases:
   - Cast n Play - The Grand Tournament
+
+- id: cast_n_play__hidden_crypt
+  name: Hidden Crypt
+  cycle: ''
+  theme: hidden_crypt
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/hidden-crypt
+  aliases:
+  - Hidden Crypt
+  - Undying Bat Mount
+  match:
+    path_patterns:
+    - "(?i)hidden[-_ ]crypt"
+    - "(?i)undying[-_ ]bat[-_ ]mount"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
