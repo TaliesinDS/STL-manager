@@ -20,8 +20,7 @@ collections:
     sequence_number_regex:
     - "^(?!\\d{2}mm)(\\d{1,2})[._ -]"
     - "(?<!mm)[ _-](\\d{1,2})[ _-]"
-- id: 
-    heroes_infinite__mortenburg_chronicles_dark_lords_of_the_ever_shifting_sands
+- id: heroes_infinite__mortenburg_chronicles_dark_lords_of_the_ever_shifting_sands
   name: 'Mortenburg Chronicles: Dark Lords of the Ever Shifting Sands'
   cycle: ''
   theme: mortenburg_chronicles_dark_lords_of_the_ever_shifting_sands
@@ -66,3 +65,18 @@ collections:
   - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/eclipsed-by-darkness-inquisition-vs-the-void-elves
   aliases:
   - 'Eclipsed by Darkness: Inquisition vs the Void Elves'
+- id: heroes_infinite__ratmen_vermins_in_the_undead_necropolis
+  name: 'Ratmen Vermins in the Undead Necropolis'
+  cycle: ''
+  theme: ratmen_vermins_in_the_undead_necropolis
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/ratmen-vermins-in-the-undead-necropolis
+  aliases:
+  - 'Ratmen Vermins in the Undead Necropolis'
+  match:
+    path_patterns:
+    - "(?i)ratmen[-_ ]vermins?[-_ ]in[-_ ]the[-_ ]undead[-_ ]necropolis"
+    sequence_number_regex:
+    - "^(?!\\d{2}mm)(\\d{1,2})[._ -]"
+    - "(?<!mm)[ _-](\\d{1,2})[ _-]"

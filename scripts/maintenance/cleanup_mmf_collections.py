@@ -1,3 +1,83 @@
+from __future__ import annotations
+
+import json
+import os
+import re
+from pathlib import Path
+from typing import Dict, List
+
+try:
+    from ruamel.yaml import YAML
+except Exception:
+    YAML = None  # type: ignore
+
+
+def load_username_map(path: Path) -> Dict[str, str]:
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def normalize_mmf_username(u: str) -> str:
+    # Normalize spaces/underscores/hyphens and case for comparison
+    u = u.strip().strip("/")
+    return u
+
+
+def url_has_username(url: str, username: str) -> bool:
+    # Accept both /users/<username>/collection/... and profile variations
+    u = normalize_mmf_username(username)
+    return re.search(rf"/users/{re.escape(u)}(/|$)", url, flags=re.IGNORECASE) is not None
+
+
+def cleanup_file(yaml_path: Path, username: str) -> int:
+    if YAML is None:
+        raise RuntimeError("ruamel.yaml is required. Please install requirements.txt")
+    yaml = YAML(typ="rt")
+    with yaml_path.open("r", encoding="utf-8") as f:
+        data = yaml.load(f) or {}
+    collections = data.get("collections", []) or []
+    kept = []
+    removed = 0
+    for c in collections:
+        urls = [u for u in c.get("source_urls", []) or [] if isinstance(u, str)]
+        if not urls:
+            # keep if no source_urls (curated/manual entry)
+            kept.append(c)
+            continue
+        if any(url_has_username(u, username) for u in urls):
+            kept.append(c)
+        else:
+            removed += 1
+    if removed:
+        data["collections"] = kept
+        yaml = YAML()
+        yaml.indent(mapping=2, sequence=2, offset=2)
+        with yaml_path.open("w", encoding="utf-8") as f:
+            yaml.dump(data, f)
+    return removed
+
+
+def main():
+    root = Path("vocab/collections")
+    map_path = Path("vocab/mmf_usernames.json")
+    username_map = load_username_map(map_path)
+    total_removed = 0
+    for yaml_path in sorted(root.glob("*.yaml")):
+        designer = yaml_path.stem
+        username = username_map.get(designer)
+        if not username:
+            continue
+        removed = cleanup_file(yaml_path, username)
+        total_removed += removed
+        if removed:
+            print(f"Cleaned {yaml_path}: removed {removed} entries not under {username}")
+    print(f"Total removed: {total_removed}")
+
+
+if __name__ == "__main__":
+    main()
 import os
 import re
 import sys

@@ -93,6 +93,7 @@ Legend: Keep = retain as‑is (with minor CLI standardization), Merge = fold int
 | match_franchise_characters.py | 30_normalize_match/ | Keep | Franchise/character matcher.
 | match_parts_to_variants.py | 30_normalize_match/ | Keep | New parts matcher; links kit children → Parts.
 | match_variants_to_units.py | 30_normalize_match/ | Keep | Unit matcher for all systems.
+| match_collections.py | 30_normalize_match/ | Keep | Match variants to per-designer collections (YAML SSOT; optional MMF refill).
 | migrate_add_columns.py | legacy/ | Deprecate | Superseded by Alembic migrations.
 | migrate_codex_to_character.py | 50_cleanup_repair/ | Keep | Safe one‑time field migration; document as legacy fixer.
 | normalize_inventory.py | 30_normalize_match/ | Keep | Core normalization.
