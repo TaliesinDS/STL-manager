@@ -1,11 +1,12 @@
 # Proposal: SSOT and Workflow for Designer Collections (Populating Variant.collection_*)
 
-This document proposes how we will populate and maintain the Variant collection fields — `collection_id`, `collection_original_label`, `collection_cycle`, `collection_sequence_number`, and `collection_theme` — using a small, explicit SSOT (single source of truth) YAML per designer and a deterministic matcher.
+This document proposes how we will populate and maintain the Variant collection fields — `collection_id`, `collection_original_label`, `collection_cycle`, `collection_sequence_number`, and `collection_theme` — using a small, explicit SSOT (single source of truth) YAML per designer and a deterministic matcher. This workflow now incorporates our MyMiniFactory (MMF) collection auto-seeding and cleanup tools.
 
 ## Goals
 - Normalize designer monthly/thematic releases into a stable, queryable structure.
-- Populate Variant.collection_* fields reliably with dry-run safety and auditability.
-- Keep source data human-editable (YAML in-repo) and provenance-linked to public product pages.
+- Populate Variant.collection_* fields automatically after designer recognition (e.g., when var 340 is recognized as a Heroes Infinite model, its collection should be identified and the collection columns filled in).
+- Preserve dry-run safety and auditability.
+- Keep source data human-editable (YAML in-repo) and provenance-linked to public pages (MMF, Patreon, etc.).
 
 ## Target columns (contract)
 - `variant.collection_id` (string, stable slug): canonical key for the release (e.g., `dm_stash__2021_09_guardians_of_the_fey`).
@@ -50,12 +51,16 @@ collections:
 ```
 
 Notes:
-- `id` is the stable slug. Keep it deterministic: `<designer_key>__<YYYY_MM>_<normalized_title>`.
+- `id` is the stable slug. Keep it deterministic: `<designer_key>__<YYYY_MM>_<normalized_title>`. If cycle is unknown, allow `<designer_key>__<normalized_title>` (cycle can be added later without changing semantics).
 - `aliases` should remain specific to avoid false positives.
 - `match.path_patterns` should prefer the explicit title over generic words (e.g., `fey` alone is too weak).
 - `sequence_number_regex` is a list; we’ll take the first capturing group that matches.
 
-## Matching strategy (deterministic first, then conservative heuristics)
+Auto-seeding from MMF (Phase 1)
+- Use `scripts/10_integrations/update_collections_from_mmf.py` to append the latest N collections for a designer into its YAML file. Entries include `name`, `theme` (slugified from the title), `cycle` when parseable from the title, and `source_urls` pointing to the user’s collections.
+- The script uses `vocab/mmf_usernames.json` to map `designer_key -> mmf_username` and only accepts URLs rooted at that username, preventing global/non-designer leaks. A companion cleaner `scripts/maintenance/cleanup_mmf_collections.py` removes any non-matching entries.
+
+## Matching strategy (designer-scoped; deterministic first, then conservative heuristics)
 1. Precondition: Variant must have `designer` normalized to a `designer_key` (via existing designers token map).
 2. Deterministic match (preferred):
    - If any `match.path_patterns` for a collection under this `designer_key` matches the Variant `rel_path` (within top N segments), select that collection.
@@ -70,35 +75,85 @@ Notes:
    - We can record a normalization warning when falling back to aliases without a regex pattern.
 4. No match: leave fields null. We’ll emit a review candidate in the dry-run report.
 
+MMF-derived pragmatic fallback (optional, Phase 1 safe):
+- For designers with MMF-seeded entries (no explicit `match.path_patterns` yet), allow a conservative alias-only match using the MMF `name` as an alias when that name is sufficiently distinctive and appears near the variant leaf.
+- This is designer-scoped (never cross-designer) and should still prefer explicit `match.path_patterns` when present.
+
 Scope control:
 - Only match within the designer’s namespace (do not match across designers).
 - Search within the last 3–4 path segments by default to avoid ambient matches from deep nesting.
 - Ignore files/folders recognized as junk (e.g., `presupported`, `previews`, `textures`, `lychee/chi*` projects) unless `sequence_number_regex` extraction needs the filename.
 
-## Loader + matcher workflow
-We’ll follow the same pattern as units/parts loaders: dry-run by default, explicit `--apply` to commit.
+## Loader + matcher workflow (updated, Phase 1)
+We’ll continue to use YAML as SSOT with MMF-assisted population; matching is a deterministic pass like our other matchers.
 
-Tools to implement (names aligned with existing conventions):
-- `scripts/20_loaders/load_collections.py`
-  - Input: one or more `vocab/collections/*.yaml`
-  - Behavior: upsert rows into `collection` table (by `id` slug), store core columns (`original_label` can mirror `name` for now), `publisher`, `cycle`, `sequence_number` (null at collection-level unless the designer publishes an overall sequence), `theme`, and stash the full YAML node in a `raw_data` JSON column if/when we add it (Phase 2). For Phase 1 we can limit to existing columns.
-- `scripts/match_collections.py`
-  - Input: DB URL and optional scope flags (by designer, by root)
-  - Behavior: scan Variants with `designer` set; apply the matching strategy; write updates to `variant.collection_*` fields. Support `--dry-run` and `--apply` and JSON report export like the existing matchers.
-
-Example dry-run commands (PowerShell-safe; scripts to be implemented):
+Population (YAML; no DB table needed in Phase 1):
+- Clean any non-designer entries first:
 ```powershell
-# Load DM Stash collections (dry-run)
-.\.venv\Scripts\python.exe .\scripts\20_loaders\load_collections.py `
-  --file .\vocab\collections\dm_stash.yaml `
-  --db-url sqlite:///./data/stl_manager_v1.db
-
-# Match variants to collections (dry-run)
-.\.venv\Scripts\python.exe .\scripts\match_collections.py `
-  --db-url sqlite:///./data/stl_manager_v1.db `
-  --designer dm_stash `
-  --out ("reports/match_collections_dm_stash_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+.\.venv\Scripts\python.exe .\scripts\maintenance\cleanup_mmf_collections.py
 ```
+- Append up to N latest MMF collections per designer into YAML:
+```powershell
+$env:MMF_API_KEY = "<your_api_key>";
+.\.venv\Scripts\python.exe .\scripts\10_integrations\update_collections_from_mmf.py --max 5 --apply
+```
+
+Matching (to be implemented):
+- `scripts/30_normalize_match/match_collections.py` (or a new `--collections` mode under the existing normalizer) will:
+  - Read per-designer YAML from `vocab/collections/`.
+  - For Variants with `designer` set, apply the matching strategy above and populate `variant.collection_*`.
+  - Support `--dry-run` and `--apply` and emit a JSON report like other matchers.
+
+Optional: on-demand MMF enrichment during matching
+- When enabled via `--mmf-refill-on-miss`, the matcher will, upon a strong collection phrase with no YAML hit:
+  1) Check `vocab/mmf_usernames.json` for the designer’s `mmf_username`.
+  2) Invoke the MMF updater programmatically for that designer (bounded N; default 5–10) to append any newly discovered collections into `vocab/collections/<designer>.yaml` (dry-run unless `--apply`).
+  3) Reload the designer’s YAML and retry the collection match.
+
+Guardrails
+- Default remains 100% local: no network calls unless `--mmf-refill-on-miss` is provided and either `MMF_API_KEY` or OAuth creds are set.
+- Only collections under the mapped `mmf_username` are considered; global/non-designer lists are ignored.
+- In `--dry-run`, the matcher includes a `would_append_collections` section in the JSON report and does not write YAML.
+- Backoff on rate limits; errors are non-fatal and logged in the report.
+
+Example dry-run (once implemented):
+```powershell
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py `
+  --db-url sqlite:///./data/stl_manager_v1.db `
+  --designer heroes_infinite `
+  --mmf-refill-on-miss `
+  --out ("reports/match_collections_heroes_infinite_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+```
+
+### When the collection is not in YAML yet (smart proposer)
+Instead of ignoring variants or asking the user to guess, add a proposer step that scans designer-scoped variants lacking `collection_id`, extracts collection-like phrases from path segments, and drafts YAML entries for review.
+
+Tool (added): `scripts/60_reports_analysis/propose_missing_collections.py`
+- Reads variants where `designer IS NOT NULL` and `collection_id IS NULL`.
+- Extracts a likely collection phrase from the top/leaf segments (ignores generic words like `Supported`, `STLs`, etc.).
+- Produces a JSON report and, with `--apply-draft`, writes draft YAML under `vocab/collections/_drafts/<designer>.pending.yaml` with:
+  - `name` (titleized phrase), `theme` (slug), empty `cycle`, `aliases` including the phrase, and a safe `match.path_patterns` for the full title.
+  - Standard sequence-number regex templates.
+- Curator quickly adds a `source_urls` (e.g., MMF collection URL) and optional `cycle`, then moves approved entries into `vocab/collections/<designer>.yaml`.
+
+Example commands (Windows PowerShell):
+```powershell
+# Propose for Heroes Infinite only; write drafts
+.\.venv\Scripts\python.exe .\scripts\60_reports_analysis\propose_missing_collections.py `
+  --db-url sqlite:///./data/stl_manager_v1.db `
+  --designer heroes_infinite `
+  --apply-draft `
+  --out ("reports/propose_missing_collections_heroes_infinite_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+
+# After review and adding source_urls, move curated entries from vocab/collections/_drafts to vocab/collections
+```
+
+Recommended quick flow for new/missing collections:
+1) Run the proposer for the target designer(s) to generate draft entries from actual folder names.
+2) Add `source_urls` and `cycle` for each draft from MMF pages; optionally run the MMF updater to fetch more recent sets.
+3) Move curated entries into the canonical YAML, then run the collections matcher (dry-run, then apply).
+
+This balances automation with a short human review, avoids false positives, and works even when MMF hasn’t surfaced the collection yet or uses slightly different titling.
 
 ## Minimal DB changes (optional Phase 2)
 The current `collection` model is intentionally light. If/when needed, we can extend it:
@@ -113,9 +168,14 @@ This can be staged without breaking the Variant fields contract. Phase 1 works w
 - Every collection entry must include at least one public `source_urls` link (e.g., MyMiniFactory, Patreon post) for provenance.
 - Use slugging rules for `id`:
   - Lowercase, ASCII, snake_case.
-  - `<designer_key>__<YYYY_MM>_<normalized_title>` with non-word chars replaced by `_` and sequences collapsed.
+  - Prefer `<designer_key>__<YYYY_MM>_<normalized_title>` when cycle is known, else `<designer_key>__<normalized_title>`.
 
-## Example: DM Stash “Guardians of the Fey” (September 2021)
+MMF username mapping (centralized)
+- `vocab/mmf_usernames.json` provides `designer_key -> mmf_username` used by the MMF updater and cleaner.
+- Usernames must match MMF slugs exactly (case, underscores, spaces). Examples: `Artisan_Guild`, `Bestiarum Miniatures`, `HeroesInfiniteByRagingHeroes`, `TitanForgeMiniatures`, `Txarli`.
+
+## Examples
+### DM Stash “Guardians of the Fey” (September 2021)
 The official page: https://www.myminifactory.com/users/DM-Stash/collection/guardians-of-the-fey (12 objects; “DM Stash September 2021 Release”).
 
 Proposed YAML entry is already included above under `dm_stash.yaml`. With that present, any Variant under DM Stash whose path contains a phrase matching `guardians[-_ ]of[-_ ]the[-_ ]fey` near the leaf will be assigned:
@@ -124,6 +184,17 @@ Proposed YAML entry is already included above under `dm_stash.yaml`. With that p
 - `collection_cycle = 2021-09`
 - `collection_sequence_number =` first number parsed from file/folder (if present)
 - `collection_theme = fey`
+
+### Heroes Infinite: expected behavior when a variant is recognized
+Given var 340 is recognized as `designer = heroes_infinite`, the collections matcher should:
+- Look up `vocab/collections/heroes_infinite.yaml` (MMF-seeded + curated).
+- Try deterministic `match.path_patterns` first; otherwise allow an alias match using the specific collection title.
+- On match, fill:
+  - `collection_id = heroes_infinite__<YYYY_MM>_<normalized_title>` (or `heroes_infinite__<normalized_title>` if cycle missing)
+  - `collection_original_label =` the matched phrase from the path or alias
+  - `collection_cycle = <YYYY-MM>` (if present in YAML)
+  - `collection_sequence_number =` first sequence parsed by regex if applicable
+  - `collection_theme = <theme>` (slugified, e.g., `arcadian_elves_ii`)
 
 ## Edge cases and guardrails
 - Re-releases/remasters: add a separate entry with a different `id` (e.g., `...__2024_03_guardians_of_the_fey_remastered`) and distinct `path_patterns`.
@@ -138,12 +209,12 @@ Proposed YAML entry is already included above under `dm_stash.yaml`. With that p
 - Filters by `collection_id` and `collection_cycle` return consistent sets.
 - Minimal manual curation after initial YAML population per designer.
 
-## Rollout plan
-1. Approve this SSOT schema (no code changes required yet).
-2. Add `vocab/collections/dm_stash.yaml` with the entry above and 1–2 more recent DM Stash releases for coverage.
-3. Implement `load_collections.py` and `match_collections.py` with dry-run first.
-4. Run dry-run on your `sample_store` scope; review JSON report; iterate on aliases/patterns.
-5. Apply; then add other designers (Printable Scenery, Cast n Play, etc.).
+## Rollout plan (updated)
+1. Approve this SSOT schema (no DB changes required for Phase 1).
+2. Populate per-designer YAML via MMF updater (and manual curation where needed); ensure `vocab/mmf_usernames.json` has correct slugs.
+3. Implement `match_collections.py` (or `--collections` mode) with dry-run first.
+4. Run dry-run for specific designers (e.g., `heroes_infinite`); review JSON report; refine `match.path_patterns` and aliases in YAML to improve precision.
+5. Apply; then expand to other designers.
 
 ---
 

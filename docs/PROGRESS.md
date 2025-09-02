@@ -1,3 +1,15 @@
+## 2025-09-02 — MMF collections hardening and repopulation
+
+- Added `vocab/mmf_usernames.json` to centralize `designer_key -> mmf_username` mapping (supports spaces/underscores/hyphens; e.g., `Artisan_Guild`, `Bestiarum Miniatures`).
+- Hardened `scripts/10_integrations/update_collections_from_mmf.py` to:
+  - Prefer the JSON username map over built-ins.
+  - Prune non-designer entries on write (only accept `source_urls` rooted at the mapped username).
+  - Fallback to YAML-derived usernames only when mapped username yields none.
+- Added `scripts/maintenance/cleanup_mmf_collections.py` to remove unrelated MMF entries from `vocab/collections/*.yaml`.
+- Ran cleanup across repo (removed 165 incorrect entries across 20 files), then appended up to 5 newest collections per designer where available.
+  - Updated designers included: `artisan_guild_miniatures`, `bestiarum_miniatures`, `cyber_forge` (via `TitanForgeMiniatures`), `epic_minis`, `heroes_infinite`, `last_sword_miniatures`, `lost_kingdom` (1), `txarli_factory`.
+  - Some designers currently show no MMF “collections” (skipped): `bam_broken_anvil_monthly`, `caballero_miniatures`, `printable_scenery`.
+
 # Project Progress (Mini Beast)
 
 A lightweight, living log of milestones, active work, and recent changes. Keep updates short and practical.

@@ -21,6 +21,7 @@ scripts/
   40_kits/                # kit detection/backfill, virtual parent linking, targeted kit fixers
   50_cleanup_repair/      # data hygiene, orphans, junk removal, prune/merge, targeted repairs
   60_reports_analysis/    # reports, counts, coverage, verification/inspection scripts
+    maintenance/             # one-off maintenance utilities (e.g., MMF YAML cleanup)
   90_util/                # show/list helpers, debug tools, one‑off inspectors, dev helpers
   windows_tools/          # PowerShell helpers (extractor, open window, one‑click templates)
   legacy/                 # archived/deprecated once migrated or superseded by Alembic/other flows
@@ -87,6 +88,7 @@ Legend: Keep = retain as‑is (with minor CLI standardization), Merge = fold int
 | load_codex_from_yaml.py | 20_loaders/ | Keep | Canonical unit loader for YAML (40K/HH/AoS).
 | load_designers.py | 20_loaders/ | Keep | Designers vocab loader.
 | load_franchises.py | 20_loaders/ | Keep | Franchises vocab loader.
+| cleanup_mmf_collections.py | maintenance/ | Keep | Prune non-designer MMF entries from YAML collections.
 | load_sample.py | 20_loaders/ | Keep | Inventory ingester.
 | match_franchise_characters.py | 30_normalize_match/ | Keep | Franchise/character matcher.
 | match_parts_to_variants.py | 30_normalize_match/ | Keep | New parts matcher; links kit children → Parts.
@@ -122,6 +124,7 @@ Legend: Keep = retain as‑is (with minor CLI standardization), Merge = fold int
 | verify_applied_matches.py | 60_reports_analysis/ | Keep | Verification.
 | verify_migration_output.py | 60_reports_analysis/ | Keep | Verification.
 | verify_tokens_written.py | 60_reports_analysis/ | Keep | Verification.
+| propose_missing_collections.py | 60_reports_analysis/ | Keep | Propose draft YAML entries for designer collections missing from YAML.
 
 ## Recommended workflow from new DB → app
 
@@ -151,6 +154,22 @@ Legend: Keep = retain as‑is (with minor CLI standardization), Merge = fold int
 
 8) 90_util
 - Helpers (`show_variant.py`, `list_variant_files.py`) and ad‑hoc inspectors.
+
+## MyMiniFactory (MMF) collections workflow (new)
+
+- `scripts/10_integrations/update_collections_from_mmf.py` appends latest N designer collections into `vocab/collections/<designer_key>.yaml`.
+- `vocab/mmf_usernames.json` contains `designer_key -> mmf_username` and is preferred over any hard-coded map.
+- `scripts/maintenance/cleanup_mmf_collections.py` removes entries whose `source_urls` don’t match the designer’s MMF username (safe cleanup).
+
+Augment with proposer for gaps:
+- `scripts/60_reports_analysis/propose_missing_collections.py` scans designer-scoped variants with no collection yet and drafts entries under `vocab/collections/_drafts/`. Review, add `source_urls`, then move into canonical YAML.
+
+Run order (suggested):
+1) Adjust/add usernames in `vocab/mmf_usernames.json`.
+2) Clean existing YAMLs:
+  `python scripts/maintenance/cleanup_mmf_collections.py`
+3) Fetch and append up to 5 newest per designer:
+  `python scripts/10_integrations/update_collections_from_mmf.py --max 5 --apply`
 
 ## Standardize CLIs and outputs (short checklist)
 

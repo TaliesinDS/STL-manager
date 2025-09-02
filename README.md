@@ -454,27 +454,41 @@ YAML parsing: `ruamel.yaml` is included in `requirements.txt` and used by the co
 
 ## MyMiniFactory Integration (public collections)
 
-A minimal client is provided under `scripts/10_integrations/` to fetch a creator’s public collections from MyMiniFactory and save a timestamped JSON report in `reports/`.
+MMF support now includes a safe, repo-driven workflow to fetch and curate creator “collections” and write them into `vocab/collections/*.yaml` without leaking unrelated global collections.
 
-Credentials (set one of):
-- OAuth: set `MMF_CLIENT_ID` and `MMF_CLIENT_SECRET` (token fetched from `https://auth.myminifactory.com/v1/oauth/tokens`).
-- API key: set `MMF_API_KEY` (passed as `?key=...`).
+Key files and scripts
+- `vocab/mmf_usernames.json` — canonical map `designer_key -> MMF username` (exact slug as used in URLs; supports spaces/underscores/hyphens).
+- `scripts/10_integrations/update_collections_from_mmf.py` — fetches latest N collections for each designer and appends new entries to the corresponding YAML file. Only URLs under the mapped username are accepted.
+- `scripts/maintenance/cleanup_mmf_collections.py` — removes YAML entries whose `source_urls` don’t match the designer’s mapped MMF username (non-designer/global collections cleanup).
 
-Optional overrides:
+Credentials (set one of)
+- OAuth: set `MMF_CLIENT_ID` and `MMF_CLIENT_SECRET` (token via `https://auth.myminifactory.com/v1/oauth/tokens`).
+- API key: set `MMF_API_KEY` (passed to the API client).
+
+Optional overrides
 - `MMF_API_BASE` (default `https://www.myminifactory.com/api/v2`)
 - `MMF_AUTH_BASE` (default `https://auth.myminifactory.com`)
 
-Examples (PowerShell):
-
+Usage examples (Windows PowerShell)
+- Clean existing YAMLs to drop non-designer entries:
 ```powershell
-$env:MMF_CLIENT_ID = "<your_client_id>"
-$env:MMF_CLIENT_SECRET = "<your_client_secret>"
-.\.venv\Scripts\python.exe .\scripts\10_integrations\fetch_mmf_collections.py --username heroesinfinite
-
-# Or using API key
-$env:MMF_API_KEY = "<your_api_key>"
-.\.venv\Scripts\python.exe .\scripts\10_integrations\fetch_mmf_collections.py --username heroesinfinite --use-api-key
+.\.venv\Scripts\python.exe .\scripts\maintenance\cleanup_mmf_collections.py
 ```
+- Update all designers (append up to 5 newest per designer):
+```powershell
+$env:MMF_API_KEY = "<your_api_key>";
+.\.venv\Scripts\python.exe .\scripts\10_integrations\update_collections_from_mmf.py --max 5 --apply
+```
+- Update a single designer:
+```powershell
+$env:MMF_API_KEY = "<your_api_key>";
+.\.venv\Scripts\python.exe .\scripts\10_integrations\update_collections_from_mmf.py --designer bestiarum_miniatures --max 5 --apply
+```
+
+Notes
+- Exact usernames matter. If a designer’s collections live under a parent brand (e.g., Cyber Forge under `TitanForgeMiniatures`), set the map accordingly in `vocab/mmf_usernames.json`.
+- The updater prunes obviously unrelated entries on write: if an item’s `source_urls` don’t match the mapped username, it won’t be added.
+- The cleanup script preserves entries without `source_urls` by default (so curated content isn’t accidentally dropped). If you want a stricter mode, open an issue or add a flag.
 
 
 ## Terminology (quick reference)
