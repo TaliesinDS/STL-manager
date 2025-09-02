@@ -1,0 +1,96 @@
+version: 1
+publisher: patreon
+
+designer_key: comet_lord_miniatures
+collections:
+- id: comet_lord_miniatures__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: comet_lord_miniatures__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: comet_lord_miniatures__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: comet_lord_miniatures__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: comet_lord_miniatures__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+# See archvillain.yaml for an example entry format.
+- id: comet_lord_miniatures__featured
+  name: Featured
+  cycle: ''
+  theme: featured
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CometLordMiniatures/collection/featured
+  aliases:
+  - Featured
+- id: comet_lord_miniatures__domain_of_the_comet_lord
+  name: Domain of The Comet Lord
+  cycle: ''
+  theme: domain_of_the_comet_lord
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CometLordMiniatures/collection/domain-of-the-comet-lord
+  aliases:
+  - Domain of The Comet Lord
+- id: comet_lord_miniatures__holiday_sale_2022
+  name: Holiday Sale 2022
+  cycle: ''
+  theme: holiday_sale_2022
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CometLordMiniatures/collection/holiday-sale-2022
+  aliases:
+  - Holiday Sale 2022
+- id: comet_lord_miniatures__demons_devils
+  name: Demons & Devils
+  cycle: ''
+  theme: demons_devils
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CometLordMiniatures/collection/demons-devils
+  aliases:
+  - Demons & Devils
+- id: comet_lord_miniatures__constructs_golems
+  name: Constructs & Golems
+  cycle: ''
+  theme: constructs_golems
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CometLordMiniatures/collection/constructs-golems
+  aliases:
+  - Constructs & Golems

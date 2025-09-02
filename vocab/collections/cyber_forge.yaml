@@ -1,0 +1,171 @@
+version: 1
+publisher: patreon
+
+designer_key: cyber_forge
+collections:
+- id: cyber_forge__2022_01_raw_power
+  name: "Raw Power"
+  cycle: "2022-01"
+  theme: raw_power
+  publisher: patreon
+  source_urls:
+  - "https://www.brueckenkopf-online.com/2022/cyber-forge-januar/"
+  aliases: ["Raw Power", "January 2022", "Space Vikings", "Queen Katrin Davidsdottir"]
+  match:
+    path_patterns:
+    - "(?i)raw[ _-]?power"
+    - "(?i)space[ _-]?vikings"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cyber_forge__2022_02_cyber_fist_tournament
+  name: "Cyber Fist Tournament 2022"
+  cycle: "2022-02"
+  theme: cyber_fist_tournament
+  publisher: patreon
+  source_urls:
+  - "https://www.brueckenkopf-online.com/2022/cyber-forge-januar-2/"
+  - "https://www.reddit.com/r/PrintedMinis/comments/skl3e9/cyber_forge_february_release/"
+  aliases: ["Cyber Fist Tournament", "CFT 2022", "February 2022"]
+  match:
+    path_patterns:
+    - "(?i)(?:cft|cyber[ _-]?fist)(?:[ _-]?tournament)?(?:[ _-]?2022)?"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cyber_forge__2022_03_star_ops
+  name: "Star Ops"
+  cycle: "2022-03"
+  theme: star_ops
+  publisher: patreon
+  source_urls:
+  - "https://www.patreon.com/posts/open-post-march-63212608"
+  - "https://www.myminifactory.com/object/3d-print-cyber-forge-march-2022-release-212550"
+  aliases: ["Star Ops", "March 2022"]
+  match:
+    path_patterns:
+    - "(?i)star[ _-]?ops"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cyber_forge__2022_04_island_of_dr_maneater
+  name: "Island of Dr. Maneater"
+  cycle: "2022-04"
+  theme: island_of_dr_maneater
+  publisher: patreon
+  source_urls:
+  - "https://www.brueckenkopf-online.com/2022/cyber-forge-2022/"
+  - "https://www.myminifactory.com/object/3d-print-cyber-forge-april-22-release-217600"
+  aliases: ["Island of Dr. Maneater", "Dr Maneater", "April 2022"]
+  match:
+    path_patterns:
+    - "(?i)(?:island[ _-]of[ _-])?dr[._-]?[ _-]?maneater"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cyber_forge__2022_05_blue_vs_red
+  name: "Blue vs Red"
+  cycle: "2022-05"
+  theme: blue_vs_red
+  publisher: patreon
+  source_urls:
+  - "https://www.patreon.com/posts/open-post-may-65571853"
+  - "https://www.patreon.com/posts/65572857"
+  - "https://www.patreon.com/posts/cyber-forge-66263960"
+  aliases: ["Blue vs Red", "May 2022"]
+  match:
+    path_patterns:
+    - "(?i)blue[ _-]?vs[ _-]?red"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cyber_forge__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: cyber_forge__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: cyber_forge__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: cyber_forge__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: cyber_forge__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: cyber_forge__3dbenchy_and_remixes
+  name: '#3DBenchy and remixes'
+  cycle: ''
+  theme: 3dbenchy_and_remixes
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/3dbenchy-and-remixes
+  aliases:
+  - '#3DBenchy and remixes'
+- id: cyber_forge__scanned_with_sony_s_3d_creator_app
+  name: Scanned with Sony's 3D Creator app
+  cycle: ''
+  theme: scanned_with_sony_s_3d_creator_app
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/scanned-with-sony-s-3d-creator-app
+  aliases:
+  - Scanned with Sony's 3D Creator app
+- id: cyber_forge__vr_kit
+  name: VR kit
+  cycle: ''
+  theme: vr_kit
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/vr-kit
+  aliases:
+  - VR kit
+- id: cyber_forge__hairy_models
+  name: Hairy models
+  cycle: ''
+  theme: hairy_models
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/hairy-models
+  aliases:
+  - Hairy models
+- id: cyber_forge__reg_s_education_collection
+  name: Reg's Education Collection
+  cycle: ''
+  theme: reg_s_education_collection
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/reg-s-education-collection
+  aliases:
+  - Reg's Education Collection

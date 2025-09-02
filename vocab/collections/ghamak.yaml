@@ -1,0 +1,127 @@
+version: 1
+publisher: patreon
+
+designer_key: ghamak
+collections:
+- id: ghamak__2022_01_scifi
+  name: "January 2022 Sci-Fi"
+  cycle: "2022-01"
+  theme: scifi
+  publisher: patreon
+  source_urls: []
+  aliases:
+  - Ghamak Jan 2022 SciFi
+  - January 2022 Sci-Fi
+  - Jan 2022 Sci-Fi
+  match:
+    path_patterns:
+    - "(?i)ghamak.*(jan|january).*2022.*sci[-_ ]?fi"
+    - "(?i)(jan|january)[-_ ]?2022.*sci[-_ ]?fi"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+- id: ghamak__2022_01_fantasy
+  name: "January 2022 Fantasy"
+  cycle: "2022-01"
+  theme: fantasy
+  publisher: patreon
+  source_urls: []
+  aliases:
+  - Ghamak Jan 2022 Fantasy
+  - January 2022 Fantasy
+  - Jan 2022 Fantasy
+  match:
+    path_patterns:
+    - "(?i)ghamak.*(jan|january).*2022.*fantasy"
+    - "(?i)(jan|january)[-_ ]?2022.*fantasy"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+- id: ghamak__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: ghamak__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: ghamak__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: ghamak__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: ghamak__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: ghamak__vulturak
+  name: Vulturak
+  cycle: ''
+  theme: vulturak
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Ghamak/collection/vulturak
+  aliases:
+  - Vulturak
+- id: ghamak__the_exiled_court
+  name: The Exiled Court
+  cycle: ''
+  theme: the_exiled_court
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Ghamak/collection/the-exiled-court
+  aliases:
+  - The Exiled Court
+- id: ghamak__corrupted_guard
+  name: Corrupted Guard
+  cycle: ''
+  theme: corrupted_guard
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Ghamak/collection/corrupted-guard
+  aliases:
+  - Corrupted Guard
+- id: ghamak__akai_shogunate
+  name: Akai Shogunate
+  cycle: ''
+  theme: akai_shogunate
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Ghamak/collection/akai-shogunate
+  aliases:
+  - Akai Shogunate
+- id: ghamak__spartans
+  name: Spartans
+  cycle: ''
+  theme: spartans
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Ghamak/collection/spartans
+  aliases:
+  - Spartans

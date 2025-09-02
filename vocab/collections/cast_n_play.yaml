@@ -1,0 +1,155 @@
+version: 1
+publisher: patreon
+
+designer_key: cast_n_play
+collections:
+- id: cast_n_play__2022_01_example_alpha
+  name: "Example Alpha"
+  cycle: "2022-01"
+  theme: example_alpha
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Alpha", "January 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]alpha"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cast_n_play__2022_02_example_beta
+  name: "Example Beta"
+  cycle: "2022-02"
+  theme: example_beta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Beta", "February 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]beta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cast_n_play__2022_03_example_gamma
+  name: "Example Gamma"
+  cycle: "2022-03"
+  theme: example_gamma
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Gamma", "March 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]gamma"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cast_n_play__2022_04_example_delta
+  name: "Example Delta"
+  cycle: "2022-04"
+  theme: example_delta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Delta", "April 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]delta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cast_n_play__2022_05_example_epsilon
+  name: "Example Epsilon"
+  cycle: "2022-05"
+  theme: example_epsilon
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Epsilon", "May 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]epsilon"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: cast_n_play__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: cast_n_play__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: cast_n_play__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: cast_n_play__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: cast_n_play__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: cast_n_play__cast_n_play_townsfolk
+  name: 'Cast n Play - Townsfolk '
+  cycle: ''
+  theme: cast_n_play_townsfolk
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-townsfolk
+  aliases:
+  - 'Cast n Play - Townsfolk '
+- id: cast_n_play__cast_n_play_angels_vs_demons
+  name: 'Cast n Play - Angels vs Demons '
+  cycle: ''
+  theme: cast_n_play_angels_vs_demons
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-angels-vs-demons
+  aliases:
+  - 'Cast n Play - Angels vs Demons '
+- id: cast_n_play__cast_n_play_a_giant_mine_siege
+  name: 'Cast n Play - A Giant Mine Siege '
+  cycle: ''
+  theme: cast_n_play_a_giant_mine_siege
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-a-giant-mine-siege
+  aliases:
+  - 'Cast n Play - A Giant Mine Siege '
+- id: cast_n_play__cast_n_play_the_cursed_crew
+  name: 'Cast n Play - The Cursed Crew '
+  cycle: ''
+  theme: cast_n_play_the_cursed_crew
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-the-cursed-crew
+  aliases:
+  - 'Cast n Play - The Cursed Crew '
+- id: cast_n_play__cast_n_play_the_grand_tournament
+  name: Cast n Play - The Grand Tournament
+  cycle: ''
+  theme: cast_n_play_the_grand_tournament
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/CastnPlay/collection/cast-n-play-the-grand-tournament
+  aliases:
+  - Cast n Play - The Grand Tournament

@@ -1,0 +1,113 @@
+version: 1
+publisher: myminifactory
+
+designer_key: dm_stash
+collections:
+- id: dm_stash__2021_09_guardians_of_the_fey
+  name: "Guardians of the Fey"
+  cycle: "2021-09"
+  theme: fey
+  publisher: myminifactory
+  release_date: "2021-09-01"
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/guardians-of-the-fey
+  aliases:
+  - Guardians of the Fey
+  - DM Stash September 2021 Release
+  - September 2021
+  match:
+    path_patterns:
+    - "(?i)guardians[-_ ]of[-_ ]the[-_ ]fey"
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: dm_stash__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: dm_stash__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: dm_stash__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: dm_stash__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: dm_stash__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: dm_stash__crimson_masquerade
+  name: Crimson Masquerade
+  cycle: ''
+  theme: crimson_masquerade
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/crimson-masquerade
+  aliases:
+  - Crimson Masquerade
+- id: dm_stash__drow_from_beyond
+  name: Drow From Beyond
+  cycle: ''
+  theme: drow_from_beyond
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/drow-from-beyond
+  aliases:
+  - Drow From Beyond
+- id: dm_stash__dm_stash_terrain_sets
+  name: DM Stash - Terrain Sets
+  cycle: ''
+  theme: dm_stash_terrain_sets
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/dm-stash-terrain-sets
+  aliases:
+  - DM Stash - Terrain Sets
+- id: dm_stash__blood_on_the_sails
+  name: Blood on the Sails
+  cycle: ''
+  theme: blood_on_the_sails
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/blood-on-the-sails
+  aliases:
+  - Blood on the Sails
+- id: dm_stash__clash_of_the_dragons
+  name: Clash of the Dragons
+  cycle: ''
+  theme: clash_of_the_dragons
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/DM-Stash/collection/clash-of-the-dragons
+  aliases:
+  - Clash of the Dragons

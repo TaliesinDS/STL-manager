@@ -104,6 +104,8 @@ class Variant(Base):
     part_pack_type = Column(String(64), nullable=True)
     has_bust_variant = Column(Boolean, default=False)
     scale_ratio_den = Column(Integer, nullable=True)
+    # Human-friendly scale label, e.g., "28mm heroic"
+    scale_name = Column(String(64), nullable=True)
     height_mm = Column(Integer, nullable=True)
     mm_declared_conflict = Column(Boolean, default=False)
 
@@ -306,6 +308,9 @@ class GameSystem(Base):
     id = Column(Integer, primary_key=True)
     key = Column(String(64), unique=True, nullable=False, index=True)
     name = Column(String(128), nullable=False)
+    # Default scale for this system, e.g., 1:56 and "28mm heroic"
+    default_scale_den = Column(Integer, nullable=True)
+    default_scale_name = Column(String(64), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     factions = relationship("Faction", back_populates="system", cascade="all, delete-orphan")

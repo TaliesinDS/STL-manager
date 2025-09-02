@@ -1,0 +1,155 @@
+version: 1
+publisher: patreon
+
+designer_key: loot_studios
+collections:
+- id: loot_studios__2022_01_example_alpha
+  name: "Example Alpha"
+  cycle: "2022-01"
+  theme: example_alpha
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Alpha", "January 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]alpha"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: loot_studios__2022_02_example_beta
+  name: "Example Beta"
+  cycle: "2022-02"
+  theme: example_beta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Beta", "February 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]beta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: loot_studios__2022_03_example_gamma
+  name: "Example Gamma"
+  cycle: "2022-03"
+  theme: example_gamma
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Gamma", "March 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]gamma"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: loot_studios__2022_04_example_delta
+  name: "Example Delta"
+  cycle: "2022-04"
+  theme: example_delta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Delta", "April 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]delta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: loot_studios__2022_05_example_epsilon
+  name: "Example Epsilon"
+  cycle: "2022-05"
+  theme: example_epsilon
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Epsilon", "May 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]epsilon"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: loot_studios__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: loot_studios__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: loot_studios__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: loot_studios__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: loot_studios__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: loot_studios__goblin_trouble_loot_studios
+  name: Goblin Trouble - Loot Studios
+  cycle: ''
+  theme: goblin_trouble_loot_studios
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/LootStudios/collection/goblin-trouble-loot-studios
+  aliases:
+  - Goblin Trouble - Loot Studios
+- id: loot_studios__vampires_in_panshaw_loot_studios
+  name: Vampires in Panshaw - Loot Studios
+  cycle: ''
+  theme: vampires_in_panshaw_loot_studios
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/LootStudios/collection/vampires-in-panshaw-loot-studios
+  aliases:
+  - Vampires in Panshaw - Loot Studios
+- id: loot_studios__wightpocalypse_loot_studios
+  name: Wightpocalypse - Loot Studios
+  cycle: ''
+  theme: wightpocalypse_loot_studios
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/LootStudios/collection/wightpocalypse-loot-studios
+  aliases:
+  - Wightpocalypse - Loot Studios
+- id: loot_studios__mad_mage_s_experiments_loot_studios
+  name: Mad Mage's Experiments - Loot Studios
+  cycle: ''
+  theme: mad_mage_s_experiments_loot_studios
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/LootStudios/collection/mad-mage-s-experiments-loot-studios
+  aliases:
+  - Mad Mage's Experiments - Loot Studios
+- id: loot_studios__expedition_to_the_underworld_loot_studios
+  name: Expedition to the Underworld - Loot Studios
+  cycle: ''
+  theme: expedition_to_the_underworld_loot_studios
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/LootStudios/collection/expedition-to-the-underworld-loot-studios
+  aliases:
+  - Expedition to the Underworld - Loot Studios

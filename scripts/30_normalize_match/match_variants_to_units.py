@@ -28,9 +28,20 @@ from scripts.lib.alias_rules import AMBIGUOUS_ALIASES  # type: ignore
 
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
+# Default scale per system as 1:denominator (e.g., 1:56 ~ 28-32mm heroic)
+SYSTEM_DEFAULT_SCALE_DEN: Dict[str, int] = {"w40k": 56, "aos": 56, "heresy": 56, "old_world": 56}
+SYSTEM_DEFAULT_SCALE_NAME: Dict[str, str] = {"w40k": "28mm heroic", "aos": "28mm heroic", "heresy": "28mm heroic", "old_world": "28mm heroic"}
 # Ambiguous/generic aliases that are too weak to accept on their own
 # Reuse the central list used by normalization/character matching for consistency
 GENERIC_ROLE_ALIASES: Set[str] = set(AMBIGUOUS_ALIASES)
+
+# Default tabletop scale by system (denominator of 1:scale). Conservative defaults for GW systems.
+DEFAULT_SCALE_BY_SYSTEM: Dict[str, int] = {
+    "w40k": 56,     # ~28mm heroic
+    "heresy": 56,   # same physical scale as 40k
+    "aos": 56,      # Age of Sigmar ~28-32mm heroic, keep single denom
+    # "old_world": 56,  # uncomment if Old World is ingested as a system key
+}
 
 
 def norm_text(s: str) -> str:
@@ -1426,6 +1437,37 @@ def main() -> None:
                             if args.apply and (args.overwrite or not getattr(v, 'intended_use_bucket', None)):
                                 if getattr(v, 'game_system', None) or getattr(v, 'codex_faction', None) or getattr(ref, 'system_key', None):
                                     v.intended_use_bucket = 'tabletop_intent'
+                        except Exception:
+                            pass
+
+                        # Default scale by system (if unset). Prefer DB defaults on GameSystem, else fall back.
+                        try:
+                            if args.apply:
+                                sys_key = getattr(ref, 'system_key', None) or getattr(v, 'game_system', None)
+                                if sys_key:
+                                    # fetch GameSystem row if present
+                                    gs = None
+                                    try:
+                                        gs = session.query(GameSystem).filter(GameSystem.key == sys_key).first()
+                                    except Exception:
+                                        gs = None
+                                    if args.overwrite or not getattr(v, 'scale_ratio_den', None):
+                                        den = (getattr(gs, 'default_scale_den', None) if gs else None) or SYSTEM_DEFAULT_SCALE_DEN.get(sys_key)
+                                        if den:
+                                            v.scale_ratio_den = den
+                                    if args.overwrite or not getattr(v, 'scale_name', None):
+                                        sname = (getattr(gs, 'default_scale_name', None) if gs else None) or SYSTEM_DEFAULT_SCALE_NAME.get(sys_key)
+                                        if sname:
+                                            v.scale_name = sname
+                        except Exception:
+                            pass
+
+                        # Default scale based on system if not already set
+                        try:
+                            if args.apply and (args.overwrite or getattr(v, 'scale_ratio_den', None) in (None, 0)):
+                                sys_key = getattr(v, 'game_system', None) or getattr(ref, 'system_key', None)
+                                if sys_key and sys_key in DEFAULT_SCALE_BY_SYSTEM:
+                                    v.scale_ratio_den = DEFAULT_SCALE_BY_SYSTEM[sys_key]
                         except Exception:
                             pass
 

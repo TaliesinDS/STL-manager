@@ -452,6 +452,31 @@ Baseline (Phase 1) runtime requires only the embedded Python environment (or for
 
 YAML parsing: `ruamel.yaml` is included in `requirements.txt` and used by the codex/parts loader to preserve structure and tolerate duplicate keys.
 
+## MyMiniFactory Integration (public collections)
+
+A minimal client is provided under `scripts/10_integrations/` to fetch a creator’s public collections from MyMiniFactory and save a timestamped JSON report in `reports/`.
+
+Credentials (set one of):
+- OAuth: set `MMF_CLIENT_ID` and `MMF_CLIENT_SECRET` (token fetched from `https://auth.myminifactory.com/v1/oauth/tokens`).
+- API key: set `MMF_API_KEY` (passed as `?key=...`).
+
+Optional overrides:
+- `MMF_API_BASE` (default `https://www.myminifactory.com/api/v2`)
+- `MMF_AUTH_BASE` (default `https://auth.myminifactory.com`)
+
+Examples (PowerShell):
+
+```powershell
+$env:MMF_CLIENT_ID = "<your_client_id>"
+$env:MMF_CLIENT_SECRET = "<your_client_secret>"
+.\.venv\Scripts\python.exe .\scripts\10_integrations\fetch_mmf_collections.py --username heroesinfinite
+
+# Or using API key
+$env:MMF_API_KEY = "<your_api_key>"
+.\.venv\Scripts\python.exe .\scripts\10_integrations\fetch_mmf_collections.py --username heroesinfinite --use-api-key
+```
+
+
 ## Terminology (quick reference)
 - Variant: a DB record representing a model folder (can be a container) that may contain files (STL/OBJ/etc.). Often corresponds to a directory in your library.
 - Kit: a Variant that acts as a parent container for part packs (e.g., bodies/heads/weapons). Children are sub-Variants.

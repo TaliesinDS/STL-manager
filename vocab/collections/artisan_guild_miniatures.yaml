@@ -1,0 +1,155 @@
+version: 1
+publisher: patreon
+
+designer_key: artisan_guild_miniatures
+collections:
+- id: artisan_guild_miniatures__2022_01_example_alpha
+  name: "Example Alpha"
+  cycle: "2022-01"
+  theme: example_alpha
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Alpha", "January 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]alpha"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: artisan_guild_miniatures__2022_02_example_beta
+  name: "Example Beta"
+  cycle: "2022-02"
+  theme: example_beta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Beta", "February 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]beta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: artisan_guild_miniatures__2022_03_example_gamma
+  name: "Example Gamma"
+  cycle: "2022-03"
+  theme: example_gamma
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Gamma", "March 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]gamma"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: artisan_guild_miniatures__2022_04_example_delta
+  name: "Example Delta"
+  cycle: "2022-04"
+  theme: example_delta
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Delta", "April 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]delta"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: artisan_guild_miniatures__2022_05_example_epsilon
+  name: "Example Epsilon"
+  cycle: "2022-05"
+  theme: example_epsilon
+  publisher: patreon
+  source_urls: []
+  aliases: ["Example Epsilon", "May 2022"]
+  match:
+    path_patterns: ["(?i)example[-_ ]epsilon"]
+    sequence_number_regex:
+    - "^(\\d{1,2})[._ -]"
+    - "[ _-](\\d{1,2})[ _-]"
+- id: artisan_guild_miniatures__michelangelo
+  name: Michelangelo
+  cycle: ''
+  theme: michelangelo
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  aliases:
+  - Michelangelo
+- id: artisan_guild_miniatures__best_3d_printable_games_toys
+  name: Best 3D printable Games & Toys
+  cycle: ''
+  theme: best_3d_printable_games_toys
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  aliases:
+  - Best 3D printable Games & Toys
+- id: artisan_guild_miniatures__pimp_my_nerf_gun
+  name: Pimp my Nerf gun
+  cycle: ''
+  theme: pimp_my_nerf_gun
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  aliases:
+  - Pimp my Nerf gun
+- id: artisan_guild_miniatures__in_the_search_of_the_next_barbie_doll
+  name: In the search of the next Barbie doll
+  cycle: ''
+  theme: in_the_search_of_the_next_barbie_doll
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  aliases:
+  - In the search of the next Barbie doll
+- id: artisan_guild_miniatures__huaban
+  name: huaban
+  cycle: ''
+  theme: huaban
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  aliases:
+  - huaban
+- id: artisan_guild_miniatures__3dbenchy_and_remixes
+  name: '#3DBenchy and remixes'
+  cycle: ''
+  theme: 3dbenchy_and_remixes
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/3dbenchy-and-remixes
+  aliases:
+  - '#3DBenchy and remixes'
+- id: artisan_guild_miniatures__scanned_with_sony_s_3d_creator_app
+  name: Scanned with Sony's 3D Creator app
+  cycle: ''
+  theme: scanned_with_sony_s_3d_creator_app
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/scanned-with-sony-s-3d-creator-app
+  aliases:
+  - Scanned with Sony's 3D Creator app
+- id: artisan_guild_miniatures__vr_kit
+  name: VR kit
+  cycle: ''
+  theme: vr_kit
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/vr-kit
+  aliases:
+  - VR kit
+- id: artisan_guild_miniatures__hairy_models
+  name: Hairy models
+  cycle: ''
+  theme: hairy_models
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/hairy-models
+  aliases:
+  - Hairy models
+- id: artisan_guild_miniatures__reg_s_education_collection
+  name: Reg's Education Collection
+  cycle: ''
+  theme: reg_s_education_collection
+  publisher: myminifactory
+  source_urls:
+  - https://www.myminifactory.com/users/romain/collection/reg-s-education-collection
+  aliases:
+  - Reg's Education Collection
