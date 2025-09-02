@@ -171,6 +171,24 @@ variant_axes:
 
 Logic: If both segmentation tokens appear (e.g., folder has both 'split' and 'merged') -> set segmentation=unknown + warning `segmentation_conflict`.
 
+Heuristic extensions (implementation detail; not part of the canonical alias lists above):
+- Segmentation (merged): detect phrases/tokens that imply an uncut/merged model even if not split cleanly into tokens, for example:
+	- "uncutversion" or the pair "uncut" + "version"
+	- "nonsplitversion" or the triplet "non/no" + "split" + "version"
+	- "unsplit" and "non_split_version"
+- Segmentation (split): detect common phrasing and synonyms that imply split/sectioned models beyond the base tokens:
+	- "cutversion" or the pair "cut" + "version"
+	- "splitversion" or the pair "split" + "version"
+	- synonyms: "sectioned", "separated", "segmented", "sliced", "slice"
+	- explicit pairings: "cut" + "parts", "separate" + "parts", "separated" + "parts", "split" + "parts"
+	- boundary word forms with separators: tokens like "foo-cut", "cut_bar" are treated as split; "uncut" is explicitly excluded
+- Support state (pre-supported): detect real-world concatenations and split pairs in addition to base tokens:
+	- tokens starting with "presupported" (e.g., "presupportedstl", "presupportedbase", "presupportedhairfront", etc.)
+	- the pair "pre" + "supported" when they appear as separate tokens
+	- conflict handling: if both presupported and unsupported signals appear, prefer `presupported` and add `support_state_conflict` to `normalization_warnings`
+
+These heuristics are implemented in the normalizer to improve recall on natural folder/file naming patterns without expanding the canonical alias set.
+
 ---
 ## 9. Scale Tokens
 ```

@@ -45,6 +45,7 @@ YAML SSOT (Tabletop Units & Parts):
 4. Faction lookup (only if system known; else note potential faction tokens for possible warning).
 5. Lineage family lookup (skip tokens already consumed by deterministic faction implying lineage if future rule added).
 6. Variant axes (segmentation, internal_volume, support_state, part_pack_type, bust indicator).
+	- Implementation detail: in addition to canonical token lists in `tokenmap.md`, the normalizer applies conservative heuristics to catch common concatenated or multi-token phrases (e.g., `cut + version`, `splitversion`, `uncutversion`, `non + split + version`, and `presupported*` prefixes). These do not expand the canonical alias sets but improve recall on real-world folder/file names. Conflicts add warnings (e.g., `support_state_conflict`).
 7. NSFW strong cues.
 8. Intended use bucket (top-level directory names only; not deeper segments).
 9. Role cues (pc_candidate_flag proto).

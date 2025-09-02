@@ -421,6 +421,128 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
     return out
 
 
+def _posix_path(s: str) -> str:
+    return (s or "").replace("\\", "/")
+
+
+def _leaf_name(rel_path: str) -> str:
+    p = _posix_path(rel_path)
+    return p.rsplit('/', 1)[-1] if '/' in p else p
+
+
+def _parent_dir(rel_path: str) -> str:
+    p = _posix_path(rel_path)
+    return p.rsplit('/', 1)[0] if '/' in p else ''
+
+
+_BOILERPLATE_TOKENS = {
+    'uncut','scale','stl','lys','base','bases','images','image','preview','supported','presupported','pre','sup','sup_',
+}
+
+
+def _extract_scale_den_from_name(name: str) -> Optional[int]:
+    s = (name or '').lower()
+    # 1-6, 1/10, 1_56, 1:72 patterns with optional 'scale'
+    m = re.search(r"\b1[\-_/,:]([0-9]{1,3})(?:\s*scale)?\b", s)
+    if m:
+        try:
+            return int(m.group(1))
+        except Exception:
+            return None
+    # '6scale' form
+    m = re.search(r"\b([0-9]{1,3})\s*scale\b", s)
+    if m:
+        try:
+            return int(m.group(1))
+        except Exception:
+            return None
+    return None
+
+
+def _normalize_model_key(name: str) -> str:
+    toks = [t for t in SPLIT_CHARS.split((name or '').lower()) if t]
+    out: list[str] = []
+    for t in toks:
+        if t in _BOILERPLATE_TOKENS:
+            continue
+        dom = classify_token(t)
+        if dom in ("scale_ratio", "scale_mm"):
+            continue
+        out.append(t)
+    return ' '.join(out)
+
+
+def infer_segmentation_from_siblings(session, variant: Variant, current_segmentation: Optional[str], allow_cross_scale: bool = True) -> tuple[Optional[str], bool]:
+    """Infer segmentation by checking sibling variants in the same parent folder.
+    Heuristic:
+      - If current leaf contains token 'uncut' => 'merged' (already handled upstream; return current as-is if set).
+      - Else, if any sibling's leaf name equals ours when removing 'uncut' tokens AND that sibling contains 'uncut', infer 'split'.
+    """
+    try:
+        rel = variant.rel_path or ''
+    except Exception:
+        return (current_segmentation, False)
+    leaf = _leaf_name(rel)
+    leaf_toks = [t for t in SPLIT_CHARS.split(leaf.lower()) if t]
+    if 'uncut' in leaf_toks:
+        # Prefer explicit token signal; keep current if already set to merged
+        return (current_segmentation or 'merged', False)
+    parent = _parent_dir(rel)
+    if not parent:
+        return (current_segmentation, False)
+    # Helper to query by prefix in a cross-platform manner
+    def _query_by_prefix(prefix: str):
+        try:
+            from sqlalchemy import or_  # type: ignore
+        except Exception:
+            return session.query(Variant).filter(Variant.rel_path.like(prefix + '/%')).all()
+        return (
+            session.query(Variant).filter(
+                or_(
+                    Variant.rel_path.like(prefix + '/%'),
+                    Variant.rel_path.like(prefix.replace('/', '\\') + '\\%')
+                )
+            ).all()
+        )
+    # Query siblings under same parent (both slash/backslash forms)
+    sibs = []
+    try:
+        sibs = _query_by_prefix(parent)
+    except Exception:
+        sibs = []
+    base_key = _normalize_model_key(leaf)
+    cur_den = _extract_scale_den_from_name(leaf)
+    for s in sibs:
+        if s.id == variant.id:
+            continue
+        s_leaf = _leaf_name(getattr(s, 'rel_path', '') or '')
+        s_toks = [t for t in SPLIT_CHARS.split(s_leaf.lower()) if t]
+        if 'uncut' not in s_toks:
+            continue
+        if _normalize_model_key(s_leaf) == base_key:
+            # Found 'uncut' sibling matching our base -> we are the split variant
+            cross = False
+            s_den = _extract_scale_den_from_name(s_leaf)
+            if allow_cross_scale and cur_den and s_den and s_den != cur_den:
+                cross = True
+            return (current_segmentation or 'split', cross)
+    # Fallback: check cousins under grandparent (parallel subfolders like '.../foo' vs '.../foo uncut')
+    gp = _parent_dir(parent)
+    if gp and allow_cross_scale:
+        try:
+            cousins = _query_by_prefix(gp)
+        except Exception:
+            cousins = []
+        for s in cousins:
+            s_leaf = _leaf_name(getattr(s, 'rel_path', '') or '')
+            s_toks = [t for t in SPLIT_CHARS.split(s_leaf.lower()) if t]
+            if 'uncut' not in s_toks:
+                continue
+            if _normalize_model_key(s_leaf) == base_key:
+                return (current_segmentation or 'split', True)
+    return (current_segmentation, False)
+
+
 def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchise_map: dict[str, str] | None = None, character_map: dict[str, str] | None = None,
                     intended_use_map: Optional[Dict[str, set]] = None, general_faction_map: Optional[Dict[str, set]] = None,
                     designer_phrases: Optional[list[tuple[list[str], str]]] = None):
@@ -697,6 +819,74 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         # If not matched above and not a stopword/classified, add to residuals
         if dom is None:
             inferred["residual_tokens"].append(tok)
+
+    # Additional segmentation hints not covered by classify_token domain mapping
+    if not inferred.get("segmentation"):
+        lower_tokens = set(token_list)
+        # Merged indicators first (avoid misclassifying 'non split version' as split)
+        if ("uncutversion" in lower_tokens) or ("uncut" in lower_tokens and "version" in lower_tokens):
+            inferred["segmentation"] = "merged"
+        elif ("nonsplitversion" in lower_tokens) or (("non" in lower_tokens or "no" in lower_tokens) and "split" in lower_tokens and "version" in lower_tokens):
+            inferred["segmentation"] = "merged"
+        elif ("unsplit" in lower_tokens) or ("non_split_version" in lower_tokens):
+            inferred["segmentation"] = "merged"
+        # Split indicators
+        elif ("cutversion" in lower_tokens) or ("cut" in lower_tokens and "version" in lower_tokens):
+            inferred["segmentation"] = "split"
+        else:
+            SYN_SPLIT = {"sectioned", "separated", "segmented", "sliced", "slice"}
+            if lower_tokens.intersection(SYN_SPLIT):
+                inferred["segmentation"] = "split"
+            elif ("splitversion" in lower_tokens) or ("split" in lower_tokens and "version" in lower_tokens):
+                inferred["segmentation"] = "split"
+            elif ("cut" in lower_tokens and "parts" in lower_tokens) or \
+                 ("separate" in lower_tokens and "parts" in lower_tokens) or \
+                 ("separated" in lower_tokens and "parts" in lower_tokens) or \
+                 ("split" in lower_tokens and "parts" in lower_tokens):
+                inferred["segmentation"] = "split"
+            else:
+                # Tertiary: tokens with cut as a boundary word (foo-cut, cut-bar, foo_cut, cut_bar)
+                # Avoid matching 'uncut' and avoid freeform substrings like 'haircut'
+                for t in token_list:
+                    lt = t.lower()
+                    if lt == "uncut":
+                        continue
+                    if lt == "cut" or lt.endswith("-cut") or lt.endswith("_cut") or lt.startswith("cut-") or lt.startswith("cut_"):
+                        inferred["segmentation"] = "split"
+                        break
+
+    # Additional support-state hints (for concatenated or variant-specific forms)
+    if not inferred.get("support_state"):
+        has_presupported = False
+        has_supported = False
+        has_unsupported = False
+        # token-level checks to catch joined forms like 'presupportedstl' or 'presupportedhairfront'
+        for t in token_list:
+            lt = t.lower()
+            if lt in {"unsupported", "no_supports", "no_support", "nosupports", "nosupport", "clean"}:
+                has_unsupported = True
+            # explicit supported
+            if lt == "supported" or lt.startswith("supported_") or lt.startswith("supported-"):
+                has_supported = True
+            # presupported appears as prefixes in many filenames
+            if lt == "presupported" or lt.startswith("presupported") or lt.startswith("pre-supported") or lt.startswith("pre_supported"):
+                has_presupported = True
+        # Also handle cases where 'pre' and 'supported' are separate tokens
+        lower_set = set(token_list)
+        if ("pre" in lower_set and "supported" in lower_set) or ("pre" in lower_set and any(tok.startswith("supported") for tok in lower_set)):
+            has_presupported = True
+        # Resolve precedence and set inferred state
+        if has_presupported and has_unsupported:
+            inferred["support_state"] = "presupported"
+            inferred.setdefault("normalization_warnings", [])
+            if "support_state_conflict" not in inferred["normalization_warnings"]:
+                inferred["normalization_warnings"].append("support_state_conflict")
+        elif has_presupported:
+            inferred["support_state"] = "presupported"
+        elif has_supported:
+            inferred["support_state"] = "supported"
+        elif has_unsupported:
+            inferred["support_state"] = "unsupported"
 
     # Secondary scale detection pass: handle split tokens like
     # "1-6 scale" -> ["1", "6", "scale"] and "1-6scale" -> ["1", "6scale"].
@@ -1052,6 +1242,13 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                            intended_use_map=intended_use_map,
                                            general_faction_map=general_faction_map,
                                            designer_phrases=designer_phrases)
+                # Sibling-aware segmentation inference
+                new_seg, cross_flag = infer_segmentation_from_siblings(session, v, inferred.get('segmentation'))
+                inferred['segmentation'] = new_seg
+                if cross_flag:
+                    inferred.setdefault('normalization_warnings', [])
+                    if 'segmentation_inferred_cross_scale' not in inferred['normalization_warnings']:
+                        inferred['normalization_warnings'].append('segmentation_inferred_cross_scale')
                 # If a designer specialization is defined and we inferred designer, set intended_use conservatively
                 d = inferred.get('designer')
                 if d and (not inferred.get('intended_use_bucket')) and d in designer_specialization:
@@ -1131,6 +1328,12 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                                intended_use_map=intended_use_map,
                                                general_faction_map=general_faction_map,
                                                designer_phrases=designer_phrases)
+                    new_seg, cross_flag = infer_segmentation_from_siblings(session, v, inferred.get('segmentation'))
+                    inferred['segmentation'] = new_seg
+                    if cross_flag:
+                        inferred.setdefault('normalization_warnings', [])
+                        if 'segmentation_inferred_cross_scale' not in inferred['normalization_warnings']:
+                            inferred['normalization_warnings'].append('segmentation_inferred_cross_scale')
                     d = inferred.get('designer')
                     if d and (not inferred.get('intended_use_bucket')) and d in designer_specialization:
                         inferred['intended_use_bucket'] = designer_specialization[d]
