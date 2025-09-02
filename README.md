@@ -18,6 +18,11 @@ Project Constraints (baseline):
 
 See `docs/TECH_STACK_PROPOSAL.md` (rev 1.1) for full architecture rationale.
 
+What’s new (2025‑09‑02):
+- Collections SSOT and matcher implemented. Per‑designer YAML lives under `vocab/collections/*.yaml` and `scripts/30_normalize_match/match_collections.py` fills `variant.collection_*`.
+- Added a YAML validator: `scripts/maintenance/validate_collections_yaml.py`.
+- Printable Scenery: consolidated “Time Warp Europe - ...” sub-lines into one `Time Warp Europe` collection id.
+
 What’s new (2025‑08‑31):
 - Shared alias rules extracted to `scripts/lib/alias_rules.py` and reused by both the normalizer and the franchise matcher.
 - Normalizer now performs conservative bigram character aliasing and prefers multi‑token aliases (e.g., `poison_ivy` from “poison ivy”) over shorter ambiguous tokens.
@@ -211,6 +216,27 @@ Notes:
 - API routes for units/parts and combined unit bundle: `docs/API_SPEC.md`.
 
 Notes & safety
+Collections matcher (designer releases):
+
+```powershell
+$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db";
+# Single designer (dry-run)
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py --db-url sqlite:///./data/stl_manager_v1.db --designer dm_stash --out ("reports/match_collections_dm_stash_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+# Apply for a single designer
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py --db-url sqlite:///./data/stl_manager_v1.db --designer dm_stash --apply --out ("reports/match_collections_dm_stash_apply_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+# All designers with YAML manifests
+$designers = (Get-ChildItem .\vocab\collections\*.yaml | ForEach-Object { $_.BaseName }); $args = @(); foreach ($d in $designers) { $args += @('--designer', $d) }; 
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py --db-url sqlite:///./data/stl_manager_v1.db @args --apply --out ("reports/match_collections_all_apply_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+```
+
+YAML validation (ruamel.yaml):
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\maintenance\validate_collections_yaml.py
+```
+
+Example consolidation (Printable Scenery): Replace many subset entries like “Time Warp Europe - Medieval Church/House/Farm/Stone Barn” with a single collection entry `printable_scenery__time_warp_europe` and a broad path pattern `(?i)time[-_ ]warp[-_ ]europe`.
+
 - All loader scripts honor the `STLMGR_DB_URL` environment variable. Example:
 
 ```powershell

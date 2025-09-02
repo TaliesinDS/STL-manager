@@ -98,11 +98,10 @@ $env:MMF_API_KEY = "<your_api_key>";
 .\.venv\Scripts\python.exe .\scripts\10_integrations\update_collections_from_mmf.py --max 5 --apply
 ```
 
-Matching (to be implemented):
-- `scripts/30_normalize_match/match_collections.py` (or a new `--collections` mode under the existing normalizer) will:
-  - Read per-designer YAML from `vocab/collections/`.
-  - For Variants with `designer` set, apply the matching strategy above and populate `variant.collection_*`.
-  - Support `--dry-run` and `--apply` and emit a JSON report like other matchers.
+Matching (implemented):
+- `scripts/30_normalize_match/match_collections.py` reads per-designer YAML from `vocab/collections/` and, for Variants with `designer` set, applies the matching strategy above to populate `variant.collection_*`.
+- Supports `--dry-run` (default) and `--apply`, writing a JSON report with `summary` and per-item results.
+- You can scope by one or more designers via repeated `--designer <key>` flags, or pass all designers by iterating over `vocab/collections/*.yaml`.
 
 Optional: on-demand MMF enrichment during matching
 - When enabled via `--mmf-refill-on-miss`, the matcher will, upon a strong collection phrase with no YAML hit:
@@ -116,7 +115,7 @@ Guardrails
 - In `--dry-run`, the matcher includes a `would_append_collections` section in the JSON report and does not write YAML.
 - Backoff on rate limits; errors are non-fatal and logged in the report.
 
-Example dry-run (once implemented):
+Example dry-run (Windows PowerShell):
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py `
   --db-url sqlite:///./data/stl_manager_v1.db `
@@ -124,6 +123,42 @@ Example dry-run (once implemented):
   --mmf-refill-on-miss `
   --out ("reports/match_collections_heroes_infinite_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
 ```
+
+Apply across all designers that have YAML manifests:
+
+```powershell
+$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db";
+$designers = (Get-ChildItem .\vocab\collections\*.yaml | ForEach-Object { $_.BaseName });
+$args = @(); foreach ($d in $designers) { $args += @('--designer', $d) };
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_collections.py --db-url sqlite:///./data/stl_manager_v1.db @args --apply --out ("reports/match_collections_all_apply_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
+```
+
+Validate YAML (ruamel.yaml):
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\maintenance\validate_collections_yaml.py
+```
+
+Example consolidation (Printable Scenery):
+- Instead of separate YAML entries like “Time Warp Europe - Medieval Church / House / Farm / Stone Barn”, define a single collection:
+
+```yaml
+- id: printable_scenery__time_warp_europe
+  name: Time Warp Europe
+  theme: time_warp_europe
+  aliases:
+  - Time Warp Europe
+  - Time Warp Europe - Church Walls
+  - Time Warp Europe - Medieval Church
+  - Time Warp Europe - Medieval House
+  - Time Warp Europe - The Farm
+  - Time Warp Europe - The Stone Barn
+  match:
+    path_patterns:
+    - "(?i)time[-_ ]warp[-_ ]europe"
+```
+
+This collapses sub-lines into a single collection id and improves consistency across variants.
 
 ### When the collection is not in YAML yet (smart proposer)
 Instead of ignoring variants or asking the user to guess, add a proposer step that scans designer-scoped variants lacking `collection_id`, extracts collection-like phrases from path segments, and drafts YAML entries for review.
