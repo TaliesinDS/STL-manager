@@ -63,93 +63,48 @@ collections:
     sequence_number_regex:
     - "^(\\d{1,2})[._ -]"
     - "[ _-](\\d{1,2})[ _-]"
-- id: epic_minis__michelangelo
-  name: Michelangelo
+- id: epic_minis__scatter_terrain_buildings
+  name: Scatter, Terrain & Buildings
   cycle: ''
-  theme: michelangelo
+  theme: scatter_terrain_buildings
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  - https://www.myminifactory.com/users/Epic-Miniatures/collection/scatter-terrain-buildings
   aliases:
-  - Michelangelo
-- id: epic_minis__best_3d_printable_games_toys
-  name: Best 3D printable Games & Toys
+  - Scatter, Terrain & Buildings
+- id: epic_minis__busts_trophies
+  name: Busts & Trophies
   cycle: ''
-  theme: best_3d_printable_games_toys
+  theme: busts_trophies
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  - https://www.myminifactory.com/users/Epic-Miniatures/collection/busts-trophies
   aliases:
-  - Best 3D printable Games & Toys
-- id: epic_minis__pimp_my_nerf_gun
-  name: Pimp my Nerf gun
+  - Busts & Trophies
+- id: epic_minis__vtt_token_sets
+  name: VTT Token Sets
   cycle: ''
-  theme: pimp_my_nerf_gun
+  theme: vtt_token_sets
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  - https://www.myminifactory.com/users/Epic-Miniatures/collection/vtt-token-sets
   aliases:
-  - Pimp my Nerf gun
-- id: epic_minis__in_the_search_of_the_next_barbie_doll
-  name: In the search of the next Barbie doll
+  - VTT Token Sets
+- id: epic_minis__invictus_model_sets
+  name: Invictus Model Sets
   cycle: ''
-  theme: in_the_search_of_the_next_barbie_doll
+  theme: invictus_model_sets
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  - https://www.myminifactory.com/users/Epic-Miniatures/collection/invictus-model-sets
   aliases:
-  - In the search of the next Barbie doll
-- id: epic_minis__huaban
-  name: huaban
+  - Invictus Model Sets
+- id: epic_minis__dragons_wyverns_more
+  name: Dragons, Wyverns & more!
   cycle: ''
-  theme: huaban
+  theme: dragons_wyverns_more
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  - https://www.myminifactory.com/users/Epic-Miniatures/collection/dragons-wyverns-more
   aliases:
-  - huaban
-- id: epic_minis__3dbenchy_and_remixes
-  name: '#3DBenchy and remixes'
-  cycle: ''
-  theme: 3dbenchy_and_remixes
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/3dbenchy-and-remixes
-  aliases:
-  - '#3DBenchy and remixes'
-- id: epic_minis__scanned_with_sony_s_3d_creator_app
-  name: Scanned with Sony's 3D Creator app
-  cycle: ''
-  theme: scanned_with_sony_s_3d_creator_app
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/scanned-with-sony-s-3d-creator-app
-  aliases:
-  - Scanned with Sony's 3D Creator app
-- id: epic_minis__vr_kit
-  name: VR kit
-  cycle: ''
-  theme: vr_kit
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/vr-kit
-  aliases:
-  - VR kit
-- id: epic_minis__hairy_models
-  name: Hairy models
-  cycle: ''
-  theme: hairy_models
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/hairy-models
-  aliases:
-  - Hairy models
-- id: epic_minis__reg_s_education_collection
-  name: Reg's Education Collection
-  cycle: ''
-  theme: reg_s_education_collection
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/reg-s-education-collection
-  aliases:
-  - Reg's Education Collection
+  - Dragons, Wyverns & more!

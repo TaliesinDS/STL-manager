@@ -23,6 +23,7 @@ from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap
 
 COLLECTIONS_DIR = os.path.join(_repo_root, "vocab", "collections")
+MMF_USERNAMES_PATH = os.path.join(_repo_root, "vocab", "mmf_usernames.json")
 
 # Map designer_key -> MMF username
 DEFAULT_USERNAME_MAP: Dict[str, str] = {
@@ -48,6 +49,18 @@ DEFAULT_USERNAME_MAP: Dict[str, str] = {
     "txarli_factory": "TxarliFactory",
     "bam_broken_anvil_monthly": "BrokenAnvil",
 }
+
+
+def load_username_overrides() -> Dict[str, str]:
+    if not os.path.exists(MMF_USERNAMES_PATH):
+        return {}
+    try:
+        with open(MMF_USERNAMES_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return {str(k): str(v) for k, v in data.items() if isinstance(k, str) and isinstance(v, str)}
+    except Exception as e:
+        print(f"Warn: failed to load {MMF_USERNAMES_PATH}: {e}")
+        return {}
 
 
 def find_designer_keys() -> List[str]:
@@ -158,6 +171,31 @@ def ensure_collections_list(doc: CommentedMap) -> List[Any]:
     return colls
 
 
+def prune_non_designer_entries(doc: CommentedMap, username: str) -> int:
+    colls = doc.get("collections") or []
+    if not isinstance(colls, list):
+        return 0
+    expected_prefix = f"https://www.myminifactory.com/users/{username}/collection/"
+    keep = []
+    removed = 0
+    for it in colls:
+        if not isinstance(it, dict):
+            keep.append(it)
+            continue
+        srcs = it.get("source_urls") or []
+        if not srcs:
+            keep.append(it)  # if no sources, we don’t delete automatically
+            continue
+        # If any source URL matches the designer path, keep; else drop
+        if any(isinstance(u, str) and u.startswith(expected_prefix) for u in srcs):
+            keep.append(it)
+        else:
+            removed += 1
+    if removed:
+        doc["collections"] = keep
+    return removed
+
+
 def entry_exists(colls: List[Any], url: str, name: str) -> bool:
     for it in colls:
         if not isinstance(it, dict):
@@ -198,6 +236,7 @@ def main() -> int:
     args = p.parse_args()
 
     keys = args.designer or find_designer_keys()
+    overrides = load_username_overrides()
 
     client_id = os.environ.get("MMF_CLIENT_ID") or os.environ.get("MMF_CLIENT_KEY")
     client_secret = os.environ.get("MMF_CLIENT_SECRET")
@@ -211,14 +250,14 @@ def main() -> int:
             print(f"Warn: OAuth token fetch failed ({e}); falling back to scrape.")
 
     for key in keys:
-        username = DEFAULT_USERNAME_MAP.get(key)
+        username = overrides.get(key) or DEFAULT_USERNAME_MAP.get(key)
         if not username:
             print(f"Skip {key}: no known MMF username mapping yet")
             continue
 
         items: List[Dict[str, Any]] = []
-        # Try with mapped username first
-        tried_usernames = []
+        tried_usernames: List[str] = []
+
         def fetch_for(u: str) -> List[Dict[str, Any]]:
             out: List[Dict[str, Any]] = []
             # Use the user-specific endpoint when possible
@@ -263,7 +302,7 @@ def main() -> int:
         if not args.apply:
             continue
 
-        # Apply: parse YAML and append structured entries if missing
+        # Apply: parse YAML and append structured entries if missing; also prune obviously unrelated MMF entries
         yaml_path = os.path.join(COLLECTIONS_DIR, f"{key}.yaml")
         if not os.path.exists(yaml_path):
             print(f"Skip apply for {key}: missing {yaml_path}")
@@ -280,6 +319,12 @@ def main() -> int:
         except Exception as e:
             print(f"Error parsing YAML for {key} ({yaml_path}): {e}")
             continue
+        # Prune unrelated entries if they point to different MMF users
+        removed = 0
+        if username:
+            removed = prune_non_designer_entries(doc, username)
+            if removed:
+                print(f"Pruned {removed} non-designer MMF collection(s) from {yaml_path}")
         colls = ensure_collections_list(doc)
         added = 0
         for it in chosen:

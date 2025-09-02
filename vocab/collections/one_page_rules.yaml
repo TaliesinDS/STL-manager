@@ -3,52 +3,6 @@ publisher: patreon
 
 designer_key: one_page_rules
 collections:
-- id: one_page_rules__michelangelo
-  name: Michelangelo
-  cycle: ''
-  theme: michelangelo
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
-  aliases:
-  - Michelangelo
-- id: one_page_rules__best_3d_printable_games_toys
-  name: Best 3D printable Games & Toys
-  cycle: ''
-  theme: best_3d_printable_games_toys
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
-  aliases:
-  - Best 3D printable Games & Toys
-- id: one_page_rules__pimp_my_nerf_gun
-  name: Pimp my Nerf gun
-  cycle: ''
-  theme: pimp_my_nerf_gun
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
-  aliases:
-  - Pimp my Nerf gun
-- id: one_page_rules__in_the_search_of_the_next_barbie_doll
-  name: In the search of the next Barbie doll
-  cycle: ''
-  theme: in_the_search_of_the_next_barbie_doll
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
-  aliases:
-  - In the search of the next Barbie doll
-- id: one_page_rules__huaban
-  name: huaban
-  cycle: ''
-  theme: huaban
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
-  aliases:
-  - huaban
-# See archvillain.yaml for an example entry format.
 - id: one_page_rules__grimdark_future_star_quest
   name: 'Grimdark Future: Star Quest'
   cycle: ''

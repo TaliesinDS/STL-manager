@@ -20,93 +20,49 @@ collections:
     sequence_number_regex:
     - "^(?!\\d{2}mm)(\\d{1,2})[._ -]"
     - "(?<!mm)[ _-](\\d{1,2})[ _-]"
-- id: heroes_infinite__michelangelo
-  name: Michelangelo
+- id: 
+    heroes_infinite__mortenburg_chronicles_dark_lords_of_the_ever_shifting_sands
+  name: 'Mortenburg Chronicles: Dark Lords of the Ever Shifting Sands'
   cycle: ''
-  theme: michelangelo
+  theme: mortenburg_chronicles_dark_lords_of_the_ever_shifting_sands
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/Scan%20The%20World/collection/michelangelo
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/mortenburg-chronicles-dark-lords-of-the-ever-shifting-sands
   aliases:
-  - Michelangelo
-- id: heroes_infinite__best_3d_printable_games_toys
-  name: Best 3D printable Games & Toys
+  - 'Mortenburg Chronicles: Dark Lords of the Ever Shifting Sands'
+- id: heroes_infinite__ghouls_and_goblins_wars_of_the_underworld
+  name: 'Ghouls and Goblins: Wars of the Underworld'
   cycle: ''
-  theme: best_3d_printable_games_toys
+  theme: ghouls_and_goblins_wars_of_the_underworld
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/best-3d-printable-games-toys
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/ghouls-and-goblins-wars-of-the-underworld
   aliases:
-  - Best 3D printable Games & Toys
-- id: heroes_infinite__pimp_my_nerf_gun
-  name: Pimp my Nerf gun
+  - 'Ghouls and Goblins: Wars of the Underworld'
+- id: heroes_infinite__imperial_commando_lost_in_the_jungle
+  name: 'Imperial Commando: Lost in the Jungle'
   cycle: ''
-  theme: pimp_my_nerf_gun
+  theme: imperial_commando_lost_in_the_jungle
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/pimp-my-nerf-gun
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/imperial-commando-lost-in-the-jungle
   aliases:
-  - Pimp my Nerf gun
-- id: heroes_infinite__in_the_search_of_the_next_barbie_doll
-  name: In the search of the next Barbie doll
+  - 'Imperial Commando: Lost in the Jungle'
+- id: heroes_infinite__paladins_of_light_against_the_red_dragonborns
+  name: Paladins of Light against the Red Dragonborns
   cycle: ''
-  theme: in_the_search_of_the_next_barbie_doll
+  theme: paladins_of_light_against_the_red_dragonborns
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/romain/collection/in-the-search-of-the-next-barbie-doll
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/paladins-of-light-against-the-red-dragonborns
   aliases:
-  - In the search of the next Barbie doll
-- id: heroes_infinite__huaban
-  name: huaban
+  - Paladins of Light against the Red Dragonborns
+- id: heroes_infinite__eclipsed_by_darkness_inquisition_vs_the_void_elves
+  name: 'Eclipsed by Darkness: Inquisition vs the Void Elves'
   cycle: ''
-  theme: huaban
+  theme: eclipsed_by_darkness_inquisition_vs_the_void_elves
   publisher: myminifactory
   source_urls:
-  - https://www.myminifactory.com/users/%E6%9D%A8%E5%8A%9B%28Li%20Yang%29/collection/huaban
+  - https://www.myminifactory.com/users/HeroesInfiniteByRagingHeroes/collection/eclipsed-by-darkness-inquisition-vs-the-void-elves
   aliases:
-  - huaban
-- id: heroes_infinite__3dbenchy_and_remixes
-  name: '#3DBenchy and remixes'
-  cycle: ''
-  theme: 3dbenchy_and_remixes
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/3dbenchy-and-remixes
-  aliases:
-  - '#3DBenchy and remixes'
-- id: heroes_infinite__scanned_with_sony_s_3d_creator_app
-  name: Scanned with Sony's 3D Creator app
-  cycle: ''
-  theme: scanned_with_sony_s_3d_creator_app
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/scanned-with-sony-s-3d-creator-app
-  aliases:
-  - Scanned with Sony's 3D Creator app
-- id: heroes_infinite__vr_kit
-  name: VR kit
-  cycle: ''
-  theme: vr_kit
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/vr-kit
-  aliases:
-  - VR kit
-- id: heroes_infinite__hairy_models
-  name: Hairy models
-  cycle: ''
-  theme: hairy_models
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/hairy-models
-  aliases:
-  - Hairy models
-- id: heroes_infinite__reg_s_education_collection
-  name: Reg's Education Collection
-  cycle: ''
-  theme: reg_s_education_collection
-  publisher: myminifactory
-  source_urls:
-  - https://www.myminifactory.com/users/romain/collection/reg-s-education-collection
-  aliases:
-  - Reg's Education Collection
+  - 'Eclipsed by Darkness: Inquisition vs the Void Elves'
