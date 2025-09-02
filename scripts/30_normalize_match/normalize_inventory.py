@@ -33,6 +33,7 @@ from scripts.quick_scan import (
     classify_token,
     SCALE_RATIO_RE,
     SCALE_MM_RE,
+    ALLOWED_DENOMS,
     SPLIT_CHARS,
 )
 from scripts.lib.alias_rules import (
@@ -373,6 +374,50 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
             seen.add(t)
             out.append(t)
 
+    # Inject synthetic scale tokens from raw path strings so that downstream
+    # classifiers can detect scale even when single-digit tokens like '1' or '6'
+    # are dropped by the tokenizer (TOKEN_MIN_LEN=2).
+    try:
+        rel_raw = (variant.rel_path or "")
+    except Exception:
+        rel_raw = ""
+    try:
+        fname_raw = (variant.filename or "")
+    except Exception:
+        fname_raw = ""
+    full_raw = f"{rel_raw}\n{fname_raw}".lower()
+    def _maybe_add(tok: str):
+        if tok and tok not in seen:
+            seen.add(tok)
+            out.append(tok)
+    # Ratio forms that mention 'scale' near the number; require 'scale' to avoid false positives
+    for m in re.finditer(r"1[\s\-_:/*]*([0-9]{1,3})\s*scale", full_raw):
+        try:
+            den = int(m.group(1))
+        except Exception:
+            den = None
+        if den and (den in ALLOWED_DENOMS or den in {5, 8, 11}):
+            _maybe_add(f"{den}scale")
+            break
+    if 'scale' in full_raw and not any(t.endswith('scale') for t in out):
+        # 'scale 10' or 'scale 1 10'
+        m2 = re.search(r"scale[\s\-_:/*]*1?[\s\-_:/*]*([0-9]{2,3})\b", full_raw)
+        if m2:
+            try:
+                den = int(m2.group(1))
+            except Exception:
+                den = None
+            if den and (den in ALLOWED_DENOMS or den in {5, 8, 11}):
+                _maybe_add(f"{den}scale")
+    # Height in mm like '75mm'
+    for m3 in re.finditer(r"\b([0-9]{2,3})\s*mm\b", full_raw):
+        try:
+            mm = int(m3.group(1))
+        except Exception:
+            mm = None
+        if mm:
+            _maybe_add(f"{mm}mm")
+
     return out
 
 
@@ -652,6 +697,68 @@ def classify_tokens(tokens: Iterable[str], designer_map: dict[str, str], franchi
         # If not matched above and not a stopword/classified, add to residuals
         if dom is None:
             inferred["residual_tokens"].append(tok)
+
+    # Secondary scale detection pass: handle split tokens like
+    # "1-6 scale" -> ["1", "6", "scale"] and "1-6scale" -> ["1", "6scale"].
+    # Only run if not already detected by direct token matches.
+    if not inferred.get("scale_ratio_den"):
+        n = len(token_list)
+        # Helper to parse a denominator from a token like "6" or "6scale"
+        def _parse_den_from_token(t: str) -> Optional[int]:
+            m = re.match(r"^([0-9]{1,3})(?:scale)?$", t)
+            if not m:
+                return None
+            try:
+                return int(m.group(1))
+            except Exception:
+                return None
+
+        # Pattern A: 1, <den>[scale]? [, 'scale'] (requires presence of '1' token, often removed by tokenizer; best effort)
+        for i in range(0, n - 1):
+            if token_list[i] != "1":
+                continue
+            nxt = token_list[i + 1]
+            den = _parse_den_from_token(nxt)
+            nxt2 = token_list[i + 2] if (i + 2) < n else None
+            has_scale_neighbor = (isinstance(nxt, str) and nxt.endswith("scale")) or (nxt2 == "scale")
+            if den and has_scale_neighbor:
+                # Accept only common/suspect denominators to avoid false positives
+                if den in ALLOWED_DENOMS or den in {5, 8, 11}:
+                    inferred["scale_ratio_den"] = den
+                    break
+
+        # Pattern B: 'scale', '1', <den> or simply 'scale', <den> (when '1' was dropped by tokenizer)
+        if not inferred.get("scale_ratio_den"):
+            for i in range(0, n - 1):
+                if token_list[i] == "scale":
+                    # Prefer two- or three-digit neighbor as denominator
+                    neighbor = token_list[i + 1] if (i + 1) < n else None
+                    if neighbor and re.fullmatch(r"[0-9]{2,3}", neighbor):
+                        den = int(neighbor)
+                        if den in ALLOWED_DENOMS or den in {5, 8, 11}:
+                            inferred["scale_ratio_den"] = den
+                            break
+                    # Consider '1' then two/three-digit as well
+                    if (i + 2) < n and token_list[i + 1] == "1":
+                        neighbor2 = token_list[i + 2]
+                        if neighbor2 and re.fullmatch(r"[0-9]{2,3}", neighbor2):
+                            den = int(neighbor2)
+                            if den in ALLOWED_DENOMS or den in {5, 8, 11}:
+                                inferred["scale_ratio_den"] = den
+                                break
+
+        # Pattern C: standalone '<den>scale' token (e.g., '6scale', '9scale')
+        if not inferred.get("scale_ratio_den"):
+            for t in token_list:
+                m = re.fullmatch(r"([0-9]{1,3})scale", t)
+                if m:
+                    try:
+                        den = int(m.group(1))
+                    except Exception:
+                        den = None
+                    if den and (den in ALLOWED_DENOMS or den in {5, 8, 11}):
+                        inferred["scale_ratio_den"] = den
+                        break
 
     # Heuristic: if no explicit lineage was found, use strong thematic hints near the tail (last ~8 tokens)
     if not inferred["lineage_family"]:

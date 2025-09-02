@@ -1,7 +1,22 @@
 import unittest
 from pathlib import Path
+import sys
+import importlib.util
+from pathlib import Path
 
 from scripts.quick_scan import SCALE_RATIO_RE, SCALE_MM_RE, tokenize, classify_token
+
+
+def _load_normalizer():
+    # Load normalize_inventory.py directly since its parent folder has a numeric prefix
+    repo_root = Path(__file__).resolve().parents[1]
+    mod_path = repo_root / 'scripts' / '30_normalize_match' / 'normalize_inventory.py'
+    spec = importlib.util.spec_from_file_location('normalize_inventory_mod', mod_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError('Failed to load normalize_inventory module spec')
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
 
 class TestScaleParsing(unittest.TestCase):
@@ -36,6 +51,23 @@ class TestScaleParsing(unittest.TestCase):
         tokens = tokenize(p)
         # Ensure none of the tokens classify as scale_ratio
         self.assertFalse(any(classify_token(t) == "scale_ratio" for t in tokens), tokens)
+
+    def test_split_scale_tokens_detected_in_normalizer(self):
+        # Simulate tokens from a path like:
+        # sample_store/Ca 3d Studios - Nami (+NSFW)/1-6 scale Nami CA3D Pre Supported/1-6scale Nami CA3D Pre Supported
+        # Tokenizer will likely produce tokens like ["ca", "3d", "studios", "nami", "1", "6", "scale", "nami", "ca3d", "pre", "supported", "1", "6scale", ...]
+        tokens = ["ca", "3d", "studios", "nami", "1", "6", "scale", "nami", "ca3d", "pre", "supported", "1", "6scale"]
+        # Use empty maps for designer/franchise/character here; scale detection should not depend on them
+        normalize_mod = _load_normalizer()
+        inferred = normalize_mod.classify_tokens(tokens, designer_map={}, franchise_map={}, character_map={})
+        self.assertEqual(inferred.get("scale_ratio_den"), 6, inferred)
+
+    def test_scale_prefix_underscore_format(self):
+        # Recognize scale-1_10 style by tokenization: expect tokens ["scale", "1", "10"] leading to 1:10
+        tokens = ["display", "artist", "piece", "scale", "1", "10", "package"]
+        normalize_mod = _load_normalizer()
+        inferred = normalize_mod.classify_tokens(tokens, designer_map={}, franchise_map={}, character_map={})
+        self.assertEqual(inferred.get("scale_ratio_den"), 10, inferred)
 
 
 if __name__ == "__main__":
