@@ -29,6 +29,9 @@ Optional JSON (--json-out):
     "domain_summary": {"designer": int, "lineage_family": int, ...},
     "archive_token_sample": [{"token": str, "count": int}]
     }
+Notes:
+    - Paths containing a '__MACOSX' component are ignored entirely.
+    - macOS sidecar files like '.DS_Store' and '._*' are skipped.
 """
 from __future__ import annotations
 import argparse
@@ -223,6 +226,13 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
     archive_token_set: set[str] = set()
     token_from_archive: set[str] = set()
     for p in root.rglob('*'):
+        # Global skip: ignore any paths that live under macOS metadata folders
+        try:
+            parts_lower = {part.lower() for part in p.parts}
+        except Exception:
+            parts_lower = set()
+        if "__macosx" in parts_lower:
+            continue
         if p.is_dir():
             if skip_dirs: continue
             for tok in tokenize(p):
@@ -234,6 +244,12 @@ def scan(root: pathlib.Path, limit: int, exts: set[str], unknown_top: int, skip_
                 if any(c.isdigit() for c in tok): numeric_like[tok] += 1
             dir_count += 1
             continue
+        # Skip macOS sidecar files
+        try:
+            if p.name == ".DS_Store" or p.name.startswith("._"):
+                continue
+        except Exception:
+            pass
         suffix = p.suffix.lower()
         is_archive = suffix in ARCHIVE_EXTS if include_archives else False
         if exts and suffix not in exts and not is_archive:

@@ -314,7 +314,10 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
     base_tokens: list[str] = []
     # tokens from rel_path
     try:
-        base_tokens += tokenize(Path(variant.rel_path or ""))
+        rp = Path(variant.rel_path or "")
+        # Ignore tokens from macOS metadata trees entirely
+        if "__macosx" not in {part.lower() for part in rp.parts}:
+            base_tokens += tokenize(rp)
     except Exception:
         pass
     # tokens from variant filename if present
@@ -346,6 +349,12 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
     for f in getattr(variant, "files", []):
         fname = (f.filename or "")
         frel = (f.rel_path or "")
+        # Skip any files under __MACOSX
+        try:
+            if frel and "__macosx" in {part.lower() for part in Path(frel).parts}:
+                continue
+        except Exception:
+            pass
         # decide which path to tokenize for the file
         token_source = fname or frel
         if not token_source:
@@ -355,6 +364,12 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
         # Skip obvious non-model files (previews, archives, text, etc.)
         if ext and ext not in MODEL_EXTS:
             continue
+        # Skip macOS sidecar files
+        try:
+            if p.name == ".DS_Store" or p.name.startswith("._"):
+                continue
+        except Exception:
+            pass
         try:
             file_tokens = tokenize(Path(token_source))
         except Exception:

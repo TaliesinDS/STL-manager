@@ -1,7 +1,7 @@
 {
   "apply": false,
-  "total_examined": 397,
-  "proposals_count": 397,
+  "total_examined": 391,
+  "proposals_count": 391,
   "proposals": [
     {
       "variant_id": 1,
@@ -130,7 +130,6 @@
           "guardians",
           "fey",
           "gwynevel",
-          ".ds",
           "32",
           "base",
           "body",
@@ -244,7 +243,6 @@
           "guardians",
           "fey",
           "markamin",
-          ".ds",
           "32",
           "base",
           "body",
@@ -271,7 +269,6 @@
           "guardians",
           "fey",
           "melwyn",
-          ".ds",
           "32",
           "base",
           "body",
@@ -373,7 +370,6 @@
           "guardians",
           "fey",
           "zelafel",
-          ".ds",
           "32",
           "battle",
           "base",
@@ -5063,102 +5059,6 @@
     },
     {
       "variant_id": 169,
-      "rel_path": "sample_store/Freeguild Command Corps/Cities of Sigmar Command Corps/__MACOSX/Cities of Sigmar Command Corps/Bodies",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "command",
-          "corps",
-          "cities",
-          "sigmar",
-          "macosx",
-          "bodies",
-          "001",
-          "002",
-          "003",
-          "004",
-          "005"
-        ],
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 170,
-      "rel_path": "sample_store/Freeguild Command Corps/Cities of Sigmar Command Corps/__MACOSX/Cities of Sigmar Command Corps/Weapons, Arms, Heads, Accessories",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "command",
-          "corps",
-          "cities",
-          "sigmar",
-          "macosx",
-          "weapons,",
-          "arms,",
-          "heads,",
-          "weapons",
-          "001",
-          "002",
-          "003",
-          "004",
-          "005",
-          "006",
-          "007",
-          "008",
-          "009",
-          "010",
-          "011",
-          "012",
-          "013",
-          "014",
-          "015",
-          "016",
-          "017",
-          "018",
-          "019",
-          "020",
-          "021",
-          "022",
-          "023",
-          "024",
-          "025",
-          "026",
-          "027",
-          "028",
-          "029",
-          "030",
-          "031",
-          "032",
-          "033",
-          "034",
-          "035",
-          "036",
-          "037",
-          "038",
-          "039",
-          "040",
-          "041",
-          "042",
-          "043",
-          "044",
-          "045",
-          "046",
-          "047",
-          "048",
-          "049"
-        ],
-        "part_pack_type": "accessory",
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 171,
       "rel_path": "sample_store/Freeguild Command Corps/Cities of Sigmar Command Corps/Cities of Sigmar Command Corps/Bodies",
       "changes": {
         "raw_path_tokens": [
@@ -5181,7 +5081,7 @@
       }
     },
     {
-      "variant_id": 172,
+      "variant_id": 170,
       "rel_path": "sample_store/Freeguild Command Corps/Cities of Sigmar Command Corps/Cities of Sigmar Command Corps/Weapons, Arms, Heads, Accessories",
       "changes": {
         "raw_path_tokens": [
@@ -5252,7 +5152,7 @@
       }
     },
     {
-      "variant_id": 173,
+      "variant_id": 171,
       "rel_path": "sample_store/Freeguild Command Corps/Mercia Standard",
       "changes": {
         "raw_path_tokens": [
@@ -5276,7 +5176,7 @@
       }
     },
     {
-      "variant_id": 174,
+      "variant_id": 172,
       "rel_path": "sample_store/Freeguild Command Corps/MerciaKing",
       "changes": {
         "raw_path_tokens": [
@@ -5298,7 +5198,7 @@
       }
     },
     {
-      "variant_id": 175,
+      "variant_id": 173,
       "rel_path": "sample_store/Freeguild Command Corps/SirBors",
       "changes": {
         "raw_path_tokens": [
@@ -5320,120 +5220,7 @@
       }
     },
     {
-      "variant_id": 176,
-      "rel_path": "sample_store/Freeguild Fusiliers/City of Sigmar Gunners/__MACOSX/Modern Fantasy Human Gunners",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "fusiliers",
-          "city",
-          "sigmar",
-          "gunners",
-          "macosx",
-          "modern",
-          "fantasy",
-          "100",
-          "101",
-          "102",
-          "103",
-          "104",
-          "105",
-          "11",
-          "12",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "24",
-          "26",
-          "27",
-          "28",
-          "29",
-          "30",
-          "31",
-          "32",
-          "33",
-          "34",
-          "35",
-          "36",
-          "37",
-          "38",
-          "39",
-          "40",
-          "41",
-          "42",
-          "43",
-          "44",
-          "45",
-          "46",
-          "47",
-          "48",
-          "50",
-          "49",
-          "51",
-          "52",
-          "53",
-          "54",
-          "55",
-          "56",
-          "57",
-          "58",
-          "59",
-          "60",
-          "61",
-          "62",
-          "64",
-          "65",
-          "66",
-          "67",
-          "70",
-          "72",
-          "73",
-          "74",
-          "75",
-          "77",
-          "78",
-          "79",
-          "80",
-          "81",
-          "82",
-          "83",
-          "84",
-          "85",
-          "86",
-          "87",
-          "88",
-          "89",
-          "91",
-          "92",
-          "93",
-          "94",
-          "95",
-          "96",
-          "97",
-          "98",
-          "99",
-          "weapons",
-          "030",
-          "034",
-          "037",
-          "040"
-        ],
-        "lineage_family": "human",
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 177,
+      "variant_id": 174,
       "rel_path": "sample_store/Freeguild Fusiliers/City of Sigmar Gunners/Modern Fantasy Human Gunners",
       "changes": {
         "raw_path_tokens": [
@@ -5446,7 +5233,6 @@
           "gunners",
           "modern",
           "fantasy",
-          ".ds",
           "100",
           "101",
           "102",
@@ -5546,7 +5332,7 @@
       }
     },
     {
-      "variant_id": 178,
+      "variant_id": 175,
       "rel_path": "sample_store/Freeguild General on Griffon/14. Sir Bors",
       "changes": {
         "raw_path_tokens": [
@@ -5577,7 +5363,7 @@
       }
     },
     {
-      "variant_id": 179,
+      "variant_id": 176,
       "rel_path": "sample_store/Freeguild General on Griffon/17. Allard, Mercia King",
       "changes": {
         "raw_path_tokens": [
@@ -5617,7 +5403,7 @@
       }
     },
     {
-      "variant_id": 180,
+      "variant_id": 177,
       "rel_path": "sample_store/Freeguild General on Griffon/6. Wind Knights Pegasus and CG",
       "changes": {
         "raw_path_tokens": [
@@ -5673,7 +5459,7 @@
       }
     },
     {
-      "variant_id": 181,
+      "variant_id": 178,
       "rel_path": "sample_store/Freeguild General on Griffon/7. Wind Knights Alternative Mount and Knights",
       "changes": {
         "raw_path_tokens": [
@@ -5735,7 +5521,7 @@
       }
     },
     {
-      "variant_id": 182,
+      "variant_id": 179,
       "rel_path": "sample_store/Freeguild General on Griffon/Lord Carmalian",
       "changes": {
         "raw_path_tokens": [
@@ -5754,7 +5540,7 @@
       }
     },
     {
-      "variant_id": 183,
+      "variant_id": 180,
       "rel_path": "sample_store/Freeguild General on Griffon/Lord Carmalian/Lychee",
       "changes": {
         "raw_path_tokens": [
@@ -5776,7 +5562,7 @@
       }
     },
     {
-      "variant_id": 184,
+      "variant_id": 181,
       "rel_path": "sample_store/Freeguild General on Griffon/Lord Carmalian on Winged Hippollyon",
       "changes": {
         "raw_path_tokens": [
@@ -5799,7 +5585,7 @@
       }
     },
     {
-      "variant_id": 185,
+      "variant_id": 182,
       "rel_path": "sample_store/Freeguild General on Griffon/Lord Carmalian on Winged Hippollyon/Lychee",
       "changes": {
         "raw_path_tokens": [
@@ -5824,7 +5610,7 @@
       }
     },
     {
-      "variant_id": 186,
+      "variant_id": 183,
       "rel_path": "sample_store/Freeguild Marshal and Relic Envoy/STL_Garmokh_Supported/STL_Garmokh_Supported",
       "changes": {
         "raw_path_tokens": [
@@ -5842,7 +5628,7 @@
       }
     },
     {
-      "variant_id": 187,
+      "variant_id": 184,
       "rel_path": "sample_store/Freeguild Marshal and Relic Envoy/STL_Garmokh_Unsupported",
       "changes": {
         "raw_path_tokens": [
@@ -5860,7 +5646,7 @@
       }
     },
     {
-      "variant_id": 188,
+      "variant_id": 185,
       "rel_path": "sample_store/Freeguild Marshal and Relic Envoy/STL_Orae_Supported/STL_Orae_Supported",
       "changes": {
         "raw_path_tokens": [
@@ -5878,7 +5664,7 @@
       }
     },
     {
-      "variant_id": 189,
+      "variant_id": 186,
       "rel_path": "sample_store/Freeguild Marshal and Relic Envoy/STL_Orae_Unsupported",
       "changes": {
         "raw_path_tokens": [
@@ -5896,7 +5682,7 @@
       }
     },
     {
-      "variant_id": 190,
+      "variant_id": 187,
       "rel_path": "sample_store/Freeguild Steelhelms/Calix",
       "changes": {
         "raw_path_tokens": [
@@ -5960,125 +5746,7 @@
       }
     },
     {
-      "variant_id": 191,
-      "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/__MACOSX/Cities of Sigmar Troops/Bodies",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "steelhelms",
-          "cities",
-          "sigmar",
-          "troops",
-          "macosx",
-          "bodies",
-          "001",
-          "002",
-          "003",
-          "004",
-          "005",
-          "006",
-          "007"
-        ],
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 192,
-      "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/__MACOSX/Cities of Sigmar Troops/Helmets",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "steelhelms",
-          "cities",
-          "sigmar",
-          "troops",
-          "macosx",
-          "helmets",
-          "001",
-          "002",
-          "003",
-          "004",
-          "005",
-          "006",
-          "007",
-          "008",
-          "009",
-          "010",
-          "011",
-          "012",
-          "013",
-          "014"
-        ],
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 193,
-      "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/__MACOSX/Cities of Sigmar Troops/Weapons, Arms, Accessories",
-      "changes": {
-        "raw_path_tokens": [
-          "sample",
-          "store",
-          "freeguild",
-          "steelhelms",
-          "cities",
-          "sigmar",
-          "troops",
-          "macosx",
-          "weapons,",
-          "arms,",
-          "weapons",
-          "001",
-          "002",
-          "003",
-          "004",
-          "005",
-          "006",
-          "007",
-          "008",
-          "009",
-          "010",
-          "011",
-          "012",
-          "013",
-          "014",
-          "015",
-          "016",
-          "017",
-          "018",
-          "019",
-          "020",
-          "021",
-          "022",
-          "023",
-          "024",
-          "025",
-          "026",
-          "027",
-          "028",
-          "029",
-          "030",
-          "031",
-          "032",
-          "033",
-          "034",
-          "035",
-          "036",
-          "037"
-        ],
-        "part_pack_type": "accessory",
-        "intended_use_bucket": "tabletop_intent",
-        "token_locale": "en"
-      }
-    },
-    {
-      "variant_id": 194,
+      "variant_id": 188,
       "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/Cities of Sigmar Troops/Bodies",
       "changes": {
         "raw_path_tokens": [
@@ -6103,7 +5771,7 @@
       }
     },
     {
-      "variant_id": 195,
+      "variant_id": 189,
       "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/Cities of Sigmar Troops/Helmets",
       "changes": {
         "raw_path_tokens": [
@@ -6135,7 +5803,7 @@
       }
     },
     {
-      "variant_id": 196,
+      "variant_id": 190,
       "rel_path": "sample_store/Freeguild Steelhelms/Cities of Sigmar Troops/Cities of Sigmar Troops/Weapons, Arms, Accessories",
       "changes": {
         "raw_path_tokens": [
@@ -6193,7 +5861,7 @@
       }
     },
     {
-      "variant_id": 197,
+      "variant_id": 191,
       "rel_path": "sample_store/Freeguild Steelhelms/One Page Rule/Combined",
       "changes": {
         "raw_path_tokens": [
@@ -6225,7 +5893,7 @@
       }
     },
     {
-      "variant_id": 198,
+      "variant_id": 192,
       "rel_path": "sample_store/Freeguild Steelhelms/One Page Rule",
       "changes": {
         "raw_path_tokens": [
@@ -6252,7 +5920,7 @@
       }
     },
     {
-      "variant_id": 199,
+      "variant_id": 193,
       "rel_path": "sample_store/Freeguild Steelhelms/Rangers",
       "changes": {
         "raw_path_tokens": [
@@ -6304,7 +5972,7 @@
       }
     },
     {
-      "variant_id": 200,
+      "variant_id": 194,
       "rel_path": "sample_store/Freeguild Steelhelms/Scan/Bodies",
       "changes": {
         "raw_path_tokens": [
@@ -6326,7 +5994,7 @@
       }
     },
     {
-      "variant_id": 201,
+      "variant_id": 195,
       "rel_path": "sample_store/Freeguild Steelhelms/Scan/Helmets",
       "changes": {
         "raw_path_tokens": [
@@ -6355,7 +6023,7 @@
       }
     },
     {
-      "variant_id": 202,
+      "variant_id": 196,
       "rel_path": "sample_store/Freeguild Steelhelms/Scan/Weapons, Arms, Accessories",
       "changes": {
         "raw_path_tokens": [
@@ -6410,7 +6078,7 @@
       }
     },
     {
-      "variant_id": 203,
+      "variant_id": 197,
       "rel_path": "sample_store/Goblin/Artisan Guild Miniatures -  Faldorn Goblins - Gbiza Goblin Pinup/Alternative Version",
       "changes": {
         "raw_path_tokens": [
@@ -6435,7 +6103,7 @@
       }
     },
     {
-      "variant_id": 204,
+      "variant_id": 198,
       "rel_path": "sample_store/Goblin/Artisan Guild Miniatures -  Faldorn Goblins - Gbiza Goblin Pinup",
       "changes": {
         "raw_path_tokens": [
@@ -6459,7 +6127,7 @@
       }
     },
     {
-      "variant_id": 205,
+      "variant_id": 199,
       "rel_path": "sample_store/Goblin/Bramblehoof, The Mock-Stag",
       "changes": {
         "raw_path_tokens": [
@@ -6480,7 +6148,7 @@
       }
     },
     {
-      "variant_id": 206,
+      "variant_id": 200,
       "rel_path": "sample_store/Goblin/Bramblehoof, The Mock-Stag - Christmas Version",
       "changes": {
         "raw_path_tokens": [
@@ -6505,7 +6173,7 @@
       }
     },
     {
-      "variant_id": 207,
+      "variant_id": 201,
       "rel_path": "sample_store/Goblin/gaz minis - goblin witch nimue + christmas",
       "changes": {
         "raw_path_tokens": [
@@ -6544,7 +6212,7 @@
       }
     },
     {
-      "variant_id": 208,
+      "variant_id": 202,
       "rel_path": "sample_store/Goblin/Gith Female Knight",
       "changes": {
         "raw_path_tokens": [
@@ -6560,7 +6228,7 @@
       }
     },
     {
-      "variant_id": 209,
+      "variant_id": 203,
       "rel_path": "sample_store/Goblin/Gith Knight Commander",
       "changes": {
         "raw_path_tokens": [
@@ -6582,7 +6250,7 @@
       }
     },
     {
-      "variant_id": 210,
+      "variant_id": 204,
       "rel_path": "sample_store/Goblin/Gith Knight Jumping",
       "changes": {
         "raw_path_tokens": [
@@ -6604,7 +6272,7 @@
       }
     },
     {
-      "variant_id": 211,
+      "variant_id": 205,
       "rel_path": "sample_store/Goblin/Gith Knight Running",
       "changes": {
         "raw_path_tokens": [
@@ -6625,7 +6293,7 @@
       }
     },
     {
-      "variant_id": 212,
+      "variant_id": 206,
       "rel_path": "sample_store/Goblin/Gith Psi Knight",
       "changes": {
         "raw_path_tokens": [
@@ -6647,7 +6315,7 @@
       }
     },
     {
-      "variant_id": 213,
+      "variant_id": 207,
       "rel_path": "sample_store/Goblin/Gith Raiders",
       "changes": {
         "raw_path_tokens": [
@@ -6671,7 +6339,7 @@
       }
     },
     {
-      "variant_id": 214,
+      "variant_id": 208,
       "rel_path": "sample_store/Goblin/Gobgrizzle, Goblin Warlord",
       "changes": {
         "raw_path_tokens": [
@@ -6691,7 +6359,7 @@
       }
     },
     {
-      "variant_id": 215,
+      "variant_id": 209,
       "rel_path": "sample_store/Goblin/Gobgrizzle, Goblin Warlord - Christmas Version",
       "changes": {
         "raw_path_tokens": [
@@ -6715,7 +6383,7 @@
       }
     },
     {
-      "variant_id": 216,
+      "variant_id": 210,
       "rel_path": "sample_store/Goblin/Goblin Shaman on Runetusk Antlerguard",
       "changes": {
         "raw_path_tokens": [
@@ -6738,7 +6406,7 @@
       }
     },
     {
-      "variant_id": 217,
+      "variant_id": 211,
       "rel_path": "sample_store/Goblin/Grimble Sootcloak, Goblin Shaman",
       "changes": {
         "raw_path_tokens": [
@@ -6758,7 +6426,7 @@
       }
     },
     {
-      "variant_id": 218,
+      "variant_id": 212,
       "rel_path": "sample_store/Goblin/Grimble Sootcloak, Goblin Shaman - Christmas Version",
       "changes": {
         "raw_path_tokens": [
@@ -6782,7 +6450,7 @@
       }
     },
     {
-      "variant_id": 219,
+      "variant_id": 213,
       "rel_path": "sample_store/Goblin/Runetusk Antlerguard, Guardian of the Shamanic",
       "changes": {
         "raw_path_tokens": [
@@ -6803,7 +6471,7 @@
       }
     },
     {
-      "variant_id": 220,
+      "variant_id": 214,
       "rel_path": "sample_store/Goblin",
       "changes": {
         "raw_path_tokens": [
@@ -6815,7 +6483,7 @@
       }
     },
     {
-      "variant_id": 221,
+      "variant_id": 215,
       "rel_path": "sample_store/Infernus Squad",
       "changes": {
         "raw_path_tokens": [
@@ -6828,7 +6496,7 @@
       }
     },
     {
-      "variant_id": 222,
+      "variant_id": 216,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad",
       "changes": {
         "raw_path_tokens": [
@@ -6859,7 +6527,7 @@
       }
     },
     {
-      "variant_id": 223,
+      "variant_id": 217,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad/hands and flamers",
       "changes": {
         "raw_path_tokens": [
@@ -6889,7 +6557,7 @@
       }
     },
     {
-      "variant_id": 224,
+      "variant_id": 218,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad/hands and flamers/Presupported Flamers",
       "changes": {
         "raw_path_tokens": [
@@ -6913,7 +6581,7 @@
       }
     },
     {
-      "variant_id": 225,
+      "variant_id": 219,
       "rel_path": "sample_store/JARDIN DE MORR",
       "changes": {
         "raw_path_tokens": [
@@ -6946,7 +6614,7 @@
       }
     },
     {
-      "variant_id": 226,
+      "variant_id": 220,
       "rel_path": "sample_store/JARDIN DE MORR/MAUSOLEOS/1",
       "changes": {
         "raw_path_tokens": [
@@ -6969,7 +6637,7 @@
       }
     },
     {
-      "variant_id": 227,
+      "variant_id": 221,
       "rel_path": "sample_store/JARDIN DE MORR/MAUSOLEOS/2",
       "changes": {
         "raw_path_tokens": [
@@ -6990,7 +6658,7 @@
       }
     },
     {
-      "variant_id": 228,
+      "variant_id": 222,
       "rel_path": "sample_store/JARDIN DE MORR/MAUSOLEOS/3",
       "changes": {
         "raw_path_tokens": [
@@ -7007,7 +6675,7 @@
       }
     },
     {
-      "variant_id": 229,
+      "variant_id": 223,
       "rel_path": "sample_store/JARDIN DE MORR/MAUSOLEOS/4",
       "changes": {
         "raw_path_tokens": [
@@ -7025,7 +6693,7 @@
       }
     },
     {
-      "variant_id": 230,
+      "variant_id": 224,
       "rel_path": "sample_store/Kh'a_Larrh_chaos_dragon/Non supported",
       "changes": {
         "raw_path_tokens": [
@@ -7050,7 +6718,7 @@
       }
     },
     {
-      "variant_id": 231,
+      "variant_id": 225,
       "rel_path": "sample_store/Kh'a_Larrh_chaos_dragon/Pre-supported",
       "changes": {
         "raw_path_tokens": [
@@ -7074,7 +6742,7 @@
       }
     },
     {
-      "variant_id": 232,
+      "variant_id": 226,
       "rel_path": "sample_store/Male Ranger",
       "changes": {
         "raw_path_tokens": [
@@ -7092,7 +6760,7 @@
       }
     },
     {
-      "variant_id": 233,
+      "variant_id": 227,
       "rel_path": "sample_store/Menace_Queen's Blade nsfw/Menace_Queen's Blade nsfw/Menace",
       "changes": {
         "raw_path_tokens": [
@@ -7124,7 +6792,7 @@
       }
     },
     {
-      "variant_id": 234,
+      "variant_id": 228,
       "rel_path": "sample_store/Menace_Queen's Blade nsfw/Menace_Queen's Blade nsfw/Menace Extra Outfits",
       "changes": {
         "raw_path_tokens": [
@@ -7145,7 +6813,7 @@
       }
     },
     {
-      "variant_id": 235,
+      "variant_id": 229,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - Church Walls",
       "changes": {
         "raw_path_tokens": [
@@ -7179,7 +6847,7 @@
       }
     },
     {
-      "variant_id": 236,
+      "variant_id": 230,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - Medieval Church",
       "changes": {
         "raw_path_tokens": [
@@ -7209,7 +6877,7 @@
       }
     },
     {
-      "variant_id": 237,
+      "variant_id": 231,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - Medieval Church/Church-decor",
       "changes": {
         "raw_path_tokens": [
@@ -7240,7 +6908,7 @@
       }
     },
     {
-      "variant_id": 238,
+      "variant_id": 232,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - Medieval House/Medieval-House-1.3",
       "changes": {
         "raw_path_tokens": [
@@ -7271,7 +6939,7 @@
       }
     },
     {
-      "variant_id": 239,
+      "variant_id": 233,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - The Farm/The-Farm",
       "changes": {
         "raw_path_tokens": [
@@ -7317,7 +6985,7 @@
       }
     },
     {
-      "variant_id": 240,
+      "variant_id": 234,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - The Farm/The-Farm/Cut Version",
       "changes": {
         "raw_path_tokens": [
@@ -7347,7 +7015,7 @@
       }
     },
     {
-      "variant_id": 241,
+      "variant_id": 235,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - The Stone Barn/Stone-Barn-1.2",
       "changes": {
         "raw_path_tokens": [
@@ -7375,7 +7043,7 @@
       }
     },
     {
-      "variant_id": 242,
+      "variant_id": 236,
       "rel_path": "sample_store/Printable Scenery - Time Warp Europe - The Stone Barn/Stone-Barn-1.2/Cut Version",
       "changes": {
         "raw_path_tokens": [
@@ -7405,7 +7073,7 @@
       }
     },
     {
-      "variant_id": 243,
+      "variant_id": 237,
       "rel_path": "sample_store/Printable_Scenery_Time_Warp_Europe_OpenLOCK_Modular_Town_Ruins/Modular-Town-Ruins",
       "changes": {
         "raw_path_tokens": [
@@ -7467,7 +7135,7 @@
       }
     },
     {
-      "variant_id": 244,
+      "variant_id": 238,
       "rel_path": "sample_store/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber_NSFW_SFW/Optional",
       "changes": {
         "raw_path_tokens": [
@@ -7488,7 +7156,7 @@
       }
     },
     {
-      "variant_id": 245,
+      "variant_id": 239,
       "rel_path": "sample_store/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber",
       "changes": {
         "raw_path_tokens": [
@@ -7521,7 +7189,7 @@
       }
     },
     {
-      "variant_id": 246,
+      "variant_id": 240,
       "rel_path": "sample_store/SakuraNSFW_Azerama/01Sakura_SplitVersion_STL_Azerama",
       "changes": {
         "raw_path_tokens": [
@@ -7551,7 +7219,7 @@
       }
     },
     {
-      "variant_id": 247,
+      "variant_id": 241,
       "rel_path": "sample_store/SakuraNSFW_Azerama/02Sakura_NonSplitVersion_Azerama",
       "changes": {
         "raw_path_tokens": [
@@ -7572,7 +7240,7 @@
       }
     },
     {
-      "variant_id": 248,
+      "variant_id": 242,
       "rel_path": "sample_store/SakuraNSFW_Azerama/03Sakura_ZbrushZtool_Azerama",
       "changes": {
         "raw_path_tokens": [
@@ -7592,7 +7260,7 @@
       }
     },
     {
-      "variant_id": 249,
+      "variant_id": 243,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1",
       "changes": {
         "raw_path_tokens": [
@@ -7623,7 +7291,7 @@
       }
     },
     {
-      "variant_id": 250,
+      "variant_id": 244,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/fullbody",
       "changes": {
         "raw_path_tokens": [
@@ -7644,7 +7312,7 @@
       }
     },
     {
-      "variant_id": 251,
+      "variant_id": 245,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/NSFW",
       "changes": {
         "raw_path_tokens": [
@@ -7667,7 +7335,7 @@
       }
     },
     {
-      "variant_id": 252,
+      "variant_id": 246,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/SFW",
       "changes": {
         "raw_path_tokens": [
@@ -7698,7 +7366,7 @@
       }
     },
     {
-      "variant_id": 253,
+      "variant_id": 247,
       "rel_path": "sample_store/space-captain-with-honor-guard/Dminis/space-captain-with-honor-guard",
       "changes": {
         "raw_path_tokens": [
@@ -7720,7 +7388,7 @@
       }
     },
     {
-      "variant_id": 254,
+      "variant_id": 248,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Centrepiece/Crew",
       "changes": {
         "raw_path_tokens": [
@@ -7749,7 +7417,7 @@
       }
     },
     {
-      "variant_id": 255,
+      "variant_id": 249,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Centrepiece/Machine",
       "changes": {
         "raw_path_tokens": [
@@ -7783,7 +7451,7 @@
       }
     },
     {
-      "variant_id": 256,
+      "variant_id": 250,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Duchess Scratchfang, Monarch of the Ratkin",
       "changes": {
         "raw_path_tokens": [
@@ -7812,7 +7480,7 @@
       }
     },
     {
-      "variant_id": 257,
+      "variant_id": 251,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Duchess Scratchfang, Monarch of the Ratkin without Cloak",
       "changes": {
         "raw_path_tokens": [
@@ -7845,7 +7513,7 @@
       }
     },
     {
-      "variant_id": 258,
+      "variant_id": 252,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Gnawnine Darktail, Grey Prophetess",
       "changes": {
         "raw_path_tokens": [
@@ -7874,7 +7542,7 @@
       }
     },
     {
-      "variant_id": 259,
+      "variant_id": 253,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Lord Osirion, Monarch of the Undead",
       "changes": {
         "raw_path_tokens": [
@@ -7903,7 +7571,7 @@
       }
     },
     {
-      "variant_id": 260,
+      "variant_id": 254,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Mordkarn, Inventor Electroclast",
       "changes": {
         "raw_path_tokens": [
@@ -7932,7 +7600,7 @@
       }
     },
     {
-      "variant_id": 261,
+      "variant_id": 255,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Nefrascara, The Swarm Mistress",
       "changes": {
         "raw_path_tokens": [
@@ -7961,7 +7629,7 @@
       }
     },
     {
-      "variant_id": 262,
+      "variant_id": 256,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Sekheta, High Priestess",
       "changes": {
         "raw_path_tokens": [
@@ -7990,7 +7658,7 @@
       }
     },
     {
-      "variant_id": 263,
+      "variant_id": 257,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Sekheta, High Priestess without The Ark of Damnation",
       "changes": {
         "raw_path_tokens": [
@@ -8024,7 +7692,7 @@
       }
     },
     {
-      "variant_id": 264,
+      "variant_id": 258,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Seshatara, Marshal Tombshade",
       "changes": {
         "raw_path_tokens": [
@@ -8053,7 +7721,7 @@
       }
     },
     {
-      "variant_id": 265,
+      "variant_id": 259,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Seshatara, Marshal Tombshade with Bow",
       "changes": {
         "raw_path_tokens": [
@@ -8086,7 +7754,7 @@
       }
     },
     {
-      "variant_id": 266,
+      "variant_id": 260,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/The Ark of Damnation",
       "changes": {
         "raw_path_tokens": [
@@ -8116,7 +7784,7 @@
       }
     },
     {
-      "variant_id": 267,
+      "variant_id": 261,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Vezthik, Marksman Voltwrench",
       "changes": {
         "raw_path_tokens": [
@@ -8145,7 +7813,7 @@
       }
     },
     {
-      "variant_id": 268,
+      "variant_id": 262,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Heroes/Whisperfang, The Silent Claw",
       "changes": {
         "raw_path_tokens": [
@@ -8174,7 +7842,7 @@
       }
     },
     {
-      "variant_id": 269,
+      "variant_id": 263,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Machines & Monsters/Lord Osirion on Sunset Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -8209,7 +7877,7 @@
       }
     },
     {
-      "variant_id": 270,
+      "variant_id": 264,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Machines & Monsters/Skarix Deathbringer, Great Rodent Demon",
       "changes": {
         "raw_path_tokens": [
@@ -8246,7 +7914,7 @@
       }
     },
     {
-      "variant_id": 271,
+      "variant_id": 265,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Machines & Monsters/Skarix Deathbringer, Great Rodent Demon with Sickles",
       "changes": {
         "raw_path_tokens": [
@@ -8285,7 +7953,7 @@
       }
     },
     {
-      "variant_id": 272,
+      "variant_id": 266,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Machines & Monsters/Skull Screecher Catapult",
       "changes": {
         "raw_path_tokens": [
@@ -8321,7 +7989,7 @@
       }
     },
     {
-      "variant_id": 273,
+      "variant_id": 267,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Machines & Monsters/Sunset Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -8351,7 +8019,7 @@
       }
     },
     {
-      "variant_id": 274,
+      "variant_id": 268,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Modular Parts",
       "changes": {
         "raw_path_tokens": [
@@ -8394,7 +8062,7 @@
       }
     },
     {
-      "variant_id": 275,
+      "variant_id": 269,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Fireclaw Snipers/Sniper_A",
       "changes": {
         "raw_path_tokens": [
@@ -8425,7 +8093,7 @@
       }
     },
     {
-      "variant_id": 276,
+      "variant_id": 270,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Fireclaw Snipers/Sniper_B",
       "changes": {
         "raw_path_tokens": [
@@ -8456,7 +8124,7 @@
       }
     },
     {
-      "variant_id": 277,
+      "variant_id": 271,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Fireclaw Snipers/Sniper_C",
       "changes": {
         "raw_path_tokens": [
@@ -8487,7 +8155,7 @@
       }
     },
     {
-      "variant_id": 278,
+      "variant_id": 272,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratkin Militia/Ratkin_A",
       "changes": {
         "raw_path_tokens": [
@@ -8514,7 +8182,7 @@
       }
     },
     {
-      "variant_id": 279,
+      "variant_id": 273,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratkin Militia/Ratkin_B",
       "changes": {
         "raw_path_tokens": [
@@ -8542,7 +8210,7 @@
       }
     },
     {
-      "variant_id": 280,
+      "variant_id": 274,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratkin Militia/Ratkin_C",
       "changes": {
         "raw_path_tokens": [
@@ -8569,7 +8237,7 @@
       }
     },
     {
-      "variant_id": 281,
+      "variant_id": 275,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratkin Militia/Ratkin_D",
       "changes": {
         "raw_path_tokens": [
@@ -8596,7 +8264,7 @@
       }
     },
     {
-      "variant_id": 282,
+      "variant_id": 276,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratkin Militia/Ratkin_E",
       "changes": {
         "raw_path_tokens": [
@@ -8625,7 +8293,7 @@
       }
     },
     {
-      "variant_id": 283,
+      "variant_id": 277,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratogre Doomfiends/Ratogre_A",
       "changes": {
         "raw_path_tokens": [
@@ -8652,7 +8320,7 @@
       }
     },
     {
-      "variant_id": 284,
+      "variant_id": 278,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratogre Doomfiends/Ratogre_B",
       "changes": {
         "raw_path_tokens": [
@@ -8684,7 +8352,7 @@
       }
     },
     {
-      "variant_id": 285,
+      "variant_id": 279,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Ratogre Doomfiends/Ratogre_C",
       "changes": {
         "raw_path_tokens": [
@@ -8711,7 +8379,7 @@
       }
     },
     {
-      "variant_id": 286,
+      "variant_id": 280,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Serpent Strike Bowguards/Bowguards_A",
       "changes": {
         "raw_path_tokens": [
@@ -8739,7 +8407,7 @@
       }
     },
     {
-      "variant_id": 287,
+      "variant_id": 281,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Serpent Strike Bowguards/Bowguards_B",
       "changes": {
         "raw_path_tokens": [
@@ -8767,7 +8435,7 @@
       }
     },
     {
-      "variant_id": 288,
+      "variant_id": 282,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Serpent Strike Bowguards/Bowguards_C",
       "changes": {
         "raw_path_tokens": [
@@ -8795,7 +8463,7 @@
       }
     },
     {
-      "variant_id": 289,
+      "variant_id": 283,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Serpent Strike Bowguards/Bowguards_D",
       "changes": {
         "raw_path_tokens": [
@@ -8823,7 +8491,7 @@
       }
     },
     {
-      "variant_id": 290,
+      "variant_id": 284,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Serpent Strike Bowguards/Bowguards_E",
       "changes": {
         "raw_path_tokens": [
@@ -8853,7 +8521,7 @@
       }
     },
     {
-      "variant_id": 291,
+      "variant_id": 285,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Sunset Chariot Revenants/Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -8880,7 +8548,7 @@
       }
     },
     {
-      "variant_id": 292,
+      "variant_id": 286,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Sunset Chariot Revenants/Chariot_Crew_A",
       "changes": {
         "raw_path_tokens": [
@@ -8910,7 +8578,7 @@
       }
     },
     {
-      "variant_id": 293,
+      "variant_id": 287,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Sunset Chariot Revenants/Chariot_Crew_B",
       "changes": {
         "raw_path_tokens": [
@@ -8940,7 +8608,7 @@
       }
     },
     {
-      "variant_id": 294,
+      "variant_id": 288,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Supported/Troops/Sunset Chariot Revenants/Chariot_Crew_C",
       "changes": {
         "raw_path_tokens": [
@@ -8970,7 +8638,7 @@
       }
     },
     {
-      "variant_id": 295,
+      "variant_id": 289,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Centrepiece/Crew",
       "changes": {
         "raw_path_tokens": [
@@ -8999,7 +8667,7 @@
       }
     },
     {
-      "variant_id": 296,
+      "variant_id": 290,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Centrepiece/Machine",
       "changes": {
         "raw_path_tokens": [
@@ -9033,7 +8701,7 @@
       }
     },
     {
-      "variant_id": 297,
+      "variant_id": 291,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Duchess Scratchfang, Monarch of the Ratkin",
       "changes": {
         "raw_path_tokens": [
@@ -9062,7 +8730,7 @@
       }
     },
     {
-      "variant_id": 298,
+      "variant_id": 292,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Duchess Scratchfang, Monarch of the Ratkin without Cloak",
       "changes": {
         "raw_path_tokens": [
@@ -9095,7 +8763,7 @@
       }
     },
     {
-      "variant_id": 299,
+      "variant_id": 293,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Gnawnine Darktail, Grey Prophetess",
       "changes": {
         "raw_path_tokens": [
@@ -9124,7 +8792,7 @@
       }
     },
     {
-      "variant_id": 300,
+      "variant_id": 294,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Lord Osirion, Monarch of the Undead",
       "changes": {
         "raw_path_tokens": [
@@ -9153,7 +8821,7 @@
       }
     },
     {
-      "variant_id": 301,
+      "variant_id": 295,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Mordkarn, Inventor Electroclast",
       "changes": {
         "raw_path_tokens": [
@@ -9182,7 +8850,7 @@
       }
     },
     {
-      "variant_id": 302,
+      "variant_id": 296,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Nefrascara, The Swarm Mistress",
       "changes": {
         "raw_path_tokens": [
@@ -9211,7 +8879,7 @@
       }
     },
     {
-      "variant_id": 303,
+      "variant_id": 297,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Sekheta, High Priestess",
       "changes": {
         "raw_path_tokens": [
@@ -9240,7 +8908,7 @@
       }
     },
     {
-      "variant_id": 304,
+      "variant_id": 298,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Sekheta, High Priestess without The Ark of Damnation",
       "changes": {
         "raw_path_tokens": [
@@ -9274,7 +8942,7 @@
       }
     },
     {
-      "variant_id": 305,
+      "variant_id": 299,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Seshatara, Marshal Tombshade",
       "changes": {
         "raw_path_tokens": [
@@ -9303,7 +8971,7 @@
       }
     },
     {
-      "variant_id": 306,
+      "variant_id": 300,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Seshatara, Marshal Tombshade with Bow",
       "changes": {
         "raw_path_tokens": [
@@ -9336,7 +9004,7 @@
       }
     },
     {
-      "variant_id": 307,
+      "variant_id": 301,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/The Ark of Damnation",
       "changes": {
         "raw_path_tokens": [
@@ -9365,7 +9033,7 @@
       }
     },
     {
-      "variant_id": 308,
+      "variant_id": 302,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Vezthik, Marksman Voltwrench",
       "changes": {
         "raw_path_tokens": [
@@ -9394,7 +9062,7 @@
       }
     },
     {
-      "variant_id": 309,
+      "variant_id": 303,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Heroes/Whisperfang, The Silent Claw",
       "changes": {
         "raw_path_tokens": [
@@ -9423,7 +9091,7 @@
       }
     },
     {
-      "variant_id": 310,
+      "variant_id": 304,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Machines & Monsters/Lord Osirion on Sunset Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -9458,7 +9126,7 @@
       }
     },
     {
-      "variant_id": 311,
+      "variant_id": 305,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Machines & Monsters/Skarix Deathbringer, Great Rodent Demon",
       "changes": {
         "raw_path_tokens": [
@@ -9494,7 +9162,7 @@
       }
     },
     {
-      "variant_id": 312,
+      "variant_id": 306,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Machines & Monsters/Skarix Deathbringer, Great Rodent Demon with Sickles",
       "changes": {
         "raw_path_tokens": [
@@ -9532,7 +9200,7 @@
       }
     },
     {
-      "variant_id": 313,
+      "variant_id": 307,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Machines & Monsters/Skull Screecher Catapult",
       "changes": {
         "raw_path_tokens": [
@@ -9568,7 +9236,7 @@
       }
     },
     {
-      "variant_id": 314,
+      "variant_id": 308,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Machines & Monsters/Sunset Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -9598,7 +9266,7 @@
       }
     },
     {
-      "variant_id": 315,
+      "variant_id": 309,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Modular Parts",
       "changes": {
         "raw_path_tokens": [
@@ -9641,7 +9309,7 @@
       }
     },
     {
-      "variant_id": 316,
+      "variant_id": 310,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Fireclaw Snipers/Sniper_A",
       "changes": {
         "raw_path_tokens": [
@@ -9672,7 +9340,7 @@
       }
     },
     {
-      "variant_id": 317,
+      "variant_id": 311,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Fireclaw Snipers/Sniper_B",
       "changes": {
         "raw_path_tokens": [
@@ -9703,7 +9371,7 @@
       }
     },
     {
-      "variant_id": 318,
+      "variant_id": 312,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Fireclaw Snipers/Sniper_C",
       "changes": {
         "raw_path_tokens": [
@@ -9734,7 +9402,7 @@
       }
     },
     {
-      "variant_id": 319,
+      "variant_id": 313,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratkin Militia/Ratkin_A",
       "changes": {
         "raw_path_tokens": [
@@ -9761,7 +9429,7 @@
       }
     },
     {
-      "variant_id": 320,
+      "variant_id": 314,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratkin Militia/Ratkin_B",
       "changes": {
         "raw_path_tokens": [
@@ -9788,7 +9456,7 @@
       }
     },
     {
-      "variant_id": 321,
+      "variant_id": 315,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratkin Militia/Ratkin_C",
       "changes": {
         "raw_path_tokens": [
@@ -9815,7 +9483,7 @@
       }
     },
     {
-      "variant_id": 322,
+      "variant_id": 316,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratkin Militia/Ratkin_D",
       "changes": {
         "raw_path_tokens": [
@@ -9842,7 +9510,7 @@
       }
     },
     {
-      "variant_id": 323,
+      "variant_id": 317,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratkin Militia/Ratkin_E",
       "changes": {
         "raw_path_tokens": [
@@ -9871,7 +9539,7 @@
       }
     },
     {
-      "variant_id": 324,
+      "variant_id": 318,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratogre Doomfiends/Ratogre_A",
       "changes": {
         "raw_path_tokens": [
@@ -9898,7 +9566,7 @@
       }
     },
     {
-      "variant_id": 325,
+      "variant_id": 319,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratogre Doomfiends/Ratogre_B",
       "changes": {
         "raw_path_tokens": [
@@ -9930,7 +9598,7 @@
       }
     },
     {
-      "variant_id": 326,
+      "variant_id": 320,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Ratogre Doomfiends/Ratogre_C",
       "changes": {
         "raw_path_tokens": [
@@ -9957,7 +9625,7 @@
       }
     },
     {
-      "variant_id": 327,
+      "variant_id": 321,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Serpent Strike Bowguards/Bowguards_A",
       "changes": {
         "raw_path_tokens": [
@@ -9986,7 +9654,7 @@
       }
     },
     {
-      "variant_id": 328,
+      "variant_id": 322,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Serpent Strike Bowguards/Bowguards_B",
       "changes": {
         "raw_path_tokens": [
@@ -10014,7 +9682,7 @@
       }
     },
     {
-      "variant_id": 329,
+      "variant_id": 323,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Serpent Strike Bowguards/Bowguards_C",
       "changes": {
         "raw_path_tokens": [
@@ -10042,7 +9710,7 @@
       }
     },
     {
-      "variant_id": 330,
+      "variant_id": 324,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Serpent Strike Bowguards/Bowguards_D",
       "changes": {
         "raw_path_tokens": [
@@ -10070,7 +9738,7 @@
       }
     },
     {
-      "variant_id": 331,
+      "variant_id": 325,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Serpent Strike Bowguards/Bowguards_E",
       "changes": {
         "raw_path_tokens": [
@@ -10100,7 +9768,7 @@
       }
     },
     {
-      "variant_id": 332,
+      "variant_id": 326,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Sunset Chariot Revenants/Chariot",
       "changes": {
         "raw_path_tokens": [
@@ -10127,7 +9795,7 @@
       }
     },
     {
-      "variant_id": 333,
+      "variant_id": 327,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Sunset Chariot Revenants/Chariot_Crew_A",
       "changes": {
         "raw_path_tokens": [
@@ -10157,7 +9825,7 @@
       }
     },
     {
-      "variant_id": 334,
+      "variant_id": 328,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Sunset Chariot Revenants/Chariot_Crew_B",
       "changes": {
         "raw_path_tokens": [
@@ -10187,7 +9855,7 @@
       }
     },
     {
-      "variant_id": 335,
+      "variant_id": 329,
       "rel_path": "sample_store/t_me_MOXOMOR_aka_heroes_Infinite_RATMEN_VERMINS_IN_THE_UNDEAD_NECROPOLIS/1/Unsupported/Troops/Sunset Chariot Revenants/Chariot_Crew_C",
       "changes": {
         "raw_path_tokens": [
@@ -10217,7 +9885,7 @@
       }
     },
     {
-      "variant_id": 336,
+      "variant_id": 330,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/40mm & 50mm Base",
       "changes": {
         "raw_path_tokens": [
@@ -10244,7 +9912,7 @@
       }
     },
     {
-      "variant_id": 337,
+      "variant_id": 331,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Flamer Arm",
       "changes": {
         "raw_path_tokens": [
@@ -10271,7 +9939,7 @@
       }
     },
     {
-      "variant_id": 338,
+      "variant_id": 332,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Gun Arms",
       "changes": {
         "raw_path_tokens": [
@@ -10299,7 +9967,7 @@
       }
     },
     {
-      "variant_id": 339,
+      "variant_id": 333,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Mini Gun Cannon Arm",
       "changes": {
         "raw_path_tokens": [
@@ -10328,7 +9996,7 @@
       }
     },
     {
-      "variant_id": 340,
+      "variant_id": 334,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Powerhand Arms/Arm 1",
       "changes": {
         "raw_path_tokens": [
@@ -10358,7 +10026,7 @@
       }
     },
     {
-      "variant_id": 341,
+      "variant_id": 335,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Powerhand Arms/Arm 2",
       "changes": {
         "raw_path_tokens": [
@@ -10388,7 +10056,7 @@
       }
     },
     {
-      "variant_id": 342,
+      "variant_id": 336,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Powerhand Arms/Arm 3",
       "changes": {
         "raw_path_tokens": [
@@ -10419,7 +10087,7 @@
       }
     },
     {
-      "variant_id": 343,
+      "variant_id": 337,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Powerhand Arms/Arm 4",
       "changes": {
         "raw_path_tokens": [
@@ -10450,7 +10118,7 @@
       }
     },
     {
-      "variant_id": 344,
+      "variant_id": 338,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Powerhand Arms/Arm 5",
       "changes": {
         "raw_path_tokens": [
@@ -10480,7 +10148,7 @@
       }
     },
     {
-      "variant_id": 345,
+      "variant_id": 339,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Arms with Weapons/Sword Arms",
       "changes": {
         "raw_path_tokens": [
@@ -10508,7 +10176,7 @@
       }
     },
     {
-      "variant_id": 346,
+      "variant_id": 340,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Cape",
       "changes": {
         "raw_path_tokens": [
@@ -10532,7 +10200,7 @@
       }
     },
     {
-      "variant_id": 347,
+      "variant_id": 341,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Helmets & Faces",
       "changes": {
         "raw_path_tokens": [
@@ -10562,7 +10230,7 @@
       }
     },
     {
-      "variant_id": 348,
+      "variant_id": 342,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Legs",
       "changes": {
         "raw_path_tokens": [
@@ -10587,7 +10255,7 @@
       }
     },
     {
-      "variant_id": 349,
+      "variant_id": 343,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Lychee Scenes",
       "changes": {
         "raw_path_tokens": [
@@ -10618,7 +10286,7 @@
       }
     },
     {
-      "variant_id": 350,
+      "variant_id": 344,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Purity Seals",
       "changes": {
         "raw_path_tokens": [
@@ -10643,7 +10311,7 @@
       }
     },
     {
-      "variant_id": 351,
+      "variant_id": 345,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Shoulders",
       "changes": {
         "raw_path_tokens": [
@@ -10675,7 +10343,7 @@
       }
     },
     {
-      "variant_id": 352,
+      "variant_id": 346,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Shoulders/Shoulder Shield",
       "changes": {
         "raw_path_tokens": [
@@ -10702,7 +10370,7 @@
       }
     },
     {
-      "variant_id": 353,
+      "variant_id": 347,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Shoulders/Ultra Shoulders",
       "changes": {
         "raw_path_tokens": [
@@ -10730,7 +10398,7 @@
       }
     },
     {
-      "variant_id": 354,
+      "variant_id": 348,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/0_Presupported Files & Lychee Scenes/Torsos",
       "changes": {
         "raw_path_tokens": [
@@ -10760,7 +10428,7 @@
       }
     },
     {
-      "variant_id": 355,
+      "variant_id": 349,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/40mm & 50mm Base",
       "changes": {
         "raw_path_tokens": [
@@ -10787,7 +10455,7 @@
       }
     },
     {
-      "variant_id": 356,
+      "variant_id": 350,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Flamer Arm",
       "changes": {
         "raw_path_tokens": [
@@ -10810,7 +10478,7 @@
       }
     },
     {
-      "variant_id": 357,
+      "variant_id": 351,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Gun Arms",
       "changes": {
         "raw_path_tokens": [
@@ -10834,7 +10502,7 @@
       }
     },
     {
-      "variant_id": 358,
+      "variant_id": 352,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Mini Gun Cannon Arm",
       "changes": {
         "raw_path_tokens": [
@@ -10859,7 +10527,7 @@
       }
     },
     {
-      "variant_id": 359,
+      "variant_id": 353,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Powerhand Arms/Arm 1",
       "changes": {
         "raw_path_tokens": [
@@ -10886,7 +10554,7 @@
       }
     },
     {
-      "variant_id": 360,
+      "variant_id": 354,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Powerhand Arms/Arm 2",
       "changes": {
         "raw_path_tokens": [
@@ -10913,7 +10581,7 @@
       }
     },
     {
-      "variant_id": 361,
+      "variant_id": 355,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Powerhand Arms/Arm 3",
       "changes": {
         "raw_path_tokens": [
@@ -10942,7 +10610,7 @@
       }
     },
     {
-      "variant_id": 362,
+      "variant_id": 356,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Powerhand Arms/Arm 4",
       "changes": {
         "raw_path_tokens": [
@@ -10969,7 +10637,7 @@
       }
     },
     {
-      "variant_id": 363,
+      "variant_id": 357,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Powerhand Arms/Arm 5",
       "changes": {
         "raw_path_tokens": [
@@ -10996,7 +10664,7 @@
       }
     },
     {
-      "variant_id": 364,
+      "variant_id": 358,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Arms with Weapons/Sword Arms",
       "changes": {
         "raw_path_tokens": [
@@ -11020,7 +10688,7 @@
       }
     },
     {
-      "variant_id": 365,
+      "variant_id": 359,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Cape",
       "changes": {
         "raw_path_tokens": [
@@ -11040,7 +10708,7 @@
       }
     },
     {
-      "variant_id": 366,
+      "variant_id": 360,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Helmets & Faces",
       "changes": {
         "raw_path_tokens": [
@@ -11066,7 +10734,7 @@
       }
     },
     {
-      "variant_id": 367,
+      "variant_id": 361,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Legs/Terminator Legs without Purity Seals",
       "changes": {
         "raw_path_tokens": [
@@ -11091,7 +10759,7 @@
       }
     },
     {
-      "variant_id": 368,
+      "variant_id": 362,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Legs",
       "changes": {
         "raw_path_tokens": [
@@ -11113,7 +10781,7 @@
       }
     },
     {
-      "variant_id": 369,
+      "variant_id": 363,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Purity Seals",
       "changes": {
         "raw_path_tokens": [
@@ -11134,7 +10802,7 @@
       }
     },
     {
-      "variant_id": 370,
+      "variant_id": 364,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Shoulders",
       "changes": {
         "raw_path_tokens": [
@@ -11163,7 +10831,7 @@
       }
     },
     {
-      "variant_id": 371,
+      "variant_id": 365,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Shoulders/Shoulder Shield",
       "changes": {
         "raw_path_tokens": [
@@ -11185,7 +10853,7 @@
       }
     },
     {
-      "variant_id": 372,
+      "variant_id": 366,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Shoulders/Ultra Shoulders",
       "changes": {
         "raw_path_tokens": [
@@ -11209,7 +10877,7 @@
       }
     },
     {
-      "variant_id": 373,
+      "variant_id": 367,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Teleporter Homer",
       "changes": {
         "raw_path_tokens": [
@@ -11230,7 +10898,7 @@
       }
     },
     {
-      "variant_id": 374,
+      "variant_id": 368,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Torsos/Clean Torsos with Targeters",
       "changes": {
         "raw_path_tokens": [
@@ -11258,7 +10926,7 @@
       }
     },
     {
-      "variant_id": 375,
+      "variant_id": 369,
       "rel_path": "sample_store/Terminator Squad/Termi 3d models_V1_3/Termi 3d Models Complete Library/Torsos",
       "changes": {
         "raw_path_tokens": [
@@ -11284,7 +10952,7 @@
       }
     },
     {
-      "variant_id": 376,
+      "variant_id": 370,
       "rel_path": "sample_store/Terminator Squad/Termies",
       "changes": {
         "raw_path_tokens": [
@@ -11298,7 +10966,7 @@
       }
     },
     {
-      "variant_id": 377,
+      "variant_id": 371,
       "rel_path": "sample_store/Terminator Squad/Terminator Scan Organized/Bodies",
       "changes": {
         "raw_path_tokens": [
@@ -11318,7 +10986,7 @@
       }
     },
     {
-      "variant_id": 378,
+      "variant_id": 372,
       "rel_path": "sample_store/Terminator Squad/Terminator Scan Organized/Helmets",
       "changes": {
         "raw_path_tokens": [
@@ -11344,7 +11012,7 @@
       }
     },
     {
-      "variant_id": 379,
+      "variant_id": 373,
       "rel_path": "sample_store/Terminator Squad/Terminator Scan Organized/Weapons and Arms",
       "changes": {
         "raw_path_tokens": [
@@ -11383,7 +11051,7 @@
       }
     },
     {
-      "variant_id": 380,
+      "variant_id": 374,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Gun Arms",
       "changes": {
         "raw_path_tokens": [
@@ -11402,7 +11070,7 @@
       }
     },
     {
-      "variant_id": 381,
+      "variant_id": 375,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Mini Gun Cannon Arm",
       "changes": {
         "raw_path_tokens": [
@@ -11421,7 +11089,7 @@
       }
     },
     {
-      "variant_id": 382,
+      "variant_id": 376,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 1",
       "changes": {
         "raw_path_tokens": [
@@ -11443,7 +11111,7 @@
       }
     },
     {
-      "variant_id": 383,
+      "variant_id": 377,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 2",
       "changes": {
         "raw_path_tokens": [
@@ -11465,7 +11133,7 @@
       }
     },
     {
-      "variant_id": 384,
+      "variant_id": 378,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 3",
       "changes": {
         "raw_path_tokens": [
@@ -11489,7 +11157,7 @@
       }
     },
     {
-      "variant_id": 385,
+      "variant_id": 379,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 4",
       "changes": {
         "raw_path_tokens": [
@@ -11511,7 +11179,7 @@
       }
     },
     {
-      "variant_id": 386,
+      "variant_id": 380,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 5",
       "changes": {
         "raw_path_tokens": [
@@ -11533,7 +11201,7 @@
       }
     },
     {
-      "variant_id": 387,
+      "variant_id": 381,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Sword Arms",
       "changes": {
         "raw_path_tokens": [
@@ -11551,7 +11219,7 @@
       }
     },
     {
-      "variant_id": 388,
+      "variant_id": 382,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Base",
       "changes": {
         "raw_path_tokens": [
@@ -11572,7 +11240,7 @@
       }
     },
     {
-      "variant_id": 389,
+      "variant_id": 383,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Helmet",
       "changes": {
         "raw_path_tokens": [
@@ -11587,7 +11255,7 @@
       }
     },
     {
-      "variant_id": 390,
+      "variant_id": 384,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Legs",
       "changes": {
         "raw_path_tokens": [
@@ -11603,7 +11271,7 @@
       }
     },
     {
-      "variant_id": 391,
+      "variant_id": 385,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Shoulder",
       "changes": {
         "raw_path_tokens": [
@@ -11624,7 +11292,7 @@
       }
     },
     {
-      "variant_id": 392,
+      "variant_id": 386,
       "rel_path": "sample_store/Terminator Squad/Terminator squad",
       "changes": {
         "raw_path_tokens": [
@@ -11639,7 +11307,7 @@
       }
     },
     {
-      "variant_id": 393,
+      "variant_id": 387,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Torso",
       "changes": {
         "raw_path_tokens": [
@@ -11656,7 +11324,7 @@
       }
     },
     {
-      "variant_id": 394,
+      "variant_id": 388,
       "rel_path": "sample_store/Terminator Squad/Warhammer Terminator Set/Bodies",
       "changes": {
         "raw_path_tokens": [
@@ -11677,7 +11345,7 @@
       }
     },
     {
-      "variant_id": 395,
+      "variant_id": 389,
       "rel_path": "sample_store/Terminator Squad/Warhammer Terminator Set/Helmets",
       "changes": {
         "raw_path_tokens": [
@@ -11704,7 +11372,7 @@
       }
     },
     {
-      "variant_id": 396,
+      "variant_id": 390,
       "rel_path": "sample_store/Terminator Squad/Warhammer Terminator Set/Weapons and Arms",
       "changes": {
         "raw_path_tokens": [
@@ -11744,7 +11412,7 @@
       }
     },
     {
-      "variant_id": 397,
+      "variant_id": 391,
       "rel_path": "sample_store/瑟瑟妹子/分件",
       "changes": {
         "raw_path_tokens": [
@@ -11797,19 +11465,19 @@
     }
   ],
   "field_summary": {
-    "raw_path_tokens": 397,
+    "raw_path_tokens": 391,
     "designer": 220,
     "designer_confidence": 220,
     "support_state": 214,
     "height_mm": 47,
-    "intended_use_bucket": 235,
-    "token_locale": 397,
+    "intended_use_bucket": 229,
+    "token_locale": 391,
     "content_flag": 55,
     "segmentation": 36,
     "normalization_warnings": 21,
     "scale_ratio_den": 19,
-    "lineage_family": 106,
-    "part_pack_type": 5,
+    "lineage_family": 105,
+    "part_pack_type": 3,
     "franchise_hints": 2,
     "internal_volume": 3,
     "residual_tokens": 1

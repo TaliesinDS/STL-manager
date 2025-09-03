@@ -11,6 +11,9 @@ It writes `data/sample_inventory.json` by default. Each item contains keys expec
 
 Usage:
   .venv\Scripts\python.exe scripts\10_inventory\create_sample_inventory.py --root sample_store --out data/sample_inventory.json
+Notes:
+    - Any files or folders under a '__MACOSX' path component are ignored.
+    - macOS sidecar files ('.DS_Store', '._*') are ignored.
 """
 from __future__ import annotations
 import argparse
@@ -30,8 +33,21 @@ def build_inventory(root: Path) -> list[dict]:
     items: list[dict] = []
     root = root.resolve()
     for p in sorted(root.rglob('*')):
+        # Skip any macOS metadata folder trees entirely
+        try:
+            parts_lower = {part.lower() for part in p.parts}
+        except Exception:
+            parts_lower = set()
+        if "__macosx" in parts_lower:
+            continue
         if p.is_dir():
             continue
+        # Skip macOS sidecar files
+        try:
+            if p.name == ".DS_Store" or p.name.startswith("._"):
+                continue
+        except Exception:
+            pass
         # Skip files located directly under the top-level sample_store root
         # (we only want to inventory files inside subfolders for now)
         try:

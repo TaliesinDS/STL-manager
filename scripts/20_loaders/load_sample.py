@@ -33,6 +33,12 @@ def load_sample(fixture_path: Path) -> int:
     }
     for it in items:
         rel = it.get("rel_path") or ""
+        # Skip any entries that are part of macOS metadata folders
+        try:
+            if "__macosx" in {part.lower() for part in Path(rel).parts}:
+                continue
+        except Exception:
+            pass
         parent = Path(rel).parent
         try:
             while parent.name.lower() in IGNORED_LEAF_FOLDERS:

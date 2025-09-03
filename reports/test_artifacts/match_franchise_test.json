@@ -1,6 +1,6 @@
 {
   "apply": false,
-  "total_candidates": 397,
+  "total_candidates": 391,
   "summary": {
     "total_proposals": 69,
     "with_franchise": 45,
@@ -11,7 +11,7 @@
       "one_piece": 20,
       "avatar_the_last_airbender": 12,
       "resident_evil": 4,
-      "my_hero_academia": 2,
+      "honkai_multiverse": 2,
       "dc_comics": 2,
       "queens_blade": 2,
       "fate_series": 2,
@@ -22,7 +22,7 @@
       "nami_one_piece": 20,
       "toph": 12,
       "sherry_birkin": 4,
-      "himiko_toga": 2,
+      "himeko": 2,
       "poison_ivy": 2,
       "menace": 2,
       "artoria_pendragon": 2,
@@ -199,7 +199,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -259,7 +259,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkonurse"
+          "ahko"
         ]
       }
     },
@@ -269,7 +269,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkonurse"
+          "ahko"
         ]
       }
     },
@@ -279,7 +279,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkonurse"
+          "ahko"
         ]
       }
     },
@@ -319,7 +319,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -329,7 +329,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -339,7 +339,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -379,7 +379,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -389,7 +389,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -399,7 +399,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -409,7 +409,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -417,10 +417,10 @@
       "variant_id": 82,
       "rel_path": "sample_store/azerama - himeko toga - my hero acadamia/nsfw",
       "changes": {
-        "franchise": "my_hero_academia",
-        "character_name": "himiko_toga",
+        "franchise": "honkai_multiverse",
+        "character_name": "himeko",
         "character_aliases": [
-          "toga"
+          "himeko"
         ]
       }
     },
@@ -428,10 +428,10 @@
       "variant_id": 83,
       "rel_path": "sample_store/azerama - himeko toga - my hero acadamia/sfw",
       "changes": {
-        "franchise": "my_hero_academia",
-        "character_name": "himiko_toga",
+        "franchise": "honkai_multiverse",
+        "character_name": "himeko",
         "character_aliases": [
-          "toga"
+          "himeko"
         ]
       }
     },
@@ -678,7 +678,7 @@
       }
     },
     {
-      "variant_id": 233,
+      "variant_id": 227,
       "rel_path": "sample_store/Menace_Queen's Blade nsfw/Menace_Queen's Blade nsfw/Menace",
       "changes": {
         "franchise": "queens_blade",
@@ -689,7 +689,7 @@
       }
     },
     {
-      "variant_id": 234,
+      "variant_id": 228,
       "rel_path": "sample_store/Menace_Queen's Blade nsfw/Menace_Queen's Blade nsfw/Menace Extra Outfits",
       "changes": {
         "franchise": "queens_blade",
@@ -700,7 +700,7 @@
       }
     },
     {
-      "variant_id": 244,
+      "variant_id": 238,
       "rel_path": "sample_store/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber_NSFW_SFW/Optional",
       "changes": {
         "franchise": "fate_series",
@@ -711,7 +711,7 @@
       }
     },
     {
-      "variant_id": 245,
+      "variant_id": 239,
       "rel_path": "sample_store/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber_NSFW_SFW/Saber",
       "changes": {
         "franchise": "fate_series",
@@ -722,7 +722,7 @@
       }
     },
     {
-      "variant_id": 249,
+      "variant_id": 243,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1",
       "changes": {
         "franchise": "resident_evil",
@@ -733,7 +733,7 @@
       }
     },
     {
-      "variant_id": 250,
+      "variant_id": 244,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/fullbody",
       "changes": {
         "franchise": "resident_evil",
@@ -744,7 +744,7 @@
       }
     },
     {
-      "variant_id": 251,
+      "variant_id": 245,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/NSFW",
       "changes": {
         "franchise": "resident_evil",
@@ -755,7 +755,7 @@
       }
     },
     {
-      "variant_id": 252,
+      "variant_id": 246,
       "rel_path": "sample_store/Sherry- isekai meikyuu de harem wo/Sherry_v1/SFW",
       "changes": {
         "franchise": "resident_evil",
