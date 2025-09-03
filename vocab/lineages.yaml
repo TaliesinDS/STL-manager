@@ -1,0 +1,1123 @@
+# Lineage SSOT (Single Source of Truth)
+#
+# Purpose: Normalize Variant.lineage_family and Variant.lineage_primary
+# across fantasy (and selectively scifi) content using conservative tokens.
+#
+# Matching guidance (consumers should follow):
+# - Prefer subtype strong hits → set both lineage_family and lineage_primary.
+# - Family strong hits → set lineage_family; leave lineage_primary null.
+# - Weak hits do not assign unless multiple consistent weak hits and no exclusions.
+# - Respect context_tags to avoid cross-pollination (e.g., Aeldari ≠ Elf).
+# - Use locale_aliases in combination with token_locale.
+#
+# Versioning: bump version when structure or matching semantics change.
+
+version: 2
+
+families:
+  - key: elf
+    name: Elf
+    context_tags: [fantasy]
+    aliases_strong: [elf, elves, elven]
+    aliases_weak: []
+    locale_aliases:
+      es: [elfo, elfos, elfica, elfico]
+      fr: [elfe, elfes, elfiques]
+      de: [elf, elfen, elfisch]
+      zh: [精灵, 精靈]
+      ja: [エルフ]
+    excludes: [aeldari, asuryani, drukhari]
+    sublineages:
+      - key: high_elf
+        name: High Elf
+        aliases_strong: ["high elf", asur]
+        aliases_weak: []
+      - key: wood_elf
+        name: Wood Elf
+        aliases_strong: ["wood elf", asrai]
+        aliases_weak: []
+      - key: dark_elf
+        name: Dark Elf
+        aliases_strong: ["dark elf", druchii]
+        aliases_weak: []
+      - key: drow
+        name: Drow
+        aliases_strong: [drow]
+        aliases_weak: []
+        excludes: [drukhari]
+      - key: sea_elf
+        name: Sea Elf
+        aliases_strong: ["sea elf", "sea elves"]
+        aliases_weak: []
+      - key: eladrin
+        name: Eladrin
+        aliases_strong: [eladrin]
+        aliases_weak: []
+      - key: shadar_kai
+        name: Shadar-kai
+        aliases_strong: [shadar-kai, shadarkai]
+        aliases_weak: []
+
+  - key: dwarf
+    name: Dwarf
+    context_tags: [fantasy]
+    aliases_strong: [dwarf, dwarves, dwarven, duardin]
+    aliases_weak: []
+    sublineages:
+      - key: duergar
+        name: Duergar (Gray Dwarf)
+        aliases_strong: [duergar, "gray dwarf", "grey dwarf"]
+        aliases_weak: []
+      - key: derro
+        name: Derro
+        aliases_strong: [derro]
+        aliases_weak: []
+      - key: hill_dwarf
+        name: Hill Dwarf
+        aliases_strong: ["hill dwarf", hill-dwarf]
+        aliases_weak: []
+      - key: mountain_dwarf
+        name: Mountain Dwarf
+        aliases_strong: ["mountain dwarf", mountain-dwarf]
+        aliases_weak: []
+
+  - key: human
+    name: Human
+    context_tags: [fantasy]
+    aliases_strong: [human, humanmale, humanfemale]
+    aliases_weak: [man, men, woman, women]
+    sublineages:
+      - key: barbarian
+        name: Barbarian
+        aliases_strong: [barbarian]
+        aliases_weak: []
+      - key: knight
+        name: Knight
+        aliases_strong: [knight]
+        aliases_weak: [paladin]
+
+  - key: orc
+    name: Orc
+    context_tags: [fantasy]
+    aliases_strong: [orc, orcs]
+    aliases_weak: []
+    excludes: [ork, orks]
+    sublineages:
+      - key: half_orc
+        name: Half-Orc
+        aliases_strong: ["half orc", half-orc]
+        aliases_weak: []
+
+  - key: goblin
+    name: Goblin
+    context_tags: [fantasy]
+    aliases_strong: [goblin, goblins]
+    aliases_weak: []
+    sublineages:
+      - key: hobgoblin
+        name: Hobgoblin
+        aliases_strong: [hobgoblin, hobgoblins]
+        aliases_weak: []
+      - key: bugbear
+        name: Bugbear
+        aliases_strong: [bugbear, bugbears]
+        aliases_weak: []
+
+  - key: halfling
+    name: Halfling
+    context_tags: [fantasy]
+    aliases_strong: [halfling, halflings, hobbit, hobbits]
+    aliases_weak: []
+    sublineages:
+      - key: lightfoot
+        name: Lightfoot Halfling
+        aliases_strong: [lightfoot]
+        aliases_weak: []
+      - key: stout
+        name: Stout Halfling
+        aliases_strong: [stout]
+        aliases_weak: []
+      - key: ghostwise
+        name: Ghostwise Halfling
+        aliases_strong: [ghostwise]
+        aliases_weak: []
+
+  - key: gnome
+    name: Gnome
+    context_tags: [fantasy]
+    aliases_strong: [gnome, gnomes]
+    aliases_weak: []
+    sublineages:
+      - key: svirfneblin
+        name: Svirfneblin (Deep Gnome)
+        aliases_strong: [svirfneblin, "deep gnome", "deep gnomes"]
+        aliases_weak: []
+      - key: rock_gnome
+        name: Rock Gnome
+        aliases_strong: ["rock gnome", "rock gnomes"]
+        aliases_weak: []
+      - key: forest_gnome
+        name: Forest Gnome
+        aliases_strong: ["forest gnome", "forest gnomes"]
+        aliases_weak: []
+
+  - key: half_elf
+    name: Half-Elf
+    context_tags: [fantasy]
+    aliases_strong: [half-elf, "half elf", halfelf]
+    aliases_weak: []
+    sublineages: []
+
+  - key: lizardfolk
+    name: Lizardfolk
+    context_tags: [fantasy]
+    aliases_strong: [lizardfolk, lizardmen, saurian]
+    aliases_weak: [reptilian]
+    sublineages: []
+
+  - key: ratfolk
+    name: Ratfolk
+    context_tags: [fantasy]
+    aliases_strong: [ratfolk, skaven]
+    aliases_weak: [ratmen, ratlings]
+    sublineages: []
+
+  - key: undead
+    name: Undead
+    context_tags: [fantasy]
+    aliases_strong: [undead]
+    aliases_weak: []
+    sublineages:
+      - key: banshee
+        name: Banshee
+        aliases_strong: [banshee, banshees]
+        aliases_weak: []
+      - key: vampire
+        name: Vampire
+        aliases_strong: [vampire, vampires]
+        aliases_weak: []
+      - key: skeleton
+        name: Skeleton
+        aliases_strong: [skeleton, skeletons]
+        aliases_weak: []
+      - key: zombie
+        name: Zombie
+        aliases_strong: [zombie, zombies]
+        aliases_weak: []
+      - key: ghost
+        name: Ghost
+        aliases_strong: [ghost, ghosts]
+        aliases_weak: []
+      - key: wraith
+        name: Wraith
+        aliases_strong: [wraith, wraiths]
+        aliases_weak: []
+      - key: specter
+        name: Specter
+        aliases_strong: [specter, spectre, specters, spectres]
+        aliases_weak: []
+      - key: wight
+        name: Wight
+        aliases_strong: [wight, wights]
+        aliases_weak: []
+      - key: ghoul
+        name: Ghoul
+        aliases_strong: [ghoul, ghouls]
+        aliases_weak: []
+      - key: mummy
+        name: Mummy
+        aliases_strong: [mummy, mummies]
+        aliases_weak: []
+      - key: lich
+        name: Lich
+        aliases_strong: [lich, liches]
+        aliases_weak: []
+      - key: death_knight
+        name: Death Knight
+        aliases_strong: ["death knight", deathknight]
+        aliases_weak: []
+      - key: dhampir
+        name: Dhampir
+        aliases_strong: [dhampir, dhampirs]
+        aliases_weak: []
+      - key: revenant
+        name: Revenant
+        aliases_strong: [revenant, revenants]
+        aliases_weak: []
+
+  - key: demon
+    name: Demon
+    context_tags: [fantasy]
+    aliases_strong: [demon, demons, daemon, daemons]
+    aliases_weak: []
+    excludes: [daemonette, bloodletter, plaguebearer, pink_horror]
+    sublineages:
+      - key: succubus
+        name: Succubus
+        aliases_strong: [succubus, succubi]
+        aliases_weak: []
+      - key: incubus
+        name: Incubus
+        aliases_strong: [incubus, incubi]
+        aliases_weak: []
+
+  - key: angel
+    name: Angel
+    context_tags: [fantasy]
+    aliases_strong: [angel, angels]
+    aliases_weak: []
+    sublineages:
+      - key: archangel
+        name: Archangel
+        aliases_strong: [archangel, archangels]
+        aliases_weak: []
+      - key: valkyrie
+        name: Valkyrie
+        aliases_strong: [valkyrie, valkyries]
+        aliases_weak: []
+
+  - key: beastman
+    name: Beastman
+    context_tags: [fantasy]
+    aliases_strong: [beastman, beastmen]
+    aliases_weak: [beastfolk]
+    sublineages: []
+
+  - key: ogre
+    name: Ogre
+    context_tags: [fantasy]
+    aliases_strong: [ogre, ogres, ogor, ogors]
+    aliases_weak: []
+    excludes: [ogryn]
+    sublineages:
+      - key: merrow
+        name: Merrow (Aquatic Ogre)
+        aliases_strong: [merrow]
+        aliases_weak: []
+      - key: oni
+        name: Oni (Ogre Mage)
+        aliases_strong: [oni, "ogre mage", ogre-mage]
+        aliases_weak: []
+
+  - key: giant
+    name: Giant
+    context_tags: [fantasy]
+    aliases_strong: [giant, giants, gargant, mega-gargant]
+    aliases_weak: [giantkin]
+    sublineages:
+      - key: hill_giant
+        name: Hill Giant
+        aliases_strong: ["hill giant", hill-giant]
+        aliases_weak: []
+      - key: stone_giant
+        name: Stone Giant
+        aliases_strong: ["stone giant", stone-giant]
+        aliases_weak: []
+      - key: frost_giant
+        name: Frost Giant
+        aliases_strong: ["frost giant", frost-giant]
+        aliases_weak: []
+      - key: fire_giant
+        name: Fire Giant
+        aliases_strong: ["fire giant", fire-giant]
+        aliases_weak: []
+      - key: storm_giant
+        name: Storm Giant
+        aliases_strong: ["storm giant", storm-giant]
+        aliases_weak: []
+      - key: cyclops
+        name: Cyclops
+        aliases_strong: [cyclops]
+        aliases_weak: [cyclopes]
+      - key: ettin
+        name: Ettin
+        aliases_strong: [ettin, ettins]
+        aliases_weak: []
+
+  - key: dragonkin
+    name: Dragonkin
+    context_tags: [fantasy]
+    aliases_strong: [dragonborn, dragonkin, draconian]
+    aliases_weak: []
+    sublineages: []
+
+  - key: dragon
+    name: Dragon
+    context_tags: [fantasy]
+    aliases_strong: [dragon, dragons, wyrm, wyrms, wurm, wurms]
+    aliases_weak: []
+    sublineages:
+      - key: drake
+        name: Drake
+        aliases_strong: [drake, drakes]
+        aliases_weak: []
+      - key: wyvern
+        name: Wyvern
+        aliases_strong: [wyvern, wyverns]
+        aliases_weak: []
+
+  - key: kobold
+    name: Kobold
+    context_tags: [fantasy]
+    aliases_strong: [kobold, kobolds]
+    aliases_weak: []
+    sublineages: []
+
+  - key: gnoll
+    name: Gnoll
+    context_tags: [fantasy]
+    aliases_strong: [gnoll, gnolls]
+    aliases_weak: []
+    sublineages: []
+
+  - key: yuan_ti
+    name: Yuan-ti (Snakefolk)
+    context_tags: [fantasy]
+    aliases_strong: [yuan-ti, "yuan ti", yuanti]
+    aliases_weak: [snakefolk, serpentfolk, naga]
+    sublineages:
+      - key: pureblood
+        name: Pureblood
+        aliases_strong: [pureblood, pure-blood]
+        aliases_weak: []
+      - key: malison
+        name: Malison
+        aliases_strong: [malison]
+        aliases_weak: []
+      - key: abomination
+        name: Abomination
+        aliases_strong: [abomination]
+        aliases_weak: []
+
+  - key: naga
+    name: Naga
+    context_tags: [fantasy]
+    aliases_strong: [naga, nagas]
+    aliases_weak: []
+    excludes: [yuan-ti, yuanti]
+    sublineages:
+      - key: guardian_naga
+        name: Guardian Naga
+        aliases_strong: ["guardian naga"]
+        aliases_weak: []
+      - key: spirit_naga
+        name: Spirit Naga
+        aliases_strong: ["spirit naga"]
+        aliases_weak: []
+      - key: bone_naga
+        name: Bone Naga
+        aliases_strong: ["bone naga"]
+        aliases_weak: []
+
+  - key: tabaxi
+    name: Tabaxi (Catfolk)
+    context_tags: [fantasy]
+    aliases_strong: [tabaxi]
+    aliases_weak: [catfolk, catgirl, catgirls]
+    sublineages: []
+
+  - key: leonin
+    name: Leonin
+    context_tags: [fantasy]
+    aliases_strong: [leonin]
+    aliases_weak: []
+    sublineages: []
+
+  - key: kenku
+    name: Kenku (Crowfolk)
+    context_tags: [fantasy]
+    aliases_strong: [kenku]
+    aliases_weak: [crowfolk, ravenfolk, tengu, corvidfolk]
+    sublineages: []
+
+  - key: aarakocra
+    name: Aarakocra (Birdfolk)
+    context_tags: [fantasy]
+    aliases_strong: [aarakocra]
+    aliases_weak: [birdfolk, owlin, owlfolk]
+    sublineages: []
+
+  - key: tortle
+    name: Tortle
+    context_tags: [fantasy]
+    aliases_strong: [tortle, tortles]
+    aliases_weak: [turtlefolk]
+    sublineages: []
+
+  - key: loxodon
+    name: Loxodon (Elephantfolk)
+    context_tags: [fantasy]
+    aliases_strong: [loxodon]
+    aliases_weak: [elephantfolk]
+    sublineages: []
+
+  - key: minotaur
+    name: Minotaur
+    context_tags: [fantasy]
+    aliases_strong: [minotaur, minotaurs]
+    aliases_weak: []
+    sublineages: []
+
+  - key: centaur
+    name: Centaur
+    context_tags: [fantasy]
+    aliases_strong: [centaur, centaurs]
+    aliases_weak: []
+    sublineages: []
+
+  - key: satyr
+    name: Satyr (Faun)
+    context_tags: [fantasy]
+    aliases_strong: [satyr, satyrs]
+    aliases_weak: [faun, fauns]
+    sublineages: []
+
+  - key: goliath
+    name: Goliath
+    context_tags: [fantasy]
+    aliases_strong: [goliath, goliaths]
+    aliases_weak: []
+    sublineages: []
+
+  - key: firbolg
+    name: Firbolg
+    context_tags: [fantasy]
+    aliases_strong: [firbolg, firbolgs]
+    aliases_weak: []
+    sublineages: []
+
+  - key: gith
+    name: Gith
+    context_tags: [fantasy]
+    aliases_strong: [gith]
+    aliases_weak: []
+    sublineages:
+      - key: githyanki
+        name: Githyanki
+        aliases_strong: [githyanki]
+        aliases_weak: []
+      - key: githzerai
+        name: Githzerai
+        aliases_strong: [githzerai]
+        aliases_weak: []
+
+  - key: genasi
+    name: Genasi (Elemental-touched)
+    context_tags: [fantasy]
+    aliases_strong: [genasi]
+    aliases_weak: []
+    sublineages:
+      - key: air_genasi
+        name: Air Genasi
+        aliases_strong: ["air genasi"]
+        aliases_weak: []
+      - key: earth_genasi
+        name: Earth Genasi
+        aliases_strong: ["earth genasi"]
+        aliases_weak: []
+      - key: fire_genasi
+        name: Fire Genasi
+        aliases_strong: ["fire genasi"]
+        aliases_weak: []
+      - key: water_genasi
+        name: Water Genasi
+        aliases_strong: ["water genasi"]
+        aliases_weak: []
+
+  - key: triton
+    name: Triton
+    context_tags: [fantasy]
+    aliases_strong: [triton, tritons]
+    aliases_weak: []
+    sublineages: []
+
+  - key: merfolk
+    name: Merfolk
+    context_tags: [fantasy]
+    aliases_strong: [merfolk, mermaid, merman, mermaids, mermen]
+    aliases_weak: []
+    sublineages: []
+
+  - key: sahuagin
+    name: Sahuagin
+    context_tags: [fantasy]
+    aliases_strong: [sahuagin]
+    aliases_weak: [sea-devil, seadevil]
+    sublineages: []
+
+  - key: kuo_toa
+    name: Kuo-toa
+    context_tags: [fantasy]
+    aliases_strong: [kuo-toa, kuo_toa]
+    aliases_weak: []
+    sublineages: []
+
+  - key: locathah
+    name: Locathah
+    context_tags: [fantasy]
+    aliases_strong: [locathah]
+    aliases_weak: []
+    sublineages: []
+
+  - key: bullywug
+    name: Bullywug
+    context_tags: [fantasy]
+    aliases_strong: [bullywug, bullywugs]
+    aliases_weak: [frogfolk]
+    sublineages: []
+
+  - key: grung
+    name: Grung
+    context_tags: [fantasy]
+    aliases_strong: [grung]
+    aliases_weak: [frogfolk]
+    sublineages: []
+
+  - key: thri_kreen
+    name: Thri-kreen
+    context_tags: [fantasy]
+    aliases_strong: [thri-kreen, thri_kreen]
+    aliases_weak: [mantisfolk, insectfolk]
+    sublineages: []
+
+  - key: aasimar
+    name: Aasimar (Celestialkin)
+    context_tags: [fantasy]
+    aliases_strong: [aasimar]
+    aliases_weak: []
+    sublineages:
+      - key: protector_aasimar
+        name: Protector Aasimar
+        aliases_strong: ["protector aasimar"]
+        aliases_weak: []
+      - key: scourge_aasimar
+        name: Scourge Aasimar
+        aliases_strong: ["scourge aasimar"]
+        aliases_weak: []
+      - key: fallen_aasimar
+        name: Fallen Aasimar
+        aliases_strong: ["fallen aasimar"]
+        aliases_weak: []
+
+  - key: tiefling
+    name: Tiefling (Fiendkin)
+    context_tags: [fantasy]
+    aliases_strong: [tiefling, tieflings]
+    aliases_weak: []
+    sublineages: []
+
+  - key: construct
+    name: Construct
+    context_tags: [fantasy]
+    aliases_strong: [construct, constructs]
+    aliases_weak: []
+    sublineages:
+      - key: warforged
+        name: Warforged
+        aliases_strong: [warforged]
+        aliases_weak: []
+      - key: autognome
+        name: Autognome
+        aliases_strong: [autognome, autognomes]
+        aliases_weak: []
+      - key: golem
+        name: Golem
+        aliases_strong: [golem, golems]
+        aliases_weak: []
+      - key: stone_golem
+        name: Stone Golem
+        aliases_strong: ["stone golem"]
+        aliases_weak: []
+      - key: iron_golem
+        name: Iron Golem
+        aliases_strong: ["iron golem"]
+        aliases_weak: []
+      - key: flesh_golem
+        name: Flesh Golem
+        aliases_strong: ["flesh golem"]
+        aliases_weak: []
+      - key: clay_golem
+        name: Clay Golem
+        aliases_strong: ["clay golem"]
+        aliases_weak: []
+      - key: modron
+        name: Modron
+        aliases_strong: [modron, modrons]
+        aliases_weak: []
+      - key: homunculus
+        name: Homunculus
+        aliases_strong: [homunculus, homunculi]
+        aliases_weak: []
+      - key: animated_armor
+        name: Animated Armor
+        aliases_strong: ["animated armor"]
+        aliases_weak: []
+      - key: scarecrow
+        name: Scarecrow
+        aliases_strong: [scarecrow, scarecrows]
+        aliases_weak: []
+
+  - key: kitsune
+    name: Kitsune (Foxfolk)
+    context_tags: [fantasy]
+    aliases_strong: [kitsune, foxfolk]
+    aliases_weak: [vulpinefolk]
+    sublineages: []
+
+  - key: harengon
+    name: Harengon (Rabbitfolk)
+    context_tags: [fantasy]
+    aliases_strong: [harengon, rabbitfolk]
+    aliases_weak: [bunnyfolk]
+    sublineages: []
+
+  - key: fey
+    name: Fey
+    context_tags: [fantasy]
+    aliases_strong: [fey]
+    aliases_weak: [fae]
+    sublineages:
+      - key: fairy
+        name: Fairy
+        aliases_strong: [fairy, fairies]
+        aliases_weak: []
+      - key: pixie
+        name: Pixie
+        aliases_strong: [pixie, pixies]
+        aliases_weak: []
+      - key: sprite
+        name: Sprite
+        aliases_strong: [sprite, sprites]
+        aliases_weak: []
+      - key: siren
+        name: Siren
+        aliases_strong: [siren, sirens]
+        aliases_weak: [sea-nymph, "sea nymph"]
+      - key: selkie
+        name: Selkie
+        aliases_strong: [selkie, selkies]
+        aliases_weak: []
+      - key: nymph
+        name: Nymph
+        aliases_strong: [nymph, nymphs]
+        aliases_weak: []
+      - key: naiad
+        name: Naiad (Water Nymph)
+        aliases_strong: [naiad, naiads]
+        aliases_weak: ["water nymph"]
+      - key: kelpie
+        name: Kelpie
+        aliases_strong: [kelpie, kelpies]
+        aliases_weak: []
+      - key: redcap
+        name: Redcap
+        aliases_strong: [redcap, redcaps]
+        aliases_weak: []
+
+  - key: genie
+    name: Genie
+    context_tags: [fantasy]
+    aliases_strong: [genie, djinn, jinn]
+    aliases_weak: []
+    sublineages:
+      - key: djinni
+        name: Djinni (Air Genie)
+        aliases_strong: [djinni]
+        aliases_weak: [genie, djinn, jinn]
+      - key: dao
+        name: Dao (Earth Genie)
+        aliases_strong: [dao]
+        aliases_weak: [genie]
+      - key: efreeti
+        name: Efreeti (Fire Genie)
+        aliases_strong: [efreeti]
+        aliases_weak: [genie]
+      - key: marid
+        name: Marid (Water Genie)
+        aliases_strong: [marid]
+        aliases_weak: [genie]
+
+  - key: elemental
+    name: Elemental
+    context_tags: [fantasy]
+    aliases_strong: [elemental, elementals]
+    aliases_weak: []
+    sublineages:
+      - key: air_elemental
+        name: Air Elemental
+        aliases_strong: ["air elemental"]
+        aliases_weak: []
+      - key: earth_elemental
+        name: Earth Elemental
+        aliases_strong: ["earth elemental"]
+        aliases_weak: []
+      - key: fire_elemental
+        name: Fire Elemental
+        aliases_strong: ["fire elemental"]
+        aliases_weak: []
+      - key: salamander
+        name: Salamander (Fire Serpent)
+        aliases_strong: [salamander, salamanders]
+        aliases_weak: []
+      - key: water_elemental
+        name: Water Elemental
+        aliases_strong: ["water elemental"]
+        aliases_weak: []
+      - key: mephit
+        name: Mephit
+        aliases_strong: [mephit, mephits]
+        aliases_weak: []
+
+  - key: ooze
+    name: Ooze (Slime)
+    context_tags: [fantasy]
+    aliases_strong: [ooze, slimes, slime]
+    aliases_weak: [pudding, "gelatinous cube"]
+    sublineages:
+      - key: gelatinous_cube
+        name: Gelatinous Cube
+        aliases_strong: ["gelatinous cube"]
+        aliases_weak: []
+      - key: black_pudding
+        name: Black Pudding
+        aliases_strong: ["black pudding"]
+        aliases_weak: []
+      - key: gray_ooze
+        name: Gray Ooze
+        aliases_strong: ["gray ooze", "grey ooze"]
+        aliases_weak: []
+      - key: ochre_jelly
+        name: Ochre Jelly
+        aliases_strong: ["ochre jelly"]
+        aliases_weak: []
+
+
+  - key: gryphon
+    name: Gryphon/Griffon
+    context_tags: [fantasy]
+    aliases_strong: [gryphon, griffon, griffin]
+    aliases_weak: []
+    sublineages: []
+
+  - key: phoenix
+    name: Phoenix
+    context_tags: [fantasy]
+    aliases_strong: [phoenix, phoenixes]
+    aliases_weak: []
+    sublineages: []
+
+  - key: hippogriff
+    name: Hippogriff
+    context_tags: [fantasy]
+    aliases_strong: [hippogriff, hippogriffs]
+    aliases_weak: []
+    sublineages: []
+
+  - key: pegasus
+    name: Pegasus
+    context_tags: [fantasy]
+    aliases_strong: [pegasus, pegasi]
+    aliases_weak: [winged-horse, winged_horse, "winged horse"]
+    sublineages: []
+
+  - key: unicorn
+    name: Unicorn
+    context_tags: [fantasy]
+    aliases_strong: [unicorn, unicorns]
+    aliases_weak: []
+    sublineages: []
+
+  - key: chimera
+    name: Chimera
+    context_tags: [fantasy]
+    aliases_strong: [chimera, chimaera]
+    aliases_weak: []
+    sublineages: []
+
+  - key: manticore
+    name: Manticore
+    context_tags: [fantasy]
+    aliases_strong: [manticore, manticores]
+    aliases_weak: []
+    sublineages: []
+
+  - key: hydra
+    name: Hydra
+    context_tags: [fantasy]
+    aliases_strong: [hydra, hydras]
+    aliases_weak: []
+    sublineages: []
+
+  - key: basilisk
+    name: Basilisk
+    context_tags: [fantasy]
+    aliases_strong: [basilisk, basilisks]
+    aliases_weak: []
+    sublineages: []
+
+  - key: cockatrice
+    name: Cockatrice
+    context_tags: [fantasy]
+    aliases_strong: [cockatrice, cockatrices]
+    aliases_weak: []
+    sublineages: []
+
+  - key: sphinx
+    name: Sphinx
+    context_tags: [fantasy]
+    aliases_strong: [sphinx, sphinxes]
+    aliases_weak: []
+    sublineages:
+      - key: androsphinx
+        name: Androsphinx
+        aliases_strong: [androsphinx, androsphinxes]
+        aliases_weak: []
+      - key: gynosphinx
+        name: Gynosphinx
+        aliases_strong: [gynosphinx, gynosphinxes]
+        aliases_weak: []
+
+  - key: gargoyle
+    name: Gargoyle
+    context_tags: [fantasy]
+    aliases_strong: [gargoyle, gargoyles]
+    aliases_weak: []
+    sublineages: []
+
+  - key: kraken
+    name: Kraken
+    context_tags: [fantasy]
+    aliases_strong: [kraken]
+    aliases_weak: []
+    sublineages: []
+
+
+  - key: lycanthrope
+    name: Lycanthrope
+    context_tags: [fantasy]
+    aliases_strong: [lycanthrope, lycanthropes]
+    aliases_weak: [were]
+    sublineages:
+      - key: werewolf
+        name: Werewolf
+        aliases_strong: [werewolf, werewolves]
+        aliases_weak: []
+      - key: wererat
+        name: Wererat
+        aliases_strong: [wererat, wererats]
+        aliases_weak: []
+      - key: weretiger
+        name: Weretiger
+        aliases_strong: [weretiger, weretigers]
+        aliases_weak: []
+      - key: werebear
+        name: Werebear
+        aliases_strong: [werebear, werebears]
+        aliases_weak: []
+      - key: wereboar
+        name: Wereboar
+        aliases_strong: [wereboar, wereboars]
+        aliases_weak: []
+
+  - key: plantfolk
+    name: Plantfolk
+    context_tags: [fantasy]
+    aliases_strong: [plantfolk]
+    aliases_weak: [plantmonster, "plant monster", fungal]
+    sublineages:
+      - key: treant
+        name: Treant
+        aliases_strong: [treant, treants]
+        aliases_weak: [ent, ents]
+      - key: myconid
+        name: Myconid
+        aliases_strong: [myconid, myconids]
+        aliases_weak: [fungalfolk]
+      - key: shambling_mound
+        name: Shambling Mound
+        aliases_strong: ["shambling mound"]
+        aliases_weak: []
+      - key: blight
+        name: Blight
+        aliases_strong: [blight, blights]
+        aliases_weak: ["twig blight", "needle blight", "vine blight"]
+
+  - key: aberration
+    name: Aberration
+    context_tags: [fantasy]
+    aliases_strong: [aberration, aberrations]
+    aliases_weak: []
+    sublineages:
+      - key: beholder
+        name: Beholder
+        aliases_strong: [beholder, beholders]
+        aliases_weak: []
+      - key: mind_flayer
+        name: Mind Flayer (Illithid)
+        aliases_strong: ["mind flayer", mind-flayer, illithid, illithids]
+        aliases_weak: []
+      - key: aboleth
+        name: Aboleth
+        aliases_strong: [aboleth, aboleths]
+        aliases_weak: []
+
+  - key: hadozee
+    name: Hadozee (Simian-folk)
+    context_tags: [fantasy]
+    aliases_strong: [hadozee]
+    aliases_weak: [simianfolk, apefolk, monkeyfolk]
+    sublineages: []
+
+  - key: giff
+    name: Giff (Hippo-folk)
+    context_tags: [fantasy]
+    aliases_strong: [giff]
+    aliases_weak: [hippofolk, "hippo folk", "hippo-people", hippomen]
+    sublineages: []
+
+  - key: drider
+    name: Drider (Spiderfolk)
+    context_tags: [fantasy]
+    aliases_strong: [drider]
+    aliases_weak: [spiderfolk, arachne]
+    sublineages: []
+
+  - key: troll
+    name: Troll
+    context_tags: [fantasy]
+    aliases_strong: [troll, trolls]
+    aliases_weak: []
+    sublineages: []
+
+  - key: troglodyte
+    name: Troglodyte
+    context_tags: [fantasy]
+    aliases_strong: [troglodyte, troglodytes]
+    aliases_weak: []
+    sublineages: []
+
+  - key: grimlock
+    name: Grimlock
+    context_tags: [fantasy]
+    aliases_strong: [grimlock, grimlocks]
+    aliases_weak: []
+    sublineages: []
+
+  - key: quaggoth
+    name: Quaggoth
+    context_tags: [fantasy]
+    aliases_strong: [quaggoth, quaggoths]
+    aliases_weak: []
+    sublineages: []
+
+  - key: hag
+    name: Hag
+    context_tags: [fantasy]
+    aliases_strong: [hag, hags]
+    aliases_weak: []
+    sublineages:
+      - key: green_hag
+        name: Green Hag
+        aliases_strong: ["green hag"]
+        aliases_weak: []
+      - key: night_hag
+        name: Night Hag
+        aliases_strong: ["night hag"]
+        aliases_weak: []
+      - key: annis_hag
+        name: Annis Hag
+        aliases_strong: ["annis hag", annis]
+        aliases_weak: []
+      - key: sea_hag
+        name: Sea Hag
+        aliases_strong: ["sea hag"]
+        aliases_weak: []
+
+  - key: medusa
+    name: Medusa
+    context_tags: [fantasy]
+    aliases_strong: [medusa, medusae]
+    aliases_weak: [gorgon]
+    sublineages: []
+
+  - key: gorgon_bull
+    name: Gorgon (Iron Bull)
+    context_tags: [fantasy]
+    aliases_strong: ["iron gorgon", "iron bull"]
+    aliases_weak: []
+    sublineages: []
+
+  - key: harpy
+    name: Harpy
+    context_tags: [fantasy]
+    aliases_strong: [harpy, harpies, harpie]
+    aliases_weak: []
+    sublineages: []
+
+  - key: lamia
+    name: Lamia
+    context_tags: [fantasy]
+    aliases_strong: [lamia, lamias]
+    aliases_weak: []
+    sublineages: []
+
+  - key: dryad
+    name: Dryad
+    context_tags: [fantasy]
+    aliases_strong: [dryad, dryads]
+    aliases_weak: []
+    sublineages: []
+
+  - key: yeti
+    name: Yeti
+    context_tags: [fantasy]
+    aliases_strong: [yeti, yetis]
+    aliases_weak: []
+    sublineages: []
+
+  - key: doppelganger
+    name: Doppelganger
+    context_tags: [fantasy]
+    aliases_strong: [doppelganger, doppelgangers]
+    aliases_weak: []
+    sublineages: []
+
+  - key: shifter
+    name: Shifter
+    context_tags: [fantasy]
+    aliases_strong: [shifter, shifters]
+    aliases_weak: []
+    sublineages: []
+
+  - key: changeling
+    name: Changeling
+    context_tags: [fantasy]
+    aliases_strong: [changeling, changelings]
+    aliases_weak: []
+    sublineages: []
+
+  - key: kalashtar
+    name: Kalashtar
+    context_tags: [fantasy]
+    aliases_strong: [kalashtar]
+    aliases_weak: []
+    sublineages: []
+
+  - key: beast
+    name: Beast
+    context_tags: [fantasy]
+    aliases_strong: [beast, beasts]
+    aliases_weak: [critters]
+    sublineages:
+      - key: bat
+        name: Bat
+        aliases_strong: [bat, bats]
+        aliases_weak: []
+      - key: roc
+        name: Roc
+        aliases_strong: [roc, rocs]
+        aliases_weak: [giant-bird, "giant bird"]
+      - key: owlbear
+        name: Owlbear
+        aliases_strong: [owlbear, owlbears]
+        aliases_weak: []

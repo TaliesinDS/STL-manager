@@ -11750,7 +11750,6 @@
         "raw_path_tokens": [
           "sample",
           "store",
-          "瑟瑟妹子",
           "分件",
           "上衣",
           "上身",
@@ -11773,7 +11772,6 @@
         "residual_tokens": [
           "sample",
           "store",
-          "瑟瑟妹子",
           "分件",
           "上衣",
           "上身",
@@ -11793,6 +11791,7 @@
           "胸罩正常1",
           "胸罩正常2"
         ],
+        "content_flag": "nsfw_weak",
         "token_locale": "zh"
       }
     }
@@ -11805,7 +11804,7 @@
     "height_mm": 47,
     "intended_use_bucket": 235,
     "token_locale": 397,
-    "content_flag": 54,
+    "content_flag": 55,
     "segmentation": 36,
     "normalization_warnings": 21,
     "scale_ratio_den": 19,
