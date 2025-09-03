@@ -3,6 +3,11 @@
 This document explains what to keep in this repository, what to exclude, and where to place common project artifacts so the project stays reproducible, portable, and reviewer-friendly.
 
 ## High-level principles
+Status update (2025-09-03)
+- Current repo follows this guidance: code under `db/`, `scripts/`, tests under `tests/`, docs in `docs/`, and vocab under `vocab/`.
+- Runtime DB files are kept under `data/` and referenced via `--db-url`/`STLMGR_DB_URL`; they’re excluded from commits.
+- Script organization matches the proposed folder structure with maintenance utilities under `scripts/maintenance/` and integrations under `scripts/10_integrations/`.
+
 - Keep source, configuration templates, short sample fixtures, docs, vocab, and migrations in Git.
 - Exclude large binary assets, runtime database files, user-specific environments, and generated dependency caches.
 - Store release artifacts (fat zips, EXEs) outside main branches — use GitHub Releases or a separate `releases/` area managed outside source control.

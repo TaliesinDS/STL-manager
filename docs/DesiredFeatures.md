@@ -9,6 +9,11 @@ Emit CSV + JSON lines per file for flexibility.
 Configurable ignore patterns (e.g., previews, unsupported formats) – minimal at first.
 
 Phase 1 (Deterministic Normalization – Low Risk Fields)
+Status update (2025-09-03)
+- Phase 0 inventory and Phase 1 deterministic normalization are in place for key fields; residual token capture and warnings are active.
+- Unit/parts vocabulary externalized under `vocab/` with loaders; linking tables enable unit and parts associations.
+- Tests cover basing integrity and workflow sanity; Windows tasks exist to run common flows.
+
 Canonical designer inference via alias map (with suffix stripping like (Presupported)).
 Franchise (broad) assignment (e.g., warhammer_40k, generic_fantasy) using curated token sets.
 Lineage family grouping (space_marines, orks, etc.) – limited curated set.

@@ -1,7 +1,7 @@
 # Proposal: Tokenization + Entity Linking Enhancements and Vocab Strategy
 
 Status: Draft for review
-Owner: Mini Beast
+Owner: STL Manager
 Date: 2025-08-25
 
 ## Objectives

@@ -3,6 +3,9 @@
 Date: 2025-08-17 (rev 1.1)
 Scope: End-to-end stack recommendations for STL Manager across phases (P0–P3+). Emphasis on maintainability, deterministic processing, incremental scaling, Windows-friendly local dev, and minimal premature complexity.
 
+Status update (2025-09-03)
+- Current codebase runs SQLite + SQLAlchemy 2.x with Alembic; loaders and matchers operate via CLI scripts; optional UI and API layers remain planned.
+
 ---
 ## Guiding Principles
 - Deterministic core first: every classification reproducible from vocab + rules.

@@ -1,8 +1,12 @@
-# Scripts organization proposal (Mini Beast)
+# Scripts organization proposal (STL Manager)
 
 This proposes a clean structure for `scripts/`, maps each current script to a category and destination, and recommends keep/merge/deprecate actions. Goals: safer workflows, clearer discoverability, consistent flags, and easier long‑term maintenance.
 
 ## Goals and conventions
+Status update (2025-09-03)
+- Folder structure implemented with canonical locations for bootstrap, loaders, normalization/matchers, kits, cleanup/repair, and reports/analysis.
+- Legacy shims retained at root where necessary; CLIs standardized to prefer `--db-url`, default dry‑run, and timestamped `--out`.
+- Windows PowerShell tasks are available for common flows (tests, loaders, matchers, backfills).
 
 - Separation of concerns: bootstrap/init, scan/inventory, load/ingest, normalize/match, kits/backfill, cleanup/repair, reports/analysis, and utilities.
 - Defaults are safe: dry‑run by default; use `--apply` to write. Prefer `--db-url` for DB selection (PowerShell‑safe).

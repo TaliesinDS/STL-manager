@@ -1,5 +1,9 @@
 # Workflow Tests Guide (Plain-English Edition)
 
+Status update (2025-09-03)
+- End‑to‑end workflow tests cover: DB bootstrap, sample inventory load, YAML loaders (units and parts), normalization and both matchers, kits backfill, hygiene scripts, and verification reports.
+- Tests are designed for Windows PowerShell with the venv interpreter and pass on the current manifests (including basing integrity).
+
 This guide explains what the “workflow tests” do, how you can run them on Windows PowerShell, and how to read the results. It’s written to be approachable if you’re not deep into Python or databases.
 
 ## What are “workflow tests” and why do we have them?

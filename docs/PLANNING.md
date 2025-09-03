@@ -11,6 +11,11 @@ Sample before bulk extraction.
 Keep raw model binaries outside Git (for now).
 Small, verifiable steps.
 Ask before increasing complexity.
+
+Status update (2025-09-03)
+- Phase: Transitioning from Phase 0 (inventory/planning) to Phase 1 (deterministic normalization) with live loaders and matchers.
+- Achieved: YAML ingestion for 40K/AoS/Heresy units and 40K parts; basing profiles embedded and validated; context‑aware unit/franchise matchers with dry‑run/apply; kit modeling/backfill; multilingual token backfill to `english_tokens`.
+- Tooling: Script reorganization complete with legacy shims; Windows‑safe commands standardized; workflow tests added for end‑to‑end sanity.
 Upcoming Steps
 Step 1: Baseline repository files (this commit).
 Step 2: Define inventory script specification.

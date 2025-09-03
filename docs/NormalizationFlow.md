@@ -4,6 +4,16 @@ Moved from repository root to `docs/` on 2025-08-16 (repository restructure) –
 
 Purpose: Define deterministic steps turning raw filesystem artifacts into normalized metadata fields (see `MetadataFields.md`) using vocab in `tokenmap.md`.
 
+Status update (2025-09-03)
+- Implemented passes: structural extraction (scale ratio/height/version/pose), designer aliases, conservative faction/system hints, variant axes (segmentation/internal_volume/support_state/part_pack_type), coarse NSFW cues, intended_use_bucket, pc_candidate_flag (proto), residual capture, and warnings.
+- Matchers integrated: unit and franchise matchers run after normalization and support dry‑run/apply; kit handling collapses or expands children based on flags.
+- Token outputs persist to Variant fields and residuals; `token_version` increments on vocab changes to enable selective re‑normalize.
+
+Status update (2025-09-03)
+- Implemented passes: structural extraction (scale ratio/height/version/pose), designer aliases, conservative faction/system hints, variant axes (segmentation/internal_volume/support_state/part_pack_type), coarse NSFW cues, intended_use_bucket, pc_candidate_flag (proto), residual capture, and warnings.
+- Matchers integrated: unit and franchise matchers run after normalization and support dry‑run/apply; kit handling collapses or expands children based on flags.
+- Token outputs persist to Variant fields and residuals; `token_version` increments on vocab changes to enable selective re‑normalize.
+
 Scope (Phase 1): Designers, game_system (implicit via faction?), codex_faction, lineage_family, variant axes (segmentation/internal_volume/support_state/part_pack_type), scale basics, intended_use_bucket, pc_candidate_flag (proto), content_flag (coarse NSFW), residual capture, warnings.
 
 Out-of-Scope (Phase 1): lineage_primary activation, actor likeness, advanced NSFW (level/exposure/acts), human_subtype, loadout variants, pose semantic grouping beyond simple token pattern, geometry hashing.

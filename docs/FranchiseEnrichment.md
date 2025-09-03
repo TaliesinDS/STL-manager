@@ -2,6 +2,10 @@
 
 Purpose: Automate population of minimal character linkage (just name + aliases) when a new franchise is added, while preserving conservative, auditable normalization principles.
 
+Status update (2025-09-03)
+- Franchise matcher enforces strong/weak signal rules and ambiguous-token guards; proposals are emitted as timestamped dry‑run reports and applied via the canonical applier.
+- Minimal character entities exist with `name`, `aliases`, `franchise`, and optional `actor_*`; linking via `character_id` is supported.
+
 ## Goals
 - Keep DB schema minimal: character_id, franchise_id, canonical_name, display_name (optional), aliases[].
 - No bios, descriptions, backstory, images, importance tiers.

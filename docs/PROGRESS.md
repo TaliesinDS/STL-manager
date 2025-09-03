@@ -1,3 +1,14 @@
+## 2025-09-03 — Status consolidation and docs refresh
+
+- Documentation refreshed to reflect implemented features and current structure.
+- Loaders: Units (40K/AoS/Heresy) and 40K Parts (wargear/bodies) loaders are stable for dry‑run and commit.
+- Linking: `variant_unit_link`, `variant_part_link`, and `unit_part_link` tables active; unit bundle concept (models + parts) documented.
+- Matching: context‑aware unit/franchise matchers support timestamped dry‑runs and apply; kit‑aware reports can collapse or show children.
+- Basing: `base_profile` entries rolled out across manifests; basing integrity test is green.
+- Multilingual: backfill to `english_tokens` is implemented with locale preservation; scale parsing corrected and guarded by tests.
+- Scripts: migration to canonical subfolders completed with legacy shims; Windows‑safe commands standardized (`--db-url`, venv Python).
+- Maintenance: MMF collections cleanup/append workflow, `__MACOSX` duplicate cleanup, and franchise manifest validation are available.
+
 ## 2025-09-02 — MMF collections hardening and repopulation
 
 - Added `vocab/mmf_usernames.json` to centralize `designer_key -> mmf_username` mapping (supports spaces/underscores/hyphens; e.g., `Artisan_Guild`, `Bestiarum Miniatures`).
@@ -10,7 +21,7 @@
   - Updated designers included: `artisan_guild_miniatures`, `bestiarum_miniatures`, `cyber_forge` (via `TitanForgeMiniatures`), `epic_minis`, `heroes_infinite`, `last_sword_miniatures`, `lost_kingdom` (1), `txarli_factory`.
   - Some designers currently show no MMF “collections” (skipped): `bam_broken_anvil_monthly`, `caballero_miniatures`, `printable_scenery`.
 
-# Project Progress (Mini Beast)
+# Project Progress (STL Manager)
 
 A lightweight, living log of milestones, active work, and recent changes. Keep updates short and practical.
 

@@ -3,6 +3,7 @@
 This file persists our immediate plan so we can resume work even after session resets.
 
 ## Current status
+- Integrity tests are green; basing profiles present and validated. Continue incremental alias hygiene.
 - File: `vocab/codex_units_horus_heresy.yaml`
 - Integrity tests: green (`tests/test_codex_basing_integrity.py`)
 - Latest change: added alias hygiene for Astartes drop pods (Anvillus for Dreadclaw; Kharybdis spelling for Charybdis).

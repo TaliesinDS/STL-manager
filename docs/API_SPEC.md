@@ -1,4 +1,9 @@
 # API Specification (Draft v0)
+Status update (2025-09-03)
+- Spec reflects implemented domain models: Variants, Units, Parts, Factions, Game Systems, Characters, and linking tables.
+- Unit bundle concept (variants + parts) is documented for a future endpoint; loaders and links exist to support it.
+- Normalization/matcher flows and bulk operations align with current scripts; auth remains single-user key (future work).
+
 
 Moved from repository root to `docs/` on 2025-08-16 (repository restructure) – content unchanged.
 

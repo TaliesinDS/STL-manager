@@ -1,6 +1,9 @@
-# Scripts Workflow Test Plan (Mini Beast)
+# Scripts Workflow Test Plan (STL Manager)
 
 This document proposes a comprehensive test suite to validate the end‑to‑end workflow after migrating `scripts/` into subfolders with backward‑compatible shims. The goal is to ensure users can perform the entire pipeline (bootstrap → inventory → loaders → normalize/match → kits → cleanup/repair → reports) using the new canonical paths and the legacy root shims, with consistent CLI flags and Windows PowerShell compatibility.
+
+Status update (2025-09-03)
+- Workflow tests are implemented and runnable on Windows PowerShell using the venv interpreter; they cover bootstrap, loaders (units/parts), normalization, matchers, kits backfill, cleanup (safe subset), and verification reports. Legacy shims are exercised for `--help` and dry‑runs.
 
 ## Objectives and success criteria
 

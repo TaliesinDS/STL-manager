@@ -2,6 +2,9 @@
 
 This document proposes how we will populate and maintain the Variant collection fields — `collection_id`, `collection_original_label`, `collection_cycle`, `collection_sequence_number`, and `collection_theme` — using a small, explicit SSOT (single source of truth) YAML per designer and a deterministic matcher. This workflow now incorporates our MyMiniFactory (MMF) collection auto-seeding and cleanup tools.
 
+Status update (2025-09-03)
+- MMF cleanup and updater scripts are available; designer-scoped YAML manifests under `vocab/collections/` can be matched to populate `variant.collection_*` fields. Draft proposer exists for missing collections.
+
 ## Goals
 - Normalize designer monthly/thematic releases into a stable, queryable structure.
 - Populate Variant.collection_* fields automatically after designer recognition (e.g., when var 340 is recognized as a Heroes Infinite model, its collection should be identified and the collection columns filled in).

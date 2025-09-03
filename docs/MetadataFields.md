@@ -1,5 +1,12 @@
 # Metadata Fields Specification
 
+Status update (2025-09-03)
+- Core Variant/File inventory fields are implemented and populated for the working dataset.
+- Enrichment in production use: designer (+confidence), intended_use_bucket, lineage_family/primary, franchise/character (with `Character` table), system/faction/unit hints, segmentation/support_state, parts/kit fields, and multilingual columns (`english_tokens`, `token_locale`, `ui_display_en`).
+- Tabletop linking is live via `variant_unit_link`; parts linking via `variant_part_link` (and `unit_part_link` for compatibility) is available.
+- Scale fields exist and are populated where detectable: `scale_ratio_den`, `scale_name`, `height_mm` (with guards for false positives).
+- Fields listed as FUTURE in this doc are not persisted yet; the spec intentionally overstates later phases to keep names stable.
+
 Moved from repository root to `docs/` on 2025-08-16 (repository restructure) – content unchanged.
 
 Purpose: Define all planned metadata fields for the STL Manager project, their intent, data type, allowed values, introduction phase, and notes so early planning stays consistent and we avoid premature complexity.

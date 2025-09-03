@@ -1,4 +1,11 @@
 # Codex Units Schema and Linking (SSOT Integration)
+Status update (2025-09-03)
+- Implemented relational schema for Systems, Factions, Units, and Parts (wargear/bodies) with alias tables.
+- Loaders for 40K/AoS/Heresy units and 40K parts are operational (dry‑run by default; `--commit` applies).
+- Many‑to‑many links in use: `variant_unit_link`, `variant_part_link`, and `unit_part_link`.
+- YAML fidelity preserved in `raw_data` with extra attributes in `attributes`; provenance via `source_file`/`source_anchor`.
+- Basing: `base_profile_key` is populated from YAML; basing integrity tests are green.
+
 
 This document explains how the YAML SSOT (single source of truth) vocab files (e.g., `vocab/codex_units_w40k.yaml`, `codex_units_aos.yaml`, `codex_units_horus_heresy.yaml`) are represented in the database and how scanned model `Variant`s get linked to those units for filtering (e.g., "all Sylvaneth" or "all Grey Knights").
 
@@ -299,6 +306,7 @@ SELECT u.*
 FROM unit u
 JOIN game_system s ON u.system_id = s.id
 WHERE s.key = 'aos' AND u.category IN ('endless_spell','manifestation','invocation');
+```
 
 Parts for a specific unit (explicit links):
 ```
