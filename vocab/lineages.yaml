@@ -1111,6 +1111,10 @@ families:
         name: Bat
         aliases_strong: [bat, bats]
         aliases_weak: []
+      - key: terrorgheist
+        name: Terrorgheist
+        aliases_strong: [terrorgheist, terrorgheists, terrorgeist, terrorgeists]
+        aliases_weak: []
       - key: roc
         name: Roc
         aliases_strong: [roc, rocs]

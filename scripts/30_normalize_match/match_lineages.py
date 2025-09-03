@@ -46,6 +46,47 @@ SPECIAL_EQUIV: Dict[str, List[re.Pattern]] = {
         re.compile(r"\bfreeguild\b"),
         re.compile(r"\bgeneral\b"),
     ],
+    'dragon': [
+        re.compile(r"\bdraggon(s)?\b"),
+    ],
+    'zombie dragon': [
+        re.compile(r"\bzombie draggon(s)?\b"),
+    ],
+    'stag': [
+        re.compile(r"\bantler(s)?\b"),
+        re.compile(r"\bantlerguard(s)?\b"),
+    ],
+    # Generic plural/synonym handling for common mounts
+    'horse': [re.compile(r"\bhorses\b")],
+    'wolf': [re.compile(r"\bwolves\b"), re.compile(r"\bdire wolf(ves)?\b"), re.compile(r"\bwarg(s)?\b"), re.compile(r"\bgiant wolf(ves)?\b")],
+    'boar': [re.compile(r"\bboars\b")],
+    'bear': [re.compile(r"\bbears\b"), re.compile(r"\bpolar bear(s)?\b")],
+    'bat': [re.compile(r"\bbats\b"), re.compile(r"\bfell bat(s)?\b")],
+    'wyvern': [re.compile(r"\bwyverns\b")],
+    'drake': [re.compile(r"\bdrakes\b")],
+    'dragon': [re.compile(r"\bdragons\b"), re.compile(r"\bdraggon(s)?\b")],
+    'griffon': [re.compile(r"\bgriffons\b")],
+    'gryphon': [re.compile(r"\bgryphons\b")],
+    'griffin': [re.compile(r"\bgriffins\b")],
+    'pegasus': [re.compile(r"\bpegasi\b")],
+    'manticore': [re.compile(r"\bmanticores\b")],
+    'chimera': [re.compile(r"\bchimeras\b")],
+    'stag': [re.compile(r"\bstags\b"), re.compile(r"\bantler(s)?\b"), re.compile(r"\bantlerguard(s)?\b")],
+    'elk': [re.compile(r"\belks\b"), re.compile(r"\bmoose\b")],
+    'lion': [re.compile(r"\blions\b")],
+    'sabretooth': [re.compile(r"\bsab(er|re)[- ]?tooth(ed)?(s)?\b"), re.compile(r"\bsaber(cat|tusk)s?\b"), re.compile(r"\bsabre(cat|tusk)s?\b")],
+    'raptor': [re.compile(r"\braptors\b"), re.compile(r"\bvelociraptor(s)?\b")],
+    'camel': [re.compile(r"\bcamels\b"), re.compile(r"\bdromedary(s)?\b")],
+    'ram': [re.compile(r"\brams\b"), re.compile(r"\bgoat(s)?\b")],
+    'rhinox': [re.compile(r"\brhino(ceros|s)?\b")],
+    'elephant': [re.compile(r"\belephants\b"), re.compile(r"\bwar elephant(s)?\b")],
+    'mammoth': [re.compile(r"\bmammoths\b")],
+    'spider': [re.compile(r"\bspiders\b"), re.compile(r"\bgiant spider(s)?\b")],
+    'scorpion': [re.compile(r"\bscorpions\b"), re.compile(r"\bgiant scorpion(s)?\b")],
+    'serpent': [re.compile(r"\bserpents\b"), re.compile(r"\bsnake(s)?\b"), re.compile(r"\bpython(s)?\b")],
+    'lizard': [re.compile(r"\blizards\b"), re.compile(r"\bgiant lizard(s)?\b"), re.compile(r"\bcold one(s)?\b")],
+    'eagle': [re.compile(r"\beagles\b"), re.compile(r"\bgiant eagle(s)?\b")],
+    'unicorn': [re.compile(r"\bunicorns\b")],
 }
 
 
@@ -64,7 +105,48 @@ def _phrase_match(text: str, phrase: str) -> bool:
 
 # Rider-over-mount heuristics
 ANIMAL_MOUNT_KEYS: Set[str] = {
-    'horse','wolf','boar','bear','bat','wyvern','drake','dragon','griffon','gryphon','hippogriff','hippogryph','pegasus','rhinox','manticore','chimera','stag','deer','elk','lion','sabretooth','saber-tooth','raptor','zebra','camel','ram'
+    'horse','horses',
+    'wolf','wolves','dire wolf','warg','giant wolf',
+    'boar','boars',
+    'bear','bears','polar bear',
+    'bat','bats','fell bat',
+    'wyvern','wyverns',
+    'drake','drakes',
+    'dragon','dragons','zombie dragon',
+    'griffon','gryphon','griffin','griffons','gryphons','griffins',
+    'hippogriff','hippogryph','pegasus','pegasi',
+    'rhinox','rhino','rhinoceros',
+    'manticore','manticores','chimera','chimeras',
+    'stag','stags','deer','elk','elks','moose','lion','lions',
+    'sabretooth','saber-tooth','sabertooth','sabercat','sabretusk','sabertusk',
+    'raptor','raptors','velociraptor',
+    'zebra','zebras','camel','camels','dromedary','ram','rams','goat','goats',
+    'elephant','elephants','mammoth','mammoths',
+    'spider','spiders','giant spider',
+    'scorpion','scorpions','giant scorpion',
+    'serpent','serpents','snake','snakes','python','pythons',
+    'lizard','lizards','giant lizard','cold one','cold ones',
+    'eagle','giant eagle','unicorn','unicorns',
+    'terrorgheist','terrorgheists',
+    'beast',
+    'runetusk','antlerguard',
+    # Warhammer AoS / WHFB specific mounts and common fantasy mounts
+    'demigryph','demigryphs',
+    'gryph charger','gryph chargers','gryph-charger','gryph-chargers',
+    'dracoline','dracolines',
+    'dracoth','dracoths',
+    'mournfang','mournfangs',
+    'stonehorn','stonehorns',
+    'thundertusk','thundertusks',
+    'carnosaur','carnosaurs',
+    'stegadon','stegadons',
+    'terradon','terradons',
+    'ripperdactyl','ripperdactyls',
+    'fellbeast','fellbeasts',
+    'roc','rocs',
+    'hippocampus','hippocampi',
+    'steed','steeds','warhorse','war horse','war-horse','nightmare','nightmares',
+    'bull','bulls','yak','yaks'
 }
 HUMANOID_RIDER_KEYS: Set[str] = {
     'ghoul','vampire','zombie','skeleton','lich','wight','wraith','human','elf','dwarf','orc','goblin','hobgoblin','ogre','troll','halfling','gnome','tiefling','aasimar'
@@ -92,6 +174,12 @@ def _pre_on_segment(text: str) -> str:
     if len(m) >= 2:
         return m[0].strip()
     return text
+
+def _post_on_segment(text: str) -> str:
+    m = re.split(r"\bon\b", text, maxsplit=1)
+    if len(m) >= 2:
+        return m[1].strip()
+    return ""
 
 
 def detect_rider_context(text: str) -> bool:
@@ -717,6 +805,70 @@ def main(argv: Optional[List[str]] = None) -> int:
                                     v.lineage_aliases = la
                             except Exception:
                                 pass
+                        # Populate mount_lineages for mounted contexts (extract from post-'on' segment)
+                        try:
+                            if detect_rider_context(v_text):
+                                post_on = _post_on_segment(v_text)
+                                mount_hits: Dict[Tuple[str, Optional[str]], Dict[str, int]] = {}
+                                # Check strong aliases for mounts
+                                for phrase, items in strong_idx.items():
+                                    if not phrase:
+                                        continue
+                                    if _phrase_match(post_on, phrase):
+                                        for fam, pri, bucket in items:
+                                            key = (fam, pri)
+                                            rec = mount_hits.setdefault(key, {'strong': 0, 'weak': 0})
+                                            rec['strong'] += 1
+                                # Check weak aliases for mounts
+                                for phrase, items in weak_idx.items():
+                                    if not phrase:
+                                        continue
+                                    if _phrase_match(post_on, phrase):
+                                        for fam, pri, bucket in items:
+                                            key = (fam, pri)
+                                            rec = mount_hits.setdefault(key, {'strong': 0, 'weak': 0})
+                                            rec['weak'] += 1
+                                # Filter to animal mounts
+                                mounts: List[Dict[str, Optional[str]]] = []
+                                for (fam, pri), cnt in mount_hits.items():
+                                    nm = (pri or fam or '').strip().lower()
+                                    if nm in ANIMAL_MOUNT_KEYS:
+                                        mounts.append({
+                                            'family_key': fam,
+                                            'primary_key': pri,
+                                            'name': names.get((fam, pri), (None, pri or fam))[1],
+                                            'basis': 'strong' if cnt.get('strong', 0) > 0 else 'weak'
+                                        })
+                                # Also capture literal mount tokens in post_on (union with lineage-based)
+                                literals = []
+                                for mk in sorted(ANIMAL_MOUNT_KEYS, key=len, reverse=True):
+                                    if _phrase_match(post_on, mk):
+                                        literals.append({'family_key': None, 'primary_key': None, 'name': mk, 'basis': 'literal'})
+                                if literals:
+                                    mounts = (mounts or []) + literals
+                                if mounts:
+                                    # If any canonical mount(s) detected, drop literal-only entries
+                                    try:
+                                        if any((m.get('family_key') is not None) for m in mounts):
+                                            mounts = [m for m in mounts if m.get('family_key') is not None]
+                                    except Exception:
+                                        pass
+                                    # Dedupe by normalized name; prefer canonical (with family_key) over literal
+                                    dedup: Dict[str, Dict[str, Optional[str]]] = {}
+                                    for m in mounts:
+                                        nm = norm_text(str(m.get('name') or ''))
+                                        if not nm:
+                                            continue
+                                        prev = dedup.get(nm)
+                                        if prev is None:
+                                            dedup[nm] = m
+                                        else:
+                                            # If previous is literal and current is canonical, replace
+                                            if (prev.get('family_key') is None) and (m.get('family_key') is not None):
+                                                dedup[nm] = m
+                                    v.mount_lineages = list(dedup.values())
+                        except Exception:
+                            pass
                         v.lineage_confidence = 'high' if accepted.basis.endswith('strong') else 'medium'
                         applied += 1
                     except Exception:

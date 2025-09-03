@@ -83,6 +83,9 @@ class Variant(Base):
     role_confidence = Column(String(32), nullable=True)
     lineage_confidence = Column(String(32), nullable=True)
 
+    # Rider/mount details
+    mount_lineages = Column(JSON, default=list)
+
     # Variant dimensions and classification
     asset_category = Column(String(64), nullable=True, index=True)
     terrain_subtype = Column(String(64), nullable=True)
