@@ -202,14 +202,14 @@ $env:STLMGR_DB_URL='sqlite:///data/stl_manager_v1.db'
 ```powershell
 $env:STLMGR_DB_URL = 'sqlite:///data/stl_manager_v1.db'
 # Load 40K units
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml
 # Load AoS units
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml
 # Load Horus Heresy units
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml
 # Load 40K wargear + bodies parts
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml
 ```
 
 Notes:

@@ -38,12 +38,12 @@ Write-Host 'Installing requirements...'
 & $pythonCmd -m pip install -r requirements.txt
 
 Write-Host 'Initializing database schema...'
-& $pythonCmd scripts\init_db.py
+& $pythonCmd scripts\00_bootstrap\bootstrap_db.py --use-metadata --db-url sqlite:///./data/stl_manager_v1.db
 
 if ($InstallSample) {
-    if (Test-Path 'scripts\load_sample.py') {
+    if (Test-Path 'scripts\20_loaders\load_sample.py') {
         Write-Host 'Loading sample fixture...'
-        & $pythonCmd scripts\load_sample.py
+        & $pythonCmd scripts\20_loaders\load_sample.py --file data\sample_quick_scan.json --db-url sqlite:///./data/stl_manager_v1.db
     } else {
         Write-Warning 'Sample loader not found; skipping.'
     }

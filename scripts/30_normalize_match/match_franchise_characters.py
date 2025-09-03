@@ -490,20 +490,44 @@ def parse_tokenmap_aliases(path: Path) -> Dict[str, List[str]]:
     return out
 
 
-def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = False, infer_oc_fantasy: bool = False):
+def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = False, infer_oc_fantasy: bool = False, limit: int = 0):
     fam, cam, f_tokens = load_franchise_maps(FR_DIR)
+    # Precompute a combined vocabulary set once to avoid rebuilding it per variant
+    base_vocab_set = set(fam.keys()) | set(cam.keys())
+    for _fk, _tk in f_tokens.items():
+        base_vocab_set |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set())
     proposals = []
     with get_session() as session:
-        # only consider variants that currently have no franchise
-        q = session.query(Variant).join(Variant.files).distinct().filter(Variant.franchise.is_(None))
-        total = q.count()
-        print(f"Found {total} candidate variants (franchise is NULL).")
+        # Only consider variants that currently have no franchise. Avoid join/distinct here,
+        # as it can be very expensive on large DBs. We'll quickly skip variants without files in the loop.
+        q = session.query(Variant).filter(Variant.franchise.is_(None))
+        try:
+            total = q.count()
+        except Exception:
+            total = None
+        if total is not None:
+            print(f"Found {total} candidate variants (franchise is NULL).")
+        else:
+            print("Scanning candidate variants (franchise is NULL)...")
         offset = 0
+        processed = 0
         while True:
             rows = q.limit(batch).offset(offset).all()
             if not rows:
                 break
+            # Enforce optional processing limit
+            if limit and processed >= limit:
+                break
+            if limit and processed + len(rows) > limit:
+                rows = rows[: max(0, limit - processed)]
             for v in rows:
+                # Skip variants with no files/documents quickly (join avoided above for perf)
+                try:
+                    if not getattr(v, 'files', None):
+                        processed += 1
+                        continue
+                except Exception:
+                    pass
                 # Prefer english_tokens when present to align with English vocab
                 try:
                     eng = getattr(v, 'english_tokens', None)
@@ -514,9 +538,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                     continue
                 # Build vocab set for optional segmentation
                 # Note: these maps are already lowercased aliases
-                vocab_set = set(fam.keys()) | set(cam.keys())
-                for _fk, _tk in f_tokens.items():
-                    vocab_set |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set())
+                vocab_set = base_vocab_set
 
                 # 1) split camelCase/alpha-digit
                 split_tokens = []
@@ -676,6 +698,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                 changed = apply_updates_to_variant(v, inferred, session, force=False)
                 if changed:
                     proposals.append({'variant_id': v.id, 'rel_path': v.rel_path, 'changes': changed})
+                processed += 1
             offset += batch
 
         print(f"Proposed updates for {len(proposals)} variants (dry-run={not apply}).")
@@ -746,7 +769,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
         except Exception:
             pass
 
-        if apply and proposals:
+    if apply and proposals:
             print('Applying updates to DB...')
             # Close the current session to avoid identity map contamination
             try:
@@ -757,10 +780,15 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
             with get_session() as write_sess:
                 q_apply = write_sess.query(Variant).join(Variant.files).distinct().filter(Variant.franchise.is_(None))
                 offset = 0
+                processed_apply = 0
                 while True:
                     rows = q_apply.limit(batch).offset(offset).all()
                     if not rows:
                         break
+                    if limit and processed_apply >= limit:
+                        break
+                    if limit and processed_apply + len(rows) > limit:
+                        rows = rows[: max(0, limit - processed_apply)]
                     any_changed = False
                     for v in rows:
                         try:
@@ -770,9 +798,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                         tokens = list(eng) if (isinstance(eng, list) and eng) else tokens_from_variant(write_sess, v)
                         if not tokens:
                             continue
-                        vocab_set = set(fam.keys()) | set(cam.keys())
-                        for _fk, _tk in f_tokens.items():
-                            vocab_set |= (_tk.get('strong', set()) or set()) | (_tk.get('weak', set()) or set())
+                        vocab_set = base_vocab_set
 
                         split_tokens = []
                         for t in tokens:
@@ -885,6 +911,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                         changed = apply_updates_to_variant(v, inferred, write_sess, force=False)
                         if changed:
                             any_changed = True
+                        processed_apply += 1
                     if any_changed:
                         write_sess.commit()
                     offset += batch
@@ -898,12 +925,13 @@ def parse_args(argv):
     ap.add_argument('--out', type=str, help='Write dry-run proposals + summary to this JSON file')
     ap.add_argument('--infer-oc', action='store_true', help='Enable strict original-character inference from path folders (opt-in)')
     ap.add_argument('--infer-oc-fantasy', action='store_true', help='When inferring OC, only accept names that look fantasy-like (rarity/suffix heuristics)')
+    ap.add_argument('--limit', type=int, default=0, help='Maximum number of variants to process (0 = no limit)')
     return ap.parse_args(argv)
 
 
 def main(argv):
     args = parse_args(argv)
-    process(apply=args.apply, batch=args.batch, out=args.out, infer_oc=args.infer_oc, infer_oc_fantasy=args.infer_oc_fantasy)
+    process(apply=args.apply, batch=args.batch, out=args.out, infer_oc=args.infer_oc, infer_oc_fantasy=args.infer_oc_fantasy, limit=max(0, int(getattr(args, 'limit', 0) or 0)))
 
 
 if __name__ == '__main__':

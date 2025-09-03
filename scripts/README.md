@@ -30,14 +30,14 @@ Activate your venv before running scripts (PowerShell):
 | `scripts/load_codex_from_yaml.py` | `scripts/20_loaders/load_codex_from_yaml.py` | Load YAML codex (40K/HH/AoS) | Yes | `--file`, `--db-url`, `--commit` |
 | `scripts/load_designers.py` | `scripts/20_loaders/load_designers.py` | Load designers tokenmap into vocab | Yes | `--db-url`, `--apply`, `--file` |
 | `scripts/load_franchises.py` | `scripts/20_loaders/load_franchises.py` | Load franchises manifests into vocab | Yes | `--db-url`, `--apply` |
-| `scripts/sync_designers_from_tokenmap.py` | `scripts/20_loaders/sync_designers_from_tokenmap.py` | Report stale designer vocab and orphaned Variant.designer; optionally clear/delete | Yes (with apply) | `--db-url`, `--apply`, `--delete-vocab`, `<tokenmap.md>` |
-| `scripts/sync_characters_to_vocab.py` | `scripts/20_loaders/sync_characters_to_vocab.py` | Aggregate characters from `vocab/franchises/*.json` into vocab | Yes (with apply) | `--db-url`, `--apply`, `--franchise` |
+| `scripts/20_loaders/sync_designers_from_tokenmap.py` | `scripts/20_loaders/sync_designers_from_tokenmap.py` | Report stale designer vocab and orphaned Variant.designer; optionally clear/delete | Yes (with apply) | `--db-url`, `--apply`, `--delete-vocab`, `<tokenmap.md>` |
+| `scripts/20_loaders/sync_characters_to_vocab.py` | `scripts/20_loaders/sync_characters_to_vocab.py` | Aggregate characters from `vocab/franchises/*.json` into vocab | Yes (with apply) | `--db-url`, `--apply`, `--franchise` |
 | `scripts/normalize_inventory.py` | `scripts/30_normalize_match/normalize_inventory.py` | Normalize variants using tokenmaps and vocab | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--only-missing` |
 | `scripts/match_franchise_characters.py` | `scripts/30_normalize_match/match_franchise_characters.py` | Franchise/character matcher | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--out` |
 | `scripts/match_variants_to_units.py` | `scripts/30_normalize_match/match_variants_to_units.py` | Unit matcher (40K/HH/AoS) | No/Yes (report/apply) | `--db-url`, `--apply`, `--systems`, `--include-kit-children`, `--include-container-folders`, `--out` |
 | `scripts/backfill_kits.py` | `scripts/40_kits/backfill_kits.py` | Mark/link kits and group children | Yes (with apply) | `--db-url`, `--apply`, `--limit` |
 | `scripts/delete_variant.py` | `scripts/50_cleanup_repair/delete_variant.py` | Targeted variant delete | Yes | `--db-url`, `--id`, `--apply` |
-| `scripts/verify_*` | `scripts/60_reports_analysis/*` | Small verification/report helpers | No | `--db-url`, script-specific |
+| `scripts/60_reports_analysis/*` | `scripts/60_reports_analysis/*` | Small verification/report helpers | No | `--db-url`, script-specific |
 
 ## Common safety flags
 
@@ -59,7 +59,7 @@ Activate your venv before running scripts (PowerShell):
 
 - `scripts/30_normalize_match/normalize_inventory.py` — normalization engine: reads `Variant` + `File` rows, tokenizes, infers fields (designer, franchise, support_state, height_mm, flags, etc.) using the tokenmap and DB `VocabEntry` alias map. Dry-run by default; use `--apply` to commit and `--force` to overwrite. Supports `--batch` and `--only-missing`. Root entrypoint is a shim.
 
-- `scripts/sync_designers_from_tokenmap.py` — compatibility shim to canonical `scripts/20_loaders/sync_designers_from_tokenmap.py`; compares `vocab/designers_tokenmap.md` to DB `VocabEntry` rows, reports stale vocab, detects orphaned `Variant.designer` values, and optionally clears designer fields and deletes stale vocab entries with `--apply` and `--delete-vocab`. Supports `--db-url`.
+- Use `scripts/20_loaders/sync_designers_from_tokenmap.py` to compare `vocab/designers_tokenmap.md` to DB `VocabEntry` rows, report stale vocab, detect orphaned `Variant.designer` values, and optionally clear designer fields and delete stale vocab entries with `--apply` and `--delete-vocab`. Supports `--db-url`.
 
 - `scripts/compute_hashes.py` — compatibility shim forwarding to `scripts/10_inventory/compute_hashes.py`.
   - Canonical: `scripts/10_inventory/compute_hashes.py` — compute SHA-256 for `File` rows (dry-run by default; may write when run with apply flags).
@@ -155,7 +155,7 @@ Some terrain and kit parents are “container-only” folders (no direct model f
 2) Load the updated codex into the database (note the `--commit` flag for this loader):
 
 ```powershell
-.\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+.\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
 ```
 
 3) Run the matcher and include container folders so parent-only terrain folders can be matched:
@@ -240,7 +240,7 @@ Windows archive extractor logs
 
 ## CI / automation ideas
 
-- Run `scripts/sync_designers_from_tokenmap.py` in dry-run in CI on PRs that modify any tokenmap to flag DB drift.  
+- Run `scripts/20_loaders/sync_designers_from_tokenmap.py` in dry-run in CI on PRs that modify any tokenmap to flag DB drift.  
 - Optionally add a pre-commit hook that runs `debug_variant_fields.py` or a quick `inspect_inference.py` spot-check for changed files.
 
 ## Contributing

@@ -51,6 +51,7 @@ def test_bootstrap_then_normalize_dryrun(cli, venv_python: str, tmp_db_url: str,
         "scripts/30_normalize_match/normalize_inventory.py",
         "--out",
         str(out_path),
+        "--limit", "50",
     ], env={"STLMGR_DB_URL": tmp_db_url})
     _assert_ok(cp.returncode, cp, "normalize_inventory --out")
     assert out_path.is_file(), "Expected normalize report to be written"
@@ -67,14 +68,14 @@ def test_bootstrap_then_normalize_dryrun(cli, venv_python: str, tmp_db_url: str,
     cp = cli([
         venv_python,
         "scripts/30_normalize_match/normalize_inventory.py",
-        "--apply",
+        "--apply", "--limit", "50",
     ], env={"STLMGR_DB_URL": tmp_db_url})
     _assert_ok(cp.returncode, cp, "normalize_inventory --apply")
     # Re-apply should also succeed without additional changes
     cp = cli([
         venv_python,
         "scripts/30_normalize_match/normalize_inventory.py",
-        "--apply",
+        "--apply", "--limit", "50",
     ], env={"STLMGR_DB_URL": tmp_db_url})
     _assert_ok(cp.returncode, cp, "normalize_inventory --apply (idempotent)")
 
@@ -108,16 +109,16 @@ def test_bootstrap_then_normalize_dryrun(cli, venv_python: str, tmp_db_url: str,
     _assert_ok(cp.returncode, cp, "report_codex_counts --yaml")
 
 
-def test_shim_help(cli, venv_python: str):
-    # Probe a small set of shims to ensure the migration left help working
+def test_entrypoints_help(cli, venv_python: str):
+    # Probe canonical entrypoints to ensure CLI help is available
     candidates = [
-        "scripts/normalize_inventory.py",
-        "scripts/match_franchise_characters.py",
-        "scripts/match_variants_to_units.py",
-        "scripts/backfill_kits.py",
-        "scripts/load_codex_from_yaml.py",
-        "scripts/compute_hashes.py",
-        "scripts/create_sample_inventory.py",
+        "scripts/30_normalize_match/normalize_inventory.py",
+        "scripts/30_normalize_match/match_franchise_characters.py",
+        "scripts/30_normalize_match/match_variants_to_units.py",
+        "scripts/40_kits/backfill_kits.py",
+        "scripts/20_loaders/load_codex_from_yaml.py",
+        "scripts/10_inventory/compute_hashes.py",
+        "scripts/10_inventory/create_sample_inventory.py",
     ]
     for script in candidates:
         cp = cli([venv_python, script, "--help"])
@@ -125,16 +126,17 @@ def test_shim_help(cli, venv_python: str):
         assert re.search(r"-h|--help", cp.stdout) or cp.stdout, f"No help/usage output for {script}"
 
 
-def test_shim_dry_runs(cli, venv_python: str, tmp_db_url: str):
+def test_cli_dry_runs(cli, venv_python: str, tmp_db_url: str):
     # Ensure schema exists
     cp = cli([venv_python, "scripts/00_bootstrap/bootstrap_db.py", "--db-url", tmp_db_url, "--use-metadata"])
     assert cp.returncode == 0, f"bootstrap_db failed: {cp.stderr}"
-    # Exercise a few shims in dry-run/no-op mode with --db-url
+    # Exercise a few canonical scripts in dry-run/no-op mode with --db-url
     samples = [
-        ("scripts/normalize_inventory.py", []),
-        ("scripts/match_franchise_characters.py", ["--batch", "10"]),
-        ("scripts/match_variants_to_units.py", ["--limit", "0"]),
-        ("scripts/backfill_kits.py", []),
+        # Keep each script constrained so the test runs fast and avoids CPU spikes
+        ("scripts/30_normalize_match/normalize_inventory.py", ["--limit", "50", "--batch", "100"]),
+        ("scripts/30_normalize_match/match_franchise_characters.py", ["--batch", "50", "--limit", "50"]),
+        ("scripts/30_normalize_match/match_variants_to_units.py", ["--limit", "50"]),
+        ("scripts/40_kits/backfill_kits.py", []),
     ]
     for sh, args in samples:
         cp = cli([venv_python, sh] + args, env={"STLMGR_DB_URL": tmp_db_url})

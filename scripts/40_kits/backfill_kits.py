@@ -9,7 +9,7 @@
 Safe by default: dry-run. Use --apply to write changes. Always prints a JSON summary report.
 
 Usage (PowerShell):
-    .\.venv\Scripts\python.exe .\scripts\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --create-virtual-parents --group-children --out .\reports\backfill_kits.json
+    .\.venv\Scripts\python.exe .\scripts\40_kits\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --create-virtual-parents --group-children --out .\reports\backfill_kits.json
 """
 from __future__ import annotations
 

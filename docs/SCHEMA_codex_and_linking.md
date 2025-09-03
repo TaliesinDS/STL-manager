@@ -347,7 +347,7 @@ WHERE s.key = 'w40k';
 
 ## Migration Strategy
 - Alembic revision: create new tables without touching existing Variant/File tables.
-- Add a simple loader script `scripts/load_codex_from_yaml.py` that supports `--system w40k --file vocab/codex_units_w40k.yaml --dry-run/--commit`.
+- Add a simple loader script `scripts/20_loaders/load_codex_from_yaml.py` that supports `--system w40k --file vocab/codex_units_w40k.yaml --dry-run/--commit`.
 - Update the matcher to optionally emit `variant_unit_link` rows.
 
 ## UI Notes
@@ -380,17 +380,17 @@ Basic examples (PowerShell on Windows):
 $env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
 
 # Load 40K units
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_w40k.yaml --commit
 
 # Load Age of Sigmar units (schema under codex_units.age_of_sigmar)
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --system aos --commit
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --system aos --commit
 
 # Load Horus Heresy units (schema under codex_units.warhammer_30k)
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --system heresy --commit
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\codex_units_horus_heresy.yaml --system heresy --commit
 
 # Load 40K parts (wargear, bodies)
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --commit
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --commit
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\bodies_w40k.yaml --commit
 ```
 
 Flags:

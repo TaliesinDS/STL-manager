@@ -53,6 +53,10 @@ DB_URL = _normalize_sqlite_url(os.environ.get("STLMGR_DB_URL", "sqlite:///./data
 # Use NullPool so SQLite file handles are released immediately (avoids Windows file locks in tests)
 engine = create_engine(DB_URL, future=True, poolclass=NullPool)
 
+# Per-process guard: track which DB URLs have had their schema verified to avoid
+# repeating expensive reflection/DDL on every session open.
+_SCHEMA_VERIFIED: set[str] = set()
+
 # Ensure SQLite enforces foreign keys so CASCADE/SET NULL work as intended
 if DB_URL.startswith("sqlite"):
     @event.listens_for(engine, "connect")
@@ -79,51 +83,62 @@ def get_session() -> Generator[Session, None, None]:
         session = SessionLocal()
     except Exception:
         session = SessionLocal()
-    # Lazily ensure core schema exists in ephemeral DBs
+    # Lazily ensure core schema exists in ephemeral DBs, but only once per DB URL per process
     try:
-        from db.models import Base as _Base  # type: ignore
-        _Base.metadata.create_all(bind=session.bind)
-        insp = _sa_inspect(session.bind)
-        tables = set(insp.get_table_names())
-        # Reconcile missing columns for variant table against ORM definition
-        if 'variant' in tables:
-            try:
-                from db.models import Variant as _Variant  # type: ignore
-                orm_cols = {c.name: c for c in _Variant.__table__.columns}  # type: ignore[attr-defined]
-                live_cols = {c['name'] for c in insp.get_columns('variant')}
-                missing = [orm_cols[name] for name in orm_cols.keys() - live_cols]
-                if missing:
-                    # Use direct DDL to add columns (SQLite-compatible)
-                    conn = session.bind.connect()  # type: ignore
-                    try:
-                        for col in missing:
-                            try:
-                                ddl_type = col.type.compile(dialect=conn.dialect)  # type: ignore
-                            except Exception:
-                                ddl_type = 'TEXT'
-                            # SQLite cannot add NOT NULL without default; relax to NULL-able
-                            ddl = f"ALTER TABLE variant ADD COLUMN {col.name} {ddl_type}"
-                            try:
-                                conn.exec_driver_sql(ddl)
-                            except Exception:
-                                # Ignore if the column was added concurrently or backend limitations
-                                pass
-                    finally:
+        url_key = None
+        try:
+            # Prefer the engine URL string when available
+            url_key = str(getattr(session.bind, "url", "")) or DB_URL
+        except Exception:
+            url_key = DB_URL
+        if url_key not in _SCHEMA_VERIFIED:
+            from db.models import Base as _Base  # type: ignore
+            _Base.metadata.create_all(bind=session.bind)
+            insp = _sa_inspect(session.bind)
+            tables = set(insp.get_table_names())
+            # Reconcile missing columns for variant table against ORM definition
+            if 'variant' in tables:
+                try:
+                    from db.models import Variant as _Variant  # type: ignore
+                    orm_cols = {c.name: c for c in _Variant.__table__.columns}  # type: ignore[attr-defined]
+                    live_cols = {c['name'] for c in insp.get_columns('variant')}
+                    missing = [orm_cols[name] for name in orm_cols.keys() - live_cols]
+                    if missing:
+                        # Use direct DDL to add columns (SQLite-compatible)
+                        conn = session.bind.connect()  # type: ignore
                         try:
-                            conn.close()
-                        except Exception:
-                            pass
-            except Exception:
-                pass
+                            for col in missing:
+                                try:
+                                    ddl_type = col.type.compile(dialect=conn.dialect)  # type: ignore
+                                except Exception:
+                                    ddl_type = 'TEXT'
+                                # SQLite cannot add NOT NULL without default; relax to NULL-able
+                                ddl = f"ALTER TABLE variant ADD COLUMN {col.name} {ddl_type}"
+                                try:
+                                    conn.exec_driver_sql(ddl)
+                                except Exception:
+                                    # Ignore if the column was added concurrently or backend limitations
+                                    pass
+                        finally:
+                            try:
+                                conn.close()
+                            except Exception:
+                                pass
+                except Exception:
+                    pass
+            _SCHEMA_VERIFIED.add(url_key)
     except Exception:
         pass
     try:
         yield session
     finally:
         session.close()
-        # Proactively dispose global engine so SQLite file handles are released (Windows lock avoidance)
+        # Optional: dispose engine eagerly when explicitly requested. By default we avoid
+        # disposing on every session close because it resets dialect caches and incurs
+        # significant overhead. NullPool already closes connections upon session close.
         try:
-            engine.dispose()
+            if os.environ.get("STLMGR_DISPOSE_EAGER", "0") in ("1", "true", "True"):
+                engine.dispose()
         except Exception:
             pass
 

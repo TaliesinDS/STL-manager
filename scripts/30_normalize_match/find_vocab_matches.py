@@ -2,7 +2,7 @@
 """Find variants whose path/filename tokens match franchise or character alias maps.
 
 Usage:
-  python scripts/find_vocab_matches.py --limit 50 --only-unassigned
+    python scripts/30_normalize_match/find_vocab_matches.py --limit 50 --only-unassigned
 
 Outputs JSON with counts and a small sample of matches.
 """

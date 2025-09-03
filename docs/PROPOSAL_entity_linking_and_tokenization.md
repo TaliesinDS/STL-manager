@@ -85,8 +85,8 @@ Minimal tables if/when syncing vocab to DB:
 ## Operational Notes
 - PowerShell-safe commands (examples):
   - `setx STLMGR_DB_URL "sqlite:///./data/stl_manager_v1.db"`
-  - `$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db"; .\\.venv\\Scripts\\python.exe .\\scripts\\match_franchise_characters.py --out .\\reports\\match_franchise_dryrun.json`
-  - `$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db"; .\\.venv\\Scripts\\python.exe .\\scripts\\match_franchise_characters.py --apply`
+  - `$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db"; .\\.venv\\Scripts\\python.exe .\\scripts\\30_normalize_match\\match_franchise_characters.py --out .\\reports\\match_franchise_dryrun.json`
+  - `$env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db"; .\\.venv\\Scripts\\python.exe .\\scripts\\30_normalize_match\\match_franchise_characters.py --apply`
 
 ## Decision
 - Review this proposal. If approved, we’ll implement tokenizer expansions in the matcher first (safer), validate via dry-run, then promote to shared tokenizer.

@@ -94,13 +94,13 @@ Run integrity tests:
 
 Run parts loader (dry-run default):
 ```powershell
-& .\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db
+& .\.venv\Scripts\python.exe .\scripts\20_loaders\load_codex_from_yaml.py --file .\vocab\wargear_w40k.yaml --db-url sqlite:///./data/stl_manager_v1.db
 ```
 
 Run kit backfill and inspect matcher report with children:
 ```powershell
-& .\.venv\Scripts\python.exe .\scripts\backfill_kits.py --create-virtual-parents --group-children --apply --out .\reports\backfill_kits_$(Get-Date -f yyyyMMdd_HHmmss)_apply.json
-& .\.venv\Scripts\python.exe .\scripts\match_variants_to_units.py --limit 200 --systems w40k aos heresy --min-score 12 --delta 3 --include-kit-children --out .\reports\match_units_with_children_$(Get-Date -f yyyyMMdd_HHmmss).json
+& .\.venv\Scripts\python.exe .\scripts\40_kits\backfill_kits.py --create-virtual-parents --group-children --apply --out .\reports\backfill_kits_$(Get-Date -f yyyyMMdd_HHmmss)_apply.json
+& .\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --limit 200 --systems w40k aos heresy --min-score 12 --delta 3 --include-kit-children --out .\reports\match_units_with_children_$(Get-Date -f yyyyMMdd_HHmmss).json
 ```
 
 ## Useful Links

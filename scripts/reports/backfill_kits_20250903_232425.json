@@ -1,12 +1,12 @@
 {
-  "ts": "2025-09-03T20:25:55.873057Z",
+  "ts": "2025-09-03T21:24:16.949063Z",
   "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/.pytest-tmp/stl_manager_e2e.db",
   "apply": false,
   "create_virtual_parents": false,
   "group_children": false,
   "changes": [
     {
-      "variant_id": 13175,
+      "variant_id": 20608,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad",
       "action": "mark_parent",
       "details": {
@@ -17,7 +17,7 @@
       }
     },
     {
-      "variant_id": 13345,
+      "variant_id": 20778,
       "rel_path": "sample_store/Terminator Squad/Terminator squad",
       "action": "mark_parent",
       "details": {
@@ -32,137 +32,137 @@
       }
     },
     {
-      "variant_id": 13176,
+      "variant_id": 20609,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad/hands and flamers",
       "action": "link_child",
       "details": {
-        "parent_id": 13175,
+        "parent_id": 20608,
         "parent_rel": "sample_store/Infernus Squad/Infernus Squad"
       }
     },
     {
-      "variant_id": 13177,
+      "variant_id": 20610,
       "rel_path": "sample_store/Infernus Squad/Infernus Squad/hands and flamers/Presupported Flamers",
       "action": "link_child",
       "details": {
-        "parent_id": 13175,
+        "parent_id": 20608,
         "parent_rel": "sample_store/Infernus Squad/Infernus Squad"
       }
     },
     {
-      "variant_id": 13333,
+      "variant_id": 20766,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Gun Arms",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13334,
+      "variant_id": 20767,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Mini Gun Cannon Arm",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13335,
+      "variant_id": 20768,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 1",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13336,
+      "variant_id": 20769,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 2",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13337,
+      "variant_id": 20770,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 3",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13338,
+      "variant_id": 20771,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 4",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13339,
+      "variant_id": 20772,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Powerhand Arms/Arm 5",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13340,
+      "variant_id": 20773,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Arm with weapon/Sword Arms",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13341,
+      "variant_id": 20774,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Base",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13342,
+      "variant_id": 20775,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Helmet",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13343,
+      "variant_id": 20776,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Legs",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13344,
+      "variant_id": 20777,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Shoulder",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     },
     {
-      "variant_id": 13346,
+      "variant_id": 20779,
       "rel_path": "sample_store/Terminator Squad/Terminator squad/Torso",
       "action": "link_child",
       "details": {
-        "parent_id": 13345,
+        "parent_id": 20778,
         "parent_rel": "sample_store/Terminator Squad/Terminator squad"
       }
     }

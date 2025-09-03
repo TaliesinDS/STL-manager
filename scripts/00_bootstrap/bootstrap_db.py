@@ -146,10 +146,30 @@ def _create_with_metadata(db_url: str, project_root: Path, echo: bool = False) -
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
     from sqlalchemy import create_engine
+    from sqlalchemy import inspect as _sa_inspect  # type: ignore
+    from sqlalchemy.exc import OperationalError as _SAOperationalError  # type: ignore
     from db.models import Base  # type: ignore
     engine = create_engine(db_url, echo=echo, future=True)
-    Base.metadata.create_all(bind=engine)
+    # Create only tables that do not exist yet to ensure idempotence
+    try:
+        insp = _sa_inspect(engine)
+        existing = set(insp.get_table_names())
+    except Exception:
+        existing = set()
+    for table in Base.metadata.sorted_tables:
+        if table.name in existing:
+            continue
+        try:
+            table.create(bind=engine, checkfirst=True)
+        except _SAOperationalError as e:
+            # Tolerate races or dialect checkfirst limitations (e.g., SQLite)
+            if "already exists" in str(e).lower():
+                print(f"[bootstrap][info] Table '{table.name}' already exists; skipping")
+            else:
+                raise
     print("Metadata create_all complete.")
+    # Safety net: add any newly-declared columns if missing (SQLite-friendly)
+    _reconcile_missing_columns(db_url, project_root)
     return 0
 
 

@@ -1220,7 +1220,8 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                      include_fields: Optional[list[str]] = None, exclude_fields: Optional[list[str]] = None,
                      print_summary: bool = False, ids: Optional[list[int]] = None,
                      use_franchise_preferences: bool = True,
-                     default_tabletop_when_system: bool = True):
+                     default_tabletop_when_system: bool = True,
+                     limit: int = 0):
     # Use repository root (two levels up from scripts/30_normalize_match)
     root = PROJECT_ROOT
     # try to load tokenmap to set token version & domain sets
@@ -1275,12 +1276,18 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
         total = q.count()
         print(f"Found {total} variants to examine (only_missing={only_missing}).")
         offset = 0
+        processed = 0
         proposed_updates = []
         field_counts: dict[str, int] = {}
         while True:
             rows = q.limit(batch_size).offset(offset).all()
             if not rows:
                 break
+            # Enforce optional processing limit
+            if limit and processed >= limit:
+                break
+            if limit and processed + len(rows) > limit:
+                rows = rows[: max(0, limit - processed)]
             for v in rows:
                 tokens = tokens_from_variant(session, v)
                 inferred = classify_tokens(tokens, designer_map, franchise_map, character_map,
@@ -1336,6 +1343,7 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                         proposed_updates.append({"variant_id": v.id, "rel_path": v.rel_path, "changes": visible})
                         for k in visible.keys():
                             field_counts[k] = field_counts.get(k, 0) + 1
+            processed += len(rows)
             offset += batch_size
         print(f"Proposed updates for {len(proposed_updates)} variants (dry-run={not apply}).")
         if print_summary and field_counts:
@@ -1366,10 +1374,15 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
             # commit in batches to limit transaction size
             print("Applying updates to DB...")
             offset = 0
+            processed_apply = 0
             total_applied = 0
             while True:
                 rows = q.limit(batch_size).offset(offset).all()
                 if not rows: break
+                if limit and processed_apply >= limit:
+                    break
+                if limit and processed_apply + len(rows) > limit:
+                    rows = rows[: max(0, limit - processed_apply)]
                 any_changed = False
                 for v in rows:
                     tokens = tokens_from_variant(session, v)
@@ -1416,6 +1429,7 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                         total_applied += 1
                 if any_changed:
                     session.commit()
+                processed_apply += len(rows)
                 offset += batch_size
             print(f"Apply complete. Variants updated: {total_applied}")
 
@@ -1437,6 +1451,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     ap.add_argument('--no-franchise-preferences', action='store_true', help='Disable intended-use inference from franchise_preferences.json')
     ap.add_argument('--no-default-tabletop-when-system', dest='default_tabletop_when_system', action='store_false',
                     help="Do not default intended_use_bucket to 'tabletop_intent' when game_system or codex_faction is present")
+    ap.add_argument('--limit', type=int, default=0, help='Maximum number of variants to process (0 = no limit)')
     return ap.parse_args(argv)
 
 
@@ -1451,7 +1466,8 @@ def main(argv: list[str]) -> int:
                      include_fields=include_fields, exclude_fields=exclude_fields,
                      print_summary=args.print_summary, ids=ids,
                      use_franchise_preferences=(not args.no_franchise_preferences),
-                     default_tabletop_when_system=getattr(args, 'default_tabletop_when_system', True))
+                     default_tabletop_when_system=getattr(args, 'default_tabletop_when_system', True),
+                     limit=max(0, int(getattr(args, 'limit', 0) or 0)))
     return 0
 
 
