@@ -98,8 +98,14 @@ def detect_rider_context(text: str) -> bool:
     # primary cues
     if re.search(r"\b(riding|mounted|cavalry|mount)\b", text):
         return True
+    # Generic 'on' + known mount tokens
     if re.search(r"\bon\b", text) and _has_any_token(text, ANIMAL_MOUNT_KEYS):
         return True
+    # 'X on Y' with rider cues before 'on' implies rider scenario even if Y is unknown to mount list
+    if re.search(r"\bon\b", text):
+        pre_on = _pre_on_segment(text)
+        if _has_any_token(pre_on, HUMANOID_RIDER_KEYS) or _has_any_token(pre_on, RIDER_ROLE_TOKENS):
+            return True
     # role + animal co-mention implies rider scenario
     if _has_any_token(text, RIDER_ROLE_TOKENS) and _has_any_token(text, ANIMAL_MOUNT_KEYS):
         return True
