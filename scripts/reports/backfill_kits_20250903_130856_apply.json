@@ -1,7 +1,7 @@
 {
-  "ts": "2025-09-03T11:08:51.767958Z",
+  "ts": "2025-09-03T11:08:56.229554Z",
   "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/.pytest-tmp/stl_manager_e2e.db",
-  "apply": false,
+  "apply": true,
   "create_virtual_parents": false,
   "group_children": false,
   "changes": [

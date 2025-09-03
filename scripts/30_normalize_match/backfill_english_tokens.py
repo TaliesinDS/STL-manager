@@ -231,8 +231,21 @@ def translate_tokens(tokens: List[str], glos: Glossary) -> List[str]:
                     out.append('left arm'); i += 1; continue
                 if ('drch' in tl) or ('der' in tl) or ('derecha' in tl) or ('derecho' in tl):
                     out.append('right arm'); i += 1; continue
+            # Try partial CJK phrase match inside the token (e.g., "内裤掀起1" contains "内裤" and "掀起")
+            # Only for non-ASCII tokens to avoid false positives.
             if any(ord(c) > 127 for c in t):
-                out.append(unidecode(t))
+                replaced = False
+                # Prefer longer keys first to capture multi-char phrases
+                for key, val in glos.map.items():
+                    # skip ASCII-only keys to reduce noise
+                    if all(ord(c) < 128 for c in key):
+                        continue
+                    if key and key in t:
+                        out.append(val)
+                        replaced = True
+                        break
+                if not replaced:
+                    out.append(unidecode(t))
             else:
                 out.append(t)
             i += 1
@@ -343,19 +356,28 @@ def run(batch: int, limit: int, ids: Optional[List[int]], apply: bool, out: Opti
         for v in variants:
             examined += 1
             # Base tokens: use stored raw_path_tokens if present; else derive on the fly
+            # Build tokens from both stored raw_path_tokens and a live derivation
+            stored: List[str] = []
             try:
                 if 'raw_path_tokens' in vcols:
-                    toks = [t for t in (getattr(v, 'raw_path_tokens', []) or []) if isinstance(t, str) and t]
-                else:
-                    toks = []
+                    stored = [t for t in (getattr(v, 'raw_path_tokens', []) or []) if isinstance(t, str) and t]
             except Exception:
-                toks = []
-            if not toks:
-                try:
-                    toks = tokens_from_variant(session, v)
-                except Exception:
-                    toks = []
-            toks = [norm_text(t) for t in toks if t]
+                stored = []
+            derived: List[str] = []
+            try:
+                derived = tokens_from_variant(session, v)
+            except Exception:
+                derived = []
+            toks_raw = stored + [t for t in derived if t not in set(stored)]
+            toks = [norm_text(t) for t in toks_raw if t]
+            # Filter out root folder tokens like 'sample_store' (and its split tokens)
+            try:
+                relp = (getattr(v, 'rel_path', '') or '')
+            except Exception:
+                relp = ''
+            rp = relp.replace('\\', '/').lstrip('./').lower()
+            if rp.startswith('sample_store/') or rp == 'sample_store':
+                toks = [t for t in toks if t not in {'sample', 'store', 'sample_store'}]
             # token_locale may not exist in DB; getattr is safe
             loc: Optional[str]
             if 'token_locale' in vcols:

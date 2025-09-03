@@ -1,6 +1,6 @@
 # Scripts README
 
-This document describes the helper scripts in `scripts/`, their purpose, inputs/outputs, and safe usage patterns. Scripts are organized by stage folders described in `docs/SCRIPTS_ORGANIZATION.md`. Most scripts default to dry-run behavior and require `--apply` (and sometimes `--force`) to write changes to the database.
+This document describes the helper scripts in `scripts/`, their purpose, inputs/outputs, and safe usage patterns. Scripts are organized by stage folders described in `docs/SCRIPTS_ORGANIZATION.md`. Most scripts default to dry-run behavior and require `--apply` (and sometimes `--force`) to write changes to the database. Note: a few loaders use `--commit` instead of `--apply` (for example, `load_codex_from_yaml.py`).
 
 ## Key environment
 
@@ -27,14 +27,14 @@ Activate your venv before running scripts (PowerShell):
 | `scripts/create_sample_inventory.py` | `scripts/10_inventory/create_sample_inventory.py` | Build inventory JSON from folders | No | `--root`, `--out` |
 | `scripts/load_sample.py` | `scripts/20_loaders/load_sample.py` | Ingest inventory JSON into DB | Yes | `--db-url`, `--apply`, `--file` |
 | `scripts/compute_hashes.py` | `scripts/10_inventory/compute_hashes.py` | Compute SHA-256 for File rows | Yes (with apply) | `--db-url`, `--apply`, `--limit` |
-| `scripts/load_codex_from_yaml.py` | `scripts/20_loaders/load_codex_from_yaml.py` | Load YAML codex (40K/HH/AoS) | Yes | `--file`, `--db-url`, `--apply` |
+| `scripts/load_codex_from_yaml.py` | `scripts/20_loaders/load_codex_from_yaml.py` | Load YAML codex (40K/HH/AoS) | Yes | `--file`, `--db-url`, `--commit` |
 | `scripts/load_designers.py` | `scripts/20_loaders/load_designers.py` | Load designers tokenmap into vocab | Yes | `--db-url`, `--apply`, `--file` |
 | `scripts/load_franchises.py` | `scripts/20_loaders/load_franchises.py` | Load franchises manifests into vocab | Yes | `--db-url`, `--apply` |
 | `scripts/sync_designers_from_tokenmap.py` | `scripts/20_loaders/sync_designers_from_tokenmap.py` | Report stale designer vocab and orphaned Variant.designer; optionally clear/delete | Yes (with apply) | `--db-url`, `--apply`, `--delete-vocab`, `<tokenmap.md>` |
 | `scripts/sync_characters_to_vocab.py` | `scripts/20_loaders/sync_characters_to_vocab.py` | Aggregate characters from `vocab/franchises/*.json` into vocab | Yes (with apply) | `--db-url`, `--apply`, `--franchise` |
 | `scripts/normalize_inventory.py` | `scripts/30_normalize_match/normalize_inventory.py` | Normalize variants using tokenmaps and vocab | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--only-missing` |
 | `scripts/match_franchise_characters.py` | `scripts/30_normalize_match/match_franchise_characters.py` | Franchise/character matcher | Yes (with apply) | `--db-url`, `--apply`, `--batch`, `--out` |
-| `scripts/match_variants_to_units.py` | `scripts/30_normalize_match/match_variants_to_units.py` | Unit matcher (40K/HH/AoS) | No/Yes (report/apply) | `--db-url`, `--apply`, `--systems`, `--include-kit-children`, `--out` |
+| `scripts/match_variants_to_units.py` | `scripts/30_normalize_match/match_variants_to_units.py` | Unit matcher (40K/HH/AoS) | No/Yes (report/apply) | `--db-url`, `--apply`, `--systems`, `--include-kit-children`, `--include-container-folders`, `--out` |
 | `scripts/backfill_kits.py` | `scripts/40_kits/backfill_kits.py` | Mark/link kits and group children | Yes (with apply) | `--db-url`, `--apply`, `--limit` |
 | `scripts/delete_variant.py` | `scripts/50_cleanup_repair/delete_variant.py` | Targeted variant delete | Yes | `--db-url`, `--id`, `--apply` |
 | `scripts/verify_*` | `scripts/60_reports_analysis/*` | Small verification/report helpers | No | `--db-url`, script-specific |
@@ -140,6 +140,42 @@ Example (2025-08-31) — command used to generate the attached systems-filtered 
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py --db-url sqlite:///./data/stl_manager_v1.db --systems w40k aos heresy --include-kit-children --out reports/match_units_test_filtered.json --append-timestamp
+
+### Matching terrain and container-only folders (e.g., Garden of Morr / Sigmarite Mausoleum)
+
+Some terrain and kit parents are “container-only” folders (no direct model files). By default, the unit matcher skips these to reduce noise. To match and link such folders (for example, AoS terrain like “Garden of Morr”, aka “Sigmarite Mausoleum”), use the following workflow:
+
+1) Ensure the unit exists in the codex YAML with useful aliases. For example, add to `vocab/codex_units_aos.yaml` under Cities of Sigmar warscroll terrain:
+
+   - id/key: `sigmarite_mausoleum`
+   - name: "Sigmarite Mausoleum"
+   - aliases: include real-world names such as "garden of morr", "jardin de morr", "graveyard", "cemetery", and gate/walls variants
+   - role: `warscroll_terrain`, base_profile: `no_base`, available_to: `["order/cities_of_sigmar"]`
+
+2) Load the updated codex into the database (note the `--commit` flag for this loader):
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\load_codex_from_yaml.py --file .\vocab\codex_units_aos.yaml --db-url sqlite:///./data/stl_manager_v1.db --commit
+```
+
+3) Run the matcher and include container folders so parent-only terrain folders can be matched:
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\30_normalize_match\match_variants_to_units.py `
+  --db-url sqlite:///./data/stl_manager_v1.db `
+  --systems aos `
+  --include-container-folders `
+  --include-kit-children `
+  --apply `
+  --overwrite `
+  --out reports/match_aos_with_terrain.json `
+  --append-timestamp
+```
+
+Tips
+- Use `--systems aos` or `--systems w40k` to limit cross-system noise.
+- Strong aliases and exact folder-name matches are heavily weighted; prefer realistic folder terms in aliases (including localized names).
+- If you only want to generate a report for review, omit `--apply` and inspect the JSON in `reports/` first.
 ```
 
 7. Run Franchise/Characters matcher (dry-run → review JSON → apply):

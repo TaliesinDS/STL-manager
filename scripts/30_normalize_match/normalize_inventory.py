@@ -113,7 +113,8 @@ def load_franchise_preferences(path: Path) -> tuple[list[tuple[list[str], str]],
 ROLE_POSITIVE = {"hero", "rogue", "wizard", "fighter", "paladin", "cleric", "barbarian", "ranger", "sorcerer", "warlock", "bard"}
 ROLE_NEGATIVE = {"horde", "swarm", "minion", "mob", "unit", "regiment"}
 NSFW_STRONG = {"nude", "naked", "topless", "nsfw", "lewd", "futa"}
-NSFW_WEAK = {"sexy", "pinup", "pin-up", "lingerie"}
+# Include common English and select CJK tokens that imply suggestive content
+NSFW_WEAK = {"sexy", "pinup", "pin-up", "lingerie", "瑟瑟妹子", "瑟瑟"}
 # Some tokens are sources/channels (e.g., Telegram groups), not designers; never assign them
 DESIGNER_IGNORE = {"moxomor"}
 

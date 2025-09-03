@@ -79,14 +79,27 @@ languages:
       "右手": right hand
       "手臂": arm
       "头": head
+      "头发": hair
       "腿": leg
+      "左腿": left leg
+      "右腿": right leg
       "武器": weapon
       "预支撑": pre-supported
       "無支撐": unsupported
       "无支撑": unsupported
       "底座": base
+      "底板": base
       "全身": full body
       "裸": nude
+      "上衣": top
+      "上身": upper body
+      "下体": lower body
+      "胸罩": bra
+      "内裤": underwear
+      "短裙": skirt
+      "护栏": guardrail
+      "正穿": worn
+      "掀起": lifted
 
   ja:  # Japanese
     mappings:
@@ -100,3 +113,7 @@ languages:
       "素体": base body
       "全裸": nude
       "台座": base
+
+# Conservative literal phrase mappings seen in sample_store
+"瑟瑟妹子": lewd girl
+"妹子": girl

@@ -1399,7 +1399,24 @@ codex_units:
             endless_spells: []
             invocations: []
             warscroll_terrain:
-              []
+              sigmarite_mausoleum:
+                name: "Sigmarite Mausoleum"
+                role: warscroll_terrain
+                aliases: [
+                  "sigmarite mausoleum",
+                  "garden of morr",
+                  "jardin de morr",
+                  "morr garden",
+                  "graveyard",
+                  "cemetery",
+                  "cemetery walls",
+                  "graveyard walls",
+                  "cemetery gate",
+                  "graveyard gate"
+                ]
+                legal_in_editions: ["2nd", "3rd"]
+                base_profile: no_base
+                available_to: ["order/cities_of_sigmar"]
             # Put CoS units under their City subfaction when applicable (e.g., Phoenicium)
             subfactions:
               hammerhal:
