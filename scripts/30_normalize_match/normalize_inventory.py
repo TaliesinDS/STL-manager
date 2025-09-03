@@ -41,6 +41,22 @@ from scripts.lib.alias_rules import (
     is_short_or_numeric as _short_or_numeric,
 )
 
+def _detect_token_locale(tokens: list[str]) -> str | None:
+    if not tokens:
+        return None
+    if all(all(ord(c) < 128 for c in t) for t in tokens):
+        return 'en'
+    def has_range(t: str, start: int, end: int) -> bool:
+        return any(start <= ord(c) <= end for c in t)
+    any_hira = any(has_range(t, 0x3040, 0x309F) for t in tokens)
+    any_kata = any(has_range(t, 0x30A0, 0x30FF) for t in tokens)
+    if any_hira or any_kata:
+        return 'ja'
+    any_cjk = any(has_range(t, 0x4E00, 0x9FFF) for t in tokens)
+    if any_cjk:
+        return 'zh'
+    return None
+
 def load_designers_json(path: Path) -> tuple[dict, list[tuple[list[str], str]], dict[str, str]]:
     """Load designers_tokenmap.json if present.
     Returns:
@@ -1102,6 +1118,13 @@ def apply_updates_to_variant(variant: Variant, inferred: dict, session, force: b
         if neww != curw:
             variant.normalization_warnings = neww
             changed["normalization_warnings"] = neww
+    # token locale tagging (guarded for older DBs)
+    try:
+        if inferred.get("token_locale") and (getattr(variant, 'token_locale', None) in (None, "")):
+            variant.token_locale = inferred.get("token_locale")
+            changed["token_locale"] = inferred.get("token_locale")
+    except Exception:
+        pass
 
     return changed
 
@@ -1166,6 +1189,12 @@ def diff_updates_for_variant(variant: Variant, inferred: dict, force: bool = Fal
                 neww.append(w)
         if neww != curw:
             changed["normalization_warnings"] = neww
+    try:
+        if inferred.get("token_locale"):
+            if would_set("token_locale", inferred.get("token_locale")):
+                changed["token_locale"] = inferred.get("token_locale")
+    except Exception:
+        pass
 
     return changed
 
@@ -1242,6 +1271,10 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                            intended_use_map=intended_use_map,
                                            general_faction_map=general_faction_map,
                                            designer_phrases=designer_phrases)
+                # Lightweight token locale tagging (no English backfill here)
+                loc = _detect_token_locale(list(tokens))
+                if loc:
+                    inferred['token_locale'] = loc
                 # Sibling-aware segmentation inference
                 new_seg, cross_flag = infer_segmentation_from_siblings(session, v, inferred.get('segmentation'))
                 inferred['segmentation'] = new_seg
@@ -1328,6 +1361,9 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
                                                intended_use_map=intended_use_map,
                                                general_faction_map=general_faction_map,
                                                designer_phrases=designer_phrases)
+                    loc = _detect_token_locale(list(tokens))
+                    if loc:
+                        inferred['token_locale'] = loc
                     new_seg, cross_flag = infer_segmentation_from_siblings(session, v, inferred.get('segmentation'))
                     inferred['segmentation'] = new_seg
                     if cross_flag:

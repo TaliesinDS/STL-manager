@@ -1,0 +1,10 @@
+# Domain-specific proper nouns and phrases (Warhammer, AoS, 30K/40K)
+# Keys are lowercase after Unicode NFKC; values are canonical English UI tokens.
+
+languages:
+  fr:
+    mappings:
+      "jardin de morr": Garden of Morr
+  en:
+    mappings:
+      "morr": Morr

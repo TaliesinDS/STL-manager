@@ -137,6 +137,11 @@ class Variant(Base):
     token_version = Column(Integer, nullable=True)
     normalization_warnings = Column(JSON, default=list)
 
+    # Multilingual support
+    token_locale = Column(String(16), nullable=True, index=True)
+    english_tokens = Column(JSON, default=list)
+    ui_display_en = Column(Text, nullable=True)
+
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

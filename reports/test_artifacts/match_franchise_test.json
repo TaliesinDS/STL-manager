@@ -11,7 +11,7 @@
       "one_piece": 20,
       "avatar_the_last_airbender": 12,
       "resident_evil": 4,
-      "my_hero_academia": 2,
+      "honkai_multiverse": 2,
       "dc_comics": 2,
       "queens_blade": 2,
       "fate_series": 2,
@@ -22,7 +22,7 @@
       "nami_one_piece": 20,
       "toph": 12,
       "sherry_birkin": 4,
-      "himiko_toga": 2,
+      "himeko": 2,
       "poison_ivy": 2,
       "menace": 2,
       "artoria_pendragon": 2,
@@ -37,7 +37,7 @@
         "franchise": "kill_la_kill",
         "character_name": "ryuko_matoi",
         "character_aliases": [
-          "ryuko"
+          "matoi"
         ]
       }
     },
@@ -239,7 +239,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoqueen"
         ]
       }
     },
@@ -249,7 +249,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoqueen"
         ]
       }
     },
@@ -299,7 +299,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoqueen"
         ]
       }
     },
@@ -309,7 +309,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoqueen"
         ]
       }
     },
@@ -417,10 +417,10 @@
       "variant_id": 82,
       "rel_path": "sample_store/azerama - himeko toga - my hero acadamia/nsfw",
       "changes": {
-        "franchise": "my_hero_academia",
-        "character_name": "himiko_toga",
+        "franchise": "honkai_multiverse",
+        "character_name": "himeko",
         "character_aliases": [
-          "toga"
+          "himeko"
         ]
       }
     },
@@ -428,10 +428,10 @@
       "variant_id": 83,
       "rel_path": "sample_store/azerama - himeko toga - my hero acadamia/sfw",
       "changes": {
-        "franchise": "my_hero_academia",
-        "character_name": "himiko_toga",
+        "franchise": "honkai_multiverse",
+        "character_name": "himeko",
         "character_aliases": [
-          "toga"
+          "himeko"
         ]
       }
     },

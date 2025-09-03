@@ -15,3 +15,4 @@ wordfreq>=3.0.1
 # YAML round-trip parser/emitter used by scripts/check_codex_duplicates.py for
 # preserving comments and enforcing flow-style list formatting
 ruamel.yaml>=0.18.0
+Unidecode>=1.3

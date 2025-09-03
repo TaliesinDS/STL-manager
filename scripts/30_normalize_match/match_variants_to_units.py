@@ -449,6 +449,13 @@ def text_for_variant(v: Variant) -> str:
         parts.append(v.rel_path)
     if v.filename:
         parts.append(v.filename)
+    # Prefer english_tokens when present
+    try:
+        eng = getattr(v, 'english_tokens', None) or []
+        if isinstance(eng, list) and eng:
+            parts.append(" ".join([str(t) for t in eng if isinstance(t, str)]))
+    except Exception:
+        pass
     # include any recorded raw tokens
     try:
         for t in (v.raw_path_tokens or []):

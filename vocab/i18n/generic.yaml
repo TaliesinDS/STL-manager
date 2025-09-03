@@ -1,0 +1,102 @@
+# Generic, domain-focused multilingual mappings -> English UI tokens
+# Normalize all keys to lowercase after Unicode NFKC; prefer multi-word phrases over single words.
+
+languages:
+  es:  # Spanish
+    # Common full words and abbreviations seen in 3D model parts
+    mappings:
+      "conejo": rabbit
+      "conejita": bunny girl
+      "conejito": bunny
+      "base": base
+      "cuerpo": body
+      "cabeza": head
+      "rostro": face
+      "cara": face
+      "orejas": ears
+      "orejitas": little ears
+      "cola": tail
+      "colita": small tail
+      "listón": ribbon
+      "liston": ribbon
+      "brazo": arm
+      "brazo izq": left arm
+      "brazo der": right arm
+      "brazo izquierdo": left arm
+      "brazo derecho": right arm
+      "pierna": leg
+      "pierna izq": left leg
+      "pierna der": right leg
+      "pierna izquierda": left leg
+      "pierna derecha": right leg
+  # No-space concatenations commonly found in filenames
+  "piernaizq": left leg
+  "piernader": right leg
+  "piernadrch": right leg
+  "piernaderecha": right leg
+  "brazoizq": left arm
+  "brazoder": right arm
+  "brazodrch": right arm
+  "brazoderecho": right arm
+  # Uppercase abbreviations often used in filenames
+  "izq": left
+  "izquierda": left
+  "izqdo": left
+  "izqda": left
+  "drch": right
+  "der": right
+  "derecha": right
+  "derecho": right
+  # Misc modeling terms
+  "nudo": knot
+  "nude": nude
+  "desnudo": nude
+  "desnuda": nude
+  "sin soporte": unsupported
+  "pre soportado": pre-supported
+  "presoportado": pre-supported
+  "pre-soportado": pre-supported
+
+  fr:  # French
+    mappings:
+      "jardin": garden
+      "cimetière": graveyard
+      "cimetiere": graveyard
+      "cathédrale": cathedral
+      "cathedrale": cathedral
+      "bras": arm
+      "jambe": leg
+      "tête": head
+      "tete": head
+      "nu": nude
+      "pré-supporté": pre-supported
+      "pre-supporte": pre-supported
+
+  zh:  # Chinese
+    mappings:
+      "分件": split parts
+      "左手": left hand
+      "右手": right hand
+      "手臂": arm
+      "头": head
+      "腿": leg
+      "武器": weapon
+      "预支撑": pre-supported
+      "無支撐": unsupported
+      "无支撑": unsupported
+      "底座": base
+      "全身": full body
+      "裸": nude
+
+  ja:  # Japanese
+    mappings:
+      "分割": split parts
+      "左手": left hand
+      "右手": right hand
+      "腕": arm
+      "頭": head
+      "脚": leg
+      "武器": weapon
+      "素体": base body
+      "全裸": nude
+      "台座": base

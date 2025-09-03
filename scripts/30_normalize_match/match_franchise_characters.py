@@ -504,7 +504,12 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
             if not rows:
                 break
             for v in rows:
-                tokens = tokens_from_variant(session, v)
+                # Prefer english_tokens when present to align with English vocab
+                try:
+                    eng = getattr(v, 'english_tokens', None)
+                except Exception:
+                    eng = None
+                tokens = list(eng) if (isinstance(eng, list) and eng) else tokens_from_variant(session, v)
                 if not tokens:
                     continue
                 # Build vocab set for optional segmentation
@@ -758,7 +763,11 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                         break
                     any_changed = False
                     for v in rows:
-                        tokens = tokens_from_variant(write_sess, v)
+                        try:
+                            eng = getattr(v, 'english_tokens', None)
+                        except Exception:
+                            eng = None
+                        tokens = list(eng) if (isinstance(eng, list) and eng) else tokens_from_variant(write_sess, v)
                         if not tokens:
                             continue
                         vocab_set = set(fam.keys()) | set(cam.keys())

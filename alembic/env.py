@@ -31,7 +31,23 @@ target_metadata = Base.metadata
 
 
 def get_url():
-    return os.environ.get('STLMGR_DB_URL', 'sqlite:///./data/stl_manager.db')
+    """Resolve the SQLAlchemy URL for migrations.
+
+    Precedence:
+    1) URL provided in alembic.ini via Config (set by bootstrap_db.py)
+    2) Environment variable STLMGR_DB_URL
+    3) Project default SQLite path
+    """
+    # Prefer value already present in Alembic config
+    cfg_url = config.get_main_option('sqlalchemy.url')
+    if cfg_url and cfg_url.strip() and cfg_url.strip().lower() != 'driver://user:pass@localhost/dbname':
+        return cfg_url
+    # Next prefer env var
+    env_url = os.environ.get('STLMGR_DB_URL')
+    if env_url and env_url.strip():
+        return env_url
+    # Fallback default: use v1 DB by convention
+    return 'sqlite:///./data/stl_manager_v1.db'
 
 
 def run_migrations_offline():

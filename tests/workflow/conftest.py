@@ -4,8 +4,15 @@ import os
 import shutil
 import sys
 from pathlib import Path
+import time
 import subprocess
 import pytest
+
+
+# Avoid collecting the legacy module name that clashes with top-level placeholder
+collect_ignore = [
+    "test_multilingual_backfill.py",
+]
 
 
 @pytest.fixture(scope="session")
@@ -39,10 +46,50 @@ def tmp_db_url(tmp_dir: Path, repo_root: Path) -> str:
     db_file = tmp_dir / "stl_manager_e2e.db"
     # Ensure a clean slate for each test function that uses this fixture
     if db_file.exists():
-        db_file.unlink()
-    # Return a relative URL from repo root (so scripts resolve paths consistently)
-    rel = Path(".pytest-tmp") / db_file.name
-    return f"sqlite:///./{rel.as_posix()}"
+        # On Windows a previous engine may briefly hold a handle; retry unlink
+        for attempt in range(10):
+            try:
+                db_file.unlink()
+                break
+            except (PermissionError, FileNotFoundError):
+                # Try to force-close any session engine still pointing at this file
+                try:
+                    if str(repo_root) not in sys.path:
+                        sys.path.insert(0, str(repo_root))
+                    import db.session as _dbs  # type: ignore
+                    # Switch to in-memory to drop file handle, then dispose
+                    if hasattr(_dbs, 'reconfigure'):
+                        _dbs.reconfigure('sqlite:///:memory:')
+                    else:
+                        try:
+                            _dbs.engine.dispose()  # type: ignore[attr-defined]
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+                time.sleep(0.1)
+        else:
+            # As a last resort, rename to a temp unique name to avoid clashes
+            try:
+                tmp_name = db_file.with_name(db_file.stem + f"_{int(time.time()*1000)}" + db_file.suffix)
+                db_file.rename(tmp_name)
+            except Exception:
+                pass
+    # Build an absolute sqlite URL to avoid relative path ambiguity across processes
+    abs_path = (repo_root / ".pytest-tmp" / db_file.name).resolve()
+    url = f"sqlite:///{abs_path.as_posix()}"
+    # Also proactively bind the session engine to this DB for this test process
+    try:
+        if str(repo_root) not in sys.path:
+            sys.path.insert(0, str(repo_root))
+        import db.session as _dbs  # type: ignore
+        if hasattr(_dbs, 'reconfigure'):
+            _dbs.reconfigure(url)
+        # Ensure child processes inherit the absolute URL
+        os.environ["STLMGR_DB_URL"] = url
+    except Exception:
+        pass
+    return url
 
 
 def run_cli(args: list[str], cwd: Path, env: dict | None = None) -> subprocess.CompletedProcess:

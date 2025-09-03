@@ -1,5 +1,5 @@
 {
-  "db_url": "sqlite:///./.pytest-tmp/stl_manager_e2e.db",
+  "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/.pytest-tmp/stl_manager_e2e.db",
   "apply": false,
   "create_missing_parts": false,
   "system_key": null,
