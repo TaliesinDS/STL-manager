@@ -224,6 +224,42 @@ class VocabEntry(Base):
         return f"<VocabEntry {self.domain}:{self.key}>"
 
 
+class Lineage(Base):
+    """Canonical lineage entries derived from vocab/lineages.yaml.
+
+    Each row represents either a family (primary_key is NULL) or a sublineage (primary_key = subkey).
+    Aliases are stored as JSON arrays for strong/weak and locale-specific aliases.
+    """
+
+    __tablename__ = "lineage"
+
+    id = Column(Integer, primary_key=True)
+    # Family/sublineage identifiers (snake_case keys from YAML)
+    family_key = Column(String(64), nullable=False, index=True)
+    primary_key = Column(String(128), nullable=True, index=True)  # sublineage key; NULL for family rows
+
+    # Display names
+    family_name = Column(String(128), nullable=True)
+    name = Column(String(256), nullable=False)
+
+    # Matching aids
+    context_tags = Column(JSON, default=list)         # e.g., ["fantasy"]
+    aliases_strong = Column(JSON, default=list)
+    aliases_weak = Column(JSON, default=list)
+    locale_aliases = Column(JSON, default=dict)       # {"es": [...], ...}
+    excludes = Column(JSON, default=list)
+
+    # Provenance
+    source_file = Column(String(512), nullable=True)
+    source_anchor = Column(String(256), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self) -> str:  # pragma: no cover - trivial
+        fk = self.family_key
+        pk = self.primary_key or "<family>"
+        return f"<Lineage {fk}/{pk} {self.name}>"
+
+
 class Job(Base):
     __tablename__ = "job"
 

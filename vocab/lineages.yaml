@@ -2,14 +2,12 @@
 #
 # Purpose: Normalize Variant.lineage_family and Variant.lineage_primary
 # across fantasy (and selectively scifi) content using conservative tokens.
-#
 # Matching guidance (consumers should follow):
 # - Prefer subtype strong hits → set both lineage_family and lineage_primary.
 # - Family strong hits → set lineage_family; leave lineage_primary null.
 # - Weak hits do not assign unless multiple consistent weak hits and no exclusions.
 # - Respect context_tags to avoid cross-pollination (e.g., Aeldari ≠ Elf).
 # - Use locale_aliases in combination with token_locale.
-#
 # Versioning: bump version when structure or matching semantics change.
 
 version: 2
@@ -100,7 +98,7 @@ families:
     name: Orc
     context_tags: [fantasy]
     aliases_strong: [orc, orcs]
-    aliases_weak: []
+    aliases_weak: [greenskin, greenskins]
     excludes: [ork, orks]
     sublineages:
       - key: half_orc
@@ -112,7 +110,7 @@ families:
     name: Goblin
     context_tags: [fantasy]
     aliases_strong: [goblin, goblins]
-    aliases_weak: []
+    aliases_weak: [grot, grots, gretchin]
     sublineages:
       - key: hobgoblin
         name: Hobgoblin
@@ -178,15 +176,15 @@ families:
   - key: ratfolk
     name: Ratfolk
     context_tags: [fantasy]
-    aliases_strong: [ratfolk, skaven]
-    aliases_weak: [ratmen, ratlings]
+    aliases_strong: [ratfolk, skaven, ratkin, rat-kin, "rat kin"]
+    aliases_weak: [ratmen, ratman, rat, rodent, rodents, vermin, vermins, ratogre, ratogres, ratlings]
     sublineages: []
 
   - key: undead
     name: Undead
     context_tags: [fantasy]
     aliases_strong: [undead]
-    aliases_weak: []
+    aliases_weak: [tomb, tombshade, vampiric, necropolis, crypt, crypts, grave, graves, graveyard, graveyards, mausoleum, mausoleums, catacomb, catacombs, sepulcher, sepulchre, ossuary, sarcophagus, damnation, ark]
     sublineages:
       - key: banshee
         name: Banshee
@@ -249,7 +247,7 @@ families:
     name: Demon
     context_tags: [fantasy]
     aliases_strong: [demon, demons, daemon, daemons]
-    aliases_weak: []
+    aliases_weak: [fiend, infernal, hellish]
     excludes: [daemonette, bloodletter, plaguebearer, pink_horror]
     sublineages:
       - key: succubus
@@ -265,7 +263,7 @@ families:
     name: Angel
     context_tags: [fantasy]
     aliases_strong: [angel, angels]
-    aliases_weak: []
+    aliases_weak: [holy, divine, seraphic]
     sublineages:
       - key: archangel
         name: Archangel
@@ -280,7 +278,7 @@ families:
     name: Beastman
     context_tags: [fantasy]
     aliases_strong: [beastman, beastmen]
-    aliases_weak: [beastfolk]
+    aliases_weak: [beastfolk, goatman, goatmen]
     sublineages: []
 
   - key: ogre
@@ -367,7 +365,7 @@ families:
     name: Gnoll
     context_tags: [fantasy]
     aliases_strong: [gnoll, gnolls]
-    aliases_weak: []
+    aliases_weak: [hyena, hyenas, hyenafolk]
     sublineages: []
 
   - key: yuan_ti
@@ -413,7 +411,7 @@ families:
     name: Tabaxi (Catfolk)
     context_tags: [fantasy]
     aliases_strong: [tabaxi]
-    aliases_weak: [catfolk, catgirl, catgirls]
+    aliases_weak: [catfolk, catgirl, catgirls, nekomimi]
     sublineages: []
 
   - key: leonin
@@ -603,14 +601,14 @@ families:
     name: Tiefling (Fiendkin)
     context_tags: [fantasy]
     aliases_strong: [tiefling, tieflings]
-    aliases_weak: []
+    aliases_weak: [hellborn, hellspawn]
     sublineages: []
 
   - key: construct
     name: Construct
     context_tags: [fantasy]
     aliases_strong: [construct, constructs]
-    aliases_weak: []
+    aliases_weak: [automaton, automatons, automata, clockwork]
     sublineages:
       - key: warforged
         name: Warforged
@@ -661,21 +659,21 @@ families:
     name: Kitsune (Foxfolk)
     context_tags: [fantasy]
     aliases_strong: [kitsune, foxfolk]
-    aliases_weak: [vulpinefolk]
+    aliases_weak: [vulpinefolk, foxgirl, foxgirls]
     sublineages: []
 
   - key: harengon
     name: Harengon (Rabbitfolk)
     context_tags: [fantasy]
     aliases_strong: [harengon, rabbitfolk]
-    aliases_weak: [bunnyfolk]
+    aliases_weak: [bunnyfolk, bunny, bunnies]
     sublineages: []
 
   - key: fey
     name: Fey
     context_tags: [fantasy]
     aliases_strong: [fey]
-    aliases_weak: [fae]
+    aliases_weak: [fae, faerie, faeries]
     sublineages:
       - key: fairy
         name: Fairy
@@ -772,7 +770,7 @@ families:
     name: Ooze (Slime)
     context_tags: [fantasy]
     aliases_strong: [ooze, slimes, slime]
-    aliases_weak: [pudding, "gelatinous cube"]
+    aliases_weak: [pudding, "gelatinous cube", goo, sludge]
     sublineages:
       - key: gelatinous_cube
         name: Gelatinous Cube
@@ -803,7 +801,7 @@ families:
     name: Phoenix
     context_tags: [fantasy]
     aliases_strong: [phoenix, phoenixes]
-    aliases_weak: []
+    aliases_weak: [firebird]
     sublineages: []
 
   - key: hippogriff
@@ -1065,14 +1063,14 @@ families:
     name: Dryad
     context_tags: [fantasy]
     aliases_strong: [dryad, dryads]
-    aliases_weak: []
+    aliases_weak: ["tree nymph", "tree spirit"]
     sublineages: []
 
   - key: yeti
     name: Yeti
     context_tags: [fantasy]
     aliases_strong: [yeti, yetis]
-    aliases_weak: []
+    aliases_weak: ["abominable snowman"]
     sublineages: []
 
   - key: doppelganger
@@ -1121,3 +1119,7 @@ families:
         name: Owlbear
         aliases_strong: [owlbear, owlbears]
         aliases_weak: []
+      - key: stag
+        name: Stag
+        aliases_strong: [stag, stags]
+        aliases_weak: [mock-stag, "mock stag", hart]
