@@ -44,6 +44,15 @@ Audit timeline per variant & per vocab entry.
 Bulk edit wizard (filter -> preview -> apply) with dry run.
 Residual token explorer: frequency table, promote to alias with one click.
 
+Feedback Loop: Mismatch Reporting & Safe Defaults
+- In‑app report flow: Add a "Report mismatch" button on Variant details. Capture variant_id, current fields (system/faction/franchise/character), filenames/paths, token trace, and an optional user comment.
+- Storage: `mismatch_reports` table with status (new/reviewed/fixed), timestamps, and resolution notes; link to the reporting user when available.
+- Admin review page: Filter/sort queue, mark accepted/denied, batch-generate a triage JSON to feed into fixer scripts.
+- Safe‑by‑default application: matchers run dry‑run by default; only fill empty fields unless `--overwrite` is set; gate writes behind `--min-confidence` (default 0.8).
+- Explainability: show "why matched" (tokens used, rule names triggered, score breakdown, alias provenance) on Variant page and include in `--out` JSON reports.
+- Progressive matching tiers: Tier 1 (exact within scoped system/faction) auto‑apply; Tier 2 (strong partial + multiple hints) proposal only by default; Tier 3 (experimental/fuzzy) proposals only.
+- Edge‑case scaling: run scans in batches, emit coverage and "top misses" reports; provide ignore/negatives overlays users can manage in‑app so noisy folders don’t pollute detection.
+
 Phase 5 (Archive Ingestion & Advanced Processing)
 Controlled archive extraction queue (hash-first to skip dups).
 Checksum based dedupe (identical meshes in different packs).
@@ -55,6 +64,21 @@ All vocab value additions logged in DECISIONS.md with version bump or explicit n
 Designer alias map curated to avoid collisions; keep minimal early; expand via residual token review.
 Factions remain inline for Phase 1 simplicity; only high-churn large lists (units, designers) externalized.
 No removal of existing canonical tokens without migration plan.
+
+Vocab Subscriptions (Blocklist‑style Updates)
+- Subscribe to external vocab sources (like uBlock Origin lists): support `vocab/subscriptions.yaml` with one or more sources (name, URL, type: designers/units/franchises/parts, optional branch/tag/ref, checksum/signature, and apply scope).
+- Update flow: "Check for updates" runs a dry‑run to fetch, validate schema, and compute a diff; show a preview grouped by category (designers, units, aliases, legends flags, base profiles) with accept/deny per group.
+- Provenance and safety: store source, version/ref, and checksum on applied rows; changes are gated by conflicts policy (local overrides win), `--min-confidence` where applicable, and never overwrite manual edits unless explicitly allowed.
+- Layering and precedence: builtin → subscribed lists (ordered) → local overrides. Local overrides always take precedence and survive updates.
+- Rollback: keep timestamped snapshots and allow one‑click revert to the previous vocab state; write a JSON diff report under `reports/` for traceability.
+- Scheduling: optional background check (e.g., weekly) plus a manual "Update vocab" button in UI.
+- Offline‑first: cache remote sources under `data/vocab_cache/` and only re‑fetch when ref or checksum changes.
+
+User‑managed Vocab (BYO) — deferred
+- The same updater should support local sources (file/folder paths) so users can curate their own vocab and apply it with the same dry‑run/diff/rollback flow.
+- Manage local sources via `vocab/subscriptions.yaml` entries pointing to paths; keep an “Overrides” folder that is ignored by Git by default.
+- Precedence: local overrides (BYO) > subscribed lists > builtin.
+- Status: parked for later to avoid scope creep; design documented for future implementation.
 
 Quality & Safety Constraints
 No destructive renames of source files in early phases.
@@ -68,12 +92,19 @@ normalize_pass.py – implement ordered deterministic passes (Phase 1 subset).
 residual_analyzer.py – frequency distribution & candidate vocab suggestions.
 vocab_loader.py – unify loading of designers + codex units + faction tokens with version check.
 collision_checker.py – detects alias collisions & ambiguous mappings.
+ export_mismatch_queue.py – dump `mismatch_reports` (admin‑accepted only) to triage JSON with explainability details.
+ apply_mismatch_fixes.py – read triage JSON and apply DB updates with `--dry-run/--apply`, `--min-confidence`, and `--overwrite` gates.
+ update_vocab_subscriptions.py – fetch/validate subscribed vocab sources (remote URLs or local paths), compute diffs, write preview report, and optionally apply with safety gates.
+ validate_vocab_sources.py – schema and collision checks for all subscribed sources; produces actionable diagnostics.
 
 Data Artifacts
 inventory_files.csv / .jsonl – raw file inventory.
 normalized_variants.jsonl – one per variant after Phase 1.
 vocab/ directory – modular vocab files versioned in Git.
 reports/residual_tokens_{date}.csv – token mining snapshots.
+ vocab/subscriptions.yaml – list of subscribed vocab sources and update policy.
+ data/vocab_cache/ – cached copies of subscribed source payloads with checksums.
+ reports/vocab_update_{timestamp}.json – diff/preview report for each update check.
 
 Stretch / Maybe Later
 Mesh thumbnail generation pipeline.
