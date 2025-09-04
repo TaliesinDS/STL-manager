@@ -105,3 +105,4 @@ A fun, game‑inspired interface (Europa Universalis vibe) that still surfaces d
 - Desktop: Tauri + React + Tailwind (or Electron) with `react-virtual` for lists.
 - Web: FastAPI/Flask backend + React frontend; `phosphor-icons`/`heroicons` for icons.
 - Performance: skeleton loaders, request de‑dup, client‑side cache; db pagination.
+ - Styling reference and demo: see `docs/ui/UI_Styling_OrnateFrames.md` and open `docs/ui/demo/ornate_frame_demo.html` in a browser for a working CSS example.

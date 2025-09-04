@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ornate Frame Demo</title>
+    <style>
+      :root {
+        --panel-fill-top: #12100b;
+        --panel-fill-bot: #17140d;
+        --gold-dark: #6a4b14;
+        --gold-mid: #d8b85a;
+        --gold-hi: #f2de8a;
+        --ink: #0c0a05;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: radial-gradient(1200px 800px at 20% 0%, #0f0e0a 0%, #0b0a07 60%, #080705 100%);
+        color: #e8e4d8;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+      }
+
+      .page {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+
+      h1, h2 {
+        font-family: "Cinzel", Georgia, serif;
+        letter-spacing: 0.02em;
+        margin: 0 0 12px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      /* Base ornate frame using gradients + layered shadows (no images) */
+      .frame {
+        border: 6px solid transparent;             /* gold ring area */
+        border-radius: 12px;
+        background:
+          /* panel fill */
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
+          /* gold border with darker edges for rounded look */
+          linear-gradient(
+            140deg,
+            var(--gold-dark) 0%,
+            var(--gold-mid) 44%,
+            var(--gold-hi) 56%,
+            var(--gold-dark) 100%
+          ) border-box;
+        /* inner cut line, outer black line, faint gold halo, drop shadow */
+        box-shadow:
+          inset 0 0 0 1px rgba(0,0,0,0.7),
+          0 0 0 1px var(--ink),
+          0 0 0 3px rgba(216,184,90,0.25),
+          0 10px 24px rgba(0,0,0,0.45);
+      }
+
+      .frame .content {
+        padding: 14px 16px;
+      }
+
+      /* Header bar built as a 3-slice (cap • tile • cap) using ::before/::after */
+      .capbar {
+        position: relative;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 8px 8px 0;
+        color: #f5e8b0;
+        text-shadow: 0 1px 0 #382a0a;
+      }
+      .capbar::before,
+      .capbar::after {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0;
+        width: 24px;               /* caps */
+        background: linear-gradient(180deg, #403015, #1f180a);
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6);
+      }
+      .capbar::before { left: 0; border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+      .capbar::after  { right: 0; border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+      .capbar .strip {
+        position: absolute; left: 24px; right: 24px; top: 0; bottom: 0;
+        background:
+          repeating-linear-gradient(90deg, #31240e 0px, #36270f 8px, #2b1f0c 16px);
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5);
+      }
+      .capbar .label {
+        position: relative;
+        z-index: 1;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+
+      /* Fixed ornate popup: thicker borders and extra inner bevel */
+      .popup {
+        max-width: 520px;
+        margin: 12px auto;
+      }
+      .popup .frame {
+        border-width: 8px;
+        border-radius: 14px;
+        box-shadow:
+          inset 0 0 0 1px rgba(0,0,0,0.75),
+          inset 0 0 0 6px rgba(0,0,0,0.2),        /* inner dark bevel */
+          0 0 0 1px var(--ink),
+          0 0 0 3px rgba(216,184,90,0.28),
+          0 16px 36px rgba(0,0,0,0.55);
+      }
+
+      .note {
+        font-size: 0.92rem;
+        color: #cfc9b6;
+        line-height: 1.4;
+      }
+      code { color: #f5e8b0; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Ornate Frame Demo (CSS‑only)</h1>
+      <p class="note">This page shows a flexible gold/black/gold frame (no images), a capped header strip, and a fixed ornate popup. Resize the window to see frames adapt. You can copy the <code>.frame</code> class into your app.</p>
+
+      <div class="grid">
+        <div class="frame">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Faction Browser</div>
+          </div>
+          <div class="content">
+            <h2>Resizable Panel</h2>
+            <p class="note">A nine-slice look without images using border gradients and shadows. Great for nested, dynamic panels.</p>
+          </div>
+        </div>
+
+        <div class="frame">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Variant Detail</div>
+          </div>
+          <div class="content">
+            <p class="note">Use this for domain-aware tabs. Add badges, coverage ring, and “Why matched” drawer here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="frame">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Ornate Popup</div>
+          </div>
+          <div class="content">
+            <p>This is a fixed, more ornate dialog with a thicker bevel. Use for modal confirmations or detailed explainability.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  </html>
