@@ -169,6 +169,22 @@
           0 12px 28px rgba(0,0,0,0.45);
       }
 
+      /* Variant: Nine-slice via SVG border-image (CC0-style) */
+      .frame--nine-svg {
+        --b: 16; /* band thickness in the SVG */
+        border: calc(var(--b) * 1px) solid transparent;
+        border-radius: 6px;
+        background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box;
+        border-image-source: url('../img/gold_frame_9slice.svg');
+        border-image-slice: var(--b) fill;
+        border-image-width: 1;
+        border-image-repeat: stretch;
+        box-shadow:
+          0 0 0 1px rgba(0,0,0,0.9),
+          inset 0 0 0 1px rgba(0,0,0,0.85),
+          0 12px 28px rgba(0,0,0,0.45);
+      }
+
       /* Variant: beveled wrap bands per side (top/right/bottom/left)
          Paints each side separately so the gold band wraps corners with a
          bevel: dark → mid → highlight → dark. Rings added via shadows. */
@@ -425,6 +441,16 @@
           </div>
           <div class="content">
             <p class="note">Gold band via a single conic‑gradient painted in the border area—no corner seams. Adjust the degree stops to shift highlight.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--nine-svg" style="--b: 16;">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">9‑Slice (SVG)</div>
+          </div>
+          <div class="content">
+            <p class="note">Nine-slice border via SVG <code>border-image</code>. Perfect corners, scalable edges. Replace the SVG with any CC0 panel.</p>
           </div>
         </div>
       </div>

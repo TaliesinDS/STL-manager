@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- CC0: Simple nine-slice capable gold frame with 16px band -->
+  <defs>
+    <linearGradient id="goldBevel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0907"/>
+      <stop offset="8%" stop-color="#3a2c10"/>
+      <stop offset="38%" stop-color="#8b6f27"/>
+      <stop offset="52%" stop-color="#f2de8a"/>
+      <stop offset="66%" stop-color="#8b6f27"/>
+      <stop offset="92%" stop-color="#3a2c10"/>
+      <stop offset="100%" stop-color="#0a0907"/>
+    </linearGradient>
+    <filter id="insetShadow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feOffset dy="0"/>
+      <feGaussianBlur stdDeviation="0.6"/>
+      <feComposite in2="SourceAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.85 0"/>
+      <feBlend mode="normal" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Outer frame area -->
+  <rect x="0" y="0" width="256" height="256" fill="url(#goldBevel)"/>
+  <!-- Inner hole (center) -->
+  <rect x="16" y="16" width="224" height="224" fill="#000"/>
+  <!-- Inner crisp ring -->
+  <rect x="16" y="16" width="224" height="224" fill="none" stroke="#000" stroke-width="1"/>
+  <!-- Outer crisp ring -->
+  <rect x="0.5" y="0.5" width="255" height="255" fill="none" stroke="#000" stroke-width="1"/>
+</svg>
