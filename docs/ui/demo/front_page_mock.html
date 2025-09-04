@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STL Manager • UI Mockup (Front Page)</title>
+    <style>
+      :root {
+        --bg-0: #0b0a07;
+        --bg-1: #0f0e0a;
+        --ink: #0c0a05;
+        --panel-fill-top: #12100b;
+        --panel-fill-bot: #17140d;
+        --gold-dark: #6a4b14;
+        --gold-mid: #d8b85a;
+        --gold-hi:  #f2de8a;
+        --text: #e8e4d8;
+        --muted: #bdb7a5;
+        --accent: #d8b85a;
+        --chip: #2a2618;
+        --chip-hl: #3a331f;
+        --ok: #64d37f;
+        --warn: #ffcc66;
+        --err: #ee6666;
+      }
+
+      html, body { height: 100%; margin: 0; }
+      body {
+        background: radial-gradient(1200px 800px at 20% 0%, var(--bg-1) 0%, var(--bg-0) 60%, #080705 100%);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+      }
+
+      h1, h2, h3 { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; margin: 0; }
+
+      /* Ornate frame from demo (CSS-only) */
+      .frame {
+        border: 6px solid transparent;
+        border-radius: 4px;
+        background:
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
+          linear-gradient(140deg, var(--gold-dark) 0%, var(--gold-mid) 44%, var(--gold-hi) 56%, var(--gold-dark) 100%) border-box;
+        box-shadow:
+          inset 0 0 0 1px rgba(0,0,0,0.7),
+          0 0 0 1px var(--ink),
+          0 0 0 3px rgba(216,184,90,0.25),
+          0 10px 24px rgba(0,0,0,0.45);
+      }
+      .frame .content { padding: 14px 16px; }
+
+      /* App shell */
+      .topbar {
+        display: grid;
+        grid-template-columns: 220px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 16px;
+      }
+      .brand { display: flex; align-items: baseline; gap: 8px; }
+      .brand .title { font-family: "Cinzel", Georgia, serif; font-size: 20px; letter-spacing: 0.04em; }
+      .brand .sub { color: var(--muted); font-size: 12px; }
+
+      .segmented {
+        display: inline-flex; gap: 6px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 1px 0 rgba(0,0,0,0.35);
+      }
+      .segmented .btn {
+        padding: 6px 10px; border-radius: 6px; cursor: pointer; user-select: none;
+        background: linear-gradient(#1b190f, #15130c);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 0 1px rgba(0,0,0,0.6);
+        color: var(--muted);
+      }
+      .segmented .btn.active { color: #f5e8b0; background: linear-gradient(#2a2414, #1a170e); }
+
+      .searchbox { display: flex; gap: 8px; align-items: center; }
+      .searchbox input {
+        background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 8px 10px; min-width: 260px;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.4);
+      }
+
+      .filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      .chip {
+        background: var(--chip); color: #dacfae; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px;
+      }
+      .chip.on { background: var(--chip-hl); border-color: #5a4c27; }
+
+      .app {
+        display: grid; grid-template-columns: 260px 1fr; gap: 16px; padding: 0 16px 24px; max-width: 1280px; margin: 0 auto;
+      }
+
+      .sidebar { display: flex; flex-direction: column; gap: 16px; }
+      .nav { list-style: none; margin: 0; padding: 0; }
+      .nav li { padding: 8px 0; color: #d2ccb9; }
+      .nav li .small { color: #a59f8d; font-size: 12px; }
+
+      .main { display: flex; flex-direction: column; gap: 16px; }
+
+      .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+      .kpi {
+        background: linear-gradient(#13110c, #15130d); border: 1px solid #2a281c; border-radius: 10px; padding: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+      }
+      .kpi .label { color: #cfc9b6; font-size: 12px; }
+      .kpi .value { font-size: 22px; letter-spacing: 0.02em; margin-top: 6px; }
+      .kpi .trend { font-size: 12px; color: #a59f8d; }
+
+      .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+      .tile {
+        display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center;
+        background: linear-gradient(#14120d, #15130d); border: 1px solid #2a281c; border-radius: 10px; padding: 12px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+      }
+
+      /* Coverage ring */
+      .ring {
+        --p: 72; /* percent */
+        --size: 64px;
+        --thick: 8px;
+        width: var(--size); height: var(--size); border-radius: 50%; position: relative;
+        background:
+          conic-gradient(var(--accent) calc(var(--p) * 1%), #2a2618 0);
+      }
+      .ring::after {
+        content: ""; position: absolute; inset: calc(var(--thick)); border-radius: 50%;
+        background: radial-gradient(60% 60% at 50% 35%, #17140d 0%, #12100b 60%, #0f0e0a 100%);
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.65);
+      }
+      .ring .center { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; font-weight: 600; }
+
+      .tile .meta { color: #cfc9b6; font-size: 12px; }
+      .tile .title { font-weight: 600; letter-spacing: 0.02em; }
+      .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; margin-right: 6px; background: #1f1b12; border: 1px solid #3a3422; }
+      .pill-ok { color: #bff1c9; border-color: #2b6039; background: #11321a; }
+      .pill-warn { color: #ffe0a8; border-color: #6d5521; background: #2d2311; }
+
+      .section h2 { margin-bottom: 8px; }
+
+      @media (max-width: 960px) {
+        .app { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="brand">
+        <div class="title">STL Manager</div>
+        <div class="sub">Beta</div>
+      </div>
+      <div class="segmented" role="tablist" aria-label="Domain selector">
+        <div class="btn active" role="tab" aria-selected="true">Wargames</div>
+        <div class="btn" role="tab">Display</div>
+        <div class="btn" role="tab">Scale Models</div>
+        <div class="btn" role="tab">Terrain</div>
+      </div>
+      <div class="searchbox">
+        <input type="search" placeholder="Search variants, designers, franchises..." aria-label="Search" />
+      </div>
+    </div>
+
+    <div class="topbar" style="padding-top: 0;">
+      <div></div>
+      <div class="segmented" role="tablist" aria-label="Campaign selector">
+        <div class="btn active" role="tab" aria-selected="true">40K</div>
+        <div class="btn" role="tab">AoS</div>
+        <div class="btn" role="tab">Heresy</div>
+        <div class="btn" role="tab">Other Systems</div>
+        <div class="btn" role="tab">Agnostic</div>
+      </div>
+      <div class="filters">
+        <span class="chip on">Intended: Tabletop</span>
+        <span class="chip">Scale: 1:56</span>
+        <span class="chip">Base: 32mm round</span>
+        <span class="chip">Confidence ≥ 0.7</span>
+      </div>
+    </div>
+
+    <div class="app">
+      <aside class="sidebar">
+        <div class="frame">
+          <div class="content">
+            <h3>Navigation</h3>
+            <ul class="nav">
+              <li>Dashboard <span class="small">(this page)</span></li>
+              <li>Variant Explorer</li>
+              <li>Faction Browser</li>
+              <li>Systems Browser</li>
+              <li>Mismatch Inbox <span class="small">(3 new)</span></li>
+              <li>Admin</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame">
+          <div class="content">
+            <h3>Quick Filters</h3>
+            <div class="filters" style="margin-top:8px;">
+              <span class="chip">Designer: ArchVillain</span>
+              <span class="chip">Unit: Elite</span>
+              <span class="chip">Support: Multi-part</span>
+              <span class="chip">Segmentation: Yes</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="frame section">
+          <div class="content">
+            <h2>Overview</h2>
+            <div class="kpis" style="margin-top:10px;">
+              <div class="kpi">
+                <div class="label">Total Variants</div>
+                <div class="value">12,948</div>
+                <div class="trend">+184 this week</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Matched Fields</div>
+                <div class="value">78%</div>
+                <div class="trend" style="color: var(--ok);">+2.1%</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Open Mismatch Reports</div>
+                <div class="value" style="color: var(--warn);">23</div>
+                <div class="trend">Median age: 3d</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Designers Known</div>
+                <div class="value">412</div>
+                <div class="trend">+4</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="frame section">
+          <div class="content">
+            <h2>Faction Browser (40K)</h2>
+            <div class="tiles" style="margin-top:10px;">
+              <div class="tile">
+                <div class="ring" style="--p:82"><div class="center">82%</div></div>
+                <div>
+                  <div class="title">Adeptus Astartes</div>
+                  <div class="meta">Variants: 1,254 • Open issues: <span class="badge pill-warn">5</span></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="ring" style="--p:68"><div class="center">68%</div></div>
+                <div>
+                  <div class="title">Adeptus Mechanicus</div>
+                  <div class="meta">Variants: 742 • Open issues: <span class="badge pill-warn">2</span></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="ring" style="--p:91"><div class="center">91%</div></div>
+                <div>
+                  <div class="title">Astra Militarum</div>
+                  <div class="meta">Variants: 1,008 • Open issues: <span class="badge pill-ok">0</span></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="ring" style="--p:54"><div class="center">54%</div></div>
+                <div>
+                  <div class="title">Chaos Daemons</div>
+                  <div class="meta">Variants: 566 • Open issues: <span class="badge pill-warn">7</span></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="ring" style="--p:73"><div class="center">73%</div></div>
+                <div>
+                  <div class="title">Necrons</div>
+                  <div class="meta">Variants: 628 • Open issues: <span class="badge pill-warn">3</span></div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="ring" style="--p:64"><div class="center">64%</div></div>
+                <div>
+                  <div class="title">T'au Empire</div>
+                  <div class="meta">Variants: 584 • Open issues: <span class="badge pill-warn">4</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="frame section">
+          <div class="content">
+            <h2>Queues</h2>
+            <div class="tiles" style="margin-top:10px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+              <div class="tile" style="grid-template-columns: 1fr; align-items: start;">
+                <div class="title">Top Misses (By volume)</div>
+                <div class="meta" style="margin-top:6px;">
+                  • Ork Boyz (multi-kit) — designer mismatch<br />
+                  • Eldar Guardians — unit role missing<br />
+                  • Sisters Repentia — base profile ambiguous
+                </div>
+              </div>
+              <div class="tile" style="grid-template-columns: 1fr; align-items: start;">
+                <div class="title">Recently Fixed</div>
+                <div class="meta" style="margin-top:6px;">
+                  • Blood Angels Intercessors — wargear linked<br />
+                  • Imperial Fists Captain — base profile 40mm round<br />
+                  • Necron Immortals — designer alias reconciled
+                </div>
+              </div>
+              <div class="tile" style="grid-template-columns: 1fr; align-items: start;">
+                <div class="title">Pending Mismatch Reports</div>
+                <div class="meta" style="margin-top:6px;">
+                  • #1842 Astra Militarum Heavy Weapons<br />
+                  • #1844 Chaos Terminators loadout<br />
+                  • #1855 Tyranid Warriors kit split
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </body>
+</html>
