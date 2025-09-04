@@ -43,7 +43,7 @@
       /* Base ornate frame using gradients + layered shadows (no images) */
       .frame {
         border: 6px solid transparent;             /* gold ring area */
-        border-radius: 12px;
+        border-radius: 4px;
         background:
           /* panel fill */
           linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
@@ -61,6 +61,231 @@
           0 0 0 1px var(--ink),
           0 0 0 3px rgba(216,184,90,0.25),
           0 10px 24px rgba(0,0,0,0.45);
+      }
+
+      /* Variant: confine gradient to the border thickness using border-image */
+      .frame--banded {
+        /* Use a solid border so border-image paints over it */
+        border: 8px solid transparent;
+        /* Only paint the interior fill in background; the border will be painted by border-image */
+        background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box;
+        /* Black → gold → black across the border thickness (outer→inner) */
+        border-image-source: linear-gradient(
+          to bottom,
+          #000000 0%,
+          #d8b85a 45%,
+          #f2de8a 55%,
+          #000000 100%
+        );
+        border-image-slice: 1;
+        border-image-repeat: stretch; /* keep a smooth band */
+        /* Optional: reduce halos since we have a strong border now */
+        box-shadow:
+          inset 0 0 0 1px rgba(0,0,0,0.7),
+          0 10px 24px rgba(0,0,0,0.45);
+      }
+
+    /* Variant: true banded rings (outer black • gold band • inner black)
+         Uses background-clip to fill the border area with gold and box-shadows
+         to draw crisp black rings on the outer and inner edges. */
+      .frame--rings {
+        --ring-thickness: 4px;     /* solid black ring thickness */
+        --band-thickness: 2px;     /* total border (gold band) thickness */
+        --ring-feather: 1px;       /* feather spread for the blur */
+        --ring-blur: 4px;          /* blur radius for the feather */
+        border: var(--band-thickness) solid transparent;
+        border-radius: 4px;
+        background:
+          /* panel fill */
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
+          /* gold band strictly in the border area */
+          linear-gradient(#d8b85a, #d8b85a) border-box;
+        /* outer ring (crisp) + outer feather, inner ring (crisp) + inner feather, drop shadow */
+        box-shadow:
+         0 0 1px var(--ring-thickness) rgba(170, 117, 5, 0.9),
+          0 0 var(--ring-blur) var(--ring-feather) rgba(138, 42, 42, 0.35),
+          inset 0 0 2px  var(--ring-thickness) rgba(133, 101, 3, 0.85),
+          inset 0 0 var(--ring-blur) var(--ring-feather) rgba(0, 0, 0, 0.855),
+          0 0 4px rgba(0,0,0,0.45);
+      }
+
+      /* Variant: seam-free wrapped band using border-image (no corner seams) */
+      .frame--wrap {
+        --band: 12px;             /* gold band width */
+        --ring: 1px;              /* black ring width */
+        border: var(--band) solid transparent;
+        border-radius: 6px;
+        background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box;
+        /* Black → dark bronze → mid gold → highlight → mid → dark → black across thickness */
+        border-image-source: linear-gradient(
+          to bottom,
+          #000000 0%,
+          #241b08 8%,
+          #8b6f27 38%,
+          #f2de8a 52%,
+          #8b6f27 66%,
+          #241b08 92%,
+          #000000 100%
+        );
+        border-image-slice: 1;
+        border-image-repeat: stretch;
+        /* crisp outer ring + crisp inner ring + soft drop */
+        box-shadow:
+          0 0 0 var(--ring) rgba(0,0,0,0.95),
+          inset 0 0 0 var(--ring) rgba(0,0,0,0.9),
+          0 12px 28px rgba(0,0,0,0.45);
+      }
+
+      /* Variant: seam-free wrap using a single conic-gradient in border area */
+      .frame--wrap-conic {
+        --band: 12px;            /* gold band width */
+        --ring: 1px;             /* black ring width */
+        border: var(--band) solid transparent;
+        border-radius: 8px;
+        background:
+          /* panel fill */
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
+          /* seam-free wrapped gold band */
+          conic-gradient(
+            from 0.25turn,
+            #000000 0deg,
+            #241b08 6deg,
+            #8b6f27 42deg,
+            #f2de8a 90deg,
+            #8b6f27 138deg,
+            #241b08 174deg,
+            #000000 180deg,
+            #241b08 186deg,
+            #8b6f27 222deg,
+            #f2de8a 270deg,
+            #8b6f27 318deg,
+            #241b08 354deg,
+            #000000 360deg
+          ) border-box;
+        /* crisp inner/outer rings + soft drop */
+        box-shadow:
+          0 0 0 var(--ring) rgba(0,0,0,0.95),
+          inset 0 0 0 var(--ring) rgba(0,0,0,0.9),
+          0 12px 28px rgba(0,0,0,0.45);
+      }
+
+      /* Variant: beveled wrap bands per side (top/right/bottom/left)
+         Paints each side separately so the gold band wraps corners with a
+         bevel: dark → mid → highlight → dark. Rings added via shadows. */
+      .frame--bevel {
+        --band-thickness: 10px;   /* gold band width */
+        --ring-thickness: 1px;    /* black ring width */
+        --ring-feather: 4px;      /* feather spread */
+        --ring-blur: 6px;         /* blur radius */
+        --grain-opacity: 0.10;    /* vertical grain/engraving opacity */
+        --grain-spacing: 4px;     /* grain spacing (px) */
+        border: var(--band-thickness) solid transparent;
+        border-radius: 4px;
+        background:
+          /* subtle vertical grain over the band (border-box clips it to band) */
+          repeating-linear-gradient(
+            90deg,
+            rgba(0,0,0, var(--grain-opacity)) 0 1px,
+            rgba(0,0,0, 0) 1px var(--grain-spacing)
+          ) border-box,
+          /* left band */
+          linear-gradient(to right, var(--gold-dark) 0%, var(--gold-mid) 45%, var(--gold-hi) 55%, var(--gold-dark) 100%) border-box,
+          /* right band */
+          linear-gradient(to left, var(--gold-dark) 0%, var(--gold-mid) 45%, var(--gold-hi) 55%, var(--gold-dark) 100%) border-box,
+          /* top band */
+          linear-gradient(to bottom, var(--gold-dark) 0%, var(--gold-mid) 45%, var(--gold-hi) 55%, var(--gold-dark) 100%) border-box,
+          /* bottom band */
+          linear-gradient(to top, var(--gold-dark) 0%, var(--gold-mid) 45%, var(--gold-hi) 55%, var(--gold-dark) 100%) border-box,
+          /* panel fill */
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box;
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+        background-size:
+          100% 100%,
+          var(--band-thickness) 100%,
+          var(--band-thickness) 100%,
+          100% var(--band-thickness),
+          100% var(--band-thickness),
+          auto;
+        background-position:
+          left top,
+          left top,
+          right top,
+          left top,
+          left bottom,
+          left top;
+        box-shadow:
+          0 0 0 var(--ring-thickness) rgba(0,0,0,0.95),
+          0 0 var(--ring-blur) var(--ring-feather) rgba(0,0,0,0.35),
+          inset 0 0 0 var(--ring-thickness) rgba(0,0,0,0.9),
+          inset 0 0 var(--ring-blur) var(--ring-feather) rgba(0,0,0,0.35),
+          /* thin inner highlight near the panel edge */
+          inset 0 0 0 calc(var(--ring-thickness) + 1px) rgba(255, 248, 224, 0.08),
+          0 10px 24px rgba(0,0,0,0.45);
+      }
+
+      /* Refined EU4-style: beveled side bands + grain + inner/outer rings
+         with a tighter inner highlight and slightly darker inner edge. */
+      .frame--eu4 {
+        --band-thickness: 12px;  /* gold band width */
+        --ring-thickness: 1px;   /* black ring width */
+        --ring-feather: 3px;     /* feather spread */
+        --ring-blur: 8px;        /* blur radius */
+        --seam-offset: 18px;     /* inner seam distance from inner edge */
+        --seam-alpha: 0.28;      /* inner seam brightness */
+        border: var(--band-thickness) solid transparent;
+        border-radius: 3px;
+        position: relative;
+        background:
+          /* vertical grain across band */
+          repeating-linear-gradient(
+            90deg,
+            rgba(0,0,0,0.10) 0 1px,
+            rgba(0,0,0,0) 1px 5px
+          ) border-box,
+          /* left band bevel (slightly brighter, earlier highlight) */
+          linear-gradient(to right, var(--gold-dark) 0%, var(--gold-mid) 40%, var(--gold-hi) 52%, var(--gold-dark) 100%) border-box,
+          /* right band bevel (slightly darker, later highlight) */
+          linear-gradient(to left,  var(--gold-dark) 0%, var(--gold-mid) 48%, var(--gold-hi) 58%, var(--gold-dark) 100%) border-box,
+          /* top band bevel (earlier highlight) */
+          linear-gradient(to bottom,var(--gold-dark) 0%, var(--gold-mid) 40%, var(--gold-hi) 52%, var(--gold-dark) 100%) border-box,
+          /* bottom band bevel (later highlight) */
+          linear-gradient(to top,   var(--gold-dark) 0%, var(--gold-mid) 48%, var(--gold-hi) 58%, var(--gold-dark) 100%) border-box,
+          /* panel fill */
+          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box;
+        background-repeat: no-repeat;
+        background-size:
+          100% 100%,                     /* grain */
+          var(--band-thickness) 100%,    /* left */
+          var(--band-thickness) 100%,    /* right */
+          100% var(--band-thickness),    /* top */
+          100% var(--band-thickness),    /* bottom */
+          auto;                          /* fill */
+        background-position:
+          left top,
+          left top,
+          right top,
+          left top,
+          left bottom,
+          left top;
+        /* Rings: outer crisp+feather, inner crisp+feather, subtle inner light, soft drop */
+        box-shadow:
+          0 0 0 var(--ring-thickness) rgba(0,0,0,0.95),
+          0 0 var(--ring-blur) var(--ring-feather) rgba(0,0,0,0.35),
+          inset 0 0 0 var(--ring-thickness) rgba(0,0,0,0.9),
+          inset 0 0 var(--ring-blur) var(--ring-feather) rgba(0,0,0,0.35),
+          /* inner highlight just inside the band */
+          inset 0 0 0 calc(var(--ring-thickness) + 1px) rgba(255,248,224,0.10),
+          0 12px 28px rgba(0,0,0,0.45);
+      }
+      .frame--eu4::after {
+        content: "";
+        position: absolute;
+        left: var(--band-thickness);
+        right: var(--band-thickness);
+        top: calc(var(--band-thickness) + var(--seam-offset));
+        height: 1px;
+        background: linear-gradient(to right, rgba(255,248,224,var(--seam-alpha)), rgba(255,248,224,0.05));
+        pointer-events: none;
       }
 
       .frame .content {
@@ -87,8 +312,8 @@
         background: linear-gradient(180deg, #403015, #1f180a);
         box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6);
       }
-      .capbar::before { left: 0; border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
-      .capbar::after  { right: 0; border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+      .capbar::before { left: 0; border-top-left-radius: 2px; border-bottom-left-radius: 2px; }
+      .capbar::after  { right: 0; border-top-right-radius: 2px; border-bottom-right-radius: 2px; }
       .capbar .strip {
         position: absolute; left: 24px; right: 24px; top: 0; bottom: 0;
         background:
@@ -109,7 +334,7 @@
       }
       .popup .frame {
         border-width: 8px;
-        border-radius: 14px;
+        border-radius: 2px;
         box-shadow:
           inset 0 0 0 1px rgba(0,0,0,0.75),
           inset 0 0 0 6px rgba(0,0,0,0.2),        /* inner dark bevel */
@@ -143,13 +368,63 @@
           </div>
         </div>
 
-        <div class="frame">
+        <div class="frame frame--banded">
           <div class="capbar">
             <div class="strip"></div>
             <div class="label">Variant Detail</div>
           </div>
           <div class="content">
             <p class="note">Use this for domain-aware tabs. Add badges, coverage ring, and “Why matched” drawer here.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--rings">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Banded Rings</div>
+          </div>
+          <div class="content">
+            <p class="note">Outer black + gold band + inner black rendered as bands wrapping the box. Adjust <code>--band-thickness</code> and <code>--ring-thickness</code>.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--bevel">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Beveled Wrap</div>
+          </div>
+          <div class="content">
+            <p class="note">Per-side bevel (dark → mid → highlight → dark) that wraps the box. Tweak <code>--band-thickness</code> and gold stops for taste.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--eu4" style="--band-thickness: 12px; --ring-thickness: 1px; --ring-feather: 3px; --ring-blur: 8px;">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">EU4‑Style Bevel</div>
+          </div>
+          <div class="content">
+            <p class="note">Wrapped bevel with grain and crisp/feathered rings. Tune <code>--band-thickness</code>, <code>--ring‑*</code>, and the gold stop percents.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--wrap" style="--band: 12px; --ring: 1px;">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Seam‑free Wrap</div>
+          </div>
+          <div class="content">
+            <p class="note">Gold band via border‑image gradient for perfect corners; inner/outer black rings via shadows. Tune the gradient stops to taste.</p>
+          </div>
+        </div>
+
+        <div class="frame frame--wrap-conic" style="--band: 12px; --ring: 1px;">
+          <div class="capbar">
+            <div class="strip"></div>
+            <div class="label">Seam‑free Conic</div>
+          </div>
+          <div class="content">
+            <p class="note">Gold band via a single conic‑gradient painted in the border area—no corner seams. Adjust the degree stops to shift highlight.</p>
           </div>
         </div>
       </div>
