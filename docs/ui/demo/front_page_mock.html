@@ -7,9 +7,9 @@
     <style>
       :root {
         --drawer-w: 420px; /* default drawer width */
-        --frame-border: 6px; /* decorative frame border thickness */
-  --drawer-top: 72px; /* drawer top offset (synced to .app top via JS) */
-  --drawer-bottom: 24px; /* drawer bottom offset */
+        --frame-border: 18px; /* decorative frame border thickness */
+        --drawer-top: 72px; /* drawer top offset (synced to .app top via JS) */
+        --drawer-bottom: 24px; /* drawer bottom offset */
         --tabs-offset: 0px; /* additional visual offset for tabs/drawer top */
         --tabs-gap: 10px; /* spacing between tab buttons */
         --rail-w: 64px; /* width of the left tab rail */
@@ -33,6 +33,16 @@
         --ok: #64d37f;
         --warn: #ffcc66;
         --err: #ee6666;
+        /* Tab art assets */
+  --tab-img-inactive: url('../img/Tab2inactive.png');
+  /* Active uses Tab2.png */
+  --tab-img-active: url('../img/Tab2.png');
+  --tab-img-size: auto var(--tab-size); /* scale by height */
+  /* Compute image width from height to avoid right-edge clipping at large sizes */
+  --tab-img-ratio: 2.6; /* width = ratio * height; adjust to match PNG aspect */
+  --tab-img-width: calc(var(--tab-size) * var(--tab-img-ratio));
+        /* Amount of the tab's left cap to tuck offscreen/under frame */
+        --tab-cap-overhang: 12px;
       }
 
       /* Light theme overrides */
@@ -66,19 +76,31 @@
 
       h1, h2, h3 { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; margin: 0; }
 
-      /* Ornate frame from demo (CSS-only) */
+      /* Frame: PNG 9-slice border (no gradients), solid center fill */
       .frame {
+        /* Border ring thickness used across layout */
         border: var(--frame-border) solid transparent;
         border-radius: 4px;
-        background:
-          linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)) padding-box,
-          linear-gradient(140deg, var(--gold-dark) 0%, var(--gold-mid) 44%, var(--gold-hi) 56%, var(--gold-dark) 100%) border-box;
+        /* 9-slice source and slice in pixels of the source asset */
+        --frame-img: url('../img/9sFrame3.png');
+        --slice: 28;           /* e.g., 12@1x or 24@2x */
+        --biw: 1;              /* border-image-width scalar; bump to 1.02 to overlap seam */
+        --seam-mask: 0px;      /* set to 1px to hide anti-alias hairline */
+        --center-fill: #000;   /* center fill color */
+        border-image-source: var(--frame-img);
+        border-image-slice: var(--slice);
+        border-image-width: var(--biw);
+        border-image-repeat: stretch;
+        /* paint solid center up to the inner edge */
+        background-color: var(--center-fill);
+        background-clip: border-box;
+        /* outer stroke + optional seam mask + soft drop */
         box-shadow:
-          inset 0 0 0 1px rgba(0,0,0,0.7),
-          0 0 0 1px var(--ink),
-          0 0 0 3px rgba(216,184,90,0.25),
+          0 0 0 1px rgba(0,0,0,0.9),
+          inset 0 0 0 var(--seam-mask) var(--center-fill),
           0 10px 24px rgba(0,0,0,0.45);
       }
+      [data-theme="light"] .frame { --center-fill: #f5efe3; }
       .frame .content { padding: 14px 16px; }
 
       /* App shell */
@@ -204,26 +226,74 @@
         .app { grid-template-columns: 1fr; }
       }
 
-      /* Drawer-attached tabs (fixed at viewport edge, slide with drawer) */
+      /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
       .drawer-tabs {
         position: fixed;
-        left: 0;
+        left: calc(-1 * var(--tab-cap-overhang));
         top: calc(var(--drawer-top) + var(--tabs-offset));
         display: flex; flex-direction: column; gap: var(--tabs-gap);
-        z-index: 960; /* above frame edge */
+        z-index: 900; /* below drawer (950) so visuals tuck under the frame */
+        pointer-events: none; /* clicks handled by hit layer */
+        transition: left .22s ease, right .22s ease;
+      }
+      /* Hit layer: invisible buttons above drawer to capture clicks and render active tab */
+      .drawer-tabs-hit {
+        position: fixed;
+        left: calc(-1 * var(--tab-cap-overhang));
+        top: calc(var(--drawer-top) + var(--tabs-offset));
+        display: flex; flex-direction: column; gap: var(--tabs-gap);
+        z-index: 1005; /* above drawer for interactions */
+        pointer-events: auto;
         transition: left .22s ease, right .22s ease;
       }
       .drawer-tab {
-        position: relative; min-width: calc(var(--tab-overhang) + 28px); height: var(--tab-size);
+        position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size);
         padding: 0 12px 0 10px; display: inline-flex; align-items: center; justify-content: flex-start;
         cursor: pointer; border: 0; border-radius: 0 999px 999px 0; /* flat left, round right */
         color: #2b210a; font-weight: 700; font-size: 14px;
-        background: linear-gradient(140deg, var(--gold-dark) 0%, var(--gold-mid) 44%, var(--gold-hi) 56%, var(--gold-dark) 100%);
-        box-shadow: 0 6px 10px rgba(0,0,0,0.35), inset 0 0 0 2px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.08);
+        background: transparent; /* remove legacy gradient tab visuals */
+        box-shadow: none; /* remove legacy shadows; art handles visuals */
+        transition: transform .12s ease;
       }
+      /* Draw tab image as a pseudo layer so we can mirror and control z-order */
+      .drawer-tabs .drawer-tab::before,
+      .drawer-tabs-hit .drawer-tab::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: var(--tab-img-size);
+        /* no z-index so the dark overlay (::after) remains above for inactive visuals */
+      }
+      /* Visual layer (below drawer): show INACTIVE image for all tabs; swap to ACTIVE on hover relay */
+      .drawer-tabs .drawer-tab::before { opacity: 1; background-image: var(--tab-img-inactive); }
+      .drawer-tabs .drawer-tab.is-hover::before { background-image: var(--tab-img-active); }
+      /* Hit layer (above drawer): only ACTIVE tab shows ACTIVE image */
+      .drawer-tabs-hit .drawer-tab::before { opacity: 0; background-image: var(--tab-img-active); }
+      .drawer-tabs-hit .drawer-tab[aria-pressed="true"]::before { opacity: 1; }
+      /* Hit layer tabs are visually minimal except the active one */
+      .drawer-tabs-hit .drawer-tab {
+        background: transparent;
+        box-shadow: none;
+      }
+      .drawer-tabs-hit .drawer-tab[aria-pressed="true"] { background: transparent; box-shadow: none; }
+      /* Remove shadow overlay approach entirely */
+
+  /* Hover lift disabled */
+  /* no transform on hover/focus-visible */
       .drawer-tab:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
       .drawer-tab[aria-pressed="true"] { filter: brightness(1.03) contrast(1.02); }
-      [data-theme="light"] .drawer-tab { color: #3a2e0f; box-shadow: 0 6px 10px rgba(0,0,0,0.15), inset 0 0 0 2px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(255,255,255,0.25); }
+  [data-theme="light"] .drawer-tab { color: #3a2e0f; box-shadow: none; }
+  [data-theme="light"] .drawer-tabs-hit .drawer-tab[aria-pressed="true"] { box-shadow: none; }
+      /* Mirror art when docked right so tab cap faces inward */
+      [data-dock="right"] .drawer-tabs .drawer-tab::before,
+      [data-dock="right"] .drawer-tabs-hit .drawer-tab::before {
+        transform: scaleX(-1);
+        transform-origin: center;
+        background-position: right center;
+      }
       .drawer-tab .txt { pointer-events: none; }
       .drawer-tab .count { position: absolute; right: 6px; top: 4px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 999px; background: #16321f; color: #bff1c9; border: 1px solid #2b6039; font-size: 11px; display: none; align-items: center; justify-content: center; }
       .drawer-tab.has-count .count { display: inline-flex; }
@@ -235,15 +305,17 @@
     .drawer.open { left: 0; }
     .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
   /* When drawer opens, slide tabs to stay attached to its edge (left dock) */
-  [data-dock="left"] .drawer.open + .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2)); }
+  [data-dock="left"] .drawer.open + .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
+  [data-dock="left"] .drawer.open ~ .drawer-tabs-hit { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
 
   /* Right-dock variant: drawer on right, tabs protrude to the left */
   [data-dock="right"] .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
   [data-dock="right"] .drawer.open { right: 0; }
-  [data-dock="right"] .drawer-tabs { left: auto; right: 0; top: calc(var(--drawer-top) + var(--tabs-offset)); }
+  [data-dock="right"] .drawer-tabs, [data-dock="right"] .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
   [data-dock="right"] .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
   [data-dock="right"] .drawer-tab .count { left: 6px; right: auto; }
-  [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2)); left: auto; }
+  [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
 
       /* Design tuner */
       .tuner {
@@ -359,6 +431,13 @@
       <button class="drawer-tab" id="tab-nsfw" data-tab="nsfw" aria-pressed="false" title="NSFW"><span class="txt">NSFW</span><span class="count"></span></button>
       <button class="drawer-tab" id="tab-more" data-tab="more" aria-pressed="false" title="More filters"><span class="txt">More</span><span class="count"></span></button>
     </div>
+    <!-- Hit layer for tabs: captures clicks above the drawer; renders only the active tab visually -->
+    <div class="drawer-tabs-hit" aria-hidden="false">
+      <button class="drawer-tab" data-ref="#tab-lineage" data-tab="lineage" aria-pressed="false" title="Lineage"><span class="txt">Lineage</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-base" data-tab="base" aria-pressed="false" title="Base options"><span class="txt">Base</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-nsfw" data-tab="nsfw" aria-pressed="false" title="NSFW"><span class="txt">NSFW</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-more" data-tab="more" aria-pressed="false" title="More filters"><span class="txt">More</span><span class="count"></span></button>
+    </div>
 
     <!-- Design tuner: quick layout iteration controls -->
     <div class="tuner frame" id="designTuner">
@@ -366,7 +445,7 @@
         <h3>Design Tuner</h3>
         <div class="row"><label>Dock side</label><select id="tDock"><option value="left">Left</option><option value="right">Right</option></select></div>
         <div class="row"><label>Rail width</label><input id="tRail" type="range" min="40" max="120" value="64"><span id="tRailV">64</span></div>
-        <div class="row"><label>Tab size</label><input id="tTab" type="range" min="36" max="64" value="44"><span id="tTabV">44</span></div>
+  <div class="row"><label>Tab size</label><input id="tTab" type="range" min="36" max="96" value="44"><span id="tTabV">44</span></div>
         <div class="row"><label>Drawer width</label><input id="tDrawer" type="range" min="280" max="640" value="420"><span id="tDrawerV">420</span></div>
   <div class="row"><label>Tabs offset (px)</label><input id="tTabsOffset" type="range" min="-80" max="160" value="0"><span id="tTabsOffsetV">0</span></div>
   <div class="row"><label>Tabs spacing</label><input id="tTabsGap" type="range" min="0" max="24" value="10"><span id="tTabsGapV">10</span></div>
@@ -597,7 +676,10 @@
       const applyBtn = document.getElementById('drawerApply');
       const clearBtn = document.getElementById('drawerClear');
       const resizeHandle = document.getElementById('drawerResize');
-  const tabs = Array.from(document.querySelectorAll('.drawer-tab'));
+  const visualTabsRoot = document.querySelector('.drawer-tabs');
+  const hitTabsRoot = document.querySelector('.drawer-tabs-hit');
+  const tabs = Array.from(visualTabsRoot.querySelectorAll('.drawer-tab'));
+  const tabsHit = Array.from(hitTabsRoot.querySelectorAll('.drawer-tab'));
       const panels = {
         lineage: document.getElementById('panel-lineage'),
         base: document.getElementById('panel-base'),
@@ -622,7 +704,9 @@
       function openDrawer(which) {
         Object.values(panels).forEach(p => p.classList.remove('active'));
         if (panels[which]) panels[which].classList.add('active');
-        tabs.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.tab === which)));
+  const isActive = (t) => t.dataset.tab === which;
+  tabs.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
+  tabsHit.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
         drawer.querySelector('#drawerTitle').textContent = (which || 'Filters').toUpperCase();
         wrap.classList.add('open'); // show backdrop only when open
         drawer.classList.add('open');
@@ -635,18 +719,28 @@
         drawer.classList.remove('open');
         wrap.setAttribute('aria-hidden', 'true');
         tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
+        tabsHit.forEach(t => t.setAttribute('aria-pressed', 'false'));
       }
 
+      function onTabClick(which) {
+        openDrawer(which);
+      }
       tabs.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const which = btn.dataset.tab;
-          const isOpen = wrap.classList.contains('open') && btn.getAttribute('aria-pressed') === 'true';
-          if (isOpen) {
-            closeDrawer();
-          } else {
-            openDrawer(which);
-          }
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          onTabClick(btn.dataset.tab);
         });
+      });
+      tabsHit.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          onTabClick(btn.dataset.tab);
+        });
+        // Relay hover to the visual tab
+        const refSel = btn.getAttribute('data-ref');
+        const visualBtn = refSel ? document.querySelector(refSel) : null;
+        btn.addEventListener('mouseenter', () => { visualBtn?.classList.add('is-hover'); });
+        btn.addEventListener('mouseleave', () => { visualBtn?.classList.remove('is-hover'); });
       });
       backdrop.addEventListener('click', closeDrawer);
       closeBtn.addEventListener('click', closeDrawer);
@@ -694,12 +788,15 @@
 
       // Apply/Clear update count badges (mock behavior for iteration)
       function updateCount(tab, count) {
-        const btn = tabs.find(t => t.dataset.tab === tab);
-        if (!btn) return;
-        let badge = btn.querySelector('.count');
-        if (!badge) { badge = document.createElement('span'); badge.className = 'count'; btn.appendChild(badge); }
-        if (count > 0) { btn.classList.add('has-count'); badge.textContent = String(count); }
-        else { btn.classList.remove('has-count'); badge.textContent = ''; }
+        const updateFor = (btn) => {
+          if (!btn) return;
+          let badge = btn.querySelector('.count');
+          if (!badge) { badge = document.createElement('span'); badge.className = 'count'; btn.appendChild(badge); }
+          if (count > 0) { btn.classList.add('has-count'); badge.textContent = String(count); }
+          else { btn.classList.remove('has-count'); badge.textContent = ''; }
+        };
+        updateFor(tabs.find(t => t.dataset.tab === tab));
+        updateFor(tabsHit.find(t => t.dataset.tab === tab));
       }
       applyBtn.addEventListener('click', () => {
         // Simple heuristic count: number of checked inputs in active panel

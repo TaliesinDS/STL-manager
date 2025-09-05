@@ -38,6 +38,39 @@ This document defines the minimal asset pack and integration details for the new
 - Slice insets: 12 px at `@1x` (24 px at `@2x`). Adjust to match your corner radius + stroke. Corners/edges live in the perimeter; center remains transparent.
 - The existing CSS uses a decorative frame thickness variable: `--frame-border: 6px`. If your 9‑slice uses 12 px slices, set `border-width: 12px` where applied (see CSS wiring below). At `@2x`, set `border-image-slice: 24`.
 
+#### Edge rules for 9‑slice images
+- No outer padding: the border’s outside edge should be flush with the image edge (the very first pixel row/column). Any transparent padding reduces effective resolution and can create halos.
+- Opaque outermost pixels: avoid feathering to transparent at the outer edge; ensure the outermost pixel row is solid (e.g., the black ring). This prevents background bleed when composited.
+- Match slices to border width: if your slice is 12 px at `@1x`, use `border-width: 12px` and `border-image-slice: 12` (double both at `@2x`). Stick to integer values to avoid half‑pixel scaling blur.
+- Don’t bake outer shadows: add drop shadows in CSS (`box-shadow`) instead of the image; `border-image` clips to the element’s border box and will crop outer glows.
+- Keep details away from stretch zones: place fine engraving near corners/caps; keep the side bands relatively uniform so `stretch`/`round` doesn’t distort details.
+
+#### Rounded corners with 9‑slice
+- `border-radius` clips the painted border (including `border-image`) to a rounded border box. You do not need to pre‑cut outside triangles in the source image.
+- Corner tiles (the four 9‑slice corners) should include the full curved band (outer ring → gold → inner ring). The area inside the inner ring can be transparent so the element’s background fill (painted on `padding-box`) shows through.
+- Avoid transparent wedges on the outer edge of the corner tiles; keep the outermost pixels opaque to prevent background bleed along the curve.
+- If you see tiny “triangles” at the corners:
+  - Ensure `border-width` matches your slice thickness (e.g., 12 px) and that `border-image-slice` uses the same number (doubled at `@2x`).
+  - Make sure your element’s background is painted on the `padding-box` (default for `background`, or explicitly via `background-clip: padding-box`) so it doesn’t overlap the border region.
+  - Check that corner art reaches both the outer and inner border arcs without gaps; anti‑alias the inner arc against transparency, not against a different color.
+- Large radii: For very large `border-radius`, corners scale up the corner tiles. Keep corner gradients and engravings symmetric so scaling preserves the look.
+
+##### Corner bleed for rounded art (filling the square corners)
+If your original artwork has a rounded outer silhouette, you still need the 9‑slice image’s corner tiles to reach the square image edges. Simple ways to “bleed” the outer edge:
+- Solid bleed: extend the outer ring color (e.g., black) straight to the top/left image edges in each corner tile (1–2 px at `@1x`, 2–4 px at `@2x`). This guarantees opaque outermost pixels and avoids gaps.
+- Gradient bleed: push your outermost gradient/metal edge out to the square edges, but keep the final pixel row/column a flat color to avoid aliasing.
+- Uniform cap: add a very thin, uniform outer stroke to your art (same color as the outer ring), so the outside of every side/corner ends in that stroke.
+
+CSS helper (optional): if you want a safety net, add a 1 px outer stroke via `box-shadow` under the border image.
+```css
+.frame {
+  /* paints a crisp 1px outer line around the border box */
+  box-shadow: 0 0 0 1px #000000, /* then your existing shadows... */
+              0 10px 24px rgba(0,0,0,0.45);
+}
+```
+Use 2 px at `@2x`. This can mask tiny mismatches while you iterate on the assets.
+
 ### Tab asset recommendations
 - Baseline height: match the CSS variable `--tab-size` (default 44 px). For `@2x`, export ~88 px tall. Include a few extra pixels of vertical padding if needed and scale via `background-size`.
 - Horizontal slicing: design as three functional regions (can be baked into one image and stretched via `background-size`):
