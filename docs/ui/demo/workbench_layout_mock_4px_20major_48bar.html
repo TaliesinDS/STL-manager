@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en" data-dock="left">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STL Manager • UI Mockup (Workbench Layout • 4px/20px/48px)</title>
+    <style>
+      :root {
+        --frame-border: 18px;
+        --drawer-top: 72px;
+        --drawer-bottom: 24px;
+        --tabs-gap: 16px; /* baked from tuner */
+        --bar-row-h: 48px; /* fixed height for topbar rows (48px as requested) */
+        /* How many major grid units wide should a top-row button be */
+        --btn-major-cols: 8;
+        /* Second row buttons width in major units (defaults to top-row value) */
+        --btn2-major-cols: 5;
+        --rail-w: 40px;   /* baked from tuner */
+        --tab-size: 64px; /* baked from tuner */
+        --tab-overhang: 36px;
+        --bg-0: #0b0a07;
+        --bg-1: #0f0e0a;
+        --ink: #0c0a05;
+        --panel-fill-top: #12100b;
+        --panel-fill-bot: #17140d;
+        --text: #e8e4d8;
+        --muted: #bdb7a5;
+        --accent: #d8b85a;
+        --chip: #2a2618;
+        --chip-hl: #3a331f;
+        --ok: #64d37f;
+        --warn: #ffcc66;
+        --err: #ee6666;
+        /* Tab art assets from demo */
+        --tab-img-inactive: url('../img/Tab2inactive.png');
+        --tab-img-active: url('../img/Tab2.png');
+        --tab-img-size: auto var(--tab-size);
+        --tab-img-ratio: 2.6;
+        --tab-img-width: calc(var(--tab-size) * var(--tab-img-ratio));
+      }
+      html, body { height: 100%; margin: 0; }
+      body {
+        background:
+          radial-gradient(1600px 1200px at 20% -10%, var(--bg-1) 0%, var(--bg-0) 72%, #070605 100%);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+      }
+      h1, h2, h3 { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; margin: 0; }
+
+      /* 9-slice ornate frame (match front_page_mock asset) */
+      .frame {
+        border: var(--frame-border) solid transparent;
+        border-radius: 4px;
+        --frame-img: url('../img/9sFrame3.png');
+        --slice: 28;
+        --biw: 1;
+        --center-fill: #000;
+        border-image-source: var(--frame-img);
+        border-image-slice: var(--slice);
+        border-image-width: var(--biw);
+        border-image-repeat: stretch;
+        background-color: var(--center-fill);
+        background-clip: border-box;
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.9), 0 10px 24px rgba(0,0,0,0.45);
+        overflow: hidden; /* clip inner overflow, keep frame fully visible */
+      }
+      .frame .content { padding: 1px 1px; }
+
+  /* Debug Grid Overlay (dev-only) */
+  :root {
+    --grid-u: 4px; /* base unit = 4px */
+    --grid-major: 5; /* major every 5 units => 20px */
+    --grid-minor-color: rgba(255,255,255,0.06);
+    --grid-major-color: rgba(255,255,255,0.12);
+    --grid-origin-x: 0px;
+    --grid-origin-y: 0px;
+  }
+  body.debug-grid-on #gridOverlay { display: block; }
+  #gridOverlay {
+    position: fixed; inset: 0; pointer-events: none; z-index: 9999; display: none;
+    background-position: var(--grid-origin-x) var(--grid-origin-y), var(--grid-origin-x) var(--grid-origin-y), var(--grid-origin-x) var(--grid-origin-y), var(--grid-origin-x) var(--grid-origin-y);
+    background-image:
+      linear-gradient(to bottom, transparent calc(var(--grid-u) - 1px), var(--grid-minor-color) 1px),
+      linear-gradient(to right,  transparent calc(var(--grid-u) - 1px), var(--grid-minor-color) 1px),
+      linear-gradient(to bottom, transparent calc((var(--grid-u) * var(--grid-major)) - 1px), var(--grid-major-color) 1px),
+      linear-gradient(to right,  transparent calc((var(--grid-u) * var(--grid-major)) - 1px), var(--grid-major-color) 1px);
+    background-size:
+      var(--grid-u) var(--grid-u),
+      var(--grid-u) var(--grid-u),
+      calc(var(--grid-u) * var(--grid-major)) calc(var(--grid-u) * var(--grid-major)),
+      calc(var(--grid-u) * var(--grid-major)) calc(var(--grid-u) * var(--grid-major));
+  }
+  /* Control panel */
+  #gridCtrl { position: fixed; top: 8px; right: 8px; z-index: 10000; width: 280px; display: none; }
+  body.debug-grid-on #gridCtrl { display: block; }
+  #gridCtrl .content { display: grid; gap: 6px; }
+  #gridCtrl .row { display: grid; grid-template-columns: auto 1fr 64px; align-items: center; gap: 6px; font-size: 12px; }
+  #gridCtrl input[type="number"] { width: 64px; }
+  #gridCtrl .row .wide { grid-column: 1 / -1; }
+  #gridCtrl input[type="range"] { width: 100%; }
+  #gridCtrl .actions { display: flex; gap: 6px; justify-content: flex-end; }
+  #gridCtrl button { cursor: pointer; }
+
+  /* Top bar (two-row button area + meta frame) */
+  .topbar { position: sticky; top: 0; z-index: 5; }
+  .topbar .content { display: grid; grid-template-columns: 180px 1fr; gap: 0; align-items: stretch; }
+  .meta-card .title { font-family: "Cinzel", Georgia, serif; font-size: 18px; letter-spacing: 0.03em; }
+  .meta-grid { display: grid; gap: 6px; margin-top: 6px; }
+  .meta-grid .row { display: grid; grid-template-columns: 100px 1fr; gap: 6px; font-size: 12px; color: #d9d2bf; }
+
+  .btn-area { display: grid; grid-template-rows: var(--bar-row-h) var(--bar-row-h) var(--bar-row-h); gap: 0; }
+  .row-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0; align-items: stretch; }
+  .row-bottom { display: grid; grid-template-columns: 1fr; align-items: stretch; }
+  .row-pins { display: flex; gap: 0; align-items: stretch; }
+  .btnbar { display: flex; flex-wrap: nowrap; gap: 0; align-items: stretch; overflow: hidden; }
+  /* Framed buttons using same 9-slice */
+  .btn9 { --btn-frame-border: 12px; background: transparent; color: #f5e8b0; cursor: pointer; border: var(--btn-frame-border) solid transparent; border-radius: 4px; --frame-img: url('../img/9sFrame3.png'); --slice: 28; --biw: 1; border-image-source: var(--frame-img); border-image-slice: var(--slice); border-image-width: var(--biw); border-image-repeat: stretch; padding: 0 12px; line-height: 1; font-size: 14px; height: 100%; display: inline-flex; align-items: center; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .btn9 { margin: 0; }
+  .btnbar .btn9 + .btn9 { margin-left: -1px; }
+  .btn9[aria-pressed="true"], .btn9.active { filter: brightness(1.05) contrast(1.04); }
+  .btn9:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
+  .btn9.small { padding: 0 10px; font-size: 13px; }
+
+  /* Top row: make each domain button a fixed width = 5 major units
+     major = var(--grid-u) * var(--grid-major); width = major * var(--btn-major-cols) */
+  .row-top .btnbar .btn9 {
+    flex: 0 0 calc(var(--grid-u) * var(--grid-major) * var(--btn-major-cols));
+    width: calc(var(--grid-u) * var(--grid-major) * var(--btn-major-cols));
+    box-sizing: border-box;
+  }
+
+  /* Second row: fixed width per button = --btn2-major-cols majors */
+  .row-bottom .btnbar .btn9 {
+    flex: 0 0 calc(var(--grid-u) * var(--grid-major) * var(--btn2-major-cols));
+    width: calc(var(--grid-u) * var(--grid-major) * var(--btn2-major-cols));
+    box-sizing: border-box;
+  }
+
+  /* Framed search and theme controls */
+  .ctrl-frame { --frame-border: 12px; height: 100%; min-width: 220px; display: flex; box-sizing: border-box; }
+  .ctrl-frame .content { display: flex; align-items: center; gap: 8px; width: 100%; height: 100%; box-sizing: border-box; }
+  .ctrl-theme { min-width: 120px; width: auto; }
+  .ctrl-search { min-width: 260px; flex: 0 0 auto; }
+  .theme-toggle { background: transparent; color: #f5e8b0; border: none; cursor: pointer; font-size: 14px; }
+  .theme-toggle .ico { margin-right: 6px; }
+  .searchbox { width: 100%; }
+  .searchbox input { width: 100%; height: 100%; background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 4px 10px; box-sizing: border-box; }
+  .row-top, .row-bottom, .row-pins { overflow: hidden; }
+  .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+
+      /* App grid: left overlay drawer, center workbench, right inspector */
+      .app { max-width: 1440px; margin: 56px auto; padding: 0 16px 24px; }
+      .appgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); gap: 16px; }
+      .workbench { min-height: 70vh; }
+      .inspector { align-self: start; position: sticky; top: calc(var(--drawer-top) + 8px); }
+
+      /* Workbench toolbar and sidecar */
+      .wb-toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+      .wb-left { display: flex; gap: 8px; align-items: center; }
+      .wb-right { display: flex; gap: 8px; align-items: center; }
+      .workbench-inner { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      .workbench.with-sidecar .workbench-inner { grid-template-columns: 1fr minmax(320px, 560px); }
+      .sidecar { display: none; }
+      .workbench.with-sidecar .sidecar { display: block; }
+
+      /* Results grid/list */
+      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+      .card { min-height: 120px; }
+      .rowlist { display: grid; gap: 8px; }
+      .row { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+
+      /* Inspector content placeholder */
+      .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px; margin-bottom: 6px; }
+
+      /* Drawer variables align with front_page_mock */
+      :root {
+        --drawer-w: 310px; /* baked from tuner */
+        --tabs-offset: 24px; /* baked from tuner */
+        --stem-w: 28px;
+        --stem-offset: 10px;
+        --tab-cap-overhang: 12px;
+        --gold-dark: #6a4b14;
+        --gold-mid: #d8b85a;
+        --gold-hi: #f2de8a;
+      }
+
+      /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
+      .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
+      /* Hit layer: above drawer, captures clicks */
+      .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; gap: var(--tabs-gap); z-index: 1005; pointer-events: auto; transition: left .22s ease, right .22s ease; }
+      .drawer-tab { position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size); padding: 0 12px 0 10px; display: inline-flex; align-items: center; justify-content: flex-start; cursor: pointer; border: 0; border-radius: 0 999px 999px 0; color: #2b210a; font-weight: 700; font-size: 14px; background: transparent; box-shadow: none; transition: transform .12s ease; }
+      .drawer-tabs .drawer-tab::before, .drawer-tabs-hit .drawer-tab::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; background-position: left center; background-size: var(--tab-img-size); }
+      .drawer-tabs .drawer-tab::before { opacity: 1; background-image: var(--tab-img-inactive); }
+      .drawer-tabs .drawer-tab.is-hover::before { background-image: var(--tab-img-active); }
+      .drawer-tabs-hit .drawer-tab::before { opacity: 0; background-image: var(--tab-img-active); }
+      .drawer-tabs-hit .drawer-tab[aria-pressed="true"]::before { opacity: 1; }
+      .drawer-tab:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
+      [data-dock="right"] .drawer-tabs .drawer-tab::before, [data-dock="right"] .drawer-tabs-hit .drawer-tab::before { transform: scaleX(-1); transform-origin: center; background-position: right center; }
+      .drawer-tab .txt { pointer-events: none; }
+      .drawer-tab .count { position: absolute; right: 6px; top: 4px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 999px; background: #16321f; color: #bff1c9; border: 1px solid #2b6039; font-size: 11px; display: none; align-items: center; justify-content: center; }
+      .drawer-tab.has-count .count { display: inline-flex; }
+
+      /* Drawer and backdrop */
+      .drawer-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
+      .drawer-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); opacity: 0; transition: opacity .2s ease; }
+      .drawer { position: fixed; top: var(--drawer-top); bottom: var(--drawer-bottom); left: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); width: var(--drawer-w); max-width: calc(100vw - 48px); transition: left .22s ease; pointer-events: auto; overflow: visible; z-index: 950; }
+      .drawer.open { left: 0; }
+      .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
+      [data-dock="left"] .drawer.open + .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
+      [data-dock="left"] .drawer.open ~ .drawer-tabs-hit { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
+      [data-dock="right"] .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
+      [data-dock="right"] .drawer.open { right: 0; }
+      [data-dock="right"] .drawer-tabs, [data-dock="right"] .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
+      [data-dock="right"] .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
+      [data-dock="right"] .drawer-tab .count { left: 6px; right: auto; }
+      [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+      [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+
+      .drawer .header { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px; padding: 10px 12px 6px; }
+      .drawer .title { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; font-size: 18px; }
+      .pin, .close { background: transparent; border: 0; color: #f5e8b0; font-size: 18px; cursor: pointer; padding: 4px 6px; border-radius: 6px; }
+      .pin[aria-pressed="true"] { color: #9fe2b0; }
+      .drawer .body { padding: 10px 12px 14px; max-height: calc(100% - 46px); overflow: auto; }
+      .drawer .hint { color: #cfc9b6; font-size: 12px; margin-bottom: 8px; }
+      .drawer .footer { position: sticky; bottom: 0; background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)); padding: 8px 12px; display: flex; gap: 8px; justify-content: flex-end; border-top: 1px solid rgba(0,0,0,0.35); }
+      .btn { padding: 6px 10px; border-radius: 6px; cursor: pointer; user-select: none; border: 1px solid #3c3622; color: #f5e8b0; background: #1f1b12; }
+      .drawer-resize { position: absolute; top: 0; right: 0; width: 8px; bottom: 0; cursor: ew-resize; }
+
+      .searchbox input { background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 8px 10px; min-width: 260px; }
+
+      /* Utilities */
+      .muted { color: var(--muted); }
+      .badge { background: #2a2618; padding: 2px 6px; border-radius: 6px; font-size: 11px; }
+      .spacer { height: 12px; }
+    </style>
+  </head>
+  <body>
+    <!-- Top scope bar: Meta frame + two rows of framed buttons -->
+    <div class="topbar">
+      <div class="content">
+        <!-- Meta frame (app info) -->
+        <div class="frame meta-card">
+          <div class="content">
+            <div class="title">STL Manager</div>
+            <div class="meta-grid">
+              <div class="row"><div>DB</div><div>stl_manager_v1.db</div></div>
+              <div class="row"><div>View</div><div>Workbench • Variants</div></div>
+              <div class="row"><div>Profile</div><div>Default</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Button area (two rows) -->
+        <div class="btn-area">
+          <div class="row-top">
+            <div class="btnbar" id="domainBar" role="tablist" aria-label="Domains">
+              <button class="btn9 small" data-domain="wargames" aria-pressed="true">Tabletop</button>
+              <button class="btn9 small" data-domain="display">Display</button>
+              <button class="btn9 small" data-domain="dnd">D&amp;D</button>
+              <button class="btn9 small" data-domain="terrain">Terrain</button>
+              <button class="btn9 small" data-domain="scale">Scale Models</button>
+            </div>
+            <div class="frame ctrl-frame ctrl-search"><div class="content">
+              <div class="searchbox"><input type="search" placeholder="Search..." aria-label="Search" /></div>
+            </div></div>
+            <div class="frame ctrl-frame ctrl-theme"><div class="content">
+              <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false"><span class="ico" aria-hidden="true">🌙</span>Dark</button>
+            </div></div>
+          </div>
+          <div class="row-bottom">
+            <div class="btnbar" id="systemBar" role="tablist" aria-label="Domain specifics">
+              <!-- Default: Tabletop systems -->
+              <button class="btn9 small" data-system="w40k" aria-pressed="true">40K</button>
+              <button class="btn9 small" data-system="aos">AoS</button>
+              <button class="btn9 small" data-system="heresy">Heresy</button>
+              <button class="btn9 small" data-system="other">Other</button>
+              <button class="btn9 small" data-system="agnostic">Agnostic</button>
+            </div>
+          </div>
+          <div class="row-pins" id="pinsBar" aria-label="Pins">
+            <!-- Reserved for pins; intentionally empty for now -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      <div class="appgrid">
+        <!-- Workbench column -->
+        <div class="workbench">
+          <div class="frame">
+            <div class="content">
+              <div class="wb-toolbar">
+                <div class="wb-left">
+                  <div class="segmented" aria-label="View mode">
+                    <button class="btn active" id="btnGrid">Grid</button>
+                    <button class="btn" id="btnList">List</button>
+                  </div>
+                  <button class="icon-btn" id="btnSidecar">Sidecar Files</button>
+                  <span class="badge">Sort: Updated</span>
+                </div>
+                <div class="wb-right">
+                  <button class="icon-btn" id="btnRefresh">Refresh</button>
+                </div>
+              </div>
+
+              <div class="workbench-inner" id="wbInner">
+                <div>
+                  <!-- Results container -->
+                  <div class="cards" id="cards">
+                    <div class="frame card"><div class="content">Variant Card A<br/><span class="muted">badges…</span></div></div>
+                    <div class="frame card"><div class="content">Variant Card B</div></div>
+                    <div class="frame card"><div class="content">Variant Card C</div></div>
+                    <div class="frame card"><div class="content">Variant Card D</div></div>
+                  </div>
+                  <div class="rowlist" id="rows" style="display:none">
+                    <div class="frame row"><div class="content">Variant Row A</div><div class="content"><span class="badge">32mm</span></div></div>
+                    <div class="frame row"><div class="content">Variant Row B</div><div class="content"><span class="badge">Hero</span></div></div>
+                    <div class="frame row"><div class="content">Variant Row C</div><div class="content"><span class="badge">Weapon</span></div></div>
+                  </div>
+                </div>
+                <div class="sidecar">
+                  <div class="frame"><div class="content">
+                    <h3>Files</h3>
+                    <div class="spacer"></div>
+                    <div class="kv"><div>helm.stl</div><div class="muted">1.2 MB • model/stl</div></div>
+                    <div class="kv"><div>torso.stl</div><div class="muted">2.8 MB • model/stl</div></div>
+                    <div class="kv"><div>readme.png</div><div class="muted">45 KB • image/png</div></div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inspector column -->
+        <div class="inspector">
+          <div class="frame"><div class="content">
+            <h3>Inspector</h3>
+            <div class="spacer"></div>
+            <div class="kv"><div>Designer</div><div>Ghamak</div></div>
+            <div class="kv"><div>System</div><div>W40K</div></div>
+            <div class="kv"><div>Faction</div><div>Adeptus Astartes</div></div>
+            <div class="kv"><div>Base</div><div>32mm Round</div></div>
+            <div class="spacer"></div>
+            <button class="icon-btn" id="btnReport">Report mismatch</button>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Debug Grid Overlay (dev-only) -->
+    <div id="gridOverlay" aria-hidden="true"></div>
+    <div id="gridCtrl" class="frame" aria-label="Grid controls">
+      <div class="content">
+  <div class="row"><div>Unit (px)</div><input id="gUnit" type="range" min="2" max="16" step="1" value="4"/><input id="gUnitN" type="number" min="2" max="16" step="1" value="4"/></div>
+  <div class="row"><div>Major every</div><input id="gMajor" type="range" min="2" max="32" step="1" value="5"/><input id="gMajorN" type="number" min="2" max="32" step="1" value="5"/></div>
+  <div class="row"><div>Minor opacity</div><input id="gMinorOpacity" type="range" min="0" max="1" step="0.01" value="0.06"/><input id="gMinorOpacityN" type="number" min="0" max="1" step="0.01" value="0.06"/></div>
+  <div class="row"><div>Major opacity</div><input id="gMajorOpacity" type="range" min="0" max="1" step="0.01" value="0.12"/><input id="gMajorOpacityN" type="number" min="0" max="1" step="0.01" value="0.12"/></div>
+        <div class="row"><label><input id="gCols" type="checkbox" checked/> Columns</label><label><input id="gRows" type="checkbox" checked/> Rows</label></div>
+        <div class="row"><div>Origin X</div><input id="gOX" type="number" value="0"/></div>
+        <div class="row"><div>Origin Y</div><input id="gOY" type="number" value="0"/></div>
+        <div class="actions">
+          <button id="gReset" class="btn">Reset</button>
+          <button id="gHide" class="btn">Hide</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backdrop wrapper and drawer attached tabs (same structure as front_page_mock) -->
+    <div id="drawerWrap" class="drawer-wrap" aria-hidden="true">
+      <div id="drawerBackdrop" class="drawer-backdrop" tabindex="-1" aria-hidden="true"></div>
+    </div>
+    <div id="drawer" class="frame drawer" role="dialog" aria-modal="false" aria-labelledby="drawerTitle">
+      <div class="header">
+        <div class="title" id="drawerTitle">Filters</div>
+        <button class="pin" id="drawerPin" aria-pressed="false" aria-label="Pin drawer">📌</button>
+        <button class="close" id="drawerClose" aria-label="Close">✕</button>
+      </div>
+      <div class="body">
+        <section id="panel-lineage" class="tabpanel" role="region" aria-labelledby="tab-lineage">
+          <div class="hint">Choose one or more lineages to focus results.</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Undead</label>
+            <label><input type="checkbox"/> Demons</label>
+            <label><input type="checkbox"/> Orcs / Greenskins</label>
+            <label><input type="checkbox"/> Elves / Aeldari</label>
+            <label><input type="checkbox"/> Soldiers / Humans</label>
+          </div>
+        </section>
+        <section id="panel-base" class="tabpanel" role="region" aria-labelledby="tab-base">
+          <div class="hint">Base profile filters help narrow variants by basing standards.</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> 25mm round</label>
+            <label><input type="checkbox"/> 32mm round</label>
+            <label><input type="checkbox"/> 40mm round</label>
+            <label><input type="checkbox"/> 50mm round</label>
+          </div>
+        </section>
+        <section id="panel-nsfw" class="tabpanel" role="region" aria-labelledby="tab-nsfw">
+          <div class="hint">Control sensitive content visibility.</div>
+          <div class="filters-col">
+            <label><input type="radio" name="nsfw"/> Hide NSFW entirely</label>
+            <label><input type="radio" name="nsfw"/> Blur thumbnails</label>
+            <label><input type="radio" name="nsfw"/> Show with badge</label>
+          </div>
+        </section>
+        <section id="panel-more" class="tabpanel" role="region" aria-labelledby="tab-more">
+          <div class="hint">Additional quick filters.</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Supported</label>
+            <label><input type="checkbox"/> Segmentation available</label>
+            <label><input type="checkbox"/> Multi‑part</label>
+          </div>
+        </section>
+      </div>
+      <div class="footer">
+        <button class="btn" id="drawerClear">Clear</button>
+        <button class="btn" id="drawerApply">Apply</button>
+      </div>
+      <div class="drawer-resize" id="drawerResize" aria-hidden="true"></div>
+    </div>
+    <div class="drawer-tabs" role="toolbar" aria-label="Quick filters">
+      <button class="drawer-tab" id="tab-lineage" data-tab="lineage" aria-pressed="false" title="Lineage"><span class="txt">Lineage</span><span class="count"></span></button>
+      <button class="drawer-tab" id="tab-base" data-tab="base" aria-pressed="false" title="Base options"><span class="txt">Base</span><span class="count"></span></button>
+      <button class="drawer-tab" id="tab-nsfw" data-tab="nsfw" aria-pressed="false" title="NSFW"><span class="txt">NSFW</span><span class="count"></span></button>
+      <button class="drawer-tab" id="tab-more" data-tab="more" aria-pressed="false" title="More filters"><span class="txt">More</span><span class="count"></span></button>
+    </div>
+    <div class="drawer-tabs-hit" aria-hidden="false">
+      <button class="drawer-tab" data-ref="#tab-lineage" data-tab="lineage" aria-pressed="false" title="Lineage"><span class="txt">Lineage</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-base" data-tab="base" aria-pressed="false" title="Base options"><span class="txt">Base</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-nsfw" data-tab="nsfw" aria-pressed="false" title="NSFW"><span class="txt">NSFW</span><span class="count"></span></button>
+      <button class="drawer-tab" data-ref="#tab-more" data-tab="more" aria-pressed="false" title="More filters"><span class="txt">More</span><span class="count"></span></button>
+    </div>
+
+    <script>
+      const btnSidecar = document.getElementById('btnSidecar');
+      const wbInner = document.getElementById('wbInner').parentElement; // .workbench
+      btnSidecar.addEventListener('click', () => {
+        wbInner.classList.toggle('with-sidecar');
+      });
+
+      const btnGrid = document.getElementById('btnGrid');
+      const btnList = document.getElementById('btnList');
+      const cards = document.getElementById('cards');
+      const rows = document.getElementById('rows');
+      btnGrid.addEventListener('click', () => { btnGrid.classList.add('active'); btnList.classList.remove('active'); cards.style.display='grid'; rows.style.display='none'; });
+      btnList.addEventListener('click', () => { btnList.classList.add('active'); btnGrid.classList.remove('active'); cards.style.display='none'; rows.style.display='grid'; });
+
+      // Debug Grid Overlay (toggle with 'G'; Shift+G cycles unit)
+      (function(){
+        const D = document.documentElement;
+        const B = document.body;
+        const elCtrl = document.getElementById('gridCtrl');
+        const unit = document.getElementById('gUnit');
+  const major = document.getElementById('gMajor');
+  const mOp = document.getElementById('gMinorOpacity');
+  const MOp = document.getElementById('gMajorOpacity');
+  const unitN = document.getElementById('gUnitN');
+  const majorN = document.getElementById('gMajorN');
+  const mOpN = document.getElementById('gMinorOpacityN');
+  const MOpN = document.getElementById('gMajorOpacityN');
+        const showCols = document.getElementById('gCols');
+        const showRows = document.getElementById('gRows');
+        const oX = document.getElementById('gOX');
+        const oY = document.getElementById('gOY');
+        const btnHide = document.getElementById('gHide');
+        const btnReset = document.getElementById('gReset');
+
+        function setVar(name, val){ D.style.setProperty(name, val); }
+        function updateColors(){
+          const minor = `rgba(255,255,255,${parseFloat(mOp.value).toFixed(2)})`;
+          const majorC = `rgba(255,255,255,${parseFloat(MOp.value).toFixed(2)})`;
+          setVar('--grid-minor-color', (showCols.checked || showRows.checked) ? minor : 'transparent');
+          setVar('--grid-major-color', (showCols.checked || showRows.checked) ? majorC : 'transparent');
+        }
+        function applyAll(){
+          setVar('--grid-u', unit.value + 'px');
+          setVar('--grid-major', major.value);
+          setVar('--grid-origin-x', (parseInt(oX.value)||0) + 'px');
+          setVar('--grid-origin-y', (parseInt(oY.value)||0) + 'px');
+          updateColors();
+          const ov = document.getElementById('gridOverlay');
+          ov.style.backgroundImage = [
+            showRows.checked ? 'linear-gradient(to bottom, transparent calc(var(--grid-u) - 1px), var(--grid-minor-color) 1px)' : 'none',
+            showCols.checked ? 'linear-gradient(to right,  transparent calc(var(--grid-u) - 1px), var(--grid-minor-color) 1px)' : 'none',
+            showRows.checked ? 'linear-gradient(to bottom, transparent calc((var(--grid-u) * var(--grid-major)) - 1px), var(--grid-major-color) 1px)' : 'none',
+            showCols.checked ? 'linear-gradient(to right,  transparent calc((var(--grid-u) * var(--grid-major)) - 1px), var(--grid-major-color) 1px)' : 'none'
+          ].filter(s => s !== 'none').join(',');
+          const sizes = [
+            showRows.checked ? 'var(--grid-u) var(--grid-u)' : null,
+            showCols.checked ? 'var(--grid-u) var(--grid-u)' : null,
+            showRows.checked ? 'calc(var(--grid-u) * var(--grid-major)) calc(var(--grid-u) * var(--grid-major))' : null,
+            showCols.checked ? 'calc(var(--grid-u) * var(--grid-major)) calc(var(--grid-u) * var(--grid-major))' : null,
+          ].filter(Boolean).join(',');
+          ov.style.backgroundSize = sizes;
+        }
+        function toggle(){ B.classList.toggle('debug-grid-on'); applyAll(); }
+        function show(){ if(!B.classList.contains('debug-grid-on')) B.classList.add('debug-grid-on'); applyAll(); }
+        function hide(){ B.classList.remove('debug-grid-on'); }
+        function reset(){ unit.value=4; major.value=5; mOp.value=0.06; MOp.value=0.12; showCols.checked=true; showRows.checked=true; oX.value=0; oY.value=0; applyAll(); }
+
+        function syncPair(rangeEl, numEl, parser) {
+          const parse = parser || ((v)=>v);
+          rangeEl.addEventListener('input', () => { numEl.value = String(rangeEl.value); applyAll(); });
+          numEl.addEventListener('input', () => { rangeEl.value = String(parse(numEl.value)); applyAll(); });
+        }
+        syncPair(unit, unitN, v=>Math.max(2, Math.min(16, Math.round(parseFloat(v)||4))));
+        syncPair(major, majorN, v=>Math.max(2, Math.min(32, Math.round(parseFloat(v)||5))));
+  syncPair(mOp, mOpN, v=>Math.max(0, Math.min(1, parseFloat(v)||0)));
+  syncPair(MOp, MOpN, v=>Math.max(0, Math.min(1, parseFloat(v)||0)));
+        showCols.addEventListener('change', applyAll);
+        showRows.addEventListener('change', applyAll);
+        oX.addEventListener('input', applyAll);
+        oY.addEventListener('input', applyAll);
+        btnHide.addEventListener('click', hide);
+        btnReset.addEventListener('click', () => { show(); reset(); unitN.value=unit.value; majorN.value=major.value; mOpN.value=mOp.value; MOpN.value=MOp.value; applyAll(); });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key.toLowerCase() === 'g' && !e.altKey && !e.ctrlKey && !e.metaKey) {
+            if (e.shiftKey) {
+              // Cycle common units
+              const opts = [4, 6, 8, 10, 12];
+              const cur = parseInt(unit.value) || 4;
+              const idx = opts.indexOf(cur);
+              unit.value = String(opts[(idx + 1) % opts.length]);
+              show();
+              applyAll();
+            } else {
+              toggle();
+            }
+            e.preventDefault();
+          }
+          if (e.key.toLowerCase() === 'g' && (e.ctrlKey || e.altKey)) {
+            // Toggle panel visibility and ensure overlay is visible for immediate feedback
+            elCtrl.style.display = (elCtrl.style.display === 'none' || !elCtrl.style.display) ? 'block' : 'none';
+            show();
+            e.preventDefault();
+          }
+        });
+
+        // Initialize hidden; user toggles with 'g'
+        applyAll();
+      })();
+
+      // Theme toggle (framed control)
+      (function(){
+        const root = document.documentElement;
+        const toggle = document.getElementById('themeToggle');
+        if (!toggle) return;
+        const ico = toggle.querySelector('.ico');
+        function applyTheme(next) {
+          if (next === 'light') { root.setAttribute('data-theme', 'light'); toggle.setAttribute('aria-pressed','true'); toggle.lastChild.textContent='Light'; ico.textContent='☀️'; }
+          else { root.setAttribute('data-theme', 'dark'); toggle.setAttribute('aria-pressed','false'); toggle.lastChild.textContent='Dark'; ico.textContent='🌙'; }
+        }
+        applyTheme('dark');
+        toggle.addEventListener('click', () => { const isLight = root.getAttribute('data-theme')==='light'; applyTheme(isLight?'dark':'light'); });
+      })();
+
+      // Domain + system bars: simple pressed-state toggle and swapping row-bottom buttons
+      (function(){
+        const domainBar = document.getElementById('domainBar');
+        const systemBar = document.getElementById('systemBar');
+        const SYSTEMS = {
+          wargames: [ ['w40k','40K'], ['aos','AoS'], ['heresy','Heresy'], ['other','Other'], ['agnostic','Agnostic'] ],
+          display: [ ['studio','Studio'], ['fantasy','Fantasy'], ['sci-fi','Sci‑Fi'] ],
+          dnd: [ ['characters','Characters'], ['monsters','Monsters'], ['props','Props'] ],
+          terrain: [ ['battlefield','Battlefield'], ['scenery','Scenery'], ['buildings','Buildings'] ],
+          scale: [ ['1-35','1:35'], ['1-48','1:48'], ['1-56','1:56'] ]
+        };
+        function setPressed(bar, btn){ Array.from(bar.querySelectorAll('.btn9')).forEach(b=>b.setAttribute('aria-pressed','false')); btn.setAttribute('aria-pressed','true'); }
+        function renderSystems(key){
+          const items = SYSTEMS[key] || [];
+          systemBar.innerHTML = items.map(([v,l],i)=>`<button class="btn9 small" data-system="${v}" aria-pressed="${i===0?'true':'false'}">${l}</button>`).join('');
+        }
+        domainBar.addEventListener('click', (e)=>{
+          const btn = e.target.closest('.btn9[data-domain]'); if(!btn) return;
+          setPressed(domainBar, btn);
+          renderSystems(btn.dataset.domain);
+        });
+      })();
+
+      // Drawer wiring (copied from front_page_mock)
+      (function() {
+        const wrap = document.getElementById('drawerWrap');
+        const drawer = document.getElementById('drawer');
+        const backdrop = document.getElementById('drawerBackdrop');
+        const closeBtn = document.getElementById('drawerClose');
+        const pinBtn = document.getElementById('drawerPin');
+        const applyBtn = document.getElementById('drawerApply');
+        const clearBtn = document.getElementById('drawerClear');
+        const resizeHandle = document.getElementById('drawerResize');
+        const visualTabsRoot = document.querySelector('.drawer-tabs');
+        const hitTabsRoot = document.querySelector('.drawer-tabs-hit');
+        const tabs = Array.from(visualTabsRoot.querySelectorAll('.drawer-tab'));
+        const tabsHit = Array.from(hitTabsRoot.querySelectorAll('.drawer-tab'));
+        const panels = {
+          lineage: document.getElementById('panel-lineage'),
+          base: document.getElementById('panel-base'),
+          nsfw: document.getElementById('panel-nsfw'),
+          more: document.getElementById('panel-more'),
+        };
+        const saveKey = 'stlmgr_dock_active';
+        const pinKey = 'stlmgr_dock_pinned';
+        const wKey = 'stlmgr_drawer_w';
+
+        function syncDrawerTop() {
+          const app = document.querySelector('.app');
+          if (!app) return;
+          const top = Math.max(0, Math.round(app.getBoundingClientRect().top + window.scrollY));
+          document.documentElement.style.setProperty('--drawer-top', top + 'px');
+        }
+        window.addEventListener('resize', syncDrawerTop);
+        window.addEventListener('load', syncDrawerTop);
+        syncDrawerTop();
+
+        function openDrawer(which) {
+          Object.values(panels).forEach(p => p.classList.remove('active'));
+          if (panels[which]) panels[which].classList.add('active');
+          const isActive = (t) => t.dataset.tab === which;
+          tabs.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
+          tabsHit.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
+          drawer.querySelector('#drawerTitle').textContent = (which || 'Filters').toUpperCase();
+          wrap.classList.add('open');
+          drawer.classList.add('open');
+          wrap.setAttribute('aria-hidden', 'false');
+          try { localStorage.setItem(saveKey, which); } catch (e) {}
+        }
+        function closeDrawer() {
+          if (pinBtn.getAttribute('aria-pressed') === 'true') return;
+          wrap.classList.remove('open');
+          drawer.classList.remove('open');
+          wrap.setAttribute('aria-hidden', 'true');
+          tabs.forEach(t => t.setAttribute('aria-pressed', 'false'));
+          tabsHit.forEach(t => t.setAttribute('aria-pressed', 'false'));
+        }
+        function onTabClick(which) { openDrawer(which); }
+        tabs.forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); onTabClick(btn.dataset.tab); }); });
+        tabsHit.forEach(btn => {
+          btn.addEventListener('click', (e) => { e.stopPropagation(); onTabClick(btn.dataset.tab); });
+          const refSel = btn.getAttribute('data-ref');
+          const visualBtn = refSel ? document.querySelector(refSel) : null;
+          btn.addEventListener('mouseenter', () => { visualBtn?.classList.add('is-hover'); });
+          btn.addEventListener('mouseleave', () => { visualBtn?.classList.remove('is-hover'); });
+        });
+        backdrop.addEventListener('click', closeDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+        try {
+          const last = localStorage.getItem(saveKey);
+          if (last && panels[last]) { tabs.find(t => t.dataset.tab === last)?.setAttribute('aria-pressed', 'true'); }
+          const pinned = localStorage.getItem(pinKey) === 'true';
+          if (pinned) pinBtn.setAttribute('aria-pressed', 'true');
+        } catch (e) {}
+
+        pinBtn.addEventListener('click', () => {
+          const next = pinBtn.getAttribute('aria-pressed') !== 'true';
+          pinBtn.setAttribute('aria-pressed', String(next));
+          try { localStorage.setItem(pinKey, String(next)); } catch (e) {}
+        });
+
+        // Resize
+        let resizing = false, startX = 0, startW = 0;
+        function onMove(e) {
+          if (!resizing) return;
+          const dx = (e.clientX || (e.touches && (e.touches[0]?.clientX)) || 0) - startX;
+          const w = Math.max(280, Math.min(640, startW + dx));
+          document.documentElement.style.setProperty('--drawer-w', w + 'px');
+        }
+        function onUp() {
+          if (!resizing) return;
+          resizing = false;
+          try { localStorage.setItem(wKey, getComputedStyle(document.documentElement).getPropertyValue('--drawer-w').trim()); } catch (e) {}
+          window.removeEventListener('mousemove', onMove);
+          window.removeEventListener('mouseup', onUp);
+        }
+        resizeHandle.addEventListener('mousedown', (e) => {
+          resizing = true; startX = e.clientX; startW = drawer.getBoundingClientRect().width;
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('mouseup', onUp);
+        });
+
+        function updateCount(tab, count) {
+          const updateFor = (btn) => {
+            if (!btn) return;
+            let badge = btn.querySelector('.count');
+            if (!badge) { badge = document.createElement('span'); badge.className = 'count'; btn.appendChild(badge); }
+            if (count > 0) { btn.classList.add('has-count'); badge.textContent = String(count); }
+            else { btn.classList.remove('has-count'); badge.textContent = ''; }
+          };
+          const vt = tabs.find(t => t.dataset.tab === tab);
+          const ht = tabsHit.find(t => t.dataset.tab === tab);
+          updateFor(vt); updateFor(ht);
+        }
+        applyBtn.addEventListener('click', () => {
+          const current = tabs.find(t => t.getAttribute('aria-pressed') === 'true')?.dataset.tab;
+          if (!current) return;
+          const activeEl = panels[current];
+          const count = activeEl ? activeEl.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked').length : 0;
+          updateCount(current, count);
+        });
+        clearBtn.addEventListener('click', () => {
+          const current = tabs.find(t => t.getAttribute('aria-pressed') === 'true')?.dataset.tab;
+          if (!current) return;
+          const activeEl = panels[current];
+          activeEl?.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(i => i.checked = false);
+          updateCount(current, 0);
+        });
+      })();
+      // No tuner or baked constants logic; values are fixed in :root
+    </script>
+  </body>
+</html>

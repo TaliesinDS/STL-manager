@@ -97,6 +97,78 @@ Toggle `.debug-grid` on `<body>` while designing.
 }
 ```
 
+## Micro vs. Meso vs. Macro grids (and why examples look “big”)
+Most web tutorials show macro column grids (8/12 columns with big gutters), not the micro baseline grid.
+
+- Micro (baseline): 4px or 8px rhythm for spacing, paddings, borders, and text line-height. This is the precision layer we snap to.
+- Meso (major step): a larger step built on the baseline (e.g., 20px = 5 × 4px). Use it to compose blocks while keeping micro precision inside.
+- Macro (columns): page-wide columns and gutters. Our workbench can keep gutters at 0 and let the frame borders provide separation.
+
+Tip: set the overlay to Unit = 4 and Major = 5 to visualize a 20px meso grid on top of the 4px baseline.
+
+## “Place by coordinates” without a brittle global grid
+Use an app-shell grid for the big regions and nested grids/subgrid inside each region. That way you still “pick a coord” (grid-row/column or named areas) but keep components modular and responsive.
+
+- App shell: meta panel + control area.
+- Control area: its own 3 fixed rows (Domains | Search | Theme, Domain-specific bar, Pins).
+- Inside rows: place items by named lines/areas or numeric lines. Prefer `subgrid` where supported so children inherit the parent’s tracks without duplicating sizes.
+
+This is more resilient than one giant page grid and keeps seams aligned while allowing local changes.
+
+## Outer-edge snap vs. inner-edge optics
+If your 9-slice frame art has perspective or uneven inner thickness (for realism):
+
+- Snap the outer edges to the grid. This guarantees clean seams and row alignment.
+- Treat the inner edge as an optical spacing problem. Keep consistent tokens for insets; they can be asymmetric to balance the perspective.
+
+Patterns that work well:
+- Asymmetric insets (preferred):
+  - `--inset-t/r/b/l` tuned per frame style, still multiples of `--u` where possible. Content padding uses these insets.
+- Optional “inner liner”: a subtle pseudo-element that defines a uniform inner rectangle (e.g., a faint inset 1px) to visually regularize the inner boundary without changing the frame art.
+- Avoid stretching the border art to “fix” the inside; if you must, tiny per-side `border-image-width` nudges only (1–2px visual effect) and test across DPRs.
+
+## Seam strategy (touching frames)
+Pick one global approach and apply it everywhere:
+
+- Overlap: adjacent items `margin-left: -1px` (simple, robust).
+- Nudge: slightly increase `border-image-width` (e.g., `1.01–1.03`) so edges kiss without gaps.
+
+Keep grid gaps at 0; let frames provide separation.
+
+## Scaling across resolutions (tokens, not transforms)
+Scale layout with design tokens and supply sharper art; don’t zoom the UI.
+
+- Baseline/token scaling: define `--u` once and let row heights/paddings derive from it. Optionally increase `--u` at wider widths; avoid `transform: scale()` or `zoom` (they blur text and fatten 1px strokes).
+- High‑DPR art: keep CSS `border-width` fixed (e.g., 20px) and serve 1x/2x sources with `image-set()` so the frame stays crisp without changing thickness.
+- Subgrid helps children inherit scaled tracks when `--u` changes.
+
+Example snippets (conceptual):
+
+```css
+:root { --u: 4px; --bar-row-h: calc(12 * var(--u)); }
+@container (min-width: 1200px) { :root { --u: 5px; } } /* optional size tier */
+.frame {
+  border-width: 20px;
+  border-image-slice: 20;
+  border-image-repeat: stretch;
+  border-image-source: image-set(
+    url('../img/frame_20px@1x.png') 1x,
+    url('../img/frame_20px@2x.png') 2x
+  );
+}
+```
+
+## Practical defaults for this project
+- Baseline unit `--u = 4px`.
+- Major step 20px (5 × 4px) for composition and row math.
+- Top bar rows `--bar-row-h = 48px` (12 × 4px) or `44px` (11 × 4px) as variants.
+- Panel frame border art: target 20px (5u) where possible; keep a 12px (3u) control-frame family for compact elements.
+
+## Quick QA checklist
+- Toggle the debug overlay; set Unit = 4, Major = 5; align the outer frame edges to major lines.
+- Verify seams at common Windows scales: 100%, 125%, 150%, 200%.
+- Confirm text baselines across neighbors feel level; adjust inner insets for optical balance, not by stretching the border art.
+
 ## Migration checklist
 1) Choose `--u` and align `--frame-border`, `--btn-frame-border`, `--bar-row-h` to multiples of `--u`.
 2) Convert (or validate) the top control area to Grid with 3 fixed rows, zero gaps.
@@ -110,6 +182,9 @@ Toggle `.debug-grid` on `<body>` while designing.
 
 - Can we keep the ornate 9-slice frames?
   Yes. The key is to snap slice thicknesses and borders to the baseline and use a seam strategy when frames touch.
+
+- Do inside edges need to be perfectly even?
+  No. Keep outer edges grid-snapped for seams/rows, then use consistent (even asymmetric) inner insets for visual balance. You can add an inner liner for a uniform perceived boundary without altering the art.
 
 - How do we handle smaller screens?
   Use overflow or control variants (e.g., search icon) rather than wrapping that breaks row integrity.

@@ -55,6 +55,14 @@ This document defines the minimal asset pack and integration details for the new
   - Check that corner art reaches both the outer and inner border arcs without gaps; anti‑alias the inner arc against transparency, not against a different color.
 - Large radii: For very large `border-radius`, corners scale up the corner tiles. Keep corner gradients and engravings symmetric so scaling preserves the look.
 
+### Button sizing (grid‑aligned defaults)
+These sizes are derived from the UI mock’s grid tokens so assets/layout stay in sync.
+
+- Grid: `--grid-u = 4px`, `--grid-major = 5` ⇒ 1 major = 20 px.
+- Top row (domain) button width: `--btn-major-cols = 8` majors ⇒ 8 × 20 = 160 px.
+- Second row (system) button width: `--btn2-major-cols = var(--btn-major-cols)` ⇒ 8 × 20 = 160 px (unless overridden).
+- Row height: `--bar-row-h = 48px`; buttons are `height: 100%` of the row (visual interior minus framed borders).
+
 ##### Corner bleed for rounded art (filling the square corners)
 If your original artwork has a rounded outer silhouette, you still need the 9‑slice image’s corner tiles to reach the square image edges. Simple ways to “bleed” the outer edge:
 - Solid bleed: extend the outer ring color (e.g., black) straight to the top/left image edges in each corner tile (1–2 px at `@1x`, 2–4 px at `@2x`). This guarantees opaque outermost pixels and avoids gaps.
