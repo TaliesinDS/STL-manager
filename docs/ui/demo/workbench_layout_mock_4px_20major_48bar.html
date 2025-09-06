@@ -10,7 +10,8 @@
         --drawer-top: 72px;
         --drawer-bottom: 24px;
         --tabs-gap: 16px; /* baked from tuner */
-        --bar-row-h: 48px; /* fixed height for topbar rows (48px as requested) */
+        --bar-row-h: 48px; /* fixed height for button rows */
+        --bar-row-h-top: var(--bar-row-h); /* top row height (override here if needed) */
         /* How many major grid units wide should a top-row button be */
         --btn-major-cols: 8;
         /* Second row buttons width in major units (defaults to top-row value) */
@@ -22,6 +23,11 @@
         --bg-1: #0f0e0a;
         --ink: #0c0a05;
         --panel-fill-top: #12100b;
+        /* Topbar button art (supports decorative overhang) */
+        --topbtn-img-inactive: url('../img/BtnTopbarInactive.png');   /* per user: this asset used when button is INACTIVE */
+        --topbtn-img-active:   url('../img/BtnTopbarActive.png'); /* per user: this asset used when button is ACTIVE */
+        --topbtn-pointer-h: 12px; /* overhang below the row; non-interactive */
+        --topbtn-active-bgY: 100%; /* vertical scale of active art inside its pseudo-element */
         --panel-fill-bot: #17140d;
         --text: #e8e4d8;
         --muted: #bdb7a5;
@@ -108,13 +114,13 @@
   .meta-grid { display: grid; gap: 6px; margin-top: 6px; }
   .meta-grid .row { display: grid; grid-template-columns: 100px 1fr; gap: 6px; font-size: 12px; color: #d9d2bf; }
 
-  .btn-area { display: grid; grid-template-rows: var(--bar-row-h) var(--bar-row-h) var(--bar-row-h); gap: 0; }
+  .btn-area { display: grid; grid-template-rows: var(--bar-row-h-top) var(--bar-row-h) var(--bar-row-h); gap: 0; }
   .row-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0; align-items: stretch; }
   .row-bottom { display: grid; grid-template-columns: 1fr; align-items: stretch; }
   .row-pins { display: flex; gap: 0; align-items: stretch; }
   .btnbar { display: flex; flex-wrap: nowrap; gap: 0; align-items: stretch; overflow: hidden; }
   /* Framed buttons using same 9-slice */
-  .btn9 { --btn-frame-border: 12px; background: transparent; color: #f5e8b0; cursor: pointer; border: var(--btn-frame-border) solid transparent; border-radius: 4px; --frame-img: url('../img/9sFrame3.png'); --slice: 28; --biw: 1; border-image-source: var(--frame-img); border-image-slice: var(--slice); border-image-width: var(--biw); border-image-repeat: stretch; padding: 0 12px; line-height: 1; font-size: 14px; height: 100%; display: inline-flex; align-items: center; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .btn9 { --btn-frame-border: 12px; background: transparent; color: #f5e8b0; cursor: pointer; border: var(--btn-frame-border) solid transparent; border-radius: 4px; --frame-img: url('../img/9sFrame3.png'); --slice: 28; --biw: 1; border-image-source: var(--frame-img); border-image-slice: var(--slice); border-image-width: var(--biw); border-image-repeat: stretch; padding: 0 12px; line-height: 1; font-size: 14px; height: 100%; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .btn9 { margin: 0; }
   .btnbar .btn9 + .btn9 { margin-left: -1px; }
   .btn9[aria-pressed="true"], .btn9.active { filter: brightness(1.05) contrast(1.04); }
@@ -136,6 +142,48 @@
     box-sizing: border-box;
   }
 
+  /* Allow decorative overhang only for the top row */
+  .row-top, .row-bottom, .row-pins { overflow: hidden; }
+  .row-top { overflow: visible; position: relative; z-index: 2; }
+  .row-top .btnbar { overflow: visible; }
+
+  /* Top row button skins: add background art and anchor for overhang */
+  .row-top .btnbar .btn9 {
+    position: relative; /* anchor pseudo-element */
+    overflow: visible;  /* allow ::after overhang to render */
+    z-index: 3;         /* ensure it paints above the next row */
+    background-image: var(--topbtn-img-inactive);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%;
+    /* Remove 9-slice frame for top row buttons */
+    border: 0;
+    border-image: none;
+    border-radius: 0;
+  }
+
+  /* Top row: disable seam overlap since we removed frames */
+  .row-top .btnbar .btn9 + .btn9 { margin-left: 0; }
+
+  /* Active state art rendered via a full-height pseudo-element that can extend below the row.
+     Layer it behind the button text using z-index; keep hitbox within the grid cell. */
+  .row-top .btnbar .btn9[aria-pressed="true"] { background-image: none; }
+  .row-top .btnbar .btn9[aria-pressed="true"]::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: calc(-1 * var(--topbtn-pointer-h));
+    height: calc(100% + var(--topbtn-pointer-h));
+    background-image: var(--topbtn-img-active);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% var(--topbtn-active-bgY);
+    pointer-events: none; /* decorative only */
+    z-index: -1; /* sit behind button text within its stacking context */
+  }
+
+  
+
   /* Framed search and theme controls */
   .ctrl-frame { --frame-border: 12px; height: 100%; min-width: 220px; display: flex; box-sizing: border-box; }
   .ctrl-frame .content { display: flex; align-items: center; gap: 8px; width: 100%; height: 100%; box-sizing: border-box; }
@@ -145,7 +193,8 @@
   .theme-toggle .ico { margin-right: 6px; }
   .searchbox { width: 100%; }
   .searchbox input { width: 100%; height: 100%; background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 4px 10px; box-sizing: border-box; }
-  .row-top, .row-bottom, .row-pins { overflow: hidden; }
+  /* Keep bottom rows clipped; top row overflow is handled above to allow decorative overhang */
+  .row-bottom, .row-pins { overflow: hidden; }
   .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
 
       /* App grid: left overlay drawer, center workbench, right inspector */
