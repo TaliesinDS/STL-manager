@@ -518,7 +518,111 @@ GET /api/v1/system/versions
 - Do we expose a batch endpoint to compute coverage for an arbitrary selection of variants to help plan an army list print queue?
 - Should loadout completeness scoring weight required vs optional components differently (e.g., optional omitted still counts as complete)?
 - Policy for cross-designer component compatibility (e.g., allow linking third-party weapon arms to official kit base body) — need explicit user opt-in? 
-- GraphQL overlay needed? (Maybe later for complex querying.)
+ - GraphQL overlay needed? (Maybe later for complex querying.)
+
+---
+
+## 2C. Variant Files & Thumbnails
+Provide files associated with a variant (for the Files Sidecar/Inspector) and optional thumbnail access.
+
+GET /api/v1/variants/{id}/files
+Response example:
+```
+{
+	"success": true,
+	"data": {
+		"variant_id": "uuid-1",
+		"files": [
+			{
+				"id": "f-1",
+				"rel_path": "sets/astartes/helm.stl",
+				"filename": "helm.stl",
+				"mime": "model/stl",
+				"size_bytes": 1234567,
+				"modified_at": "2025-08-16T10:10:10Z",
+				"thumbnail_url": null,
+				"is_primary": true
+			},
+			{
+				"id": "f-2",
+				"rel_path": "sets/astartes/readme.png",
+				"filename": "readme.png",
+				"mime": "image/png",
+				"size_bytes": 45678,
+				"modified_at": "2025-08-16T10:11:10Z",
+				"thumbnail_url": "/api/v1/files/f-2/thumbnail",
+				"is_primary": false
+			}
+		]
+	}
+}
+```
+
+GET /api/v1/files/{file_id}/thumbnail
+- Returns a small PNG/JPEG preview if available; otherwise 404.
+
+Notes:
+- Thumbnails may be generated offline; API exposes URLs when present.
+- For performance, clients can request projections (e.g., `fields=id,filename,thumbnail_url`).
+
+## 2D. Variant Explainability
+Expose tokenization and rule provenance used to produce current metadata/match decisions (for the Inspector Explain tab).
+
+GET /api/v1/variants/{id}/explain
+Response example:
+```
+{
+	"success": true,
+	"data": {
+		"variant_id": "uuid-1",
+		"tokens": ["intercessor", "bolt", "primaris"],
+		"rules_fired": [
+			{ "rule": "w40k_unit_detect", "weight": 0.6, "evidence": ["intercessor"] },
+			{ "rule": "faction_astartes_alias", "weight": 0.4, "evidence": ["sm", "astartes"] }
+		],
+		"scores": { "unit": 0.92, "faction": 0.81 },
+		"alias_provenance": [
+			{ "domain": "faction", "alias": "sm", "canonical": "adeptus_astartes", "source": "token_map_v9" }
+		]
+	}
+}
+```
+
+## 5A. Mismatch Reports
+Endpoints to capture and triage user-submitted mismatches from the Inspector and process them in an Admin Inbox.
+
+POST /api/v1/mismatch-reports
+```
+{
+	"variant_id": "uuid-1",
+	"domain": "wargames", // or display|scale_models|terrain
+	"current_fields": { "system_key": "w40k", "faction_key": "adeptus_astartes" },
+	"message": "Should be Grey Knights",
+	"evidence_tokens": ["gk", "storm_bolter"],
+	"attachments": null
+}
+```
+Response: created report with `id`, `status` (new), timestamps.
+
+GET /api/v1/mismatch-reports?status=new|reviewed|fixed&domain=wargames&cursor=...
+Response:
+```
+{
+	"success": true,
+	"data": { "results": [ { "id": "mr-1", "variant_id": "uuid-1", "status": "new", "message": "...", "created_at": "..." } ], "next_cursor": null }
+}
+```
+
+GET /api/v1/mismatch-reports/{id}
+- Returns full report including snapshots and audit links.
+
+PATCH /api/v1/mismatch-reports/{id}
+```
+{ "status": "reviewed", "resolution_notes": "Confirmed; will relink faction", "assigned_to": "admin" }
+```
+
+DELETE /api/v1/mismatch-reports/{id}
+- Dismiss report (soft delete with audit; retains reference on variant).
 - Multi-tenant isolation? (Not in scope now.)
 - Delta feed for synchronization beyond audit (e.g., change stream).
 - How should inferred unit↔part compatibility be exposed vs explicit `unit_part_link`? Separate endpoint (`/units/{id}/compatible-parts?inferred=true`) or flag in results?

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" data-dock="left">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STL Manager • UI Mockup (Workbench Layout)</title>
+    <style>
+      :root {
+        --frame-border: 18px;
+        --drawer-top: 72px;
+        --drawer-bottom: 24px;
+        --tabs-gap: 10px;
+        --rail-w: 64px;
+        --tab-size: 44px;
+        --tab-overhang: 36px;
+        --bg-0: #0b0a07;
+        --bg-1: #0f0e0a;
+        --ink: #0c0a05;
+        --panel-fill-top: #12100b;
+        --panel-fill-bot: #17140d;
+        --text: #e8e4d8;
+        --muted: #bdb7a5;
+        --accent: #d8b85a;
+        --chip: #2a2618;
+        --chip-hl: #3a331f;
+        --ok: #64d37f;
+        --warn: #ffcc66;
+        --err: #ee6666;
+        /* Tab art assets from demo */
+        --tab-img-inactive: url('../img/Tab2inactive.png');
+        --tab-img-active: url('../img/Tab2.png');
+        --tab-img-size: auto var(--tab-size);
+        --tab-img-ratio: 2.6;
+        --tab-img-width: calc(var(--tab-size) * var(--tab-img-ratio));
+      }
+      html, body { height: 100%; margin: 0; }
+      body {
+        background:
+          radial-gradient(1600px 1200px at 20% -10%, var(--bg-1) 0%, var(--bg-0) 72%, #070605 100%);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+      }
+      h1, h2, h3 { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; margin: 0; }
+
+      /* 9-slice ornate frame (uses ../img/9slice1.png) */
+      .frame {
+        border: var(--frame-border) solid transparent;
+        border-radius: 4px;
+        --frame-img: url('../img/9slice1.png');
+        --slice: 12;
+        --biw: 1;
+        --center-fill: #000;
+        border-image-source: var(--frame-img);
+        border-image-slice: var(--slice);
+        border-image-width: var(--biw);
+        border-image-repeat: stretch;
+        background-color: var(--center-fill);
+        background-clip: border-box;
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.9), 0 10px 24px rgba(0,0,0,0.45);
+      }
+      .frame .content { padding: 14px 16px; }
+
+      /* Top bar */
+      .topbar { position: sticky; top: 0; z-index: 5; }
+      .topbar .content { display: grid; grid-template-columns: 240px 1fr auto; gap: 12px; align-items: center; }
+      .brand { display: flex; align-items: baseline; gap: 8px; }
+      .brand .title { font-family: "Cinzel", Georgia, serif; font-size: 20px; letter-spacing: 0.04em; }
+      .segmented { display: inline-flex; gap: 6px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 8px; }
+      .segmented .btn { padding: 6px 10px; border-radius: 6px; cursor: pointer; user-select: none; background: #1b190f; color: #e0dccf; border: 1px solid rgba(0,0,0,0.5); }
+      .segmented .btn.active { background: #2a2414; color: #f5e8b0; }
+      .rightbar { display: flex; gap: 10px; align-items: center; justify-content: flex-end; }
+      .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+      .icon-btn { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; padding: 8px 10px; border-radius: 8px; color: #f5e8b0; background: #1a170e; border: 1px solid rgba(0,0,0,0.6); }
+
+      /* App grid: left overlay drawer, center workbench, right inspector */
+      .app { max-width: 1440px; margin: 16px auto; padding: 0 16px 24px; }
+      .appgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); gap: 16px; }
+      .workbench { min-height: 70vh; }
+      .inspector { align-self: start; position: sticky; top: calc(var(--drawer-top) + 8px); }
+
+      /* Workbench toolbar and sidecar */
+      .wb-toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+      .wb-left { display: flex; gap: 8px; align-items: center; }
+      .wb-right { display: flex; gap: 8px; align-items: center; }
+      .workbench-inner { display: grid; grid-template-columns: 1fr; gap: 12px; }
+      .workbench.with-sidecar .workbench-inner { grid-template-columns: 1fr minmax(320px, 560px); }
+      .sidecar { display: none; }
+      .workbench.with-sidecar .sidecar { display: block; }
+
+      /* Results grid/list */
+      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+      .card { min-height: 120px; }
+      .rowlist { display: grid; gap: 8px; }
+      .row { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+
+      /* Inspector content placeholder */
+      .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px; margin-bottom: 6px; }
+
+      /* Left overlay drawer with image tabs */
+      .drawer { position: fixed; left: 0; top: var(--drawer-top); bottom: var(--drawer-bottom); width: 420px; pointer-events: none; }
+      .drawer .panel { position: absolute; left: 0; top: 0; bottom: 0; width: calc(420px - var(--rail-w)); transform: translateX(-100%); transition: transform .2s ease; pointer-events: auto; }
+      .drawer.open .panel { transform: translateX(0); }
+      .drawer .tabs { position: absolute; left: 0; top: 0; bottom: 0; width: var(--rail-w); display: flex; flex-direction: column; gap: var(--tabs-gap); align-items: flex-start; justify-content: flex-start; pointer-events: auto; }
+      .drawer-tab { position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size); padding-left: 8px; border: 0; cursor: pointer; color: #2b210a; font-weight: 700; font-size: 14px; background: transparent; box-shadow: none; display: inline-flex; align-items: center; }
+      .drawer-tab::before { content: ""; position: absolute; inset: 0; left: -10px; width: var(--tab-img-width); background-image: var(--tab-img-inactive); background-size: var(--tab-img-size); background-repeat: no-repeat; background-position: left center; z-index: -1; }
+      .drawer-tab[aria-pressed="true"]::before { background-image: var(--tab-img-active); }
+      .drawer .grab { position: absolute; right: -10px; top: 8px; width: 12px; height: 28px; opacity: .6; }
+
+      .searchbox input { background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 8px 10px; min-width: 260px; }
+
+      /* Utilities */
+      .muted { color: var(--muted); }
+      .badge { background: #2a2618; padding: 2px 6px; border-radius: 6px; font-size: 11px; }
+      .spacer { height: 12px; }
+    </style>
+  </head>
+  <body>
+    <!-- Top scope bar -->
+    <div class="frame topbar">
+      <div class="content">
+        <div class="brand">
+          <div class="title">STL Manager</div>
+          <div class="muted">Workbench Mock</div>
+        </div>
+        <div>
+          <div class="segmented" role="tablist" aria-label="Domain">
+            <div class="btn active" role="tab" aria-selected="true">Wargames</div>
+            <div class="btn" role="tab">Display</div>
+            <div class="btn" role="tab">Scale Models</div>
+            <div class="btn" role="tab">Terrain</div>
+          </div>
+          <span class="chip">40K</span>
+          <span class="chip">Intended: Proxy</span>
+        </div>
+        <div class="rightbar">
+          <div class="searchbox"><input placeholder="Search..." /></div>
+          <button class="icon-btn" id="btnTools">Tools</button>
+          <button class="icon-btn" id="btnAdmin">Admin</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      <div class="appgrid">
+        <!-- Workbench column -->
+        <div class="workbench">
+          <div class="frame">
+            <div class="content">
+              <div class="wb-toolbar">
+                <div class="wb-left">
+                  <div class="segmented" aria-label="View mode">
+                    <button class="btn active" id="btnGrid">Grid</button>
+                    <button class="btn" id="btnList">List</button>
+                  </div>
+                  <button class="icon-btn" id="btnSidecar">Sidecar Files</button>
+                  <span class="badge">Sort: Updated</span>
+                </div>
+                <div class="wb-right">
+                  <button class="icon-btn" id="btnRefresh">Refresh</button>
+                </div>
+              </div>
+
+              <div class="workbench-inner" id="wbInner">
+                <div>
+                  <!-- Results container -->
+                  <div class="cards" id="cards">
+                    <div class="frame card"><div class="content">Variant Card A<br/><span class="muted">badges…</span></div></div>
+                    <div class="frame card"><div class="content">Variant Card B</div></div>
+                    <div class="frame card"><div class="content">Variant Card C</div></div>
+                    <div class="frame card"><div class="content">Variant Card D</div></div>
+                  </div>
+                  <div class="rowlist" id="rows" style="display:none">
+                    <div class="frame row"><div class="content">Variant Row A</div><div class="content"><span class="badge">32mm</span></div></div>
+                    <div class="frame row"><div class="content">Variant Row B</div><div class="content"><span class="badge">Hero</span></div></div>
+                    <div class="frame row"><div class="content">Variant Row C</div><div class="content"><span class="badge">Weapon</span></div></div>
+                  </div>
+                </div>
+                <div class="sidecar">
+                  <div class="frame"><div class="content">
+                    <h3>Files</h3>
+                    <div class="spacer"></div>
+                    <div class="kv"><div>helm.stl</div><div class="muted">1.2 MB • model/stl</div></div>
+                    <div class="kv"><div>torso.stl</div><div class="muted">2.8 MB • model/stl</div></div>
+                    <div class="kv"><div>readme.png</div><div class="muted">45 KB • image/png</div></div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inspector column -->
+        <div class="inspector">
+          <div class="frame"><div class="content">
+            <h3>Inspector</h3>
+            <div class="spacer"></div>
+            <div class="kv"><div>Designer</div><div>Ghamak</div></div>
+            <div class="kv"><div>System</div><div>W40K</div></div>
+            <div class="kv"><div>Faction</div><div>Adeptus Astartes</div></div>
+            <div class="kv"><div>Base</div><div>32mm Round</div></div>
+            <div class="spacer"></div>
+            <button class="icon-btn" id="btnReport">Report mismatch</button>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left drawer with image tabs -->
+    <div class="drawer" id="drawer">
+      <div class="tabs">
+        <button class="drawer-tab" aria-pressed="true">Filters</button>
+        <button class="drawer-tab" aria-pressed="false">Lineage</button>
+        <button class="drawer-tab" aria-pressed="false">Base</button>
+        <button class="drawer-tab" aria-pressed="false">NSFW</button>
+      </div>
+      <div class="panel frame"><div class="content">
+        <h3>Filters</h3>
+        <div class="spacer"></div>
+        <div class="chip">Adeptus Astartes</div>
+        <div class="chip">Troops</div>
+        <div class="chip">32mm</div>
+        <div class="spacer"></div>
+        <button class="icon-btn" id="btnCloseDrawer">Close</button>
+      </div></div>
+    </div>
+
+    <script>
+      const btnSidecar = document.getElementById('btnSidecar');
+      const wbInner = document.getElementById('wbInner').parentElement; // .workbench
+      btnSidecar.addEventListener('click', () => {
+        wbInner.classList.toggle('with-sidecar');
+      });
+
+      const btnGrid = document.getElementById('btnGrid');
+      const btnList = document.getElementById('btnList');
+      const cards = document.getElementById('cards');
+      const rows = document.getElementById('rows');
+      btnGrid.addEventListener('click', () => { btnGrid.classList.add('active'); btnList.classList.remove('active'); cards.style.display='grid'; rows.style.display='none'; });
+      btnList.addEventListener('click', () => { btnList.classList.add('active'); btnGrid.classList.remove('active'); cards.style.display='none'; rows.style.display='grid'; });
+
+      // Drawer open/close demo: clicking the leftmost tab opens drawer
+      const drawer = document.getElementById('drawer');
+      const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+      drawer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('drawer-tab')) {
+          drawer.classList.add('open');
+        }
+      });
+      btnCloseDrawer.addEventListener('click', () => drawer.classList.remove('open'));
+    </script>
+  </body>
+</html>
