@@ -1,8 +1,1423 @@
 {
   "apply": false,
-  "total_examined": 21896,
-  "proposals_count": 0,
-  "proposals": [],
-  "field_summary": {},
+  "total_examined": 391,
+  "proposals_count": 50,
+  "proposals": [
+    {
+      "variant_id": 1,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Bonded Souls - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "bonded",
+          "souls",
+          "bondedsouls",
+          "base",
+          "bodies",
+          "arm",
+          "legs",
+          "torso"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 2,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Bonded Souls - Supported/Supported/STLs",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "bonded",
+          "souls",
+          "stls",
+          "bondedsouls",
+          "base",
+          "bodies",
+          "arm",
+          "legs",
+          "torso"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 3,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Elenil - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "elenil",
+          "32",
+          "base",
+          "body",
+          "wings",
+          "75"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 4,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Erimila - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "erimila",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 5,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Gwynevel - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "gwynevel",
+          "32",
+          "base",
+          "body",
+          "75"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 6,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Lazlus - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "lazlus",
+          "base",
+          "ne",
+          "nw",
+          "se",
+          "sw",
+          "body",
+          "arm",
+          "legs"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 7,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Lazlus - Supported/Supported/STL/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "lazlus",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 8,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Lazlus - Supported/Supported/STL/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "lazlus",
+          "base",
+          "ne",
+          "nw",
+          "se",
+          "sw",
+          "body",
+          "arm",
+          "legs"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 9,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Markamin - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "markamin",
+          "32",
+          "base",
+          "body",
+          "75"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 10,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Melwyn - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "melwyn",
+          "32",
+          "base",
+          "body",
+          "75"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 11,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Noranor - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "noranor",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 12,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Treneal - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "treneal",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 13,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Verina - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "verina",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 14,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Supported/Zelafel - Supported",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "zelafel",
+          "32",
+          "battle",
+          "base",
+          "body",
+          "peaceful",
+          "75"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "supported",
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 15,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Bonded Souls - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "bonded",
+          "souls",
+          "bondedsouls",
+          "base",
+          "bodies"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 16,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Bonded Souls - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "bonded",
+          "souls",
+          "bondedsouls",
+          "base",
+          "bodies"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 17,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Elenil - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "elenil",
+          "base",
+          "body",
+          "wings"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 18,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Elenil - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "elenil",
+          "base",
+          "body",
+          "wings"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 19,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Erimila - Unuspported/Unuspported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "erimila",
+          "unuspported",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 20,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Erimila - Unuspported/Unuspported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "erimila",
+          "unuspported",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 21,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Gwynevel - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "gwynevel",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 22,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Gwynevel - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "gwynevel",
+          "base1",
+          "base2",
+          "body1",
+          "body2"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 23,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Lazlus - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "lazlus",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 24,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Lazlus - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "lazlus",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 25,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Markamin - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "markamin",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 26,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Markamin - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "markamin",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 27,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Melywn - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "melywn",
+          "melwyn",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 28,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Melywn - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "melywn",
+          "melwyn",
+          "base1",
+          "base2",
+          "body1",
+          "body2"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 29,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Noranor - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "noranor",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 30,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Noranor - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "noranor",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 31,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Treneal - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "treneal",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 32,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Treneal - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "treneal",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 33,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Verina - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "verina",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 34,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Verina - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "verina",
+          "base",
+          "body"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 35,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Zelafel - Unsupported/Unsupported/32mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "zelafel",
+          "battle",
+          "base",
+          "body",
+          "peaceful"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 32,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 36,
+      "rel_path": "sample_store/(DM Stash) 2021-09 - Guardians of the Fey.7z/(DM Stash) 2021-09 - Guardians of the Fey/Unsupported/Zelafel - Unsupported/Unsupported/75mm",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "dm",
+          "stash",
+          "2021",
+          "09",
+          "guardians",
+          "fey",
+          "zelafel",
+          "battle",
+          "base",
+          "body",
+          "peaceful"
+        ],
+        "designer": "dm_stash",
+        "designer_confidence": "high",
+        "support_state": "unsupported",
+        "height_mm": 75,
+        "intended_use_bucket": "tabletop_intent",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 37,
+      "rel_path": "sample_store/60e73ad2721a1_special-lord-of-battle-1",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "60e73ad2721a1",
+          "special",
+          "lord",
+          "battle",
+          "arm1",
+          "arm2",
+          "arm3",
+          "arm4",
+          "backpack",
+          "body",
+          "tail",
+          "wing1",
+          "wing2"
+        ],
+        "support_state": "supported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 38,
+      "rel_path": "sample_store/[Gaz minis] Ryuko Matoi +NSFW/KLK",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "gaz",
+          "ryuko",
+          "matoi",
+          "klk",
+          "120",
+          "base",
+          "flames",
+          "sup",
+          "head",
+          "arm",
+          "leg",
+          "torso",
+          "weapon",
+          "full"
+        ],
+        "designer": "gaz_minis",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 39,
+      "rel_path": "sample_store/_Blood Angels Terminator Assault Squad",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "blood",
+          "angels",
+          "terminator",
+          "assault",
+          "squad"
+        ],
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 40,
+      "rel_path": "sample_store/_Sanguinius/Primarca Angeles Sangrientos.Sanguinius v01",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "sanguinius",
+          "primarca",
+          "angeles",
+          "sangrientos.sanguinius",
+          "v01",
+          "arm01",
+          "arm02",
+          "back",
+          "base",
+          "body",
+          "eagle",
+          "face",
+          "foot01",
+          "foot02",
+          "front",
+          "hair01",
+          "hair02",
+          "leg01",
+          "leg02",
+          "pauldron01",
+          "pauldron02",
+          "shield",
+          "sun",
+          "sword",
+          "tape01",
+          "tape02",
+          "wing01",
+          "wing02",
+          "wing03",
+          "wing04"
+        ],
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 41,
+      "rel_path": "sample_store/august release/Presupported/CG",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "august",
+          "release",
+          "cg",
+          "captainbody",
+          "captainhelmet",
+          "captainnohelmet",
+          "captainrhanda",
+          "captainrhandb",
+          "captainscenicbase",
+          "musicianbody",
+          "musicianhelmet",
+          "musicianlhand",
+          "musiciannohelmet",
+          "standardbody",
+          "standardhelmet",
+          "standardnohelmet",
+          "standardscenicbase",
+          "standardstandarda",
+          "standardstandardb"
+        ],
+        "support_state": "presupported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 42,
+      "rel_path": "sample_store/august release/Presupported/Chariot",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "august",
+          "release",
+          "chariot",
+          "chariotabackarcher",
+          "chariotabackbase",
+          "chariotabackbasedeco",
+          "chariotachariot",
+          "chariotadragonflybody",
+          "chariotadragonflywingbackl",
+          "chariotadragonflywingbackr",
+          "chariotadragonflywingfrontl",
+          "chariotadragonflywingfrontr",
+          "chariotafrontarcher",
+          "chariotafrontbase",
+          "chariotafrontbasedeco",
+          "chariotatransparent",
+          "stickfront",
+          "sticksback",
+          "chariotbbackarcher",
+          "chariotbbackbase",
+          "chariotbbackbasedeco",
+          "chariotbchariot",
+          "chariotbdragonflybody",
+          "chariotbfrontarcher",
+          "chariotbfrontbase",
+          "chariotbfrontbasedeco",
+          "chariotbtransparent",
+          "chariotbtransparentstickback",
+          "chariotbwingbackl",
+          "chariotbwingbackr",
+          "chariotbwingfrontl",
+          "chariotbwingfrontr"
+        ],
+        "support_state": "presupported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 43,
+      "rel_path": "sample_store/august release/Presupported/Druid",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "august",
+          "release",
+          "druid",
+          "druidbody",
+          "druidfox",
+          "druidrhand",
+          "druidscenicbase",
+          "druidstickbug",
+          "druidtreebase"
+        ],
+        "support_state": "presupported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 44,
+      "rel_path": "sample_store/august release/Presupported/Heroine",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "august",
+          "release",
+          "heroine",
+          "heroinebase",
+          "heroinebody",
+          "heroinehelmet",
+          "heroinenohelmet",
+          "heroinespear",
+          "heroinesword"
+        ],
+        "support_state": "presupported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 45,
+      "rel_path": "sample_store/august release/Presupported/Regiment",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "august",
+          "release",
+          "regiment",
+          "regiment10body",
+          "regiment10helmet",
+          "regiment10nohelmet",
+          "regiment10spear",
+          "regiment10sword",
+          "regiment1body",
+          "regiment1helmet",
+          "regiment1nohelmet",
+          "regiment1spear",
+          "regiment1sword",
+          "regiment2body",
+          "regiment2helmet",
+          "regiment2nohelmet",
+          "regiment2spear",
+          "regiment2sword",
+          "regiment3body",
+          "regiment3helmet",
+          "regiment3nohelmet",
+          "regiment3spear",
+          "regiment3sword",
+          "regiment4body",
+          "regiment4helmet",
+          "regiment4nohelmet",
+          "regiment4spear",
+          "regiment4sword",
+          "regiment5body",
+          "regiment5helmet",
+          "regiment5nohelmet",
+          "regiment5spear",
+          "regiment5sword",
+          "regiment6body",
+          "regiment6helmet",
+          "regiment6nohelmet",
+          "regiment6spear",
+          "regiment6sword",
+          "regiment7body",
+          "regiment7helmet",
+          "regiment7nohelmet",
+          "regiment7spear",
+          "regiment7sword",
+          "regiment8body",
+          "regiment8helmet",
+          "regiment8nohelmet",
+          "regiment8spear",
+          "regiment8sword",
+          "regiment9body",
+          "regiment9helmet",
+          "regiment9nohelmet",
+          "regiment9spear",
+          "regiment9sword"
+        ],
+        "support_state": "presupported",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 46,
+      "rel_path": "sample_store/Azerama - Adult Toph/NSFW/Toph_Presupported_Azerama",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "adult",
+          "toph",
+          "infoprint",
+          "tophnsfw",
+          "presupportedarmleft",
+          "presupportedarmright",
+          "presupportedlegleft",
+          "presupportedlegright",
+          "presupportedtorso",
+          "tophpresupported",
+          "facezen",
+          "footleft",
+          "footright",
+          "hairback",
+          "hairfront",
+          "handleft",
+          "handright",
+          "simplebaseback",
+          "simplebasefront"
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "support_state": "presupported",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 47,
+      "rel_path": "sample_store/Azerama - Adult Toph/NSFW/Toph_ZbrushZtool_Azerama",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "adult",
+          "toph",
+          "zbrushztool",
+          "infoprint",
+          "tophnsfw",
+          "cut",
+          "uncut"
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "segmentation": "split",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 48,
+      "rel_path": "sample_store/Azerama - Adult Toph/NSFW/TophBigBaseAndAlternativePieces",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "adult",
+          "toph",
+          "tophbigbaseandalternativepieces",
+          "basea",
+          "baseb",
+          "basec",
+          "based",
+          "basedusta",
+          "basedustb",
+          "basedustc",
+          "basedustd",
+          "basee",
+          "basef",
+          "basegrounda",
+          "basegroundb",
+          "basegroundc",
+          "basegroundd",
+          "basegrounde",
+          "basegroundf",
+          "basehexrockbota",
+          "basehexrockbotb",
+          "basehexrocktopa",
+          "basehexrocktopb",
+          "basemainrockback",
+          "basemainrockfront",
+          "baserockbacka",
+          "baserockbackb",
+          "baserockfronta",
+          "baserockfrontb",
+          "facemad"
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 49,
+      "rel_path": "sample_store/Azerama - Adult Toph/NSFW/TophNSFW_BuilPlate192x120mm_Azerama",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "adult",
+          "toph",
+          "tophnsfw",
+          "builplate192x120mm",
+          "01tophnsfw",
+          "simplebase",
+          "02tophnsfw",
+          "infoprint"
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "segmentation": "split",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    },
+    {
+      "variant_id": 50,
+      "rel_path": "sample_store/Azerama - Adult Toph/NSFW/TophNSFW_CutVersion_STL_Azerama",
+      "changes": {
+        "raw_path_tokens": [
+          "sample",
+          "store",
+          "adult",
+          "toph",
+          "tophnsfw",
+          "cutversion",
+          "facezen",
+          "footleft",
+          "footright",
+          "azerama3",
+          "hairback",
+          "hairfront",
+          "handleft",
+          "handright",
+          "simplebaseback",
+          "simplebasefront",
+          "armleft",
+          "armright",
+          "legleft",
+          "legright",
+          "torso"
+        ],
+        "designer": "azerama",
+        "designer_confidence": "high",
+        "segmentation": "split",
+        "intended_use_bucket": "display_large",
+        "content_flag": "nsfw",
+        "token_locale": "en"
+      }
+    }
+  ],
+  "field_summary": {
+    "raw_path_tokens": 50,
+    "designer": 42,
+    "designer_confidence": 42,
+    "support_state": 43,
+    "height_mm": 31,
+    "intended_use_bucket": 42,
+    "token_locale": 50,
+    "content_flag": 6,
+    "segmentation": 3
+  },
   "db_url": "sqlite:///C:/Users/akortekaas/Documents/GitHub/STL-manager/.pytest-tmp/stl_manager_e2e.db"
 }

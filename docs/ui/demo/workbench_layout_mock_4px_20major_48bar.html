@@ -221,11 +221,13 @@
       .sidecar { display: none; }
       .workbench.with-sidecar .sidecar { display: block; }
 
-      /* Results grid/list */
-      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-      .card { min-height: 120px; }
-      .rowlist { display: grid; gap: 8px; }
-      .row { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  /* Results grid/list */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .card { min-height: 120px; }
+  /* Table-like list view: no frames, 1px gold/brass separators between entries */
+  .rowlist { display: grid; gap: 0; }
+  .table-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8px 12px; }
+  .rowlist .table-row + .table-row { border-top: 1px solid var(--gold-dark); }
 
       /* Inspector content placeholder */
       .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px; margin-bottom: 6px; }
@@ -407,9 +409,9 @@
                     <div class="frame card"><div class="content">Variant Card D</div></div>
                   </div>
                   <div class="rowlist" id="rows" style="display:none">
-                    <div class="frame row"><div class="content">Variant Row A</div><div class="content"><span class="badge">32mm</span></div></div>
-                    <div class="frame row"><div class="content">Variant Row B</div><div class="content"><span class="badge">Hero</span></div></div>
-                    <div class="frame row"><div class="content">Variant Row C</div><div class="content"><span class="badge">Weapon</span></div></div>
+                    <div class="table-row"><div>Variant Row A</div><div><span class="badge">32mm</span></div></div>
+                    <div class="table-row"><div>Variant Row B</div><div><span class="badge">Hero</span></div></div>
+                    <div class="table-row"><div>Variant Row C</div><div><span class="badge">Weapon</span></div></div>
                   </div>
                 </div>
                 <div class="sidecar">
@@ -684,6 +686,8 @@
         function renderSystems(key){
           const items = SYSTEMS[key] || [];
           systemBar.innerHTML = items.map(([v,l],i)=>`<button class="btn9 small" data-system="${v}" aria-pressed="${i===0?'true':'false'}">${l}</button>`).join('');
+          // Notify listeners that system buttons have been re-rendered
+          try { systemBar.dispatchEvent(new CustomEvent('systemsUpdated', { bubbles: true })); } catch (e) {}
         }
         domainBar.addEventListener('click', (e)=>{
           const btn = e.target.closest('.btn9[data-domain]'); if(!btn) return;
@@ -822,6 +826,118 @@
         });
       })();
       // No tuner or baked constants logic; values are fixed in :root
+    </script>
+    <script>
+      // Live data wiring for list view and inspector
+      (function(){
+        const API_BASE = 'http://127.0.0.1:8000';
+        const rowsEl = document.getElementById('rows');
+        const cardsEl = document.getElementById('cards');
+        const systemBar = document.getElementById('systemBar');
+        const domainBar = document.getElementById('domainBar');
+        const searchInput = document.querySelector('.ctrl-search input[type="search"]');
+        const inspector = document.querySelector('.inspector .frame .content');
+
+        function debounce(fn, ms){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; }
+
+        function currentSystem(){
+          const btn = systemBar.querySelector('.btn9[aria-pressed="true"]');
+          return btn ? btn.getAttribute('data-system') : null;
+        }
+
+        async function fetchVariants(params){
+          const u = new URL(API_BASE + '/variants');
+          if (params.q) u.searchParams.set('q', params.q);
+          if (params.system) u.searchParams.set('system', params.system);
+          if (params.faction) u.searchParams.set('faction', params.faction);
+          u.searchParams.set('limit', String(params.limit ?? 50));
+          u.searchParams.set('offset', String(params.offset ?? 0));
+          const res = await fetch(u.toString());
+          if (!res.ok) throw new Error('API error ' + res.status);
+          return res.json();
+        }
+
+        function fmtName(v){
+          return v.ui_display_en || v.filename || v.rel_path || ('Variant #' + v.id);
+        }
+
+        function renderList(items){
+          rowsEl.innerHTML = '';
+          const frag = document.createDocumentFragment();
+          items.forEach(v => {
+            const row = document.createElement('div');
+            row.className = 'table-row';
+            row.setAttribute('data-id', String(v.id));
+            const left = document.createElement('div');
+            left.textContent = fmtName(v);
+            const right = document.createElement('div');
+            const badge = document.createElement('span');
+            badge.className = 'badge';
+            badge.textContent = v.game_system ? v.game_system.toUpperCase() : (v.base_size_mm ? (v.base_size_mm + 'mm') : '#'+v.id);
+            right.appendChild(badge);
+            row.appendChild(left);
+            row.appendChild(right);
+            row.addEventListener('click', () => loadDetail(v.id));
+            frag.appendChild(row);
+          });
+          rowsEl.appendChild(frag);
+        }
+
+        async function loadDetail(id){
+          try{
+            const res = await fetch(API_BASE + '/variants/' + id);
+            if (!res.ok) throw new Error('Not found');
+            const d = await res.json();
+            const name = fmtName(d);
+            inspector.innerHTML = `
+              <h3>${name}</h3>
+              <div class="spacer"></div>
+              <div class="kv"><div>Designer</div><div>${d.designer || '—'}</div></div>
+              <div class="kv"><div>System</div><div>${d.game_system || '—'}</div></div>
+              <div class="kv"><div>Faction</div><div>${d.codex_faction || '—'}</div></div>
+              <div class="kv"><div>Base</div><div>${d.base_size_mm ? d.base_size_mm + 'mm' : '—'}</div></div>
+              <div class="spacer"></div>
+              <div class="kv"><div>Path</div><div class="muted">${d.rel_path || '—'}</div></div>
+            `;
+          } catch(e){ /* no-op */ }
+        }
+
+        async function refresh(){
+          const q = (searchInput && searchInput.value) ? searchInput.value.trim() : '';
+          const system = currentSystem();
+          try{
+            const data = await fetchVariants({ q, system, limit: 50, offset: 0 });
+            renderList(data.items || []);
+            // If user is in list mode, keep rows visible; otherwise just prepare data
+            if (rowsEl && rowsEl.style.display === 'none' && cardsEl) {
+              // do not force switch; user controls the toggle
+            }
+          } catch(e){
+            // Optionally render an error row
+          }
+        }
+
+        const debouncedRefresh = debounce(refresh, 250);
+
+        // Hook search
+        if (searchInput) searchInput.addEventListener('input', debouncedRefresh);
+        // Hook system changes: clicks on system bar
+        systemBar.addEventListener('click', (e)=>{
+          const btn = e.target.closest('.btn9[data-system]');
+          if (!btn) return;
+          // toggle pressed state among siblings
+          Array.from(systemBar.querySelectorAll('.btn9')).forEach(b=>b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true');
+          refresh();
+        });
+        // When systems list is regenerated due to domain change
+        systemBar.addEventListener('systemsUpdated', ()=>{
+          refresh();
+        });
+
+        // Initial load
+        refresh();
+      })();
     </script>
     <script>
       // Align inspector's left edge with the left edge of the search bar frame

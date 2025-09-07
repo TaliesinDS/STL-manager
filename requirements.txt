@@ -16,3 +16,7 @@ wordfreq>=3.0.1
 # preserving comments and enforcing flow-style list formatting
 ruamel.yaml>=0.18.0
 Unidecode>=1.3
+
+# API prototype
+fastapi>=0.115
+uvicorn>=0.30
