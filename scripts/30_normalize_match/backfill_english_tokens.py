@@ -18,7 +18,7 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import sys
 ROOT = Path(__file__).resolve().parents[2]
@@ -33,7 +33,6 @@ try:
     from db.models import Collection  # type: ignore
 except Exception:  # pragma: no cover
     Collection = None  # type: ignore
-from scripts.quick_scan import SPLIT_CHARS  # type: ignore
 # Import via compatibility shim to avoid dotted path with numeric segment
 from scripts.normalize_inventory import tokens_from_variant  # type: ignore
 
@@ -45,7 +44,6 @@ except Exception:
 # Optional ruamel.yaml (preferred if available)
 try:
     from ruamel.yaml import YAML  # type: ignore
-    _RU_YAML: Optional[object]
     _ru_yaml = YAML(typ='safe')
 except Exception:
     _ru_yaml = None  # type: ignore
@@ -66,8 +64,6 @@ except Exception:
 class Glossary:
     # map phrase (lower, NFKC-ish) -> English replacement
     map: Dict[str, str]
-    # phrases sorted by token length desc for longest-first matching
-    phrases: List[List[str]]
     # language-specific key sets for locale refinement
     ja_keys: set[str]
     zh_keys: set[str]
@@ -186,14 +182,7 @@ def load_glossaries() -> Glossary:
                             elif lang_key == 'zh':
                                 zh_keys.add(key_norm2)
 
-    # Build phrases sorted by length desc
-    phrases: List[List[str]] = []
-    for key in mapping.keys():
-        toks = [t for t in SPLIT_CHARS.split(key) if t]
-        if toks:
-            phrases.append(toks)
-    phrases.sort(key=lambda ts: -len(ts))
-    return Glossary(map=mapping, phrases=phrases, ja_keys=ja_keys, zh_keys=zh_keys)
+    return Glossary(map=mapping, ja_keys=ja_keys, zh_keys=zh_keys)
 
 
 def translate_tokens(tokens: List[str], glos: Glossary) -> List[str]:
@@ -413,6 +402,34 @@ _CONTAINER_SEGMENTS = {
 }
 
 
+def _is_packaging_segment(seg: str) -> bool:
+    """Heuristic packaging check used outside of _best_named_segment_from_path.
+
+    Handles multi-word folders like 'Supported STL', pure 'STL', numeric sizes, and common support folders.
+    """
+    s = (seg or '').strip().lower()
+    if not s:
+        return False
+    base = s.rsplit('.', 1)[0]
+    if base in _PACKAGING_SEGMENTS:
+        return True
+    # Any segment containing 'support' (captures supported/unsupported, even with typos) unless explicitly a hyphenated brand label
+    if 'support' in s and ' - ' not in seg:
+        return True
+    # Common multi-word packaging names
+    if re.fullmatch(r'(supported|unsupported)\s+stl(s)?', s):
+        return True
+    if re.fullmatch(r'stl(s)?', s):
+        return True
+    # mm sizes
+    if s.endswith('mm') and s[:-2].isdigit():
+        return True
+    # Hidden OS cruft
+    if s in {'.ds_store','__macosx'}:
+        return True
+    return False
+
+
 def _best_named_segment_from_path(relp: str) -> str:
     p = (relp or '').replace('\\', '/').strip('/')
     if not p:
@@ -482,7 +499,7 @@ def _best_named_segment_from_path(relp: str) -> str:
         elif 7 <= len(toks) <= 9:
             sc += 1
         # penalize brand/month folders
-        if any(t in _MONTHS for t in [t.title() for t in toks]):
+        if any(t in _MONTHS for t in toks):
             sc -= 2
         if any(t in {'dm','stash','release'} for t in toks):
             sc -= 2
@@ -544,7 +561,6 @@ def _looks_like_proper_name(label: str) -> bool:
 
 def _choose_collection_name(v_obj, coll_meta: Optional[Dict[int, Dict[str, Optional[str]]]] = None) -> str:
     # Prefer explicit theme; fallback to original label
-    parts: List[str] = []
     try:
         theme = (getattr(v_obj, 'collection_theme', None) or '').strip()
     except Exception:
@@ -669,6 +685,27 @@ def _choose_thing_name(v_obj, glos: Glossary, eng_tokens: Optional[List[str]], c
                 base = mapped or words
                 keep_n = 8 if len(base) >= 2 else 5
                 variant_label = _title_case(base[:keep_n])
+        # Opportunistically prefer the deepest non-packaging segment when it looks like a composite name (e.g., 'X on Y')
+        try:
+            relp_deep = getattr(v_obj, 'rel_path', '') or ''
+        except Exception:
+            relp_deep = ''
+        if relp_deep:
+            segs_deep = [s for s in relp_deep.replace('\\','/').split('/') if s]
+            if segs_deep:
+                lastd = segs_deep[-1]
+                if lastd.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segs_deep) >= 2:
+                    lastd = segs_deep[-2]
+                if lastd and (lastd != seg):
+                    wd = _clean_words(_split_words(lastd))
+                    # looks like composite if contains 'on' or has >= 3 tokens with letters
+                    composite = ('on' in {t.lower() for t in wd}) or (sum(1 for t in wd if any(c.isalpha() for c in t)) >= 3)
+                    if composite:
+                        md = translate_tokens(wd, glos) if wd else []
+                        base_d = md or wd
+                        cand_d = _title_case(base_d[:8]) if base_d else ''
+                        if cand_d:
+                            variant_label = cand_d
         # Guard: if variant_label collapsed to a single token but the chosen segment
         # contains a clear two-word proper name, rebuild from the first two tokens.
         v_words = _clean_words(_split_words(variant_label))
@@ -779,126 +816,130 @@ def _choose_thing_name(v_obj, glos: Glossary, eng_tokens: Optional[List[str]], c
 def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = None, coll_meta: Optional[Dict[int, Dict[str, Optional[str]]]] = None) -> str:
     """Build a semantic display name using character/unit, collection, and designer context.
 
-    Examples:
-      - Catwoman by Azerama
-      - Guardians of the Fey: Erimilia
-      - Guardians of the Fey: Bonded Souls
-      - Guardians of the Fey: September (for monthly collection releases)
+    Precedence (stable):
+      1) Deepest hyphen brand/collection/model pattern (prefer rightmost non-brand part)
+      2) Deepest composite "X on Y" segment (preserve 'on')
+      3) Deepest proper-name leaf (>=2 alpha tokens)
+      4) Comma-preserve anywhere in path (verbatim)
+      5) Fallback to _choose_thing_name and other hints
     """
     collection = _choose_collection_name(v_obj, coll_meta)
-    # Earliest guard: if any rel_path segment contains a comma-separated proper name, preserve it verbatim
+    # Basic path breakdown
     try:
-        relp0 = getattr(v_obj, 'rel_path', '') or ''
+        relp = getattr(v_obj, 'rel_path', '') or ''
     except Exception:
-        relp0 = ''
-    if relp0:
-        segs0 = [s for s in relp0.replace('\\','/').split('/') if s]
-        for s in reversed(segs0):
-            s_clean = re.sub(r'^\s*\d+[\.-]?\s*', '', s).strip()
-            if (',' in s_clean) and re.search(r'[A-Za-z]', s_clean):
-                # Return immediately with collection prefix if applicable
-                if collection and (' '.join(_clean_words(_split_words(s_clean))) != ' '.join(_clean_words(_split_words(collection)))):
-                    return f"{collection}: {s_clean}"
-                return s_clean
-    thing = _choose_thing_name(v_obj, glos, eng_tokens, coll_meta)
-    # Strong preservation: if any path segment contains a comma-separated proper name,
-    # use it directly as the 'thing' to keep commas and small words (e.g., 'Ushoran, Mortarch of Delusion').
-    try:
-        relp_comm = getattr(v_obj, 'rel_path', '') or ''
-    except Exception:
-        relp_comm = ''
-    if relp_comm:
-        segs_comm = [s for s in relp_comm.replace('\\','/').split('/') if s]
-        for s in reversed(segs_comm):
-            s2 = re.sub(r'^\s*\d+[\.-]?\s*', '', s).strip()
-            if (',' in s2) and re.search(r'[A-Za-z]', s2):
-                thing = s2
-                break
-    # Strong hint: if deepest path segment starts with an ordering number like '6. Foo Bar', prefer that label
-    try:
-        relp_num = getattr(v_obj, 'rel_path', '') or ''
-    except Exception:
-        relp_num = ''
-    if relp_num:
-        pnum = relp_num.replace('\\', '/').strip('/')
-        segsnum = [s for s in pnum.split('/') if s]
-        if segsnum:
-            lastnum = segsnum[-1]
-            if lastnum.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segsnum) >= 2:
-                lastnum = segsnum[-2]
-            m = re.match(r'^\s*\d+[\.-]?\s*(.+)$', lastnum)
-            if m:
-                raw = m.group(1).strip()
-                wn = _clean_words(_split_words(raw))
-                mn = translate_tokens(wn, glos) if wn else []
-                candn = _title_case((mn or wn)[:8]) if (mn or wn) else ''
-                def _normx(s: str) -> str:
-                    return ' '.join(_clean_words(_split_words(s or '')))
-                if candn and ((_normx(candn) != _normx(collection))):
-                    thing = candn
-    # If nothing derived yet, attempt to build from deepest path segment
-    if not thing:
-        try:
-            relp = getattr(v_obj, 'rel_path', '') or ''
-        except Exception:
-            relp = ''
-        p0 = relp.replace('\\', '/').strip('/')
-        segs0 = [s for s in p0.split('/') if s]
-        if segs0:
-            last0 = segs0[-1]
-            if last0.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segs0) >= 2:
-                last0 = segs0[-2]
-            w0 = _strip_noise_tokens(_clean_words(_split_words(last0)))
-            m0 = translate_tokens(w0, glos) if w0 else []
-            base0 = m0 or w0
-            if base0:
-                thing = _title_case(base0[:8])
-    # If we have a collection and the variant's deepest segment follows a brand - collection - model pattern,
-    # recompute 'thing' from the last hyphen part to avoid duplicates like "Hidden Crypt: Cast Play Hidden Crypt Undying".
-    if collection:
-        try:
-            relp = getattr(v_obj, 'rel_path', '') or ''
-        except Exception:
-            relp = ''
-        p = relp.replace('\\', '/').strip('/')
-        segs = [s for s in p.split('/') if s]
-        if segs:
-            last = segs[-1]
-            # If last is packaging, consider previous
-            if last.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segs) >= 2:
-                last = segs[-2]
-            if ' - ' in last or '-' in last:
-                parts_h = [x.strip() for x in re.split(r'\s*-\s*', last) if x.strip()]
-                if len(parts_h) >= 2:
-                    def _norm(s: str) -> str:
-                        return ' '.join(_clean_words(_split_words(s)))
-                    coll_norm = _norm(collection)
-                    def is_brand(s: str) -> bool:
-                        sn = _norm(s)
-                        return sn in {'cast n play','castnplay','dm stash','dm'}
-                    cands = [x for x in parts_h if not is_brand(x) and (_norm(x) != coll_norm)]
-                    pick = cands[-1] if cands else parts_h[-1]
-                    w = _strip_noise_tokens(_clean_words(_split_words(pick)))
-                    mapped = translate_tokens(w, glos) if w else []
-                    if mapped:
-                        thing = _title_case(mapped[:5])
-            # If chosen thing still collapses to the collection/unit, attempt to rebuild from the deepest segment
-            try:
-                unit_chk = (getattr(v_obj, 'codex_unit_name', None) or '').strip()
-            except Exception:
-                unit_chk = ''
-            def _norm2(s: str) -> str:
+        relp = ''
+    segs = [s for s in relp.replace('\\', '/').split('/') if s]
+    last = ''
+    last_idx = -1
+    if segs:
+        i = len(segs) - 1
+        while i >= 0 and _is_packaging_segment(segs[i]):
+            i -= 1
+        last = segs[i] if i >= 0 else ''
+        last_idx = i
+
+    # 1) Hyphen brand/collection/model pattern at the leaf
+    if last and ((' - ' in last) or ('-' in last)):
+        parts_h = [x.strip() for x in re.split(r'\s*-\s*', last) if x.strip()]
+        if len(parts_h) >= 2:
+            def _normc(s: str) -> str:
                 return ' '.join(_clean_words(_split_words(s or '')))
-            if thing and ((_norm2(thing) == _norm2(collection)) or (unit_chk and _norm2(thing) == _norm2(unit_chk))):
-                w2 = _strip_noise_tokens(_clean_words(_split_words(last)))
-                mapped2 = translate_tokens(w2, glos) if w2 else []
-                if mapped2 or w2:
-                    # Keep more tokens for descriptive phrases
-                    base2 = mapped2 or w2
-                    thing2 = _title_case(base2[:8])
-                    if thing2 and (_norm2(thing2) != _norm2(collection)):
-                        thing = thing2
-    # If the variant label is a generic bucket (e.g., Bodies), prefix with unit name if available
+            coll_norm = _normc(collection) if collection else ''
+            def is_brand(s: str) -> bool:
+                sn = _normc(s)
+                if sn in {'cast n play','castnplay','dm stash','dm'}:
+                    return True
+                toksb = set(_clean_words(_split_words(sn)))
+                brand_hits = {'studio','studios','3d','miniature','miniatures','atelier','workshop','forge','labs','lab','models','model','printing','print','prints','patreon'}
+                return bool(toksb & brand_hits)
+            cands = [x for x in parts_h if not is_brand(x) and (_normc(x) != coll_norm)]
+            pick = cands[-1] if cands else parts_h[-1]
+            w = _strip_noise_tokens(_clean_words(_split_words(pick)))
+            mapped = translate_tokens(w, glos) if w else []
+            thing_h = _title_case((mapped or w)[:6]) if (mapped or w) else ''
+            if thing_h:
+                if collection and (_normc(thing_h) != coll_norm):
+                    return f"{collection}: {thing_h}"
+                return thing_h
+
+    # 2) Composite "X on Y" leaf
+    if last and re.search(r'\bon\b', last, flags=re.I):
+        wnp = _clean_words(_split_words(last))  # preserve 'on'
+        mnp = translate_tokens(wnp, glos) if wnp else []
+        basenp = mnp or wnp
+        candnp = _title_case(basenp[:8]) if basenp else ''
+        if candnp:
+            def _norm_pre2(s: str) -> str:
+                return ' '.join(_clean_words(_split_words(s or '')))
+            if collection and (_norm_pre2(candnp) != _norm_pre2(collection)):
+                return f"{collection}: {candnp}"
+            return candnp
+
+    # 3) Deepest proper-name leaf (>=2 alpha tokens) — but skip pure generic buckets
+    if last:
+        wleaf = _clean_words(_split_words(last))
+        alpha_count = sum(1 for t in wleaf if any(c.isalpha() for c in t))
+        # If all tokens are within generic bucket names, don't treat as a proper name
+        all_bucket = bool(wleaf) and all(t in _GENERIC_VARIANT_NAMES for t in wleaf)
+        if (alpha_count >= 2) and (not all_bucket):
+            mle = translate_tokens(wleaf, glos) if wleaf else []
+            basele = mle or wleaf
+            c_le = _title_case(basele[:8]) if basele else ''
+            if c_le:
+                def _norm_pre3(s: str) -> str:
+                    return ' '.join(_clean_words(_split_words(s or '')))
+                if collection and (_norm_pre3(c_le) != _norm_pre3(collection)):
+                    return f"{collection}: {c_le}"
+                return c_le
+
+    # 4) Comma-preserve anywhere in path (verbatim), except when the segment is just a generic bucket label
+    for s in reversed(segs):
+        s_clean = re.sub(r'^\s*\d+[\.-]?\s*', '', s).strip()
+        if (',' in s_clean) and re.search(r'[A-Za-z]', s_clean):
+            toks_pres = _clean_words(_split_words(s_clean))
+            if toks_pres and all(t in _GENERIC_VARIANT_NAMES for t in toks_pres):
+                # Defer handling to the bucket-prefix logic below
+                break
+            if collection and (' '.join(_clean_words(_split_words(s_clean))) != ' '.join(_clean_words(_split_words(collection)))):
+                return f"{collection}: {s_clean}"
+            return s_clean
+
+    # 5) Fallback: derive via helper and hints
+    thing = _choose_thing_name(v_obj, glos, eng_tokens, coll_meta)
+
+    # Strong preservation: comma-separated proper names override thing (skip generic bucket-only segments)
+    for s in reversed(segs):
+        s2 = re.sub(r'^\s*\d+[\.-]?\s*', '', s).strip()
+        if (',' in s2) and re.search(r'[A-Za-z]', s2):
+            toks2 = _clean_words(_split_words(s2))
+            if toks2 and all(t in _GENERIC_VARIANT_NAMES for t in toks2):
+                continue
+            thing = s2
+            break
+
+    # Hint: numeric ordering like '6. Foo Bar' at the leaf
+    if last:
+        m = re.match(r'^\s*\d+[\.-]?\s*(.+)$', last)
+        if m:
+            raw = m.group(1).strip()
+            wn = _clean_words(_split_words(raw))
+            mn = translate_tokens(wn, glos) if wn else []
+            candn = _title_case((mn or wn)[:8]) if (mn or wn) else ''
+            def _normx(s: str) -> str:
+                return ' '.join(_clean_words(_split_words(s or '')))
+            if candn and (not collection or (_normx(candn) != _normx(collection))):
+                thing = candn
+
+    # If nothing derived yet, attempt to build from deepest path segment
+    if not thing and last:
+        w0 = _strip_noise_tokens(_clean_words(_split_words(last)))
+        m0 = translate_tokens(w0, glos) if w0 else []
+        base0 = m0 or w0
+        if base0:
+            thing = _title_case(base0[:8])
+
+    # If the variant label is a generic bucket (e.g., Bodies), prefix with unit/collection
     try:
         unit_raw = (getattr(v_obj, 'codex_unit_name', None) or '').strip()
     except Exception:
@@ -907,27 +948,40 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
     # If the deepest path segment is a generic bucket (Bodies/Helmets/etc.) and the current
     # chosen label omits it (e.g., equals the collection or another folder), include the bucket
     # as a suffix using Unit or Collection as the prefix for clarity.
-    try:
-        relp_last = getattr(v_obj, 'rel_path', '') or ''
-    except Exception:
-        relp_last = ''
-    if relp_last:
-        p_last = relp_last.replace('\\', '/').strip('/')
-        segs_last = [s for s in p_last.split('/') if s]
-        if segs_last:
-            last_seg = segs_last[-1]
-            if last_seg.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segs_last) >= 2:
-                last_seg = segs_last[-2]
-            toks_last = _strip_noise_tokens(_clean_words(_split_words(last_seg)))
-            # Treat 1-3 token segments entirely within the generic bucket set as a bucket suffix
-            if toks_last and (all(t in _GENERIC_VARIANT_NAMES for t in toks_last)):
-                bucket = _title_case(toks_last[:6])
-                def _norm_b(s: str) -> str:
-                    return ' '.join(_clean_words(_split_words(s or '')))
-                # Only add when bucket not already part of the chosen label
-                if bucket and (not thing or bucket.lower() not in (thing or '').lower()):
-                    if unit_label:
-                        thing = f"{unit_label}: {bucket}"
+    if last:
+        toks_last = _strip_noise_tokens(_clean_words(_split_words(last)))
+        # Treat 1-3 token segments entirely within the generic bucket set as a bucket suffix
+        if toks_last and (all(t in _GENERIC_VARIANT_NAMES for t in toks_last)):
+            bucket = _title_case(toks_last[:6])
+            def _norm_b(s: str) -> str:
+                return ' '.join(_clean_words(_split_words(s or '')))
+            # Add when thing is empty or equals the bucket (so we can prefix it),
+            # otherwise skip to avoid duplicating a longer, non-bucket label
+            if bucket and (not thing or _norm_b(thing) == _norm_b(bucket)):
+                if unit_label:
+                    thing = f"{unit_label}: {bucket}"
+                else:
+                    # Fallback: use nearest non-packaging, non-container parent as unit prefix
+                    prefix = ''
+                    if last_idx > 0:
+                        j = last_idx - 1
+                        while j >= 0:
+                            cand = segs[j]
+                            cand_l = cand.strip().lower()
+                            if cand_l in {'sample_store'}:
+                                j -= 1; continue
+                            if _is_packaging_segment(cand):
+                                j -= 1; continue
+                            if cand_l in _CONTAINER_SEGMENTS:
+                                j -= 1; continue
+                            # Accept this as prefix
+                            words_p = _clean_words(_split_words(cand))
+                            prefix = _title_case(words_p[:8]) if words_p else ''
+                            if prefix:
+                                break
+                            j -= 1
+                    if prefix:
+                        thing = f"{prefix}: {bucket}"
                     elif collection:
                         thing = f"{collection}: {bucket}"
                     else:
@@ -937,36 +991,27 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
         def _norm_u(s: str) -> str:
             return ' '.join(_clean_words(_split_words(s or '')))
         if _norm_u(thing) == _norm_u(unit_label):
-            try:
-                relp_u = getattr(v_obj, 'rel_path', '') or ''
-            except Exception:
-                relp_u = ''
-            p_u = relp_u.replace('\\', '/').strip('/')
-            segs_u = [s for s in p_u.split('/') if s]
-            if segs_u:
-                last_u = segs_u[-1]
-                if last_u.strip().lower() in {'supported','unsupported','stl','stls','lys','lychee'} and len(segs_u) >= 2:
-                    last_u = segs_u[-2]
-                # Special-case: segments like 'STL_Garmokh_Supported' -> 'Garmokh'
-                m_name = re.search(r'(?i)\bstl[_\-\s]+([^_\-\s][^_\-\s]*)[_\-\s]+(supported|unsupported)\b', last_u)
-                if m_name:
-                    core = m_name.group(1)
-                    w_core = _strip_noise_tokens(_clean_words(_split_words(core)))
-                    cand_core = _title_case(w_core[:2]) if w_core else ''
-                    if cand_core and (_norm_u(cand_core) != _norm_u(unit_label)):
-                        thing = cand_core
-                if not thing or _norm_u(thing) == _norm_u(unit_label):
-                    # Fallback: derive from split words of last segment
-                    w_u = _strip_noise_tokens(_clean_words(_split_words(last_u)))
-                    m_u = translate_tokens(w_u, glos) if w_u else []
-                    base_u = m_u or w_u
-                    cand = _title_case(base_u[:8]) if base_u else ''
-                    if cand and (_norm_u(cand) != _norm_u(unit_label)):
-                        thing = cand
+            segs_u = segs
+            last_u = last
+            # Special-case: segments like 'STL_Garmokh_Supported' -> 'Garmokh'
+            m_name = re.search(r'(?i)\bstl[_\-\s]+([^_\-\s][^_\-\s]*)[_\-\s]+(supported|unsupported)\b', last_u)
+            if m_name:
+                core = m_name.group(1)
+                w_core = _strip_noise_tokens(_clean_words(_split_words(core)))
+                cand_core = _title_case(w_core[:2]) if w_core else ''
+                if cand_core and (_norm_u(cand_core) != _norm_u(unit_label)):
+                    thing = cand_core
+            if not thing or _norm_u(thing) == _norm_u(unit_label):
+                # Fallback: derive from split words of last segment
+                w_u = _strip_noise_tokens(_clean_words(_split_words(last_u)))
+                m_u = translate_tokens(w_u, glos) if w_u else []
+                base_u = m_u or w_u
+                cand = _title_case(base_u[:8]) if base_u else ''
+                if cand and (_norm_u(cand) != _norm_u(unit_label)):
+                    thing = cand
             # If still equal to unit, consider english_tokens only for STL supported/unsupported patterns
             if _norm_u(thing) == _norm_u(unit_label):
-                last_u2 = segs_u[-1] if segs_u else ''
-                low2 = (last_u2 or '').lower()
+                low2 = (last or '').lower()
                 if ('stl' in low2) or ('supported' in low2) or ('unsupported' in low2):
                     cand2 = _candidate_from_eng_tokens(eng_tokens)
                     if cand2 and (_norm_u(cand2) != _norm_u(unit_label)):
@@ -1051,40 +1096,6 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
     if designer:
         return designer
     return ''
-    # 1) From rel_path last segment
-    try:
-        relp = getattr(v_obj, 'rel_path', '') or ''
-    except Exception:
-        relp = ''
-    words = _split_words(relp)
-    words = _clean_words(words)
-    # Map phrases of up to 3 tokens via glossary
-    if words:
-        # translate_tokens expects a token list and replaces phrases; we restrict to our words
-        mapped = translate_tokens(words, glos) or words
-        # Keep first 5 words to avoid dumps
-        mapped = mapped[:5]
-        name = _title_case(mapped)
-        if name:
-            return name
-    # 2) From filename stem
-    try:
-        fname = getattr(v_obj, 'filename', None) or ''
-    except Exception:
-        fname = ''
-    if fname:
-        stem = fname.rsplit('.', 1)[0]
-        words2 = _clean_words(_split_words(stem))
-        if words2:
-            mapped2 = translate_tokens(words2, glos) or words2
-            mapped2 = mapped2[:5]
-            name2 = _title_case(mapped2)
-            if name2:
-                return name2
-    # 3) Fallback: english_tokens (first few)
-    toks = [str(t).strip() for t in (eng_tokens or []) if isinstance(t, str) and str(t).strip()]
-    toks = _clean_words(toks)[:5]
-    return _title_case(toks)
 
 
 def run(batch: int, limit: int, ids: Optional[List[int]], apply: bool, out: Optional[str], force: bool, materialize_ui: bool, tabletop_only: bool = False) -> None:

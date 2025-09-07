@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Generator
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,7 +12,7 @@ from db.session import get_session
 from db import models
 
 
-def get_db() -> Session:
+def get_db() -> Generator[Session, None, None]:
     # Wrap the existing contextmanager for FastAPI dependency injection
     with get_session() as s:
         yield s

@@ -18,10 +18,11 @@
       "kill_la_kill": 1
     },
     "top_characters": {
-      "ahko": 24,
+      "ahko": 22,
       "nami_one_piece": 20,
       "toph": 12,
       "sherry_birkin": 4,
+      "rentarou": 2,
       "himiko_toga": 2,
       "poison_ivy": 2,
       "menace": 2,
@@ -37,7 +38,7 @@
         "franchise": "kill_la_kill",
         "character_name": "ryuko_matoi",
         "character_aliases": [
-          "ryuko_matoi"
+          "matoi"
         ]
       }
     },
@@ -199,7 +200,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -237,9 +238,9 @@
       "variant_id": 64,
       "rel_path": "sample_store/Azerama - Ahko (+NSFW)/Ahko_Nurse_Azerama/01AhkoNurse_SplitVersion_STL_Azerama",
       "changes": {
-        "character_name": "ahko",
+        "character_name": "rentarou",
         "character_aliases": [
-          "ahkoqueen"
+          "rentarouhead"
         ]
       }
     },
@@ -297,9 +298,9 @@
       "variant_id": 70,
       "rel_path": "sample_store/Azerama - Ahko (+NSFW)/Ahko_Queen_Azerama/01AhkoQueen_SplitVersion_STL_Azerama",
       "changes": {
-        "character_name": "ahko",
+        "character_name": "rentarou",
         "character_aliases": [
-          "ahkoqueen"
+          "rentarouhead"
         ]
       }
     },
@@ -319,7 +320,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -329,7 +330,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -339,7 +340,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahkoqueen"
+          "ahko"
         ]
       }
     },
@@ -379,7 +380,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -389,7 +390,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -399,7 +400,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
@@ -409,7 +410,7 @@
       "changes": {
         "character_name": "ahko",
         "character_aliases": [
-          "ahko"
+          "ahkoskirt"
         ]
       }
     },
