@@ -201,7 +201,16 @@
       .app { max-width: 1440px; margin: 56px auto; padding: 0 16px 24px; }
       .appgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); gap: 16px; }
       .workbench { min-height: 70vh; }
-      .inspector { align-self: start; position: sticky; top: calc(var(--drawer-top) + 8px); }
+      /* Inspector: overlay fixed to viewport right; left aligned with search bar,
+         top aligned with the workbench frame */
+      .inspector {
+        position: fixed;
+        top: var(--inspector-top, calc(var(--drawer-top) + 8px));
+        bottom: var(--drawer-bottom);
+        right: 0;
+        left: var(--inspector-left, calc(100vw - 380px)); /* fallback to ~380px width */
+        z-index: 700;
+      }
 
       /* Workbench toolbar and sidecar */
       .wb-toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
@@ -231,6 +240,10 @@
         --gold-dark: #6a4b14;
         --gold-mid: #d8b85a;
         --gold-hi: #f2de8a;
+        /* Drawer tab badge offsets */
+        --tab-badge-right: 78px; /* distance from the right edge when docked left */
+        --tab-badge-left: 76px;  /* distance from the left edge when docked right */
+        --tab-badge-top: -4px;    /* distance from the top edge of the tab */
       }
 
       /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
@@ -246,7 +259,30 @@
       .drawer-tab:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
       [data-dock="right"] .drawer-tabs .drawer-tab::before, [data-dock="right"] .drawer-tabs-hit .drawer-tab::before { transform: scaleX(-1); transform-origin: center; background-position: right center; }
       .drawer-tab .txt { pointer-events: none; }
-      .drawer-tab .count { position: absolute; right: 6px; top: 4px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 999px; background: #16321f; color: #bff1c9; border: 1px solid #2b6039; font-size: 11px; display: none; align-items: center; justify-content: center; }
+      .drawer-tab .count {
+        position: absolute;
+        right: var(--tab-badge-right, 6px);
+        top: var(--tab-badge-top, 4px);
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        padding: 0;
+        border-radius: 999px;
+        background: transparent;
+        background-image: url('../img/greenroundbutton.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        color: #ffffff;
+        border: 0;
+        font-size: 11px;
+        line-height: 1;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none; /* ensure clicks go to the tab */
+        text-shadow: 0 1px 1px rgba(0,0,0,0.45);
+      }
       .drawer-tab.has-count .count { display: inline-flex; }
 
       /* Drawer and backdrop */
@@ -261,7 +297,7 @@
       [data-dock="right"] .drawer.open { right: 0; }
       [data-dock="right"] .drawer-tabs, [data-dock="right"] .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
       [data-dock="right"] .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
-      [data-dock="right"] .drawer-tab .count { left: 6px; right: auto; }
+      [data-dock="right"] .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
       [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
       [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
 
@@ -281,6 +317,15 @@
       .muted { color: var(--muted); }
       .badge { background: #2a2618; padding: 2px 6px; border-radius: 6px; font-size: 11px; }
       .spacer { height: 12px; }
+
+  /* Drawer panels: show one at a time */
+  .tabpanel { display: none; }
+  .tabpanel.active { display: block; }
+  /* List layout: vertical, no wrapping of labels */
+  .filters-col { display: flex; flex-direction: column; gap: 6px; }
+  .filters-col label { display: flex; align-items: center; gap: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .filters-col.scroll { max-height: 320px; overflow-y: auto; padding-right: 6px; }
+  .searchbox.small input { min-width: 0; width: 100%; height: 32px; padding: 4px 8px; }
     </style>
   </head>
   <body>
@@ -426,39 +471,58 @@
         <button class="close" id="drawerClose" aria-label="Close">✕</button>
       </div>
       <div class="body">
-        <section id="panel-lineage" class="tabpanel" role="region" aria-labelledby="tab-lineage">
+        <!-- Lineage tab -->
+        <section id="panel-lineage" class="tabpanel active" role="region" aria-labelledby="tab-lineage">
           <div class="hint">Choose one or more lineages to focus results.</div>
-          <div class="filters-col">
-            <label><input type="checkbox"/> Undead</label>
-            <label><input type="checkbox"/> Demons</label>
-            <label><input type="checkbox"/> Orcs / Greenskins</label>
-            <label><input type="checkbox"/> Elves / Aeldari</label>
-            <label><input type="checkbox"/> Soldiers / Humans</label>
+          <div class="searchbox small" style="margin-bottom:6px;"><input id="lineageFilter" type="search" placeholder="Filter lineages…" aria-label="Filter lineages"/></div>
+          <div class="filters-col scroll" id="lineageList">
+            <label><input type="checkbox" value="Undead"/> Undead</label>
+            <label><input type="checkbox" value="Demons"/> Demons</label>
+            <label><input type="checkbox" value="Orcs / Greenskins"/> Orcs / Greenskins</label>
+            <label><input type="checkbox" value="Elves / Aeldari"/> Elves / Aeldari</label>
+            <label><input type="checkbox" value="Soldiers / Humans"/> Soldiers / Humans</label>
+            <label><input type="checkbox" value="Dwarves / Duardin"/> Dwarves / Duardin</label>
+            <label><input type="checkbox" value="Chaos"/> Chaos</label>
+            <label><input type="checkbox" value="Beasts"/> Beasts</label>
+            <label><input type="checkbox" value="Monsters"/> Monsters</label>
           </div>
         </section>
+        <!-- Base tab -->
         <section id="panel-base" class="tabpanel" role="region" aria-labelledby="tab-base">
           <div class="hint">Base profile filters help narrow variants by basing standards.</div>
           <div class="filters-col">
-            <label><input type="checkbox"/> 25mm round</label>
-            <label><input type="checkbox"/> 32mm round</label>
-            <label><input type="checkbox"/> 40mm round</label>
-            <label><input type="checkbox"/> 50mm round</label>
+            <label><input type="checkbox"/> 25mm Round</label>
+            <label><input type="checkbox"/> 28mm Round</label>
+            <label><input type="checkbox"/> 32mm Round</label>
+            <label><input type="checkbox"/> 40mm Round</label>
+            <label><input type="checkbox"/> 50mm Round</label>
+            <label><input type="checkbox"/> 60mm Round</label>
+            <label><input type="checkbox"/> 90mm Round</label>
+            <label><input type="checkbox"/> 120mm Oval</label>
+            <label><input type="checkbox"/> 60x35mm Oval</label>
+            <label><input type="checkbox"/> 75x42mm Oval</label>
+            <label><input type="checkbox"/> 25mm Square</label>
+            <label><input type="checkbox"/> 40mm Square</label>
           </div>
         </section>
+        <!-- NSFW tab -->
         <section id="panel-nsfw" class="tabpanel" role="region" aria-labelledby="tab-nsfw">
           <div class="hint">Control sensitive content visibility.</div>
           <div class="filters-col">
-            <label><input type="radio" name="nsfw"/> Hide NSFW entirely</label>
-            <label><input type="radio" name="nsfw"/> Blur thumbnails</label>
-            <label><input type="radio" name="nsfw"/> Show with badge</label>
+            <label><input type="radio" name="nsfw" value="hide"/> Hide NSFW entirely</label>
+            <label><input type="radio" name="nsfw" value="blur"/> Blur thumbnails</label>
+            <label><input type="radio" name="nsfw" value="show"/> Show with badge</label>
           </div>
         </section>
+        <!-- More tab -->
         <section id="panel-more" class="tabpanel" role="region" aria-labelledby="tab-more">
           <div class="hint">Additional quick filters.</div>
           <div class="filters-col">
             <label><input type="checkbox"/> Supported</label>
             <label><input type="checkbox"/> Segmentation available</label>
             <label><input type="checkbox"/> Multi‑part</label>
+            <label><input type="checkbox"/> Has alternate heads</label>
+            <label><input type="checkbox"/> Includes bases</label>
           </div>
         </section>
       </div>
@@ -734,7 +798,8 @@
             if (!btn) return;
             let badge = btn.querySelector('.count');
             if (!badge) { badge = document.createElement('span'); badge.className = 'count'; btn.appendChild(badge); }
-            if (count > 0) { btn.classList.add('has-count'); badge.textContent = String(count); }
+            const txt = count > 9 ? '9+' : String(count);
+            if (count > 0) { btn.classList.add('has-count'); badge.textContent = txt; }
             else { btn.classList.remove('has-count'); badge.textContent = ''; }
           };
           const vt = tabs.find(t => t.dataset.tab === tab);
@@ -757,6 +822,67 @@
         });
       })();
       // No tuner or baked constants logic; values are fixed in :root
+    </script>
+    <script>
+      // Align inspector's left edge with the left edge of the search bar frame
+      (function(){
+        const root = document.documentElement;
+        function computeInspectorLeft(){
+          const el = document.querySelector('.ctrl-frame.ctrl-search');
+          if (!el) return;
+          const r = el.getBoundingClientRect();
+          root.style.setProperty('--inspector-left', r.left + 'px');
+        }
+        window.addEventListener('load', computeInspectorLeft);
+        window.addEventListener('resize', computeInspectorLeft);
+        // Recompute on topbar interactions that can affect layout
+        const topbar = document.querySelector('.topbar');
+        if (topbar) {
+          topbar.addEventListener('click', (e) => {
+            if (e.target && e.target.closest('.btn9')) {
+              // Defer to allow layout to settle
+              requestAnimationFrame(computeInspectorLeft);
+            }
+          });
+        }
+        // Initial compute in case load has already fired
+        requestAnimationFrame(computeInspectorLeft);
+      })();
+      // Align inspector's top edge with the top of the workbench frame
+      ;(function(){
+        const root = document.documentElement;
+        function computeInspectorTop(){
+          const wbFrame = document.querySelector('.workbench > .frame');
+          if (!wbFrame) return;
+          const r = wbFrame.getBoundingClientRect();
+          // Use viewport-relative top so the fixed inspector matches as the user scrolls
+          root.style.setProperty('--inspector-top', Math.max(0, Math.round(r.top)) + 'px');
+        }
+        ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, computeInspectorTop, { passive: true }));
+        // Also recompute after potential layout shifts in the app area
+        const app = document.querySelector('.app');
+        if (app) {
+          const ro = new ResizeObserver(() => computeInspectorTop());
+          ro.observe(app);
+        }
+        requestAnimationFrame(computeInspectorTop);
+      })();
+    </script>
+    <script>
+      // Lineage live filter for scrollable list
+      (function(){
+        const q = document.getElementById('lineageFilter');
+        const list = document.getElementById('lineageList');
+        if (!q || !list) return;
+        function apply(){
+          const needle = (q.value || '').toLowerCase();
+          list.querySelectorAll('label').forEach(l => {
+            const txt = l.textContent.toLowerCase();
+            l.style.display = needle ? (txt.includes(needle) ? '' : 'none') : '';
+          });
+        }
+        q.addEventListener('input', apply);
+      })();
     </script>
   </body>
 </html>
