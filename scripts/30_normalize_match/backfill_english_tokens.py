@@ -253,6 +253,63 @@ def translate_tokens(tokens: List[str], glos: Glossary) -> List[str]:
     return dedup
 
 
+def _translate_tokens_keep_dupes(tokens: List[str], glos: Glossary) -> List[str]:
+    """Translate tokens like translate_tokens but preserve duplicates and order.
+
+    Useful for building human display strings where repeating words (e.g., '... and Knights')
+    should not be collapsed away.
+    """
+    out: List[str] = []
+    i = 0
+    n = len(tokens)
+    while i < n:
+        matched = False
+        max_L = min(5, n - i)
+        for L in range(max_L, 0, -1):
+            phrase = tokens[i:i+L]
+            key = ' '.join(phrase)
+            if key in glos.map:
+                out.append(glos.map[key])
+                i += L
+                matched = True
+                break
+            key2 = '_'.join(phrase)
+            if key2 in glos.map:
+                out.append(glos.map[key2])
+                i += L
+                matched = True
+                break
+        if not matched:
+            t = tokens[i]
+            tl = t.lower()
+            if 'pierna' in tl:
+                if ('izq' in tl) or ('izqda' in tl) or ('izqdo' in tl) or ('izquierda' in tl):
+                    out.append('left leg'); i += 1; continue
+                if ('drch' in tl) or ('der' in tl) or ('derecha' in tl) or ('derecho' in tl):
+                    out.append('right leg'); i += 1; continue
+            if 'brazo' in tl:
+                if ('izq' in tl) or ('izqda' in tl) or ('izqdo' in tl) or ('izquierda' in tl):
+                    out.append('left arm'); i += 1; continue
+                if ('drch' in tl) or ('der' in tl) or ('derecha' in tl) or ('derecho' in tl):
+                    out.append('right arm'); i += 1; continue
+            if any(ord(c) > 127 for c in t):
+                replaced = False
+                for key, val in glos.map.items():
+                    if all(ord(c) < 128 for c in key):
+                        continue
+                    if key and key in t:
+                        out.append(val)
+                        replaced = True
+                        break
+                if not replaced:
+                    out.append(unidecode(t))
+            else:
+                out.append(t)
+            i += 1
+    # Unlike translate_tokens, do NOT dedup here
+    return [s.strip().lower() for s in out if s and s.strip()]
+
+
 def _split_words(s: str) -> List[str]:
     """Split a candidate label into words: separators + simple CamelCase boundaries."""
     if not s:
@@ -304,8 +361,26 @@ _BANNED_WORDS = {
 _GENERIC_VARIANT_NAMES = {
     'bodies','body','heads','head','arms','arm','legs','leg','torsos','torso',
     'weapons','weapon','bits','accessories','poses','pose','helmets','helmet',
-    'cloaks','cloak','shields','shield','spears','spear','swords','sword','backpacks','backpack'
+    'cloaks','cloak','shields','shield','spears','spear','swords','sword','backpacks','backpack',
+    'hand','hands','flamer','flamers'
 }
+
+# Connectors that can appear in bucket phrases without disqualifying them from being treated as buckets
+_BUCKET_CONNECTORS = {"and", "&", "with"}
+
+# Packaging adjectives that can appear alongside bucket nouns (kept in label, ignored for bucket test)
+_BUCKET_PACKAGING = {"presupported", "supported", "unsupported"}
+
+def _is_bucket_phrase(toks: List[str]) -> bool:
+    nouns = 0
+    for t in toks:
+        if t in _GENERIC_VARIANT_NAMES:
+            nouns += 1
+            continue
+        if (t in _BUCKET_CONNECTORS) or (t in _BUCKET_PACKAGING):
+            continue
+        return False
+    return nouns >= 1
 
 
 def _clean_words(words: List[str]) -> List[str]:
@@ -854,10 +929,28 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
                 brand_hits = {'studio','studios','3d','miniature','miniatures','atelier','workshop','forge','labs','lab','models','model','printing','print','prints','patreon'}
                 return bool(toksb & brand_hits)
             cands = [x for x in parts_h if not is_brand(x) and (_normc(x) != coll_norm)]
-            pick = cands[-1] if cands else parts_h[-1]
-            w = _strip_noise_tokens(_clean_words(_split_words(pick)))
-            mapped = translate_tokens(w, glos) if w else []
-            thing_h = _title_case((mapped or w)[:6]) if (mapped or w) else ''
+            right = cands[-1] if cands else parts_h[-1]
+            # If the right part clearly looks like a titled phrase (contains ' the ' or similar),
+            # and an adjacent left neighbor exists that is not a brand (e.g., 'Vaal-Kan the Firstborn'),
+            # then preserve the left+right joined with a hyphen to keep the given name.
+            pick_text = right
+            idx_right = parts_h.index(right) if right in parts_h else -1
+            if idx_right > 0:
+                left_neighbor = parts_h[idx_right - 1]
+                if not is_brand(left_neighbor):
+                    right_l = right.lower()
+                    if (' the ' in f' {right_l} ') or right_l.startswith('the '):
+                        pick_text = f"{left_neighbor}-{right}"
+            # Build label tokens without stripping stopwords to preserve articles like 'the'
+            w = _clean_words(_split_words(pick_text))
+            mapped = _translate_tokens_keep_dupes(w, glos) if w else []
+            thing_h = _title_case((mapped or w)[:10]) if (mapped or w) else ''
+            # If original pick_text contained a hyphen between two alpha tokens, re-insert it in title-cased output
+            if thing_h and '-' in pick_text:
+                # Simple heuristic: join first two words with a hyphen when the original left-right join used one
+                parts = thing_h.split(' ')
+                if len(parts) >= 2:
+                    thing_h = parts[0] + '-' + ' '.join(parts[1:])
             if thing_h:
                 if collection and (_normc(thing_h) != coll_norm):
                     return f"{collection}: {thing_h}"
@@ -881,11 +974,11 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
         wleaf = _clean_words(_split_words(last))
         alpha_count = sum(1 for t in wleaf if any(c.isalpha() for c in t))
         # If all tokens are within generic bucket names, don't treat as a proper name
-        all_bucket = bool(wleaf) and all(t in _GENERIC_VARIANT_NAMES for t in wleaf)
+        all_bucket = bool(wleaf) and _is_bucket_phrase(wleaf)
         if (alpha_count >= 2) and (not all_bucket):
-            mle = translate_tokens(wleaf, glos) if wleaf else []
+            mle = _translate_tokens_keep_dupes(wleaf, glos) if wleaf else []
             basele = mle or wleaf
-            c_le = _title_case(basele[:8]) if basele else ''
+            c_le = _title_case(basele[:10]) if basele else ''
             if c_le:
                 def _norm_pre3(s: str) -> str:
                     return ' '.join(_clean_words(_split_words(s or '')))
@@ -924,8 +1017,8 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
         if m:
             raw = m.group(1).strip()
             wn = _clean_words(_split_words(raw))
-            mn = translate_tokens(wn, glos) if wn else []
-            candn = _title_case((mn or wn)[:8]) if (mn or wn) else ''
+            mn = _translate_tokens_keep_dupes(wn, glos) if wn else []
+            candn = _title_case((mn or wn)[:10]) if (mn or wn) else ''
             def _normx(s: str) -> str:
                 return ' '.join(_clean_words(_split_words(s or '')))
             if candn and (not collection or (_normx(candn) != _normx(collection))):
@@ -934,10 +1027,10 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
     # If nothing derived yet, attempt to build from deepest path segment
     if not thing and last:
         w0 = _strip_noise_tokens(_clean_words(_split_words(last)))
-        m0 = translate_tokens(w0, glos) if w0 else []
+        m0 = _translate_tokens_keep_dupes(w0, glos) if w0 else []
         base0 = m0 or w0
         if base0:
-            thing = _title_case(base0[:8])
+            thing = _title_case(base0[:10])
 
     # If the variant label is a generic bucket (e.g., Bodies), prefix with unit/collection
     try:
@@ -950,38 +1043,52 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
     # as a suffix using Unit or Collection as the prefix for clarity.
     if last:
         toks_last = _strip_noise_tokens(_clean_words(_split_words(last)))
-        # Treat 1-3 token segments entirely within the generic bucket set as a bucket suffix
-        if toks_last and (all(t in _GENERIC_VARIANT_NAMES for t in toks_last)):
+        # Treat segments composed of bucket nouns optionally separated by connectors or packaging adjectives as a bucket suffix
+        if toks_last and _is_bucket_phrase(toks_last):
             bucket = _title_case(toks_last[:6])
             def _norm_b(s: str) -> str:
                 return ' '.join(_clean_words(_split_words(s or '')))
-            # Add when thing is empty or equals the bucket (so we can prefix it),
-            # otherwise skip to avoid duplicating a longer, non-bucket label
-            if bucket and (not thing or _norm_b(thing) == _norm_b(bucket)):
-                if unit_label:
-                    thing = f"{unit_label}: {bucket}"
-                else:
-                    # Fallback: use nearest non-packaging, non-container parent as unit prefix
-                    prefix = ''
-                    if last_idx > 0:
-                        j = last_idx - 1
-                        while j >= 0:
-                            cand = segs[j]
-                            cand_l = cand.strip().lower()
-                            if cand_l in {'sample_store'}:
-                                j -= 1; continue
-                            if _is_packaging_segment(cand):
-                                j -= 1; continue
-                            if cand_l in _CONTAINER_SEGMENTS:
-                                j -= 1; continue
-                            # Accept this as prefix
-                            words_p = _clean_words(_split_words(cand))
-                            prefix = _title_case(words_p[:8]) if words_p else ''
-                            if prefix:
-                                break
-                            j -= 1
-                    if prefix:
-                        thing = f"{prefix}: {bucket}"
+            # Identify a nearest non-container parent to use as a prefix when unit_label is missing
+            parent_prefix = ''
+            if last_idx > 0:
+                j = last_idx - 1
+                while j >= 0:
+                    cand = segs[j]
+                    cand_l = cand.strip().lower()
+                    if cand_l in {'sample_store'}:
+                        j -= 1; continue
+                    if _is_packaging_segment(cand):
+                        j -= 1; continue
+                    if cand_l in _CONTAINER_SEGMENTS:
+                        j -= 1; continue
+                    words_p = _clean_words(_split_words(cand))
+                    # Skip container/bucket-like parent names
+                    if _is_bucket_phrase(words_p):
+                        j -= 1
+                        continue
+                    parent_prefix = _title_case(words_p[:8]) if words_p else ''
+                    if parent_prefix:
+                        break
+                    j -= 1
+            # Determine if current thing is container-ish (e.g., equals collection or contains container tokens)
+            thing_tokens = _clean_words(_split_words(thing or ''))
+            is_containerish = False
+            if thing:
+                # Matches collection exactly
+                if collection and (_norm_b(thing) == _norm_b(collection)):
+                    is_containerish = True
+                # Contains a container keyword like 'troops', 'units', 'characters'
+                cont_keys = set(_CONTAINER_SEGMENTS)
+                if any(t in cont_keys for t in thing_tokens):
+                    is_containerish = True
+            # Only add when bucket not already present in the chosen label and the label is empty or containerish
+            if bucket:
+                # Prefix when label is missing, equals the bucket, or is container-ish
+                if (not thing) or (_norm_b(thing) == _norm_b(bucket)) or is_containerish:
+                    if unit_label:
+                        thing = f"{unit_label}: {bucket}"
+                    elif parent_prefix:
+                        thing = f"{parent_prefix}: {bucket}"
                     elif collection:
                         thing = f"{collection}: {bucket}"
                     else:
@@ -1046,14 +1153,35 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
                         cand_tok2 = _candidate_from_eng_tokens(eng_tokens)
                         if cand_tok2 and (_norm_f(cand_tok2) != _norm_f(unit_folder)):
                             thing = cand_tok2
-    if thing and unit_label:
+    if thing:
         thing_norm = thing.strip().lower()
-        if thing_norm in _GENERIC_VARIANT_NAMES:
-            thing = f"{unit_label}: {thing}"
-        else:
-            toks_thing = _clean_words(_split_words(thing_norm))
-            if toks_thing and all(t in _GENERIC_VARIANT_NAMES for t in toks_thing):
+        toks_thing = _clean_words(_split_words(thing_norm))
+        # If the chosen label is effectively a bucket phrase, ensure it is prefixed by unit or nearest parent
+        if _is_bucket_phrase(toks_thing):
+            # Compute nearest non-container parent as a fallback prefix
+            parent_prefix2 = ''
+            if last_idx > 0:
+                j2 = last_idx - 1
+                while j2 >= 0:
+                    cand2 = segs[j2]
+                    cand2_l = cand2.strip().lower()
+                    if cand2_l in {'sample_store'}:
+                        j2 -= 1; continue
+                    if _is_packaging_segment(cand2):
+                        j2 -= 1; continue
+                    if cand2_l in _CONTAINER_SEGMENTS:
+                        j2 -= 1; continue
+                    words_p2 = _clean_words(_split_words(cand2))
+                    if _is_bucket_phrase(words_p2):
+                        j2 -= 1; continue
+                    parent_prefix2 = _title_case(words_p2[:8]) if words_p2 else ''
+                    if parent_prefix2:
+                        break
+                    j2 -= 1
+            if unit_label:
                 thing = f"{unit_label}: {thing}"
+            elif parent_prefix2:
+                thing = f"{parent_prefix2}: {thing}"
 
     try:
         designer_raw = (getattr(v_obj, 'designer', None) or '').strip()

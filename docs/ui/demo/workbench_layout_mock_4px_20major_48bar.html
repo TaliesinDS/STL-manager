@@ -43,6 +43,17 @@
         --tab-img-size: auto var(--tab-size);
         --tab-img-ratio: 2.6;
         --tab-img-width: calc(var(--tab-size) * var(--tab-img-ratio));
+        /* Theme switcher background images */
+        --theme-switch-bg-dark: url('../img/ComfyUI_14363_.png');
+        /* Light-mode image */
+        --theme-switch-bg-light: url('../img/ComfyUI_14835_.png');
+        /* Workbench edge and padding controls */
+        --wb-edge-top: 0px;
+        --wb-edge-right: -300px;
+        --wb-edge-bottom: 0px;
+        --wb-edge-left: 0px;
+        --wb-pad-v: 10px;
+        --wb-pad-h: 12px;
       }
       html, body { height: 100%; margin: 0; }
       body {
@@ -50,6 +61,8 @@
           radial-gradient(1600px 1200px at 20% -10%, var(--bg-1) 0%, var(--bg-0) 72%, #070605 100%);
         color: var(--text);
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+        /* Constrain page-level scroll; internal panels will scroll */
+        overflow: hidden;
       }
       h1, h2, h3 { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; margin: 0; }
 
@@ -187,20 +200,44 @@
   /* Framed search and theme controls */
   .ctrl-frame { --frame-border: 12px; height: 100%; min-width: 220px; display: flex; box-sizing: border-box; }
   .ctrl-frame .content { display: flex; align-items: center; gap: 8px; width: 100%; height: 100%; box-sizing: border-box; }
-  .ctrl-theme { min-width: 120px; width: auto; }
+  .ctrl-theme { min-width: 120px; width: auto; position: relative; cursor: pointer; }
   .ctrl-search { min-width: 260px; flex: 0 0 auto; }
-  .theme-toggle { background: transparent; color: #f5e8b0; border: none; cursor: pointer; font-size: 14px; }
-  .theme-toggle .ico { margin-right: 6px; }
+  /* Make the (visually empty) button cover the whole frame for focus/ARIA, no visible text/icon */
+  .theme-toggle { position: absolute; inset: 0; background: transparent; color: inherit; border: none; cursor: pointer; font-size: 0; }
+  .theme-toggle:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
   .searchbox { width: 100%; }
   .searchbox input { width: 100%; height: 100%; background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 4px 10px; box-sizing: border-box; }
+  /* Apply background art to the theme switcher frame based on current theme */
+  html[data-theme="dark"] .ctrl-frame.ctrl-theme {
+    background-image: var(--theme-switch-bg-dark);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  html[data-theme="light"] .ctrl-frame.ctrl-theme {
+    background-image: var(--theme-switch-bg-light);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
   /* Keep bottom rows clipped; top row overflow is handled above to allow decorative overhang */
   .row-bottom, .row-pins { overflow: hidden; }
   .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
 
       /* App grid: left overlay drawer, center workbench, right inspector */
-      .app { max-width: 1440px; margin: 56px auto; padding: 0 16px 24px; }
-      .appgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); gap: 16px; }
-      .workbench { min-height: 70vh; }
+  .app { max-width: 1440px; margin: 56px auto; padding: 0 16px 24px; }
+  /* Fill viewport below top offset; prevent outer scroll */
+  .appgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 380px); gap: 16px; height: calc(100vh - var(--drawer-top) - var(--drawer-bottom)); overflow: hidden; }
+  /* Workbench column occupies full height; allow internal scrolling */
+  .workbench { height: 90%; min-height: 0; }
+  .workbench > .frame { height: 100%; }
+  /* Adjustable outer margins for the workbench frame */
+  .workbench > .frame { margin: var(--wb-edge-top) var(--wb-edge-right) var(--wb-edge-bottom) var(--wb-edge-left); }
+  .workbench > .frame > .content { display: grid; grid-template-rows: auto 1fr; padding: var(--wb-pad-v) var(--wb-pad-h); }
+  /* Scroll area inside the workbench frame (beneath toolbar) */
+  .workbench-inner { overflow: auto; min-height: 0; }
+  /* Ensure nested grids can shrink for scroll container */
+  .workbench-inner > div { min-height: 0; }
       /* Inspector: overlay fixed to viewport right; left aligned with search bar,
          top aligned with the workbench frame */
       .inspector {
@@ -234,7 +271,7 @@
 
       /* Drawer variables align with front_page_mock */
       :root {
-        --drawer-w: 310px; /* baked from tuner */
+        --drawer-w: 280px; /* baked from tuner */
         --tabs-offset: 24px; /* baked from tuner */
         --stem-w: 28px;
         --stem-offset: 10px;
@@ -328,6 +365,39 @@
   .filters-col label { display: flex; align-items: center; gap: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .filters-col.scroll { max-height: 320px; overflow-y: auto; padding-right: 6px; }
   .searchbox.small input { min-width: 0; width: 100%; height: 32px; padding: 4px 8px; }
+
+      /* Light theme overrides (copied from front_page_mock for consistency) */
+      [data-theme="light"] {
+        --bg-0: #efe9dc;
+        --bg-1: #f7f3ea;
+        --ink: #1f180b;
+        --panel-fill-top: #faf6ec;
+        --panel-fill-bot: #eee6d4;
+        --gold-dark: #7a5719;
+        --gold-mid: #c9a74b;
+        --gold-hi: #f2de8a;
+        --text: #2e2818;
+        --muted: #5f5748;
+        --accent: #b8912e;
+        --chip: #efe7d5;
+        --chip-hl: #e6dcc5;
+        --ok: #2f8e4b;
+        --warn: #b8821a;
+        --err: #b23b3b;
+      }
+      /* Use a light inner fill for frames under light mode */
+      [data-theme="light"] .frame { --center-fill: #f5efe3; }
+      /* Inputs: lighten background/border in light mode */
+      [data-theme="light"] .searchbox input {
+        background: #f5efe3;
+        color: var(--text);
+        border-color: #cfc4ab;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+      }
+      /* Buttons (Grid/List, drawer actions) */
+      [data-theme="light"] .btn { color: #2e2818; background: #efe7d5; border-color: #cdbd97; }
+      /* Chips: ensure contrast like front_page_mock */
+      [data-theme="light"] .chip { background: #f3ebd9; border-color: #c8b894; color: #2e2818; }
     </style>
   </head>
   <body>
@@ -358,8 +428,8 @@
             <div class="frame ctrl-frame ctrl-search"><div class="content">
               <div class="searchbox"><input type="search" placeholder="Search..." aria-label="Search" /></div>
             </div></div>
-            <div class="frame ctrl-frame ctrl-theme"><div class="content">
-              <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false"><span class="ico" aria-hidden="true">🌙</span>Dark</button>
+            <div class="frame ctrl-frame ctrl-theme" role="button" tabindex="0"><div class="content">
+              <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"></button>
             </div></div>
           </div>
           <div class="row-bottom">
@@ -549,10 +619,13 @@
 
     <script>
       const btnSidecar = document.getElementById('btnSidecar');
-      const wbInner = document.getElementById('wbInner').parentElement; // .workbench
-      btnSidecar.addEventListener('click', () => {
-        wbInner.classList.toggle('with-sidecar');
-      });
+      const wbInnerEl = document.getElementById('wbInner');
+      const workbenchEl = wbInnerEl ? wbInnerEl.closest('.workbench') : null;
+      if (btnSidecar && workbenchEl) {
+        btnSidecar.addEventListener('click', () => {
+          workbenchEl.classList.toggle('with-sidecar');
+        });
+      }
 
       const btnGrid = document.getElementById('btnGrid');
       const btnList = document.getElementById('btnList');
@@ -661,14 +734,26 @@
       (function(){
         const root = document.documentElement;
         const toggle = document.getElementById('themeToggle');
-        if (!toggle) return;
-        const ico = toggle.querySelector('.ico');
+        const frame = document.querySelector('.ctrl-frame.ctrl-theme');
+        if (!toggle || !frame) return;
         function applyTheme(next) {
-          if (next === 'light') { root.setAttribute('data-theme', 'light'); toggle.setAttribute('aria-pressed','true'); toggle.lastChild.textContent='Light'; ico.textContent='☀️'; }
-          else { root.setAttribute('data-theme', 'dark'); toggle.setAttribute('aria-pressed','false'); toggle.lastChild.textContent='Dark'; ico.textContent='🌙'; }
+          if (next === 'light') {
+            root.setAttribute('data-theme', 'light');
+            toggle.setAttribute('aria-pressed','true');
+            toggle.setAttribute('aria-label','Switch to dark theme');
+          } else {
+            root.setAttribute('data-theme', 'dark');
+            toggle.setAttribute('aria-pressed','false');
+            toggle.setAttribute('aria-label','Switch to light theme');
+          }
         }
         applyTheme('dark');
-        toggle.addEventListener('click', () => { const isLight = root.getAttribute('data-theme')==='light'; applyTheme(isLight?'dark':'light'); });
+        function onToggle(){ const isLight = root.getAttribute('data-theme')==='light'; applyTheme(isLight?'dark':'light'); }
+        toggle.addEventListener('click', (e) => { e.stopPropagation(); onToggle(); });
+        frame.addEventListener('click', onToggle);
+        frame.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); }
+        });
       })();
 
       // Domain + system bars: simple pressed-state toggle and swapping row-bottom buttons
