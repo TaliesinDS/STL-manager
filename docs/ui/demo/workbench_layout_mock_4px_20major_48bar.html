@@ -24,7 +24,9 @@
         --ink: #0c0a05;
         --panel-fill-top: #12100b;
         /* Topbar button art (supports decorative overhang) */
-        --topbtn-img-inactive: url('../img/BtnTopbarInactive.png');   /* per user: this asset used when button is INACTIVE */
+    --topbtn-img-inactive: url('../img/BtnTopbarInactive.png');   /* per user: this asset used when button is INACTIVE */
+  /* Ambient info panel fixed bottom offset (simple, maintainable) */
+        --ambient-bottom: 82px;
         --topbtn-img-active:   url('../img/BtnTopbarActive.png'); /* per user: this asset used when button is ACTIVE */
         --topbtn-pointer-h: 12px; /* overhang below the row; non-interactive */
         --topbtn-active-bgY: 100%; /* vertical scale of active art inside its pseudo-element */
@@ -33,7 +35,6 @@
         --muted: #bdb7a5;
         --accent: #d8b85a;
         --chip: #2a2618;
-        --chip-hl: #3a331f;
         --ok: #64d37f;
         --warn: #ffcc66;
         --err: #ee6666;
@@ -54,6 +55,10 @@
         --wb-edge-left: 0px;
         --wb-pad-v: 10px;
         --wb-pad-h: 12px;
+        /* Fixed bottom inset for inspector panel */
+        --inspector-bottom: 24px;
+        /* Bottom inset for the inner inspector frame (visual edge control) */
+        --inspector-frame-bottom: 56px;
       }
       html, body { height: 100%; margin: 0; }
       body {
@@ -213,12 +218,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-origin: border-box;
   }
   html[data-theme="light"] .ctrl-frame.ctrl-theme {
     background-image: var(--theme-switch-bg-light);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-origin: border-box;
   }
   /* Keep bottom rows clipped; top row overflow is handled above to allow decorative overhang */
   .row-bottom, .row-pins { overflow: hidden; }
@@ -243,11 +250,75 @@
       .inspector {
         position: fixed;
         top: var(--inspector-top, calc(var(--drawer-top) + 8px));
-        bottom: var(--drawer-bottom);
+        bottom: var(--inspector-bottom, 244px);
         right: 0;
         left: var(--inspector-left, calc(100vw - 380px)); /* fallback to ~380px width */
         z-index: 700;
       }
+      /* Make the inner frame the visual element with its own bottom inset, without
+         impacting other .frame instances elsewhere in the layout. */
+      .inspector > .frame {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: var(--inspector-frame-bottom, 0px);
+      }
+      /* Inspector content spacing and scroll */
+  .inspector > .frame > .content { padding: 16px; overflow: auto; display: grid; gap: 8px; }
+
+      /* Inspector layout boxes (empty frames) */
+      .insp-layout { display: grid; gap: 12px; }
+      .ibox {
+        --mini-border: 10px; --mini-slice: 28; --mini-biw: 1; --mini-img: url('../img/9sFrame3.png');
+        border: var(--mini-border) solid transparent; border-radius: 4px;
+        border-image-source: var(--mini-img); border-image-slice: var(--mini-slice); border-image-width: var(--mini-biw); border-image-repeat: stretch;
+        background-color: var(--center-fill, #000); box-shadow: 0 0 0 1px rgba(0,0,0,0.85);
+        min-height: 28px; box-sizing: border-box;
+        /* Do not allow content to change box size */
+        overflow: hidden;
+        min-width: 0;
+      }
+      .ibox .label { font-size: 12px; color: var(--muted); padding: 6px 8px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .ibox.name { height: 60px; }
+
+      /* Middle cluster: squares on sides + tall preview center */
+  .midgrid { display: grid; grid-template-columns: 72px 1fr 72px; gap: 8px; align-items: stretch; }
+  .midgrid > * { min-width: 0; }
+  .sidecol { display: grid; gap: 18px; }
+      .ibox.sq { width: 100%; height: 72px; }
+      .preview .ibox.tall { height: 220px; }
+
+      /* Actions row under preview */
+  .actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .actions-row > * { min-width: 0; }
+      .ibox.rect { height: 36px; }
+
+      /* Six wide metadata boxes */
+  .insp-meta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0px; }
+  .insp-meta-grid > * { min-width: 0; }
+      .insp-meta-grid .ibox.meta { height: 40px; }
+
+      /* Files box */
+  .ibox.files { min-height: 240px; position: relative; }
+        /* Optional: inventory-like grid background (toggle by adding .grid-bg) */
+        .ibox.files.grid-bg {
+          --inv-grid-gap: 32px;                  /* cell size */
+          --inv-grid-inset: 0px;                 /* padding from frame edge */
+          --inv-grid-color: rgba(216,184,90,.16);/* subtle brass line */
+        }
+        .ibox.files.grid-bg::before {
+          content: "";
+          position: absolute;
+          top: var(--inv-grid-inset); left: var(--inv-grid-inset);
+          right: var(--inv-grid-inset); bottom: var(--inv-grid-inset);
+          pointer-events: none;
+          border-radius: 2px;
+          background-image:
+            linear-gradient(to bottom, var(--inv-grid-color) 1px, transparent 1px),
+            linear-gradient(to right,  var(--inv-grid-color) 1px, transparent 1px);
+          background-size: var(--inv-grid-gap) var(--inv-grid-gap);
+        }
 
       /* Workbench toolbar and sidecar */
       .wb-toolbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
@@ -263,8 +334,9 @@
   .card { min-height: 120px; }
   /* Table-like list view: no frames, 1px gold/brass separators between entries */
   .rowlist { display: grid; gap: 0; }
-  .table-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8px 12px; }
-  .rowlist .table-row + .table-row { border-top: 1px solid var(--gold-dark); }
+  .table-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8px 12px; border: 2px solid var(--gold-darkest); }
+  /* Avoid double-thick separators: keep first row's top border, remove top border on subsequent rows */
+  .rowlist .table-row + .table-row { border-top: 0; }
 
       /* Inspector content placeholder */
       .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px; margin-bottom: 6px; }
@@ -276,7 +348,8 @@
         --stem-w: 28px;
         --stem-offset: 10px;
         --tab-cap-overhang: 12px;
-        --gold-dark: #6a4b14;
+        --gold-darkest: #2b210a;
+        --gold-dark: #533a0f;
         --gold-mid: #d8b85a;
         --gold-hi: #f2de8a;
         /* Drawer tab badge offsets */
@@ -398,6 +471,42 @@
       [data-theme="light"] .btn { color: #2e2818; background: #efe7d5; border-color: #cdbd97; }
       /* Chips: ensure contrast like front_page_mock */
       [data-theme="light"] .chip { background: #f3ebd9; border-color: #c8b894; color: #2e2818; }
+
+      /* Ambient info panel (background-like, non-interactive) */
+      .ambient-info {
+        position: fixed;
+        top: var(--drawer-top);
+        bottom: var(--ambient-bottom);
+        left: 72px;
+        width: calc(var(--drawer-w) - 0px);
+        padding: 8px;
+        z-index: 800; /* below drawer (950) and drawer tabs (900/1005) */
+        pointer-events: none; /* non-interactive by design */
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      html[data-dock="right"] .ambient-info { left: auto; right: 0; }
+      .ambient-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0px;
+        padding: 10px 12px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.3;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.18) inset;
+      }
+      .ambient-card .title { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; font-size: 14px; color: #d9d2bf; opacity: 0.8; margin-bottom: 6px; }
+      .ambient-rows { display: grid; gap: 4px; }
+      .ambient-rows .row { display: grid; grid-template-columns: 64px 1fr; gap: 8px; color: #cfc9b6; opacity: 0.85; }
+      .ambient-rows .row div:first-child { color: #bdb7a5; opacity: 0.8; }
+      .ambient-foot { margin-top: 8px; font-size: 11px; color: #bdb7a5; opacity: 0.75; }
+      /* Light theme: invert to low-contrast dark-on-light */
+      [data-theme="light"] .ambient-card {
+        background: rgba(0,0,0,0.03);
+        border-color: rgba(0,0,0,0.08);
+        color: var(--muted);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.06) inset;
+      }
     </style>
   </head>
   <body>
@@ -501,14 +610,40 @@
         <!-- Inspector column -->
         <div class="inspector">
           <div class="frame"><div class="content">
-            <h3>Inspector</h3>
-            <div class="spacer"></div>
-            <div class="kv"><div>Designer</div><div>Ghamak</div></div>
-            <div class="kv"><div>System</div><div>W40K</div></div>
-            <div class="kv"><div>Faction</div><div>Adeptus Astartes</div></div>
-            <div class="kv"><div>Base</div><div>32mm Round</div></div>
-            <div class="spacer"></div>
-            <button class="icon-btn" id="btnReport">Report mismatch</button>
+            <div class="insp-layout">
+              <!-- 1) Wide box: Variant name -->
+              <div class="ibox name" id="inspName"><div class="label">Variant name</div></div>
+
+              <!-- 2) Middle: side squares + tall preview -->
+              <div class="midgrid">
+                <div class="sidecol">
+                  <div class="ibox sq"><div class="label">NSFW</div></div>
+                  <div class="ibox sq"><div class="label">Scale or Base</div></div>
+                <div class="ibox rect"><div class="label">Favorite</div></div>
+                </div>
+                <div class="preview">
+                  <div class="ibox tall" id="inspPreview"><div class="label">Preview</div></div>
+                </div>
+                <div class="sidecol">
+                  <div class="ibox sq"><div class="label">Support</div></div>
+                  <div class="ibox sq"><div class="label">Segmentation</div></div>
+                  <div class="ibox rect"><div class="label">Report mismatch</div></div>
+                </div>
+              </div>
+
+              <!-- 3) Six wide boxes for metadata -->
+              <div class="insp-meta-grid">
+                <div class="ibox meta"><div class="label">Game system</div></div>
+                <div class="ibox meta"><div class="label">Faction T1</div></div>
+                <div class="ibox meta"><div class="label">Faction T2</div></div>
+                <div class="ibox meta"><div class="label">Codex Unit</div></div>
+                <div class="ibox meta"><div class="label">Designer</div></div>
+                <div class="ibox meta"><div class="label">Collection</div></div>
+              </div>
+
+              <!-- 4) Big files box -->
+              <div class="ibox files grid-bg" id="inspFiles"><div class="label">Files</div></div>
+            </div>
           </div></div>
         </div>
       </div>
@@ -616,6 +751,19 @@
       <button class="drawer-tab" data-ref="#tab-nsfw" data-tab="nsfw" aria-pressed="false" title="NSFW"><span class="txt">NSFW</span><span class="count"></span></button>
       <button class="drawer-tab" data-ref="#tab-more" data-tab="more" aria-pressed="false" title="More filters"><span class="txt">More</span><span class="count"></span></button>
     </div>
+
+    <!-- Ambient info panel: background-like, non-interactive area under the drawer space -->
+    <aside class="ambient-info" aria-hidden="true">
+      <div class="ambient-card">
+        <div class="title">Workspace</div>
+        <div class="ambient-rows">
+          <div class="row"><div>DB</div><div>stl_manager_v1.db</div></div>
+          <div class="row"><div>View</div><div>Workbench • Variants</div></div>
+          <div class="row"><div>Profile</div><div>Default</div></div>
+        </div>
+        <div class="ambient-foot">Tip: press G to toggle the 4px grid overlay.</div>
+      </div>
+    </aside>
 
     <script>
       const btnSidecar = document.getElementById('btnSidecar');
@@ -1085,5 +1233,6 @@
         q.addEventListener('input', apply);
       })();
     </script>
+    
   </body>
 </html>
