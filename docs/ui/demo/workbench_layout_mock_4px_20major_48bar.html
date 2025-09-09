@@ -127,12 +127,12 @@
 
   /* Top bar (two-row button area + meta frame) */
   .topbar { position: sticky; top: 0; z-index: 5; }
-  .topbar .content { display: grid; grid-template-columns: 180px 1fr; gap: 0; align-items: stretch; }
+  .topbar .content { display: grid; grid-template-columns: 180px 1fr; gap: 0; align-items: stretch; height: 144px; }
   .meta-card .title { font-family: "Cinzel", Georgia, serif; font-size: 18px; letter-spacing: 0.03em; }
   .meta-grid { display: grid; gap: 6px; margin-top: 6px; }
   .meta-grid .row { display: grid; grid-template-columns: 100px 1fr; gap: 6px; font-size: 12px; color: #d9d2bf; }
 
-  .btn-area { display: grid; grid-template-rows: var(--bar-row-h-top) auto var(--bar-row-h); gap: 0; }
+  .btn-area { display: grid; grid-template-rows: var(--bar-row-h-top) var(--bar-row-h) auto; gap: 0; }
   .row-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0; align-items: stretch; }
   .row-bottom { display: grid; grid-template-columns: 1fr; align-items: stretch; }
   .row-pins { display: flex; gap: 0; align-items: stretch; }
@@ -272,32 +272,36 @@
     background-position: center;
     background-origin: border-box;
   }
-  /* Keep bottom rows clipped; top row overflow is handled above to allow decorative overhang */
-  .row-bottom, .row-pins { overflow: hidden; }
-  .row-crumb { overflow: visible; }
+  /* Keep second row clipped; third row hosts crumb panel and may expand */
+  .row-bottom { overflow: hidden; }
+  .row-crumb { overflow: hidden; }
+  .row-pins { overflow: visible; }
   .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
 
   /* Breadcrumb chip row (anchored, non-floating) */
-  .row-crumb { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 8px; padding: 6px 0 8px; }
-  .row-crumb .chip { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .row-crumb { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 8px; padding: 0px 0 0px; }
+  .row-crumb .chip { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; padding: 12px 12px; border-radius: 0px; border: 1px solid #3c3622; background: var(--chip); }
   .row-crumb .chip .segments { display: inline-flex; gap: 6px; align-items: center; }
+  .row-crumb .chip .segments, .row-crumb .chip .seg { pointer-events: auto; }
   .row-crumb .chip .seg { display: inline-flex; align-items: center; gap: 6px; position: relative; }
   .row-crumb .chip .seg + .seg::before { content: "/"; opacity: 0.6; margin: 0 2px; }
-  .row-crumb .chip .caret { opacity: 0.8; }
+  .row-crumb .chip .caret { opacity: 0.8; pointer-events: none; }
   /* Placeholder flag/icon for first segment; swap to real flag art later */
   .row-crumb .chip .seg.flag::before {
     content: ""; display: inline-block; width: 18px; height: 18px; border-radius: 2px; margin-right: 4px; border: 1px solid rgba(0,0,0,0.35);
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04); background: linear-gradient(135deg, #2b240f, #1c170a);
+    pointer-events: none; /* do not block clicks; let them hit the segment */
   }
   .row-crumb .chip .seg.flag.game-40k::before { background: linear-gradient(135deg, #203a7a, #152553); }
   .row-crumb .chip .seg.flag.game-aos::before { background: linear-gradient(135deg, #3a7a20, #265315); }
   .row-crumb .chip .seg.flag.game-30k::before { background: linear-gradient(135deg, #7a3a20, #532615); }
   /* Inline panel anchored under the chip; pushes layout down instead of floating */
-  .crumb-panel { display: none; grid-column: 1 / -1; background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)); border: 1px solid #2a281c; border-radius: 8px; padding: 8px; box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
+  .crumb-panel { display: none; grid-column: 1 / -1; background: none; border: 0px solid #2a281c; border-radius: 0px; padding: 1px; box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
   .crumb-panel.active { display: block; }
-  .crumb-panel { min-height: 64px; }
-  .crumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
-  .crumb-tile { background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 8px; text-align: center; cursor: pointer; user-select: none; }
+  .crumb-panel { height: 32px; }
+  /* Make tiles flow left-to-right and wrap to new rows */
+  .crumb-grid { display: flex; flex-wrap: nowrap; gap: 6px; }
+  .crumb-tile { background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 0px; padding: 1px; text-align: center; cursor: pointer; user-select: none; flex: 0 1 160px; }
   .crumb-tile:hover, .crumb-tile:focus { outline: none; border-color: var(--gold-mid); }
 
       /* App grid: left overlay drawer, center workbench, right inspector */
@@ -667,14 +671,14 @@
               <span class="segments" id="crumbSegments"><span class="seg flag">40K</span></span>
               <span class="caret" aria-hidden="true">▾</span>
             </div>
-            <div class="crumb-panel" id="crumbPanel" role="region" aria-label="Drilldown options">
-              <div class="crumb-grid" id="crumbGrid"></div>
-            </div>
             <!-- Hidden placeholder to remain compatible with existing scripts -->
             <div class="btnbar" id="systemBar" role="tablist" aria-label="Domain specifics" style="display:none"></div>
           </div>
           <div class="row-pins" id="pinsBar" aria-label="Pins">
-            <!-- Reserved for pins; intentionally empty for now -->
+            <!-- Anchored crumb panel now lives in third row so second row height stays fixed -->
+            <div class="crumb-panel" id="crumbPanel" role="region" aria-label="Drilldown options">
+              <div class="crumb-grid" id="crumbGrid"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1293,7 +1297,8 @@
           const top = Math.max(0, Math.round(wbFrame.getBoundingClientRect().top));
           document.documentElement.style.setProperty('--drawer-top', top + 'px');
         }
-        ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, syncDrawerTop, { passive: true }));
+  ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, syncDrawerTop, { passive: true }));
+  document.addEventListener('crumbPanelToggled', syncDrawerTop);
         const app = document.querySelector('.app');
         if (app) { const ro = new ResizeObserver(() => syncDrawerTop()); ro.observe(app); }
         requestAnimationFrame(syncDrawerTop);
@@ -1591,7 +1596,7 @@
           if (level === 'faction') {
             makeTiles(DATA.faction[state.base]||[], (v)=>{ state.faction=v; state.subfaction=null; updateSeg(); render('subfaction'); document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>grid.appendChild(n));
           } else if (level === 'subfaction') {
-            makeTiles(DATA.subfaction[state.faction]||[], (v)=>{ state.subfaction=v; updateSeg(); panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); state.open=false; document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>grid.appendChild(n));
+            makeTiles(DATA.subfaction[state.faction]||[], (v)=>{ state.subfaction=v; updateSeg(); panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); state.open=false; document.dispatchEvent(new CustomEvent('crumbChanged')); document.dispatchEvent(new CustomEvent('crumbPanelToggled')); }).forEach(n=>grid.appendChild(n));
           }
         }
         function updateSeg(){
@@ -1603,12 +1608,14 @@
             span.textContent = s;
             span.tabIndex=0;
             span.addEventListener('click', (e)=>{
+              // Always handle at segment level, but don’t let it bubble into chip and re-toggle
               e.stopPropagation();
               if (i===0) { state.faction = state.subfaction = null; render('faction'); }
               else if (i===1) { state.subfaction = null; render('subfaction'); }
               panel.classList.add('active'); chip.setAttribute('aria-expanded','true'); state.open=true;
               updateSeg();
               document.dispatchEvent(new CustomEvent('crumbChanged'));
+              document.dispatchEvent(new CustomEvent('crumbPanelToggled'));
             });
             segEl.appendChild(span);
           });
@@ -1621,6 +1628,7 @@
           state.open = !state.open;
           panel.classList.toggle('active', state.open);
           chip.setAttribute('aria-expanded', state.open ? 'true' : 'false');
+          document.dispatchEvent(new CustomEvent('crumbPanelToggled'));
           if (state.open) render(state.faction ? 'subfaction' : 'faction');
         });
 
@@ -1670,7 +1678,8 @@
           // Use viewport-relative top so the fixed inspector matches as the user scrolls
           root.style.setProperty('--inspector-top', Math.max(0, Math.round(r.top)) + 'px');
         }
-        ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, computeInspectorTop, { passive: true }));
+  ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, computeInspectorTop, { passive: true }));
+  document.addEventListener('crumbPanelToggled', computeInspectorTop);
         // Also recompute after potential layout shifts in the app area
         const app = document.querySelector('.app');
         if (app) {
