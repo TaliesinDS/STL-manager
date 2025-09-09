@@ -157,3 +157,55 @@ Use this structure when documenting additional elements:
 - Finalize color tagging or number-only for collections
 - Decide on max recents in quick menu (3–5?) and search for All collections view
 - Accessibility: keyboard map and ARIA roles for menus
+
+---
+
+## Banner Dropdowns (Row‑1 Menus)
+
+This section specifies the banner dropdown used by all top‑row domain buttons (Tabletop, Display, DnD, Terrain, Scale, Unsorted, Favorites). Banners are always used; scrolling is enabled only if the menu has 8+ items (currently only Favorites).
+
+Source: `docs/ui/demo/workbench_layout_mock_4px_20major_48bar.html`
+
+### Structure
+- `#bannerMenu` (container)
+  - `.menu-frame` — decorative skin: `menubanner1.png`, anchored bottom center
+    - `.menu-scroll` — scroll container (only scrolls if 8+ items)
+      - `.menu-items` — grid (`gap: 4px`)
+        - `.menu-item` — `<button role="menuitem">…</button>`
+
+### Spacing controls
+- Head gap: `--banner-head-gap` (crest clearance)
+- Tail gap: `--banner-tail-gap` (tip clearance)
+
+Configuration precedence (evaluated on open):
+1) Active top‑row button `data-head-gap` / `data-tail-gap`
+2) `#bannerMenu` `data-head-gap` / `data-tail-gap`
+
+The resolved values are applied as inline CSS variables on `.menu-frame`. The scroller (`.menu-scroll`) uses those via padding:
+- `padding-top: calc(6px + var(--banner-head-gap, 24px))`
+- `padding-bottom: calc(6px + var(--banner-tail-gap, 16px))`
+
+### Sizing and scrolling rules
+- Always open the banner for row‑1 buttons.
+- Determine `shouldScroll = (items.length >= 8)`.
+- Visible rows `n = shouldScroll ? 7 : items.length`.
+- Desired height `desired = padTop + (itemH * n) + rowGap*(n-1) + padBottom`.
+- Clamp to viewport below the button: `finalH = clamp(desired, 120, window.innerHeight - menuTop - 8)`.
+- Apply `finalH` to `.menu-frame` (`height` and `max-height`).
+- If `shouldScroll`:
+  - Set `.menu-scroll` height to `finalH - (tailGap + 8)` to reserve the tail and an extra 8px guard, `overflow-y: auto`.
+- Else:
+  - Clear explicit scroller size and set `overflow-y: hidden`.
+
+### Accessibility
+- `.menu-items` has `role="menu"` and an `aria-label` based on the domain.
+- `.menu-item` uses `role="menuitem"` and is focusable.
+- Close on outside click or Escape.
+
+### Theming
+- `.menu-frame` has transparent background and square corners; only the PNG is visible.
+- Skin can be swapped by changing the `background-image` URL in CSS.
+
+### Troubleshooting
+- Items overlap the tail when scrolled: confirm we subtract `tailGap + 8` from scroller height and the banner applies `--banner-tail-gap`.
+- Non‑scroll menus show a scrollbar: ensure `shouldScroll` is false and scroller overflow is hidden with no explicit height.
