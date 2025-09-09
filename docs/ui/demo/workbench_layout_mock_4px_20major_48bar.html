@@ -132,7 +132,7 @@
   .meta-grid { display: grid; gap: 6px; margin-top: 6px; }
   .meta-grid .row { display: grid; grid-template-columns: 100px 1fr; gap: 6px; font-size: 12px; color: #d9d2bf; }
 
-  .btn-area { display: grid; grid-template-rows: var(--bar-row-h-top) var(--bar-row-h) var(--bar-row-h); gap: 0; }
+  .btn-area { display: grid; grid-template-rows: var(--bar-row-h-top) auto var(--bar-row-h); gap: 0; }
   .row-top { display: grid; grid-template-columns: 1fr auto auto; gap: 0; align-items: stretch; }
   .row-bottom { display: grid; grid-template-columns: 1fr; align-items: stretch; }
   .row-pins { display: flex; gap: 0; align-items: stretch; }
@@ -274,7 +274,31 @@
   }
   /* Keep bottom rows clipped; top row overflow is handled above to allow decorative overhang */
   .row-bottom, .row-pins { overflow: hidden; }
+  .row-crumb { overflow: visible; }
   .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+
+  /* Breadcrumb chip row (anchored, non-floating) */
+  .row-crumb { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 8px; padding: 6px 0 8px; }
+  .row-crumb .chip { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .row-crumb .chip .segments { display: inline-flex; gap: 6px; align-items: center; }
+  .row-crumb .chip .seg { display: inline-flex; align-items: center; gap: 6px; position: relative; }
+  .row-crumb .chip .seg + .seg::before { content: "/"; opacity: 0.6; margin: 0 2px; }
+  .row-crumb .chip .caret { opacity: 0.8; }
+  /* Placeholder flag/icon for first segment; swap to real flag art later */
+  .row-crumb .chip .seg.flag::before {
+    content: ""; display: inline-block; width: 18px; height: 18px; border-radius: 2px; margin-right: 4px; border: 1px solid rgba(0,0,0,0.35);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04); background: linear-gradient(135deg, #2b240f, #1c170a);
+  }
+  .row-crumb .chip .seg.flag.game-40k::before { background: linear-gradient(135deg, #203a7a, #152553); }
+  .row-crumb .chip .seg.flag.game-aos::before { background: linear-gradient(135deg, #3a7a20, #265315); }
+  .row-crumb .chip .seg.flag.game-30k::before { background: linear-gradient(135deg, #7a3a20, #532615); }
+  /* Inline panel anchored under the chip; pushes layout down instead of floating */
+  .crumb-panel { display: none; grid-column: 1 / -1; background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)); border: 1px solid #2a281c; border-radius: 8px; padding: 8px; box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
+  .crumb-panel.active { display: block; }
+  .crumb-panel { min-height: 64px; }
+  .crumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
+  .crumb-tile { background: #1a1811; color: var(--text); border: 1px solid #2a281c; border-radius: 8px; padding: 8px; text-align: center; cursor: pointer; user-select: none; }
+  .crumb-tile:hover, .crumb-tile:focus { outline: none; border-color: var(--gold-mid); }
 
       /* App grid: left overlay drawer, center workbench, right inspector */
   .app { max-width: 1440px; margin: 56px auto; padding: 0 16px 24px; }
@@ -637,15 +661,17 @@
               <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme"></button>
             </div></div>
           </div>
-          <div class="row-bottom">
-            <div class="btnbar" id="systemBar" role="tablist" aria-label="Domain specifics">
-              <!-- Default: Tabletop systems -->
-              <button class="btn9 small" data-system="w40k" aria-pressed="true">40K</button>
-              <button class="btn9 small" data-system="aos">AoS</button>
-              <button class="btn9 small" data-system="heresy">Heresy</button>
-              <button class="btn9 small" data-system="other">Other</button>
-              <button class="btn9 small" data-system="agnostic">Agnostic</button>
+          <!-- Breadcrumb drilldown row now replaces the second row buttons -->
+          <div class="row-bottom row-crumb" id="crumbRow" aria-label="Drilldown">
+            <div class="chip" id="crumbChip" aria-haspopup="true" aria-expanded="false">
+              <span class="segments" id="crumbSegments"><span class="seg flag">40K</span></span>
+              <span class="caret" aria-hidden="true">▾</span>
             </div>
+            <div class="crumb-panel" id="crumbPanel" role="region" aria-label="Drilldown options">
+              <div class="crumb-grid" id="crumbGrid"></div>
+            </div>
+            <!-- Hidden placeholder to remain compatible with existing scripts -->
+            <div class="btnbar" id="systemBar" role="tablist" aria-label="Domain specifics" style="display:none"></div>
           </div>
           <div class="row-pins" id="pinsBar" aria-label="Pins">
             <!-- Reserved for pins; intentionally empty for now -->
@@ -992,7 +1018,6 @@
         }
         function applyAll(){
           setVar('--grid-u', unit.value + 'px');
-          setVar('--grid-major', major.value);
           setVar('--grid-origin-x', (parseInt(oX.value)||0) + 'px');
           setVar('--grid-origin-y', (parseInt(oY.value)||0) + 'px');
           updateColors();
@@ -1261,15 +1286,17 @@
         const pinKey = 'stlmgr_dock_pinned';
         const wKey = 'stlmgr_drawer_w';
 
+        // Sync drawer top with workbench frame top so they align visually
         function syncDrawerTop() {
-          const app = document.querySelector('.app');
-          if (!app) return;
-          const top = Math.max(0, Math.round(app.getBoundingClientRect().top + window.scrollY));
+          const wbFrame = document.querySelector('.workbench > .frame');
+          if (!wbFrame) return;
+          const top = Math.max(0, Math.round(wbFrame.getBoundingClientRect().top));
           document.documentElement.style.setProperty('--drawer-top', top + 'px');
         }
-        window.addEventListener('resize', syncDrawerTop);
-        window.addEventListener('load', syncDrawerTop);
-        syncDrawerTop();
+        ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, syncDrawerTop, { passive: true }));
+        const app = document.querySelector('.app');
+        if (app) { const ro = new ResizeObserver(() => syncDrawerTop()); ro.observe(app); }
+        requestAnimationFrame(syncDrawerTop);
 
         function openDrawer(which) {
           Object.values(panels).forEach(p => p.classList.remove('active'));
@@ -1382,8 +1409,25 @@
         function debounce(fn, ms){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; }
 
         function currentSystem(){
-          const btn = systemBar.querySelector('.btn9[aria-pressed="true"]');
+          // Prefer breadcrumb base label
+          const baseSeg = document.querySelector('#crumbSegments .seg');
+          const base = baseSeg ? (baseSeg.textContent || '').trim() : '';
+          const map = (v)=>{
+            const k = v.toLowerCase();
+            if (k.includes('40')) return 'w40k';
+            if (k.includes('aos')) return 'aos';
+            if (k.includes('30') || k.includes('heresy')) return 'heresy';
+            return null;
+          };
+          const fromCrumb = map(base);
+          if (fromCrumb) return fromCrumb;
+          // Fallback to hidden systemBar if ever populated
+          const btn = systemBar ? systemBar.querySelector('.btn9[aria-pressed="true"]') : null;
           return btn ? btn.getAttribute('data-system') : null;
+        }
+        function currentFacet(){
+          const segs = Array.from(document.querySelectorAll('#crumbSegments .seg')).map(el => (el.textContent||'').trim());
+          return { faction: segs[1] || null, subfaction: segs[2] || null };
         }
 
         async function fetchVariants(params){
@@ -1446,8 +1490,9 @@
         async function refresh(){
           const q = (searchInput && searchInput.value) ? searchInput.value.trim() : '';
           const system = currentSystem();
+          const { faction, subfaction } = currentFacet();
           try{
-            const data = await fetchVariants({ q, system, limit: 50, offset: 0 });
+            const data = await fetchVariants({ q, system, faction: (subfaction || faction || undefined), limit: 50, offset: 0 });
             renderList(data.items || []);
             // If user is in list mode, keep rows visible; otherwise just prepare data
             if (rowsEl && rowsEl.style.display === 'none' && cardsEl) {
@@ -1462,22 +1507,132 @@
 
         // Hook search
         if (searchInput) searchInput.addEventListener('input', debouncedRefresh);
-        // Hook system changes: clicks on system bar
-        systemBar.addEventListener('click', (e)=>{
-          const btn = e.target.closest('.btn9[data-system]');
-          if (!btn) return;
-          // toggle pressed state among siblings
-          Array.from(systemBar.querySelectorAll('.btn9')).forEach(b=>b.setAttribute('aria-pressed','false'));
-          btn.setAttribute('aria-pressed','true');
-          refresh();
-        });
-        // When systems list is regenerated due to domain change
-        systemBar.addEventListener('systemsUpdated', ()=>{
-          refresh();
-        });
+        // Hook system changes: clicks on system bar (kept for compatibility if populated)
+        if (systemBar) {
+          systemBar.addEventListener('click', (e)=>{
+            const btn = e.target.closest('.btn9[data-system]');
+            if (!btn) return;
+            Array.from(systemBar.querySelectorAll('.btn9')).forEach(b=>b.setAttribute('aria-pressed','false'));
+            btn.setAttribute('aria-pressed','true');
+            try { systemBar.dispatchEvent(new CustomEvent('systemChanged', { bubbles: true })); } catch (e) {}
+            refresh();
+          });
+          // When systems list is regenerated due to domain change
+          systemBar.addEventListener('systemsUpdated', ()=>{ try { systemBar.dispatchEvent(new CustomEvent('systemChanged', { bubbles: true })); } catch (e) {} refresh(); });
+        }
+        // Refresh when breadcrumb updates
+        document.addEventListener('crumbChanged', ()=>{ refresh(); });
 
         // Initial load
         refresh();
+      })();
+    </script>
+    <script>
+      // Breadcrumb drilldown wiring (anchored under second row; starts from current selection)
+      (function(){
+        const systemBar = document.getElementById('systemBar');
+        const chip = document.getElementById('crumbChip');
+        const segEl = document.getElementById('crumbSegments');
+        const panel = document.getElementById('crumbPanel');
+        const grid = document.getElementById('crumbGrid');
+        if (!systemBar || !chip || !segEl || !panel || !grid) return;
+
+        // Sample data for demo; replace with live faceting later
+        const DATA = {
+          faction: {
+            '40K': ['Space Marines', 'Adeptus Mechanicus', 'Chaos Space Marines', 'Necrons', 'Aeldari'],
+            'AoS': ['Order', 'Chaos', 'Death', 'Destruction'],
+            '30K': ['Legiones Astartes (Loyalist)', 'Legiones Astartes (Traitor)', 'Mechanicum', 'Solar Auxilia']
+          },
+          subfaction: {
+            'Space Marines': ['Dark Angels', 'Blood Angels', 'Ultramarines', 'Space Wolves'],
+            'Adeptus Mechanicus': ['Ryza', 'Lucius', 'Metalica'],
+            'Chaos Space Marines': ['Black Legion', 'World Eaters', "Emperor's Children"],
+            'Necrons': ['Sautekh', 'Mephrit', 'Novokh'],
+            'Aeldari': ['Ulthwé', 'Biel-Tan', 'Saim-Hann'],
+            'Order': ['Stormcast Eternals', 'Sylvaneth', 'Cities of Sigmar'],
+            'Chaos': ['Slaves to Darkness', 'Hedonites of Slaanesh'],
+            'Death': ['Soulblight Gravelords', 'Nighthaunt'],
+            'Destruction': ['Orruk Warclans', 'Gloomspite Gitz', 'Ogor Mawtribes'],
+            'Legiones Astartes (Loyalist)': ['Dark Angels', 'Ultramarines', 'Imperial Fists'],
+            'Legiones Astartes (Traitor)': ['Sons of Horus', 'World Eaters', "Emperor's Children"],
+            'Mechanicum': ['Taghmata', 'Cybernetica'],
+            'Solar Auxilia': ['Cohort', 'Veletaris']
+          }
+        };
+
+  const state = { base: baseFromSystem(), faction: null, subfaction: null, open: false };
+
+        function baseFromSystem(){
+          const btn = systemBar ? systemBar.querySelector('.btn9[aria-pressed="true"]') : null;
+          if (!btn) {
+            // Default base when buttons are not rendered
+            return '40K';
+          }
+          const sys = (btn.getAttribute('data-system') || '').toLowerCase();
+          if (sys === 'w40k' || sys === '40k') return '40K';
+          if (sys === 'aos') return 'AoS';
+          if (sys === 'heresy' || sys === '30k' || sys === 'hh') return '30K';
+          return btn.textContent.trim() || null;
+        }
+        function gameClass(label){
+          const k = (label||'').toLowerCase();
+          if (k.includes('40')) return 'game-40k';
+          if (k.includes('aos')) return 'game-aos';
+          if (k.includes('30')) return 'game-30k';
+          return '';
+        }
+        function clear(el){ while (el.firstChild) el.removeChild(el.firstChild); }
+        function makeTiles(list, click){
+          return (list||[]).map(v=>{ const d=document.createElement('div'); d.className='crumb-tile'; d.textContent=v; d.tabIndex=0; d.addEventListener('click',()=>click(v)); d.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); click(v);} }); return d; });
+        }
+        function render(level){
+          clear(grid);
+          if (level === 'faction') {
+            makeTiles(DATA.faction[state.base]||[], (v)=>{ state.faction=v; state.subfaction=null; updateSeg(); render('subfaction'); document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>grid.appendChild(n));
+          } else if (level === 'subfaction') {
+            makeTiles(DATA.subfaction[state.faction]||[], (v)=>{ state.subfaction=v; updateSeg(); panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); state.open=false; document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>grid.appendChild(n));
+          }
+        }
+        function updateSeg(){
+          clear(segEl);
+          const segs = [state.base, state.faction, state.subfaction].filter(Boolean);
+          segs.forEach((s,i)=>{
+            const span = document.createElement('span');
+            span.className = i===0 ? `seg flag ${gameClass(state.base)}` : 'seg';
+            span.textContent = s;
+            span.tabIndex=0;
+            span.addEventListener('click', (e)=>{
+              e.stopPropagation();
+              if (i===0) { state.faction = state.subfaction = null; render('faction'); }
+              else if (i===1) { state.subfaction = null; render('subfaction'); }
+              panel.classList.add('active'); chip.setAttribute('aria-expanded','true'); state.open=true;
+              updateSeg();
+              document.dispatchEvent(new CustomEvent('crumbChanged'));
+            });
+            segEl.appendChild(span);
+          });
+          // if no base, hide row
+          document.getElementById('crumbRow').style.display = state.base ? '' : 'none';
+        }
+
+        chip.addEventListener('click', ()=>{
+          if (!state.base) return; // nothing selected in system bar yet
+          state.open = !state.open;
+          panel.classList.toggle('active', state.open);
+          chip.setAttribute('aria-expanded', state.open ? 'true' : 'false');
+          if (state.open) render(state.faction ? 'subfaction' : 'faction');
+        });
+
+        // React to second-row changes
+        systemBar.addEventListener('systemChanged', ()=>{
+          state.base = baseFromSystem(); state.faction = null; state.subfaction = null; state.open = false;
+          panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); updateSeg();
+          document.dispatchEvent(new CustomEvent('crumbChanged'));
+        });
+
+        // Init
+        updateSeg();
       })();
     </script>
     <script>
