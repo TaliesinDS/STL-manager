@@ -204,20 +204,44 @@
   .banner-menu { position: absolute; z-index: 10050; display: none; }
   .banner-menu.open { display: block; }
   .banner-menu .menu-frame {
-    /* Simple banner: no ornate frame image */
-    background: #1a1811;
-    border: 1px solid #2a281c;
-    border-radius: 8px;
+    /* Banner skin: scales image to width, anchors tip at bottom */
+  background-color: transparent; /* no fill behind transparent PNG */
+    background-image: url('../img/menubanner1.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto; /* scale to element width, preserve aspect */
+    background-position: bottom center; /* keep pointed tip at bottom edge */
+    border: 0px solid #2a281c;
+    border-radius: 0;
     box-shadow: 0 10px 24px rgba(0,0,0,0.35);
-    width: 100%;
-    max-height: 320px;
-    overflow-y: auto;
-    /* Hide scrollbar (keep scrolling) */
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE/Edge legacy */
+  width: 100%;
+  box-sizing: border-box;
+  max-height: 320px;
+  overflow: hidden;
+    overscroll-behavior: contain; /* prevent scroll chaining affecting layout */
+    overflow-anchor: none;        /* avoid scroll anchoring jumps */
+    contain: layout paint;        /* isolate layout/paint to this element */
+    /* Inner scroller will handle scroll */
   }
-  .banner-menu .menu-frame::-webkit-scrollbar { display: none; } /* WebKit */
-  .banner-menu .menu-items { padding: 6px; display: grid; gap: 4px; }
+  .banner-menu .menu-scroll {
+    max-height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    overflow-anchor: none;
+    contain: layout paint;
+    box-sizing: border-box;
+    /* Reserve head/tail gap in the scrolling viewport so items never overlap the banner art */
+    padding: 6px;
+    padding-top: calc(6px + var(--banner-head-gap, 24px));
+    padding-bottom: calc(6px + var(--banner-tail-gap, 16px));
+  }
+  .banner-menu .menu-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+  .banner-menu .menu-scroll::-webkit-scrollbar { display: none; }
+  .banner-menu .menu-items {
+    /* Items grid relies on scroller padding for outer spacing */
+    padding: 0;
+    display: grid;
+    gap: 4px;
+  }
   .banner-menu .menu-item { appearance: none; background: #1f1b12; color: #f5e8b0; border: 1px solid #3c3622; border-radius: 6px; padding: 8px 10px; text-align: left; cursor: pointer; font: inherit; }
   .banner-menu .menu-item:hover, .banner-menu .menu-item:focus { background: #241e13; outline: none; }
 
@@ -630,9 +654,11 @@
       </div>
     </div>
     <!-- Banner dropdown menu container -->
-    <div id="bannerMenu" class="banner-menu" aria-hidden="true">
-      <div class="menu-frame">
-        <div class="menu-items" role="menu" aria-label="Saved collections"></div>
+  <div id="bannerMenu" class="banner-menu" aria-hidden="true" data-tail-gap="42" data-head-gap="0">
+  <div class="menu-frame">
+        <div class="menu-scroll">
+          <div class="menu-items" role="menu" aria-label="Saved collections"></div>
+        </div>
       </div>
     </div>
 
@@ -1103,8 +1129,9 @@
         function setPressed(bar, btn){ Array.from(bar.querySelectorAll('.btn9')).forEach(b=>b.setAttribute('aria-pressed','false')); btn.setAttribute('aria-pressed','true'); }
         function renderSystems(key){
           const items = SYSTEMS[key] || [];
-          // For all domains, show banner dropdown instead of flooding the second row
-          if (bannerMenu && bannerItems && items.length) {
+          // Use banner dropdown for all domains (row 1 buttons)
+          const useBanner = true;
+          if (useBanner && bannerMenu && bannerItems && items.length) {
             systemBar.innerHTML = '';
             bannerItems.setAttribute('aria-label', key.replace(/(^.|_.?)/g, s=>s.toUpperCase()).replace(/_/g,' '));
             bannerItems.innerHTML = items.map(([v,l])=>`<button class="menu-item" role="menuitem" data-value="${v}">${l}</button>`).join('');
@@ -1115,13 +1142,60 @@
               bannerMenu.style.top = Math.round(r.bottom) + 'px';
               bannerMenu.style.width = Math.round(r.width) + 'px';
             }
+            // Apply configurable gaps; allow active domain button to override
+            const activeBtn = domainBar.querySelector('.btn9[aria-pressed="true"]');
+            const btnTail = activeBtn ? activeBtn.getAttribute('data-tail-gap') : null;
+            const btnHead = activeBtn ? activeBtn.getAttribute('data-head-gap') : null;
+            const gap = parseInt((btnTail ?? bannerMenu.getAttribute('data-tail-gap') ?? '16'), 10);
+            const frame = bannerMenu.querySelector('.menu-frame');
+            if (frame) frame.style.setProperty('--banner-tail-gap', (isFinite(gap)?gap:16) + 'px');
+            const headGap = parseInt((btnHead ?? bannerMenu.getAttribute('data-head-gap') ?? '24'), 10);
+            if (frame) frame.style.setProperty('--banner-head-gap', (isFinite(headGap)?headGap:24) + 'px');
+            // Open first so layout is accurate
             bannerMenu.classList.add('open');
             bannerMenu.setAttribute('aria-hidden','false');
+            // Measure and size on next frame when layout is settled
+            requestAnimationFrame(() => {
+              try {
+                const itemsEls = bannerItems.querySelectorAll('.menu-item');
+                const scroller = bannerMenu.querySelector('.menu-scroll');
+                if (frame && scroller && itemsEls.length) {
+                  const scrollStyle = getComputedStyle(scroller);
+                  const padTop = parseFloat(scrollStyle.paddingTop) || 0;
+                  const padBottom = parseFloat(scrollStyle.paddingBottom) || 0;
+                  const rowGap = parseFloat(getComputedStyle(bannerItems).rowGap) || 0;
+                  const itemRect = itemsEls[0].getBoundingClientRect();
+                  const itemH = itemRect.height || 0;
+                  const shouldScroll = itemsEls.length >= 8;
+                  const n = shouldScroll ? 7 : itemsEls.length; // show up to 7 items before scroll
+                  const itemsBlock = (itemH * n) + (rowGap * Math.max(0, n - 1));
+                  const desired = padTop + itemsBlock + padBottom;
+                  // Constrain to viewport below the button using actual position
+                  const menuTop = bannerMenu.getBoundingClientRect().top;
+                  const avail = Math.max(120, (window.innerHeight - menuTop - 8));
+                  const finalH = Math.max(120, Math.min(desired, avail));
+                  frame.style.maxHeight = finalH + 'px';
+                  frame.style.height = finalH + 'px';
+                  if (shouldScroll) {
+                    const tailGapPx = Math.max(0, parseInt(getComputedStyle(frame).getPropertyValue('--banner-tail-gap')) || 0);
+                    const scrollH = Math.max(80, finalH - tailGapPx);
+                    scroller.style.height = scrollH + 'px';
+                    scroller.style.maxHeight = scrollH + 'px';
+                    scroller.style.overflowY = 'auto';
+                  } else {
+                    scroller.style.height = '';
+                    scroller.style.maxHeight = '';
+                    scroller.style.overflowY = 'hidden';
+                  }
+                }
+              } catch (e) { /* no-op */ }
+            });
             if (!bannerClickAttached) { bannerItems.addEventListener('click', onBannerItemClick); bannerClickAttached = true; }
             return;
           }
-          // Fallback: if no items, clear and close
-          systemBar.innerHTML = '';
+          // Inline buttons for other domains
+          systemBar.innerHTML = items.map(([v,l],i)=>`<button class="btn9 small" data-system="${v}" aria-pressed="${i===0?'true':'false'}">${l}</button>`).join('');
+          try { systemBar.dispatchEvent(new CustomEvent('systemsUpdated', { bubbles: true })); } catch (e) {}
           closeBanner();
         }
         function closeBanner(){
@@ -1129,6 +1203,10 @@
           bannerMenu.classList.remove('open');
           bannerMenu.setAttribute('aria-hidden','true');
           if (bannerClickAttached && bannerItems) { bannerItems.removeEventListener('click', onBannerItemClick); bannerClickAttached = false; }
+          const frame = bannerMenu.querySelector('.menu-frame');
+          if (frame) { frame.style.maxHeight = ''; frame.style.height = ''; }
+          const scroller = bannerMenu.querySelector('.menu-scroll');
+          if (scroller) { scroller.style.maxHeight = ''; scroller.style.height = ''; }
         }
         // Close on outside click or Escape
         document.addEventListener('click', (e)=>{
