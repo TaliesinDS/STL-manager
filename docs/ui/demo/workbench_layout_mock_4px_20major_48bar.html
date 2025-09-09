@@ -314,6 +314,25 @@
   .actions-row > * { min-width: 0; }
       .ibox.rect { height: 36px; }
 
+      /* Favorite target indicator (visual only) */
+      .ibox.rect.fav { position: relative; overflow: visible; }
+      .fav-indicator {
+        position: absolute;
+        top: calc(-1 * var(--mini-border, 10px) + -8px);
+        right: calc(-1 * var(--mini-border, 10px) + -8px);
+        width: 36px; height: 36px;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: transparent;
+        background-image: url('../img/greenroundbutton.png');
+        background-repeat: no-repeat; background-position: center; background-size: contain;
+        color: #ffffff; font-weight: 700; font-size: 12px; line-height: 1;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.45);
+        border-radius: 999px;
+        pointer-events: none; /* graphics only */
+        z-index: 5; /* hover above frame chrome */
+      }
+      .fav-indicator .txt { transform: translateY(-0.5px); }
+
       /* Six wide metadata boxes */
   .insp-meta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0px; }
   .insp-meta-grid > * { min-width: 0; }
@@ -639,7 +658,7 @@
                 <div class="sidecol">
                   <div class="ibox sq"><div class="label">NSFW</div></div>
                   <div class="ibox sq"><div class="label">Scale or Base</div></div>
-                <div class="ibox rect"><div class="label">Favorite</div></div>
+                <div class="ibox rect fav"><div class="label">Favorite</div><div class="fav-indicator" title="Target: Favorites"><span class="txt">★</span></div></div>
                 </div>
                 <div class="preview">
                   <div class="ibox tall" id="inspPreview"><div class="label">Preview</div></div>
@@ -669,10 +688,10 @@
             <div class="frame notes-box"><div class="content">
               <div class="title">Notes</div>
               <div class="notes-grid">
-                <textarea class="textarea" placeholder="Add a note about this variant…" disabled></textarea>
+                <textarea class="textarea" placeholder="Add a note about this model…" disabled></textarea>
                 <div class="checklist">
-                  <label><input type="checkbox" disabled/> Is printed</label>
-                  <label><input type="checkbox" disabled/> Post-processed</label>
+                  <label><input type="checkbox" disabled/> Printed</label>
+                  <label><input type="checkbox" disabled/> Prepped</label>
                   <label><input type="checkbox" disabled/> Primed</label>
                   <label><input type="checkbox" disabled/> Painted</label>
                 </div>
