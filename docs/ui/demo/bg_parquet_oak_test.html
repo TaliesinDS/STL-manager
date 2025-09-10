@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parquet Background (Old Oak) – Pattern Test</title>
+  <style>
+    /* Old oak parquet palette and sizing, converted from SCSS to CSS custom properties */
+    :root {
+      /* Base + transparency */
+  --bgcolor: #080705;          /* very deep matte base (warm near-black) */
+      --transparent: rgba(0,0,0,0);
+
+      /* Wood tones (light → dark) */
+  --color-1: #5C4734;          /* warm highlight (subdued) */
+  --color-2: #483626;          /* aged oak mid (closer to base) */
+  --color-3: #342617;          /* deep walnut (muted) */
+  --color-4: #3C2C1E;          /* subtle board variation */
+  --color-5: #15110D;          /* tarred seam / knots */
+
+      /* Unit sizing */
+  --size: 1.6em; /* slightly tighter pattern so it recedes */
+      --big-size: calc(var(--size) * 2);
+  --min: calc(var(--size) * 0.16); /* thinner inlay lines */
+  --max: calc(var(--size) * 0.44); /* reduced band thickness */
+
+      /* Patina/noise controls */
+  /* Patina with tunable alpha to avoid shape distortion */
+  --patina-ink-alpha: 0.008;
+  --patina-ink: rgba(14, 10, 7, var(--patina-ink-alpha));   /* subtle dark grain */
+  --patina-ink-2-alpha: 0.003;
+  --patina-ink-2: rgba(255, 240, 210, var(--patina-ink-2-alpha)); /* light waxy highlight */
+  --darken-overlay: rgba(0,0,0,0.2);     /* global darken to keep focus on UI */
+    }
+
+    html, body { height: 100%; margin: 0; }
+
+    /* The layered parquet pattern translated to plain CSS */
+    body {
+      background:
+        /* quadrant A */
+        linear-gradient(to left bottom,
+          var(--transparent) var(--min),
+          var(--color-5) var(--min), var(--color-5) var(--max),
+          var(--transparent) var(--max)
+        ) 0 0,
+        linear-gradient(to right top,
+          var(--transparent) var(--min),
+          var(--color-5) var(--min), var(--color-5) var(--max),
+          var(--transparent) var(--max)
+        ) var(--size) 0,
+
+        linear-gradient(to left bottom,
+          var(--transparent) var(--min),
+          var(--color-3) var(--min), var(--color-3) var(--max),
+          var(--transparent) var(--min)
+        ) 0 var(--max),
+        linear-gradient(to right top,
+          var(--transparent) var(--min),
+          var(--color-3) var(--min), var(--color-3) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) var(--max),
+
+        linear-gradient(to left bottom,
+          var(--transparent) var(--min),
+          var(--color-4) var(--min), var(--color-4) var(--max),
+          var(--transparent) var(--min)
+        ) 0 calc(var(--max) * 2),
+        linear-gradient(to right top,
+          var(--transparent) var(--min),
+          var(--color-4) var(--min), var(--color-4) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) calc(var(--max) * 2),
+
+        linear-gradient(to left bottom,
+          var(--transparent) var(--min),
+          var(--color-2) var(--min), var(--color-2) var(--max),
+          var(--transparent) var(--min)
+        ) 0 calc(var(--max) * 3),
+        linear-gradient(to right top,
+          var(--transparent) var(--min),
+          var(--color-2) var(--min), var(--color-2) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) calc(var(--max) * 3),
+
+        /* quadrant B */
+        linear-gradient(to right bottom,
+          var(--transparent) var(--min),
+          var(--color-2) var(--min), var(--color-2) var(--max),
+          var(--transparent) var(--max)
+        ) 0 0,
+        linear-gradient(to left top,
+          var(--transparent) var(--min),
+          var(--color-2) var(--min), var(--color-2) var(--max),
+          var(--transparent) var(--max)
+        ) var(--size) 0,
+
+        linear-gradient(to right bottom,
+          var(--transparent) var(--min),
+          var(--color-5) var(--min), var(--color-5) var(--max),
+          var(--transparent) var(--min)
+        ) 0 var(--max),
+        linear-gradient(to left top,
+          var(--transparent) var(--min),
+          var(--color-5) var(--min), var(--color-5) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) var(--max),
+
+        linear-gradient(to right bottom,
+          var(--transparent) var(--min),
+          var(--color-3) var(--min), var(--color-3) var(--max),
+          var(--transparent) var(--min)
+        ) 0 calc(var(--max) * 2),
+        linear-gradient(to left top,
+          var(--transparent) var(--min),
+          var(--color-3) var(--min), var(--color-3) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) calc(var(--max) * 2),
+
+        linear-gradient(to right bottom,
+          var(--transparent) var(--min),
+          var(--color-4) var(--min), var(--color-4) var(--max),
+          var(--transparent) var(--min)
+        ) 0 calc(var(--max) * 3),
+        linear-gradient(to left top,
+          var(--transparent) var(--min),
+          var(--color-4) var(--min), var(--color-4) var(--max),
+          var(--transparent) var(--min)
+        ) var(--size) calc(var(--max) * 3),
+
+        /* subtle patina/noise overlays (very low alpha) */
+        /* fine vertical grain ticks */
+        repeating-linear-gradient(90deg,
+          var(--patina-ink) 0 1px,
+          rgba(0,0,0,0) 1px 12px
+        ) 0 0 / 8px 100%,
+        /* fine horizontal banding */
+        repeating-linear-gradient(0deg,
+          rgba(0,0,0,0.006) 0 2px,
+          rgba(0,0,0,0) 2px 10px
+        ) 0 0 / 100% 10px,
+        /* soft uneven lighting to add depth */
+        radial-gradient(ellipse at 20% 15%,
+          var(--patina-ink-2) 0%, rgba(255,255,255,0) 60%
+        ),
+        radial-gradient(ellipse at 80% 85%,
+          rgba(0,0,0,0.02) 0%, rgba(0,0,0,0) 60%
+        ),
+        /* global darken overlay */
+        linear-gradient(var(--darken-overlay), var(--darken-overlay));
+
+      background-size: var(--big-size) var(--big-size);
+      background-color: var(--bgcolor);
+      background-repeat: repeat;
+      color: #3a2a19;
+      font: 16px/1.6 "Trebuchet MS", Verdana, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    .demo { max-width: 860px; margin: 8vh auto; background: rgba(255,255,255,0.06); border: 1px solid rgba(0,0,0,0.2); border-radius: 10px; backdrop-filter: blur(2px); padding: 18px 22px; color: #24190f; }
+    .demo h1 { margin: 0 0 8px; font-size: 22px; color: #3b2a15; }
+    .demo p { margin: 0 0 8px; }
+    .swatches { display: flex; gap: 8px; margin-top: 8px; }
+    .swatch { width: 32px; height: 24px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.25); }
+    .c1 { background: var(--color-1); }
+    .c2 { background: var(--color-2); }
+    .c3 { background: var(--color-3); }
+    .c4 { background: var(--color-4); }
+    .c5 { background: var(--color-5); }
+  </style>
+</head>
+<body>
+  <div class="demo" role="region" aria-label="Parquet background test">
+    <h1>Old Oak Parquet – Background Pattern Test</h1>
+    <p>This page reproduces your parquet tiling with a warm, old-oak palette. Tweak <code>--size</code>, <code>--min</code>, and <code>--max</code> in the CSS to alter tile density and line thickness.</p>
+    <div class="swatches" aria-hidden="true">
+  <div class="swatch c1" title="#5C4734"></div>
+  <div class="swatch c2" title="#483626"></div>
+  <div class="swatch c3" title="#342617"></div>
+  <div class="swatch c4" title="#3C2C1E"></div>
+  <div class="swatch c5" title="#15110D"></div>
+    </div>
+  </div>
+</body>
+</html>
