@@ -276,7 +276,7 @@
   .row-bottom { overflow: hidden; }
   .row-crumb { overflow: hidden; }
   .row-pins { overflow: visible; }
-  .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+  .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 15px; }
 
   /* Breadcrumb chip row (anchored, non-floating) */
   .row-crumb { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 8px; padding: 0px 0 0px; }
@@ -1131,7 +1131,7 @@
           try { systemBar.dispatchEvent(new CustomEvent('systemsUpdated', { bubbles: true })); } catch (e) {}
         }
         const SYSTEMS = {
-          wargames: [ ['w40k','40K'], ['aos','AoS'], ['heresy','Heresy'], ['trenchcrusade','Trench Crusade'], ['historical','Historical'], ['other','Other'], ['agnostic','Agnostic'] ],
+          wargames: [ ['w40k','Warhammer 40.000'], ['aos','Age of Sigmar'], ['heresy','Horus Heresy'], ['trenchcrusade','Trench Crusade'], ['historical','Historical'], ['other','Other'], ['agnostic','Agnostic'] ],
           display: [ ['studio','Studio'], ['fantasy','Fantasy'], ['sci-fi','Sci‑Fi'], ['nsfw','NSFW'] ],
           dnd: [ ['characters','Characters'], ['monsters','Monsters'], ['animals','Animals'], ['props','Props'] ],
           terrain: [ ['battlefield','Battlefield'], ['scenery','Scenery'], ['buildings','Buildings'] ],
@@ -1414,18 +1414,19 @@
         function debounce(fn, ms){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }; }
 
         function currentSystem(){
-          // Prefer breadcrumb base label
+          // Prefer breadcrumb base via CSS class rather than label text
           const baseSeg = document.querySelector('#crumbSegments .seg');
-          const base = baseSeg ? (baseSeg.textContent || '').trim() : '';
-          const map = (v)=>{
-            const k = v.toLowerCase();
-            if (k.includes('40')) return 'w40k';
-            if (k.includes('aos')) return 'aos';
-            if (k.includes('30') || k.includes('heresy')) return 'heresy';
-            return null;
-          };
-          const fromCrumb = map(base);
-          if (fromCrumb) return fromCrumb;
+          if (baseSeg) {
+            const cls = baseSeg.classList;
+            if (cls.contains('game-40k')) return 'w40k';
+            if (cls.contains('game-aos')) return 'aos';
+            if (cls.contains('game-30k')) return 'heresy';
+          }
+          // Fallback to parsing text if classes unavailable
+          const base = baseSeg ? (baseSeg.textContent || '').trim().toLowerCase() : '';
+          if (base.includes('sigmar')) return 'aos';
+          if (base.includes('heresy') || base.includes('30')) return 'heresy';
+          if (base.includes('40')) return 'w40k';
           // Fallback to hidden systemBar if ever populated
           const btn = systemBar ? systemBar.querySelector('.btn9[aria-pressed="true"]') : null;
           return btn ? btn.getAttribute('data-system') : null;
@@ -1571,7 +1572,7 @@
         function baseFromSystem(){
           const btn = systemBar ? systemBar.querySelector('.btn9[aria-pressed="true"]') : null;
           if (!btn) {
-            // Default base when buttons are not rendered
+            // Default base code when buttons are not rendered
             return '40K';
           }
           const sys = (btn.getAttribute('data-system') || '').toLowerCase();
@@ -1580,6 +1581,7 @@
           if (sys === 'heresy' || sys === '30k' || sys === 'hh') return '30K';
           return btn.textContent.trim() || null;
         }
+        const BASE_DISPLAY = { '40K': 'Warhammer 40,000', 'AoS': 'Age of Sigmar', '30K': 'Horus Heresy' };
         function gameClass(label){
           const k = (label||'').toLowerCase();
           if (k.includes('40')) return 'game-40k';
@@ -1605,7 +1607,8 @@
           segs.forEach((s,i)=>{
             const span = document.createElement('span');
             span.className = i===0 ? `seg flag ${gameClass(state.base)}` : 'seg';
-            span.textContent = s;
+            // Show full display name for base, keep others verbatim
+            span.textContent = (i===0 && BASE_DISPLAY[s]) ? BASE_DISPLAY[s] : s;
             span.tabIndex=0;
             span.addEventListener('click', (e)=>{
               // Always handle at segment level, but don’t let it bubble into chip and re-toggle
