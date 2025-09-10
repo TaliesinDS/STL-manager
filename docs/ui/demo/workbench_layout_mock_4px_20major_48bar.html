@@ -199,6 +199,8 @@
     pointer-events: none; /* decorative only */
     z-index: -1; /* sit behind button text within its stacking context */
   }
+  /* Ensure the active button (and its overhang) sits above the dropdown banner */
+  .row-top .btnbar .btn9[aria-pressed="true"] { z-index: 10060; }
 
   /* Banner-style dropdown menu (for saved collections) */
   .banner-menu { position: absolute; z-index: 10050; display: none; }
@@ -245,6 +247,17 @@
   .banner-menu .menu-item { appearance: none; background: none; color: #f5e8b0; border: 0px solid #3c3622; border-radius: 6px; padding: 8px 10px; text-align: left; cursor: pointer; font: inherit; }
   .banner-menu .menu-item:hover, .banner-menu .menu-item:focus { background: #241e13; outline: none; }
 
+  /* Overlay for the active top-row button overhang (renders above banner) */
+  .btn-overhang {
+    position: absolute;
+    z-index: 10060; /* above .banner-menu (10050) */
+    pointer-events: none; /* decorative */
+    background-image: var(--topbtn-img-active);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% var(--topbtn-active-bgY);
+    display: none;
+  }
   
 
   /* Framed search and theme controls */
@@ -691,6 +704,16 @@
         </div>
       </div>
     </div>
+  <!-- Breadcrumb dropdown menu (shares banner skin) -->
+  <div id="crumbMenu" class="banner-menu" aria-hidden="true" data-tail-gap="42" data-head-gap="0" data-width="148">
+    <div class="menu-frame">
+      <div class="menu-scroll">
+        <div class="menu-items" role="menu" aria-label="Breadcrumb options"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Active top-row button overhang overlay (above banner) -->
+  <div id="btnOverhang" class="btn-overhang" aria-hidden="true"></div>
 
     <div class="app">
       <div class="appgrid">
@@ -1118,8 +1141,25 @@
       (function(){
         const domainBar = document.getElementById('domainBar');
         const systemBar = document.getElementById('systemBar');
-        const bannerMenu = document.getElementById('bannerMenu');
+  const bannerMenu = document.getElementById('bannerMenu');
+  const btnOverhang = document.getElementById('btnOverhang');
         const bannerItems = bannerMenu ? bannerMenu.querySelector('.menu-items') : null;
+        const rowTopEl = document.querySelector('.row-top');
+        let rebalanceOverlay = null;
+        function placeOverhang(btn){
+          if (!btnOverhang || !btn || !rowTopEl) return;
+          const r = btn.getBoundingClientRect();
+          const seam = rowTopEl.getBoundingClientRect();
+          btnOverhang.style.left = Math.round(r.left) + 'px';
+          btnOverhang.style.width = Math.round(r.width) + 'px';
+          const pointer = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbtn-pointer-h')) || 12;
+          const btnH = Math.round(r.height);
+          // Draw only the pointer sliver just below the top-row seam
+          btnOverhang.style.top = Math.round(seam.bottom) + 'px';
+          btnOverhang.style.height = Math.max(1, pointer) + 'px';
+          btnOverhang.style.backgroundSize = '100% ' + (btnH + pointer) + 'px';
+          btnOverhang.style.backgroundPosition = 'center bottom';
+        }
         let bannerClickAttached = false;
         function onBannerItemClick(e){
           const it = e.target.closest('.menu-item');
@@ -1170,6 +1210,7 @@
               bannerMenu.style.left = Math.round(r.left) + 'px';
               bannerMenu.style.top = Math.round(r.bottom) + 'px';
               bannerMenu.style.width = Math.round(r.width) + 'px';
+              placeOverhang(activeDomain);
             }
             // Apply configurable gaps; allow active domain button to override
             const activeBtn = domainBar.querySelector('.btn9[aria-pressed="true"]');
@@ -1183,39 +1224,52 @@
             // Open first so layout is accurate
             bannerMenu.classList.add('open');
             bannerMenu.setAttribute('aria-hidden','false');
+            if (btnOverhang) btnOverhang.style.display = 'block';
+            // Rebalance overlay on resize/scroll while open
+            rebalanceOverlay = () => {
+              if (!bannerMenu.classList.contains('open')) return;
+              const act = domainBar.querySelector('.btn9[aria-pressed="true"]');
+              placeOverhang(act);
+            };
+            window.addEventListener('resize', rebalanceOverlay);
+            document.addEventListener('scroll', rebalanceOverlay, { passive: true });
             // Measure and size on next frame when layout is settled
             requestAnimationFrame(() => {
               try {
-                const itemsEls = bannerItems.querySelectorAll('.menu-item');
                 const scroller = bannerMenu.querySelector('.menu-scroll');
+                const itemsEls = bannerItems.querySelectorAll('.menu-item');
                 if (frame && scroller && itemsEls.length) {
+                  // Clear any previous explicit sizing
+                  scroller.style.height = '';
+                  scroller.style.maxHeight = '';
+                  // Natural full content height
+                  const natural = Math.ceil(scroller.scrollHeight);
+                  // Cap by summing the first N row heights to avoid giant banners on large viewports
+                  const maxRows = 7; // general cap for domain banners
+                  const used = Math.min(maxRows, itemsEls.length);
+                  let sumHeights = 0;
+                  for (let i = 0; i < used; i++) {
+                    const r = itemsEls[i].getBoundingClientRect();
+                    sumHeights += (r.height || itemsEls[i].offsetHeight || 0);
+                  }
                   const scrollStyle = getComputedStyle(scroller);
                   const padTop = parseFloat(scrollStyle.paddingTop) || 0;
                   const padBottom = parseFloat(scrollStyle.paddingBottom) || 0;
                   const rowGap = parseFloat(getComputedStyle(bannerItems).rowGap) || 0;
-                  const itemRect = itemsEls[0].getBoundingClientRect();
-                  const itemH = itemRect.height || 0;
-                  const shouldScroll = itemsEls.length >= 8;
-                  const n = shouldScroll ? 7 : itemsEls.length; // show up to 7 items before scroll
-                  const itemsBlock = (itemH * n) + (rowGap * Math.max(0, n - 1));
-                  const desired = padTop + itemsBlock + padBottom;
-                  // Constrain to viewport below the button using actual position
+                  const capByRows = Math.ceil(padTop + sumHeights + rowGap * Math.max(0, used - 1) + padBottom);
+                  const desired = Math.min(natural, capByRows);
                   const menuTop = bannerMenu.getBoundingClientRect().top;
                   const avail = Math.max(120, (window.innerHeight - menuTop - 8));
                   const finalH = Math.max(120, Math.min(desired, avail));
                   frame.style.maxHeight = finalH + 'px';
                   frame.style.height = finalH + 'px';
-                  if (shouldScroll) {
-                    const tailGapPx = Math.max(0, parseInt(getComputedStyle(frame).getPropertyValue('--banner-tail-gap')) || 0);
-                    const scrollH = Math.max(80, finalH - (tailGapPx + 8));
-                    scroller.style.height = scrollH + 'px';
-                    scroller.style.maxHeight = scrollH + 'px';
-                    scroller.style.overflowY = 'auto';
-                  } else {
-                    scroller.style.height = '';
-                    scroller.style.maxHeight = '';
-                    scroller.style.overflowY = 'hidden';
-                  }
+                  // Reserve visual tail area precisely: subtract actual bottom padding (6px + tail gap)
+                  const scrollStyle2 = getComputedStyle(scroller);
+                  const padBottom2 = parseFloat(scrollStyle2.paddingBottom) || 0;
+                  const scH = Math.max(80, finalH - padBottom2);
+                  scroller.style.height = scH + 'px';
+                  scroller.style.maxHeight = scH + 'px';
+                  scroller.style.overflowY = natural > scH ? 'auto' : 'hidden';
                 }
               } catch (e) { /* no-op */ }
             });
@@ -1231,6 +1285,12 @@
           if (!bannerMenu) return;
           bannerMenu.classList.remove('open');
           bannerMenu.setAttribute('aria-hidden','true');
+          if (btnOverhang) btnOverhang.style.display = 'none';
+          if (rebalanceOverlay) {
+            window.removeEventListener('resize', rebalanceOverlay);
+            document.removeEventListener('scroll', rebalanceOverlay, { passive: true });
+            rebalanceOverlay = null;
+          }
           if (bannerClickAttached && bannerItems) { bannerItems.removeEventListener('click', onBannerItemClick); bannerClickAttached = false; }
           const frame = bannerMenu.querySelector('.menu-frame');
           if (frame) { frame.style.maxHeight = ''; frame.style.height = ''; }
@@ -1539,9 +1599,13 @@
         const systemBar = document.getElementById('systemBar');
         const chip = document.getElementById('crumbChip');
         const segEl = document.getElementById('crumbSegments');
-        const panel = document.getElementById('crumbPanel');
-        const grid = document.getElementById('crumbGrid');
-        if (!systemBar || !chip || !segEl || !panel || !grid) return;
+  const panel = document.getElementById('crumbPanel');
+  const grid = document.getElementById('crumbGrid');
+  const crumbMenu = document.getElementById('crumbMenu');
+  const crumbItems = crumbMenu ? crumbMenu.querySelector('.menu-items') : null;
+  const crumbRow = document.getElementById('crumbRow');
+  let crumbAnchorEl = null;
+  if (!systemBar || !chip || !segEl || !crumbMenu || !crumbItems) return;
 
         // Sample data for demo; replace with live faceting later
         const DATA = {
@@ -1590,17 +1654,86 @@
           return '';
         }
         function clear(el){ while (el.firstChild) el.removeChild(el.firstChild); }
-        function makeTiles(list, click){
-          return (list||[]).map(v=>{ const d=document.createElement('div'); d.className='crumb-tile'; d.textContent=v; d.tabIndex=0; d.addEventListener('click',()=>click(v)); d.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); click(v);} }); return d; });
+        function makeMenu(list, click){
+          return (list||[]).map(v=>{ const b=document.createElement('button'); b.className='menu-item'; b.type='button'; b.textContent=v; b.setAttribute('role','menuitem'); b.addEventListener('click',()=>click(v)); b.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); click(v);} }); return b; });
         }
         function render(level){
-          clear(grid);
+          clear(crumbItems);
           if (level === 'faction') {
-            makeTiles(DATA.faction[state.base]||[], (v)=>{ state.faction=v; state.subfaction=null; updateSeg(); render('subfaction'); document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>grid.appendChild(n));
+            makeMenu(DATA.faction[state.base]||[], (v)=>{
+              state.faction=v; state.subfaction=null; updateSeg();
+              // Auto-open next level (subfaction) under the new faction segment
+              const anchor = Array.from(segEl.children).find(el => el.textContent.trim() === v) || segEl.lastElementChild;
+              render('subfaction');
+              openCrumbMenu(anchor);
+              document.dispatchEvent(new CustomEvent('crumbChanged'));
+            }).forEach(n=>crumbItems.appendChild(n));
           } else if (level === 'subfaction') {
-            makeTiles(DATA.subfaction[state.faction]||[], (v)=>{ state.subfaction=v; updateSeg(); panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); state.open=false; document.dispatchEvent(new CustomEvent('crumbChanged')); document.dispatchEvent(new CustomEvent('crumbPanelToggled')); }).forEach(n=>grid.appendChild(n));
+            makeMenu(DATA.subfaction[state.faction]||[], (v)=>{ state.subfaction=v; updateSeg(); closeCrumbMenu(); document.dispatchEvent(new CustomEvent('crumbChanged')); }).forEach(n=>crumbItems.appendChild(n));
           }
         }
+
+        function positionCrumbMenu(anchor){
+          const a = anchor || crumbAnchorEl || chip;
+          const r = a.getBoundingClientRect();
+          const root = document.documentElement;
+          const scrollY = window.scrollY || root.scrollTop || 0;
+          const scrollX = window.scrollX || root.scrollLeft || 0;
+          const fixedW = parseInt(crumbMenu.getAttribute('data-width')||'280',10);
+          const left = Math.round(scrollX + (r.left + (r.width/2) - fixedW/2));
+          const clampedLeft = Math.max(8, Math.min(left, (window.innerWidth - fixedW - 8)));
+          crumbMenu.style.left = clampedLeft + 'px';
+          const seamRect = crumbRow ? crumbRow.getBoundingClientRect() : null;
+          const topPx = Math.round(scrollY + (seamRect ? seamRect.bottom : r.bottom));
+          crumbMenu.style.top = topPx + 'px';
+          crumbMenu.style.width = fixedW + 'px';
+          const frame = crumbMenu.querySelector('.menu-frame');
+          if (frame) {
+            const tailGap = parseInt(crumbMenu.getAttribute('data-tail-gap')||'16',10);
+            const headGap = parseInt(crumbMenu.getAttribute('data-head-gap')||'12',10);
+            frame.style.setProperty('--banner-tail-gap', (isFinite(tailGap)?tailGap:16) + 'px');
+            frame.style.setProperty('--banner-head-gap', (isFinite(headGap)?headGap:12) + 'px');
+          }
+        }
+        function sizeCrumbMenu(){
+          const frame = crumbMenu.querySelector('.menu-frame');
+          const scroller = crumbMenu.querySelector('.menu-scroll');
+          const itemsEls = crumbItems.querySelectorAll('.menu-item');
+          if (!frame || !scroller || !itemsEls.length) return;
+          // Reset any explicit scroller sizing
+          scroller.style.height = '';
+          scroller.style.maxHeight = '';
+          // Natural content height including paddings
+          const natural = Math.ceil(scroller.scrollHeight);
+          // Cap by summing first N rows
+          const maxRows = 7;
+          const used = Math.min(maxRows, itemsEls.length);
+          let sumHeights = 0;
+          for (let i = 0; i < used; i++) {
+            const r = itemsEls[i].getBoundingClientRect();
+            sumHeights += (r.height || itemsEls[i].offsetHeight || 0);
+          }
+          const scrollStyle = getComputedStyle(scroller);
+          const padTop = parseFloat(scrollStyle.paddingTop) || 0;
+          const padBottom = parseFloat(scrollStyle.paddingBottom) || 0;
+          const rowGap = parseFloat(getComputedStyle(crumbItems).rowGap) || 0;
+          const capByRows = Math.ceil(padTop + sumHeights + rowGap * Math.max(0, used - 1) + padBottom);
+          const desired = Math.min(natural, capByRows);
+          const menuTop = crumbMenu.getBoundingClientRect().top;
+          const avail = Math.max(120, (window.innerHeight - menuTop - 8));
+          const finalH = Math.max(120, Math.min(desired, avail));
+          frame.style.maxHeight = finalH + 'px';
+          frame.style.height = finalH + 'px';
+          // Reserve tail gap precisely by subtracting actual bottom padding
+          const padBottom2 = parseFloat(getComputedStyle(scroller).paddingBottom) || 0;
+          const scH = Math.max(80, finalH - padBottom2);
+          scroller.style.height = scH + 'px';
+          scroller.style.maxHeight = scH + 'px';
+          scroller.style.overflowY = natural > scH ? 'auto' : 'hidden';
+        }
+  function openCrumbMenu(anchor){ crumbAnchorEl = anchor || crumbAnchorEl || chip; positionCrumbMenu(crumbAnchorEl); crumbMenu.classList.add('open'); crumbMenu.setAttribute('aria-hidden','false'); requestAnimationFrame(sizeCrumbMenu); document.addEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
+        function closeCrumbMenu(){ crumbMenu.classList.remove('open'); crumbMenu.setAttribute('aria-hidden','true'); document.removeEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
+        function onDocClick(e){ if (!crumbMenu.contains(e.target) && !chip.contains(e.target)) closeCrumbMenu(); }
         function updateSeg(){
           clear(segEl);
           const segs = [state.base, state.faction, state.subfaction].filter(Boolean);
@@ -1611,14 +1744,16 @@
             span.textContent = (i===0 && BASE_DISPLAY[s]) ? BASE_DISPLAY[s] : s;
             span.tabIndex=0;
             span.addEventListener('click', (e)=>{
-              // Always handle at segment level, but don’t let it bubble into chip and re-toggle
               e.stopPropagation();
-              if (i===0) { state.faction = state.subfaction = null; render('faction'); }
-              else if (i===1) { state.subfaction = null; render('subfaction'); }
-              panel.classList.add('active'); chip.setAttribute('aria-expanded','true'); state.open=true;
+              let nextLevel = null;
+              if (i===0) { state.faction = state.subfaction = null; render('faction'); nextLevel = 'faction'; }
+              else if (i===1) { state.subfaction = null; render('subfaction'); nextLevel = 'subfaction'; }
+              chip.setAttribute('aria-expanded','true'); state.open=true;
               updateSeg();
+              // Re-acquire the fresh segment node at the same index after update
+              const anchor = segEl.children[i] || segEl.lastElementChild || chip;
+              openCrumbMenu(anchor);
               document.dispatchEvent(new CustomEvent('crumbChanged'));
-              document.dispatchEvent(new CustomEvent('crumbPanelToggled'));
             });
             segEl.appendChild(span);
           });
@@ -1629,18 +1764,24 @@
         chip.addEventListener('click', ()=>{
           if (!state.base) return; // nothing selected in system bar yet
           state.open = !state.open;
-          panel.classList.toggle('active', state.open);
           chip.setAttribute('aria-expanded', state.open ? 'true' : 'false');
-          document.dispatchEvent(new CustomEvent('crumbPanelToggled'));
-          if (state.open) render(state.faction ? 'subfaction' : 'faction');
+          if (state.open) { render(state.faction ? 'subfaction' : 'faction');
+            // Anchor to most specific existing segment
+            const anchor = segEl.lastElementChild || chip;
+            openCrumbMenu(anchor);
+          }
+          else { closeCrumbMenu(); }
         });
 
         // React to second-row changes
         systemBar.addEventListener('systemChanged', ()=>{
           state.base = baseFromSystem(); state.faction = null; state.subfaction = null; state.open = false;
-          panel.classList.remove('active'); chip.setAttribute('aria-expanded','false'); updateSeg();
+          closeCrumbMenu(); chip.setAttribute('aria-expanded','false'); updateSeg();
           document.dispatchEvent(new CustomEvent('crumbChanged'));
         });
+
+        // Close crumb menu on Escape
+        document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') { closeCrumbMenu(); state.open = false; chip.setAttribute('aria-expanded','false'); } });
 
         // Init
         updateSeg();
