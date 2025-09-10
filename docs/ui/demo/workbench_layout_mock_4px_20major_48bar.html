@@ -552,7 +552,7 @@
       /* Drawer variables align with front_page_mock */
       :root {
         --drawer-w: 280px; /* baked from tuner */
-        --tabs-offset: 82px; /* baked from tuner */
+        --tabs-offset: 82px; /* base baked from tuner (overridden below to include nameplate) */
         --stem-w: 28px;
         --stem-offset: 10px;
         --tab-cap-overhang: 12px;
@@ -565,6 +565,20 @@
         --tab-badge-left: 76px;  /* distance from the left edge when docked right */
         --tab-badge-top: -4px;    /* distance from the top edge of the tab */
       }
+
+      /* Drawer nameplate controls (floats over the drawer's top frame edge) */
+      :root {
+        /* Visual height reserved to push header/body content down */
+        --drawer-nameplate-h: 10px; /* adjust to fit NameFrame.png art */
+        /* Visual dimensions of the decorative plate asset */
+        --drawer-nameplate-visual-h: 56px;
+        --drawer-nameplate-w: 320px;
+        /* Header height baseline and computed total with nameplate */
+        --drawer-head-base: 46px;
+        --drawer-head-h: calc(var(--drawer-head-base) + var(--drawer-nameplate-h));
+      }
+      /* Nudge the attached tabs down by the nameplate height */
+      :root { --tabs-offset: calc(82px + var(--drawer-nameplate-h)); }
 
       /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
       .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
@@ -621,7 +635,7 @@
       [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
       [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
 
-  .drawer .header { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px; padding: 10px 12px 6px; overflow: visible; position: relative; background-color: #0b0d0e; }
+  .drawer .header { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px; padding: 10px 12px 6px; margin-top: var(--drawer-nameplate-h); overflow: visible; position: relative; background-color: #0b0d0e; }
       /* Ribbon body across full header width (behind content) */
       .drawer .header::before {
         content: ""; position: absolute; top: 0; bottom: 0; left: 0; right: calc(var(--drawer-title-tail-width) - var(--drawer-title-tail-overhang-x));
@@ -642,7 +656,33 @@
       .drawer .title { font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em; font-size: 18px; background: transparent; padding: 0; }
       .pin, .close { background: transparent; border: 0; color: #f5e8b0; font-size: 18px; cursor: pointer; padding: 4px 6px; border-radius: 6px; }
       .pin[aria-pressed="true"] { color: #9fe2b0; }
-      .drawer .body { padding: 10px 12px 14px; max-height: calc(100% - 46px); overflow: auto; }
+      .drawer .body { padding: 10px 12px 14px; max-height: calc(100% - var(--drawer-head-h)); overflow: auto; }
+      /* Decorative nameplate centered and floating above the drawer frame top edge */
+      .drawer .drawer-nameplate {
+        position: absolute;
+        left: 50%;
+        /* Float above the inner top padding edge by half the plate height + half the frame border,
+           so it visually straddles the ornate frame edge. */
+        top: calc(-1 * ( (var(--drawer-nameplate-visual-h) * 0.5) + (var(--frame-border) * 0.5) ));
+        transform: translateX(-50%);
+        width: var(--drawer-nameplate-w);
+        height: var(--drawer-nameplate-visual-h);
+        background-image: url('../img/NameFrame.png');
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f5e8b0;
+        font-family: "Cinzel", Georgia, serif;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        text-transform: lowercase;
+        pointer-events: none; /* graphics only; do not block tabs */
+        z-index: 960; /* above drawer (950), below tabs-hit (1005) */
+      }
+      .drawer .drawer-nameplate .txt { transform: translateY(1px); }
       .drawer .hint { color: #cfc9b6; font-size: 12px; margin-bottom: 8px; }
       .drawer .footer { position: sticky; bottom: 0; background: linear-gradient(var(--panel-fill-top), var(--panel-fill-bot)); padding: 8px 12px; display: flex; gap: 8px; justify-content: flex-end; border-top: 1px solid rgba(0,0,0,0.35); }
       .btn { padding: 6px 10px; border-radius: 6px; cursor: pointer; user-select: none; border: 1px solid #3c3622; color: #f5e8b0; background: #1f1b12; }
@@ -936,8 +976,9 @@
       <div id="drawerBackdrop" class="drawer-backdrop" tabindex="-1" aria-hidden="true"></div>
     </div>
     <div id="drawer" class="frame drawer" role="dialog" aria-modal="false" aria-labelledby="drawerTitle">
+      <div class="drawer-nameplate" aria-hidden="true"><span class="title" style="font-size: 18px;">FILTERS</span></div>
       <div class="header">
-        <div class="title" id="drawerTitle">Filters</div>
+        <div class="title" id="drawerTitle">FILTERS</div>
         <button class="pin" id="drawerPin" aria-pressed="false" aria-label="Pin drawer">📌</button>
         <button class="close" id="drawerClose" aria-label="Close">✕</button>
       </div>
