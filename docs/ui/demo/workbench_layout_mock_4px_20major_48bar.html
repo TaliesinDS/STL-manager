@@ -1263,13 +1263,15 @@
                   const finalH = Math.max(120, Math.min(desired, avail));
                   frame.style.maxHeight = finalH + 'px';
                   frame.style.height = finalH + 'px';
-                  // Reserve visual tail area precisely: subtract actual bottom padding (6px + tail gap)
+                  // Reserve head and tail area precisely: subtract top and bottom paddings
                   const scrollStyle2 = getComputedStyle(scroller);
+                  const padTop2 = parseFloat(scrollStyle2.paddingTop) || 0;
                   const padBottom2 = parseFloat(scrollStyle2.paddingBottom) || 0;
-                  const scH = Math.max(80, finalH - padBottom2);
+                  const scH = Math.max(0, finalH - padTop2 - padBottom2);
                   scroller.style.height = scH + 'px';
                   scroller.style.maxHeight = scH + 'px';
-                  scroller.style.overflowY = natural > scH ? 'auto' : 'hidden';
+                  // Only enable scroll if content exceeds full frame including paddings
+                  scroller.style.overflowY = natural > finalH ? 'auto' : 'hidden';
                 }
               } catch (e) { /* no-op */ }
             });
@@ -1724,12 +1726,14 @@
           const finalH = Math.max(120, Math.min(desired, avail));
           frame.style.maxHeight = finalH + 'px';
           frame.style.height = finalH + 'px';
-          // Reserve tail gap precisely by subtracting actual bottom padding
-          const padBottom2 = parseFloat(getComputedStyle(scroller).paddingBottom) || 0;
-          const scH = Math.max(80, finalH - padBottom2);
+          // Reserve head and tail areas by subtracting both paddings
+          const sStyle = getComputedStyle(scroller);
+          const padTop2 = parseFloat(sStyle.paddingTop) || 0;
+          const padBottom2 = parseFloat(sStyle.paddingBottom) || 0;
+          const scH = Math.max(0, finalH - padTop2 - padBottom2);
           scroller.style.height = scH + 'px';
           scroller.style.maxHeight = scH + 'px';
-          scroller.style.overflowY = natural > scH ? 'auto' : 'hidden';
+          scroller.style.overflowY = natural > finalH ? 'auto' : 'hidden';
         }
   function openCrumbMenu(anchor){ crumbAnchorEl = anchor || crumbAnchorEl || chip; positionCrumbMenu(crumbAnchorEl); crumbMenu.classList.add('open'); crumbMenu.setAttribute('aria-hidden','false'); requestAnimationFrame(sizeCrumbMenu); document.addEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
         function closeCrumbMenu(){ crumbMenu.classList.remove('open'); crumbMenu.setAttribute('aria-hidden','true'); document.removeEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
