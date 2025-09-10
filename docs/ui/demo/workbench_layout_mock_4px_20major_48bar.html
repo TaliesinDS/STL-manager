@@ -287,13 +287,62 @@
   }
   /* Keep second row clipped; third row hosts crumb panel and may expand */
   .row-bottom { overflow: hidden; }
-  .row-crumb { overflow: hidden; }
+  .row-crumb { overflow: visible; }
+  :root {
+    /* Fallback full ribbon image */
+    --crumbtrail-bg: url('../img/NameBannerRightPointing.png');
+  /* Preferred split: set body-only tile (no tail) to avoid scaling */
+  --crumb-body-bg: url('../img/NameBannerRightBody.png');
+    --crumb-tail-bg: url('../img/NameBannerRightPointing.png');
+    --crumb-tail-width: 72px; /* fixed-width curly end cap */
+    --crumb-tail-gap: var(--crumb-tail-width); /* reserve same space for text padding */
+    --crumb-tail-overhang: 10px; /* amount the tail dangles below the row */
+  }
+  /* Breadcrumb banner art should only sit behind the chip + tail gap */
+  #crumbRow { background: none; }
   .row-pins { overflow: visible; }
-  .chip { background: var(--chip); color: #efe5c8; border: 1px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 15px; }
+  .chip { background: var(--chip); color: #efe5c8; border: 0px solid #3c3622; border-radius: 999px; padding: 6px 10px; font-size: 15px; }
 
   /* Breadcrumb chip row (anchored, non-floating) */
   .row-crumb { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 8px; padding: 0px 0 0px; }
-  .row-crumb .chip { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; padding: 12px 12px; border-radius: 0px; border: 1px solid #3c3622; background: var(--chip); }
+  .row-crumb .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    /* add tail gap to the right while keeping original 12px padding */
+    padding: 12px calc(12px + var(--crumb-tail-gap)) 12px 12px;
+    border-radius: 0px;
+    border: 0px solid #3c3622;
+    background-color: transparent;
+    position: relative;
+  }
+  .row-crumb .chip::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: var(--crumb-tail-gap);
+    /* First layer: optional body tile (repeat-x, no scale); Second: fallback stretch if no body tile */
+    background-image: var(--crumb-body-bg), var(--crumbtrail-bg);
+    background-repeat: repeat-x, no-repeat;
+    background-position: left center, left center;
+    background-size: auto 100%, 100% 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .row-crumb .chip::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: calc(-1 * var(--crumb-tail-overhang)); right: 0; width: var(--crumb-tail-width);
+    background-image: var(--crumbtrail-bg);
+    background-repeat: no-repeat;
+    /* Keep tail image height equal to chip height; extra area below shows as overhang */
+    background-position: right top;
+    background-size: auto calc(130% - var(--crumb-tail-overhang));
+    pointer-events: none;
+    z-index: 0;
+  }
+  .row-crumb .chip > * { position: relative; z-index: 1; }
   .row-crumb .chip .segments { display: inline-flex; gap: 6px; align-items: center; }
   .row-crumb .chip .segments, .row-crumb .chip .seg { pointer-events: auto; }
   .row-crumb .chip .seg { display: inline-flex; align-items: center; gap: 6px; position: relative; }
@@ -1299,6 +1348,9 @@
           const scroller = bannerMenu.querySelector('.menu-scroll');
           if (scroller) { scroller.style.maxHeight = ''; scroller.style.height = ''; }
         }
+        // Listen for external requests to close banners (e.g., crumbs opening)
+        document.addEventListener('closeAllBanners', () => { try { closeBanner(); } catch (e) {} });
+        document.addEventListener('crumbPanelToggled', () => { try { closeBanner(); } catch (e) {} });
         // Close on outside click or Escape
         document.addEventListener('click', (e)=>{
           if (!bannerMenu || !bannerMenu.classList.contains('open')) return;
@@ -1735,7 +1787,16 @@
           scroller.style.maxHeight = scH + 'px';
           scroller.style.overflowY = natural > finalH ? 'auto' : 'hidden';
         }
-  function openCrumbMenu(anchor){ crumbAnchorEl = anchor || crumbAnchorEl || chip; positionCrumbMenu(crumbAnchorEl); crumbMenu.classList.add('open'); crumbMenu.setAttribute('aria-hidden','false'); requestAnimationFrame(sizeCrumbMenu); document.addEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
+  function openCrumbMenu(anchor){
+    try { document.dispatchEvent(new CustomEvent('closeAllBanners')); } catch (e) {}
+    crumbAnchorEl = anchor || crumbAnchorEl || chip;
+    positionCrumbMenu(crumbAnchorEl);
+    crumbMenu.classList.add('open');
+    crumbMenu.setAttribute('aria-hidden','false');
+    requestAnimationFrame(sizeCrumbMenu);
+    document.addEventListener('click', onDocClick, { capture: true });
+    try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {}
+  }
         function closeCrumbMenu(){ crumbMenu.classList.remove('open'); crumbMenu.setAttribute('aria-hidden','true'); document.removeEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
         function onDocClick(e){ if (!crumbMenu.contains(e.target) && !chip.contains(e.target)) closeCrumbMenu(); }
         function updateSeg(){
