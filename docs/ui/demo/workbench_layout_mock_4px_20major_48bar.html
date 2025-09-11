@@ -749,7 +749,7 @@
       .drawer-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); opacity: 0; transition: opacity .2s ease; }
       .drawer { position: fixed; top: var(--drawer-top); bottom: var(--drawer-bottom); left: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); width: var(--drawer-w); max-width: calc(100vw - 48px); transition: left .22s ease; pointer-events: auto; overflow: visible; z-index: 950; }
       .drawer.open { left: 0; }
-      .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
+  .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
       [data-dock="left"] .drawer.open + .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
       [data-dock="left"] .drawer.open ~ .drawer-tabs-hit { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
       [data-dock="right"] .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
@@ -759,6 +759,15 @@
       [data-dock="right"] .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
       [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
       [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  /* Scoped right-docked Tools drawer rules */
+  .tools-dock { position: relative; }
+  .tools-dock .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
+  .tools-dock .drawer.open { right: 0; }
+  .tools-dock .drawer-tabs, .tools-dock .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
+  .tools-dock .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
+  .tools-dock .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
+  .tools-dock .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  .tools-dock .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
 
   .drawer .header { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 8px; padding: 10px 12px 6px; margin-top: var(--drawer-nameplate-h); overflow: visible; position: relative; background-color: #0b0d0e; }
       /* Ribbon body across full header width (behind content) */
@@ -1297,6 +1306,77 @@
         <div class="ambient-foot">Tip: press G to toggle the 4px grid overlay.</div>
       </div>
     </aside>
+
+    <!-- Right-side Tools drawer: mirrored structure to the left Filters drawer -->
+    <div class="tools-dock" data-dock="right">
+      <div id="toolsWrap" class="drawer-wrap" aria-hidden="true">
+        <div id="toolsBackdrop" class="drawer-backdrop" tabindex="-1" aria-hidden="true"></div>
+      </div>
+      <div id="toolsDrawer" class="frame drawer" role="dialog" aria-modal="false" aria-labelledby="toolsTitle">
+      <div class="drawer-nameplate" aria-hidden="true"><span class="title" style="font-size: 18px;">TOOLS</span></div>
+      <div class="header">
+        <div class="title" id="toolsTitle">TOOLS</div>
+        <button class="pin" id="toolsPin" aria-pressed="false" aria-label="Pin tools"></button>
+        <button class="close" id="toolsClose" aria-label="Close">✕</button>
+      </div>
+      <div class="body">
+        <section id="tools-db" class="tabpanel active" role="region" aria-labelledby="tab-tools-db">
+          <div class="hint">Database tasks</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Backup DB</label>
+            <label><input type="checkbox"/> Vacuum/Analyze</label>
+          </div>
+        </section>
+        <section id="tools-scan" class="tabpanel" role="region" aria-labelledby="tab-tools-scan">
+          <div class="hint">Scanning utilities</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Quick scan</label>
+            <label><input type="checkbox"/> Deep scan</label>
+          </div>
+        </section>
+        <section id="tools-match" class="tabpanel" role="region" aria-labelledby="tab-tools-match">
+          <div class="hint">Matching helpers</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Match variants → units</label>
+            <label><input type="checkbox"/> Inspect unmatched</label>
+          </div>
+        </section>
+        <section id="tools-backfill" class="tabpanel" role="region" aria-labelledby="tab-tools-backfill">
+          <div class="hint">Backfill utilities</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Build UI labels</label>
+            <label><input type="checkbox"/> Populate english_tokens</label>
+          </div>
+        </section>
+        <section id="tools-vocab" class="tabpanel" role="region" aria-labelledby="tab-tools-vocab">
+          <div class="hint">Vocab management</div>
+          <div class="filters-col">
+            <label><input type="checkbox"/> Reload designers</label>
+            <label><input type="checkbox"/> Sync franchises</label>
+          </div>
+        </section>
+      </div>
+      <div class="footer">
+        <button class="btn" id="toolsCancel">Close</button>
+        <button class="btn" id="toolsRun">Run</button>
+      </div>
+      <div class="drawer-resize" id="toolsResize" aria-hidden="true"></div>
+      </div>
+      <div class="drawer-tabs" id="toolsTabs" role="toolbar" aria-label="Tools tabs">
+      <button class="drawer-tab" id="tab-tools-db" data-tab="db" aria-pressed="false" title="Database"><span class="txt">DB</span></button>
+      <button class="drawer-tab" id="tab-tools-scan" data-tab="scan" aria-pressed="false" title="Scan"><span class="txt">Scan</span></button>
+      <button class="drawer-tab" id="tab-tools-match" data-tab="match" aria-pressed="false" title="Match"><span class="txt">Match</span></button>
+      <button class="drawer-tab" id="tab-tools-backfill" data-tab="backfill" aria-pressed="false" title="Backfill"><span class="txt">Backfill</span></button>
+      <button class="drawer-tab" id="tab-tools-vocab" data-tab="vocab" aria-pressed="false" title="Vocab"><span class="txt">Vocab</span></button>
+      </div>
+      <div class="drawer-tabs-hit" id="toolsTabsHit" aria-hidden="false">
+      <button class="drawer-tab" data-ref="#tab-tools-db" data-tab="db" aria-pressed="false" title="Database"><span class="txt">DB</span></button>
+      <button class="drawer-tab" data-ref="#tab-tools-scan" data-tab="scan" aria-pressed="false" title="Scan"><span class="txt">Scan</span></button>
+      <button class="drawer-tab" data-ref="#tab-tools-match" data-tab="match" aria-pressed="false" title="Match"><span class="txt">Match</span></button>
+      <button class="drawer-tab" data-ref="#tab-tools-backfill" data-tab="backfill" aria-pressed="false" title="Backfill"><span class="txt">Backfill</span></button>
+      <button class="drawer-tab" data-ref="#tab-tools-vocab" data-tab="vocab" aria-pressed="false" title="Vocab"><span class="txt">Vocab</span></button>
+      </div>
+    </div>
 
     <script>
       // Saved panel: basic selection toggling for collection list (visual only)
@@ -1837,7 +1917,23 @@
         if (app) { const ro = new ResizeObserver(() => syncDrawerTop()); ro.observe(app); }
         requestAnimationFrame(syncDrawerTop);
 
+        // Force-close Tools drawer (ignores pin) so only one drawer is open
+        function forceCloseTools() {
+          const twrap = document.getElementById('toolsWrap');
+          const tdrawer = document.getElementById('toolsDrawer');
+          if (!twrap || !tdrawer) return;
+          twrap.classList.remove('open');
+          tdrawer.classList.remove('open');
+          twrap.setAttribute('aria-hidden','true');
+          const tTabsRoot = document.getElementById('toolsTabs');
+          const tTabsHitRoot = document.getElementById('toolsTabsHit');
+          if (tTabsRoot) Array.from(tTabsRoot.querySelectorAll('.drawer-tab')).forEach(t => t.setAttribute('aria-pressed','false'));
+          if (tTabsHitRoot) Array.from(tTabsHitRoot.querySelectorAll('.drawer-tab')).forEach(t => t.setAttribute('aria-pressed','false'));
+        }
+
         function openDrawer(which) {
+          // Ensure Tools drawer is closed first
+          forceCloseTools();
           Object.values(panels).forEach(p => p.classList.remove('active'));
           if (panels[which]) panels[which].classList.add('active');
           const isActive = (t) => t.dataset.tab === which;
@@ -2027,6 +2123,125 @@
             document.querySelectorAll('.filters-col.scroll').forEach(el => attach(el, el.closest('.frame') || el.parentElement));
             document.querySelectorAll('.collection-list').forEach(el => attach(el, el.closest('.collection-box') || el.parentElement));
         });
+      })();
+    </script>
+    <script>
+      // Tools drawer wiring (mirrors Filters drawer, docked to the right)
+      (function(){
+        const btnTools = document.getElementById('btnTools');
+        const wrap = document.getElementById('toolsWrap');
+        const drawer = document.getElementById('toolsDrawer');
+        const backdrop = document.getElementById('toolsBackdrop');
+        const closeBtn = document.getElementById('toolsClose');
+        const pinBtn = document.getElementById('toolsPin');
+        const runBtn = document.getElementById('toolsRun');
+        const cancelBtn = document.getElementById('toolsCancel');
+        const resizeHandle = document.getElementById('toolsResize');
+        const tabsRoot = document.getElementById('toolsTabs');
+        const tabsHitRoot = document.getElementById('toolsTabsHit');
+  if (!wrap || !drawer || !tabsRoot || !tabsHitRoot) return;
+        const tabs = Array.from(tabsRoot.querySelectorAll('.drawer-tab'));
+        const tabsHit = Array.from(tabsHitRoot.querySelectorAll('.drawer-tab'));
+        const panels = {
+          db: document.getElementById('tools-db'),
+          scan: document.getElementById('tools-scan'),
+          match: document.getElementById('tools-match'),
+          backfill: document.getElementById('tools-backfill'),
+          vocab: document.getElementById('tools-vocab'),
+        };
+        const STORAGE_NS = 'wb4px_20major_48bar_tools';
+        const saveKey = `stlmgr_tools_active_${STORAGE_NS}`;
+        const pinKey = `stlmgr_tools_pinned_${STORAGE_NS}`;
+        const wKey = `stlmgr_tools_w_${STORAGE_NS}`;
+
+        function syncTop() {
+          const wbFrame = document.querySelector('.workbench > .frame');
+          if (!wbFrame) return;
+          const top = Math.max(0, Math.round(wbFrame.getBoundingClientRect().top));
+          document.documentElement.style.setProperty('--drawer-top', top + 'px');
+        }
+        ['load','resize','scroll'].forEach(ev => window.addEventListener(ev, syncTop, { passive: true }));
+        const app = document.querySelector('.app');
+        if (app) { const ro = new ResizeObserver(() => syncTop()); ro.observe(app); }
+        requestAnimationFrame(syncTop);
+
+        // Force-close Filters drawer (ignores pin) so only one drawer is open
+        function forceCloseFilters() {
+          const fwrap = document.getElementById('drawerWrap');
+          const fdrawer = document.getElementById('drawer');
+          if (!fwrap || !fdrawer) return;
+          fwrap.classList.remove('open');
+          fdrawer.classList.remove('open');
+          fwrap.setAttribute('aria-hidden','true');
+          const fTabsRoot = Array.from(document.querySelectorAll('.drawer-tabs')).find(el => !el.closest('.tools-dock'));
+          const fTabsHitRoot = Array.from(document.querySelectorAll('.drawer-tabs-hit')).find(el => !el.closest('.tools-dock'));
+          if (fTabsRoot) Array.from(fTabsRoot.querySelectorAll('.drawer-tab')).forEach(t => t.setAttribute('aria-pressed','false'));
+          if (fTabsHitRoot) Array.from(fTabsHitRoot.querySelectorAll('.drawer-tab')).forEach(t => t.setAttribute('aria-pressed','false'));
+        }
+
+        function select(which) {
+          Object.values(panels).forEach(p => p.classList.remove('active'));
+          if (panels[which]) panels[which].classList.add('active');
+          const isActive = (t) => t.dataset.tab === which;
+          tabs.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
+          tabsHit.forEach(t => t.setAttribute('aria-pressed', String(isActive(t))));
+          try { localStorage.setItem(saveKey, which); } catch (e) {}
+        }
+        function open(which) {
+          // Ensure Filters drawer is closed first
+          forceCloseFilters();
+          if (which) select(which);
+          wrap.classList.add('open');
+          drawer.classList.add('open');
+          wrap.setAttribute('aria-hidden','false');
+        }
+        function close() {
+          if (pinBtn.getAttribute('aria-pressed') === 'true') return;
+          wrap.classList.remove('open');
+          drawer.classList.remove('open');
+          wrap.setAttribute('aria-hidden','true');
+          tabs.forEach(t => t.setAttribute('aria-pressed','false'));
+          tabsHit.forEach(t => t.setAttribute('aria-pressed','false'));
+        }
+        function onTab(which) { open(which); }
+        tabs.forEach(btn => btn.addEventListener('click', (e)=>{ e.stopPropagation(); onTab(btn.dataset.tab);}));
+        tabsHit.forEach(btn => {
+          btn.addEventListener('click', (e)=>{ e.stopPropagation(); onTab(btn.dataset.tab);} );
+          const refSel = btn.getAttribute('data-ref');
+          const visualBtn = refSel ? document.querySelector(refSel) : null;
+          btn.addEventListener('mouseenter', () => { visualBtn?.classList.add('is-hover'); });
+          btn.addEventListener('mouseleave', () => { visualBtn?.classList.remove('is-hover'); });
+        });
+        backdrop.addEventListener('click', close);
+        closeBtn.addEventListener('click', close);
+        cancelBtn.addEventListener('click', close);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  btnTools?.addEventListener('click', () => {
+          const last = (function(){ try { return localStorage.getItem(saveKey) || 'db'; } catch (e){ return 'db'; } })();
+          open(last);
+        });
+        pinBtn.addEventListener('click', ()=>{
+          const next = pinBtn.getAttribute('aria-pressed') !== 'true';
+          pinBtn.setAttribute('aria-pressed', String(next));
+          try { localStorage.setItem(pinKey, String(next)); } catch (e) {}
+        });
+
+        // Restore width if any
+        try {
+          const w = localStorage.getItem(wKey);
+          if (w) document.documentElement.style.setProperty('--drawer-w', w);
+        } catch(e) {}
+        // Resize logic
+  let resizing = false, startX = 0, startW = 0;
+  function onMove(e){ if(!resizing) return; const dx = (e.clientX||0)-startX; const w = Math.max(280, Math.min(640, startW + dx)); document.documentElement.style.setProperty('--drawer-w', w + 'px'); }
+        function onUp(){ if(!resizing) return; resizing=false; try { localStorage.setItem(wKey, getComputedStyle(document.documentElement).getPropertyValue('--drawer-w').trim()); } catch(e){} window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); }
+        resizeHandle.addEventListener('mousedown', (e)=>{ resizing = true; startX = e.clientX; startW = drawer.getBoundingClientRect().width; window.addEventListener('mousemove', onMove); window.addEventListener('mouseup', onUp); });
+
+        // No-op run button for now
+        runBtn?.addEventListener('click', ()=>{ /* placeholder */ });
+
+        // Initialize closed
+        wrap.classList.remove('open'); drawer.classList.remove('open'); wrap.setAttribute('aria-hidden','true');
       })();
     </script>
     <script>
