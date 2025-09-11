@@ -11,6 +11,7 @@ Related docs:
 - Workflow test plan (detailed): see `docs/SCRIPTS_WORKFLOW_TEST_PLAN.md`.
 - Schema and linking details: see `docs/SCHEMA_codex_and_linking.md`.
 - API shapes (developer preview): see `docs/API_SPEC.md`.
+ - Resources and links: see `docs/RESOURCES.md`.
 
 Project Constraints (baseline):
 - 100% local, offline-friendly (no required external services / cloud).
