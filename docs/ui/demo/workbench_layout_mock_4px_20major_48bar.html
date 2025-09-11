@@ -311,6 +311,10 @@
     --crumb-tail-width: 72px; /* fixed-width curly end cap */
     --crumb-tail-gap: var(--crumb-tail-width); /* reserve same space for text padding */
     --crumb-tail-overhang: 10px; /* amount the tail dangles below the row */
+    /* Ensure the first chip body (before the tail) is not narrower than the dropdown banner */
+    --crumb-min-body-width: 148px; /* match crumb dropdown data-width by default */
+  /* Minimum inner gap between banner and chip edges when centering under short labels */
+  --crumb-banner-min-gap: 8px;
 
     /* Drawer title ribbon pieces */
     --drawer-title-body-bg: url('../img/NameBannerRightBody.png');
@@ -340,6 +344,8 @@
     border: 0px solid #3c3622;
     background-color: transparent;
     position: relative;
+    /* Keep the body section (excluding tail gap) at least as wide as the banner */
+    min-width: calc(var(--crumb-min-body-width) + var(--crumb-tail-gap));
   }
   .row-crumb .chip::before {
     content: "";
@@ -1816,8 +1822,17 @@
           const scrollY = window.scrollY || root.scrollTop || 0;
           const scrollX = window.scrollX || root.scrollLeft || 0;
           const fixedW = parseInt(crumbMenu.getAttribute('data-width')||'280',10);
-          const left = Math.round(scrollX + (r.left + (r.width/2) - fixedW/2));
-          const clampedLeft = Math.max(8, Math.min(left, (window.innerWidth - fixedW - 8)));
+          // Center under the anchor by default
+          const desiredLeft = Math.round(scrollX + (r.left + (r.width/2) - fixedW/2));
+          // Viewport safety clamps
+          let clampedLeft = Math.max(8, Math.min(desiredLeft, (window.innerWidth - fixedW - 8)));
+          // Keep banner within the chip body with a minimum inner gap on both sides
+          const chipRect = chip.getBoundingClientRect();
+          const minGap = parseInt(getComputedStyle(root).getPropertyValue('--crumb-banner-min-gap')) || 8;
+          const chipLeftBound = Math.round(scrollX + chipRect.left + minGap);
+          const chipRightBound = Math.round(scrollX + chipRect.right - minGap);
+          clampedLeft = Math.max(clampedLeft, chipLeftBound);
+          clampedLeft = Math.min(clampedLeft, chipRightBound - fixedW);
           crumbMenu.style.left = clampedLeft + 'px';
           const seamRect = crumbRow ? crumbRow.getBoundingClientRect() : null;
           const topPx = Math.round(scrollY + (seamRect ? seamRect.bottom : r.bottom));
@@ -1978,6 +1993,18 @@
           ro.observe(app);
         }
         requestAnimationFrame(computeInspectorTop);
+      })();
+      // Sync breadcrumb min body width to the crumb menu configured width
+      (function(){
+        const root = document.documentElement;
+        const menu = document.getElementById('crumbMenu');
+        function apply(){
+          if (!menu) return;
+          const w = parseInt(menu.getAttribute('data-width')||'0',10);
+          if (w > 0) root.style.setProperty('--crumb-min-body-width', w + 'px');
+        }
+        window.addEventListener('load', apply);
+        apply();
       })();
     </script>
     <script>
