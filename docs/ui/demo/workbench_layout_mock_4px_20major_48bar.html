@@ -706,9 +706,9 @@
       :root { --tabs-offset: calc(82px + var(--drawer-nameplate-h)); }
 
       /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
-      .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
+  .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
       /* Hit layer: above drawer, captures clicks */
-      .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; gap: var(--tabs-gap); z-index: 1005; pointer-events: auto; transition: left .22s ease, right .22s ease; }
+  .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 1005; pointer-events: auto; transition: left .22s ease, right .22s ease; }
       .drawer-tab { position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size); padding: 0 12px 0 10px; display: inline-flex; align-items: center; justify-content: flex-start; cursor: pointer; border: 0; border-radius: 0 999px 999px 0; color: #2b210a; font-weight: 700; font-size: 14px; background: transparent; box-shadow: none; transition: transform .12s ease; }
       .drawer-tabs .drawer-tab::before, .drawer-tabs-hit .drawer-tab::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; background-position: left center; background-size: var(--tab-img-size); }
       .drawer-tabs .drawer-tab::before { opacity: 1; background-image: var(--tab-img-inactive); }
@@ -716,7 +716,7 @@
       .drawer-tabs-hit .drawer-tab::before { opacity: 0; background-image: var(--tab-img-active); }
       .drawer-tabs-hit .drawer-tab[aria-pressed="true"]::before { opacity: 1; }
       .drawer-tab:focus-visible { outline: 2px solid #8ab4f8; outline-offset: 2px; }
-      [data-dock="right"] .drawer-tabs .drawer-tab::before, [data-dock="right"] .drawer-tabs-hit .drawer-tab::before { transform: scaleX(-1); transform-origin: center; background-position: right center; }
+  [data-dock="right"] .drawer-tabs .drawer-tab::before, [data-dock="right"] .drawer-tabs-hit .drawer-tab::before { transform: scaleX(-1); transform-origin: center; }
       .drawer-tab .txt { pointer-events: none; }
       .drawer-tab .count {
         position: absolute;
@@ -750,23 +750,23 @@
       .drawer { position: fixed; top: var(--drawer-top); bottom: var(--drawer-bottom); left: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); width: var(--drawer-w); max-width: calc(100vw - 48px); transition: left .22s ease; pointer-events: auto; overflow: visible; z-index: 950; }
       .drawer.open { left: 0; }
   .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
-      [data-dock="left"] .drawer.open + .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
-      [data-dock="left"] .drawer.open ~ .drawer-tabs-hit { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
+  [data-dock="left"] .drawer.open ~ .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
+  [data-dock="left"] .drawer.open ~ .drawer-tabs-hit { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
       [data-dock="right"] .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
       [data-dock="right"] .drawer.open { right: 0; }
-      [data-dock="right"] .drawer-tabs, [data-dock="right"] .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
+  [data-dock="right"] .drawer-tabs, [data-dock="right"] .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); align-items: flex-end; }
       [data-dock="right"] .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
       [data-dock="right"] .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
-      [data-dock="right"] .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
-      [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  [data-dock="right"] .drawer.open ~ .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  [data-dock="right"] .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
   /* Scoped right-docked Tools drawer rules */
   .tools-dock { position: relative; }
   .tools-dock .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
   .tools-dock .drawer.open { right: 0; }
-  .tools-dock .drawer-tabs, .tools-dock .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); }
+  .tools-dock .drawer-tabs, .tools-dock .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); align-items: flex-end; }
   .tools-dock .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
   .tools-dock .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
-  .tools-dock .drawer.open + .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
+  .tools-dock .drawer.open ~ .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
   .tools-dock .drawer.open ~ .drawer-tabs-hit { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
 
   .drawer .header { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 8px; padding: 10px 12px 6px; margin-top: var(--drawer-nameplate-h); overflow: visible; position: relative; background-color: #0b0d0e; }
