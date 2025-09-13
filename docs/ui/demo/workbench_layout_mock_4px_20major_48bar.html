@@ -554,9 +554,11 @@
         left: 0;
         /* Leave room for footer by measuring its computed height at runtime */
         bottom: 0;
+        /* Allow overhang graphics (e.g., small banners) to render above the ornate frame */
+        overflow: visible;
       }
       /* Inspector content spacing and scroll */
-  .inspector > .frame > .content { padding: 12px; overflow: auto; display: grid; gap: 8px; }
+  .inspector > .frame > .content { padding: var(--insp-content-pad-top, 0px) 12px 12px; overflow: visible; display: grid; gap: 8px; }
 
       /* Inspector footer: pinned notes/workflow + licensing area */
       .inspector > .frame > .insp-foot {
@@ -600,6 +602,7 @@
         --insp-name-banner-w: 108%;            /* width relative to box */
         --insp-name-banner-shift-y: 64px;       /* positive moves image down */
         --insp-name-banner-shift-x: 184px;        /* positive moves image right */
+        --insp-name-label-shift-y: 10px;         /* positive moves text down over the banner */
       }
       .inspector .ibox.name {
         /* Remove mini frame; use transparent center */
@@ -640,6 +643,7 @@
         text-shadow: 0 1px 0 rgba(0,0,0,0.5);
         background: transparent;
         padding: 0 16px;
+        transform: translateY(var(--insp-name-label-shift-y));
       }
 
       /* Middle cluster: squares on sides + tall preview center */
@@ -648,6 +652,29 @@
   .sidecol { display: grid; gap: 18px; }
       .ibox.sq { width: 100%; height: 72px; }
       .preview .ibox.tall { height: 220px; }
+
+      /* Preview bottom-rail floating 3-button overlay */
+      :root {
+        --insp-preview-rail-img: url('../img/3button.png');
+        --insp-preview-rail-w: 72%;   /* width relative to preview box */
+        --insp-preview-rail-h: 48%;   /* height relative to preview box */
+        --insp-preview-rail-offset-y: 26px; /* nudge up/down from bottom */
+      }
+      #inspPreview { position: relative; overflow: visible; }
+      #inspPreview::after {
+        content: "";
+        position: absolute;
+        left: 50%; bottom: 0;
+        transform: translate(-50%, var(--insp-preview-rail-offset-y));
+        width: var(--insp-preview-rail-w);
+        height: var(--insp-preview-rail-h);
+        background-image: var(--insp-preview-rail-img);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: contain;
+        pointer-events: none; /* decorative overlay only */
+        z-index: 6; /* above frame chrome and preview content */
+      }
 
       /* Inspector side squares: use decorative background art instead of mini frame */
       .inspector .sidecol .ibox.sq {
@@ -659,10 +686,59 @@
         background-position: center center;
         background-size: 100% 100%;
         display: flex; align-items: center; justify-content: center;
+        overflow: visible; /* allow overhang banner to render outside the square */
+      }
+      /* NSFW overlay image: render above squarebuttonbg but beneath the text label */
+      .inspector .sidecol .ibox.sq.nsfw::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/pinupimg.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        z-index: 0; /* base layer for content; label sits above at z-index:1 */
+        pointer-events: none; /* decorative only */
       }
       .inspector .sidecol .ibox.sq .label {
         position: relative; z-index: 1;
         color: #f5e8b0; text-shadow: 0 1px 1px rgba(0,0,0,0.45);
+      }
+
+      /* Small banner overlay (generic): floats over the bottom edge of the square */
+      .inspector .sidecol .ibox.sq.has-banner {
+        /* Tunable dimensions for the floating banner */
+        --banner-w: 164%;
+        --banner-h: 39px;
+        --banner-overhang: 14px; /* how far the banner hangs below the square */
+        --banner-text-color: #000000;
+      }
+      .inspector .sidecol .ibox.sq.has-banner::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: calc(-1 * var(--banner-overhang));
+        transform: translateX(-50%);
+        width: var(--banner-w);
+        height: var(--banner-h);
+        background-image: url('../img/NameBannerSmall.png');
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: contain;
+        z-index: 5; /* above button art/border, below label text */
+        pointer-events: none;
+      }
+      /* Center the label on the floating banner */
+      .inspector .sidecol .ibox.sq.has-banner .label {
+        position: absolute;
+        left: 50%;
+        bottom: calc(-1 * var(--banner-overhang) + (var(--banner-h) / 2));
+        transform: translate(-50%, 50%);
+        z-index: 6; /* above the banner overlay */
+        color: var(--banner-text-color, #f5e8b0);
+        text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+        white-space: nowrap;
+        pointer-events: none;
       }
 
       /* Actions row under preview */
@@ -1217,16 +1293,16 @@
               <!-- 2) Middle: side squares + tall preview -->
               <div class="midgrid">
                 <div class="sidecol">
-                  <div class="ibox sq"><div class="label">NSFW</div></div>
-                  <div class="ibox sq"><div class="label">Scale or Base</div></div>
+                  <div class="ibox sq nsfw has-banner"><div class="label">NSFW</div></div>
+                  <div class="ibox sq has-banner"><div class="label">Scale or Base</div></div>
                 <div class="ibox rect fav"><div class="label">Favorite</div><div class="fav-indicator" title="Target: Favorites"><span class="txt">★</span></div></div>
                 </div>
                 <div class="preview">
                   <div class="ibox tall" id="inspPreview"><div class="label">Preview</div></div>
                 </div>
                 <div class="sidecol">
-                  <div class="ibox sq"><div class="label">Support</div></div>
-                  <div class="ibox sq"><div class="label">Segmentation</div></div>
+                  <div class="ibox sq has-banner"><div class="label">Support</div></div>
+                  <div class="ibox sq has-banner"><div class="label">Segmentation</div></div>
                   <div class="ibox rect"><div class="label">Report mismatch</div></div>
                 </div>
               </div>
