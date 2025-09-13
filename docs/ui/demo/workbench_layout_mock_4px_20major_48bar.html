@@ -719,6 +719,26 @@
         z-index: 0;
         pointer-events: none;
       }
+
+      /* Segmented overlay image: same layering pattern as support */
+      .inspector .sidecol .ibox.sq.segmented {
+        /* Tunable controls for segmented overlay (unitless percents) */
+        --seg-bg-x: 50;       /* 0–100 => background-position X% */
+        --seg-bg-y: 50;       /* 0–100 => background-position Y% */
+        --seg-bg-scale: 70;   /* 50–200 => background-size width in % */
+      }
+      .inspector .sidecol .ibox.sq.segmented::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/SegmentParts.png');
+        background-repeat: no-repeat;
+        /* Position and size controlled via CSS variables */
+        background-position: calc(var(--seg-bg-x, 50) * 1%) calc(var(--seg-bg-y, 50) * 1%);
+        background-size: calc(var(--seg-bg-scale, 70) * 1%) auto;
+        z-index: 0;
+        pointer-events: none;
+      }
       .inspector .sidecol .ibox.sq .label {
         position: relative; z-index: 1;
         color: #f5e8b0; text-shadow: 0 1px 1px rgba(0,0,0,0.45);
@@ -1321,7 +1341,7 @@
                 </div>
                 <div class="sidecol">
                   <div class="ibox sq support has-banner"><div class="label">Support</div></div>
-                  <div class="ibox sq has-banner"><div class="label">Segmentation</div></div>
+                  <div class="ibox sq segmented has-banner"><div class="label">Segmentation</div></div>
                   <div class="ibox rect"><div class="label">Report mismatch</div></div>
                 </div>
               </div>
