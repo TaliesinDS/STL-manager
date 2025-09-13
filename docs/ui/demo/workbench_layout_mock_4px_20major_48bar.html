@@ -700,6 +700,25 @@
         z-index: 0; /* base layer for content; label sits above at z-index:1 */
         pointer-events: none; /* decorative only */
       }
+      /* Support overlay image: same layering as NSFW underlay (above button bg, below text/banner) */
+      .inspector .sidecol .ibox.sq.support {
+        /* Tunable controls for support overlay (unitless percents) */
+        --support-bg-x: 50;      /* 0–100 => background-position X% */
+        --support-bg-y: 50;      /* 0–100 => background-position Y% */
+        --support-bg-scale: 68;  /* 50–200 => background-size width in % */
+      }
+      .inspector .sidecol .ibox.sq.support::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('../img/Supportedbg.png');
+        background-repeat: no-repeat;
+        /* Position and size controlled via CSS variables */
+        background-position: calc(var(--support-bg-x, 50) * 1%) calc(var(--support-bg-y, 50) * 1%);
+        background-size: calc(var(--support-bg-scale, 100) * 1%) auto;
+        z-index: 0;
+        pointer-events: none;
+      }
       .inspector .sidecol .ibox.sq .label {
         position: relative; z-index: 1;
         color: #f5e8b0; text-shadow: 0 1px 1px rgba(0,0,0,0.45);
@@ -1301,7 +1320,7 @@
                   <div class="ibox tall" id="inspPreview"><div class="label">Preview</div></div>
                 </div>
                 <div class="sidecol">
-                  <div class="ibox sq has-banner"><div class="label">Support</div></div>
+                  <div class="ibox sq support has-banner"><div class="label">Support</div></div>
                   <div class="ibox sq has-banner"><div class="label">Segmentation</div></div>
                   <div class="ibox rect"><div class="label">Report mismatch</div></div>
                 </div>
