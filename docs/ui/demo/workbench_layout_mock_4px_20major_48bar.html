@@ -44,6 +44,9 @@
         --tab-img-size: auto var(--tab-size);
         --tab-img-ratio: 2.6;
         --tab-img-width: calc(var(--tab-size) * var(--tab-img-ratio));
+  /* Click hit area tuning: shrink the hit-layer width without affecting visuals */
+  --tab-hit-pad: -96px; /* negative reduces clickable width; tweak between -120px and -60px */
+  --tab-hit-width: calc(var(--tab-img-width) + var(--tab-hit-pad));
         /* Theme switcher background images */
         --theme-switch-bg-dark: url('../img/ComfyUI_14363_.png');
         /* Light-mode image */
@@ -922,7 +925,9 @@
       /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
   .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
       /* Hit layer: above drawer, captures clicks */
-  .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 1005; pointer-events: auto; transition: left .22s ease, right .22s ease; }
+  .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 1005; pointer-events: none; transition: left .22s ease, right .22s ease; }
+  /* Narrow the clickable area to better match visible tab cap width; enable pointer events only on the buttons */
+  .drawer-tabs-hit .drawer-tab { min-width: 0; width: var(--tab-hit-width); pointer-events: auto; }
       .drawer-tab { position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size); padding: 0 12px 0 10px; display: inline-flex; align-items: center; justify-content: flex-start; cursor: pointer; border: 0; border-radius: 0 999px 999px 0; color: #2b210a; font-weight: 700; font-size: 14px; background: transparent; box-shadow: none; transition: transform .12s ease; }
       .drawer-tabs .drawer-tab::before, .drawer-tabs-hit .drawer-tab::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; background-position: left center; background-size: var(--tab-img-size); }
       .drawer-tabs .drawer-tab::before { opacity: 1; background-image: var(--tab-img-inactive); }
@@ -978,6 +983,8 @@
   .tools-dock .drawer { left: auto; right: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); transition: right .22s ease; }
   .tools-dock .drawer.open { right: 0; }
   .tools-dock .drawer-tabs, .tools-dock .drawer-tabs-hit { left: auto; right: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); align-items: flex-end; }
+  /* Apply same clickable-width limit on right-docked hit layer */
+  .tools-dock .drawer-tabs-hit .drawer-tab { min-width: 0; width: var(--tab-hit-width); }
   .tools-dock .drawer-tab { border-radius: 999px 0 0 999px; justify-content: flex-end; }
   .tools-dock .drawer-tab .count { left: var(--tab-badge-left, 6px); right: auto; }
   .tools-dock .drawer.open ~ .drawer-tabs { right: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); left: auto; }
