@@ -499,6 +499,9 @@
   .row-crumb .chip .seg { display: inline-flex; align-items: center; gap: 6px; position: relative; }
   .row-crumb .chip .seg + .seg::before { content: "/"; opacity: 0.6; margin: 0 2px; }
   .row-crumb .chip .caret { opacity: 0.8; pointer-events: none; }
+  /* New chip slide-in animation (pure horizontal glide) */
+  @keyframes seg-slide-in { from { transform: translateX(-18px); } to { transform: translateX(0); } }
+  .row-crumb .chip .seg.is-new { animation: seg-slide-in .22s cubic-bezier(.2,.8,.2,1); }
   /* Placeholder flag/icon for first segment; swap to real flag art later */
   .row-crumb .chip .seg.flag::before {
     content: ""; display: inline-block; width: 18px; height: 18px; border-radius: 2px; margin-right: 4px; border: 1px solid rgba(0,0,0,0.35);
@@ -958,9 +961,9 @@
       :root { --tabs-offset: calc(82px + var(--drawer-nameplate-h)); }
 
       /* Drawer-attached tabs (visual layer below drawer for tuck-under) */
-  .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 900; pointer-events: none; transition: left .22s ease, right .22s ease; }
+  .drawer-tabs { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 11010; pointer-events: none; transition: left .22s ease, right .22s ease; }
       /* Hit layer: above drawer, captures clicks */
-  .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 1005; pointer-events: none; transition: left .22s ease, right .22s ease; }
+  .drawer-tabs-hit { position: fixed; left: calc(-1 * var(--tab-cap-overhang)); top: calc(var(--drawer-top) + var(--tabs-offset)); display: flex; flex-direction: column; align-items: flex-start; gap: var(--tabs-gap); z-index: 11015; pointer-events: none; transition: left .22s ease, right .22s ease; }
   /* Narrow the clickable area to better match visible tab cap width; enable pointer events only on the buttons */
   .drawer-tabs-hit .drawer-tab { min-width: 0; width: var(--tab-hit-width); pointer-events: auto; }
       .drawer-tab { position: relative; min-width: max(calc(var(--tab-overhang) + 28px), var(--tab-img-width)); height: var(--tab-size); padding: 0 12px 0 10px; display: inline-flex; align-items: center; justify-content: flex-start; cursor: pointer; border: 0; border-radius: 0 999px 999px 0; color: #2b210a; font-weight: 700; font-size: 14px; background: transparent; box-shadow: none; transition: transform .12s ease; }
@@ -998,10 +1001,13 @@
       }
       .drawer-tab.has-count .count { display: inline-flex; }
 
-      /* Drawer and backdrop */
-      .drawer-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 900; }
-      .drawer-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); opacity: 0; transition: opacity .2s ease; }
-      .drawer { position: fixed; top: var(--drawer-top); bottom: var(--drawer-bottom); left: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); width: var(--drawer-w); max-width: calc(100vw - 48px); transition: left .22s ease; pointer-events: auto; overflow: visible; z-index: 950; }
+  /* Drawer and backdrop */
+  /* Place the entire drawer layer above topbar/banners (clicktrap lives here) */
+  .drawer-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 11000; }
+  /* Backdrop (clicktrap): above app UI but below the drawer panel */
+  .drawer-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); opacity: 0; transition: opacity .2s ease; z-index: 11005; }
+  /* Drawer panel above the backdrop so interactions remain enabled */
+  .drawer { position: fixed; top: var(--drawer-top); bottom: var(--drawer-bottom); left: calc(-1 * (var(--drawer-w) + (var(--frame-border) * 2))); width: var(--drawer-w); max-width: calc(100vw - 48px); transition: left .22s ease; pointer-events: auto; overflow: visible; z-index: 11050; }
       .drawer.open { left: 0; }
   .drawer-wrap.open .drawer-backdrop { opacity: 1; pointer-events: auto; }
   [data-dock="left"] .drawer.open ~ .drawer-tabs { left: calc(var(--drawer-w) + (var(--frame-border) * 2) - var(--tab-cap-overhang)); }
@@ -2920,6 +2926,12 @@
               document.dispatchEvent(new CustomEvent('crumbChanged'));
             });
             segEl.appendChild(span);
+            // Mark the newest appended segment for slide-in (last item only)
+            if (i === segs.length - 1 && segs.length > 1) {
+              span.classList.add('is-new');
+              // Remove the marker after animation ends to avoid replays
+              span.addEventListener('animationend', () => span.classList.remove('is-new'), { once: true });
+            }
           });
           // if no base, hide row
           document.getElementById('crumbRow').style.display = state.base ? '' : 'none';
