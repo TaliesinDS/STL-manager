@@ -83,6 +83,8 @@
         /* Inspector position controls */
   --inspector-left: 1740px; /* distance from viewport left */
   --inspector-w: 400px;  /* inspector panel width */
+  /* Banner slide distance (controls perceived travel). 110% = glide fully off */
+  --banner-slide-offset: 110%;
       }
       html, body { height: 100%; margin: 0; }
       body {
@@ -164,7 +166,7 @@
   }
 
   /* Top bar (two-row button area + meta frame) */
-  .topbar { position: sticky; top: 0; z-index: 5; }
+  .topbar { position: sticky; top: 0; z-index: 10150; }
   .topbar .content { display: grid; grid-template-columns: 180px 1fr; gap: 0; align-items: stretch; height: 144px; }
   /* Ensure meta-card stays in the first (fixed) column and does not span */
   .topbar .meta-card { grid-column: 1 / 2; box-sizing: border-box; justify-self: stretch; }
@@ -203,7 +205,7 @@
 
   /* Allow decorative overhang only for the top row */
   .row-top, .row-bottom, .row-pins { overflow: hidden; }
-  .row-top { overflow: visible; position: relative; z-index: 2; }
+  .row-top { overflow: visible; position: relative; }
   .row-top .btnbar { overflow: visible; }
 
   /* Top row button skins: add background art and anchor for overhang */
@@ -241,11 +243,39 @@
     z-index: -1; /* sit behind button text within its stacking context */
   }
   /* Ensure the active button (and its overhang) sits above the dropdown banner */
-  .row-top .btnbar .btn9[aria-pressed="true"] { z-index: 10060; }
+  .row-top .btnbar .btn9[aria-pressed="true"] { z-index: 10110; }
 
-  /* Banner-style dropdown menu (for saved collections) */
-  .banner-menu { position: absolute; z-index: 10050; display: none; }
-  .banner-menu.open { display: block; }
+  /* Banner-style dropdown menu (for saved collections & breadcrumbs) */
+  .banner-menu {
+    position: absolute;
+    z-index: 10040; /* sit below active button (10060) and overhang (10120) */
+    /* Keep in DOM for smooth transitions */
+    display: block;
+    /* Pure vertical glide: no opacity or scaling */
+    transform: translateY(calc(-1 * var(--banner-slide-offset, 110%)));
+    visibility: hidden; /* fully hidden by default */
+    pointer-events: none; /* disabled when hidden */
+    transition: transform .22s cubic-bezier(.2,.8,.2,1);
+    will-change: transform;
+  }
+  /* Separate stacking: domain menu sits below the sticky topbar (z-index:5),
+    while the breadcrumb menu sits above it so it can overlay the chip row. */
+  #bannerMenu { z-index: 10105; }
+  #crumbMenu { z-index: 10100; }
+  .banner-menu.open {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  /* Keep visible during the slide-out so transform can animate */
+  .banner-menu.closing {
+    visibility: visible;
+    pointer-events: none;
+  }
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .banner-menu { transition: none; transform: none; }
+  }
   .banner-menu .menu-frame {
     /* Banner skin: scales image to width, anchors tip at bottom */
   background-color: transparent; /* no fill behind transparent PNG */
@@ -347,11 +377,16 @@
     --scroll-hint-outset-top: -10px;
     --scroll-hint-outset-bottom: -32px;
   }
+  /* Ensure banner scroll-hint arrows never overlay topbar/chips/buttons */
+  .banner-menu.scroll-hint-host::before,
+  .banner-menu.scroll-hint-host::after {
+    z-index: 1; /* within banner context; below topbar (z=5), above banner content */
+  }
 
   /* Overlay for the active top-row button overhang (renders above banner) */
   .btn-overhang {
     position: absolute;
-    z-index: 10060; /* above .banner-menu (10050) */
+    z-index: 10120; /* above banners and topbar content */
     pointer-events: none; /* decorative */
     background-image: var(--topbtn-img-active);
     background-repeat: no-repeat;
@@ -484,7 +519,7 @@
   .crumb-tile:hover, .crumb-tile:focus { outline: none; border-color: var(--gold-mid); }
 
       /* Hanging bookmark banners in the breadcrumb row; float above (not clipped) */
-  #crumbRow { position: relative; overflow: visible; display: flex; align-items: center; z-index: 2; }
+  #crumbRow { position: relative; overflow: visible; display: flex; align-items: center; }
   .bookmark-strip {
     position: relative;
     z-index: 3;
@@ -1258,14 +1293,14 @@
               <div class="crumb-grid" id="crumbGrid"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- Banner dropdown menu container -->
-  <div id="bannerMenu" class="banner-menu scroll-hint-host" aria-hidden="true" data-tail-gap="42" data-head-gap="0">
-  <div class="menu-frame">
-        <div class="menu-scroll">
-          <div class="menu-items" role="menu" aria-label="Saved collections"></div>
+          <!-- Domain banner dropdown menu moved inside topbar for correct stacking over chips/bookmarks -->
+          <div id="bannerMenu" class="banner-menu scroll-hint-host" aria-hidden="true" data-tail-gap="42" data-head-gap="0">
+            <div class="menu-frame">
+              <div class="menu-scroll">
+                <div class="menu-items" role="menu" aria-label="Saved collections"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2006,8 +2041,10 @@
             const activeDomain = domainBar.querySelector('.btn9[aria-pressed="true"]') || domainBar.querySelector(`.btn9[data-domain="${key}"]`);
             if (activeDomain) {
               const r = activeDomain.getBoundingClientRect();
-              bannerMenu.style.left = Math.round(r.left) + 'px';
-              bannerMenu.style.top = Math.round(r.bottom) + 'px';
+              const host = document.querySelector('.topbar');
+              const hr = host ? host.getBoundingClientRect() : { left: 0, top: 0, bottom: 0 };
+              bannerMenu.style.left = Math.round(r.left - hr.left) + 'px';
+              bannerMenu.style.top = Math.round(r.bottom - hr.top) + 'px';
               bannerMenu.style.width = Math.round(r.width) + 'px';
               placeOverhang(activeDomain);
             }
@@ -2104,21 +2141,35 @@
         }
         function closeBanner(){
           if (!bannerMenu) return;
+          // If already closed, nothing to do
+          if (!bannerMenu.classList.contains('open')) return;
+          // Start closing transition
           bannerMenu.classList.remove('open');
+          bannerMenu.classList.add('closing');
           bannerMenu.setAttribute('aria-hidden','true');
-          if (btnOverhang) btnOverhang.style.display = 'none';
-          if (rebalanceOverlay) {
-            window.removeEventListener('resize', rebalanceOverlay);
-            document.removeEventListener('scroll', rebalanceOverlay, { passive: true });
-            rebalanceOverlay = null;
-          }
-          if (bannerClickAttached && bannerItems) { bannerItems.removeEventListener('click', onBannerItemClick); bannerClickAttached = false; }
-          const frame = bannerMenu.querySelector('.menu-frame');
-          if (frame) { frame.style.maxHeight = ''; frame.style.height = ''; }
-          const scroller = bannerMenu.querySelector('.menu-scroll');
-          if (scroller) { scroller.style.maxHeight = ''; scroller.style.height = ''; }
-          // Clear hint classes on host
-          bannerMenu.classList.remove('scroll-hint-host', 'has-more-top', 'has-more-bottom');
+          // Force reflow so transform transition reliably fires
+          void bannerMenu.offsetHeight;
+          const onDone = (e) => {
+            if (e && e.target !== bannerMenu) return; // only react to container transition
+            bannerMenu.removeEventListener('transitionend', onDone);
+            bannerMenu.classList.remove('closing');
+            if (rebalanceOverlay) {
+              window.removeEventListener('resize', rebalanceOverlay);
+              document.removeEventListener('scroll', rebalanceOverlay, { passive: true });
+              rebalanceOverlay = null;
+            }
+            if (bannerClickAttached && bannerItems) { bannerItems.removeEventListener('click', onBannerItemClick); bannerClickAttached = false; }
+            const frame = bannerMenu.querySelector('.menu-frame');
+            if (frame) { frame.style.maxHeight = ''; frame.style.height = ''; }
+            const scroller = bannerMenu.querySelector('.menu-scroll');
+            if (scroller) { scroller.style.maxHeight = ''; scroller.style.height = ''; }
+            // Clear hint classes on host
+            bannerMenu.classList.remove('scroll-hint-host', 'has-more-top', 'has-more-bottom');
+            if (btnOverhang) btnOverhang.style.display = 'none';
+          };
+          bannerMenu.addEventListener('transitionend', onDone);
+          // Safety timeout in case transitionend doesn't fire
+          setTimeout(onDone, 350);
         }
         // Listen for external requests to close banners (e.g., crumbs opening)
         document.addEventListener('closeAllBanners', () => { try { closeBanner(); } catch (e) {} });
@@ -2830,7 +2881,22 @@
     document.addEventListener('click', onDocClick, { capture: true });
     try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {}
   }
-        function closeCrumbMenu(){ crumbMenu.classList.remove('open'); crumbMenu.setAttribute('aria-hidden','true'); document.removeEventListener('click', onDocClick, { capture: true }); try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {} }
+        function closeCrumbMenu(){
+          crumbMenu.classList.remove('open');
+          crumbMenu.classList.add('closing');
+          crumbMenu.setAttribute('aria-hidden','true');
+          // Force reflow so transform transition reliably fires
+          void crumbMenu.offsetHeight;
+          const onDone = (e) => {
+            if (e && e.target !== crumbMenu) return;
+            crumbMenu.removeEventListener('transitionend', onDone);
+            crumbMenu.classList.remove('closing');
+            document.removeEventListener('click', onDocClick, { capture: true });
+            try { document.dispatchEvent(new CustomEvent('crumbPanelToggled')); } catch (e) {}
+          };
+          crumbMenu.addEventListener('transitionend', onDone);
+          setTimeout(onDone, 350);
+        }
         function onDocClick(e){ if (!crumbMenu.contains(e.target) && !chip.contains(e.target)) closeCrumbMenu(); }
         function updateSeg(){
           clear(segEl);
