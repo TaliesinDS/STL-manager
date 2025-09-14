@@ -780,6 +780,40 @@
         z-index: 0;
         pointer-events: none;
       }
+      /* Scale overlay image: same layering pattern as support/segmented */
+      .inspector .sidecol .ibox.sq.scale {
+        /* Tunable controls for scale overlay (unitless percents) */
+        --scale-bg-x: 50;       /* 0–100 => background-position X% */
+        --scale-bg-y: 50;       /* 0–100 => background-position Y% */
+        --scale-bg-scale: 72;   /* deprecated: no longer used; we render at native size */
+        /* Art selector: override this to switch the scale sprite per selected item */
+        --scale-art: url('../img/scale4.png');
+        /* Pixel offsets to nudge intrinsic image into the frame without scaling */
+        --scale-offset-x: 0px;
+        --scale-offset-y: 0px;
+      }
+      .inspector .sidecol .ibox.sq.scale::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        /* Use CSS variable so caller can swap specific scale images later */
+        background-image: var(--scale-art);
+        background-repeat: no-repeat;
+        /* Pixel-perfect: do not scale the artwork; render at intrinsic size */
+        background-size: auto;
+        /* Center by default; allow pixel nudges via offsets */
+        background-position: calc(50% + var(--scale-offset-x, 0px)) calc(50% + var(--scale-offset-y, 0px));
+        image-rendering: pixelated;
+        image-rendering: crisp-edges; /* fallback */
+        z-index: 0;
+        pointer-events: none;
+      }
+      /* Place a small round badge at the top-right of the scale square */
+      .inspector .sidecol .ibox.sq.scale { position: relative; overflow: visible; }
+      .inspector .sidecol .ibox.sq.scale .fav-indicator {
+        top: var(--fav-badge-top-sq, -10px);
+        right: var(--fav-badge-right-sq, -12px);
+      }
       .inspector .sidecol .ibox.sq .label {
         position: relative; z-index: 1;
         color: #f5e8b0; text-shadow: 0 1px 1px rgba(0,0,0,0.45);
@@ -844,8 +878,8 @@
 
       /* Ensure favorite badge stays at top-right for inspector rectangle buttons */
       :root {
-        --fav-badge-top: -12px;   /* tweak as desired */
-        --fav-badge-right: -16px; /* tweak as desired */
+        --fav-badge-top: -10px;   /* tweak as desired */
+        --fav-badge-right: -14px; /* tweak as desired */
       }
       .inspector .ibox.rect.fav { position: relative; overflow: visible; }
       .inspector .ibox.rect.fav .fav-indicator {
@@ -859,10 +893,10 @@
         position: absolute;
         top: calc(-1 * var(--mini-border, 10px) + -8px);
         right: calc(-1 * var(--mini-border, 10px) + -8px);
-        width: 36px; height: 36px;
+        width: 30px; height: 30px;
         display: inline-flex; align-items: center; justify-content: center;
         background: transparent;
-        background-image: url('../img/greenroundbutton.png');
+        background-image: url('../img/roundframesmallthin.png');
         background-repeat: no-repeat; background-position: center; background-size: contain;
         color: #ffffff; font-weight: 700; font-size: 12px; line-height: 1;
         text-shadow: 0 1px 1px rgba(0,0,0,0.45);
@@ -1381,7 +1415,7 @@
               <div class="midgrid">
                 <div class="sidecol">
                   <div class="ibox sq nsfw has-banner"><div class="label">NSFW</div></div>
-                  <div class="ibox sq has-banner"><div class="label">Scale or Base</div></div>
+                  <div class="ibox sq scale has-banner"><div class="label">Scale</div><div class="fav-indicator" title="Scale badge"><span class="txt">12</span></div></div>
                 <div class="ibox rect fav"><div class="label">Favorite</div><div class="fav-indicator" title="Target: Favorites"><span class="txt">★</span></div></div>
                 </div>
                 <div class="preview">
