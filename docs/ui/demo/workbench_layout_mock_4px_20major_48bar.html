@@ -700,8 +700,46 @@
         --insp-preview-rail-w: 72%;   /* width relative to preview box */
         --insp-preview-rail-h: 48%;   /* height relative to preview box */
         --insp-preview-rail-offset-y: 26px; /* nudge up/down from bottom */
+        /* Preview background image (panel base layer) */
+  --insp-preview-bg-img: url('../img/inspectorpreviewbg.png');
+  --insp-preview-bg-size: 550%; /* contain|cover or 100% 100% */
+  /* Place art a bit above the rail so it’s not hidden */
+  --insp-preview-bg-x: 46%;
+  --insp-preview-bg-y: 45%;
+        /* Default preview placeholder (shows above bg, below rail) */
+  --insp-preview-default-img: url('../img/inspectorpreviewdefault.png');
+        --insp-preview-default-scale: 72; /* percent width of panel */
+        --insp-preview-default-offset-x: 0px; /* +/- nudge from center */
+        --insp-preview-default-offset-y: 70px;
+        /* Arrow overlays above left/right small buttons (tunable) */
+        --insp-arrow-img: url('../img/arrowright.png'); /* base art points right */
+        --insp-arrow-base-w: 44px;   /* base arrow width in px */
+        --insp-arrow-base-h: 22px;   /* base arrow height in px */
+        --insp-arrow-scale: 1;       /* overall scale multiplier (e.g., 1.2 = 120%) */
+        --insp-arrow-offset-y: -7px; /* distance up from preview bottom to place arrows */
+        --insp-arrow-right-x: 38px;  /* horizontal offset from center to right arrow */
+        --insp-arrow-left-x: 38px;   /* horizontal offset from center to left arrow */
       }
       #inspPreview { position: relative; overflow: visible; }
+      /* Base background for the preview panel */
+      #inspPreview {
+        background-image: var(--insp-preview-bg-img);
+        background-repeat: no-repeat;
+        background-position: var(--insp-preview-bg-x) var(--insp-preview-bg-y);
+        background-size: var(--insp-preview-bg-size);
+      }
+      /* Default placeholder image (behind rail, above bg) */
+      #inspPreview::before {
+        content: "";
+        position: absolute;
+        inset: 0; /* fill panel; size via background-size percent */
+        background-image: var(--insp-preview-default-img);
+        background-repeat: no-repeat;
+        background-position: calc(50% + var(--insp-preview-default-offset-x)) calc(50% + var(--insp-preview-default-offset-y));
+        background-size: calc(var(--insp-preview-default-scale) * 1%) auto;
+        pointer-events: none;
+        z-index: 5; /* below rail (::after at z=6) */
+      }
       #inspPreview::after {
         content: "";
         position: absolute;
@@ -715,6 +753,35 @@
         background-size: contain;
         pointer-events: none; /* decorative overlay only */
         z-index: 6; /* above frame chrome and preview content */
+      }
+      /* Keep the label text above placeholder and rail */
+      #inspPreview > .label { position: relative; z-index: 8; }
+
+      /* New: arrows above the small left/right buttons on the preview rail */
+      .inspector .preview { position: relative; }
+      .inspector .preview::before,
+      .inspector .preview::after {
+        content: "";
+        position: absolute;
+        bottom: var(--insp-arrow-offset-y);
+        width: calc(var(--insp-arrow-base-w) * var(--insp-arrow-scale));
+        height: calc(var(--insp-arrow-base-h) * var(--insp-arrow-scale));
+        background-image: var(--insp-arrow-img);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        pointer-events: none;
+        z-index: 7; /* above the 3-button rail (::after at z=6) */
+      }
+      /* Right arrow uses the original art (points right) */
+      .inspector .preview::before {
+        left: calc(50% + var(--insp-arrow-right-x));
+        transform: translateX(-50%);
+      }
+      /* Left arrow mirrors the same art */
+      .inspector .preview::after {
+        left: calc(50% - var(--insp-arrow-left-x));
+        transform: translateX(-50%) scaleX(-1);
       }
 
       /* Inspector side squares: use decorative background art instead of mini frame */
