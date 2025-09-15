@@ -2,7 +2,7 @@
 <html lang="en" data-dock="left">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.25, maximum-scale=4, user-scalable=yes" />
     <title>STL Manager • UI Mockup (Workbench Layout • 4px/20px/48px)</title>
     <style>
       :root {
@@ -1345,6 +1345,26 @@
         border-color: rgba(0,0,0,0.08);
         color: var(--muted);
         box-shadow: 0 6px 14px rgba(0,0,0,0.06) inset;
+      }
+
+      /* Mobile/tablet quick preview: make the demo usable on narrow screens */
+      @media (max-width: 1200px) {
+        html, body { height: auto; }
+        body { overflow: auto; }
+        .app { max-width: 100%; margin: 16px auto; padding: 0 8px 16px; }
+        .appgrid { grid-template-columns: 1fr; height: auto; overflow: visible; }
+        /* Dock inspector below the workbench and make it fluid */
+        .inspector {
+          position: static;
+          width: auto;
+          left: auto; right: auto; top: auto; bottom: auto;
+        }
+        .inspector > .frame { position: relative; }
+        /* Reduce big fixed offsets so content fits */
+        :root { --drawer-top: 12px; --drawer-bottom: 12px; }
+        /* Tabs: keep visible but avoid offscreen positioning */
+        .drawer-tabs, .drawer-tabs-hit { position: static; }
+        .drawer { position: relative; left: 0 !important; right: 0 !important; width: auto; }
       }
     </style>
   </head>
