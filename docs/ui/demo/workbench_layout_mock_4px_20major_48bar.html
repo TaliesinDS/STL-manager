@@ -588,7 +588,7 @@
       }
       /* Keep inspector within viewport horizontally on any screen width */
       .inspector {
-        left: clamp(8px, var(--inspector-left, 1740px), calc(100vw - var(--inspector-w, 400px) - 8px));
+        left: clamp(8px, var(--inspector-left, 1740px), calc(100svw - var(--inspector-w, 400px) - 8px));
       }
       /* Make the inner frame the visual element with its own bottom inset, without
          impacting other .frame instances elsewhere in the layout. */
@@ -1353,6 +1353,7 @@
 
       /* Tablet layout adjustments (e.g., 1680px wide devices) */
       @media (max-width: 1800px) and (min-width: 1201px) {
+        body { overflow-x: hidden; }
         :root {
           /* remove desktop overhang margins so there is no blank gap */
           --wb-edge-right: 0px;
@@ -1360,14 +1361,22 @@
           /* allow inspector to flex slightly narrower on medium screens */
           --inspector-w: clamp(320px, 28vw, 400px);
         }
+        /* Constrain wide button row to its own scroller to avoid page overflow */
+        .row-top { overflow: hidden; }
+        .row-top .btnbar { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+        .row-top .btnbar .btn9 { flex: 0 0 auto; }
       }
 
       /* Mobile/tablet quick preview: make the demo usable on narrow screens */
       @media (max-width: 1200px) {
         html, body { height: auto; }
-        body { overflow: auto; }
+        body { overflow: auto; overflow-x: hidden; }
         .app { max-width: 100%; margin: 16px auto; padding: 0 8px 16px; }
         .appgrid { grid-template-columns: 1fr; height: auto; overflow: visible; gap: 12px; }
+        /* Constrain wide button row to its own scroller to avoid page overflow */
+        .row-top { overflow: hidden; }
+        .row-top .btnbar { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+        .row-top .btnbar .btn9 { flex: 0 0 auto; }
         .workbench { height: auto; }
         .workbench > .frame { height: auto; }
         /* Dock inspector below the workbench and make it fluid */
@@ -1392,6 +1401,35 @@
         /* Tabs: keep visible but avoid offscreen positioning */
         .drawer-tabs, .drawer-tabs-hit { position: static; }
         .drawer { position: relative; left: 0 !important; right: 0 !important; width: auto; }
+      }
+
+      /* Tablet vertical compression (e.g., ~1680px CSS width devices) */
+      @media (max-width: 1800px) and (min-width: 1201px) {
+        :root {
+          --bar-row-h: 40px;
+          --bar-row-h-top: var(--bar-row-h);
+          --tabs-gap: 12px;
+          --drawer-top: 56px;
+          --drawer-bottom: 12px;
+        }
+        .topbar .content { height: 112px; }
+        .ctrl-theme { min-width: 96px; }
+        .ctrl-search { min-width: 200px; }
+        .searchbox input { height: 36px; padding: 2px 8px; }
+      }
+
+      /* Mobile vertical compression */
+      @media (max-width: 1200px) {
+        :root {
+          --bar-row-h: 36px;
+          --bar-row-h-top: var(--bar-row-h);
+          --tabs-gap: 10px;
+        }
+        .topbar .content { height: auto; }
+        .row-top { grid-template-columns: 1fr; }
+        .ctrl-theme { min-width: 0; }
+        .ctrl-search { min-width: 0; }
+        .searchbox input { height: 34px; padding: 2px 8px; }
       }
     </style>
   </head>
