@@ -1352,16 +1352,28 @@
         html, body { height: auto; }
         body { overflow: auto; }
         .app { max-width: 100%; margin: 16px auto; padding: 0 8px 16px; }
-        .appgrid { grid-template-columns: 1fr; height: auto; overflow: visible; }
+        .appgrid { grid-template-columns: 1fr; height: auto; overflow: visible; gap: 12px; }
+        .workbench { height: auto; }
+        .workbench > .frame { height: auto; }
         /* Dock inspector below the workbench and make it fluid */
         .inspector {
           position: static;
-          width: auto;
+          width: 100%;
+          max-width: none;
           left: auto; right: auto; top: auto; bottom: auto;
         }
         .inspector > .frame { position: relative; }
         /* Reduce big fixed offsets so content fits */
-        :root { --drawer-top: 12px; --drawer-bottom: 12px; }
+        :root {
+          --drawer-top: 12px;
+          --drawer-bottom: 12px;
+          /* Remove desktop overhang to the right so no empty gap appears */
+          --wb-edge-right: 0px;
+          --wb-edge-left: 0px;
+          /* Neutralize fixed inspector metrics on mobile */
+          --inspector-left: 0px;
+          --inspector-w: auto;
+        }
         /* Tabs: keep visible but avoid offscreen positioning */
         .drawer-tabs, .drawer-tabs-hit { position: static; }
         .drawer { position: relative; left: 0 !important; right: 0 !important; width: auto; }
