@@ -586,6 +586,10 @@
         width: var(--inspector-w, 400px);
         z-index: 700;
       }
+      /* Keep inspector within viewport horizontally on any screen width */
+      .inspector {
+        left: clamp(8px, var(--inspector-left, 1740px), calc(100vw - var(--inspector-w, 400px) - 8px));
+      }
       /* Make the inner frame the visual element with its own bottom inset, without
          impacting other .frame instances elsewhere in the layout. */
       .inspector > .frame {
@@ -1345,6 +1349,17 @@
         border-color: rgba(0,0,0,0.08);
         color: var(--muted);
         box-shadow: 0 6px 14px rgba(0,0,0,0.06) inset;
+      }
+
+      /* Tablet layout adjustments (e.g., 1680px wide devices) */
+      @media (max-width: 1800px) and (min-width: 1201px) {
+        :root {
+          /* remove desktop overhang margins so there is no blank gap */
+          --wb-edge-right: 0px;
+          --wb-edge-left: 0px;
+          /* allow inspector to flex slightly narrower on medium screens */
+          --inspector-w: clamp(320px, 28vw, 400px);
+        }
       }
 
       /* Mobile/tablet quick preview: make the demo usable on narrow screens */
