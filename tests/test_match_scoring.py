@@ -14,7 +14,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Set, Tuple
 
 # The module lives under a numeric-prefix directory so we import it via spec.
 _REPO = Path(__file__).resolve().parents[1]

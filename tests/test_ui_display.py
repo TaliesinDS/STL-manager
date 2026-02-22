@@ -14,8 +14,6 @@ import sys
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
-from typing import Dict, List, Optional
-from unittest.mock import patch
 
 # ---------------------------------------------------------------------------
 # Load ui_display module
