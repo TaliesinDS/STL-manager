@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import argparse
-from typing import Dict, Optional
+from typing import Optional
 
 from db.models import GameSystem, Variant  # type: ignore
 from db.session import get_session  # type: ignore
+from scripts.lib.constants import SYSTEM_DEFAULT_SCALE_DEN, SYSTEM_DEFAULT_SCALE_NAME
 
-SYSTEM_DEFAULT_SCALE_DEN: Dict[str, int] = {"w40k": 56, "aos": 56, "heresy": 56, "old_world": 56}
-SYSTEM_DEFAULT_SCALE_NAME: Dict[str, str] = {"w40k": "28mm heroic", "aos": "28mm heroic", "heresy": "28mm heroic", "old_world": "28mm heroic"}
 
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="Backfill scale fields (den and name) on Variants by system.")

@@ -1,17 +1,12 @@
 from __future__ import annotations
 
 import argparse
-from typing import Dict, Optional
+from typing import Optional
 
 from db.models import Variant  # type: ignore
 from db.session import get_session  # type: ignore
+from scripts.lib.constants import SYSTEM_DEFAULT_SCALE_DEN
 
-SYSTEM_DEFAULT_SCALE_DEN: Dict[str, int] = {
-    "w40k": 56,
-    "aos": 56,
-    "heresy": 56,
-    "old_world": 56,
-}
 
 def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="Backfill scale_ratio_den by system (1:den). Defaults AoS/W40K/Heresy/Old World to 56.")

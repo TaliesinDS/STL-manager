@@ -52,35 +52,46 @@ Phase 1 must come first because it unlocks clean imports, which enables the refa
 
 ## Phase 2 — High: Deduplication & Refactoring (Issues 3, 5, 7)
 
-### 2.1 Extract shared constants (Issue #3)
+### 2.1 Extract shared constants (Issue #3) — DONE
 
-10. Create `scripts/lib/constants.py` containing:
-    - `AOS_FACTION_TO_GRAND_ALLIANCE: dict[str, str]` — the map currently in `match_variants_to_units.py` (~line 368).
-    - `DEFAULT_SCALE_MAP: dict` — any duplicated scale mappings.
-    - `AOS_FACTION_TOKENS: list[str]` — the faction hint tokens.
-    - `KIT_CHILD_TOKENS: set[str]` — the set used for kit detection.
-    - `NOISE_FILENAMES: set[str]` — OS noise files set.
-11. Update all files that define these locally to import from `scripts.lib.constants`.
-12. Run tests to verify.
+> Completed 2026-02-22.
 
-### 2.2 De-duplicate kit child enrichment (Issue #7)
+- Created `scripts/lib/constants.py` with `NOISE_FILENAMES`, `KIT_CHILD_TOKENS`,
+  `KIT_PARENT_HINTS`, `DEFAULT_SCALE_MAP`, `AOS_FACTION_TOKENS`.
+- Updated 5 consumer files to import from the shared module instead of
+  defining constants locally.
+- All 19 tests pass.
 
-13. In `scripts/30_normalize_match/match_variants_to_units.py`, identify the two copy-pasted ~80-line blocks (once for the `parent_id` path, once for the `kit_parent_rel` path).
-14. Extract into a shared function, e.g.:
-    ```python
-    def _enrich_kit_child(variant, parent_variant, session) -> dict:
-        ...
-    ```
-15. Replace both call sites with calls to the extracted function.
+### 2.2 De-duplicate kit child enrichment (Issue #7) — DONE
 
-### 2.3 Decompose `backfill_english_tokens.py` (Issue #5)
+> Completed 2026-02-22.
 
-16. Read `scripts/30_normalize_match/backfill_english_tokens.py` fully to map function boundaries.
-17. Extract `build_ui_display()` and `_choose_thing_name()` into a new module `scripts/lib/ui_display.py`.
-18. Collapse the 8+ near-identical `_norm*` helper functions into 1–2 parameterized functions.
-19. Replace `_translate_tokens_keep_dupes()` with the existing `translate_tokens()` plus a flag parameter (e.g., `keep_dupes=True`).
-20. Update `backfill_english_tokens.py` to import from the new module.
-21. Run tests.
+- Extracted `_enrich_kit_child(v, parent_v, session, args)` in
+  `match_variants_to_units.py` (~130 lines of shared logic).
+- Replaced two ~140-line copy-pasted blocks (parent_id path and
+  kit_parent_rel path) with calls to the new helper.
+- Reconciled minor drift between the two blocks (pre-computing `v_norm`,
+  using `new_fp[-1]` consistently, adopting the safer `faction_general`
+  guard, and including the `codex_faction` ensure block).
+- Net reduction: ~250 lines removed.
+- All 19 tests pass.
+
+### 2.3 Decompose `backfill_english_tokens.py` (Issue #5) — DONE
+
+> Completed 2026-02-22.
+
+- Extracted `build_ui_display()`, `_choose_thing_name()`, and 15 helper
+  functions/constants into `scripts/lib/ui_display.py` (~720 lines).
+- Collapsed 8+ near-identical `_norm*` lambdas into a single `_norm_label()`
+  function shared by all comparison sites.
+- Merged `_translate_tokens_keep_dupes()` into `translate_tokens()` via a new
+  `dedup=False` keyword argument — removed ~60 lines of duplicated translation
+  logic.
+- Used `importlib.util.spec_from_file_location` for the lazy cross-reference
+  between `ui_display.py` and `backfill_english_tokens.py` (numeric-prefixed
+  package directories can't use dotted imports).
+- `backfill_english_tokens.py` reduced from 1 491 to 527 lines (−965 lines).
+- All 19 tests pass.
 
 ---
 
@@ -255,7 +266,7 @@ Phase 1 (pyproject.toml, sys.path, CI)
 |-------|-------|--------|-------------|--------|
 | 1st | Phase 1 | High | `pyproject.toml`, remove sys.path hacks, expand CI | **DONE** |
 | 2nd | Phase 3.1 | Low | `.gitignore` cleanup | **DONE** |
-| 3rd | Phase 2 | High | Extract constants, deduplicate, decompose monoliths | |
+| 3rd | Phase 2 | High | Extract constants, deduplicate, decompose monoliths | **DONE** |
 | 4th | Phase 3.2 | Low | `ruff` config | **DONE** |
 | 5th | Phase 4 | Medium | Unit tests for scoring + UI display | |
 | 6th | Phase 5 | Low | `utcnow`, compat, config, shims, legacy | |

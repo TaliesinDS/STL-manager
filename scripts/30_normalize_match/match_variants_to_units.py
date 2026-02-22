@@ -27,11 +27,18 @@ from db.models import (  # type: ignore
 )
 from db.session import get_session  # type: ignore
 from scripts.lib.alias_rules import AMBIGUOUS_ALIASES  # type: ignore
+from scripts.lib.constants import (
+    AOS_FACTION_TOKENS,
+    AOS_FACTION_TOKENS_MAP,
+    AOS_LEAF_TO_GRAND,
+    KIT_CHILD_TOKENS,
+    MEANINGFUL_EXTS,
+    NOISE_FILENAMES,
+    SYSTEM_DEFAULT_SCALE_DEN,
+    SYSTEM_DEFAULT_SCALE_NAME,
+)
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
-# Default scale per system as 1:denominator (e.g., 1:56 ~ 28-32mm heroic)
-SYSTEM_DEFAULT_SCALE_DEN: Dict[str, int] = {"w40k": 56, "aos": 56, "heresy": 56, "old_world": 56}
-SYSTEM_DEFAULT_SCALE_NAME: Dict[str, str] = {"w40k": "28mm heroic", "aos": "28mm heroic", "heresy": "28mm heroic", "old_world": "28mm heroic"}
 # Ambiguous/generic aliases that are too weak to accept on their own
 # Reuse the central list used by normalization/character matching for consistency
 GENERIC_ROLE_ALIASES: Set[str] = set(AMBIGUOUS_ALIASES)
@@ -62,14 +69,6 @@ def system_hint(text: str) -> Optional[str]:
     if any(k in t for k in ["aos", "age of sigmar", "sigmar", "freeguild"]):
         return "aos"
     # Heuristic: presence of known AoS faction tokens implies AoS system
-    AOS_FACTION_TOKENS = [
-        "flesh eater courts", "soulblight gravelords", "nighthaunt", "stormcast eternals",
-        "seraphon", "kharadron overlords", "gloomspite gitz", "orruk warclans",
-        "ogor mawtribes", "sylvaneth", "cities of sigmar", "skaven", "slaves to darkness",
-        "blades of khorne", "disciples of tzeentch", "maggotkin of nurgle", "hedonites of slaanesh",
-        "beasts of chaos", "sons of behemat", "fyreslayers", "lumineth realm lords",
-        "daughters of khaine", "idoneth deepkin", "ossiarch bonereapers",
-    ]
     if any(re.search(rf"\b{re.escape(tok)}\b", t) for tok in AOS_FACTION_TOKENS):
         return "aos"
     if any(k in t for k in ["heresy", "30k", "horus heresy"]):
@@ -336,66 +335,6 @@ def inject_mounted_candidates(results: List[Tuple[UnitRef, float, str]], mount_c
 # Spells heuristics
 # -----------------
 
-AOS_FACTION_TOKENS_MAP: Dict[str, str] = {
-    # map phrase -> faction_key
-    "flesh eater courts": "flesh_eater_courts",
-    "soulblight gravelords": "soulblight_gravelords",
-    "nighthaunt": "nighthaunt",
-    "stormcast eternals": "stormcast_eternals",
-    "seraphon": "seraphon",
-    "kharadron overlords": "kharadron_overlords",
-    "gloomspite gitz": "gloomspite_gitz",
-    "orruk warclans": "orruk_warclans",
-    "ogor mawtribes": "ogor_mawtribes",
-    "sylvaneth": "sylvaneth",
-    "cities of sigmar": "cities_of_sigmar",
-    "skaven": "skaven",
-    "slaves to darkness": "slaves_to_darkness",
-    "blades of khorne": "blades_of_khorne",
-    "disciples of tzeentch": "disciples_of_tzeentch",
-    "maggotkin of nurgle": "maggotkin_of_nurgle",
-    "hedonites of slaanesh": "hedonites_of_slaanesh",
-    "beasts of chaos": "beasts_of_chaos",
-    "sons of behemat": "sons_of_behemat",
-    "fyreslayers": "fyreslayers",
-    "lumineth realm lords": "lumineth_realm_lords",
-    "daughters of khaine": "daughters_of_khaine",
-    "idoneth deepkin": "idoneth_deepkin",
-    "ossiarch bonereapers": "ossiarch_bonereapers",
-}
-
-# AoS: map leaf faction keys to their Grand Alliance for fallback/path expansion
-AOS_LEAF_TO_GRAND: Dict[str, str] = {
-    # Order
-    "stormcast_eternals": "order",
-    "cities_of_sigmar": "order",
-    "fyreslayers": "order",
-    "kharadron_overlords": "order",
-    "lumineth_realm_lords": "order",
-    "idoneth_deepkin": "order",
-    "daughters_of_khaine": "order",
-    "seraphon": "order",
-    "sylvaneth": "order",
-    # Chaos
-    "slaves_to_darkness": "chaos",
-    "blades_of_khorne": "chaos",
-    "disciples_of_tzeentch": "chaos",
-    "maggotkin_of_nurgle": "chaos",
-    "hedonites_of_slaanesh": "chaos",
-    "beasts_of_chaos": "chaos",
-    "skaven": "chaos",
-    # Death
-    "flesh_eater_courts": "death",
-    "soulblight_gravelords": "death",
-    "nighthaunt": "death",
-    "ossiarch_bonereapers": "death",
-    # Destruction
-    "gloomspite_gitz": "destruction",
-    "orruk_warclans": "destruction",
-    "ogor_mawtribes": "destruction",
-    "sons_of_behemat": "destruction",
-}
-
 
 def detect_spell_context(v_text_norm: str) -> bool:
     return bool(re.search(r"\b(spell|spells|endless spell|endless spells|manifestation|invocation)s?\b", v_text_norm))
@@ -572,6 +511,153 @@ def find_best_matches(
         results = inject_spell_candidates(results, spells_by_faction, v_text)
         results = apply_spell_bias(results, v_text)
     return results
+
+
+def _enrich_kit_child(v: Variant, parent_v: Optional[Variant], session, args) -> None:
+    """Propagate faction / system / unit-name hints from *parent_v* onto kit-child *v*."""
+    v_text = text_for_variant(v)
+    sys_guess = system_hint(v_text)
+    v_norm = norm_text(v_text)
+    aos_leaf = detect_aos_faction_hint(v_norm)
+    new_fp: Optional[List[str]] = None
+    new_leaf: Optional[str] = None
+
+    if aos_leaf:
+        new_leaf = aos_leaf
+        ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
+        new_fp = [ga, aos_leaf] if ga else [aos_leaf]
+    else:
+        ch, sf = find_chapter_hint(v_norm)
+        leaf = sf or ch
+        if leaf:
+            new_leaf = leaf
+            try:
+                fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
+                if fac_row is not None:
+                    tmp = getattr(fac_row, 'full_path', None) or None
+                    if not tmp:
+                        chain: List[str] = []
+                        cur = fac_row; guard = 0
+                        while cur is not None and guard < 20:
+                            k = getattr(cur, 'key', None)
+                            if isinstance(k, str) and k:
+                                chain.append(k)
+                            pid = getattr(cur, 'parent_id', None)
+                            if not pid:
+                                break
+                            cur = session.get(Faction, pid)
+                            guard += 1
+                        if chain:
+                            tmp = list(reversed(chain))
+                    if tmp:
+                        new_fp = list(tmp)
+            except Exception:
+                pass
+
+    # If no hint-derived faction, propagate from parent or Unit lookup by parent name
+    if (not new_leaf and not new_fp) and parent_v:
+        try:
+            p_fp = getattr(parent_v, 'faction_path', None)
+            if isinstance(p_fp, list) and p_fp:
+                new_fp = list(p_fp)
+                new_leaf = new_fp[-1]
+            elif getattr(parent_v, 'codex_faction', None):
+                cf = parent_v.codex_faction
+                fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
+                if fac_row is not None:
+                    tmp = getattr(fac_row, 'full_path', None) or None
+                    if not tmp:
+                        chain: List[str] = []
+                        cur = fac_row; guard = 0
+                        while cur is not None and guard < 20:
+                            k = getattr(cur, 'key', None)
+                            if isinstance(k, str) and k:
+                                chain.append(k)
+                            pid = getattr(cur, 'parent_id', None)
+                            if not pid:
+                                break
+                            cur = session.get(Faction, pid)
+                            guard += 1
+                        if chain:
+                            tmp = list(reversed(chain))
+                    if tmp:
+                        new_fp = list(tmp)
+                        new_leaf = new_fp[-1]
+            # Last attempt: look up Unit by parent codex_unit_name
+            if (not new_fp) and getattr(parent_v, 'codex_unit_name', None):
+                try:
+                    uname = parent_v.codex_unit_name
+                    urow = session.execute(select(Unit).where(Unit.name == uname)).scalars().first()
+                    if urow and getattr(urow, 'faction_id', None):
+                        f = session.get(Faction, urow.faction_id)
+                        if f is not None:
+                            tmp = getattr(f, 'full_path', None) or None
+                            if not tmp and getattr(f, 'key', None):
+                                tmp = [f.key]
+                            if tmp:
+                                new_fp = list(tmp)
+                                new_leaf = new_fp[-1]
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    # Propagate codex_unit_name and game_system from parent when available
+    try:
+        if (args.overwrite or not getattr(v, 'codex_unit_name', None)) and parent_v and getattr(parent_v, 'codex_unit_name', None):
+            v.codex_unit_name = parent_v.codex_unit_name
+    except Exception:
+        pass
+    try:
+        if args.overwrite or not getattr(v, 'game_system', None):
+            if parent_v and getattr(parent_v, 'game_system', None):
+                v.game_system = parent_v.game_system
+            elif sys_guess:
+                v.game_system = sys_guess
+            elif aos_leaf:
+                v.game_system = 'aos'
+    except Exception:
+        pass
+
+    if new_leaf or new_fp:
+        try:
+            if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
+                v.codex_faction = new_leaf
+        except Exception:
+            pass
+        try:
+            if isinstance(new_fp, list) and new_fp:
+                existing_fp = getattr(v, 'faction_path', None)
+                cf_try = getattr(v, 'codex_faction', None)
+                should_set = False
+                if args.overwrite or not existing_fp:
+                    should_set = True
+                elif isinstance(existing_fp, list):
+                    if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
+                        if not existing_fp or (cf_try and existing_fp == [cf_try]):
+                            should_set = True
+                if should_set:
+                    # AoS expansion
+                    if len(new_fp) == 1:
+                        leaf = new_fp[0]
+                        ga = AOS_LEAF_TO_GRAND.get(leaf)
+                        if ga:
+                            new_fp = [ga, leaf]
+                    v.faction_path = new_fp
+                    try:
+                        fg = getattr(v, 'faction_general', None)
+                        if args.overwrite or not fg or (isinstance(fg, str) and cf_try and fg == cf_try):
+                            v.faction_general = new_fp[0]
+                    except Exception:
+                        pass
+                # Ensure codex_faction present
+                try:
+                    if args.overwrite or not getattr(v, 'codex_faction', None):
+                        v.codex_faction = new_fp[-1]
+                except Exception:
+                    pass
+        except Exception:
+            pass
 
 
 def main() -> None:
@@ -751,15 +837,6 @@ def main() -> None:
                             segs.add(n)
             return segs
 
-        KIT_CHILD_TOKENS: Set[str] = {
-            "body", "bodies", "torsos", "torso",
-            "head", "heads", "helmet", "helmets",
-            "arm", "arms", "left arm", "right arm",
-            "weapon", "weapons", "ranged", "melee",
-            "bits", "bitz", "accessories", "options",
-            "shields", "backpacks", "shoulder pads", "pauldrons",
-        }
-
         def _is_kit_container(parent_rel_lower: str) -> Tuple[bool, List[str]]:
             """Heuristic: container-only folder that aggregates modular subfolders like bodies/heads/weapons.
 
@@ -769,9 +846,6 @@ def main() -> None:
             matched = sorted([s for s in child_segs if s in KIT_CHILD_TOKENS])
             # require at least two distinct kit child types to consider it a kit container
             return (len(matched) >= 2, matched)
-
-    # Helper to decide whether a variant has meaningful files (ignore OS noise files)
-        NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
 
         def _is_noise_filename(name: str) -> bool:
             n = (name or "").strip().lower()
@@ -789,10 +863,6 @@ def main() -> None:
         def _has_meaningful_files(variant: Variant) -> bool:
             try:
                 files = getattr(variant, 'files', []) or []
-                MEANINGFUL_EXTS = {
-                    "stl", "obj", "ztl",
-                    "lys", "lychee", "3mf", "step", "stp",
-                }
                 for f in files:
                     # Skip directories
                     if getattr(f, 'is_dir', False):
@@ -977,150 +1047,12 @@ def main() -> None:
                     # Minimal hint-only enrichment for kit children before skipping
                     if args.apply:
                         try:
-                            v_text = text_for_variant(v)
-                            # Try to get parent variant from index
                             parent_v = None
                             try:
                                 parent_v = id_index.get(int(db_parent_id))
                             except Exception:
                                 parent_v = None
-                            # System guess from text
-                            sys_guess = system_hint(v_text)
-                            v_norm = norm_text(v_text)
-                            aos_leaf = detect_aos_faction_hint(v_norm)
-                            new_fp: Optional[List[str]] = None
-                            new_leaf: Optional[str] = None
-                            if aos_leaf:
-                                new_leaf = aos_leaf
-                                ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
-                                new_fp = [ga, aos_leaf] if ga else [aos_leaf]
-                            else:
-                                ch, sf = find_chapter_hint(v_norm)
-                                leaf = sf or ch
-                                if leaf:
-                                    new_leaf = leaf
-                                    try:
-                                        fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
-                                        if fac_row is not None:
-                                            tmp = getattr(fac_row, 'full_path', None) or None
-                                            if not tmp:
-                                                chain: List[str] = []
-                                                cur = fac_row; guard = 0
-                                                while cur is not None and guard < 20:
-                                                    k = getattr(cur, 'key', None)
-                                                    if isinstance(k, str) and k:
-                                                        chain.append(k)
-                                                    pid = getattr(cur, 'parent_id', None)
-                                                    if not pid:
-                                                        break
-                                                    cur = session.get(Faction, pid)
-                                                    guard += 1
-                                                if chain:
-                                                    tmp = list(reversed(chain))
-                                            if tmp:
-                                                new_fp = list(tmp)
-                                    except Exception:
-                                        pass
-                            # If no hint-derived faction, propagate from parent or Unit lookup by parent name
-                            if (not new_leaf and not new_fp) and parent_v:
-                                try:
-                                    p_fp = getattr(parent_v, 'faction_path', None)
-                                    if isinstance(p_fp, list) and p_fp:
-                                        new_fp = list(p_fp)
-                                        new_leaf = new_fp[-1]
-                                    elif getattr(parent_v, 'codex_faction', None):
-                                        cf = parent_v.codex_faction
-                                        fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
-                                        if fac_row is not None:
-                                            tmp = getattr(fac_row, 'full_path', None) or None
-                                            if not tmp:
-                                                chain: List[str] = []
-                                                cur = fac_row; guard = 0
-                                                while cur is not None and guard < 20:
-                                                    k = getattr(cur, 'key', None)
-                                                    if isinstance(k, str) and k:
-                                                        chain.append(k)
-                                                    pid = getattr(cur, 'parent_id', None)
-                                                    if not pid:
-                                                        break
-                                                    cur = session.get(Faction, pid)
-                                                    guard += 1
-                                                if chain:
-                                                    tmp = list(reversed(chain))
-                                            if tmp:
-                                                new_fp = list(tmp)
-                                                new_leaf = new_fp[-1]
-                                    # Last attempt: look up Unit by parent codex_unit_name
-                                    if (not new_fp) and getattr(parent_v, 'codex_unit_name', None):
-                                        try:
-                                            uname = parent_v.codex_unit_name
-                                            urow = session.execute(select(Unit).where(Unit.name == uname)).scalars().first()
-                                            if urow and getattr(urow, 'faction_id', None):
-                                                f = session.get(Faction, urow.faction_id)
-                                                if f is not None:
-                                                    tmp = getattr(f, 'full_path', None) or None
-                                                    if not tmp and getattr(f, 'key', None):
-                                                        tmp = [f.key]
-                                                    if tmp:
-                                                        new_fp = list(tmp)
-                                                        new_leaf = new_fp[-1]
-                                        except Exception:
-                                            pass
-                                except Exception:
-                                    pass
-                            # Propagate codex_unit_name and game_system from parent when available
-                            try:
-                                if (args.overwrite or not getattr(v, 'codex_unit_name', None)) and parent_v and getattr(parent_v, 'codex_unit_name', None):
-                                    v.codex_unit_name = parent_v.codex_unit_name
-                            except Exception:
-                                pass
-                            try:
-                                if args.overwrite or not getattr(v, 'game_system', None):
-                                    if parent_v and getattr(parent_v, 'game_system', None):
-                                        v.game_system = parent_v.game_system
-                                    elif sys_guess:
-                                        v.game_system = sys_guess
-                                    elif aos_leaf:
-                                        v.game_system = 'aos'
-                            except Exception:
-                                pass
-                            if new_leaf or new_fp:
-                                try:
-                                    if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
-                                        v.codex_faction = new_leaf
-                                except Exception:
-                                    pass
-                                try:
-                                    if isinstance(new_fp, list) and new_fp:
-                                        existing_fp = getattr(v, 'faction_path', None)
-                                        cf_try = getattr(v, 'codex_faction', None)
-                                        should_set = False
-                                        if args.overwrite or not existing_fp:
-                                            should_set = True
-                                        elif isinstance(existing_fp, list):
-                                            if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
-                                                if not existing_fp or (cf_try and existing_fp == [cf_try]):
-                                                    should_set = True
-                                        if should_set:
-                                            # AoS expansion
-                                            if len(new_fp) == 1:
-                                                leaf = new_fp[0]
-                                                ga = AOS_LEAF_TO_GRAND.get(leaf)
-                                                if ga:
-                                                    new_fp = [ga, leaf]
-                                            v.faction_path = new_fp
-                                            try:
-                                                v.faction_general = new_fp[0]
-                                            except Exception:
-                                                pass
-                                        # Ensure codex_faction present
-                                        try:
-                                            if args.overwrite or not getattr(v, 'codex_faction', None):
-                                                v.codex_faction = new_fp[-1]
-                                        except Exception:
-                                            pass
-                                except Exception:
-                                    pass
+                            _enrich_kit_child(v, parent_v, session, args)
                         except Exception:
                             pass
                     skipped_kit_children += 1
@@ -1130,139 +1062,8 @@ def main() -> None:
                     # Minimal hint-only enrichment for kit children before skipping
                     if args.apply:
                         try:
-                            v_text = text_for_variant(v)
-                            # Try to get parent variant by rel path
                             parent_v = rel_lower_index.get(kit_parent_rel)
-                            sys_guess = system_hint(v_text)
-                            aos_leaf = detect_aos_faction_hint(norm_text(v_text))
-                            new_fp: Optional[List[str]] = None
-                            new_leaf: Optional[str] = None
-                            if aos_leaf:
-                                new_leaf = aos_leaf
-                                ga = AOS_LEAF_TO_GRAND.get(aos_leaf)
-                                new_fp = [ga, aos_leaf] if ga else [aos_leaf]
-                            else:
-                                ch, sf = find_chapter_hint(norm_text(v_text))
-                                leaf = sf or ch
-                                if leaf:
-                                    new_leaf = leaf
-                                    try:
-                                        fac_row = session.execute(select(Faction).where(Faction.key == leaf)).scalars().first()
-                                        if fac_row is not None:
-                                            tmp = getattr(fac_row, 'full_path', None) or None
-                                            if not tmp:
-                                                chain: List[str] = []
-                                                cur = fac_row; guard = 0
-                                                while cur is not None and guard < 20:
-                                                    k = getattr(cur, 'key', None)
-                                                    if isinstance(k, str) and k:
-                                                        chain.append(k)
-                                                    pid = getattr(cur, 'parent_id', None)
-                                                    if not pid:
-                                                        break
-                                                    cur = session.get(Faction, pid)
-                                                    guard += 1
-                                                if chain:
-                                                    tmp = list(reversed(chain))
-                                            if tmp:
-                                                new_fp = list(tmp)
-                                    except Exception:
-                                        pass
-                            # If no hint-derived faction, propagate from parent or Unit lookup by parent name
-                            if (not new_leaf and not new_fp) and parent_v:
-                                try:
-                                    p_fp = getattr(parent_v, 'faction_path', None)
-                                    if isinstance(p_fp, list) and p_fp:
-                                        new_fp = list(p_fp)
-                                    elif getattr(parent_v, 'codex_faction', None):
-                                        cf = parent_v.codex_faction
-                                        fac_row = session.execute(select(Faction).where(Faction.key == cf)).scalars().first()
-                                        if fac_row is not None:
-                                            tmp = getattr(fac_row, 'full_path', None) or None
-                                            if not tmp:
-                                                chain: List[str] = []
-                                                cur = fac_row; guard = 0
-                                                while cur is not None and guard < 20:
-                                                    k = getattr(cur, 'key', None)
-                                                    if isinstance(k, str) and k:
-                                                        chain.append(k)
-                                                    pid = getattr(cur, 'parent_id', None)
-                                                    if not pid:
-                                                        break
-                                                    cur = session.get(Faction, pid)
-                                                    guard += 1
-                                                if chain:
-                                                    tmp = list(reversed(chain))
-                                            if tmp:
-                                                new_fp = list(tmp)
-                                                new_leaf = cf
-                                    # Last attempt: look up Unit by parent codex_unit_name
-                                    if (not new_fp) and getattr(parent_v, 'codex_unit_name', None):
-                                        try:
-                                            uname = parent_v.codex_unit_name
-                                            urow = session.execute(select(Unit).where(Unit.name == uname)).scalars().first()
-                                            if urow and getattr(urow, 'faction_id', None):
-                                                f = session.get(Faction, urow.faction_id)
-                                                if f is not None:
-                                                    tmp = getattr(f, 'full_path', None) or None
-                                                    if not tmp and getattr(f, 'key', None):
-                                                        tmp = [f.key]
-                                                    if tmp:
-                                                        new_fp = list(tmp)
-                                                        new_leaf = tmp[-1]
-                                        except Exception:
-                                            pass
-                                except Exception:
-                                    pass
-                            # Propagate codex_unit_name and game_system from parent when available
-                            try:
-                                if (args.overwrite or not getattr(v, 'codex_unit_name', None)) and parent_v and getattr(parent_v, 'codex_unit_name', None):
-                                    v.codex_unit_name = parent_v.codex_unit_name
-                            except Exception:
-                                pass
-                            try:
-                                if args.overwrite or not getattr(v, 'game_system', None):
-                                    if parent_v and getattr(parent_v, 'game_system', None):
-                                        v.game_system = parent_v.game_system
-                                    elif sys_guess:
-                                        v.game_system = sys_guess
-                                    elif aos_leaf:
-                                        v.game_system = 'aos'
-                            except Exception:
-                                pass
-                            if new_leaf or new_fp:
-                                try:
-                                    if new_leaf and (args.overwrite or not getattr(v, 'codex_faction', None)):
-                                        v.codex_faction = new_leaf
-                                except Exception:
-                                    pass
-                                try:
-                                    if isinstance(new_fp, list) and new_fp:
-                                        existing_fp = getattr(v, 'faction_path', None)
-                                        cf_try = getattr(v, 'codex_faction', None)
-                                        should_set = False
-                                        if args.overwrite or not existing_fp:
-                                            should_set = True
-                                        elif isinstance(existing_fp, list):
-                                            if len(existing_fp) <= 1 and len(new_fp) > len(existing_fp):
-                                                if not existing_fp or (cf_try and existing_fp == [cf_try]):
-                                                    should_set = True
-                                        if should_set:
-                                            # AoS expansion
-                                            if len(new_fp) == 1:
-                                                leaf = new_fp[0]
-                                                ga = AOS_LEAF_TO_GRAND.get(leaf)
-                                                if ga:
-                                                    new_fp = [ga, leaf]
-                                            v.faction_path = new_fp
-                                        try:
-                                            fg = getattr(v, 'faction_general', None)
-                                            if args.overwrite or not fg or (isinstance(fg, str) and cf_try and fg == cf_try):
-                                                v.faction_general = new_fp[0]
-                                        except Exception:
-                                            pass
-                                except Exception:
-                                    pass
+                            _enrich_kit_child(v, parent_v, session, args)
                         except Exception:
                             pass
                     skipped_kit_children += 1

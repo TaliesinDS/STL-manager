@@ -23,16 +23,6 @@ from typing import List, Optional, Set
 from db.models import Variant
 from db.session import DB_URL, get_session
 
-KIT_CHILD_TOKENS: Set[str] = {
-    "body", "bodies", "torsos", "torso",
-    "head", "heads", "helmet", "helmets",
-    "arm", "arms", "left arm", "right arm",
-    "hand", "hands",
-    "weapon", "weapons", "ranged", "melee", "flamer", "flamers",
-    "bits", "bitz", "accessories", "options",
-    "shields", "backpacks", "shoulder pads", "pauldrons",
-}
-
 
 def _norm(s: str) -> str:
     import re as _re

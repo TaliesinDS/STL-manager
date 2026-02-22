@@ -28,28 +28,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 from db.models import Variant
 from db.session import DB_URL, get_session
-
-KIT_CHILD_TOKENS: Set[str] = {
-    "body", "bodies", "torsos", "torso",
-    "head", "heads", "helmet", "helmets",
-    "arm", "arms", "left arm", "right arm",
-    # Also recognize hands as an arm synonym
-    "hand", "hands",
-    # Common weapon synonyms that appear in folder names
-    "weapon", "weapons", "ranged", "melee", "flamer", "flamers",
-    "bits", "bitz", "accessories", "options",
-    "shields", "backpacks", "shoulder pads", "pauldrons",
-    # Additional real-world labels we've seen
-    "shoulders", "legs", "bases", "base",
-}
-
-# Parent folder name hints that strongly imply a modular kit container
-KIT_PARENT_HINTS: Set[str] = {
-    "complete library", "full kit", "all parts", "modular", "complete set",
-    "upgrade set", "bits library", "bitz library", "kit", "complete pack", "full pack",
-}
-
-NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
+from scripts.lib.constants import ARCHIVE_EXTS, KIT_CHILD_TOKENS, KIT_PARENT_HINTS, MEANINGFUL_EXTS, NOISE_FILENAMES
 
 
 def _norm(s: str) -> str:
@@ -72,8 +51,6 @@ def _is_noise_filename(name: str) -> bool:
 def _has_meaningful_files(v: Variant) -> bool:
     try:
         files = getattr(v, "files", []) or []
-        MEANINGFUL_EXTS = {"stl", "obj", "ztl", "lys", "lychee", "3mf", "step", "stp"}
-        ARCHIVE_EXTS = {"zip", "rar", "7z"}
         for f in files:
             if getattr(f, "is_dir", False):
                 continue

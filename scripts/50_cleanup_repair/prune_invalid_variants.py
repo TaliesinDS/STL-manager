@@ -15,26 +15,7 @@ from sqlalchemy import select
 
 from db.models import Variant  # type: ignore
 from db.session import get_session  # type: ignore
-
-NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
-# Consider these extensions as meaningful 3D model or source files
-MEANINGFUL_EXTS = {
-    "stl", "obj", "ztl",  # common 3D model formats and ZBrush source
-    # slicer/project and CAD formats (optional but useful)
-    "lys", "lychee", "3mf", "step", "stp"
-}
-# Archives are considered meaningful (contain models inside)
-ARCHIVE_EXTS = {"zip", "rar", "7z"}
-
-# Child folder tokens that imply a modular squad kit (preserve such containers)
-KIT_CHILD_TOKENS: Set[str] = {
-    "body", "bodies", "torsos", "torso",
-    "head", "heads", "helmet", "helmets",
-    "arm", "arms", "left arm", "right arm",
-    "weapon", "weapons", "ranged", "melee",
-    "bits", "bitz", "accessories", "options",
-    "shields", "backpacks", "shoulder pads", "pauldrons",
-}
+from scripts.lib.constants import ARCHIVE_EXTS, KIT_CHILD_TOKENS, MEANINGFUL_EXTS, NOISE_FILENAMES
 
 
 def _norm(s: str | None) -> str:

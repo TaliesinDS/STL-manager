@@ -10,6 +10,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
 
 from db.models import Base, Faction, GameSystem, Part, PartAlias, Unit, UnitAlias
+from scripts.lib.constants import SYSTEM_DEFAULT_SCALE_DEN, SYSTEM_DEFAULT_SCALE_NAME
 
 
 def ensure_tables(db_url: str) -> None:
@@ -22,13 +23,6 @@ def upsert_system(session: Session, key: str, name: str) -> GameSystem:
 
     Defaults are conservative GW tabletop values: 1:56 (~28mm heroic).
     """
-    DEFAULT_SCALE_DEN = {"w40k": 56, "aos": 56, "heresy": 56, "old_world": 56}
-    DEFAULT_SCALE_NAME = {
-        "w40k": "28mm heroic",
-        "aos": "28mm heroic",
-        "heresy": "28mm heroic",
-        "old_world": "28mm heroic",
-    }
     sys_obj = session.execute(select(GameSystem).where(GameSystem.key == key)).scalar_one_or_none()
     if sys_obj is None:
         sys_obj = GameSystem(key=key, name=name)
@@ -39,8 +33,8 @@ def upsert_system(session: Session, key: str, name: str) -> GameSystem:
             sys_obj.name = name
     # Ensure default scale fields are populated; do not overwrite if already set
     try:
-        den = DEFAULT_SCALE_DEN.get(key)
-        sname = DEFAULT_SCALE_NAME.get(key)
+        den = SYSTEM_DEFAULT_SCALE_DEN.get(key)
+        sname = SYSTEM_DEFAULT_SCALE_NAME.get(key)
         if den is not None and getattr(sys_obj, "default_scale_den", None) in (None, 0):
             sys_obj.default_scale_den = den
         if sname and not getattr(sys_obj, "default_scale_name", None):
