@@ -10,12 +10,13 @@ It writes `data/sample_inventory.json` by default. Each item contains keys expec
   - token_version (0)
 
 Usage:
-  .venv\Scripts\python.exe scripts\10_inventory\create_sample_inventory.py --root sample_store --out data/sample_inventory.json
+  .venv\\Scripts\\python.exe scripts\10_inventory\\create_sample_inventory.py --root sample_store --out data/sample_inventory.json
 Notes:
     - Any files or folders under a '__MACOSX' path component are ignored.
     - macOS sidecar files ('.DS_Store', '._*') are ignored.
 """
 from __future__ import annotations
+
 import argparse
 import json
 from pathlib import Path

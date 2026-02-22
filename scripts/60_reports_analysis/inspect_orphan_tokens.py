@@ -7,12 +7,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session
 from db.models import Variant
+from db.session import get_session
 from scripts.quick_scan import tokenize
 
 

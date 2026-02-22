@@ -6,20 +6,15 @@ Canonical location: scripts/20_loaders/load_designers.py
 """
 from __future__ import annotations
 
-import sys
-import re
 import ast
+import re
+import sys
+from collections import defaultdict
 from pathlib import Path
 from typing import Optional
-from collections import defaultdict
 
-# Ensure project root on sys.path for db imports regardless of CWD
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
+from db.models import Variant, VocabEntry
 from db.session import SessionLocal
-from db.models import VocabEntry, Variant
 
 FENCE_RE = re.compile(r"^```")
 ENTRY_RE = re.compile(r"^\s*([A-Za-z0-9_\-]+)\s*:\s*(\[.*\])\s*$")
@@ -142,7 +137,7 @@ def reconcile_renamed_designers(session, entries: dict[str, list[str]], update_v
             session.flush()
 
         # Merge aliases: authoritative from file
-        file_aliases = list((entries.get(new_key) or []))
+        file_aliases = list(entries.get(new_key) or [])
         merged = []
         def _extend(vals):
             nonlocal merged

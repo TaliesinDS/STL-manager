@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stl-manager"
+version = "0.1.0"
+description = "Local-first 3D model intelligence engine"
+requires-python = ">=3.9"
+dependencies = [
+    "sqlalchemy>=2.0",
+    "alembic>=1.11",
+    "wordfreq>=3.0.1",
+    "ruamel.yaml>=0.18.0",
+    "Unidecode>=1.3",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4",
+    "ruff",
+    "pytest-cov",
+]
+
+[tool.setuptools.packages.find]
+include = ["db*", "scripts*", "api*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
+markers = [
+    "workflow: end-to-end workflow tests for scripts (slow-ish, Windows-friendly)",
+]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+exclude = [
+    "scripts/60_reports_analysis",  # diagnostic scripts with py3.12 syntax
+    "scripts/legacy",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "S"]
+ignore = [
+    "E501",   # line-too-long — too many to fix at once
+    "E701",   # multiple-statements-on-one-line-colon
+    "E702",   # multiple-statements-on-one-line-semicolon
+    "E402",   # module-import-not-at-top-of-file
+    "UP006",  # non-pep585-annotation — requires 3.9+ typing updates
+    "UP045",  # non-pep604-annotation-optional
+    "UP035",  # deprecated-import
+    "S101",   # assert — used in tests
+    "S110",   # try-except-pass
+    "S112",   # try-except-continue
+    "S310",   # suspicious-url-open-usage — legitimate HTTP calls
+    "S324",   # hashlib-insecure-hash-function — used for file fingerprinting
+    "S603",   # subprocess-without-shell-equals-true
+    "S607",   # start-process-with-partial-path
+    "S608",   # hardcoded-sql-expression — SQLAlchemy text()
+]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/diagnostics/*" = ["E", "F841"]
+"scripts/dev/*" = ["E", "F841", "S"]
+"tests/*" = ["S105"]  # false positive on test fixture field names

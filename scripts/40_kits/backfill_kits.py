@@ -9,7 +9,7 @@
 Safe by default: dry-run. Use --apply to write changes. Always prints a JSON summary report.
 
 Usage (PowerShell):
-    .\.venv\Scripts\python.exe .\scripts\40_kits\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --create-virtual-parents --group-children --out .\reports\backfill_kits.json
+    .\\.venv\\Scripts\\python.exe .\\scripts\40_kits\backfill_kits.py --db-url sqlite:///./data/stl_manager_v1.db --create-virtual-parents --group-children --out .\reports\backfill_kits.json
 """
 from __future__ import annotations
 
@@ -25,11 +25,9 @@ from typing import Dict, List, Optional, Set, Tuple
 
 # Ensure project root importability
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session, DB_URL
 from db.models import Variant
+from db.session import DB_URL, get_session
 
 KIT_CHILD_TOKENS: Set[str] = {
     "body", "bodies", "torsos", "torso",
@@ -148,7 +146,7 @@ def _is_kit_container(parent_rel_lower: str, all_rel_lowers: List[str]) -> Tuple
     # Map common synonyms to canonical tokens
     def _add_match(token: str, seg: str) -> None:
         # unify synonyms
-        if token == "shoulders":
+        if token == "shoulders":  # noqa: S105
             matched_set.add("shoulder pads")
         elif token in ("base", "bases"):
             matched_set.add("bases")
@@ -479,7 +477,9 @@ def main(argv: List[str]) -> int:
     if args.db_url:
         try:
             from sqlalchemy import create_engine as _ce
-            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            from sqlalchemy.orm import Session as _S
+            from sqlalchemy.orm import sessionmaker as _sm
+
             import db.session as _dbs
             # Dispose existing engine and rebind
             try:

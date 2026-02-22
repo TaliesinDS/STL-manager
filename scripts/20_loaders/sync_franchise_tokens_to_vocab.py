@@ -4,11 +4,8 @@ import argparse
 import json
 import os
 from pathlib import Path
-import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 fr_dir = PROJECT_ROOT / 'vocab' / 'franchises'
 
@@ -38,8 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.db_url:
         os.environ['STLMGR_DB_URL'] = args.db_url
 
-    from db.session import SessionLocal  # late import to honor --db-url
     from db.models import VocabEntry
+    from db.session import SessionLocal  # late import to honor --db-url
 
     session = SessionLocal()
     created = 0

@@ -16,27 +16,25 @@ Conservative by default: only writes when target fields are empty; use
 `--force` to overwrite.
 """
 from __future__ import annotations
+
+import json
 import sys
 from pathlib import Path
-import json
-import time
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-from db.session import get_session
-from db.models import Variant
-from scripts.normalize_inventory import (
-    tokens_from_variant,
-    build_franchise_alias_map,
-    build_character_alias_map,
-    TABLETOP_HINTS,
-)
-
+import glob
 from pathlib import Path
 from typing import Dict, Tuple
-import glob
+
+from db.models import Variant
+from db.session import get_session
+from scripts.normalize_inventory import (
+    TABLETOP_HINTS,
+    build_character_alias_map,
+    build_franchise_alias_map,
+    tokens_from_variant,
+)
 
 # Global stoplist: tokens here are considered noise and will not be
 # treated as franchise signals. Add short/common noisy words like

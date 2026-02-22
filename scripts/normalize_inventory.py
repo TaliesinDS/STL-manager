@@ -19,10 +19,6 @@ _HERE = Path(__file__).resolve()
 _ROOT = _HERE.parent.parent  # project root
 _IMPL_PATH = _ROOT / "scripts" / "30_normalize_match" / "normalize_inventory.py"
 
-# Ensure project root is on sys.path for absolute imports like 'db.*'
-if str(_ROOT) not in sys.path:
-    sys.path.insert(0, str(_ROOT))
-
 if not _IMPL_PATH.is_file():
     raise FileNotFoundError(f"Canonical normalize_inventory not found at {_IMPL_PATH}")
 

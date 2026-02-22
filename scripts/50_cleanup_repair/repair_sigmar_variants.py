@@ -8,12 +8,6 @@ Dry-run by default; pass --apply to commit. Use --db-url to target a DB.
 
 import argparse
 import os
-import sys
-from pathlib import Path
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 TARGET_IDS = [232, 233, 235, 236, 259, 260, 261, 263, 264, 265, 269]
 CORRECT_FRANCHISE = "warhammer_age_of_sigmar"
@@ -21,8 +15,8 @@ CORRECT_FACTION = "cities_of_sigmar"
 
 
 def process(ids, apply: bool):
-    from db.session import get_session
     from db.models import Variant
+    from db.session import get_session
 
     changed = []
     with get_session() as session:

@@ -14,10 +14,6 @@ _HERE = Path(__file__).resolve()
 _ROOT = _HERE.parent.parent  # project root
 _MATCHER_PATH = _ROOT / "scripts" / "30_normalize_match" / "match_variants_to_units.py"
 
-# Ensure project root on sys.path for 'db.*' imports from implementation
-if str(_ROOT) not in sys.path:
-    sys.path.insert(0, str(_ROOT))
-
 def _load_matcher() -> ModuleType:
     if not _MATCHER_PATH.is_file():
         raise FileNotFoundError(f"Matcher not found at {_MATCHER_PATH}")

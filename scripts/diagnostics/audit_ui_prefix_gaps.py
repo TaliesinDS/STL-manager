@@ -2,8 +2,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import List, Dict, Any
-
+from typing import Any, Dict, List
 
 GENERIC_VARIANT_NAMES = {
     'bodies','body','heads','head','arms','arm','legs','leg','torsos','torso',

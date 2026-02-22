@@ -4,19 +4,16 @@ Dry-run by default: prints planned merges. Use --apply to modify the DB.
 
 Usage (PowerShell):
   $env:STLMGR_DB_URL="sqlite:///./data/stl_manager_v1.db"
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\cleanup_merge_leaf_variants.py --leaf hands --apply
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\\cleanup_merge_leaf_variants.py --leaf hands --apply
 """
 from __future__ import annotations
+
 import argparse
-from pathlib import Path
 import sys
+from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
+from db.models import File, Variant, VariantUnitLink  # type: ignore
 from db.session import get_session  # type: ignore
-from db.models import Variant, File, VariantUnitLink  # type: ignore
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -50,7 +47,7 @@ def parent_path(rel_path: str) -> str:
 
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
-    leaves = [l.strip().lower() for l in (args.leaf_names or []) if l and l.strip()]
+    leaves = [leaf.strip().lower() for leaf in (args.leaf_names or []) if leaf and leaf.strip()]
     if not leaves:
         print("No leaf names provided; nothing to do.")
         return 0

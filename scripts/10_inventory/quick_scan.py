@@ -34,12 +34,13 @@ Notes:
     - macOS sidecar files like '.DS_Store' and '._*' are skipped.
 """
 from __future__ import annotations
+
 import argparse
+import collections
+import json
 import pathlib
 import re
 import sys
-import collections
-import json
 from pathlib import Path
 
 # Resolve repo root and scripts dir based on this file being under scripts/10_inventory/

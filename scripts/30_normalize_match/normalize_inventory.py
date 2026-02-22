@@ -10,36 +10,36 @@ and will not overwrite them unless `--force` is used.
 from __future__ import annotations
 
 import argparse
-import sys
-from pathlib import Path
 import json
 import re
-from typing import Iterable, Tuple, Dict, List, Optional
+import sys
+from collections.abc import Iterable
+from pathlib import Path
+from typing import Dict, List, Optional
 
-# Ensure project root is on sys.path so `from db...` imports work
 # scripts/30_normalize_match/ -> scripts -> repo root
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session, DB_URL
-from db.models import Variant, File, VocabEntry, Character
+from db.models import Character, File, Variant, VocabEntry
+from db.session import DB_URL, get_session
+from scripts.lib.alias_rules import (
+    AMBIGUOUS_ALIASES,
+)
+from scripts.lib.alias_rules import (
+    is_short_or_numeric as _short_or_numeric,
+)
 
 # Reuse tokenizer and tokenmap loader from quick_scan to keep behavior consistent
 from scripts.quick_scan import (
-    tokenize,
-    load_tokenmap,
-    load_external_designers,
-    classify_token,
-    SCALE_RATIO_RE,
-    SCALE_MM_RE,
     ALLOWED_DENOMS,
+    SCALE_MM_RE,
+    SCALE_RATIO_RE,
     SPLIT_CHARS,
+    classify_token,
+    load_tokenmap,
+    tokenize,
 )
-from scripts.lib.alias_rules import (
-    AMBIGUOUS_ALIASES,
-    is_short_or_numeric as _short_or_numeric,
-)
+
 
 def _detect_token_locale(tokens: list[str]) -> str | None:
     if not tokens:
@@ -310,7 +310,7 @@ def tokens_from_variant(session, variant: Variant) -> list[str]:
     # files when there's contextual evidence they belong to the same variant
     # (shared tokens, matching filename or rel_path prefix). We also skip
     # common non-model file extensions (images, archives, etc.).
-    toks: list[str] = []
+    _toks: list[str] = []
     base_tokens: list[str] = []
     # tokens from rel_path
     try:
@@ -1227,7 +1227,7 @@ def process_variants(batch_size: int, apply: bool, only_missing: bool, force: bo
     # try to load tokenmap to set token version & domain sets
     tm_path = Path(tokenmap_path) if tokenmap_path else (root / 'vocab' / 'tokenmap.md')
     if tm_path.exists():
-        stats = load_tokenmap(tm_path)
+        _stats = load_tokenmap(tm_path)
         token_map_version = getattr(sys.modules.get('scripts.quick_scan'), 'TOKENMAP_VERSION', None)
     else:
         token_map_version = None

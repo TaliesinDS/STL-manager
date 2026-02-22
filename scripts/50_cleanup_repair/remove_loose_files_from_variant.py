@@ -9,28 +9,23 @@ variant are considered loose.
 
 Usage examples:
   # Dry-run for variant 66
-  .venv\Scripts\python.exe scripts\50_cleanup_repair\remove_loose_files_from_variant.py 66
+  .venv\\Scripts\\python.exe scripts\50_cleanup_repair\remove_loose_files_from_variant.py 66
 
   # Apply changes
   $env:STLMGR_DB_URL = 'sqlite:///.../data/stl_manager_v1.db'
-  .venv\Scripts\python.exe scripts\50_cleanup_repair\remove_loose_files_from_variant.py 66 --apply
+  .venv\\Scripts\\python.exe scripts\50_cleanup_repair\remove_loose_files_from_variant.py 66 --apply
 """
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import List
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-import sys
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
+from db.models import File, Variant
 from db.session import get_session
-from db.models import Variant, File
 from scripts.quick_scan import tokenize
-
 
 MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb', '.ztl', '.step', '.stp', '.lys', '.chitubox', '.ctb'}
 

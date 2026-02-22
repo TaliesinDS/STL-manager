@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from pathlib import Path
 import json
 import os
+from pathlib import Path
 
 import pytest
-
 
 pytestmark = pytest.mark.workflow
 
@@ -24,8 +23,8 @@ def _bootstrap_db(cli, venv_python: str, db_url: str):
 def _insert_variants_direct(db_url: str):
     # Insert a few variants with raw_path_tokens covering Spanish, Chinese, Japanese and accented Latin
     os.environ["STLMGR_DB_URL"] = db_url
-    from db.session import get_session
     from db.models import Variant
+    from db.session import get_session
     with get_session() as sess:
         rows = [
             Variant(rel_path="ml/test_es", filename=None, raw_path_tokens=["PiernaDRCH", "BrazoIZQ"]),
@@ -67,8 +66,8 @@ def test_backfill_english_tokens_end_to_end(cli, venv_python: str, tmp_db_url: s
 
     # 3) Validate DB content
     os.environ["STLMGR_DB_URL"] = tmp_db_url
-    from db.session import get_session
     from db.models import Variant
+    from db.session import get_session
     with get_session() as sess:
         rows = {v.rel_path: v for v in sess.query(Variant).all()}
         # Spanish abbreviations -> English phrases, locale en (ASCII)
@@ -95,7 +94,7 @@ def test_backfill_english_tokens_end_to_end(cli, venv_python: str, tmp_db_url: s
         roe = ro.english_tokens or []
         assert "senorita" in roe  # Unidecode fallback lowercased
 
-        snap = {k: tuple((rows[k].english_tokens or [])) for k in rows}
+        snap = {k: tuple(rows[k].english_tokens or []) for k in rows}
 
     if apply_twice:
         # 4) Re-run apply to ensure idempotency (no changes should be proposed/applied)
@@ -119,8 +118,8 @@ def test_backfill_english_tokens_end_to_end(cli, venv_python: str, tmp_db_url: s
         assert len(data2.get("proposals", [])) == 0
         # Verify DB remained unchanged
         os.environ["STLMGR_DB_URL"] = tmp_db_url
-        from db.session import get_session as _gs
         from db.models import Variant as _V
+        from db.session import get_session as _gs
         with _gs() as sess:
             rows2 = {v.rel_path: v for v in sess.query(_V).all()}
             for k, before in snap.items():

@@ -6,8 +6,9 @@ Create Date: 2025-09-03
 """
 from __future__ import annotations
 
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision = '20250903_add_lineage_table'

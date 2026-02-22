@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 """Diagnostic helper: report counts for normalized fields on Variant rows and print sample rows."""
 from __future__ import annotations
+
 import json
-from pathlib import Path
 import sys
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session
 from db.models import Variant
+from db.session import get_session
 
 FIELDS = [
     "support_state",

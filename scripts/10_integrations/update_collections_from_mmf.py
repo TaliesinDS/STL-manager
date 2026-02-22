@@ -1,26 +1,24 @@
+import argparse
+import json
 import os
 import re
-import sys
-import json
-import argparse
-from datetime import datetime
-from typing import Dict, List, Any, Optional
 import urllib.parse
+from datetime import datetime
+from typing import Any, Dict, List, Optional
 
-# path shim
+# repo root for locating vocab/collections and reports
 _here = os.path.abspath(os.path.dirname(__file__))
 _repo_root = os.path.abspath(os.path.join(_here, os.pardir, os.pardir))
-if _repo_root not in sys.path:
-    sys.path.insert(0, _repo_root)
 
-from scripts.lib.mmf_client import (
-    paginate_user_collections,
-    scrape_user_collections,
-    get_access_token,
-    MMFError,
-)
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap
+
+from scripts.lib.mmf_client import (
+    MMFError,
+    get_access_token,
+    paginate_user_collections,
+    scrape_user_collections,
+)
 
 COLLECTIONS_DIR = os.path.join(_repo_root, "vocab", "collections")
 MMF_USERNAMES_PATH = os.path.join(_repo_root, "vocab", "mmf_usernames.json")
@@ -55,7 +53,7 @@ def load_username_overrides() -> Dict[str, str]:
     if not os.path.exists(MMF_USERNAMES_PATH):
         return {}
     try:
-        with open(MMF_USERNAMES_PATH, "r", encoding="utf-8") as f:
+        with open(MMF_USERNAMES_PATH, encoding="utf-8") as f:
             data = json.load(f)
         return {str(k): str(v) for k, v in data.items() if isinstance(k, str) and isinstance(v, str)}
     except Exception as e:
@@ -81,7 +79,7 @@ def detect_username_from_yaml(designer_key: str) -> Optional[str]:
     if not os.path.exists(yaml_path):
         return None
     try:
-        with open(yaml_path, "r", encoding="utf-8") as f:
+        with open(yaml_path, encoding="utf-8") as f:
             txt = f.read()
     except Exception:
         return None
@@ -310,7 +308,7 @@ def main() -> int:
 
         yaml = YAML()
         yaml.preserve_quotes = True
-        with open(yaml_path, "r", encoding="utf-8") as f:
+        with open(yaml_path, encoding="utf-8") as f:
             raw_txt = f.read()
         # Normalize leading tabs to two spaces to accommodate files using tab indentation
         normalized_txt = re.sub(r"(?m)^(\t+)", lambda m: "  " * len(m.group(1)), raw_txt)

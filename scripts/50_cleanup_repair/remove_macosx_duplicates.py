@@ -7,22 +7,18 @@ Features:
   - --apply to actually delete rows (cascades to File via ORM relationships)
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\remove_macosx_duplicates.py --out reports/remove_macosx_dryrun.json
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\remove_macosx_duplicates.py --apply --out reports/remove_macosx_apply.json
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\remove_macosx_duplicates.py --out reports/remove_macosx_dryrun.json
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\remove_macosx_duplicates.py --apply --out reports/remove_macosx_apply.json
 """
 from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session, DB_URL  # type: ignore
-from db.models import Variant, File  # type: ignore
+from db.models import File, Variant  # type: ignore
+from db.session import DB_URL, get_session  # type: ignore
 
 
 def find_targets(session):

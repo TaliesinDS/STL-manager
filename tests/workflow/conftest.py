@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import os
-import shutil
-import sys
-from pathlib import Path
-import time
 import subprocess
-import pytest
+import sys
+import time
+from pathlib import Path
 
+import pytest
 
 # Avoid collecting the legacy module name that clashes with top-level placeholder
 collect_ignore = [
@@ -54,8 +53,6 @@ def tmp_db_url(tmp_dir: Path, repo_root: Path) -> str:
             except (PermissionError, FileNotFoundError):
                 # Try to force-close any session engine still pointing at this file
                 try:
-                    if str(repo_root) not in sys.path:
-                        sys.path.insert(0, str(repo_root))
                     import db.session as _dbs  # type: ignore
                     # Switch to in-memory to drop file handle, then dispose
                     if hasattr(_dbs, 'reconfigure'):
@@ -80,8 +77,6 @@ def tmp_db_url(tmp_dir: Path, repo_root: Path) -> str:
     url = f"sqlite:///{abs_path.as_posix()}"
     # Also proactively bind the session engine to this DB for this test process
     try:
-        if str(repo_root) not in sys.path:
-            sys.path.insert(0, str(repo_root))
         import db.session as _dbs  # type: ignore
         if hasattr(_dbs, 'reconfigure'):
             _dbs.reconfigure(url)

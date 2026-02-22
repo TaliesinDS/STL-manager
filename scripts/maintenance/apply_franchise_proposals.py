@@ -1,8 +1,7 @@
-import re
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Tuple
-
 
 MD_HEADER_RE = re.compile(r"^##\s+.+\(`([a-z0-9_]+)`\)\s*$")
 BULLET_RE = re.compile(r"^\s*-\s+([a-z0-9_]+)\s+—\s+aliases:\s*\[", re.IGNORECASE)
@@ -85,8 +84,8 @@ def insert_characters_preserving_style(json_path: Path, items: List[Tuple[str, L
 
     # Determine indentation
     # Look backward from end_idx to find last non-empty line inside array
-    pre_array = text[:open_bracket_idx]
-    post_array = text[end_idx + 1:]
+    _pre_array = text[:open_bracket_idx]
+    _post_array = text[end_idx + 1:]
     before = text[open_bracket_idx + 1:end_idx]
     lines = before.splitlines()
     indent = "  "

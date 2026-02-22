@@ -6,9 +6,6 @@ Create Date: 2025-09-03
 """
 from __future__ import annotations
 
-from alembic import op
-import sqlalchemy as sa
-
 # revision identifiers, used by Alembic.
 revision = '20250903_merge_heads_lineage_mounts'
 down_revision = ('20250903_add_lineage_table', '20250903_add_mount_lineages')

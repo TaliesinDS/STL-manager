@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import List, Optional, Generator
+from collections.abc import Generator
+from typing import List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,8 +9,8 @@ from pydantic import BaseModel
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from db.session import get_session
 from db import models
+from db.session import get_session
 
 
 def get_db() -> Generator[Session, None, None]:

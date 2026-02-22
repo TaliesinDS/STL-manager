@@ -1,31 +1,32 @@
 from __future__ import annotations
 
 import argparse
-import json
-import os
-import re
-from collections import defaultdict
 import hashlib
-from dataclasses import dataclass, asdict
+import json
+import re
+import sys
+from collections import defaultdict
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from sqlalchemy import select
 from sqlalchemy.exc import OperationalError
 
-import sys
-# Ensure repository root is on sys.path for imports like 'db.models'
 # __file__ is .../scripts/30_normalize_match/match_variants_to_units.py
 # parents[2] -> repo root
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
-from db.models import Variant, Unit, GameSystem, Faction, VariantUnitLink  # type: ignore
+from db.models import (  # type: ignore
+    Faction,
+    GameSystem,
+    Unit,
+    Variant,
+    VariantUnitLink,
+)
 from db.session import get_session  # type: ignore
 from scripts.lib.alias_rules import AMBIGUOUS_ALIASES  # type: ignore
-
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
 # Default scale per system as 1:denominator (e.g., 1:56 ~ 28-32mm heroic)
@@ -650,7 +651,9 @@ def main() -> None:
     if args.db_url:
         try:
             from sqlalchemy import create_engine as _ce
-            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            from sqlalchemy.orm import Session as _S
+            from sqlalchemy.orm import sessionmaker as _sm
+
             import db.session as _dbs
             try:
                 _dbs.engine.dispose()
@@ -1546,7 +1549,7 @@ def main() -> None:
                                             tmp = getattr(fac_row, 'full_path', None) or None
                                             if not tmp:
                                                 try:
-                                                		# Build by climbing parents
+                                                    # Build by climbing parents
                                                     chain: List[str] = []
                                                     cur = fac_row
                                                     guard = 0

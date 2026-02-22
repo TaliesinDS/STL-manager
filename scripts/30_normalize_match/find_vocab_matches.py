@@ -7,17 +7,17 @@ Usage:
 Outputs JSON with counts and a small sample of matches.
 """
 from __future__ import annotations
-import sys
-from pathlib import Path
+
 import json
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session
 from db.models import Variant
-from scripts.normalize_inventory import tokens_from_variant, build_franchise_alias_map, build_character_alias_map, build_designer_alias_map
+from db.session import get_session
+from scripts.normalize_inventory import (
+    build_character_alias_map,
+    build_designer_alias_map,
+    build_franchise_alias_map,
+    tokens_from_variant,
+)
 
 
 def find_matches(limit: int = 100, only_unassigned: bool = False):
@@ -26,7 +26,7 @@ def find_matches(limit: int = 100, only_unassigned: bool = False):
     with get_session() as session:
         franchise_map = build_franchise_alias_map(session)
         character_map = build_character_alias_map(session)
-        designer_map = build_designer_alias_map(session)
+        _designer_map = build_designer_alias_map(session)
 
         q = session.query(Variant).join(Variant.files).distinct().limit(limit)
         for v in q:

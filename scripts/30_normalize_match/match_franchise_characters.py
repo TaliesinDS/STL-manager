@@ -10,30 +10,33 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Dict, Tuple, List
+from typing import Dict, List, Tuple
 
 # scripts/30_normalize_match/* -> repo root is two levels up
 ROOT = Path(__file__).resolve().parents[2]
 FR_DIR = ROOT / 'vocab' / 'franchises'
 OC_WHITELIST_PATH = ROOT / 'vocab' / 'oc_whitelist.txt'
 
-import sys
-# Ensure project root is on sys.path so `from db...` imports work
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session
 from db.models import Variant
-
-# Reuse helper functions from normalize_inventory
-from scripts.normalize_inventory import tokens_from_variant, apply_updates_to_variant, TABLETOP_HINTS
-from scripts.quick_scan import classify_token
+from db.session import get_session
 from scripts.lib.alias_rules import (
     AMBIGUOUS_ALIASES,
-    is_short_or_numeric as shared_short_or_numeric,
+)
+from scripts.lib.alias_rules import (
     has_supporting_franchise_tokens as shared_has_support,
 )
+from scripts.lib.alias_rules import (
+    is_short_or_numeric as shared_short_or_numeric,
+)
+
+# Reuse helper functions from normalize_inventory
+from scripts.normalize_inventory import (
+    TABLETOP_HINTS,
+    apply_updates_to_variant,
+    tokens_from_variant,
+)
+
 try:
     # Use STOPWORDS to avoid forming bigrams across common words when available
     from scripts.quick_scan import STOPWORDS as QS_STOPWORDS
@@ -582,8 +585,8 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                 }
 
                 # count franchise alias matches
-                alias_count = sum(1 for t in token_list if t in fam)
-                has_char_any = any(t in cam for t in token_list)
+                _alias_count = sum(1 for t in token_list if t in fam)
+                _has_char_any = any(t in cam for t in token_list)
                 has_char_strong = False
 
                 def short_or_numeric(tok: str) -> bool:
@@ -715,8 +718,8 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
 
             # Top franchises proposed
             from collections import Counter
-            fr_counter = Counter((p['changes'].get('franchise') for p in proposals if p.get('changes') and p['changes'].get('franchise')))
-            ch_counter = Counter((p['changes'].get('character_name') for p in proposals if p.get('changes') and p['changes'].get('character_name')))
+            fr_counter = Counter(p['changes'].get('franchise') for p in proposals if p.get('changes') and p['changes'].get('franchise'))
+            ch_counter = Counter(p['changes'].get('character_name') for p in proposals if p.get('changes') and p['changes'].get('character_name'))
 
             print("\n--- Summary ---")
             print(f"Total proposals: {total_props}")
@@ -827,7 +830,7 @@ def process(apply: bool, batch: int, out: str | None = None, infer_oc: bool = Fa
                             'normalization_warnings': [],
                             'token_version': None,
                         }
-                        alias_count = sum(1 for t in token_list if t in fam)
+                        _alias_count = sum(1 for t in token_list if t in fam)
                         has_char_strong = False
 
                         def short_or_numeric(tok: str) -> bool:

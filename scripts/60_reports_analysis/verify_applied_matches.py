@@ -5,11 +5,8 @@ import argparse
 import json
 import os
 from pathlib import Path
-import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def _load_json_with_trailer(path: Path) -> dict:
@@ -57,8 +54,8 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     ids = [p.get('variant_id') for p in data.get('proposals', []) if 'variant_id' in p]
 
-    from db.session import get_session  # late import to honor --db-url
     from db.models import Variant
+    from db.session import get_session  # late import to honor --db-url
     with get_session() as session:
         rows = session.query(Variant).filter(Variant.id.in_(ids)).all()
         by_id = {r.id: r for r in rows}

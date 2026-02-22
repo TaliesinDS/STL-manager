@@ -1,5 +1,5 @@
-from db.session import get_session
 from db.models import VocabEntry
+from db.session import get_session
 
 with get_session() as session:
     rows = session.query(VocabEntry).filter_by(domain='character').all()

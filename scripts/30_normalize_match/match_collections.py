@@ -11,13 +11,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from sqlalchemy import create_engine, select, and_
+from sqlalchemy import and_, create_engine, select
 from sqlalchemy.orm import Session
 
 # Ensure repository root is on sys.path for local package imports
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
 try:
     from ruamel.yaml import YAML
@@ -215,7 +213,7 @@ def main():
                         break
 
             # Optional MMF refill on miss
-            refilled = False
+            _refilled = False
             if not chosen and args.mmf_refill_on_miss:
                 ok, msg = mmf_refill_for_designer(designer, apply=args.apply)
                 report["items"].append({"variant_id": v.id, "designer": designer, "action": "mmf_refill", "ok": ok, "log": msg})

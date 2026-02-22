@@ -8,8 +8,8 @@ Phase 1 note:
 - Variant.collection_* fields are written by the matcher script, independently of this loader.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\20_loaders\load_collections.py \
-    --file .\vocab\collections\dm_stash.yaml \
+  .\\.venv\\Scripts\\python.exe .\\scripts\20_loaders\\load_collections.py \
+    --file .\vocab\\collections\\dm_stash.yaml \
     --db-url sqlite:///./data/stl_manager_v1.db   # optional override
 
 Add --commit to persist changes; otherwise it's a dry-run.
@@ -21,13 +21,10 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-# Ensure repo root on sys.path
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.models import Collection  # type: ignore
 import db.session as _dbs  # type: ignore
+from db.models import Collection  # type: ignore
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def reconfigure_db(db_url: str | None) -> None:
@@ -35,7 +32,8 @@ def reconfigure_db(db_url: str | None) -> None:
         return
     try:
         from sqlalchemy import create_engine as _ce
-        from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+        from sqlalchemy.orm import Session as _S
+        from sqlalchemy.orm import sessionmaker as _sm
         try:
             _dbs.engine.dispose()
         except Exception:

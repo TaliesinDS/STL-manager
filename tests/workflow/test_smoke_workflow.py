@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import re
-import pytest
+from pathlib import Path
 
+import pytest
 
 pytestmark = pytest.mark.workflow
 
@@ -91,14 +91,13 @@ def test_bootstrap_then_normalize_dryrun(cli, venv_python: str, tmp_db_url: str,
     # If no kits exist, script should still exit 0 and write a report
     assert cp.returncode == 0
     if parts_report.exists():
-        import json
         pdata = json.loads(parts_report.read_text("utf-8"))
         assert isinstance(pdata, dict)
         for k in ["db_url", "apply", "changes", "counts"]:
             assert k in pdata
 
     # Reports: codex counts and verify applied matches (dry)
-    counts_report = reports_dir / "codex_counts_test.json"
+    _counts_report = reports_dir / "codex_counts_test.json"
     cp = cli([
         venv_python,
         "scripts/60_reports_analysis/report_codex_counts.py",

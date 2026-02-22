@@ -9,12 +9,6 @@ Dry-run by default; pass --apply to commit. Use --db-url to target a DB.
 import argparse
 import json
 import os
-import sys
-from pathlib import Path
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def find_candidates(session):
@@ -31,8 +25,8 @@ def find_candidates(session):
 
 
 def apply_migration(apply: bool, force: bool):
-    from db.session import get_session
     from db.models import Variant
+    from db.session import get_session
 
     proposals = []
     with get_session() as session:

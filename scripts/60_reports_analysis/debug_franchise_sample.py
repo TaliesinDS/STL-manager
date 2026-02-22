@@ -13,9 +13,6 @@ PROJECT = ROOT.parent.parent  # scripts/
 CANON = PROJECT / "90_util" / "debug_franchise_sample.py"
 MODULE_NAME = "scripts.90_util.debug_franchise_sample"
 
-if str(PROJECT.parent) not in sys.path:  # repo root
-    sys.path.insert(0, str(PROJECT.parent))
-
 
 def _load() -> ModuleType:
     spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))

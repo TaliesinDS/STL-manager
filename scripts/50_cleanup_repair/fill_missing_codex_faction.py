@@ -2,7 +2,7 @@
 """Fill codex_faction (and faction_path) for variants that have a matched unit.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\fill_missing_codex_faction.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\fill_missing_codex_faction.py \
     --db-url sqlite:///./data/stl_manager_v1.db --ids 292 293 294 --apply
 
 Behavior:
@@ -16,19 +16,11 @@ Behavior:
 from __future__ import annotations
 
 import argparse
-from typing import Optional, List
-from pathlib import Path
 import sys
+from typing import List, Optional
 
-from sqlalchemy import select
-
-# Ensure project root on sys.path
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
+from db.models import Faction, Unit, Variant
 from db.session import get_session
-from db.models import Variant, Unit, Faction, GameSystem
 
 
 def resolve_faction_path(session, fac: Faction) -> Optional[List[str]]:

@@ -11,10 +11,6 @@ def _load_and_run(argv: list[str] | None = None) -> int:
     scripts_dir = here.parent
     canonical = scripts_dir / '90_util' / 'list_variant_files.py'
 
-    proj_root = scripts_dir.parent
-    if str(proj_root) not in sys.path:
-        sys.path.insert(0, str(proj_root))
-
     spec = importlib.util.spec_from_file_location('scripts.90_util.list_variant_files', canonical)
     if spec is None or spec.loader is None:
         raise RuntimeError(f'Cannot import canonical script at: {canonical}')

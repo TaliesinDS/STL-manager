@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-from pathlib import Path
 import sys
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
 from sqlalchemy import text
-from db.session import engine, SessionLocal
+
 from db.models import Character
+from db.session import SessionLocal, engine
 
 
 def main(argv: list[str] | None = None) -> int:

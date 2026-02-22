@@ -78,17 +78,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-import os
-import re
-import sys
-import json
-from typing import Dict, List, Any
+from typing import Any
 
-# path shim
+# repo root for locating vocab/collections dirs
 _here = os.path.abspath(os.path.dirname(__file__))
 _repo_root = os.path.abspath(os.path.join(_here, os.pardir, os.pardir))
-if _repo_root not in sys.path:
-    sys.path.insert(0, _repo_root)
 
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap
@@ -124,7 +118,7 @@ def load_username_overrides() -> Dict[str, str]:
     if not os.path.exists(MMF_USERNAMES_PATH):
         return {}
     try:
-        with open(MMF_USERNAMES_PATH, "r", encoding="utf-8") as f:
+        with open(MMF_USERNAMES_PATH, encoding="utf-8") as f:
             data = json.load(f)
         return {str(k): str(v) for k, v in data.items() if isinstance(k, str) and isinstance(v, str)}
     except Exception:
@@ -180,7 +174,7 @@ def main() -> int:
             continue
         path = os.path.join(COLLECTIONS_DIR, name)
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 raw_txt = f.read()
         except Exception:
             continue

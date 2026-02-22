@@ -3,19 +3,15 @@
 
 Dry-run by default; use --apply to commit. Prefer passing --db-url over setting env vars.
 Examples (PowerShell):
-    .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --id 66 --apply
-    .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --rel-path sample_store --apply
+    .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --id 66 --apply
+    .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\\delete_variant.py --db-url sqlite:///./data/stl_manager_v1.db --rel-path sample_store --apply
 """
 from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 def find_variant(session, Variant, vid: int | None, rel_path: str | None):
     if vid is not None:
@@ -42,8 +38,8 @@ def main(argv: list[str]) -> int:
         import os
         os.environ["STLMGR_DB_URL"] = args.db_url
 
-    from db.session import get_session  # type: ignore
     from db.models import Variant  # type: ignore
+    from db.session import get_session  # type: ignore
 
     with get_session() as session:
         v = find_variant(session, Variant, args.id, args.rel_path)

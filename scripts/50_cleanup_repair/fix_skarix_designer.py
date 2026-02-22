@@ -9,12 +9,6 @@ Dry-run by default; pass --apply to commit. Use --db-url to target a DB.
 import argparse
 import json
 import os
-import sys
-from pathlib import Path
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 
 def normalize_alias(a: str) -> str:
@@ -60,7 +54,6 @@ def main(argv: list[str] | None = None) -> int:
         os.environ["STLMGR_DB_URL"] = args.db_url
 
     from db.session import get_session  # late import to honor --db-url
-    from db.models import VocabEntry
 
     target = "skarix"
     with get_session() as session:

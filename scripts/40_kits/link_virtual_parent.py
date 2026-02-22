@@ -9,7 +9,7 @@
 Safe by default: dry-run. Use --apply to write changes. Prints a concise JSON summary.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\link_virtual_parent.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\\link_virtual_parent.py \
     --db-url sqlite:///./data/stl_manager_v1.db \
     --parent-rel "sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library" \
     --child-ids 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 \
@@ -23,16 +23,12 @@ import json
 import re
 import sys
 from dataclasses import asdict, dataclass
-from pathlib import Path
 from typing import List, Optional, Set, Tuple
 
-# Project import path
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session, DB_URL
 from db.models import Variant
+
+# Project import path
+from db.session import DB_URL, get_session
 
 
 def _norm(s: str) -> str:
@@ -98,7 +94,9 @@ def main(argv: List[str]) -> int:
     if args.db_url:
         try:
             from sqlalchemy import create_engine as _ce
-            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            from sqlalchemy.orm import Session as _S
+            from sqlalchemy.orm import sessionmaker as _sm
+
             import db.session as _dbs
             try:
                 _dbs.engine.dispose()

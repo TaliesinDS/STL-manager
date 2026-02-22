@@ -8,24 +8,23 @@ by `scripts/create_sample_inventory.py`. Tokenizes full path components using
 them with `--apply` (creates a DB backup automatically).
 
 Usage:
-  .venv\Scripts\python.exe scripts\30_normalize_match\apply_sample_folder_tokens.py [--inventory path] [--apply] [--batch N]
+  .venv\\Scripts\\python.exe scripts\30_normalize_match\apply_sample_folder_tokens.py [--inventory path] [--apply] [--batch N]
 """
 from __future__ import annotations
+
 import argparse
 import json
 import shutil
+import sys
 import time
 from pathlib import Path
-import sys
 
 # Ensure project root on sys.path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
+from db.models import File, Variant
+from db.session import engine, get_session
 from scripts.quick_scan import tokenize
-from db.session import get_session, engine
-from db.models import Variant, File
 
 
 def load_inventory(path: Path) -> list[dict]:
@@ -77,9 +76,9 @@ def main(argv: list[str]) -> int:
             # Compute full-path tokens using our improved tokenizer
             toks_full = tokenize(Path(inv['rel_path']))
             # Existing residual tokens on file and variant
-            file_tokens = set((f.residual_tokens or []) )
+            file_tokens = set(f.residual_tokens or [] )
             v = session.query(Variant).filter_by(id=f.variant_id).one_or_none()
-            variant_tokens = set((v.residual_tokens or [])) if v else set()
+            variant_tokens = set(v.residual_tokens or []) if v else set()
 
             missing_for_file = sorted(t for t in toks_full if t not in file_tokens)
             missing_for_variant = sorted(t for t in toks_full if t not in variant_tokens)

@@ -2,9 +2,9 @@
 """Run pytest only for changed test files (git-aware), with fast fallbacks.
 
 Usage examples (run with your venv Python):
-  .\.venv\Scripts\python.exe scripts\dev\run_changed_tests.py
-  .\.venv\Scripts\python.exe scripts\dev\run_changed_tests.py --since main
-  .\.venv\Scripts\python.exe scripts\dev\run_changed_tests.py --include-workflow
+  .\\.venv\\Scripts\\python.exe scripts\\dev\run_changed_tests.py
+  .\\.venv\\Scripts\\python.exe scripts\\dev\run_changed_tests.py --since main
+  .\\.venv\\Scripts\\python.exe scripts\\dev\run_changed_tests.py --include-workflow
 
 Behavior:
   - Collects changed files from git (staged + unstaged) relative to --since (default: HEAD).
@@ -15,7 +15,6 @@ Behavior:
 from __future__ import annotations
 
 import argparse
-import os
 import subprocess
 import sys
 from pathlib import Path

@@ -14,9 +14,6 @@ PROJECT = ROOT.parent
 CANON = PROJECT / "scripts" / "10_inventory" / "quick_scan.py"
 MODULE_NAME = "scripts.10_inventory.quick_scan"
 
-if str(PROJECT) not in sys.path:
-    sys.path.insert(0, str(PROJECT))
-
 
 def _load() -> ModuleType:
     spec = importlib.util.spec_from_file_location(MODULE_NAME, str(CANON))

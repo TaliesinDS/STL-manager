@@ -16,20 +16,16 @@ Behavior:
 
 Usage (PowerShell):
   $env:STLMGR_DB_URL = 'sqlite:///./data/stl_manager_v1.db'
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\cleanup_remove_junk_only_variants.py --apply
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\\cleanup_remove_junk_only_variants.py --apply
 """
 from __future__ import annotations
+
 import argparse
-from pathlib import Path
 import sys
+from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
+from db.models import File, Variant  # type: ignore
 from db.session import get_session  # type: ignore
-from db.models import Variant, File  # type: ignore
-
 
 MODEL_EXTS = {'.stl', '.obj', '.3mf', '.gltf', '.glb', '.step', '.stp', '.lys', '.chitubox', '.ctb', '.ztl'}
 ARCHIVE_EXTS = {'.zip', '.rar', '.7z', '.cbz', '.cbr'}

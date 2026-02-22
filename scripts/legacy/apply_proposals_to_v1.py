@@ -22,11 +22,6 @@ from typing import Dict, Any
 # Ensure we point at the canonical DB before importing project modules
 os.environ["STLMGR_DB_URL"] = os.environ.get("STLMGR_DB_URL", "sqlite:///./data/stl_manager_v1.db")
 
-# Ensure repository root is on sys.path so `import db.session` works when running from scripts/
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if REPO_ROOT not in sys.path:
-    sys.path.insert(0, REPO_ROOT)
-
 # Import project DB helpers
 try:
     from db.session import get_session

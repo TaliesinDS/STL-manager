@@ -6,15 +6,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from ruamel.yaml import YAML
-from sqlalchemy import select
-import sys
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.models import Base, GameSystem, Faction, Unit, UnitAlias, Part, PartAlias
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+
+from db.models import Base, Faction, GameSystem, Part, PartAlias, Unit, UnitAlias
 
 
 def ensure_tables(db_url: str) -> None:
@@ -403,7 +398,7 @@ def main() -> None:
 
             for f_key, f in factions_obj.items():
                 f_name = f.get("name") or f_key.replace("_", " ").title()
-                parent_top = upsert_faction(session, system, f_key, f_name)
+                _parent_top = upsert_faction(session, system, f_key, f_name)
                 if isinstance(f.get("units"), dict):
                     handle_units(f_key, f_name, f.get("units"), source_anchor=f"factions.{f_key}.units")
 
@@ -428,7 +423,7 @@ def main() -> None:
                         for sf_key, sf in f[subkey].items():
                             sf_name = sf.get("name") or sf_key.replace("_", " ").title()
                             parent = upsert_faction(session, system, f_key, f_name)
-                            subf = upsert_faction(session, system, sf_key, sf_name, parent=parent)
+                            _subf = upsert_faction(session, system, sf_key, sf_name, parent=parent)
                             if isinstance(sf.get("units"), dict):
                                 handle_units(
                                     sf_key,

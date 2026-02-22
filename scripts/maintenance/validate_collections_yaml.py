@@ -5,14 +5,14 @@ Prints OK/ERR per file and exits with non-zero status if any errors are found.
 """
 from __future__ import annotations
 
-import sys
-import os
 import glob
+import os
+import sys
 from typing import List
 
 try:
     from ruamel.yaml import YAML
-except Exception as e:  # pragma: no cover
+except Exception:  # pragma: no cover
     print("ERR - ruamel.yaml is required. Please install requirements.", file=sys.stderr)
     raise
 
@@ -22,7 +22,7 @@ def validate(paths: List[str]) -> int:
     errs = 0
     for path in sorted(paths):
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 yaml.load(f)
             print(f"OK  - {path}")
         except Exception as e:

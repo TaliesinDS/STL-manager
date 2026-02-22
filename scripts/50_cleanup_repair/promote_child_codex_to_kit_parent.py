@@ -2,7 +2,7 @@
 """Promote child codex assignments to kit parent when unanimous.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\50_cleanup_repair\promote_child_codex_to_kit_parent.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\50_cleanup_repair\\promote_child_codex_to_kit_parent.py \
     --db-url sqlite:///./data/stl_manager_v1.db --ids 292 --apply
 
 Behavior:
@@ -19,19 +19,13 @@ Behavior:
 from __future__ import annotations
 
 import argparse
-from collections import Counter
-from typing import Iterable, Optional
-
-from pathlib import Path
 import sys
+from collections import Counter
+from collections.abc import Iterable
+from typing import Optional
 
-# Ensure project root on sys.path
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session, DB_URL
 from db.models import Variant
+from db.session import get_session
 
 
 def _agreeing_pair(pairs: Iterable[tuple[Optional[str], Optional[str]]]) -> Optional[tuple[str, str]]:

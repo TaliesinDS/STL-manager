@@ -6,15 +6,12 @@ import json
 import sys
 from pathlib import Path
 
-# Ensure repo root on path
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+from db.models import Variant  # type: ignore
+from db.session import DB_URL, get_session  # type: ignore
+from scripts.quick_scan import (
+    tokenize,  # type: ignore
+)
 
-from db.session import get_session, DB_URL  # type: ignore
-from db.models import Variant, File  # type: ignore
-from scripts.quick_scan import SPLIT_CHARS  # type: ignore
-from scripts.quick_scan import tokenize  # type: ignore
 
 def build_designer_alias_map(session) -> dict[str, str]:
     from db.models import VocabEntry  # lazy import
@@ -47,7 +44,7 @@ def tokens_from_variant_simple(session, variant) -> list[str]:
             pass
     # include a few model-file tokens if present
     for f in getattr(variant, 'files', []) or []:
-        p = Path((f.filename or f.rel_path or '')).suffix.lower()
+        p = Path(f.filename or f.rel_path or '').suffix.lower()
         if not p or p not in MODEL_EXTS:
             continue
         try:

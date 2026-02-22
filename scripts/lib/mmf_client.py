@@ -1,12 +1,10 @@
+import json
 import os
 import time
-from typing import Any, Dict, List, Optional
-
-import json
 import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
-
+from typing import Any, Dict, List, Optional
 
 MMF_BASE = os.environ.get("MMF_API_BASE", "https://www.myminifactory.com/api/v2")
 AUTH_BASE = os.environ.get("MMF_AUTH_BASE", "https://auth.myminifactory.com")

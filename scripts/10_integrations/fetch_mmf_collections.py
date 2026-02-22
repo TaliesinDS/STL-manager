@@ -1,16 +1,9 @@
 import argparse
 import json
 import os
-import sys
 from datetime import datetime
 
-# Ensure project root is on sys.path for 'scripts.lib' imports when executed directly
-_here = os.path.abspath(os.path.dirname(__file__))
-_repo_root = os.path.abspath(os.path.join(_here, os.pardir, os.pardir))
-if _repo_root not in sys.path:
-    sys.path.insert(0, _repo_root)
-
-from scripts.lib.mmf_client import get_access_token, paginate_user_collections, MMFError
+from scripts.lib.mmf_client import MMFError, get_access_token, paginate_user_collections
 
 
 def main() -> int:

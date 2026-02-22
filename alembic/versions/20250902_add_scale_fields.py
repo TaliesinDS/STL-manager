@@ -4,8 +4,9 @@ Revision ID: 20250902_add_scale_fields
 Revises: 20250830_kit_container_support
 Create Date: 2025-09-02
 """
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 revision = '20250902_add_scale_fields'
 down_revision = '20250830_kit'

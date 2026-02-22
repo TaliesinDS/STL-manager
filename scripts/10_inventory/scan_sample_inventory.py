@@ -4,19 +4,17 @@ directory components (i.e., tokens that were previously omitted when only
 tokenizing Path.stem).
 
 Usage:
-  .venv\Scripts\python.exe scripts\10_inventory\scan_sample_inventory.py
+  .venv\\Scripts\\python.exe scripts\10_inventory\\scan_sample_inventory.py
 """
 from __future__ import annotations
-import sys
+
 import json
+import sys
 from pathlib import Path
 
-# Ensure project root importability
-PROJECT_ROOT = Path(__file__).resolve().parents[2]  # repo root
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
 from scripts.quick_scan import tokenize
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def tokenize_stem(path: str) -> list[str]:

@@ -7,10 +7,11 @@ JSON object (dict), and write a cleaned output file. By default it writes
 to the same directory with a `.clean` suffix to avoid accidental data loss.
 """
 from __future__ import annotations
+
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 
 def clean_file(in_path: Path, out_path: Path) -> int:

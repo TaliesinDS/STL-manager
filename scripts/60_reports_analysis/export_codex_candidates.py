@@ -5,17 +5,15 @@ codex_unit_name, character_name, character_aliases.
 """
 from __future__ import annotations
 
-from pathlib import Path
-from datetime import datetime
 import json
 import sys
+from datetime import datetime
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
-from db.session import get_session
 from db.models import Variant
+from db.session import get_session
 
 
 def main(argv: list[str] | None = None) -> int:

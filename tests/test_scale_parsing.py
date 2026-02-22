@@ -1,10 +1,8 @@
+import importlib.util
 import unittest
 from pathlib import Path
-import sys
-import importlib.util
-from pathlib import Path
 
-from scripts.quick_scan import SCALE_RATIO_RE, SCALE_MM_RE, tokenize, classify_token
+from scripts.quick_scan import SCALE_MM_RE, SCALE_RATIO_RE, classify_token, tokenize
 
 
 def _load_normalizer():

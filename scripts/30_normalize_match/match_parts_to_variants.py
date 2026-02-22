@@ -14,12 +14,12 @@ Safety:
 
 Examples (PowerShell):
   # Dry-run on one kit by rel path
-  .\.venv\Scripts\python.exe .\scripts\match_parts_to_variants.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\\match_parts_to_variants.py \
     --db-url sqlite:///./data/stl_manager_v1.db \
     --parent-rel 'sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library'
 
   # Apply and auto-create generic Parts under Warhammer 40,000 system
-  .\.venv\Scripts\python.exe .\scripts\match_parts_to_variants.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\\match_parts_to_variants.py \
     --db-url sqlite:///./data/stl_manager_v1.db \
     --parent-rel 'sample_store\\Terminator Squad\\Termi 3d models_V1_3\\Termi 3d Models Complete Library' \
     --create-missing-parts --system-key w40k --apply
@@ -33,15 +33,13 @@ import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Tuple
 
 # Project root import
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-from db.session import get_session, DB_URL
-from db.models import Variant, Part, VariantPartLink, GameSystem, Faction
+from db.models import Faction, GameSystem, Part, Variant, VariantPartLink
+from db.session import DB_URL, get_session
 
 
 def _norm(s: str) -> str:
@@ -198,7 +196,9 @@ def main(argv: List[str]) -> int:
     if args.db_url:
         try:
             from sqlalchemy import create_engine as _ce
-            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            from sqlalchemy.orm import Session as _S
+            from sqlalchemy.orm import sessionmaker as _sm
+
             import db.session as _dbs
             try:
                 _dbs.engine.dispose()

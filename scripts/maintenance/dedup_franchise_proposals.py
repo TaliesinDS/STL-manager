@@ -118,17 +118,17 @@ def dedup_proposals(md_path: Path, existing: set[str]) -> tuple[int, int]:
     # Normalize blank lines
     normalized: list[str] = []
     blank_run = 0
-    for l in final_lines:
-        if l.strip() == "":
+    for line in final_lines:
+        if line.strip() == "":
             blank_run += 1
             if blank_run <= 1:
                 normalized.append("")
         else:
             blank_run = 0
-            normalized.append(l)
+            normalized.append(line)
 
     md_path.write_text("\n".join(normalized) + "\n", encoding="utf-8")
-    kept = sum(1 for l in normalized if bullet_re.match(l))
+    kept = sum(1 for line in normalized if bullet_re.match(line))
     return removed_existing + removed_internal, kept
 
 

@@ -1,22 +1,19 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
 
 from sqlalchemy import (
+    JSON,
+    Boolean,
     Column,
+    DateTime,
+    Float,
+    ForeignKey,
     Integer,
     String,
-    Boolean,
-    Float,
-    DateTime,
     Text,
-    JSON,
-    LargeBinary,
-    ForeignKey,
 )
 from sqlalchemy.orm import declarative_base, relationship
-
 
 Base = declarative_base()
 

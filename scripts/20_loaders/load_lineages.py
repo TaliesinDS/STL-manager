@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 Load vocab/lineages.yaml into the DB lineage table (dry-run by default).
 
 Usage:
@@ -9,17 +9,14 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-from typing import Any, Dict, List
-
-# Ensure project root on sys.path for db imports regardless of CWD
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from db.session import get_session, reconfigure
-from db.models import Lineage
+from typing import Any, Dict
 
 from ruamel.yaml import YAML
+
+from db.models import Lineage
+from db.session import get_session, reconfigure
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def load_yaml(path: Path) -> Dict[str, Any]:

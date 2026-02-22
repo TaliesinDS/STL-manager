@@ -1,16 +1,10 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
-from typing import Optional, Dict
-import sys
+from typing import Dict, Optional
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session  # type: ignore
 from db.models import Variant  # type: ignore
+from db.session import get_session  # type: ignore
 
 SYSTEM_DEFAULT_SCALE_DEN: Dict[str, int] = {
     "w40k": 56,

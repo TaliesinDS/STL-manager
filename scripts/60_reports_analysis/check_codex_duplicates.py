@@ -4,14 +4,14 @@
 Rehomed from scripts root; defaults generalized to repo-relative paths.
 """
 from __future__ import annotations
+
 import argparse
-from typing import Dict, Any, List
 from pathlib import Path
+from typing import Any, Dict, List
 
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 from ruamel.yaml.scalarstring import DoubleQuotedScalarString as DQ
-
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -38,7 +38,7 @@ def save_yaml(data, path: str):
 
 
 def _rewrite_aliases_inline_in_text(path: str):
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, encoding='utf-8') as f:
         lines = f.readlines()
 
     out = []
@@ -289,7 +289,7 @@ def main():
     out_path = args.input if args.inplace else args.output
     save_yaml(data, out_path)
     _rewrite_aliases_inline_in_text(out_path)
-    print(('Deduplication complete. Output written to: ' + out_path))
+    print('Deduplication complete. Output written to: ' + out_path)
 
 
 if __name__ == '__main__':

@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 import os
-from typing import Generator
+from collections.abc import Generator
 from contextlib import contextmanager
-
-from sqlalchemy import create_engine, event, inspect as _sa_inspect
-from sqlalchemy.pool import NullPool
-from sqlalchemy.engine import Engine
-from sqlalchemy.orm import sessionmaker, Session
 from pathlib import Path
+
+from sqlalchemy import create_engine, event
+from sqlalchemy import inspect as _sa_inspect
+from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.pool import NullPool
+
 try:
-    from sqlalchemy.engine.url import make_url, URL  # type: ignore
+    from sqlalchemy.engine.url import URL, make_url  # type: ignore
 except Exception:
     make_url = None  # type: ignore
     URL = None  # type: ignore

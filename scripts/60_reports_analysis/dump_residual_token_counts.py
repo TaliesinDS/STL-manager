@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dump global residual token frequencies to CSV for review.
+r"""Dump global residual token frequencies to CSV for review.
 
 Usage:
   .venv\Scripts\python.exe scripts/dump_residual_token_counts.py --top 2000 --out reports/residual_tokens_top.csv
@@ -9,18 +9,14 @@ Also prints top 50 tokens to stdout.
 """
 from __future__ import annotations
 
-import csv
 import argparse
+import csv
+import sys
 from collections import Counter
 from pathlib import Path
-import sys
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session
 from db.models import Variant
+from db.session import get_session
 
 
 def dump(top: int, out_path: Path) -> None:

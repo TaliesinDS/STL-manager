@@ -7,7 +7,7 @@
 - Safe by default (dry-run). Use --apply to commit.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\fix_infernus_kit.py \
+  .\\.venv\\Scripts\\python.exe .\\scripts\fix_infernus_kit.py \
     --db-url sqlite:///./data/stl_manager_v1.db --apply
 """
 from __future__ import annotations
@@ -16,16 +16,12 @@ import argparse
 import re
 import sys
 from dataclasses import asdict, dataclass
-from typing import List, Optional, Set
 
 # ensure project root
-from pathlib import Path
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+from typing import List, Optional, Set
 
-from db.session import get_session, DB_URL
 from db.models import Variant
+from db.session import DB_URL, get_session
 
 KIT_CHILD_TOKENS: Set[str] = {
     "body", "bodies", "torsos", "torso",
@@ -95,7 +91,9 @@ def main(argv: List[str]) -> int:
     if args.db_url:
         try:
             from sqlalchemy import create_engine as _ce
-            from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+            from sqlalchemy.orm import Session as _S
+            from sqlalchemy.orm import sessionmaker as _sm
+
             import db.session as _dbs
             try:
                 _dbs.engine.dispose()

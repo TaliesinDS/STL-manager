@@ -4,8 +4,9 @@ Revision ID: 20250830_kit
 Revises: 0001_canonical_initial
 Create Date: 2025-08-30
 """
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision = '20250830_kit'

@@ -7,8 +7,8 @@ report optionally to --out. JSON-typed columns are treated as "empty" when
 they equal [] or {}.
 
 Usage (PowerShell):
-  .\.venv\Scripts\python.exe .\scripts\diagnostics\audit_variant_coverage.py \
-    --db .\data\stl_manager_v1.db \
+  .\\.venv\\Scripts\\python.exe .\\scripts\\diagnostics\audit_variant_coverage.py \
+    --db .\\data\\stl_manager_v1.db \
     --out ("reports/variant_coverage_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".json")
 """
 from __future__ import annotations
@@ -67,8 +67,8 @@ def count_coverage(con: sqlite3.Connection) -> Tuple[int, List[Tuple[str, int, i
         if detect_json_like(c):
             # Consider [] or {} as empty. Use .format with escaped braces for '{}'.
             cur.execute(
-                "SELECT COUNT(*) FROM variant WHERE {c} IS NOT NULL "
-                "AND TRIM(CAST({c} AS TEXT)) NOT IN ('[]','{{}}')".format(c=c)
+                f"SELECT COUNT(*) FROM variant WHERE {c} IS NOT NULL "
+                f"AND TRIM(CAST({c} AS TEXT)) NOT IN ('[]','{{}}')"
             )
             non_empty = int(cur.fetchone()[0] or 0)
 

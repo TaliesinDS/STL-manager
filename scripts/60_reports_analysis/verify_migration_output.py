@@ -5,13 +5,6 @@ import argparse
 import json
 import os
 import sys
-from pathlib import Path
-
-# Ensure project root is on sys.path for imports
-ROOT = Path(__file__).resolve().parent.parent.parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
 
 DEFAULT_IDS = [66, 69, 77, 78, 79, 80, 82, 84, 85, 86, 87, 88, 89, 142, 146, 149, 150, 153, 154]
 
@@ -41,8 +34,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.db_url:
         os.environ["STLMGR_DB_URL"] = args.db_url
 
-    from db.session import get_session  # late import to honor --db-url
     from db.models import Variant
+    from db.session import get_session  # late import to honor --db-url
 
     ids = _parse_ids(args.ids)
     out: list[dict] = []

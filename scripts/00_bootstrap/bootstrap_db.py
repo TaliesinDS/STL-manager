@@ -9,7 +9,7 @@ Defaults are safe:
 - Falls back to SQLAlchemy metadata create_all if Alembic is unavailable
 
 Examples (PowerShell):
-  .\.venv\Scripts\python.exe scripts\00_bootstrap\bootstrap_db.py --db-url sqlite:///./data/stl_manager_v1.db
+  .\\.venv\\Scripts\\python.exe scripts\00_bootstrap\bootstrap_db.py --db-url sqlite:///./data/stl_manager_v1.db
 
 Optional:
   --use-metadata      Use SQLAlchemy Base.metadata.create_all instead of Alembic
@@ -19,8 +19,9 @@ from __future__ import annotations
 
 import argparse
 import os
-import sys
 from pathlib import Path
+
+
 def _reconcile_missing_columns(db_url: str, project_root: Path) -> None:
     """Add any ORM-declared columns that are missing from existing tables.
 
@@ -28,10 +29,9 @@ def _reconcile_missing_columns(db_url: str, project_root: Path) -> None:
     nullable columns; it won't modify or drop existing columns.
     """
     try:
-        if str(project_root) not in sys.path:
-            sys.path.insert(0, str(project_root))
         import sqlalchemy as sa  # type: ignore
         from sqlalchemy import inspect as _sa_inspect  # type: ignore
+
         from db.models import Base as _Base  # type: ignore
         eng = sa.create_engine(db_url, future=True)
         insp = _sa_inspect(eng)
@@ -84,8 +84,9 @@ def _ensure_sqlite_dir(db_url: str, project_root: Path) -> None:
 def _run_alembic_upgrade_head(db_url: str, project_root: Path) -> int:
     try:
         from alembic.config import Config  # type: ignore
-        from alembic import command  # type: ignore
         from sqlalchemy.exc import IntegrityError  # type: ignore
+
+        from alembic import command  # type: ignore
     except Exception as e:  # Alembic not installed or import error
         print("[warn] Alembic not available:", e)
         return 2
@@ -124,9 +125,8 @@ def _run_alembic_upgrade_head(db_url: str, project_root: Path) -> int:
         # Fall through to metadata create_all below
     # Safety net: ensure all ORM-declared tables exist (no-ops for existing tables)
     try:
-        if str(project_root) not in sys.path:
-            sys.path.insert(0, str(project_root))
         from sqlalchemy import create_engine as _ce  # type: ignore
+
         from db.models import Base as _Base  # type: ignore
         eng = _ce(db_url, future=True)
         _Base.metadata.create_all(bind=eng)
@@ -143,11 +143,10 @@ def _create_with_metadata(db_url: str, project_root: Path, echo: bool = False) -
     print("Creating tables via SQLAlchemy metadata (create_all)...")
     os.environ["STLMGR_DB_URL"] = db_url
     # Import after setting env var so db.session picks it up
-    if str(project_root) not in sys.path:
-        sys.path.insert(0, str(project_root))
     from sqlalchemy import create_engine
     from sqlalchemy import inspect as _sa_inspect  # type: ignore
     from sqlalchemy.exc import OperationalError as _SAOperationalError  # type: ignore
+
     from db.models import Base  # type: ignore
     engine = create_engine(db_url, echo=echo, future=True)
     # Create only tables that do not exist yet to ensure idempotence

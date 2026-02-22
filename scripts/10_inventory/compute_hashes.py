@@ -7,36 +7,33 @@ Safe defaults:
 
 Usage:
   # dry-run (default) - shows how many files are missing hashes and sample paths
-  .venv\Scripts\python.exe scripts\10_inventory\compute_hashes.py
+  .venv\\Scripts\\python.exe scripts\10_inventory\\compute_hashes.py
 
   # apply: compute and write hashes (may take long for many/large files)
-  .venv\Scripts\python.exe scripts\10_inventory\compute_hashes.py --apply --batch 50
+  .venv\\Scripts\\python.exe scripts\10_inventory\\compute_hashes.py --apply --batch 50
 """
 from __future__ import annotations
+
 import argparse
 import hashlib
 import sys
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Iterator
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
-from db.session import get_session
 from db.models import File
-
+from db.session import get_session
 
 CHUNK = 8 * 1024 * 1024
 
 
 def iter_missing_files(limit: int = 0) -> Iterator[File]:
     with get_session() as session:
-        q = session.query(File).filter(File.hash_sha256 == None).order_by(File.id)
+        q = session.query(File).filter(File.hash_sha256.is_(None)).order_by(File.id)
         if limit:
             q = q.limit(limit)
-        for f in q:
-            yield f
+        yield from q
 
 
 def sha256_of_path(p: Path) -> str:

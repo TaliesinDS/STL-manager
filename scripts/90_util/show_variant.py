@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session, DB_URL
-from db.models import Variant
 import json
+import sys
+
+from db.models import Variant
+from db.session import get_session
 
 
 def rebind_db(db_url: str | None) -> None:
@@ -17,7 +13,9 @@ def rebind_db(db_url: str | None) -> None:
         return
     try:
         from sqlalchemy import create_engine as _ce
-        from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+        from sqlalchemy.orm import Session as _S
+        from sqlalchemy.orm import sessionmaker as _sm
+
         import db.session as _dbs
         try:
             _dbs.engine.dispose()

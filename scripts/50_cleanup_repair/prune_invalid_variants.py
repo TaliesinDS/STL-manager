@@ -7,25 +7,21 @@ import re
 import shutil
 from datetime import datetime
 from pathlib import Path
-from typing import List, Set, Tuple
+from typing import List, Set
 
-import sys
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
 from sqlalchemy import select
 
-from db.models import Variant, File  # type: ignore
+from db.models import Variant  # type: ignore
 from db.session import get_session  # type: ignore
-
 
 NOISE_FILENAMES = {".ds_store", "thumbs.db", "desktop.ini"}
 # Consider these extensions as meaningful 3D model or source files
 MEANINGFUL_EXTS = {
     "stl", "obj", "ztl",  # common 3D model formats and ZBrush source
     # slicer/project and CAD formats (optional but useful)
-    "lys", "lychee", "3mf", "step", "stp" 
+    "lys", "lychee", "3mf", "step", "stp"
 }
 # Archives are considered meaningful (contain models inside)
 ARCHIVE_EXTS = {"zip", "rar", "7z"}

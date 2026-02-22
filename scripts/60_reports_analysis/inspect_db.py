@@ -4,18 +4,15 @@ Combines previous `inspect_db.py` and `db_check.py` behaviors and adds
 Windows-friendly CLI options for focused spot checks (e.g., english_tokens).
 """
 from __future__ import annotations
-from pathlib import Path
-import sys
-import json
-import argparse
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+import argparse
+import json
+import sys
+from pathlib import Path
 
 from sqlalchemy import text
-from db.session import DB_URL, engine, get_session
-from db.models import Variant, File, Archive, Collection, Character
+
+from db.models import Archive, Character, Collection, File, Variant
 
 
 def _parse_args(argv: list[str] | None) -> argparse.Namespace:
@@ -36,7 +33,8 @@ def _maybe_reconfigure_db(db_url: str | None) -> None:
             return
         # Fallback minimal reconfigure
         from sqlalchemy import create_engine as _ce
-        from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+        from sqlalchemy.orm import Session as _S
+        from sqlalchemy.orm import sessionmaker as _sm
         try:
             _dbs.engine.dispose()
         except Exception:
@@ -52,7 +50,9 @@ def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
     _maybe_reconfigure_db(getattr(args, 'db_url', None))
     # Import after potential reconfigure so DB_URL/engine reflect changes
-    from db.session import DB_URL as _DBURL, engine as _engine, get_session as _get_session  # type: ignore
+    from db.session import DB_URL as _DBURL  # type: ignore
+    from db.session import engine as _engine
+    from db.session import get_session as _get_session
 
     print('Effective DB_URL:', _DBURL)
     if _DBURL.startswith('sqlite:///'):

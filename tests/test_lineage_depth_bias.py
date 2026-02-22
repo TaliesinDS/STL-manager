@@ -1,4 +1,5 @@
 import unittest
+
 from scripts.normalize_inventory import classify_tokens
 
 

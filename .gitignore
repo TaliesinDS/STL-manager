@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 .venv/
 .env
 .env.*
@@ -9,10 +10,12 @@ __pycache__/
 /data/
 *.db
 *.sqlite3
+data/*.bak*
 
 # Build
 dist/
 build/
+*.egg-info/
 
 # Node
 frontend/node_modules/
@@ -22,6 +25,7 @@ frontend/node_modules/
 *.obj
 *.zip
 *.rar
+
 # Local sample store (user-added test data)
 sample_store/
 
@@ -37,23 +41,17 @@ Thumbs.db
 *.log
 *.tmp
 
-__pycache__/
-*.pyc
-.env
-.env.*
-.vscode/
-.idea/
-.venv/
-build/
-dist/
+# Notes
 notes/
+
 # Reports (generated artifacts)
+scripts/reports/
 /reports/test_artifacts/**
 /reports/**/*.json
 !/reports/*.md
 !/reports/README.md
-# Optional future patterns (uncomment if you choose to exclude)
-# *.stl
-# *.obj
-# *.zip
-# *.rar
+
+# Test caches
+.pytest_cache/
+**/.pytest_cache/
+.pytest-tmp/

@@ -4,17 +4,21 @@ on:
   push:
     branches: [ main ]
     paths:
+      - 'scripts/**'
+      - 'db/**'
+      - 'api/**'
+      - 'tests/**'
       - 'vocab/**'
-      - 'tests/test_codex_basing_integrity.py'
-      - 'requirements.txt'
-      - 'requirements-dev.txt'
+      - 'pyproject.toml'
       - '.github/workflows/ci.yml'
   pull_request:
     paths:
+      - 'scripts/**'
+      - 'db/**'
+      - 'api/**'
+      - 'tests/**'
       - 'vocab/**'
-      - 'tests/test_codex_basing_integrity.py'
-      - 'requirements.txt'
-      - 'requirements-dev.txt'
+      - 'pyproject.toml'
       - '.github/workflows/ci.yml'
   workflow_dispatch:
 
@@ -33,11 +37,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          if (Test-Path requirements-dev.txt) { pip install -r requirements-dev.txt }
+          pip install -e ".[dev]"
+        shell: pwsh
+
+      - name: Lint
+        run: ruff check .
         shell: pwsh
 
       - name: Run tests
-        run: |
-          python -m pytest -q tests/test_codex_basing_integrity.py
+        run: python -m pytest tests/ -q --cov=db --cov=scripts --cov=api --cov-report=term-missing
         shell: pwsh

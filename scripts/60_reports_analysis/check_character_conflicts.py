@@ -6,6 +6,7 @@ Usage: python scripts/60_reports_analysis/check_character_conflicts.py
 Outputs a small JSON report to stdout and writes `reports/character_conflicts.json` when conflicts exist.
 """
 from __future__ import annotations
+
 import json
 import re
 from pathlib import Path
@@ -95,5 +96,4 @@ def main() -> int:
 
 
 if __name__ == '__main__':
-    import sys
     raise SystemExit(main())

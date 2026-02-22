@@ -1,16 +1,9 @@
 import os
-import sys
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
-
-# ensure project root is importable
-REPO_ROOT = os.path.dirname(os.path.dirname(__file__))
-if REPO_ROOT not in sys.path:
-    sys.path.insert(0, REPO_ROOT)
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

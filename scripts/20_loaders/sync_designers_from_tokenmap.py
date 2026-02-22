@@ -11,13 +11,7 @@ import ast
 import json
 import os
 import re
-import sys
 from pathlib import Path
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
 
 FENCE_RE = re.compile(r"^```")
 ENTRY_RE = re.compile(r"^\s*([A-Za-z0-9_\-]+)\s*:\s*(\[.*\])\s*$")
@@ -80,8 +74,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.db_url:
         os.environ["STLMGR_DB_URL"] = args.db_url
 
+    from db.models import Variant, VocabEntry
     from db.session import get_session  # late import to honor --db-url
-    from db.models import VocabEntry, Variant
 
     path = Path(args.tokenmap)
     if not path.exists():

@@ -3,19 +3,16 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
-import sys
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
+from db.models import Lineage, Variant  # type: ignore
 from db.session import get_session, reconfigure  # type: ignore
-from db.models import Variant, Lineage  # type: ignore
-
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
 
@@ -64,14 +61,14 @@ SPECIAL_EQUIV: Dict[str, List[re.Pattern]] = {
     'bat': [re.compile(r"\bbats\b"), re.compile(r"\bfell bat(s)?\b")],
     'wyvern': [re.compile(r"\bwyverns\b")],
     'drake': [re.compile(r"\bdrakes\b")],
-    'dragon': [re.compile(r"\bdragons\b"), re.compile(r"\bdraggon(s)?\b")],
+    'dragon': [re.compile(r"\bdragons\b"), re.compile(r"\bdraggon(s)?\b")],  # noqa: F601
     'griffon': [re.compile(r"\bgriffons\b")],
     'gryphon': [re.compile(r"\bgryphons\b")],
     'griffin': [re.compile(r"\bgriffins\b")],
     'pegasus': [re.compile(r"\bpegasi\b")],
     'manticore': [re.compile(r"\bmanticores\b")],
     'chimera': [re.compile(r"\bchimeras\b")],
-    'stag': [re.compile(r"\bstags\b"), re.compile(r"\bantler(s)?\b"), re.compile(r"\bantlerguard(s)?\b")],
+    'stag': [re.compile(r"\bstags\b"), re.compile(r"\bantler(s)?\b"), re.compile(r"\bantlerguard(s)?\b")],  # noqa: F601
     'elk': [re.compile(r"\belks\b"), re.compile(r"\bmoose\b")],
     'lion': [re.compile(r"\blions\b")],
     'sabretooth': [re.compile(r"\bsab(er|re)[- ]?tooth(ed)?(s)?\b"), re.compile(r"\bsaber(cat|tusk)s?\b"), re.compile(r"\bsabre(cat|tusk)s?\b")],
@@ -337,7 +334,7 @@ def leaf_local_match(v: Variant, phrase: str) -> bool:
     return False
 
 
-    
+
 
 
 def _is_local_strong(phrase: str, v: Variant) -> bool:

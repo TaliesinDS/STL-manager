@@ -16,19 +16,19 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import sys
 ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
-from db.session import get_session, DB_URL  # type: ignore
-from sqlalchemy import inspect as _sa_inspect  # type: ignore
 import sqlalchemy as sa  # type: ignore
+from sqlalchemy import inspect as _sa_inspect  # type: ignore
+
 from db.models import Variant  # type: ignore
+from db.session import DB_URL, get_session  # type: ignore
+
 try:
     from db.models import Collection  # type: ignore
 except Exception:  # pragma: no cover
@@ -1098,7 +1098,7 @@ def build_ui_display(v_obj, glos: Glossary, eng_tokens: Optional[List[str]] = No
         def _norm_u(s: str) -> str:
             return ' '.join(_clean_words(_split_words(s or '')))
         if _norm_u(thing) == _norm_u(unit_label):
-            segs_u = segs
+            _segs_u = segs
             last_u = last
             # Special-case: segments like 'STL_Garmokh_Supported' -> 'Garmokh'
             m_name = re.search(r'(?i)\bstl[_\-\s]+([^_\-\s][^_\-\s]*)[_\-\s]+(supported|unsupported)\b', last_u)
@@ -1244,8 +1244,6 @@ def run(batch: int, limit: int, ids: Optional[List[int]], apply: bool, out: Opti
             tables = set(insp0.get_table_names())
             if 'variant' not in tables:
                 try:
-                    if str(ROOT) not in sys.path:
-                        sys.path.insert(0, str(ROOT))
                     from db.models import Base as _Base  # type: ignore
                     _Base.metadata.create_all(bind=session.bind)
                     # refresh inspector after DDL
@@ -1298,7 +1296,6 @@ def run(batch: int, limit: int, ids: Optional[List[int]], apply: bool, out: Opti
         except Exception as e:
             # If table still missing, try to create and retry once
             try:
-                import sqlalchemy as _sa  # type: ignore
                 from sqlalchemy.exc import OperationalError as _OpErr  # type: ignore
             except Exception:
                 _OpErr = Exception  # type: ignore
@@ -1472,7 +1469,8 @@ def main(argv: List[str]) -> int:
             else:
                 # Backward-compatible fallback
                 from sqlalchemy import create_engine as _ce
-                from sqlalchemy.orm import sessionmaker as _sm, Session as _S
+                from sqlalchemy.orm import Session as _S
+                from sqlalchemy.orm import sessionmaker as _sm
                 try:
                     _dbs.engine.dispose()
                 except Exception:

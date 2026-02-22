@@ -4,10 +4,6 @@ create_all() to create new tables and will use PRAGMA + ALTER TABLE to add
 nullable columns to existing SQLite tables.
 """
 from pathlib import Path
-import sys
-
-proj_root = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(proj_root))
 
 from db.session import engine
 from db.models import Base

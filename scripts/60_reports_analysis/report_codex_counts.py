@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 import os
 from pathlib import Path
-from typing import Dict, Any
+from typing import Any, Dict
 
 from sqlalchemy import create_engine, text
 

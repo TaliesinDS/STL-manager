@@ -4,7 +4,7 @@ import argparse
 import json
 import os
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -17,7 +17,6 @@ except Exception:
     YAML = None  # type: ignore
 
 from db.models import Variant
-
 
 GENERIC_SEGMENTS = {
     "supported",
@@ -65,7 +64,7 @@ def titleize(text: str) -> str:
 
 def segment_score(seg: str) -> float:
     # Score by length, word count, presence of stop words like 'of','the', and capitalization pattern
-    raw = seg.strip(" \/")
+    raw = seg.strip(r" \/")
     if not raw:
         return 0.0
     norm = re.sub(r"[_-]+", " ", raw)

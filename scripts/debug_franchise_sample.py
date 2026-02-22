@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import importlib.util
-import os
 import sys
 from pathlib import Path
 
@@ -11,11 +10,6 @@ def _load_and_run(argv: list[str] | None = None) -> int:
     here = Path(__file__).resolve()
     root = here.parent
     canonical = root / '90_util' / 'debug_franchise_sample.py'
-
-    # Ensure project root is on sys.path
-    proj_root = here.parent.parent
-    if str(proj_root) not in sys.path:
-        sys.path.insert(0, str(proj_root))
 
     spec = importlib.util.spec_from_file_location('scripts.60_reports_analysis.debug_franchise_sample', canonical)
     spec = importlib.util.spec_from_file_location('scripts.90_util.debug_franchise_sample', canonical)
@@ -40,4 +34,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == '__main__':
     raise SystemExit(main(sys.argv[1:]))
- 
+

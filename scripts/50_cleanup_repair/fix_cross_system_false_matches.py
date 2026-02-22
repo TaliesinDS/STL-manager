@@ -2,18 +2,10 @@ from __future__ import annotations
 
 import argparse
 import re
-from pathlib import Path
 from typing import Optional
 
-from sqlalchemy import select
-
-import sys
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session  # type: ignore
 from db.models import Variant  # type: ignore
+from db.session import get_session  # type: ignore
 
 WORD_SEP_RE = re.compile(r"[\W_]+", re.UNICODE)
 

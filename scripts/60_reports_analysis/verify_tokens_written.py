@@ -2,12 +2,6 @@ from __future__ import annotations
 
 import argparse
 import os
-from pathlib import Path
-import sys
-
-PROJ = Path(__file__).resolve().parent.parent.parent
-if str(PROJ) not in sys.path:
-    sys.path.insert(0, str(PROJ))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -19,8 +13,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.db_url:
         os.environ["STLMGR_DB_URL"] = args.db_url
 
-    from db.session import get_session  # late import to honor --db-url
     from db.models import File, Variant
+    from db.session import get_session  # late import to honor --db-url
 
     with get_session() as s:
         f = s.query(File).filter(File.rel_path.like(args.like)).first()

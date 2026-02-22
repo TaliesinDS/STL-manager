@@ -6,15 +6,10 @@ Outputs a simple tab-separated report to stdout.
 """
 from __future__ import annotations
 
-from pathlib import Path
 import sys
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from db.session import get_session
 from db.models import Variant, VocabEntry
+from db.session import get_session
 
 
 def main(argv: list[str] | None = None) -> int:

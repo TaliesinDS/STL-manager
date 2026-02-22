@@ -1,12 +1,13 @@
 """canonical initial migration
 
 Revision ID: 0001_canonical_initial
-Revises: 
+Revises:
 Create Date: 2025-08-23T19:00:00
 """
 
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 revision = '0001_canonical_initial'
 down_revision = None
