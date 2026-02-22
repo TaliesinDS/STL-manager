@@ -1,7 +1,7 @@
 2025-08-16: Simplified character enrichment spec to exclude importance tiers and rich provenance (bios, backstory). Minimal fields retained: canonical_name, optional display_name, aliases. Updated franchise enrichment doc & sample manifest accordingly per user preference for lean DB.
 # Decisions
 
-2026-02-22: Considered splitting the `Variant` model (~60+ columns) into separate tables (e.g., `VariantIdentity`, `VariantClassification`, `VariantCompatibility`, `VariantTabletop`). Trade-offs: splitting reduces row width and improves clarity but adds JOIN cost to every query and complicates script imports. **Decision: defer until Phase 2+.** The current single-table design is acceptable for SQLite at current scale (<50k rows). If the model grows past ~80 columns or multi-user concurrency becomes relevant, revisit with a vertical partitioning approach (shared PK, lazy-loaded relationship properties). Phase annotations (P0/P1/P2) have been added as inline comments in `db/models.py` to guide a future split.
+2026-02-22: Decided to keep the `Variant` model as a single wide table (~60+ columns). The table is write-once (built during scan, appended when new files are added) and serves as a read-heavy data source for the API — not a fast-moving transactional table. Splitting into multiple tables would add JOIN overhead to every read for no practical benefit at this scale. Phase annotations (P0/P1/P2) added as inline comments in `db/models.py` for documentation only.
 
 2025-08-15: Created separate repo (STL-manager) to isolate code/planning from blog and avoid large binary history.
 2025-08-15: Phase 0 limited to read-only inventory of already extracted files; archives untouched.
