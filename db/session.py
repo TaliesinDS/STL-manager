@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import threading
 from collections.abc import Generator
 from contextlib import contextmanager
 from pathlib import Path
@@ -144,26 +145,31 @@ def get_session() -> Generator[Session, None, None]:
             pass
 
 
+_reconfigure_lock = threading.Lock()
+
+
 def reconfigure(db_url: str) -> None:
     """Rebuild the SQLAlchemy engine/session for a new DB URL.
 
     Ensures NullPool (to release SQLite file handles) and PRAGMA foreign_keys for SQLite.
+    Thread-safe via _reconfigure_lock.
     """
     global DB_URL, engine, SessionLocal
-    # Dispose any existing connections
-    try:
-        engine.dispose()
-    except Exception:
-        pass
-    DB_URL = _normalize_sqlite_url(db_url)
-    engine = create_engine(DB_URL, future=True, poolclass=NullPool)
-    if DB_URL.startswith("sqlite"):
-        @event.listens_for(engine, "connect")
-        def _set_sqlite_pragma_new(dbapi_connection, connection_record):  # type: ignore[override]
-            try:
-                cursor = dbapi_connection.cursor()
-                cursor.execute("PRAGMA foreign_keys=ON")
-                cursor.close()
-            except Exception:
-                pass
-    SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, class_=Session)
+    with _reconfigure_lock:
+        # Dispose any existing connections
+        try:
+            engine.dispose()
+        except Exception:
+            pass
+        DB_URL = _normalize_sqlite_url(db_url)
+        engine = create_engine(DB_URL, future=True, poolclass=NullPool)
+        if DB_URL.startswith("sqlite"):
+            @event.listens_for(engine, "connect")
+            def _set_sqlite_pragma_new(dbapi_connection, connection_record):  # type: ignore[override]
+                try:
+                    cursor = dbapi_connection.cursor()
+                    cursor.execute("PRAGMA foreign_keys=ON")
+                    cursor.close()
+                except Exception:
+                    pass
+        SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, class_=Session)

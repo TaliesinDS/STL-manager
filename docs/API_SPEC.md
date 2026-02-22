@@ -41,7 +41,7 @@ Error Format:
 }
 ```
 
-## 1. Field Catalog
+## 1. Field Catalog [PLANNED]
 Expose machine-readable schema for dynamic forms.
 
 GET /api/v1/schema/fields
@@ -76,7 +76,7 @@ Response data example:
 ## 2. Variant Resources
 Represents a single file/model variant (post-scan granular unit).
 
-GET /api/v1/variants?filters&cursor=...
+GET /api/v1/variants?filters&cursor=... [IMPLEMENTED — basic filters: q, system, faction]
 - Filters: designer=ghamak, game_system=warhammer_40k, lineage_family=elf, asset_category=terrain, content_flag=nsfw, residual_tokens__contains=wizard.
 - Returns page of variants plus next_cursor (or null).
 
@@ -100,7 +100,7 @@ Sample response:
 }
 ```
 
-GET /api/v1/variants/{id}
+GET /api/v1/variants/{id} [IMPLEMENTED — returns detail with files]
 - Returns full detail (all metadata fields + override map + warnings + audit summary counts).
 - Includes `characters` array when linked: each { character_id, name, aliases, franchise, info_url }.
 
@@ -108,7 +108,7 @@ Kit container fields (if present on this variant):
 - `parent_id` (number|null), `is_kit_container` (bool), `kit_child_types` (array of strings), and child `part_pack_type` (string) are exposed on the Variant resource.
 The API treats these as read-only except via dedicated normalization/backfill jobs.
 
-GET /api/v1/variants/{id}/units
+GET /api/v1/variants/{id}/units [PLANNED]
 - Lists Units linked to this Variant (via `variant_unit_link`).
 Response data example:
 ```
@@ -123,7 +123,7 @@ Response data example:
 }
 ```
 
-GET /api/v1/variants/{id}/proxy-candidates
+GET /api/v1/variants/{id}/proxy-candidates [PLANNED]
 - Returns list of units the variant can proxy (directly or via loadout kits), with summary of completeness.
 Response:
 ```
@@ -152,12 +152,11 @@ Response:
 }
 ```
 
-GET /api/v1/variants/{id}/loadout-coverage?unit_id=... (optional unit filter)
+GET /api/v1/variants/{id}/loadout-coverage?unit_id=... (optional unit filter) [PLANNED]
 - Detailed matrix of loadout requirements vs supplied components.
 
-GET /api/v1/variants/{id}/component-compatibility
+GET /api/v1/variants/{id}/component-compatibility [PLANNED]
 - Lists explicit compatibility assertions for component-providing variant (arms, weapons, backpacks).
-Response:
 ```
 {
 	"success": true,
@@ -171,21 +170,19 @@ Response:
 }
 ```
 
-POST /api/v1/variants/{id}/component-compatibility
+POST /api/v1/variants/{id}/component-compatibility [PLANNED]
 ```
-{
 	"assertions": [
 		{ "target_type": "model_group", "target_id": "mg-123", "fit_type": "exact", "confidence": "certain", "evidence_tokens": ["titan_forge", "intercessor" ] }
 	]
 }
 ```
 
-DELETE /api/v1/variants/{id}/component-compatibility/{assertion_id}
+DELETE /api/v1/variants/{id}/component-compatibility/{assertion_id} [PLANNED]
 - Soft deletes assertion.
 
-POST /api/v1/variants/{id}/proxy-assertions
+POST /api/v1/variants/{id}/proxy-assertions [PLANNED]
 ```
-{
 	"assertions": [
 		{
 			"unit_id": "u-abc",
@@ -202,9 +199,8 @@ Response returns created rows (id, normalized fields).
 DELETE /api/v1/variants/{id}/proxy-assertions/{assertion_id}
 - Removes granular proxy assertion (soft delete with audit).
 
-POST /api/v1/variants/{id}/unit-links
+POST /api/v1/variants/{id}/unit-links [PLANNED]
 ```
-{
 	"links": [
 		{ "unit_id": "u-abc", "is_primary": true, "match_method": "manual", "match_confidence": 0.95, "notes": "confirmed" }
 	]
@@ -212,12 +208,11 @@ POST /api/v1/variants/{id}/unit-links
 ```
 Response returns created rows (id, normalized fields).
 
-DELETE /api/v1/variants/{id}/unit-links/{link_id}
+DELETE /api/v1/variants/{id}/unit-links/{link_id} [PLANNED]
 - Removes a Variant↔Unit link (soft delete with audit).
 
-PATCH /api/v1/variants/{id}
+PATCH /api/v1/variants/{id} [PLANNED]
 Request:
-```
 {
 	"changes": [
 		{ "field": "franchise", "value": "lotr" },
@@ -229,14 +224,14 @@ Request:
 ```
 Response includes new version.
 
-DELETE /api/v1/variants/{id}/overrides/{field}
+DELETE /api/v1/variants/{id}/overrides/{field} [PLANNED]
 - Clears override; field recomputed next normalization pass or immediately if on-demand recompute requested.
 
-POST /api/v1/variants/normalize (optional immediate re-run)
+POST /api/v1/variants/normalize (optional immediate re-run) [PLANNED]
 Request: { "variant_ids": ["uuid-1", "uuid-2"], "force": false }
 - Skips fields with overrides.
 
-## 2A. Unit Resources
+## 2A. Unit Resources [PLANNED]
 Represents a tabletop unit entry normalized from codex YAML (40K/AoS/Heresy).
 
 GET /api/v1/units?filters&cursor=...
@@ -292,7 +287,7 @@ GET /api/v1/factions?system_key=w40k&parent_id=null
 GET /api/v1/game-systems
 - Lists available game systems and display names.
 
-## 2B. Part Resources
+## 2B. Part Resources [PLANNED]
 Represents modular parts (wargear, bodies, decor) ingested from YAML.
 
 GET /api/v1/parts?filters&cursor=...
@@ -326,7 +321,7 @@ Response returns created `variant_part_link` rows.
 DELETE /api/v1/variants/{id}/parts/{link_id}
 - Removes a Variant↔Part link (soft delete with audit).
 
-## 3. Bulk Operations
+## 3. Bulk Operations [PLANNED]
 POST /api/v1/bulk/variants/update
 ```
 {
@@ -359,7 +354,7 @@ GET /api/v1/jobs/{id}
 
 POST /api/v1/jobs/{id}/cancel (best-effort)
 
-## 4. Vocabulary Management
+## 4. Vocabulary Management [PLANNED]
 Domains: designer, franchise, lineage_family, lineage_primary, faction, vehicle_type, vehicle_era, terrain_subtype, base_theme, asset_category (rare), addon_type, style_primary.
 Upcoming domains (Phase 2+): component_type, weapon_profile_code, loadout_code.
 
@@ -384,7 +379,7 @@ DELETE /api/v1/vocab/{domain}/{id}
 GET /api/v1/vocab/changes?since=timestamp
 - Audit feed for replication or UI update.
 
-## 5. Suggestions (Candidate Vocab)
+## 5. Suggestions (Candidate Vocab) [PLANNED]
 GET /api/v1/suggestions
 Query params: domain=franchise|designer|lineage, min_frequency=2
 Response entries:
@@ -421,7 +416,7 @@ POST /api/v1/suggestions/{id}/promote
 DELETE /api/v1/suggestions/{id}
 - Dismiss candidate (records suppression so it doesn’t reappear until new evidence threshold).
 
-## 6. Audit
+## 6. Audit [PLANNED]
 GET /api/v1/audit/variant/{id}?limit=100&cursor=...
 GET /api/v1/audit/vocab/{domain}/{id}
 
@@ -432,7 +427,7 @@ POST /api/v1/audit/revert
 ```
 - Creates inverse change (if still applicable) and logs new audit row referencing original.
 
-## 7. Overrides
+## 7. Overrides [PLANNED]
 GET /api/v1/variants/{id}/overrides
 Response: list of { field, manual_value, original_auto_value, applied_at, applied_by }
 
@@ -449,7 +444,7 @@ POST /api/v1/variants/{id}/overrides
 DELETE /api/v1/variants/{id}/overrides/{field}
 - Clears override (same as earlier DELETE convenience).
 
-## 8. Normalization & Recompute
+## 8. Normalization & Recompute [PLANNED]
 POST /api/v1/normalize/run
 ```
 {
@@ -464,16 +459,16 @@ POST /api/v1/normalize/run
 
 GET /api/v1/normalize/status/{job_id}
 
-## 9. Search (Full-Text / Token)
+## 9. Search (Full-Text / Token) [PLANNED]
 GET /api/v1/search?q=archer+forest&limit=50
 - Unified search across canonical names, aliases, residual_tokens, user_tags.
 - Types covered: variant, unit, part, franchise, designer.
 Response includes hits by type with score.
 
-## 10. Jobs Endpoint (Unified)
+## 10. Jobs Endpoint (Unified) [PLANNED]
 GET /api/v1/jobs?types=bulk_update,normalization_run&status=running
 
-## 11. System / Versions
+## 11. System / Versions [PLANNED]
 GET /api/v1/system/versions
 ```
 {
@@ -490,11 +485,11 @@ GET /api/v1/system/versions
 }
 ```
 
-## 12. WebSocket / SSE (Future)
+## 12. WebSocket / SSE (Future) [PLANNED]
 - Channel for job progress updates, candidate suggestions stream, audit tail.
 - Endpoint: /api/v1/events (SSE) or /ws.
 
-## 13. Rate Limiting (Future)
+## 13. Rate Limiting (Future) [PLANNED]
 - Soft limits per key (requests/minute) with 429 response including retry_after.
 
 ## 14. Security & Validation
@@ -522,7 +517,7 @@ GET /api/v1/system/versions
 
 ---
 
-## 2C. Variant Files & Thumbnails
+## 2C. Variant Files & Thumbnails [PLANNED]
 Provide files associated with a variant (for the Files Sidecar/Inspector) and optional thumbnail access.
 
 GET /api/v1/variants/{id}/files
@@ -565,7 +560,7 @@ Notes:
 - Thumbnails may be generated offline; API exposes URLs when present.
 - For performance, clients can request projections (e.g., `fields=id,filename,thumbnail_url`).
 
-## 2D. Variant Explainability
+## 2D. Variant Explainability [PLANNED]
 Expose tokenization and rule provenance used to produce current metadata/match decisions (for the Inspector Explain tab).
 
 GET /api/v1/variants/{id}/explain
@@ -588,7 +583,7 @@ Response example:
 }
 ```
 
-## 5A. Mismatch Reports
+## 5A. Mismatch Reports [PLANNED]
 Endpoints to capture and triage user-submitted mismatches from the Inspector and process them in an Admin Inbox.
 
 POST /api/v1/mismatch-reports

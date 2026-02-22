@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 from sqlalchemy import (
     JSON,
@@ -25,6 +25,7 @@ class Variant(Base):
     rel_path = Column(String(1024), nullable=False, index=True)
     # Variants represent logical model variants (often a folder). Filename is
     # optional because a variant may contain multiple files.
+    # ── P0: Core identity & inventory ──────────────────────────────
     filename = Column(String(512), nullable=True)
     extension = Column(String(32), nullable=True, index=True)
     size_bytes = Column(Integer, nullable=True)
@@ -32,7 +33,7 @@ class Variant(Base):
     is_archive = Column(Boolean, default=False)
     hash_sha256 = Column(String(128), nullable=True, index=True)
 
-    # Normalized metadata fields (phase P0/P1 subset)
+    # ── P0/P1: Normalized metadata ────────────────────────────────
     designer = Column(String(256), nullable=True, index=True)
     franchise = Column(String(256), nullable=True, index=True)
     content_flag = Column(String(32), nullable=True)
@@ -56,7 +57,7 @@ class Variant(Base):
     collection_sequence_number = Column(Integer, nullable=True)
     collection_theme = Column(String(128), nullable=True)
 
-    # Tabletop / franchise / character fields (P1/P2)
+    # ── P1: Tabletop / franchise / character ───────────────────────
     game_system = Column(String(128), nullable=True, index=True)
     codex_faction = Column(String(256), nullable=True, index=True)
     codex_unit_name = Column(String(256), nullable=True)
@@ -68,6 +69,7 @@ class Variant(Base):
     supported_loadout_codes = Column(JSON, default=list)
     base_size_mm = Column(Integer, nullable=True)
 
+    # ── P1: Lineage & classification ──────────────────────────────
     lineage_family = Column(String(64), nullable=True, index=True)
     lineage_primary = Column(String(128), nullable=True)
     lineage_aliases = Column(JSON, default=list)
@@ -83,7 +85,7 @@ class Variant(Base):
     # Rider/mount details
     mount_lineages = Column(JSON, default=list)
 
-    # Variant dimensions and classification
+    # ── P1: Variant dimensions and classification ─────────────────
     asset_category = Column(String(64), nullable=True, index=True)
     terrain_subtype = Column(String(64), nullable=True)
     vehicle_type = Column(String(64), nullable=True)
@@ -113,6 +115,7 @@ class Variant(Base):
     style_primary_confidence = Column(String(32), nullable=True)
     style_aesthetic_tags = Column(JSON, default=list)
 
+    # ── P2: Addon / compatibility ─────────────────────────────────
     addon_type = Column(String(64), nullable=True)
     requires_base_model = Column(Boolean, default=False)
     compatibility_scope = Column(String(64), nullable=True)
@@ -128,24 +131,26 @@ class Variant(Base):
     clothing_variant_flag = Column(Boolean, default=False)
     magnet_ready_flag = Column(Boolean, default=False)
 
-    # Tagging & notes
+    # ── P1: Tagging & notes ───────────────────────────────────────
     user_tags = Column(JSON, default=list)
     notes = Column(Text, nullable=True)
 
-    # Residual/diagnostic fields
+    # ── P0: Residual/diagnostic fields ────────────────────────────
     residual_tokens = Column(JSON, default=list)
     token_version = Column(Integer, nullable=True)
     normalization_warnings = Column(JSON, default=list)
 
-    # Multilingual support
+    # ── P1: Multilingual support ──────────────────────────────────
     token_locale = Column(String(16), nullable=True, index=True)
     english_tokens = Column(JSON, default=list)
     ui_display_en = Column(Text, nullable=True)
 
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # ── P0: Timestamps ───────────────────────────────────────
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
+    updated_at = Column(DateTime, default=lambda: datetime.now(UTC),
+                        onupdate=lambda: datetime.now(UTC))
 
-    # Kit/container relationships (self-referential)
+    # ── P1: Kit/container relationships (self-referential) ───
     parent_id = Column(Integer, ForeignKey("variant.id", ondelete="SET NULL"), nullable=True, index=True)
     is_kit_container = Column(Boolean, default=False, index=True)
     kit_child_types = Column(JSON, default=list)
@@ -175,7 +180,7 @@ class Archive(Base):
     size_bytes = Column(Integer, nullable=True)
     hash_sha256 = Column(String(128), nullable=True)
     nested_archive_flag = Column(Boolean, default=False)
-    scan_first_seen_at = Column(DateTime, default=datetime.utcnow)
+    scan_first_seen_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Archive id={self.id} file={self.filename}>"
@@ -202,7 +207,7 @@ class File(Base):
     depth = Column(Integer, nullable=True)
     is_dir = Column(Boolean, default=False)
 
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     variant = relationship("Variant", back_populates="files")
 
@@ -218,7 +223,7 @@ class VocabEntry(Base):
     key = Column(String(256), nullable=False, index=True)
     aliases = Column(JSON, default=list)
     meta = Column(JSON, default=dict)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<VocabEntry {self.domain}:{self.key}>"
@@ -252,7 +257,7 @@ class Lineage(Base):
     # Provenance
     source_file = Column(String(512), nullable=True)
     source_anchor = Column(String(256), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         fk = self.family_key
@@ -268,8 +273,9 @@ class Job(Base):
     status = Column(String(32), default="pending", index=True)
     progress = Column(Integer, default=0)
     payload = Column(JSON, default=dict)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
+    updated_at = Column(DateTime, default=lambda: datetime.now(UTC),
+                        onupdate=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Job id={self.id} name={self.name} status={self.status}>"
@@ -285,7 +291,7 @@ class AuditLog(Base):
     old_value = Column(Text, nullable=True)
     new_value = Column(Text, nullable=True)
     actor = Column(String(128), nullable=True)
-    ts = Column(DateTime, default=datetime.utcnow)
+    ts = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<AuditLog {self.resource_type}:{self.resource_id} {self.field}>"
@@ -297,7 +303,7 @@ class VariantArchive(Base):
     id = Column(Integer, primary_key=True)
     variant_id = Column(Integer, ForeignKey("variant.id", ondelete="CASCADE"), nullable=False, index=True)
     archive_id = Column(Integer, ForeignKey("archive.id", ondelete="CASCADE"), nullable=False, index=True)
-    first_seen_at = Column(DateTime, default=datetime.utcnow)
+    first_seen_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<VariantArchive variant={self.variant_id} archive={self.archive_id}>"
@@ -312,7 +318,7 @@ class Collection(Base):
     cycle = Column(String(16), nullable=True)
     sequence_number = Column(Integer, nullable=True)
     theme = Column(String(128), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Collection id={self.id} label={self.original_label}>"
@@ -328,7 +334,7 @@ class Character(Base):
     actor_likeness = Column(String(256), nullable=True)
     actor_confidence = Column(String(32), nullable=True)
     info_url = Column(String(1024), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     def __repr__(self) -> str:  # pragma: no cover - trivial
         return f"<Character id={self.id} name={self.name}>"
@@ -352,7 +358,7 @@ class GameSystem(Base):
     # Default scale for this system, e.g., 1:56 and "28mm heroic"
     default_scale_den = Column(Integer, nullable=True)
     default_scale_name = Column(String(64), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     factions = relationship("Faction", back_populates="system", cascade="all, delete-orphan")
     units = relationship("Unit", back_populates="system")
@@ -374,7 +380,7 @@ class Faction(Base):
     # Optional convenience fields
     full_path = Column(JSON, default=list)  # e.g., ["imperium", "adeptus_astartes", "dark_angels"]
     aliases = Column(JSON, default=list)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     system = relationship("GameSystem", back_populates="factions")
     parent = relationship("Faction", remote_side=[id], backref="children")
@@ -416,7 +422,7 @@ class Unit(Base):
     # Provenance
     source_file = Column(String(512), nullable=True)  # vocab file path relative to repo
     source_anchor = Column(String(256), nullable=True)  # optional YAML path or group
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     system = relationship("GameSystem", back_populates="units")
     faction = relationship("Faction", back_populates="units")
@@ -459,7 +465,7 @@ class VariantUnitLink(Base):
     match_method = Column(String(64), nullable=True)  # e.g., "token", "manual", "yaml-guided"
     match_confidence = Column(Float, nullable=True)
     notes = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     variant = relationship("Variant", back_populates="unit_links")
     unit = relationship("Unit", back_populates="variant_links")
@@ -501,7 +507,7 @@ class Part(Base):
 
     source_file = Column(String(512), nullable=True)
     source_anchor = Column(String(256), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     system = relationship("GameSystem")
     faction = relationship("Faction")
@@ -540,7 +546,7 @@ class VariantPartLink(Base):
     match_method = Column(String(64), nullable=True)
     match_confidence = Column(Float, nullable=True)
     notes = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     variant = relationship("Variant", back_populates="part_links")
     part = relationship("Part", back_populates="variant_links")
@@ -560,7 +566,7 @@ class UnitPartLink(Base):
     relation_type = Column(String(32), nullable=True)  # e.g., 'compatible', 'recommended', 'required'
     required_slot = Column(String(64), nullable=True)  # optional slot constraint
     notes = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
 
     unit = relationship("Unit", back_populates="part_links")
     part = relationship("Part", back_populates="unit_links")

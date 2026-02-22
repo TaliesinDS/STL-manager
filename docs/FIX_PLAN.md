@@ -153,101 +153,132 @@ Phase 1 must come first because it unlocks clean imports, which enables the refa
 
 ## Phase 5 — Medium: Code Quality Fixes (Issues 10–16)
 
-### 5.1 Remove root shims (Issue #10)
+### 5.1 Remove root shims (Issue #10) — DONE
 
-30. Review `scripts/maintenance/remove_root_shims.py` to understand what it does.
-31. Identify the ~15 shim files in `scripts/` root (e.g., `normalize_inventory.py`, `quick_scan.py`, `show_variant.py`, etc.).
-32. Run `remove_root_shims.py` or manually delete the shims.
-33. Update any imports or references that used the shim paths.
+> Completed 2026-02-22.
 
-### 5.2 Fix `datetime.utcnow` deprecation (Issue #11)
+- Deleted 17 standalone shim scripts from `scripts/` root (e.g., `show_variant.py`,
+  `assign_codex_units_aos.py`, `debug_matching_state.py`, all `inspect_*`, `report_*`,
+  `dump_*`, `variant_field_stats.py`, etc.).
+- Kept `normalize_inventory.py` and `quick_scan.py` as import facades — they are
+  imported by 17+ files across the codebase (tests, normalizers, loaders).
+- Deleted `scripts/maintenance/remove_root_shims.py` (no longer needed).
+- No imports or references broke — the deleted shims were standalone entry points only.
+- All 106 tests pass.
 
-34. In `db/models.py`, replace all `datetime.utcnow` with `datetime.now(timezone.utc)`:
-    ```python
-    # Before
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+### 5.2 Fix `datetime.utcnow` deprecation (Issue #11) — DONE
 
-    # After
-    from datetime import timezone
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc),
-                        onupdate=lambda: datetime.now(timezone.utc))
-    ```
-35. Grep for any other `utcnow` usage across the codebase and fix.
+> Completed 2026-02-22.
 
-### 5.3 Fix Python 3.9 compat in `quick_scan.py` (Issue #12)
+- Replaced all 21 `datetime.utcnow` usages in `db/models.py` with
+  `lambda: datetime.now(datetime.UTC)` (18 `default=`, 3 `onupdate=`).
+- Fixed 1 additional occurrence in `scripts/30_normalize_match/match_variants_to_units.py`.
+- Ruff auto-fixed `timezone.utc` → `datetime.UTC` alias (UP017, valid for
+  target-version `py311`).
+- Removed unused `timezone` imports.
+- All 106 tests pass, `ruff check .` clean.
 
-36. Check `scripts/10_inventory/quick_scan.py` for `str | None`, `list[str]` union syntax.
-37. Add `from __future__ import annotations` at the top (or convert to `Optional[str]`, `List[str]`).
+### 5.3 Fix Python 3.9 compat in `quick_scan.py` (Issue #12) — DONE (pre-existing)
 
-### 5.4 Gitignore `.bak` files (Issue #13)
+> Already resolved — `from __future__ import annotations` was present at line 38.
+> Target Python version has also been updated to `>=3.11` in `pyproject.toml`,
+> making the union syntax natively valid.
 
-38. Add `data/*.bak*` to `.gitignore`.
-39. Run `git rm --cached data/*.bak*` to remove from tracking (**confirm with user first** — 23 backup files).
+### 5.4 Gitignore `.bak` files (Issue #13) — DONE (pre-existing)
 
-### 5.5 Remove `redis.url` from config (Issue #16)
+> Already resolved — `data/*.bak*` was already present in `.gitignore`.
 
-40. Edit `CONFIG.example.yaml` — remove the `redis:` section entirely.
+### 5.5 Remove `redis.url` from config (Issue #16) — DONE
 
-### 5.6 Clean up `scripts/legacy/` (Issue #15)
+> Completed 2026-02-22.
 
-41. Review each file in `scripts/legacy/` — 6 files:
-    - `apply_proposals_to_v1.py`
-    - `create_and_stamp.py`
-    - `gen_migration_from_metadata.py`
-    - `inspect_sqlite.py`
-    - `migrate_add_columns.py`
-    - `set_alembic_version.py`
-42. Confirm all are dead code (migration-era artifacts).
-43. Delete or move to an archive branch.
+- Removed the `redis:` section from `CONFIG.example.yaml`.
+- No code references redis config; only documentation mentions it as an
+  optional future upgrade path.
+
+### 5.6 Clean up `scripts/legacy/` (Issue #15) — DONE
+
+> Completed 2026-02-22.
+
+- Confirmed all 6 files are dead code (migration-era artifacts, no imports
+  or references outside docs).
+- Deleted `scripts/legacy/` directory entirely.
+- All 106 tests pass.
 
 ---
 
 ## Phase 6 — Medium: Documentation & Architecture (Issue #17)
 
-### 6.1 Split README
+### 6.1 Split README — DONE
 
-44. Extract changelog section from `README.md` into `CHANGELOG.md`.
-45. Extract architecture overview into `docs/ARCHITECTURE.md`.
-46. Extract CLI reference into `docs/CLI_REFERENCE.md`.
-47. Keep `README.md` as a concise project overview with links to the sub-documents.
-48. Mark unimplemented API endpoints in `docs/API_SPEC.md` with `[PLANNED]` labels.
+> Completed 2026-02-22.
+
+- Extracted changelog ("What's new" sections) into `CHANGELOG.md` at repo root.
+- Extracted architecture overview, repository layout, flowchart, and runtime
+  deps into `docs/ARCHITECTURE.md`.
+- Extracted all CLI commands, PowerShell examples, loader/matcher/scan
+  workflows, and MMF integration into `docs/CLI_REFERENCE.md`.
+- Rewrote `README.md` as a concise overview (~90 lines) with a documentation
+  table linking to all sub-documents.
+- Marked all unimplemented API endpoints in `docs/API_SPEC.md` with `[PLANNED]`
+  labels. The two implemented endpoints (`GET /variants`, `GET /variants/{id}`)
+  are marked `[IMPLEMENTED]`.
+- All 106 tests pass.
 
 ---
 
 ## Phase 7 — Low: Nice-to-Have (Issues 18–22)
 
-### 7.1 Add `pytest-cov` (Issue #18)
+### 7.1 Add `pytest-cov` (Issue #18) — DONE
 
-49. Add `pytest-cov` to dev dependencies.
-50. Add `[tool.coverage]` config to `pyproject.toml`.
-51. Add `--cov=db --cov=scripts --cov-report=term-missing` to pytest defaults.
+> Completed 2026-02-22.
 
-### 7.2 Document Variant field phases (Issue #22)
+- `pytest-cov` already in dev dependencies.
+- Added `[tool.coverage.run]` and `[tool.coverage.report]` to `pyproject.toml`.
+- Added `--cov=db --cov=scripts --cov=api --cov-report=term-missing` to
+  `[tool.pytest.ini_options] addopts`.
+- Removed stale `scripts/legacy` from ruff exclude list.
+- All 106 tests pass with coverage reporting.
 
-52. Add inline comments in `db/models.py` grouping fields by phase (P0, P1, P2).
-53. Or create a `docs/MODEL_FIELDS.md` reference document.
+### 7.2 Document Variant field phases (Issue #22) — DONE
 
-### 7.3 Thread-safety for `reconfigure()` (Issue #21)
+> Completed 2026-02-22.
 
-54. Add a `threading.Lock` around the global mutation in `db/session.py`'s `reconfigure()`:
-    ```python
-    _reconfigure_lock = threading.Lock()
+- Added inline phase section comments (`── P0:`, `── P1:`, `── P2:`) to
+  `db/models.py` grouping all ~60 Variant columns by implementation phase.
+- P0: identity, inventory, timestamps, residuals.
+- P1: normalized metadata, tabletop/franchise, lineage, classification,
+  tagging, multilingual, kit relationships.
+- P2: addon/compatibility fields.
+- All 106 tests pass.
 
-    def reconfigure(db_url: str) -> None:
-        with _reconfigure_lock:
-            global DB_URL, engine, SessionLocal
-            ...
-    ```
+### 7.3 Thread-safety for `reconfigure()` (Issue #21) — DONE
 
-### 7.4 `mmf_client.py` retry/backoff (Issue #20)
+> Completed 2026-02-22.
 
-55. Add basic retry logic with exponential backoff to `scripts/lib/mmf_client.py` for HTTP requests.
+- Added `_reconfigure_lock = threading.Lock()` in `db/session.py`.
+- Wrapped the entire `reconfigure()` body in `with _reconfigure_lock:`.
+- All 106 tests pass.
 
-### 7.5 Consider splitting `Variant` model (Issue #19)
+### 7.4 `mmf_client.py` retry/backoff (Issue #20) — DONE
 
-56. This is a large architectural change — defer to a dedicated design phase. Document the intent and trade-offs as a future consideration in `DECISIONS.md`.
+> Completed 2026-02-22.
+
+- Added exponential backoff retry (3 retries, 1s/2s/4s delays) to
+  `_http_request()` in `scripts/lib/mmf_client.py`.
+- Client errors (4xx except 429) fail immediately without retry.
+- Server errors (5xx), rate limits (429), and network errors trigger retry.
+- Logs warnings via `logging` module on each retry attempt.
+- All 106 tests pass, `ruff check .` clean.
+
+### 7.5 Consider splitting `Variant` model (Issue #19) — DONE (documented)
+
+> Completed 2026-02-22.
+
+- Documented trade-offs and deferral rationale in `DECISIONS.md` (2026-02-22 entry).
+- Decision: defer to Phase 2+. Current single-table design is acceptable for
+  SQLite at current scale. Phase annotations (P0/P1/P2) in `db/models.py`
+  guide a future split if needed.
 
 ---
 
@@ -278,6 +309,6 @@ Phase 1 (pyproject.toml, sys.path, CI)
 | 3rd | Phase 2 | High | Extract constants, deduplicate, decompose monoliths | **DONE** |
 | 4th | Phase 3.2 | Low | `ruff` config | **DONE** |
 | 5th | Phase 4 | Medium | Unit tests for scoring + UI display | **DONE** |
-| 6th | Phase 5 | Low | `utcnow`, compat, config, shims, legacy | |
-| 7th | Phase 6 | Low | README split, API spec labels | |
-| 8th | Phase 7 | Low | Coverage, thread safety, retry, model split | |
+| 6th | Phase 5 | Low | `utcnow`, compat, config, shims, legacy | **DONE** |
+| 7th | Phase 6 | Low | README split, API spec labels | **DONE** |
+| 8th | Phase 7 | Low | Coverage, thread safety, retry, model split | **DONE** |

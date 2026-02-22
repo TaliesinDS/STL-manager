@@ -1,5 +1,2 @@
 db:
   url: sqlite:///./data/stl_manager.db
-
-redis:
-  url: redis://localhost:6379

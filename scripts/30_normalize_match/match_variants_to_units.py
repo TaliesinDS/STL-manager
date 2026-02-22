@@ -7,7 +7,7 @@ import re
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
@@ -1587,7 +1587,7 @@ def main() -> None:
     # Write report
     with out_path.open("w", encoding="utf-8") as f:
         json.dump({
-            "ts": datetime.utcnow().isoformat() + "Z",
+            "ts": datetime.now(UTC).isoformat() + "Z",
             "apply": args.apply,
             "include_kit_children": args.include_kit_children,
             "limit": args.limit,

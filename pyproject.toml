@@ -30,17 +30,28 @@ include = ["db*", "scripts*", "api*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-q"
+addopts = "-q --cov=db --cov=scripts --cov=api --cov-report=term-missing"
 markers = [
     "workflow: end-to-end workflow tests for scripts (slow-ish, Windows-friendly)",
 ]
+
+[tool.coverage.run]
+source = ["db", "scripts", "api"]
+omit = [
+    "scripts/60_reports_analysis/*",
+    "scripts/diagnostics/*",
+    "scripts/dev/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
 
 [tool.ruff]
 target-version = "py311"
 line-length = 120
 exclude = [
     "scripts/60_reports_analysis",  # diagnostic scripts with py3.12 syntax
-    "scripts/legacy",
 ]
 
 [tool.ruff.lint]

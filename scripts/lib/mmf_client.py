@@ -1,6 +1,8 @@
 import json
+import logging
 import os
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
@@ -9,25 +11,43 @@ from typing import Any, Dict, List, Optional
 MMF_BASE = os.environ.get("MMF_API_BASE", "https://www.myminifactory.com/api/v2")
 AUTH_BASE = os.environ.get("MMF_AUTH_BASE", "https://auth.myminifactory.com")
 
+_log = logging.getLogger(__name__)
+
+_MAX_RETRIES = 3
+_BACKOFF_BASE = 1.0  # seconds; doubles each retry
+
 
 class MMFError(Exception):
     pass
 
 
 def _http_request(url: str, method: str = "GET", headers: Optional[Dict[str, str]] = None, data: Optional[bytes] = None) -> Dict[str, Any]:
-    req = urllib.request.Request(url, data=data, method=method)
-    if headers:
-        for k, v in headers.items():
-            req.add_header(k, v)
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            ct = resp.headers.get("Content-Type", "application/json")
-            raw = resp.read()
-            if "application/json" in ct:
-                return json.loads(raw.decode("utf-8"))
-            return {"raw": raw.decode("utf-8", errors="replace"), "status": resp.status}
-    except Exception as e:
-        raise MMFError(f"HTTP {method} {url} failed: {e}")
+    last_exc: Exception | None = None
+    for attempt in range(_MAX_RETRIES + 1):
+        req = urllib.request.Request(url, data=data, method=method)
+        if headers:
+            for k, v in headers.items():
+                req.add_header(k, v)
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                ct = resp.headers.get("Content-Type", "application/json")
+                raw = resp.read()
+                if "application/json" in ct:
+                    return json.loads(raw.decode("utf-8"))
+                return {"raw": raw.decode("utf-8", errors="replace"), "status": resp.status}
+        except urllib.error.HTTPError as e:
+            # Don't retry client errors (4xx) except 429 (rate limit)
+            if 400 <= e.code < 500 and e.code != 429:
+                raise MMFError(f"HTTP {method} {url} failed: {e}")
+            last_exc = e
+        except Exception as e:
+            last_exc = e
+        if attempt < _MAX_RETRIES:
+            delay = _BACKOFF_BASE * (2 ** attempt)
+            _log.warning("MMF request failed (attempt %d/%d), retrying in %.1fs: %s",
+                         attempt + 1, _MAX_RETRIES + 1, delay, last_exc)
+            time.sleep(delay)
+    raise MMFError(f"HTTP {method} {url} failed after {_MAX_RETRIES + 1} attempts: {last_exc}")
 
 
 def get_access_token(client_id: str, client_secret: str, *, grant_type: str = "client_credentials") -> str:
