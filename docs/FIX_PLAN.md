@@ -121,24 +121,33 @@ Phase 1 must come first because it unlocks clean imports, which enables the refa
 
 ## Phase 4 — High: Testing (Issue #4)
 
-### 4.1 Unit tests for scoring logic
+### 4.1 Unit tests for scoring logic — DONE
 
-27. Create `tests/test_match_scoring.py`:
-    - Test `system_hint()` with various inputs.
-    - Test mount detection logic.
-    - Test spell injection matching.
-    - Test chapter hints / faction path walking.
-    - Test score delta gating.
-    - Test the full `score_candidate()` function with synthetic data.
+> Completed 2026-02-22.
 
-### 4.2 Unit tests for UI display logic
+- Created `tests/test_match_scoring.py` (21 tests).
+- Covers `norm_text`, `system_hint`, `find_chapter_hint`, `_has_marine_context`,
+  `detect_mount_context`, `apply_mount_bias`, `detect_spell_context`,
+  `detect_aos_faction_hint`, `score_match`, `_path_segments`,
+  and `find_best_matches` (including mount injection & spell injection).
+- Uses `importlib.util.spec_from_file_location` to load the module from its
+  numeric-prefix directory.
+- All 21 tests pass.
 
-28. Create `tests/test_ui_display.py` (depends on Phase 2.3 extraction):
-    - Test `build_ui_display()` with known variant metadata.
-    - Test `_choose_thing_name()` edge cases.
-    - Test tokenization variants, comma handling, prefix stripping.
+### 4.2 Unit tests for UI display logic — DONE
 
-29. Ensure these new tests are picked up by the CI test run.
+> Completed 2026-02-22.
+
+- Created `tests/test_ui_display.py` (18 tests).
+- Covers `_split_words`, `_clean_words`, `_title_case`, `_norm_label`,
+  `_is_bucket_phrase`, `_is_packaging_segment`, `_best_named_segment_from_path`,
+  `_choose_thing_name`, and `build_ui_display`.
+- Uses a stub `translate_tokens` (identity function) seeded into `sys.modules`
+  to avoid loading the real backfill module and its DB dependencies.
+- All 18 tests pass.
+
+29. Both test files are auto-discovered by pytest via `testpaths = ["tests"]`
+    in `pyproject.toml` — no CI changes needed.
 
 ---
 
@@ -268,7 +277,7 @@ Phase 1 (pyproject.toml, sys.path, CI)
 | 2nd | Phase 3.1 | Low | `.gitignore` cleanup | **DONE** |
 | 3rd | Phase 2 | High | Extract constants, deduplicate, decompose monoliths | **DONE** |
 | 4th | Phase 3.2 | Low | `ruff` config | **DONE** |
-| 5th | Phase 4 | Medium | Unit tests for scoring + UI display | |
+| 5th | Phase 4 | Medium | Unit tests for scoring + UI display | **DONE** |
 | 6th | Phase 5 | Low | `utcnow`, compat, config, shims, legacy | |
 | 7th | Phase 6 | Low | README split, API spec labels | |
 | 8th | Phase 7 | Low | Coverage, thread safety, retry, model split | |

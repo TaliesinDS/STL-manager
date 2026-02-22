@@ -27,11 +27,10 @@ def test_bootstrap_then_normalize_dryrun(cli, venv_python: str, tmp_db_url: str,
     cp = cli([venv_python, "scripts/00_bootstrap/bootstrap_db.py", "--db-url", tmp_db_url, "--use-metadata"])
     _assert_ok(cp.returncode, cp, "bootstrap_db")
 
-    # 2) Create a tiny sample inventory and ingest
-    tmp_json = repo_root / ".pytest-tmp" / "sample_inventory.json"
-    cp = cli([venv_python, "scripts/10_inventory/create_sample_inventory.py", "--out", str(tmp_json)])
-    _assert_ok(cp.returncode, cp, "create_sample_inventory")
-    assert tmp_json.is_file(), "Expected sample inventory JSON to be created"
+    # 2) Use the pre-committed fixture inventory (sample_store/ is gitignored
+    #    and unavailable in CI, so we cannot run create_sample_inventory.py)
+    tmp_json = repo_root / "tests" / "fixtures" / "sample_inventory.json"
+    assert tmp_json.is_file(), "Expected tests/fixtures/sample_inventory.json to exist"
 
     # load_sample reads DB from STLMGR_DB_URL; it doesn't support --db-url/--apply
     cp = cli([
